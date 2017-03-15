@@ -28,7 +28,8 @@ def generate_badges(aggregate, folder, index, picture):
         else:
             row = [""] * (4 - len(row)) + row
         for j, text in enumerate(row):
-            content = content.replace("person_{}_line_{}".format(i, j), text)            
+            content = content.replace("person_{}_line_{}".format(i + 1, j + 1), text)
+        content = content.replace("badge_{}.png".format(i), picture_name)            
     with open(target, "w", encoding="UTF-8") as f:
         f.write(content)
     
