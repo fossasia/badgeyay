@@ -3,6 +3,8 @@ fossasia-badge-generator
 
 This script generates the badges for the FOSSASIA conference.
 
+[Current Badges](https://niccokunzmann.github.io/download_latest/all-badges.pdf)
+
 Specification
 -------------
 
