@@ -10,3 +10,6 @@ for input_file in input_files:
     if not os.path.isfile(picture):
         print("SKIP: {} has no picture {}".format(input_file, picture))
         continue
+    folder = input_file + ".badges"
+    os.makedirs(folder, exist_ok=True)
+    
