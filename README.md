@@ -8,7 +8,7 @@ Specification
 
 ### Input
 
-- The input is a set of csv files in the same folder.
+- The input is a set of csv files in the same folder, UTF-8.
 - The csv file is named after the badge type to take. 
   Example: `vip.png.csv` uses the picture `vip.png`.
 - The csv has the following three columns
