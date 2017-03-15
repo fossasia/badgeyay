@@ -11,12 +11,12 @@ Specification
 - The input is a set of csv files in the same folder, UTF-8.
 - The csv file is named after the badge type to take. 
   Example: `vip.png.csv` uses the picture `vip.png`.
-- The csv has the following three columns
-  1. First Nmae
-  2. Second Name
-    - If there is no last name, the first name is split at the last space
-      if the name has more than 12 letters
-  3. Twitterhandle
+- The CSV has up to 4 columns for the name and the twitter handle.
+  They will be filled if this number is filled:
+  - `  X `
+  - `  XX`
+  - ` XXX`
+  - `XXXX`
 
 ### Output
 
