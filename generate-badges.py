@@ -13,11 +13,11 @@ with open("badges/8BadgesOnA3.svg", encoding="UTF-8") as f:
     CONTENT = f.read()
 
 def generate_badges(aggregate, folder, index, picture):
-    target = os.path.join(folder, "speakers_{}.svg".format(index))
+    target = os.path.join(folder, "badges_{}.svg".format(index))
     print("Generating {}".format(target))
     content = CONTENT
     ext = os.path.splitext(picture)[1]
-    picture_name = "speakers_{}_background{}".format(index, ext)
+    picture_name = "badges_{}_background{}".format(index, ext)
     shutil.copyfile(picture, os.path.join(folder, picture_name))
     for i, row in enumerate(aggregate):
         row = [entry for entry in row if not entry.isspace()]
@@ -56,4 +56,5 @@ for input_file in input_files:
                 generate_badges(aggregate, folder, i, picture)
                 aggregate = []
                 i += 1
-        generate_badges(aggregate, folder, i, picture)
+        if aggregate:
+            generate_badges(aggregate, folder, i, picture)
