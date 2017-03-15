@@ -26,6 +26,7 @@ The outputs are in a folder derived form the input csv.
 
 ### Usage
 
-Run the Python file with Python 3.
-It turns all input files to the output files.
+You need Ubuntu.
 
+You can run the `merge_badges.sh` file.
+It generates badges for every csv file and combines them to one.
