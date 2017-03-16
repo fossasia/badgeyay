@@ -25,7 +25,12 @@ Specification
 
 The output file is svg / pdf / multipage pdf of size A3.
 Each badge has the size A6.
-The outputs are in a folder derived form the input csv.
+The outputs are in a folder derived form the input csv
+
+### Customization
+
+You can change the font style, font size, color,etc from the .svg file in the folder badges.
+Inkscape is generally used for editing of such files.
 
 ### Usage
 
