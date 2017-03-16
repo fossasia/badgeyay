@@ -1,5 +1,7 @@
-language: generic
+language: python3
 
+before:
+- apt-get -y install librsvg2-bin pdftk
 script:
 - ./merge_badges.sh
 
