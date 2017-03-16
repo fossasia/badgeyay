@@ -43,7 +43,7 @@ When a PR is merged into the master branch, the current badges canbe downloaded.
 
 Contributions, Bug Reports, Feature Requests
 --------------
-This is an Open Source project and we would be happy to see contributors who report bugs and file feature requests submitting pull requests as well. Please report issues in the GitHub tracker.
+This is an Open Source project and we would be happy to see contributors who report bugs and file feature requests submitting pull requests as well. Please report issues in the [GitHub tracker][new-issue].
 
 Implementation
 --------------
@@ -63,3 +63,4 @@ Related Repositories
 
 [travis]: https://travis-ci.org/niccokunzmann/fossasia-badge-generator
 [releases]: https://github.com/niccokunzmann/fossasia-badge-generator/releases
+[new-issue]: https://github.com/niccokunzmann/fossasia-badge-generator/issues/new
