@@ -34,4 +34,6 @@ for folder in *.badges; do
   all="$out $all"
 done
 
-pdftk $all cat output all-badges.pdf
+final="all-badges.pdf"
+pdftk $all cat output "$final"
+echo "Created $final"
