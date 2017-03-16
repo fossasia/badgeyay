@@ -16,9 +16,9 @@ Specification
   Example: `vip.png.csv` uses the picture `vip.png`.
 - The CSV has up to 4 columns for the name and the twitter handle.
   They will be filled if this number is filled:
-  - `  X `
-  - `  XX`
-  - ` XXX`
+  - `__X_`
+  - `__XX`
+  - `_XXX`
   - `XXXX`
 
 ### Output
