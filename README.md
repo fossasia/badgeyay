@@ -64,3 +64,10 @@ Related Repositories
 [travis]: https://travis-ci.org/niccokunzmann/fossasia-badge-generator
 [releases]: https://github.com/niccokunzmann/fossasia-badge-generator/releases
 [new-issue]: https://github.com/niccokunzmann/fossasia-badge-generator/issues/new
+
+Maintainers
+-------------------
+
+The project is maintained by
+ - Nicco Kunzmann ([@niccokunzmann](https://github.com/niccokunzmann))
+ - Tarun Kumar ([@meets2tarun](https://github.com/meets2tarun))
