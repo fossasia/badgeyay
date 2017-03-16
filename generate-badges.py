@@ -8,7 +8,7 @@ import shutil
 input_files = [file for file in os.listdir(".")
                if file.lower().endswith(".csv")]
 
-NUMBER_OF_BADGES_PER_PAGE = 8               
+NUMBER_OF_BADGES_PER_PAGE = 8
 with open("badges/8BadgesOnA3.svg", encoding="UTF-8") as f:
     CONTENT = f.read()
 
@@ -51,6 +51,7 @@ for input_file in input_files:
         aggregate = []
         i = 1
         for row in csv.reader(f):
+            aggregate.append(row)
             aggregate.append(row)
             if len(aggregate) >= NUMBER_OF_BADGES_PER_PAGE:
                 generate_badges(aggregate, folder, i, picture)
