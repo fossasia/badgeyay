@@ -4,7 +4,7 @@ fossasia-badge-generator
 This script generates the badges for the FOSSASIA conference.
 
 [Download Current Badges](https://niccokunzmann.github.io/download_latest/all-badges.pdf)
-[![Build Status](https://travis-ci.org/niccokunzmann/fossasia-badge-generator.svg?branch=master)](https://travis-ci.org/niccokunzmann/fossasia-badge-generator)
+[![Build Status](https://travis-ci.org/niccokunzmann/fossasia-badge-generator.svg?branch=master)][travis]
 
 Specification
 -------------
@@ -33,8 +33,24 @@ You need Ubuntu.
 
 You can run the `merge_badges.sh` file.
 It generates badges for every csv file and combines them to one.
+There is a travis build which build the badges automatically.
+When a PR is merged into the master branch, the current badges canbe downloaded.
+
+Implementation
+--------------
+
+[generate_badges.py](generate_badges.py) creates svg files from the `csv`, `png` and
+[badges/8BadgesOnA3.svg](badges/8BadgesOnA3.svg).
+
+[merge_badges.sh](merge_badges.sh) converts there into pdf files and merges
+them together into one.
+
+[Travis][travis] creates new [releases][releases] with the `all-badges.pdf` file.
 
 Related Repositories
 --------------------
 
 - https://github.com/fossasia/fossasia-artwork/tree/master/Badges/Badges-2017
+
+[travis]: https://travis-ci.org/niccokunzmann/fossasia-badge-generator
+[releases]: https://github.com/niccokunzmann/fossasia-badge-generator/releases
