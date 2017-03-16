@@ -41,6 +41,10 @@ It generates badges for every csv file and combines them to one.
 There is a travis build which build the badges automatically.
 When a PR is merged into the master branch, the current badges canbe downloaded.
 
+Contributions, Bug Reports, Feature Requests
+--------------
+This is an Open Source project and we would be happy to see contributors who report bugs and file feature requests submitting pull requests as well. Please report issues in the GitHub tracker.
+
 Implementation
 --------------
 
