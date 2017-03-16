@@ -32,3 +32,8 @@ You need Ubuntu.
 
 You can run the `merge_badges.sh` file.
 It generates badges for every csv file and combines them to one.
+
+Related Repositories
+--------------------
+
+- https://github.com/fossasia/fossasia-artwork/tree/master/Badges/Badges-2017
