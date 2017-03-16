@@ -4,6 +4,7 @@ import os
 import csv
 import itertools
 import shutil
+import html
 
 input_files = [file for file in os.listdir(".")
                if file.lower().endswith(".csv")]
@@ -28,6 +29,7 @@ def generate_badges(aggregate, folder, index, picture):
         else:
             row = [""] * (4 - len(row)) + row
         for j, text in enumerate(row):
+            text = html.escape(text)
             content = content.replace("person_{}_line_{}".format(i + 1, j + 1), text)
         content = content.replace("badge_{}.png".format(i + 1), picture_name)            
     with open(target, "w", encoding="UTF-8") as f:
