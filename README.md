@@ -52,7 +52,11 @@ It must be in the speakers.json file.
 ]
 ```
 
+To generate the `speaker.png.csv` file and the all-badges.png file, execute
 
+```
+./generate-speaker-csv.py && ./merge_badges.sh
+```
 
 Specification
 -------------
