@@ -1,10 +1,58 @@
-fossasia-badge-generator
+eventyay-badge-generator
 ========================
 
-This script generates the badges for the FOSSASIA conference.
+This script generates the badges for an exported list of speakers of the eventyey platform.
 
-[Download Current Badges](https://niccokunzmann.github.io/download_latest/all-badges.pdf)
 [![Build Status](https://travis-ci.org/niccokunzmann/fossasia-badge-generator.svg?branch=master)][travis]
+
+Conversion
+----------
+
+The input form eventyay is a json list of speakers.
+It must be in the speakers.json file.
+
+```
+[
+    {
+        "id": 2503, 
+        "name": "Nicco Kunzmann", 
+        "email": "niccokunzmann@asdfg.com", 
+        "mobile": "", 
+        "photo": "https://storage.googleapis.com/eventyay.com/events/69/speakers/2503/photo/TmpqTmxjVX/bd9e6b8b-31c2-4af2-9977-2e8443510f12.png", 
+        "organisation": "Coderdojo", 
+        "position": "", 
+        "country": "", 
+        "short_biography": "<p>CoderDojo ist ein Programmierklub für Mädchen und Jungen im Alter von 5-17 Jahren. Hier könnt ihr euch kreativ mit Technik auseinandersetzen und Programmieren lernen.</p><p>Alle Materielien findet ihr unter <a href=\"http://coderdojopotsdam.github.io\" rel=\"nofollow\" target=\"_blank\">coderdojopotsdam.github.io</a>, nachdem ihr auch \"View More\" oder \"mehr anzeigen\" klickt.</p>", 
+        "long_biography": "", 
+        "website": "", 
+        "twitter": "", 
+        "facebook": "", 
+        "github": "", 
+        "linkedin": "", 
+        "city": "", 
+        "featured": false, 
+        "gender": "", 
+        "heard_from": "", 
+        "icon": "https://storage.googleapis.com/eventyay.com/events/69/speakers/2503/icon/T3BCMXdRWU/8cc480fb-b3ae-46c5-8b6c-4fe07b4c7223.jpg", 
+        "sessions": [
+            {
+                "id": 3699, 
+                "title": "Python Workshop"
+            }, 
+            {
+                "id": 3296, 
+                "title": "Coderdojo"
+            }
+        ], 
+        "small": "https://storage.googleapis.com/eventyay.com/events/69/speakers/2503/small/dVdxZU1nY0/fbd66dcf-51ba-45c2-a5e0-54ae33526744.jpg", 
+        "speaking_experience": "", 
+        "sponsorship_required": "", 
+        "thumbnail": "https://storage.googleapis.com/eventyay.com/events/69/speakers/2503/thumbnail/MlR1dVI3bW/bacafb8c-beab-4ede-ba5c-0d20740a8e56.jpg"
+    }
+]
+```
+
+
 
 Specification
 -------------

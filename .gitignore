@@ -2,3 +2,5 @@
 /*.csv#
 *.badges
 *.swp
+*.pdf
+/speaker.json
