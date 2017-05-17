@@ -6,6 +6,12 @@ This script generates the badges for the FOSSASIA conference.
 [Download Current Badges](https://niccokunzmann.github.io/download_latest/all-badges.pdf)
 [![Build Status](https://travis-ci.org/niccokunzmann/fossasia-badge-generator.svg?branch=master)][travis]
 
+Used for
+--------
+
+- FOSSASIA 2017 (master)
+- [OpenTechSummit 2017 (ots-eventyay)](https://github.com/niccokunzmann/fossasia-badge-generator/tree/ots-eventyay)
+
 Specification
 -------------
 
