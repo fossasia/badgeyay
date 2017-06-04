@@ -1,16 +1,17 @@
-fossasia-badge-generator
-========================
+# badgeyay
 
-This script generates the badges for the FOSSASIA conference.
+[![Travis branch](https://img.shields.io/travis/fossasia/badgeyay/development.svg?style=flat-square)](https://travis-ci.org/fossasia/badgeyay)
+[![Codecov branch](https://img.shields.io/codecov/c/github/fossasia/badgeyay/development.svg?style=flat-square&label=Codecov+Coverage)](https://codecov.io/gh/fossasia/badgeyay)
+[![Gitter](https://img.shields.io/badge/chat-on%20gitter-ff006f.svg?style=flat-square)](https://gitter.im/fossasia/open-event-orga-server)
 
-[Download Current Badges](https://niccokunzmann.github.io/download_latest/all-badges.pdf)
-[![Build Status](https://travis-ci.org/niccokunzmann/fossasia-badge-generator.svg?branch=master)][travis]
+The goal of badgeyay is to provide a simple badge generator with the following features:
+* a simple web UI to add data and generate printable badges in a zip
+* Fields should include:
+   * choose size of badges
+   * choose background of badges and upload logo and background image
+   * upload CSV or copy/paste text for badges including name, type of attendee, nick/handle, organization/project
 
-Used for
---------
-
-- FOSSASIA 2017 (master)
-- [OpenTechSummit 2017 (ots-eventyay)](https://github.com/niccokunzmann/fossasia-badge-generator/tree/ots-eventyay)
+This first step is to provide a simple script to generate the badges for the FOSSASIA conference. The next step is to provide a web UI.
 
 Specification
 -------------
@@ -61,15 +62,6 @@ Implementation
 them together into one.
 
 [Travis][travis] creates new [releases][releases] with the `all-badges.pdf` file.
-
-Related Repositories
---------------------
-
-- https://github.com/fossasia/fossasia-artwork/tree/master/Badges/Badges-2017
-
-[travis]: https://travis-ci.org/niccokunzmann/fossasia-badge-generator
-[releases]: https://github.com/niccokunzmann/fossasia-badge-generator/releases
-[new-issue]: https://github.com/niccokunzmann/fossasia-badge-generator/issues/new
 
 Maintainers
 -------------------
