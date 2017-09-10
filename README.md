@@ -2,7 +2,7 @@
 
 [![Travis branch](https://img.shields.io/travis/fossasia/badgeyay/development.svg?style=flat-square)](https://travis-ci.org/fossasia/badgeyay)
 [![Codecov branch](https://img.shields.io/codecov/c/github/fossasia/badgeyay/development.svg?style=flat-square&label=Codecov+Coverage)](https://codecov.io/gh/fossasia/badgeyay)
-[![Gitter](https://img.shields.io/badge/chat-on%20gitter-ff006f.svg?style=flat-square)](https://gitter.im/fossasia/open-event-orga-server)
+[![Gitter](https://img.shields.io/badge/chat-on%20gitter-ff006f.svg?style=flat-square)][gitter]
 
 The goal of badgeyay is to provide a simple badge generator with the following features:
 * a simple web UI to add data and generate printable badges in a zip
@@ -12,6 +12,13 @@ The goal of badgeyay is to provide a simple badge generator with the following f
    * upload CSV or copy/paste text for badges including name, type of attendee, nick/handle, organization/project
 
 This first step is to provide a simple script to generate the badges for the FOSSASIA conference. The next step is to provide a web UI.
+
+If you like to join developing,
+
+- you can [chat on gitter][gitter], mentioning the maintainers.
+- you can read [issues](https://github.com/fossasia/badgeyay/issues) and solve them.
+  - When you solve an issue, you do not own it. Share your progress via a Pull-Requst as soon as possible.
+  - Discuss with others who work on the issue about the best solution. It is your responsibility, not the maintainer's to choose the best solution.
 
 Specification
 -------------
@@ -69,3 +76,5 @@ Maintainers
 The project is maintained by
  - Nicco Kunzmann ([@niccokunzmann](https://github.com/niccokunzmann))
  - Tarun Kumar ([@meets2tarun](https://github.com/meets2tarun))
+ 
+ [gitter]: https://gitter.im/fossasia/open-event-orga-server
