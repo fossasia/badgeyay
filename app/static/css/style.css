@@ -29,20 +29,13 @@
 }
 .navbar-brand{
   padding: 30px 15px;
-  font-size: 28px;
-  color: crimson !important;
+  font-size: 28px;  
   font-weight: bold;
 }
 .navbar-nav,.navbar-nav>li>a{
-  font-weight: bold;
-  color: crimson !important;
+  font-weight: bold;  
   padding-top:0px;
   padding-left:25px;
-}
-.list-group-item a{
-  color: crimson;
-  font-weight: bold;
-  text-decoration: none;
 }
 .not-found{
   font-size: 18em;
@@ -52,4 +45,74 @@
   border:none;
   background-color: crimson;
   margin-top: 10px;
+}
+.navbar .glyphicon-th {
+  font-size: 30px;
+  margin-top: 20px;
+}
+.navbar hr {
+  margin-bottom: 0;
+  margin-top: 10px;
+}
+.custom-menu {
+  min-height: 350px;
+  overflow: auto;
+  width: 300px;
+  position: absolute;
+  border: 1px solid #bfbfbf;
+  position: absolute;
+  right: 20px;
+  top: 0px;
+  box-shadow: 0px 0px 5px 5px #f2f2f2;
+  background-color: white;
+}
+.custom-arrow {
+  background-color: white;
+  width: 15px;
+  height: 15px;
+  border: 1px solid #bfbfbf;
+  position: absolute;
+  top: -7px;
+  right: 44px;
+  -webkit-transform: rotate(45deg);
+  -moz-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+.hide-arrow {
+  width: 30px;
+  height: 30px;
+  position: absolute;
+  background-color: white;
+  right: 10px;
+  top: 0px;
+  z-index: 2;
+}
+.custom-menu-content {
+  position: relative;
+  top: 70px;
+  left: 35px;
+  z-index: 3;
+}
+.custom-menu-item {
+  display: inline-block;
+  width: 32%;
+  max-height: 70px;
+  padding: 5px;
+  text-align: center;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  margin-top: 20px;
+}
+.custom-icon img {
+  width: 60%;
+}
+.footer {
+  position: absolute;
+  text-align: center;
+  width: 100%;
+  padding: 10px;
+  bottom: 0px;
+  border-top: 1px solid #bfbfbf;
+  background-color: #f9f9f9;
 }
