@@ -1,0 +1,55 @@
+.board .col-md-4 {
+  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+  margin-top: 40px;
+  padding-bottom: 20px;
+}
+.board .btn-success {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  background: darkgreen;
+}
+.flash-error{
+  padding: 10px 10px;
+  background-color: crimson;
+  color: white;
+  font-weight: bold;
+  font-size: 14px;
+  border-radius: 5px;
+}
+.flash-success{
+  padding: 10px 10px;
+  background-color: darkgreen;
+  color: white;
+  font-weight: bold;
+  font-size: 14px;
+}
+.navbar{
+  height: 80px;
+  background-color: white;
+}
+.navbar-brand{
+  padding: 30px 15px;
+  font-size: 28px;
+  color: crimson !important;
+  font-weight: bold;
+}
+.navbar-nav,.navbar-nav>li>a{
+  font-weight: bold;
+  color: crimson !important;
+  padding-top:0px;
+  padding-left:25px;
+}
+.list-group-item a{
+  color: crimson;
+  font-weight: bold;
+  text-decoration: none;
+}
+.not-found{
+  font-size: 18em;
+  color:crimson;
+}
+.btn-danger,.btn-danger:hover,.btn-danger:focus{
+  border:none;
+  background-color: crimson;
+  margin-top: 10px;
+}
