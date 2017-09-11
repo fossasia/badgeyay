@@ -20,18 +20,22 @@ def generate_badges():
 
 @app.route('/upload', methods=['POST'])
 def upload():
-    # check if the post request has the file part
-    if 'file' not in request.files:
-        flash('Please select a CSV file to Upload!', 'error')
-        return redirect(url_for('index'))
 
-    file = request.files['file']
-    filename = file.filename    
-
+    filename = "default.png.csv"
+    csv = request.form['csv'].strip()
+    # If the textbox is filled
+    if csv != '':
+        f = open(os.path.join(app.config['UPLOAD_FOLDER'], filename), "w+")
+        f.write(csv)
+        f.close()
     # if user does not select file, browser submits an empty part without filename
-    if filename == '':
-        flash('Please select a CSV file to Upload!', 'error')
-        return redirect(url_for('index'))
+    else:
+        file = request.files['file']    
+        if file.filename == '':
+            flash('Please select a CSV file to Upload!', 'error')
+            return redirect(url_for('index'))
+        else:
+            filename = file.filename
 
     # If a PNG is uploaded, push it to the folder
     if request.files['image'].filename != '':
@@ -45,9 +49,11 @@ def upload():
             flash('Please select a PNG image to Upload!', 'error')
             return redirect(url_for('index'))
 
+    # If the csv file is uploaded
     if '.' in filename and filename.rsplit('.', 1)[1] == 'csv':
         filename = secure_filename(filename)
-        file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+        if filename != "default.png.csv":
+            file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
         generate_badges()
         flash('Your Badge has been successfully created!', 'success')
         return redirect(url_for('index'))
