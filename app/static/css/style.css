@@ -110,6 +110,9 @@
 .custom-icon img {
   width: 60%;
 }
+textarea {
+  resize: vertical;
+}
 .footer {
   position: absolute;
   text-align: center;
