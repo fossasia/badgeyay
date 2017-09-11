@@ -1,18 +1,14 @@
 $(function() {
 
-    $('#login-form-link').click(function(e) {
-    $("#login-form").delay(100).fadeIn(100);
-    $("#register-form").fadeOut(100);
-    $('#register-form-link').removeClass('active');
-    $(this).addClass('active');
-    e.preventDefault();
+  $('.glyphicon-th').click(function(){
+    $('.custom-menu-content').toggleClass('hidden');
   });
-  $('#register-form-link').click(function(e) {
-    $("#register-form").delay(100).fadeIn(100);
-    $("#login-form").fadeOut(100);
-    $('#login-form-link').removeClass('active');
-    $(this).addClass('active');
-    e.preventDefault();
-  });
+
+  var apiUrl = "https://api.github.com/repos/fossasia/badgeyay/git/refs/heads/development";
+  $.ajax({url: apiUrl, success: function(result){
+    var version = result['object']['sha'];
+    var versionLink = 'https://github.com/fossasia/badgeyay/tree/'+version;
+    var deployLink = $('.version').attr('href', versionLink).html(version);
+  }});
 
 });
