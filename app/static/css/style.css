@@ -46,6 +46,9 @@
   background-color: crimson;
   margin-top: 10px;
 }
+.form-group label {
+  margin-top: 20px;
+}
 .navbar .glyphicon-th {
   font-size: 30px;
   margin-top: 20px;
