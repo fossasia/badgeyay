@@ -19,7 +19,7 @@ If you like to join developing,
 - you can find/create [issues](https://github.com/fossasia/badgeyay/issues) and solve them.
   - When you solve an issue, you do not own it. Share your progress via a Pull-Requst as soon as possible.
   - Discuss with others who work on the issue about the best solution. It is your responsibility, not the maintainer's to choose the best solution.
-- If in doubt, let's follow [CCCC](https://rfc.zeromq.org/spec:42/C4).
+- If in doubt, let's follow [CCCC][cccc].
 
 Specification
 -------------
@@ -74,8 +74,26 @@ them together into one.
 Maintainers
 -------------------
 
-The project is maintained by
- - Nicco Kunzmann ([@niccokunzmann](https://github.com/niccokunzmann))
- - Tarun Kumar ([@meets2tarun](https://github.com/meets2tarun))
- 
- [gitter]: https://gitter.im/fossasia/open-event-orga-server
+You can reach the maintainers,
+ping them personally by looking at the [Badgeyay team][team].
+
+You can become a maintainer by following the project and contributing code to it.
+Please see your role in the [CCCC][cccc].
+
+The project is maintained by the [Badgeyay maintainer's team][team].
+To join the team:
+1. Contribute
+2. You or someone else proposes you in an issue to become a member of the team.
+3. A Badgeyay admin adds you.
+
+To stay a maintainer in the team:
+1. Follow the rules of [CCCC][cccc] or [Badgeyay](.github/CONTRIBUTING.md) and do not violate them willingly or in a harmful way. 
+
+To be removed from the team:
+1. Someone creates an issue to ask for removal, e.g. because if inactivity or a violation.
+2. An admin removes you.
+
+
+[gitter]: https://gitter.im/fossasia/badgeyay
+[cccc]: https://rfc.zeromq.org/spec:42/C4
+[team]: https://github.com/orgs/fossasia/teams/badgeyay-admin/members
