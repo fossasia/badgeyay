@@ -5,12 +5,20 @@
 		<div class="col-md-4 col-md-offset-4">
 			{% with m = get_flashed_messages(with_categories=true) %}
 				{% if m %}
-					{% for cat,msg in m %}
-						<div class="flash-{{cat}}">{{msg}}</div>
-						{% if cat == 'success' %}
-							<div class="text-center">
-							    <a href="static/uploads/all-badges.pdf" class="btn btn-lg btn-success" download="download">Download as PDF</a>
-							</div>
+                    {% for cat,msg in m %}
+                        {% if cat == 'success' %}
+                            <div class="flash-{{cat}}">Your badges has been successfully generated.</div>
+                            <div class="text-center">
+                                <a href="static/uploads/all-badges.zip" class="btn btn-lg btn-success" download="download">Download as ZIP</a>
+                            </div>
+                            <div class="text-center">
+                                <a href="static/uploads/{{msg}}.badges.pdf" class="btn btn-lg btn-success" download="download">Download as PDF</a>
+                            </div>
+                            <div class="text-center">
+                                <a href="static/uploads/{{msg}}.badges.svg.zip" class="btn btn-lg btn-success" download="download">Download as ZIP of SVGs</a>
+                            </div>
+                        {% else %}
+                            <div class="flash-{{cat}}">{{msg}}</div>
 					    {% endif %}
 					{% endfor %}
 				{% endif %}
@@ -28,6 +36,6 @@
 				</div>
 		    </form>
 		</div>
-    </div>	
+    </div>
 </div>
 {% endblock %}
