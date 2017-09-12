@@ -58,7 +58,7 @@ def upload():
         flash('Your Badge has been successfully created!', 'success')
         return redirect(url_for('index'))
     else:
-    	flash('Only CSV files is accepted!', 'error')
+    	flash('Only CSV file is accepted!', 'error')
     	return redirect(url_for('index'))
 
 @app.errorhandler(404)
