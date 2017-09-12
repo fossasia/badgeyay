@@ -87,7 +87,7 @@ To join the team:
 3. A Badgeyay admin adds you.
 
 To be excluded from the team:
-1. Do nothing or violate the rules of [CCCC][cccc] or [Badgeyay](.github/CONTRIBUTING.md) willingly in a harmful way. 
+1. Follow the rules of [CCCC][cccc] or [Badgeyay](.github/CONTRIBUTING.md) and do not violate them willingly or in a harmful way. 
 2. Someone creates an issue to ask for removal.
 3. An admin removes you.
 
