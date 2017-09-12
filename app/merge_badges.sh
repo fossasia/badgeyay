@@ -28,13 +28,13 @@ done
 echo "Merging badges of different types."
 
 all=""
-for folder in *.badges; do
+for folder in ./static/badges/*.badges; do
   out="${folder}.pdf"
   echo "merging $folder to $out"
   pdftk "$folder"/*.pdf cat output "$out"
   all="$out $all"
 done
 
-final="all-badges.pdf"
+final="static/badges/all-badges.pdf"
 pdftk $all cat output "$final"
 echo "Created $final"
