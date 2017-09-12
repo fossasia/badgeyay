@@ -60,6 +60,8 @@ Contributions, Bug Reports, Feature Requests
 --------------
 This is an Open Source project and we would be happy to see contributors who report bugs and file feature requests submitting pull requests as well. Please report issues in the [GitHub tracker][new-issue].
 
+Also read [CONTRIBUTING.md](https://github.com/fossasia/badgeyay/blob/development/.github/CONTRIBUTING.md)
+
 Implementation
 --------------
 
