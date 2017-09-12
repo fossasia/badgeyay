@@ -75,7 +75,7 @@ Maintainers
 -------------------
 
 You can reach the maintainers,
-ping them personally by loooking at the [Badgeyay team][team].
+ping them personally by looking at the [Badgeyay team][team].
 
 You can become a maintainer by following the project and contributing code to it.
 Please see your role in the [CCCC][cccc].
