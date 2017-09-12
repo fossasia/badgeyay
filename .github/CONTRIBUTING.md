@@ -8,7 +8,7 @@
 
 **Code Styleguide**
 * Do follow the .editorconfig file regarding maintaining of code style (It's mandatory).
-* For more information regarding .editorconfig file, see http://editorconfig.org/#download
+* For more information regarding .editorconfig file, see [editorconfig](http://editorconfig.org/#download)
 
 **Feature Requests and Bug Reports**
 * When you file a feature request or when you are submitting a bug report to the [issue tracker](https://github.com/fossasia/badgeyay/issues), make sure you add steps to reproduce it. Especially if that bug is some weird/rare one.
