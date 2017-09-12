@@ -5,22 +5,29 @@ import os
 
 APP_ROOT = os.path.dirname(os.path.abspath(__file__))
 UPLOAD_FOLDER = os.path.join(APP_ROOT, 'static/uploads')
-
+SCRIPT=os.path.join(APP_ROOT, 'merge_badges.sh')
 app = Flask(__name__)
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 app.config['MAX_CONTENT_LENGTH'] = 16 * 1024 * 1024
 app.config['SECRET_KEY'] = 'secret'
 
+
 @app.route('/')
 def index():
-	return render_template('index.html')
+    return render_template('index.html')
+
 
 def generate_badges():
+<<<<<<< HEAD
+    os.system(SCRIPT)
+    
+=======
     os.system(os.path.join(app.config['UPLOAD_FOLDER'], 'merge_badges.sh'))
 
+
+>>>>>>> c206790... Allows downloading of badges in zipped, pdf and svg versions
 @app.route('/upload', methods=['POST'])
 def upload():
-
     filename = "default.png.csv"
     csv = request.form['csv'].strip()
     # If the textbox is filled
@@ -30,7 +37,7 @@ def upload():
         f.close()
     # if user does not select file, browser submits an empty part without filename
     else:
-        file = request.files['file']    
+        file = request.files['file']
         if file.filename == '':
             flash('Please select a CSV file to Upload!', 'error')
             return redirect(url_for('index'))
@@ -55,15 +62,17 @@ def upload():
         if filename != "default.png.csv":
             file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
         generate_badges()
-        flash('Your Badge has been successfully created!', 'success')
+        flash(filename, 'success')
         return redirect(url_for('index'))
     else:
-    	flash('Only CSV file is accepted!', 'error')
-    	return redirect(url_for('index'))
+        flash('Only CSV file is accepted!', 'error')
+        return redirect(url_for('index'))
+
 
 @app.errorhandler(404)
 def Not_Found(e):
-	return render_template('404.html'), 404
+    return render_template('404.html'), 404
+
 
 if __name__ == '__main__':
     app.run()

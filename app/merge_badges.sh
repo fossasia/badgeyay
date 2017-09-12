@@ -18,7 +18,7 @@ python3 generate-badges.py
 
 echo "Generating PDF files from svg."
 
-for svg in `find | grep -E '\.svg$'`; do
+for svg in `find static/badges/ | grep -E '\.svg$'`; do
   pdf="${svg%.svg}.pdf"
   echo "svg: $svg"
   echo "pdf: $pdf"
@@ -28,13 +28,22 @@ done
 echo "Merging badges of different types."
 
 all=""
-for folder in *.badges; do
+for folder in ./static/badges/*.badges; do
   out="${folder}.pdf"
   echo "merging $folder to $out"
   pdftk "$folder"/*.pdf cat output "$out"
   all="$out $all"
 done
 
-final="all-badges.pdf"
+final="static/badges/all-badges.pdf"
 pdftk $all cat output "$final"
 echo "Created $final"
+
+echo "Generating ZIP file"
+find . \( -iname \*.svg -o -iname \*.pdf \) | zip  -@ all-badges.zip
+
+echo "Generating ZIP of SVG files"
+for folder in $(ls -d */); do
+    filename="${folder%%/}.svg.zip"
+    find ./${folder%%/} -type f -name "*.svg" | zip  -@ $filename
+done
