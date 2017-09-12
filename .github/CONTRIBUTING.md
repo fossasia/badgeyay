@@ -7,7 +7,7 @@
 * When you're submitting a PR for a UI-related issue, it would be really awesome if you add a screenshot of your change or a link to a deployment where it can be tested out along with your PR. It makes it very easy for the reviewers and you'll also get reviews quicker.
 
 **Code Styleguide**
-* Do follow the .editorconfig file regarding maintaining of code style(Its mandatory).
+* Do follow the .editorconfig file regarding maintaining of code style (It's mandatory).
 * For more information regarding .editorconfig file, see http://editorconfig.org/#download
 
 **Feature Requests and Bug Reports**
