@@ -5,7 +5,7 @@ import os
 
 APP_ROOT = os.path.dirname(os.path.abspath(__file__))
 UPLOAD_FOLDER = os.path.join(APP_ROOT, 'static/uploads')
-
+SCRIPT=os.path.join(APP_ROOT, 'merge_badges.sh')
 app = Flask(__name__)
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 app.config['MAX_CONTENT_LENGTH'] = 16 * 1024 * 1024
@@ -18,9 +18,7 @@ def index():
 
 
 def generate_badges():
-    os.system(os.path.join(app.config['UPLOAD_FOLDER'], 'merge_badges.sh'))
-
-
+    os.system(SCRIPT)
 @app.route('/upload', methods=['POST'])
 def upload():
 

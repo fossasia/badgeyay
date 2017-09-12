@@ -6,11 +6,13 @@ import itertools
 import shutil
 import html
 
-input_files = [file for file in os.listdir(".")
+APP_ROOT = os.path.dirname(os.path.abspath(__file__))
+UPLOAD_FOLDER = os.path.join(APP_ROOT, 'static/uploads')
+input_files = [file for file in os.listdir("./static/uploads")
                if file.lower().endswith(".csv")]
 
 NUMBER_OF_BADGES_PER_PAGE = 8
-with open("../../../badges/8BadgesOnA3.svg", encoding="UTF-8") as f:
+with open("../badges/8BadgesOnA3.svg", encoding="UTF-8") as f:
     CONTENT = f.read()
 
 def generate_badges(aggregate, folder, index, picture):
@@ -38,26 +40,27 @@ def generate_badges(aggregate, folder, index, picture):
 
 for input_file in input_files:
     picture = os.path.splitext(input_file)[0]
-    if not os.path.isfile(picture):
+    picpath='./static/uploads/'+picture
+    if not os.path.isfile(picpath):
         print("SKIP: {} has no picture {}".format(input_file, picture))
         continue
     print("READING: {}".format(input_file))
-    folder = input_file + ".badges"
+    folder = APP_ROOT+'/static/badges/'+input_file + ".badges"
     shutil.rmtree(folder, ignore_errors=True)
     try:
         os.makedirs(folder, exist_ok=True)
     except PermissionError:
         pass
     
-    with open(input_file, encoding="UTF-8") as f:
+    with open(os.path.join(UPLOAD_FOLDER, input_file), encoding="UTF-8") as f:
         aggregate = []
         i = 1
         for row in csv.reader(f):
             aggregate.append(row)
             aggregate.append(row)
             if len(aggregate) >= NUMBER_OF_BADGES_PER_PAGE:
-                generate_badges(aggregate, folder, i, picture)
+                generate_badges(aggregate, folder, i, picpath)
                 aggregate = []
                 i += 1
         if aggregate:
-            generate_badges(aggregate, folder, i, picture)
+            generate_badges(aggregate, folder, i, picpath)
