@@ -38,3 +38,12 @@ done
 final="all-badges.pdf"
 pdftk $all cat output "$final"
 echo "Created $final"
+
+echo "Generating ZIP file"
+find . \( -iname \*.svg -o -iname \*.pdf \) | zip  -@ all-badges.zip
+
+echo "Generating ZIP of SVG files"
+for folder in $(ls -d */); do
+    filename="${folder%%/}.svg.zip"
+    find ./${folder%%/} -type f -name "*.svg" | zip  -@ $filename
+done
