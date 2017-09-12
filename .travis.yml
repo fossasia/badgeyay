@@ -3,8 +3,9 @@ language: python3
 before_install:
 - sudo apt-get -qq update
 - sudo apt-get -y install librsvg2-bin pdftk
+
 script:
-- ./merge_badges.sh
+- python app/tests/test.py
 
 deploy:
 - provider: releases
@@ -14,4 +15,3 @@ deploy:
   file: "all-badges.pdf"
   on:
     branch: master
-
