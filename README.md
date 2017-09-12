@@ -86,10 +86,12 @@ To join the team:
 2. You or someone else proposes you in an issue to become a member of the team.
 3. A Badgeyay admin adds you.
 
-To be excluded from the team:
+To stay a maintainer in the team:
 1. Follow the rules of [CCCC][cccc] or [Badgeyay](.github/CONTRIBUTING.md) and do not violate them willingly or in a harmful way. 
-2. Someone creates an issue to ask for removal.
-3. An admin removes you.
+
+To be removed from the team:
+1. Someone creates an issue to ask for removal, e.g. because if inactivity or a violation.
+2. An admin removes you.
 
 
 [gitter]: https://gitter.im/fossasia/badgeyay
