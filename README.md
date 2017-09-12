@@ -92,6 +92,6 @@ To be excluded from the team:
 3. An admin removes you.
 
 
-[gitter]: https://gitter.im/fossasia/open-event-orga-server
+[gitter]: https://gitter.im/fossasia/badgeyay
 [cccc]: https://rfc.zeromq.org/spec:42/C4
 [team]: https://github.com/orgs/fossasia/teams/badgeyay-admin/members
