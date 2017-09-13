@@ -5,6 +5,7 @@ import csv
 import itertools
 import shutil
 import html
+import json
 
 APP_ROOT = os.path.dirname(os.path.abspath(__file__))
 UPLOAD_FOLDER = os.path.join(APP_ROOT, 'static/uploads')
@@ -39,6 +40,16 @@ def generate_badges(aggregate, folder, index, picture):
     
 
 for input_file in input_files:
+    config_json = 'default.config.json'
+
+    #check if custom config.json is present for the file
+    config_json_uploaded = os.path.splitext(input_file)[0] + '.json'
+    config_json_uploaded_path = './static/uploads/' + config_json_uploaded
+    if os.path.isfile(config_json_uploaded_path):
+        config_json = config_json_uploaded
+    config = json.loads(open('./static/uploads/'+ config_json).read())
+    options = config['options']
+
     picture = os.path.splitext(input_file)[0]
     picpath='./static/uploads/'+picture
     if not os.path.isfile(picpath):
@@ -57,7 +68,8 @@ for input_file in input_files:
         i = 1
         for row in csv.reader(f):
             aggregate.append(row)
-            aggregate.append(row)
+            if options['badge_wrap']:
+                aggregate.append(row)
             if len(aggregate) >= NUMBER_OF_BADGES_PER_PAGE:
                 generate_badges(aggregate, folder, i, picpath)
                 aggregate = []

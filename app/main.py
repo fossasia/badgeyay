@@ -11,7 +11,6 @@ app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 app.config['MAX_CONTENT_LENGTH'] = 16 * 1024 * 1024
 app.config['SECRET_KEY'] = 'secret'
 
-
 @app.route('/')
 def index():
     return render_template('index.html')
@@ -48,6 +47,15 @@ def upload():
             image.save(os.path.join(app.config['UPLOAD_FOLDER'], imgname))
         else:
             flash('Please select a PNG image to Upload!', 'error')
+            return redirect(url_for('index'))
+
+    # if config file is uploaded
+    config_json = request.files['config']
+    if config_json.filename != '':
+        if '.' in config_json.filename and config_json.filename.rsplit('.', 1)[1] == 'json':
+            config_json.save(os.path.join(app.config['UPLOAD_FOLDER'], config_json.filename))
+        else:
+            flash('Only JSON file is accepted!', 'error')
             return redirect(url_for('index'))
 
     # If the csv file is uploaded
