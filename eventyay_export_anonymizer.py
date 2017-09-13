@@ -2,7 +2,6 @@
 import sys
 import json
 import random
-import os
 
 if len(sys.argv) <= 1:
     print("Please pass the name of the file with th exported json as "
