@@ -1,0 +1,8 @@
+click==6.7
+flask==0.12.2
+html==1.16
+itsdangerous==0.24
+jinja2==2.9.6
+markupsafe==1.0
+werkzeug==0.12.2
+wtforms==2.1
