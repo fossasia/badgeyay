@@ -1,5 +1,4 @@
 from flask import Flask, render_template, request, redirect, url_for, flash
-from wtforms import Form
 from werkzeug.utils import secure_filename
 import os, shutil
 

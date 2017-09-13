@@ -2,7 +2,6 @@
 
 import os
 import csv
-import itertools
 import shutil
 import html
 import json
@@ -61,7 +60,7 @@ for input_file in input_files:
     shutil.rmtree(folder, ignore_errors=True)
     try:
         os.makedirs(folder, exist_ok=True)
-    except PermissionError:
+    except Exception:
         pass
     
     with open(os.path.join(UPLOAD_FOLDER, input_file), encoding="UTF-8") as f:

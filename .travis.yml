@@ -3,9 +3,11 @@ language: python3
 before_install:
 - sudo apt-get -qq update
 - sudo apt-get -y install librsvg2-bin pdftk
+- sudo pip install pyflakes
 
 script:
 - python app/tests/test.py
+- python -m pyflakes .
 
 deploy:
 - provider: releases
