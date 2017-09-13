@@ -9,14 +9,10 @@
                         {% if cat == 'success' %}
                             <div class="flash-{{cat}}">Your badges has been successfully generated.</div>
                             <div class="text-center">
-                                <a href="static/badges/all-badges.zip" class="btn btn-lg btn-success" download="download">Download as ZIP</a>
-                            </div>
-                            <div class="text-center">
-                                <a href="static/badges/{{msg}}.badges.pdf" class="btn btn-lg btn-success" download="download">Download as PDF</a>
-                            </div>
-                            <div class="text-center">
-                                <a href="static/badges/{{msg}}.badges.svg.zip" class="btn btn-lg btn-success" download="download">Download as ZIP of SVGs</a>
-                            </div>
+	                            <a href="static/badges/all-badges.zip" class="btn btn-success" download="download">Download as ZIP</a>
+	                            <a href="static/badges/{{msg}}.badges.pdf" class="btn btn-success" download="download">Download as PDF</a>
+	                            <a href="static/badges/{{msg}}.badges.svg.zip" class="btn btn-success" download="download">Download as ZIP of SVGs</a>
+	                        </div>
                         {% else %}
                             <div class="flash-{{cat}}">{{msg}}</div>
 					    {% endif %}

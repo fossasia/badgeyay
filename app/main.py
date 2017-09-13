@@ -1,11 +1,13 @@
 from flask import Flask, render_template, request, redirect, url_for, flash
 from wtforms import Form
 from werkzeug.utils import secure_filename
-import os
+import os, shutil
 
 APP_ROOT = os.path.dirname(os.path.abspath(__file__))
 UPLOAD_FOLDER = os.path.join(APP_ROOT, 'static/uploads')
-SCRIPT=os.path.join(APP_ROOT, 'merge_badges.sh')
+BADGES_FOLDER = os.path.join(APP_ROOT, 'static/badges')
+SCRIPT = os.path.join(APP_ROOT, 'merge_badges.sh')
+
 app = Flask(__name__)
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 app.config['MAX_CONTENT_LENGTH'] = 16 * 1024 * 1024
@@ -19,11 +21,25 @@ def index():
 
 def generate_badges():
     os.system(SCRIPT)
+
+
+def empty_directory():
+    for file in os.listdir(BADGES_FOLDER):
+        file_path = os.path.join(BADGES_FOLDER, file)
+        try:
+            if os.path.isfile(file_path):
+                os.unlink(file_path)
+            elif os.path.isdir(file_path): shutil.rmtree(file_path)
+        except Exception:
+            pass
+
+
 @app.route('/upload', methods=['POST'])
 def upload():
-
+    empty_directory()
     filename = "default.png.csv"
     csv = request.form['csv'].strip()
+
     # If the textbox is filled
     if csv != '':
         f = open(os.path.join(app.config['UPLOAD_FOLDER'], filename), "w+")
@@ -56,6 +72,15 @@ def upload():
         if filename != "default.png.csv":
             file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
         generate_badges()
+
+        # Remove the uploaded files after job in done
+        if filename != "default.png.csv":
+            os.unlink(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+        try:
+            os.unlink(os.path.join(app.config['UPLOAD_FOLDER'], imgname))
+        except Exception:
+            pass
+
         flash(filename, 'success')
         return redirect(url_for('index'))
     else:
