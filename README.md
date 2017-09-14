@@ -62,6 +62,21 @@ This is an Open Source project and we would be happy to see contributors who rep
 
 Also read [CONTRIBUTING.md](https://github.com/fossasia/badgeyay/blob/development/.github/CONTRIBUTING.md)
 
+Installation
+--------------
+Badgeyay can be easily deployed on a variety of platforms. Currently it can be deployed in following ways.
+
+1. [Local Installation](/docs/installation/local.md)
+
+2. [Deployment on Heroku](/docs/installation/heroku.md)
+
+3. [Deployment with Docker](/docs/installation/docker.md)
+
+One-click Heroku deployment is also available:
+
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
+
+
 Implementation
 --------------
 
