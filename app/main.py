@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request, redirect, url_for, flash
 from werkzeug.utils import secure_filename
 import os, shutil
+import traceback
 
 APP_ROOT = os.path.dirname(os.path.abspath(__file__))
 UPLOAD_FOLDER = os.path.join(APP_ROOT, 'static/uploads')
@@ -29,7 +30,7 @@ def empty_directory():
                 os.unlink(file_path)
             elif os.path.isdir(file_path): shutil.rmtree(file_path)
         except Exception:
-            pass
+            traceback.print_exc()
 
 
 @app.route('/upload', methods=['POST'])
@@ -86,7 +87,7 @@ def upload():
         try:
             os.unlink(os.path.join(app.config['UPLOAD_FOLDER'], imgname))
         except Exception:
-            pass
+            traceback.print_exc()
 
         flash(filename, 'success')
         return redirect(url_for('index'))
