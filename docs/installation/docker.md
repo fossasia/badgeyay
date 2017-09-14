@@ -13,6 +13,6 @@
 git clone https://github.com/fossasia/badgeyay && cd badgeyay
 ```
 
-* In the terminal window, run `docker build -t badgeyay:latest` to build open-event-orga-server's docker image. This process can take some time.
+* In the terminal window, run `docker build -t badgeyay:latest` to build badgeyay's docker image. This process can take some time.
 
 * After build is done, run `docker run -d -p 5000:5000 badgeyay` to start the server.
