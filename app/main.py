@@ -23,14 +23,18 @@ def generate_badges():
 
 
 def empty_directory():
-    for file in os.listdir(BADGES_FOLDER):
-        file_path = os.path.join(BADGES_FOLDER, file)
-        try:
-            if os.path.isfile(file_path):
-                os.unlink(file_path)
-            elif os.path.isdir(file_path): shutil.rmtree(file_path)
-        except Exception:
-            traceback.print_exc()
+	# checks for badges folder
+	if not os.path.exists(BADGES_FOLDER):
+		os.mkdir(BADGES_FOLDER)	#creates one, if does not exists
+	# emptying previous files and folders inside the badges folder
+	for file in os.listdir(BADGES_FOLDER):
+	    file_path = os.path.join(BADGES_FOLDER, file)
+	    try:
+	        if os.path.isfile(file_path):
+	            os.unlink(file_path)	# removes the file
+	        elif os.path.isdir(file_path): shutil.rmtree(file_path)	# if folder, then remove it completely
+	    except Exception:
+	        traceback.print_exc()
 
 
 @app.route('/upload', methods=['POST'])
