@@ -1,1 +1,9 @@
--r app/requirements.txt
+click==6.7
+flask==0.12.2
+itsdangerous==0.24
+jinja2==2.9.6
+markupsafe==1.0
+werkzeug==0.12.2
+wtforms==2.1
+pyflakes==1.6.0
+gunicorn
