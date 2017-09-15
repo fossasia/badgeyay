@@ -11,4 +11,10 @@ $(function() {
     var deployLink = $('.version').attr('href', versionLink).html(version);
   }});
 
+  $(".menu-options").click(function(){
+    var i = $(this).data("item");
+    $(".placeholder").text(i);
+    $("input[name='img-default']").val(i);
+  });
+
 });
