@@ -34,10 +34,10 @@ def generate_badges(aggregate, folder, index, picture):
         for j, text in enumerate(row):
             text = html.escape(text)
             content = content.replace("person_{}_line_{}".format(i + 1, j + 1), text)
-        content = content.replace("badge_{}.png".format(i + 1), picture_name)            
+        content = content.replace("badge_{}.png".format(i + 1), picture_name)
     with open(target, "w", encoding="UTF-8") as f:
         f.write(content)
-    
+
 
 for input_file in input_files:
     config_json = 'default.config.json'
@@ -62,7 +62,7 @@ for input_file in input_files:
         os.makedirs(folder, exist_ok=True)
     except Exception:
         pass
-    
+
     with open(os.path.join(UPLOAD_FOLDER, input_file), encoding="UTF-8") as f:
         aggregate = []
         i = 1

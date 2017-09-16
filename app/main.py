@@ -2,6 +2,7 @@ from flask import Flask, render_template, request, redirect, url_for, flash
 from werkzeug.utils import secure_filename
 import os, shutil
 import traceback
+import generate_csv_eventyay
 
 APP_ROOT = os.path.dirname(os.path.abspath(__file__))
 UPLOAD_FOLDER = os.path.join(APP_ROOT, 'static/uploads')
@@ -55,6 +56,7 @@ def upload():
 	empty_directory()
 	csv = request.form['csv'].strip()
 	img = request.form['img-default']
+	eventyay_url = request.form['eventyay_url'].strip()
 	file = request.files['file']
 	_pdf = True if request.form.get('pdf') == 'on' else False
 	_zip = True if request.form.get('zip') == 'on' else False
@@ -69,6 +71,11 @@ def upload():
 		f.write(csv)
 		f.close()
 	# if user does not select file, browser submits an empty part without filename
+
+	elif eventyay_url !='':
+		filename='speaker.png.csv'
+		generate_csv_eventyay.tocsv(eventyay_url,filename)
+
 	else:
 		if file.filename == '':
 			flash('Please select a CSV file to Upload!', 'error')
@@ -100,7 +107,7 @@ def upload():
 	# If the csv file is uploaded
 	if '.' in filename and filename.rsplit('.', 1)[1] == 'csv':
 		filename = secure_filename(filename)
-		if filename != "default.png.csv":
+		if filename != "default.png.csv" and eventyay_url == '':
 			file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
 		generate_badges(_zip,_pdf)
 
