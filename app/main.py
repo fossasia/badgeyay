@@ -23,8 +23,13 @@ def index():
 	return render_template('index.html', default_background = default_background)
 
 
-def generate_badges():
-	os.system(SCRIPT)
+def generate_badges(_zip=False,_pdf=False):
+	if _zip == True and _pdf == True:
+		os.system('python merge_badges.py -z -p')
+	elif _zip == True and _pdf == False:
+		os.system('python merge_badges.py -z')
+	else:
+		os.system('python merge_badges.py -p')
 
 
 def empty_directory():
@@ -52,6 +57,9 @@ def upload():
 	csv = request.form['csv'].strip()
 	img = request.form['img-default']
 	eventyay_url = request.form['eventyay_url'].strip()
+	file = request.files['file']
+	_pdf = True if request.form.get('pdf') == 'on' else False
+	_zip = True if request.form.get('zip') == 'on' else False
 
 	# If default background is selected
 	if img != '':
@@ -101,7 +109,7 @@ def upload():
 		filename = secure_filename(filename)
 		if filename != "default.png.csv" and eventyay_url == '':
 			file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-		generate_badges()
+		generate_badges(_zip,_pdf)
 
 		# Remove the uploaded files after job in done
 		os.unlink(os.path.join(app.config['UPLOAD_FOLDER'], filename))
@@ -110,8 +118,14 @@ def upload():
 				os.unlink(os.path.join(app.config['UPLOAD_FOLDER'], imgname))
 		except Exception:
 			traceback.print_exc()
+      
+		if _zip and _pdf:
+			flash(filename, 'success')
+		elif _zip and not _pdf:
+			flash(filename,'success-zip')
+		else:
+			flash(filename,'success-pdf')
 
-		flash(filename, 'success')
 		return redirect(url_for('index'))
 	else:
 		flash('Only CSV file is accepted!', 'error')

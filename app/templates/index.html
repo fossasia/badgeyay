@@ -13,14 +13,37 @@
 	                            <a href="static/badges/{{msg}}.badges.pdf" class="btn btn-success" download="download">Download as PDF</a>
 	                            <a href="static/badges/{{msg}}.badges.svg.zip" class="btn btn-success" download="download">Download as ZIP of SVGs</a>
 	                        </div>
+	                    {% endif %}
+
+	                    {% if cat == 'success-pdf' %}
+	                    	<div class="text-center">
+		                    	<div class="flash-{{cat}}">Your badges has been successfully generated.</div>
+		                    	<a href="static/badges/{{msg}}.badges.pdf" class="btn btn-success" download="download">Download as PDF</a>
+	                    	</div>
+	                    {% endif %}
+
+	                    {% if cat == 'success-zip' %}
+	                    	<div class="text-center">
+		                    	<div class="flash-{{cat}}">Your badges has been successfully generated.</div>
+		                    	<a href="static/badges/all-badges.zip" class="btn btn-success" download="download">Download as ZIP</a>
+		                    	<a href="static/badges/{{msg}}.badges.svg.zip" class="btn btn-success" download="download">Download as ZIP of SVGs</a>
+	                    	</div>
+	                    {% endif %}
+
                         {% else %}
                             <div class="flash-{{cat}}">{{msg}}</div>
-					    {% endif %}
 					{% endfor %}
 				{% endif %}
 			{% endwith %}
 			<form action="{{ url_for('upload') }}" method="post" enctype="multipart/form-data">
 			    <div class="form-group">
+                    <span class="options">
+			    	    <label>Tick the download type(s):</label>
+			    	    <label for="zip">Zip</label>
+			    	    <input type="checkbox" id="zip" name="zip">
+    			    	<label for="pdf">PDF</label>
+	    		    	<input type="checkbox" id="pdf" name="pdf">
+                    </span>
 					<label for="inputFile">Upload a CSV file to generate badges</label>
 					<input type="file" id="inputFile" name="file">
 					<div class="text-center">OR</div>
