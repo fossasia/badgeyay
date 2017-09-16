@@ -49,10 +49,31 @@
 					<div class="text-center">OR</div>
 					<label for="textArea">Enter data manually</label>
 					<textarea class="form-control" id="textArea" name="csv"></textarea>
+
 					<label for="imageFile">[Optional] Upload a PNG file for badge background</label>
 					<input type="file" id="imageFile" name="image">
+					<div class="text-center">OR</div>
+					<label for="inputFile">[Optional] Select one from here</label>
+					<div class="btn-group">
+						<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+							<span class="placeholder">
+								Select a background
+							</span>
+							<span class="glyphicon glyphicon-chevron-down"></span>
+						</button>
+						<ul class="dropdown-menu">
+							{% for i in default_background %}
+							<li class="menu-options" data-item="{{i}}">
+								<img src="static/uploads/{{i}}"> {{i}}
+							</li>
+							{% endfor %}
+						</ul>
+					</div>
+					<input type="hidden" name="img-default" value="">
+
 					<label for="inputFile">[Optional] Upload a config(json) file to customise badges</label>
 					<input type="file" id="inputFile" name="config">
+
 					<button type="submit" class="btn btn-danger pull-right">Upload</button>
 				</div>
 		    </form>

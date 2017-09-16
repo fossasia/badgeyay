@@ -108,6 +108,39 @@
   box-sizing: border-box;
   margin-top: 20px;
 }
+.btn-group {
+  margin-top: 20px;
+  width: 100%;
+}
+.dropdown-toggle {
+  width: 100%;
+}
+.dropdown-menu {
+  width: 100%;
+  height: 200px;
+  overflow-y: auto;
+}
+.btn-group img {
+  margin-right: 10px;
+  margin-left: 10px;
+  margin-bottom: 10px;
+  width: 30px;
+  height: 50px;
+}
+.dropdown-toggle {
+  padding-right: 50px;
+}
+.dropdown-toggle .glyphicon {
+  margin-left: 20px;
+  margin-right: -40px;
+}
+.menu-options {
+  border-bottom: 1px solid darkgray;
+}
+.dropdown-menu>li:hover {
+  background: #f1f9fd;
+  cursor: pointer;
+}
 .custom-icon img {
   width: 60%;
 }

@@ -15,7 +15,11 @@ app.config['SECRET_KEY'] = 'secret'
 
 @app.route('/')
 def index():
-    return render_template('index.html')
+	default_background = []
+	for file in os.listdir(UPLOAD_FOLDER):
+		if file.rsplit('.', 1)[1] == 'png':
+			default_background.append(file)
+	return render_template('index.html', default_background = default_background)
 
 
 def generate_badges(_zip=False,_pdf=False):
@@ -28,18 +32,22 @@ def generate_badges(_zip=False,_pdf=False):
 
 
 def empty_directory():
-	# checks for badges folder
+	# Creates 'badges' directory if not exists
 	if not os.path.exists(BADGES_FOLDER):
-		os.mkdir(BADGES_FOLDER)	#creates one, if does not exists
+		os.mkdir(BADGES_FOLDER)
+
 	# emptying previous files and folders inside the badges folder
 	for file in os.listdir(BADGES_FOLDER):
-	    file_path = os.path.join(BADGES_FOLDER, file)
-	    try:
-	        if os.path.isfile(file_path):
-	            os.unlink(file_path)	# removes the file
-	        elif os.path.isdir(file_path): shutil.rmtree(file_path)	# if folder, then remove it completely
-	    except Exception:
-	        traceback.print_exc()
+		file_path = os.path.join(BADGES_FOLDER, file)
+		try:
+			if os.path.isfile(file_path):
+				# removes the file
+				os.unlink(file_path)
+			elif os.path.isdir(file_path):
+				# removes the directory
+				shutil.rmtree(file_path)
+		except Exception:
+			traceback.print_exc()
 
 
 @app.route('/upload', methods=['POST'])
@@ -103,12 +111,14 @@ def upload():
 				os.unlink(os.path.join(app.config['UPLOAD_FOLDER'], imgname))
 		except Exception:
 			traceback.print_exc()
+      
 		if _zip and _pdf:
 			flash(filename, 'success')
 		elif _zip and not _pdf:
 			flash(filename,'success-zip')
 		else:
 			flash(filename,'success-pdf')
+
 		return redirect(url_for('index'))
 	else:
 		flash('Only CSV file is accepted!', 'error')
@@ -117,8 +127,8 @@ def upload():
 
 @app.errorhandler(404)
 def Not_Found(e):
-    return render_template('404.html'), 404
+	return render_template('404.html'), 404
 
 
 if __name__ == '__main__':
-    app.run()
+	app.run()
