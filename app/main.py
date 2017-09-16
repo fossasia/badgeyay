@@ -48,79 +48,10 @@ def empty_directory():
 
 @app.route('/upload', methods=['POST'])
 def upload():
-    empty_directory()
-    filename = "default.png.csv"
-    csv = request.form['csv'].strip()
-    eventyay_url = request.form['eventyay_url'].strip()
-
-    # If the textbox is filled
-    if csv != '':
-        f = open(os.path.join(app.config['UPLOAD_FOLDER'], filename), "w+")
-        f.write(csv)
-        f.close()
-    # if user does not select file, browser submits an empty part without filename
-
-    # If Eventyay URL is provided.
-    elif eventyay_url != '':
-        filename='speaker.png.csv'
-        generate_csv_eventyay.tocsv(eventyay_url)
-
-
-    else:
-        file = request.files['file']
-        if file.filename == '':
-            flash('Please select a CSV file to Upload!', 'error')
-            return redirect(url_for('index'))
-        else:
-            filename = file.filename
-
-    # If a PNG is uploaded, push it to the folder
-    if request.files['image'].filename != '':
-        image = request.files['image']
-        imgname = image.filename
-        if '.' in imgname and imgname.rsplit('.', 1)[1] == 'png':
-            imgname = filename.rsplit('.', 1)[0]
-            imgname = secure_filename(imgname)
-            image.save(os.path.join(app.config['UPLOAD_FOLDER'], imgname))
-        else:
-            flash('Please select a PNG image to Upload!', 'error')
-            return redirect(url_for('index'))
-
-    # if config file is uploaded
-    config_json = request.files['config']
-    if config_json.filename != '':
-        if '.' in config_json.filename and config_json.filename.rsplit('.', 1)[1] == 'json':
-            config_json.save(os.path.join(app.config['UPLOAD_FOLDER'], config_json.filename))
-        else:
-            flash('Only JSON file is accepted!', 'error')
-            return redirect(url_for('index'))
-
-    # If the csv file is uploaded
-    if '.' in filename and filename.rsplit('.', 1)[1] == 'csv':
-        filename = secure_filename(filename)
-        if(filename != "default.png.csv" and filename != "speaker.png.csv"):
-            file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-        generate_badges()
-
-
-        # Remove the uploaded files after job in done
-        if filename != "default.png.csv":
-            os.unlink(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-        try:
-            os.unlink(os.path.join(app.config['UPLOAD_FOLDER'], imgname))
-        except Exception:
-            traceback.print_exc()
-
-        flash(filename, 'success')
-        return redirect(url_for('index'))
-    else:
-        flash('Only CSV file is accepted!', 'error')
-        return redirect(url_for('index'))
-=======
 	empty_directory()
 	csv = request.form['csv'].strip()
 	img = request.form['img-default']
-	file = request.files['file']
+	eventyay_url = request.form['eventyay_url'].strip()
 
 	# If default background is selected
 	if img != '':
@@ -132,6 +63,11 @@ def upload():
 		f.write(csv)
 		f.close()
 	# if user does not select file, browser submits an empty part without filename
+
+	elif eventyay_url !='':
+		filename='speaker.png.csv'
+		generate_csv_eventyay.tocsv(eventyay_url,filename)
+
 	else:
 		if file.filename == '':
 			flash('Please select a CSV file to Upload!', 'error')
@@ -163,7 +99,7 @@ def upload():
 	# If the csv file is uploaded
 	if '.' in filename and filename.rsplit('.', 1)[1] == 'csv':
 		filename = secure_filename(filename)
-		if filename != "default.png.csv":
+		if filename != "default.png.csv" and eventyay_url == '':
 			file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
 		generate_badges()
 

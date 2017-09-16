@@ -4,11 +4,10 @@ APP_ROOT = os.path.dirname(os.path.abspath(__file__))
 UPLOAD_FOLDER = os.path.join(APP_ROOT, 'static/uploads')
 MAX_STRING = "chaftsladen Potsdam (F"
 
-def tocsv(url_eventyay):
+def tocsv(url_eventyay,filename):
     with urllib.request.urlopen(url_eventyay) as url:
         data = json.loads(url.read().decode(url.info().get_param('charset') or 'utf8'))
         speakers = data['speakers']
-        filename = "speaker.png.csv"
         with open(os.path.join(UPLOAD_FOLDER, filename), "w+") as f:
             #f.write("name,organisation,website,twitter,facebook,github,linkedin,position\n")
             for speaker in speakers:
@@ -44,6 +43,7 @@ def tocsv(url_eventyay):
                         i += 1
                 fields += [""] * 4
                 f.write("{},{},{},{}\n".format(*fields[:4]))
+            f.close()
 
 if __name__ == '__main__':
     tocsv()
