@@ -61,6 +61,10 @@ def upload():
 	_pdf = True if request.form.get('pdf') == 'on' else False
 	_zip = True if request.form.get('zip') == 'on' else False
 
+	if not _pdf and not _zip:
+		flash('Please select a download filetype!', 'error')
+		return redirect(url_for('index'))
+
 	# If default background is selected
 	if img != '':
 		filename = img + '.csv'
@@ -71,11 +75,9 @@ def upload():
 		f.write(csv)
 		f.close()
 	# if user does not select file, browser submits an empty part without filename
-
 	elif eventyay_url !='':
 		filename='speaker.png.csv'
 		generate_csv_eventyay.tocsv(eventyay_url,filename)
-
 	else:
 		if file.filename == '':
 			flash('Please select a CSV file to Upload!', 'error')
@@ -123,7 +125,7 @@ def upload():
 			flash(filename, 'success')
 		elif _zip and not _pdf:
 			flash(filename,'success-zip')
-		else:
+		elif not _zip and _pdf:
 			flash(filename,'success-pdf')
 
 		return redirect(url_for('index'))

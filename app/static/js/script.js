@@ -4,7 +4,8 @@ $(function() {
 		var container = $(".custom-menu-content");
 		var button = $('.glyphicon-th');
 
-	// if the target of the click is not the button, the container or a descendant of the container
+		// if the target of the click is not the button,
+		// the container or a descendant of the container
 		if (!button.is(e.target) && !container.is(e.target) && container.has(e.target).length === 0) {
 			container.addClass('hidden');
 		}
@@ -21,10 +22,10 @@ $(function() {
 		var deployLink = $('.version').attr('href', versionLink).html(version);
 	}});
 
-  $(".menu-options").click(function(){
-    var i = $(this).data("item");
-    $(".placeholder").text(i);
-    $("input[name='img-default']").val(i);
-  });
+	$(".menu-options").click(function(){
+		var i = $(this).data("item");
+		$(".placeholder").text(i);
+		$("input[name='img-default']").val(i);
+	});
 
 });
