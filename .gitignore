@@ -2,3 +2,6 @@
 *.badges
 *.swp
 /*.pyc
+
+# Distribution / packaging
+badgeyay_env/
