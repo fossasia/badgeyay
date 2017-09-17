@@ -1,5 +1,5 @@
 #!usr/bin/python3
-from urllib2 import urlopen
+from urllib.request import urlopen
 import json
 import os
 
