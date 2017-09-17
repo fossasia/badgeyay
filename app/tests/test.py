@@ -15,12 +15,22 @@ class BadgeyayTest(unittest.TestCase):
 	def test_title(self):
 		self.assertEqual(self.driver.title, 'BadgeYay')
 
-	def test_menu(self):
+	def test_menu_visibility(self):
+		#elem is div element of right most menu bar ,until glyphicon is not clicked it should not
+		#display all menus like (code, bug report etc)
 		elem = self.driver.find_element_by_css_selector(".custom-menu-content")
 		self.assertFalse(elem.is_displayed())
-		self.driver.find_element_by_css_selector(".glyphicon-th").click()
+	
+	def test_menu_click_on(self):
+		#elem is glyphicon element, when it is clicked it should display menu bar containing
+		#(code,bug reports etc)
+		elem=self.driver.find_element_by_css_selector(".glyphicon-th").click()
 		self.assertTrue(elem.is_displayed())
-		self.driver.find_element_by_css_selector(".glyphicon-th").click()
+	
+	def test_menu_click_off(self):
+		#elem is glyphicon element, when it is clicked again it should hide menu bar containing
+		#(code,bug reports etc)		
+		elem=self.driver.find_element_by_css_selector(".glyphicon-th").click()
 		self.assertFalse(elem.is_displayed())
 
 	def test_error(self):
