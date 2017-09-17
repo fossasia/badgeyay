@@ -7,3 +7,5 @@ werkzeug==0.12.2
 wtforms==2.1
 pyflakes==1.6.0
 gunicorn
+selenium
+nose
