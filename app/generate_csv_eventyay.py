@@ -1,15 +1,17 @@
-import urllib.request, json, os
+#!usr/bin/python3
+from urllib2 import urlopen
+import json
+import os
 
 APP_ROOT = os.path.dirname(os.path.abspath(__file__))
 UPLOAD_FOLDER = os.path.join(APP_ROOT, 'static/uploads')
 MAX_STRING = "chaftsladen Potsdam (F"
 
 def tocsv(url_eventyay,filename):
-    with urllib.request.urlopen(url_eventyay) as url:
+    with urlopen(url_eventyay) as url:
         data = json.loads(url.read().decode(url.info().get_param('charset') or 'utf8'))
         speakers = data['speakers']
-        with open(os.path.join(UPLOAD_FOLDER, filename), "w+") as f:
-            #f.write("name,organisation,website,twitter,facebook,github,linkedin,position\n")
+        with open(os.path.join(UPLOAD_FOLDER, filename), "w+") as f:            
             for speaker in speakers:
                 fields = [speaker[field] for field in "name organisation website twitter facebook github linkedin position".split() if speaker[field]]
                 i = 0
