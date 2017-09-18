@@ -4,14 +4,11 @@ import time
 import os
 
 class BadgeyayTest(unittest.TestCase):
-	
-	@classmethod
-	def setup(self):
-		self.driver.get('http://localhost:5000')
-		
+
 	@classmethod
 	def setUpClass(cls):
 		cls.driver = webdriver.Firefox()
+		cls.driver.get('http://localhost:5000')
 		super(BadgeyayTest, cls).setUpClass()
 
 	def test_title(self):
@@ -21,15 +18,13 @@ class BadgeyayTest(unittest.TestCase):
 		# Check that menu is not visible initially
 		elem = self.driver.find_element_by_css_selector(".custom-menu-content")
 		self.assertFalse(elem.is_displayed())
-	
-	def test_menu_click_on(self):
+
+	def test_menu_click_on_off(self):
 		# Check that menu is visible when opened
-		elem=self.driver.find_element_by_css_selector(".glyphicon-th").click()
+		elem = self.driver.find_element_by_css_selector(".custom-menu-content")
+		self.driver.find_element_by_css_selector(".glyphicon-th").click()
 		self.assertTrue(elem.is_displayed())
-	
-	def test_menu_click_off(self):
-		# Check that menu is not visible when closed
-		elem=self.driver.find_element_by_css_selector(".glyphicon-th").click()
+		self.driver.find_element_by_css_selector(".glyphicon-th").click()
 		self.assertFalse(elem.is_displayed())
 
 	def test_error(self):
