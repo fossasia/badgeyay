@@ -1,8 +1,8 @@
 {% extends "layout.html" %}
 {% block body %}
-<div class="container">
+<div class="container board">
 	<div class="row">
-		<div class="col-md-4 col-md-offset-4 col-sm-8 col-sm-offset-2 col-xs-10 col-xs-offset-1 jumbotron">
+		<div class="col-md-4 col-md-offset-4 col-sm-8 col-sm-offset-2 col-xs-10 col-xs-offset-1">
 			{% with m = get_flashed_messages(with_categories=true) %}
 				{% if m %}
                     {% for cat,msg in m %}
@@ -37,7 +37,7 @@
 				<label>Tick the download type(s):</label>
 				<div class="checkbox">
 			    	<label for="zip">
-			      		<input type="checkbox" id="zip" name="zip">Zip
+			      		<input type="checkbox" id="zip" name="zip">ZIP
 			      	</label>
 			    </div>
 			    <div class="checkbox">
@@ -59,7 +59,10 @@
 					<input type="text" class="form-control" id="textField" name="eventyay_url">
 			  	</div>
 			  	<div class="form-group">
-			  		<label for="imageFile"><span class="label label-info">OPTIONAL</span> Upload a PNG file for badge background</label>
+			  		<label for="imageFile">
+			  			<span class="label label-info">OPTIONAL</span>
+			  			Upload a PNG file for badge background
+			  		</label>
 					<input type="file" id="imageFile" name="image">
 			  	</div>
 			  	<div class="text-center"><strong>OR</strong></div>
@@ -83,10 +86,13 @@
 					<input type="hidden" name="img-default" value="">
 			  	</div>
 			  	<div class="form-group">
-			  		<label for="inputFile"><span class="label label-info">OPTIONAL</span> Upload a config file (JSON) to customise badges</label>
+			  		<label for="inputFile">
+			  			<span class="label label-info">OPTIONAL</span>
+			  			Upload a config file (JSON) to customise badges
+			  		</label>
 					<input type="file" id="inputFile" name="config">
 			  	</div>
-			  	<button type="submit" class="btn btn-primary" style="width: 100%;">Upload</button>
+			  	<button type="submit" class="btn btn-primary">Upload</button>
 			</form>
 		</div>
 	</div>
