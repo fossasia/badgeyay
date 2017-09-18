@@ -10,16 +10,24 @@ NUMBER_OF_BADGES_PER_PAGE = 8
 APP_ROOT = os.path.dirname(os.path.abspath(__file__))
 UPLOAD_FOLDER = os.path.join(APP_ROOT, 'static/uploads')
 
+paper_sizes = {}
+paper_sizes['A3'] = ['297mm', '420mm']
+paper_sizes['A4'] = ['210mm', '297mm']
+
 input_files = [file for file in os.listdir("./static/uploads")
                if file.lower().endswith(".csv")]
 
 with open("../badges/8BadgesOnA3.svg", encoding="UTF-8") as f:
     CONTENT = f.read()
 
-def generate_badges(aggregate, folder, index, picture):
+def generate_badges(aggregate, folder, index, picture, paper_size):
+    paper_width = paper_sizes[paper_size][0]
+    paper_height = paper_sizes[paper_size][1]
     target = os.path.join(folder, "badges_{}.svg".format(index))
     print("Generating {}".format(target))
     content = CONTENT
+    content = content.replace("paper_width", paper_width)
+    content = content.replace("paper_height", paper_height)
     ext = os.path.splitext(picture)[1]
     picture_name = "badges_{}_background{}".format(index, ext)
     shutil.copyfile(picture, os.path.join(folder, picture_name))
@@ -71,8 +79,8 @@ for input_file in input_files:
             if options['badge_wrap']:
                 aggregate.append(row)
             if len(aggregate) >= NUMBER_OF_BADGES_PER_PAGE:
-                generate_badges(aggregate, folder, i, picpath)
+                generate_badges(aggregate, folder, i, picpath, options['paper_size'])
                 aggregate = []
                 i += 1
         if aggregate:
-            generate_badges(aggregate, folder, i, picpath)
+            generate_badges(aggregate, folder, i, picpath, options['paper_size'])
