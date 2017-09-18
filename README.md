@@ -40,7 +40,9 @@ Specification
 
 The output file is svg / pdf / multipage pdf of size A3.
 Each badge has the size A6.
-The outputs are in a folder derived form the input csv
+The outputs are in a folder derived form the input csv.
+The outputs can be either of the two types, viz ZIPs or PDFs, or both. User has the choice to choose from either of
+the two or both of them.
 
 ### Customization
 
@@ -51,10 +53,10 @@ Inkscape is generally used for editing of such files.
 
 You need Ubuntu.
 
-You can run the `merge_badges.sh` file.
+You can run the `merge_badges.py` file.
 It generates badges for every csv file and combines them to one.
 There is a travis build which build the badges automatically.
-When a PR is merged into the master branch, the current badges canbe downloaded.
+When a PR is merged into the master branch, the current badges can be downloaded.
 
 Contributions, Bug Reports, Feature Requests
 --------------
@@ -80,10 +82,10 @@ One-click Docker and Heroku deployment is also available:
 Implementation
 --------------
 
-[generate_badges.py](generate_badges.py) creates svg files from the `csv`, `png` and
+[generate_badges.py](/app/generate_badges.py) creates svg files from the `csv`, `png` and
 [badges/8BadgesOnA3.svg](badges/8BadgesOnA3.svg).
 
-[merge_badges.sh](merge_badges.sh) converts there into pdf files and merges
+[merge_badges.py](/app/merge_badges.py) converts there into pdf files and merges
 them together into one.
 
 [Travis][travis] creates new [releases][releases] with the `all-badges.pdf` file.
