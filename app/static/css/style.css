@@ -146,7 +146,7 @@ textarea {
   resize: vertical;
 }
 .footer {
-  position: absolute;
+  position: relative;
   text-align: center;
   width: 100%;
   padding: 10px;
