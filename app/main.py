@@ -71,7 +71,7 @@ def upload():
 		filename = img + '.csv'
 	# If the textbox is filled
 	elif csv != '':
-	    check_csv = csv.splitlines()
+		check_csv = csv.splitlines()
 		count_line = 0
 		for check in check_csv:
 			line = check.split(',')
@@ -130,7 +130,7 @@ def upload():
 				os.unlink(os.path.join(app.config['UPLOAD_FOLDER'], imgname))
 		except Exception:
 			traceback.print_exc()
-      
+
 		if _zip and _pdf:
 			flash(filename, 'success')
 		elif _zip and not _pdf:
