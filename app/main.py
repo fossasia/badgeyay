@@ -71,10 +71,19 @@ def upload():
 		filename = img + '.csv'
 	# If the textbox is filled
 	elif csv != '':
-		filename = "default.png.csv"
-		f = open(os.path.join(app.config['UPLOAD_FOLDER'], filename), "w+")
-		f.write(csv)
-		f.close()
+	    check_csv = csv.splitlines()
+		count_line = 0
+		for check in check_csv:
+			line = check.split(',')
+			if len(line) == 4:
+				count_line=count_line+1
+		if count_line == len(check_csv):
+			filename = "default.png.csv"
+			f = open(os.path.join(app.config['UPLOAD_FOLDER'], filename), "w+")
+			f.write(csv)
+			f.close()
+		else:
+			flash('Write Data in Correct format!', 'error')
 	# if user does not select file, browser submits an empty part without filename
 	elif eventyay_url !='':
 		filename = 'speaker.png.csv'
