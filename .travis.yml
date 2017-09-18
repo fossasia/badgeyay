@@ -3,8 +3,7 @@ language: python3
 before_install:
 - sudo apt-get -qq update
 - sudo apt-get -y install librsvg2-bin pdftk
-- sudo pip install pyflakes
-- sudo pip install selenium
+- sudo pip install -r test-requirements.txt
 
 script:
 - python app/tests/test.py

@@ -76,7 +76,7 @@ def upload():
 		f.close()
 	# if user does not select file, browser submits an empty part without filename
 	elif eventyay_url !='':
-		filename='speaker.png.csv'
+		filename = 'speaker.png.csv'
 		generate_csv_eventyay.tocsv(eventyay_url,filename)
 	else:
 		if file.filename == '':
