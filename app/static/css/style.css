@@ -42,10 +42,8 @@
   font-size: 18em;
   color:crimson;
 }
-.btn-danger,.btn-danger:hover,.btn-danger:focus{
-  border:none;
-  background-color: crimson;
-  margin-top: 10px;
+.btn-primary{
+  width: 100%;
 }
 .form-group label {
   margin-top: 20px;
