@@ -58,6 +58,13 @@ It generates badges for every csv file and combines them to one.
 There is a travis build which build the badges automatically.
 When a PR is merged into the master branch, the current badges can be downloaded.
 
+### Running locally 
+First fork the main repo https://github.com/fossasia/badgeyay.
+Then clone your local repo.
+Go to badgeyay/app directory (cd badgeyay/app).
+run 'python main.py' to start server.
+Remember 'main.py' should only be executed from app directory.
+
 Contributions, Bug Reports, Feature Requests
 --------------
 This is an Open Source project and we would be happy to see contributors who report bugs and file feature requests submitting pull requests as well. Please report issues in the [GitHub tracker](https://github.com/fossasia/badgeyay/issues/new).
