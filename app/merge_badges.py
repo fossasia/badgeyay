@@ -21,7 +21,7 @@ if os.system('which pdftk') != 0:
 
 os.system('python3 generate-badges.py')
 
-BADGES_FOLDER = 'static/badges'
+BADGES_FOLDER = '../badges'
 
 
 input_folders = [file for file in os.listdir(BADGES_FOLDER)
