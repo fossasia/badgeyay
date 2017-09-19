@@ -1,5 +1,8 @@
 #!usr/bin/python3
-from urllib.request import urlopen
+try:
+    from urllib.request import urlopen
+except Exception:
+    from urllib2 import urlopen
 import json
 import os
 
