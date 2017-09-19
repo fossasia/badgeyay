@@ -84,6 +84,7 @@ def upload():
 			f.close()
 		else:
 			flash('Write Data in Correct format!', 'error')
+			return redirect(url_for('index'))
 	# if user does not select file, browser submits an empty part without filename
 	elif eventyay_url !='':
 		filename = 'speaker.png.csv'
