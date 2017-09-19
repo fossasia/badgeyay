@@ -42,11 +42,11 @@ The output file is svg / pdf / multipage pdf of size A3.
 Each badge has the size A6.
 The outputs are in a folder derived form the input csv.
 The outputs can be either of the two types, viz ZIPs or PDFs, or both. User has the choice to choose from either of
-the two or both of them.
+the two or from both of them.
 
 ### Customization
 
-You can change the font style, font size, color,etc from the .svg file in the folder badges.
+You can change the font style, font size, color etc from the `.svg` file in the folder badges.
 Inkscape is generally used for editing of such files.
 
 ### Usage
@@ -60,7 +60,7 @@ When a PR is merged into the master branch, the current badges can be downloaded
 
 Contributions, Bug Reports, Feature Requests
 --------------
-This is an Open Source project and we would be happy to see contributors who report bugs and file feature requests submitting pull requests as well. Please report issues in the [GitHub tracker][new-issue].
+This is an Open Source project and we would be happy to see contributors who report bugs and file feature requests submitting pull requests as well. Please report issues in the [GitHub tracker](https://github.com/fossasia/badgeyay/issues/new).
 
 Also read [CONTRIBUTING.md](https://github.com/fossasia/badgeyay/blob/development/.github/CONTRIBUTING.md)
 
@@ -85,10 +85,10 @@ Implementation
 [generate_badges.py](/app/generate_badges.py) creates svg files from the `csv`, `png` and
 [badges/8BadgesOnA3.svg](badges/8BadgesOnA3.svg).
 
-[merge_badges.py](/app/merge_badges.py) converts there into pdf files and merges
+[merge_badges.py](/app/merge_badges.py) converts them into pdf files and merges
 them together into one.
 
-[Travis][travis] creates new [releases][releases] with the `all-badges.pdf` file.
+[Travis](https://github.com/fossasia/badgeyay/blob/development/.travis.yml) creates new releases with the `all-badges.pdf` file.
 
 Maintainers
 -------------------
