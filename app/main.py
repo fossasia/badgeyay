@@ -116,8 +116,9 @@ def upload():
 	else:
 		y=filename.find("png.csv")
 		if y!=-1:
-			flash('Please upload a image in png', 'error')
-			return redirect(url_for('index'))
+			if img == '':
+				flash('Please upload a image in png', 'error')
+				return redirect(url_for('index'))
 		else:
 			flash('Please upload Csv file in \'.png.csv\' format', 'error')
 			return redirect(url_for('index'))
