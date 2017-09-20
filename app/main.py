@@ -1,4 +1,5 @@
 from flask import Flask, render_template, request, redirect, url_for, flash
+from flask_compress import Compress
 from werkzeug.utils import secure_filename
 import os, shutil
 import traceback
@@ -14,6 +15,11 @@ app.config['DEBUG'] = True
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 app.config['MAX_CONTENT_LENGTH'] = 16 * 1024 * 1024
 app.config['SECRET_KEY'] = 'secret'
+COMPRESS_MIMETYPES = ['text/html', 'text/css', \
+'application/json']
+COMPRESS_LEVEL = 6
+COMPRESS_MIN_SIZE = 500
+Compress(app)
 
 @app.route('/')
 def index():
