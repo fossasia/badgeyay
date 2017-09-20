@@ -149,6 +149,10 @@ def upload():
 def Not_Found(e):
 	return render_template('404.html'), 404
 
+@app.errorhandler(500)
+def Internal_Server_Error(e):
+    trace = traceback.format_exc()
+    return render_template('500.html', exception=trace), 500
 
 if __name__ == '__main__':
 	app.run()
