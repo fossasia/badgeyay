@@ -144,6 +144,9 @@ def upload():
 		flash('Only CSV file is accepted!', 'error')
 		return redirect(url_for('index'))
 
+@app.route('/guide')
+def guide():
+	return render_template('guide.html')
 
 @app.errorhandler(404)
 def Not_Found(e):

@@ -1,0 +1,71 @@
+{% extends "layout.html" %}
+{% block body %}
+<div class="container board">
+	<div class="row">
+		<div class="jumbotron text-center">
+			<h1>Badgeyay User-Input Guide</h1>
+		</div>
+		<div class="col-sm-12 text-center">
+			<p>Want to learn what is the "Correct Format"?</p>
+			<p>Check <a href="#csv">CSV</a>, <a href="#manual">Manual Data</a>, <a href="#json">JSON</a></p>
+		</div>
+		<div class="col-sm-12 text-left options" id="csv">
+			<h2>1. CSV Format</h2>
+			<pre class="alert-info">The CSV must be uploaded with 4 columns of data</pre>
+			<p>Four comma (',') seperated values should be present in the CSV</p>
+			<p>See Example Image Below</p>
+			<img src="static/images/guide_csv.png" class="guide_img" alt="CSV Image">
+		</div>
+		<div class="col-sm-12 text-left options" id="manual">
+			<h2>2. Manual Data Format</h2>
+			<pre class="alert-info">Format for Manual data is same as CSV's data</pre>
+			<p>Four comma (',') seperated values on each line is the correct format</p>
+			<p>See Image below</p>
+			<img src="static/images/guide_manual.png" class="guide_img" alt="Manual Data Image">
+		</div>
+		<div class="col-sm-12 text-left options" id="json">
+			<h2>3. JSON Data Format</h2>
+			<pre class="alert-info">JSON is an optional parameter to customise your badges</pre>
+			<p>An example JSON has been provided Below</p>
+			<pre>[{
+"id": 1070,
+"name": "Ltnng Nnxmlt",
+"email": "jold@fgsjdohtqcrvfluecz-uomagqy.nt",
+"mobile": "+8059433591623",
+"photo": "pggvr:\/\/chnvqwb.tfkshbecpm.fxq\/nwozlkwi.bbh\l2y5t093kx39.ggj",
+"organisation": "Ybsbakoldbf(YVMSPW)",
+"position": "Uessxkh",
+"country": "Knshzkqcgqg",
+"short_biography": "<c><\/r>",
+"long_biography": "",
+"website": "oluk:\/\/iug.rgkrkbz-vlivvbc.qq",
+"twitter": "",
+"facebook": "",
+"github": "",
+"linkedin": "",
+"city": "Uahknek",
+"featured": 0,
+"gender": "",
+"heard_from": "Oboiuu",
+"icon": "umdnc:\/\/ielslpn.jjfjevzxjf.wqo\/sbssygxo.udw\/586d0e2s-b3cw-7710-882b-k69cf25866hx.zxr",
+"sessions": [
+  {
+    "id": 4361,
+    "title": "Qlfzdid GiarJbgaZssvzh 7290"
+  },
+  {
+    "id": 3287,
+    "title": "Qkysglazcvgn - Ssjbyjtft Lnge Bcrify sa"
+  }
+],
+"small": "qundt:\/\/boeqgph.aW\/ryl0puoy-5181-8615-54y7-658ucyj5x787.aes",
+"speaking_experience": "",
+"sponsorship_required": "",
+"thumbnail": "ebrvh:\/\/yfparbk.mcfhzpphko.nmb\/5i9a1742-d388-6rtz-n914-gj332a4dasp4.xnj"
+},..]
+		  </pre>
+		  <p>The JSON File contains an array of JSON Objects</p>
+		</div>
+	</div>
+</div>
+{% endblock %}
