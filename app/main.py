@@ -113,6 +113,15 @@ def upload():
 		else:
 			flash('Please select a PNG image to Upload!', 'error')
 			return redirect(url_for('index'))
+	else:
+		y=filename.find("png.csv")
+		if y!=-1:
+			flash('Please upload a image in png', 'error')
+			return redirect(url_for('index'))
+		else:
+			flash('Please upload Csv file in \'.png.csv\' format', 'error')
+			return redirect(url_for('index'))
+
 
 	# if config file is uploaded
 	config_json = request.files['config']
@@ -146,9 +155,7 @@ def upload():
 			flash(filename,'success-pdf')
 
 		return redirect(url_for('index'))
-	else:
-		flash('Only CSV file is accepted!', 'error')
-		return redirect(url_for('index'))
+	
 
 @app.route('/guide')
 def guide():
