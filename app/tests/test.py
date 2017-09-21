@@ -8,6 +8,7 @@ class BadgeyayTest(unittest.TestCase):
 	@classmethod
 	def setUpClass(cls):
 		cls.driver = webdriver.PhantomJS()
+		cls.driver.get('http://localhost:5000')
 		super(BadgeyayTest, cls).setUpClass()
 
 	def test_title(self):
