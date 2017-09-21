@@ -117,10 +117,10 @@ def upload():
 		y=filename.find("png.csv")
 		if y!=-1:
 			if img == '':
-				flash('Please upload a image in png', 'error')
+				flash('Please upload a image in png format!', 'error')
 				return redirect(url_for('index'))
 		else:
-			flash('Please upload Csv file in \'.png.csv\' format', 'error')
+			flash('Please upload a csv file in \'csv\' format! Each line is a badge and the lines on the badge are separated by commas. Try it out!', 'error')
 			return redirect(url_for('index'))
 
 
