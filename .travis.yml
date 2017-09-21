@@ -6,7 +6,7 @@ before_install:
 - sudo pip install -r test-requirements.txt
 
 script:
-- python app/tests/test.py
+- phantomjs app/tests/test.py
 - python -m pyflakes .
 
 deploy:
