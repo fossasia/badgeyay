@@ -1,4 +1,5 @@
 $(document).on('ready', function() {
+
 	$(document).mouseup(function(e) {
 		var container = $(".custom-menu-content");
 		var button = $(".glyphicon-th");
@@ -7,17 +8,19 @@ $(document).on('ready', function() {
 		if (!button.is(e.target) && !container.is(e.target) && container.has(e.target).length === 0) {
 			container.addClass("hidden");
 		}
-	$(".glyphicon-th").click(function(){
 	});
+
+	$(".glyphicon-th").click(function(){
 		$(".custom-menu-content").toggleClass("hidden");
 	});
+
 	$(".menu-options").click(function(){
 		var i = $(this).data("item");
 		$(".placeholder").text(i);
 		$("input[name='img-default']").val(i);
 	});
-	var apiUrl = "https://api.github.com/repos/fossasia/badgeyay/git/refs/heads/development";
 
+	var apiUrl = "https://api.github.com/repos/fossasia/badgeyay/git/refs/heads/development";
 	$.ajax({
 		url: apiUrl,
 		async: true,
@@ -27,12 +30,11 @@ $(document).on('ready', function() {
 				var versionLink = "https://github.com/fossasia/badgeyay/tree/"+version;
 				var deployLink = $('.version').attr("href", versionLink).html(version);
 			} else {
-				alert('Sorry, Server did not Respond Correctly. Please Reload Page or.');
+				$('.version').html('Failed to access version');
 			}
 		},
-		error(error) {
-			console.error(error);
-			alert("Error Occured " + error + "Please Reload The Page")
+		error(error) {			
+			$('.version').html('Failed to access version');
 		}
 	});
 });
