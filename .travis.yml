@@ -6,7 +6,7 @@ before_install:
 - sudo pip install -r test-requirements.txt
 
 script:
-- python app/tests/test.py
+- nosetests app/tests/test.py -v --with-coverage
 - python -m pyflakes .
 
 deploy:
@@ -17,3 +17,6 @@ deploy:
   file: "all-badges.pdf"
   on:
     branch: master
+
+after_success:
+- 'bash <(curl -s https://codecov.io/bash)'

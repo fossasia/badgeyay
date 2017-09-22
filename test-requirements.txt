@@ -1,2 +1,4 @@
 pyflakes==1.6.0
+coverage>=4.2,<5
+nose
 selenium
