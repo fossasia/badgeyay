@@ -1,4 +1,4 @@
-$(document).on("ready", function() {
+$(document).on('ready', function() {
 	$(document).mouseup(function(e) {
 		var container = $(".custom-menu-content");
 		var button = $(".glyphicon-th");
