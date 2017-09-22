@@ -7,9 +7,9 @@ $(document).on('ready', function() {
 		if (!button.is(e.target) && !container.is(e.target) && container.has(e.target).length === 0) {
 			container.addClass("hidden");
 		}
-	$('.glyphicon-th').click(function(){
+	$(".glyphicon-th").click(function(){
 	});
-		$('.custom-menu-content').toggleClass("hidden");
+		$(".custom-menu-content").toggleClass("hidden");
 	});
 	$(".menu-options").click(function(){
 		var i = $(this).data("item");
@@ -24,7 +24,7 @@ $(document).on('ready', function() {
 		success(result) {
 			if(typeof result.object !== "undefined" && typeof result.object.sha !== "undefined") {
 				var version = result["object"]["sha"];
-				var versionLink = 'https://github.com/fossasia/badgeyay/tree/'+version;
+				var versionLink = "https://github.com/fossasia/badgeyay/tree/"+version;
 				var deployLink = $('.version').attr("href", versionLink).html(version);
 			} else {
 				alert('Sorry, Server did not Respond Correctly. Please Reload Page or.');
@@ -35,4 +35,4 @@ $(document).on('ready', function() {
 			alert("Error Occured " + error + "Please Reload The Page")
 		}
 	});
-})
+});
