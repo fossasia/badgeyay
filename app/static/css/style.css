@@ -157,7 +157,10 @@ textarea {
 .options{
 margin-bottom: 20px;
 }
+.guide {
+  padding: 20px 0px;
+}
 .guide_img{
   max-width: 100%;
-  border:0.1em solid;
+  border: 0.1em solid;
 }

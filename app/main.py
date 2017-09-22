@@ -15,8 +15,7 @@ app.config['DEBUG'] = True
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 app.config['MAX_CONTENT_LENGTH'] = 16 * 1024 * 1024
 app.config['SECRET_KEY'] = 'secret'
-COMPRESS_MIMETYPES = ['text/html', 'text/css', \
-'application/json']
+COMPRESS_MIMETYPES = ['text/html', 'text/css', 'application/json']
 COMPRESS_LEVEL = 6
 COMPRESS_MIN_SIZE = 500
 Compress(app)
@@ -92,7 +91,7 @@ def upload():
 			flash('Write Data in Correct format!', 'error')
 			return redirect(url_for('index'))
 	# if user does not select file, browser submits an empty part without filename
-	elif eventyay_url !='':
+	elif eventyay_url != '':
 		filename = 'speaker.png.csv'
 		generate_csv_eventyay.tocsv(eventyay_url,filename)
 	else:
@@ -114,13 +113,13 @@ def upload():
 			flash('Please select a PNG image to Upload!', 'error')
 			return redirect(url_for('index'))
 	else:
-		y=filename.find("png.csv")
-		if y!=-1:
+		y = filename.find("png.csv")
+		if y != -1:
 			if img == '':
-				flash('Please upload a image in png format!', 'error')
+				flash('Please upload an image in \'PNG\' format!', 'error')
 				return redirect(url_for('index'))
 		else:
-			flash('Please upload a csv file in \'csv\' format! Each line is a badge and the lines on the badge are separated by commas. Try it out!', 'error')
+			flash('Please upload a file in \'CSV\' format! Each line is a badge and the lines on the badge are separated by commas. Try it out!', 'error')
 			return redirect(url_for('index'))
 
 
@@ -156,7 +155,7 @@ def upload():
 			flash(filename,'success-pdf')
 
 		return redirect(url_for('index'))
-	
+
 
 @app.route('/guide')
 def guide():
