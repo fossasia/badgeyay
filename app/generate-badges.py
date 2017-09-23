@@ -14,10 +14,10 @@ paper_sizes = {}
 paper_sizes['A3'] = ['297mm', '420mm']
 paper_sizes['A4'] = ['210mm', '297mm']
 
-input_files = [file for file in os.listdir("./static/uploads")
+input_files = [file for file in os.listdir(UPLOAD_FOLDER)
                if file.lower().endswith(".csv")]
 
-with open("../badges/8BadgesOnA3.svg", encoding="UTF-8") as f:
+with open(APP_ROOT + "/../badges/8BadgesOnA3.svg", encoding="UTF-8") as f:
     CONTENT = f.read()
 
 def generate_badges(aggregate, folder, index, picture, paper_size):
@@ -55,16 +55,16 @@ for input_file in input_files:
     config_json_uploaded_path = './static/uploads/' + config_json_uploaded
     if os.path.isfile(config_json_uploaded_path):
         config_json = config_json_uploaded
-    config = json.loads(open('./static/uploads/'+ config_json).read())
+    config = json.loads(open(UPLOAD_FOLDER + '/'+ config_json).read())
     options = config['options']
 
     picture = os.path.splitext(input_file)[0]
-    picpath = './static/uploads/' + picture
+    picpath = UPLOAD_FOLDER + '/' + picture
     if not os.path.isfile(picpath):
         print("SKIP: {} has no picture {}".format(input_file, picture))
         continue
     print("READING: {}".format(input_file))
-    folder = APP_ROOT+'/static/badges/'+input_file + ".badges"
+    folder = APP_ROOT + '/static/badges/' + input_file + ".badges"
     shutil.rmtree(folder, ignore_errors=True)
     try:
         os.makedirs(folder, exist_ok=True)

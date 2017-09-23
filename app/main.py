@@ -2,6 +2,7 @@ from flask import Flask, render_template, request, redirect, url_for, flash
 from flask_compress import Compress
 from werkzeug.utils import secure_filename
 import os, shutil
+import uuid
 import traceback
 import generate_csv_eventyay
 
@@ -31,11 +32,11 @@ def index():
 
 def generate_badges(_zip=False,_pdf=False):
 	if _zip == True and _pdf == True:
-		os.system('python merge_badges.py -z -p')
+		os.system('python ' + APP_ROOT + '/merge_badges.py -z -p')
 	elif _zip == True and _pdf == False:
-		os.system('python merge_badges.py -z')
+		os.system('python ' + APP_ROOT + '/merge_badges.py -z')
 	else:
-		os.system('python merge_badges.py -p')
+		os.system('python ' + APP_ROOT + '/merge_badges.py -p')
 
 
 def empty_directory():
@@ -81,7 +82,7 @@ def upload():
 		for check in check_csv:
 			line = check.split(',')
 			if len(line) == 4:
-				count_line=count_line+1
+				count_line = count_line + 1
 		if count_line == len(check_csv):
 			filename = "default.png.csv"
 			f = open(os.path.join(app.config['UPLOAD_FOLDER'], filename), "w+")
@@ -99,7 +100,7 @@ def upload():
 			flash('Please select a CSV file to Upload!', 'error')
 			return redirect(url_for('index'))
 		else:
-			filename = file.filename
+			filename = str(uuid.uuid4()) + '.png.csv'
 
 	# If a PNG is uploaded, push it to the folder
 	if request.files['image'].filename != '':
@@ -113,8 +114,7 @@ def upload():
 			flash('Please select a PNG image to Upload!', 'error')
 			return redirect(url_for('index'))
 	else:
-		y = filename.find("png.csv")
-		if y != -1:
+		if filename.find("png.csv") != -1:
 			if img == '':
 				flash('Please upload an image in \'PNG\' format!', 'error')
 				return redirect(url_for('index'))

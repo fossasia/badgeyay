@@ -10,8 +10,6 @@ arguments = parser.parse_args()
 _pdf = arguments.pdf
 _zip = arguments.zip
 
-print(_pdf,_zip)
-
 if os.system('which rsvg-convert') != 0:
 	os.system('sudo apt-get -y install librsvg2-bin')
 if os.system('which python3') != 0:
@@ -19,10 +17,10 @@ if os.system('which python3') != 0:
 if os.system('which pdftk') != 0:
 	os.system('sudo apt-get -y install pdftk')
 
-os.system('python3 generate-badges.py')
+APP_ROOT = os.path.dirname(os.path.abspath(__file__))
+BADGES_FOLDER = os.path.join(APP_ROOT, 'static/badges')
 
-BADGES_FOLDER = 'static/badges'
-
+os.system('python3 ' + APP_ROOT + '/generate-badges.py')
 
 input_folders = [file for file in os.listdir(BADGES_FOLDER)
                if file.lower().endswith(".badges")]
