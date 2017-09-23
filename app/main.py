@@ -148,11 +148,11 @@ def upload():
 			traceback.print_exc()
 
 		if _zip and _pdf:
-			flash(filename, 'success')
+			flash(filename.replace('.','-'), 'success')
 		elif _zip and not _pdf:
-			flash(filename,'success-zip')
+			flash(filename.replace('.','-'),'success-zip')
 		elif not _zip and _pdf:
-			flash(filename,'success-pdf')
+			flash(filename.replace('.','-'),'success-pdf')
 
 		return redirect(url_for('index'))
 
