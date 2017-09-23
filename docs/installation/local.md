@@ -40,6 +40,12 @@ $ workon badgeyay               # To activate it again
 (badgeyay) $ pip install -e .
 ```
 
+* Create application environment variables.
+
+```
+cp .env.example .env
+```
+
 * To run the project on a local machine.
 
 ```sh
