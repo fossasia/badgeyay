@@ -3,7 +3,7 @@ language: python3
 before_install:
 - sudo apt-get -qq update
 - sudo apt-get -y install librsvg2-bin pdftk
-- sudo pip install -r test-requirements.txt
+- sudo pip install -r requirements/test.txt
 
 script:
 - nosetests app/tests/test.py -v --with-coverage
