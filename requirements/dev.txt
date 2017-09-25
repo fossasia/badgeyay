@@ -1,1 +1,1 @@
--r app/requirements.txt
+-r ../app/requirements.txt
