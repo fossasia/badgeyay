@@ -10,6 +10,8 @@ The goal of badgeyay is to provide a simple badge generator with the following f
    * choose size of badges
    * choose background of badges and upload logo and background image
    * upload CSV or copy/paste text for badges including name, type of attendee, nick/handle, organization/project
+   
+   
 To get a better idea about the working of badgeyay ,you can check out the following youtube video:
 <a href = "https://www.youtube.com/watch?v=Gh8j_01LIoQ">badgeyay</a>
 
