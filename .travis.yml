@@ -1,4 +1,7 @@
-language: python3
+language: python
+
+python:
+- 3.6
 
 before_install:
 - sudo apt-get -qq update
