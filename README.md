@@ -65,8 +65,11 @@ When a PR is merged into the master branch, the current badges can be downloaded
 ### Running locally 
 1. Fork the main repo. https://github.com/fossasia/badgeyay
 2. Clone your local repo. ```git clone https://github.com/<your_username>/badgeyay.git```
-3. Go to badgeyay/app directory. ```cd badgeyay/app```
-4. Run ```python main.py``` to start server.
+3. Create a virtual environment. ```virtualenv -p python3 venv```
+4. Activate the virtual environment. ```source activate venv```
+5. Install the requirements. ```pip install -r requirements.txt```
+6. Go to badgeyay/app directory. ```cd badgeyay/app```
+7. Run ```python main.py``` to start server.
 * Remember: ```main.py``` should only be executed from app directory.
 
 Contributions, Bug Reports, Feature Requests
