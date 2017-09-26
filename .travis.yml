@@ -3,7 +3,7 @@ language: python3
 before_install:
 - sudo apt-get -qq update
 - sudo apt-get -y install librsvg2-bin pdftk
-- sudo pip install -r requirements/test.txt
+- sudo pip install -r requirements/test.txt -r requirements/prod.txt
 - ( cd app && python main.py ) & # run the app in the background
 - sleep 1 && wget http://localhost:5000 > /dev/null  # wait for the app to start
 
