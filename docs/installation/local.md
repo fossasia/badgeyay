@@ -25,8 +25,8 @@ $ cd badgeyay
 $ git remote add upstream https://github.com/fossasia/badgeyay.git
 ```
 
-* It is recommended that you use `[virtualenv](https://virtualenv.pypa.io/en/stable/installation/)`
-and `[virtualenvwrapper](https://virtualenvwrapper.readthedocs.io/en/latest/install.html)` to maintain a clean Python 3 environment. Create a `virtualenv`:
+* It is recommended that you use [`virtualenv`](https://virtualenv.pypa.io/en/stable/installation/)
+and [`virtualenvwrapper`](https://virtualenvwrapper.readthedocs.io/en/latest/install.html) to maintain a clean Python 3 environment. Create a `virtualenv`:
 
 ```sh
 $ mkvirtualenv -p python3 badgeyay
