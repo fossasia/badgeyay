@@ -62,6 +62,17 @@ It generates badges for every csv file and combines them to one.
 There is a travis build which build the badges automatically.
 When a PR is merged into the master branch, the current badges can be downloaded.
 
+### Technologies Used
+
+BadgeYAY uses a number of open source projects to work properly:
+
+* [Flask](http://flask.pocoo.org/) - Microframework powered by python
+* [Bootstrap](http://getbootstrap.com/) - Responsive frontend framework for webapp
+* [Shell](https://en.wikipedia.org/wiki/Unix_shell) - Script used for triggering Travis using [Travis API](https://docs.travis-ci.com/user/triggering-builds/)
+* [Heroku](https://www.heroku.com/) - Webapp deployed here
+* [Travis](travis-ci.org) - Continuous Integration which build the iso
+* [Github Release](https://help.github.com/articles/creating-releases/) - Deploying the iso here
+
 ### Running locally 
 1. [Fork the main repo](https://github.com/fossasia/badgeyay/fork).
 2. Clone your local repo. ```git clone https://github.com/<your_username>/badgeyay.git```
