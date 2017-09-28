@@ -63,7 +63,6 @@
 			  	</div>
 			  	<div class="form-group">
 			  		<label for="imageFile">
-			  			<span class="label label-info">OPTIONAL</span>
 			  			Upload a PNG file for badge background
 			  		</label>
 					<input type="file" id="imageFile" name="image">
@@ -71,7 +70,6 @@
 			  	<div class="text-center"><strong>OR</strong></div>
 			  	<div class="form-group">
 			  		<label for="inputFile">
-			  			<span class="label label-info">OPTIONAL</span>
 			  			Select one from here
 			  		</label>
 			  		<div class="btn-group">
@@ -88,9 +86,21 @@
 							</li>
 							{% endfor %}
 						</ul>
-						<input id="cp1" type="text" class="form-control" placeholder="Enter Color HEX if user_defined" name="bg_color"/>
+						<div class="well">
+						  	<div class="row">
+							   <div class="col-md-3">
+									<div class="form-group">
+										  <input type="text" id="color_picker" class="form-control" data-inline="true" value="#4fc8db" name="bg_color">
+									</div>
+									<div id="inlinecolorhex">
+									<span class="float-right">
+										<h3><small>#4fc8db</small></h3>
+									</span>
+									</div>
+								</div>
+							</div>	  
+						</div>
 						<input id="image_text" type="text" class="form-control" placeholder="Enter Text if user_defined" name="text_on_image"/>
-					</div>
 					<input type="hidden" name="img-default" value="">
 			  	</div>
 			  	<div class="form-group">
