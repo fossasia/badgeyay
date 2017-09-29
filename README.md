@@ -28,6 +28,17 @@ If you like to join developing,
 Specification
 -------------
 
+### Technologies Used
+
+Badgeyay uses a number of open source projects:
+
+* [Flask](http://flask.pocoo.org/) - Microframework powered by python
+* [Bootstrap](https://getbootstrap.com/docs/3.3/) - Responsive frontend framework
+* [Shell](https://en.wikipedia.org/wiki/Unix_shell) - Script used for merging badges of different types
+* [Heroku](https://www.heroku.com/) - Webapp deployed here
+* [Travis](travis-ci.org) - Continuous Integration of the project
+* [Github Release](https://help.github.com/articles/creating-releases/) - Releases are GitHub's way of packaging and providing software to the users
+
 ### Input
 
 - The input is a set of csv files in the same folder, UTF-8.
