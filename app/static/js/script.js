@@ -1,4 +1,4 @@
-$(document).on('ready', function() {
+$(document).on("ready", function() {
 	$(document).mouseup(function(e) {
 		var container = $(".custom-menu-content");
 		var button = $(".glyphicon-th");
@@ -25,14 +25,14 @@ $(document).on('ready', function() {
 			if(typeof result.object !== "undefined" && typeof result.object.sha !== "undefined") {
 				var version = result["object"]["sha"];
 				var versionLink = "https://github.com/fossasia/badgeyay/tree/"+version;
-				var deployLink = $('.version').attr("href", versionLink).html(version);
+				var deployLink = $(".version").attr("href", versionLink).html(version);
 			} else {
-				alert('Sorry, Server did not Respond Correctly. Please Reload Page or.');
+				alert("Sorry, Server did not Respond Correctly. Please Reload Page or.");
 			}
 		},
 		error(error) {
-			console.error(error);
-			alert("Error Occured " + error + "Please Reload The Page")
+			Console.error(error);
+			alert("Error Occured " + error + "Please Reload The Page");
 		}
 	});
 });
