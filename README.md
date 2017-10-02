@@ -13,6 +13,7 @@ The goal of badgeyay is to provide a simple badge generator with the following f
    
    
 To get a better idea about the working of badgeyay ,you can check out the following:
+![Alt text](app/working.gif)
 [![Alt Watch](https://user-images.githubusercontent.com/8705386/30831526-438f8c4c-a237-11e7-83fc-c12046f12e18.png)](https://www.youtube.com/watch?v=Gh8j_01LIoQ)
 
 This first step is to provide a simple script to generate the badges for the FOSSASIA conference. The next step is to provide a web UI.
