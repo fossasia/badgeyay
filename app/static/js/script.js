@@ -20,29 +20,35 @@ $(document).on("ready", function() {
 		$("input[name='img-default']").val(i);
 	});
 
-	var colpick = $('.demo').each( function() {
+	var colpick = $(".demo").each( function() {
 		$(this).minicolors({
-		control: $(this).attr('data-control') || 'hue',
-		inline: $(this).attr('data-inline') === 'true',
-		letterCase: 'lowercase',
+		control: $(this).attr("data-control") || "hue",
+		inline: $(this).attr("data-inline") === "true",
+		letterCase: "lowercase",
 		opacity: false,
-		change: function(hex, opacity) {
-			if(!hex) return;
-			if(opacity) hex += ', ' + opacity;
+		change(hex, opacity) {
+			if(!hex) {
+				return;
+			}
+			if(opacity) {
+				hex += ", " + opacity;
+			}
 			try {
-			console.log(hex);
-			} catch(e) {}
+			//console.log(hex);
+			} catch(e) {
+				//comment
+			}
 			$(this).select();
 			},
-			theme: 'bootstrap'
+			theme: "bootstrap"
 			});
 		});
 	  
-		var $inlinehex = $('#inlinecolorhex h3 small');
-		$('#color_picker').minicolors({
-		  inline: true,
-		  theme: 'bootstrap',
-		  change: function(hex) {
+		var $inlinehex = $("#inlinecolorhex h3 small");
+		$("#color_picker").minicolors({
+			inline: true,
+		  	theme: "bootstrap",
+		 	change(hex) {
 			if(!hex) return;
 			$inlinehex.html(hex);
 		  }
