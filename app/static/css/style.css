@@ -48,6 +48,9 @@
 .form-group label {
   margin-top: 20px;
 }
+.well {
+  margin-top: 40px;
+}
 .navbar .glyphicon-th {
   font-size: 30px;
   margin-top: 20px;
