@@ -1,9 +1,17 @@
-language: python3
+language: python
+
+python:
+- 3.6
 
 before_install:
 - sudo apt-get -qq update
 - sudo apt-get -y install librsvg2-bin pdftk
-- sudo pip install -r requirements/test.txt
+- pip install -r requirements/test.txt -r requirements/prod.txt
+- ( cd app && python main.py ) & # run the app in the background
+- sleep 1 && wget http://localhost:5000 > /dev/null  # wait for the app to start
+- wget http://selenium-release.storage.googleapis.com/3.5/selenium-server-standalone-3.5.3.jar
+- java -jar selenium-server-standalone-3.5.3.jar &
+- sleep 1 # give selenium time to start and show the output
 
 script:
 - nosetests app/tests/test.py -v --with-coverage
