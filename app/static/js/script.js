@@ -1,4 +1,4 @@
-$(document).on('ready', function() {
+$(document).on("ready", function() {
 
 	$(document).mouseup(function(e) {
 		var container = $(".custom-menu-content");
@@ -56,13 +56,13 @@ $(document).on('ready', function() {
 			if(typeof result.object !== "undefined" && typeof result.object.sha !== "undefined") {
 				var version = result["object"]["sha"];
 				var versionLink = "https://github.com/fossasia/badgeyay/tree/"+version;
-				var deployLink = $('.version').attr("href", versionLink).html(version);
+				var deployLink = $(".version").attr("href", versionLink).html(version);
 			} else {
-				$('.version').html('Failed to access version');
+				$(".version").html("Failed to access version");
 			}
 		},
-		error(error) {			
-			$('.version').html('Failed to access version');
+		error(error) {
+			$(".version").html("Failed to access version");
 		}
 	});
 });
