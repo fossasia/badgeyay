@@ -10,6 +10,11 @@ The goal of badgeyay is to provide a simple badge generator with the following f
    * choose size of badges
    * choose background of badges and upload logo and background image
    * upload CSV or copy/paste text for badges including name, type of attendee, nick/handle, organization/project
+   
+   
+To get a better idea about the working of badgeyay ,you can check out the following:
+![Alt text](app/working.gif)
+[![Alt Watch](https://user-images.githubusercontent.com/8705386/30831526-438f8c4c-a237-11e7-83fc-c12046f12e18.png)](https://www.youtube.com/watch?v=Gh8j_01LIoQ)
 
 This first step is to provide a simple script to generate the badges for the FOSSASIA conference. The next step is to provide a web UI.
 
@@ -23,6 +28,17 @@ If you like to join developing,
 
 Specification
 -------------
+
+### Technologies Used
+
+Badgeyay uses a number of open source projects:
+
+* [Flask](http://flask.pocoo.org/) - Microframework powered by python
+* [Bootstrap](https://getbootstrap.com/docs/3.3/) - Responsive frontend framework
+* [Shell](https://en.wikipedia.org/wiki/Unix_shell) - Script used for merging badges of different types
+* [Heroku](https://www.heroku.com/) - Webapp deployed here
+* [Travis](travis-ci.org) - Continuous Integration of the project
+* [Github Release](https://help.github.com/articles/creating-releases/) - Releases are GitHub's way of packaging and providing software to the users
 
 ### Input
 
@@ -59,11 +75,14 @@ There is a travis build which build the badges automatically.
 When a PR is merged into the master branch, the current badges can be downloaded.
 
 ### Running locally 
-First fork the main repo https://github.com/fossasia/badgeyay.
-Then clone your local repo.
-Go to badgeyay/app directory (cd badgeyay/app).
-run 'python main.py' to start server.
-Remember 'main.py' should only be executed from app directory.
+1. [Fork the main repo](https://github.com/fossasia/badgeyay/fork).
+2. Clone your local repo. ```git clone https://github.com/<your_username>/badgeyay.git```
+3. Create a virtual environment. ```virtualenv -p python3 venv```
+4. Activate the virtual environment. ```source activate venv```
+5. Install the requirements. ```pip install -r requirements.txt```
+6. Go to badgeyay/app directory. ```cd badgeyay/app```
+7. Run ```python main.py``` to start server.
+* Remember: ```main.py``` should only be executed from app directory.
 
 Contributions, Bug Reports, Feature Requests
 --------------
