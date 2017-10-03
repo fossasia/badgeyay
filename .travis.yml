@@ -10,6 +10,8 @@ before_install:
 - mv phantomjs-2.1.1-linux-x86_64 phantomjs
 - sudo mv phantomjs /usr/local/phantomjs/bin/
 - "phantomjs --version"
+- sudo apt-get -y install librsvg2-bin pdftk
+- sudo pip install -r requirements/test.txt
 
 script:
 - nosetests app/tests/test.py -v --with-coverage

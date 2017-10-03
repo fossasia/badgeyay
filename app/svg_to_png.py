@@ -11,7 +11,7 @@ def do_svg2png(filename,opacity,fill,text_):
     png_filename = filename
     filename = filename.rsplit(".",1)[0] + '.svg'
     filename = os.path.join(SVGS_FOLDER, filename)
-    tree = etree.parse(open(filename, 'r'))
+    tree = parse(open(filename, 'r'))
     element = tree.getroot()
     #changing style using XPath.
     path = element.xpath('//*[@id="rect4504"]')[0]
