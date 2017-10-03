@@ -2,6 +2,7 @@
 import os
 import argparse
 from PyPDF2 import PdfFileMerger
+from exceptions import PackageNotFoundError
 
 parser = argparse.ArgumentParser(description='Argument Parser for merge_badges')
 parser.add_argument('-p',dest='pdf',action='store_true')
@@ -12,9 +13,9 @@ _pdf = arguments.pdf
 _zip = arguments.zip
 
 if os.system('which rsvg-convert') != 0:
-	os.system('sudo apt-get -y install librsvg2-bin')
+    raise PackageNotFoundError("Package rsvg-convert not found")
 if os.system('which python3') != 0:
-	os.system('sudo apt-get -y install python3')
+    raise PackageNotFoundError("Package python3 not found")
 
 APP_ROOT = os.path.dirname(os.path.abspath(__file__))
 BADGES_FOLDER = os.path.join(APP_ROOT, 'static/badges')
