@@ -1,6 +1,7 @@
 #!usr/bin/python3
 import os
 import argparse
+import zipfile
 
 parser = argparse.ArgumentParser(description='Argument Parser for merge_badges')
 parser.add_argument('-p',dest='pdf',action='store_true')
@@ -24,6 +25,17 @@ os.system('python3 ' + APP_ROOT + '/generate-badges.py')
 
 input_folders = [file for file in os.listdir(BADGES_FOLDER)
                if file.lower().endswith(".badges")]
+
+def _zipFile(src,dst,allowed):
+    zf = zipfile.ZipFile("%s.zip" % (dst), "w", zipfile.ZIP_DEFLATED)
+    abs_src = os.path.abspath(src)
+    for dirname, subdirs, files in os.walk(src):
+        for filename in files:
+            if filename != dst + ".zip" and filename.split('.')[-1] in allowed:
+                absname = os.path.abspath(os.path.join(dirname, filename))
+                arcname = absname[len(abs_src) + 1:]
+                zf.write(absname, arcname)
+    zf.close()
 
 def generate_pdfs(folder_path):
 	svgs = [file for file in os.listdir(folder_path)
@@ -49,7 +61,7 @@ print ('Merging badges of different types.')
 
 for folder in input_folders:
 	folder_path = os.path.join(BADGES_FOLDER, folder)
-	out = folder + '.pdf'
+	out = folder.replace('.','-') + '.pdf'
 	out_path = os.path.join(BADGES_FOLDER, out)
 	os.system('pdftk ' + folder_path + '/*.pdf cat output ' + out_path)
 
@@ -60,7 +72,7 @@ if _zip:
 	print ("Created {}".format(final_path))
 	print ("Generating ZIP file")
 
-	os.system('find static/badges/ \( -iname \*.svg -o -iname \*.pdf \) | zip  -@ static/badges/all-badges.zip')
+	_zipFile("static/badges", "static/badges/all-badges", ["svg", "pdf"])
 
 	print ('Generating ZIP of SVG files')
 
@@ -69,5 +81,5 @@ if _zip:
 
 	for folder in input_folders:
 		folder_path = os.path.join(BADGES_FOLDER, folder)
-		file_name = folder_path + '.svg.zip'
-		os.system('find ' + folder_path + ' -type f -name *.svg | zip -@ ' + file_name)
+		file_name = folder_path.replace('.','-') + '-svg'
+		_zipFile(folder_path, os.path.join(folder_path, file_name), ["svg"])
