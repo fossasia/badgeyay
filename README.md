@@ -74,6 +74,31 @@ It generates badges for every csv file and combines them to one.
 There is a travis build which build the badges automatically.
 When a PR is merged into the master branch, the current badges can be downloaded.
 
+### Install Dependencies
+
+Badgeyay requires the following dependencies to be installed
+- python3
+- rsvg-convert
+- pdftk
+
+For Ubuntu/Debian based Package Managers
+```
+sudo apt-get update
+sudo apt-get python3 librsvg2-bin pdftk
+```
+
+For Fedora/CentOS/RPM based package managers
+```
+sudo -i
+dnf install librsvg2 librsvg2-tools
+dnf install gcc gcc-c++ libXrandr gtk2 libXtst libart_lgpl
+wget http://mirror.centos.org/centos/6/os/x86_64/Packages/libgcj-4.4.7-18.el6.x86_64.rpm
+wget https://www.pdflabs.com/tools/pdftk-the-pdf-toolkit/pdftk-2.02-1.el6.x86_64.rpm
+rpm -ivh --nodeps libgcj-4.4.7-11.el6.x86_64.rpm
+rpm -i pdftk-2.02-1.el6.x86_64.rpm
+exit
+```
+
 ### Running locally 
 1. [Fork the main repo](https://github.com/fossasia/badgeyay/fork).
 2. Clone your local repo. ```git clone https://github.com/<your_username>/badgeyay.git```
@@ -115,6 +140,12 @@ Implementation
 them together into one.
 
 [Travis](https://github.com/fossasia/badgeyay/blob/development/.travis.yml) creates new releases with the `all-badges.pdf` file.
+
+License
+-------------------
+
+Badgeyay - A simple badge generator. Its main purpose is to generate badges for events/conferences under the Open Event project of FOSSASIA. The Open Event project aims to make server and client software required for hosting events/conferences easy to build and configure. Copyright (C) 2016, FOSSASIA. This program is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version. This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with this program. If not, see http://www.gnu.org/licenses/.
+
 
 Maintainers
 -------------------

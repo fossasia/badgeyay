@@ -20,6 +20,7 @@ input_files = [file for file in os.listdir(UPLOAD_FOLDER)
 with open(APP_ROOT + "/../badges/8BadgesOnA3.svg", encoding="UTF-8") as f:
     CONTENT = f.read()
 
+
 def generate_badges(aggregate, folder, index, picture, paper_size):
     paper_width = paper_sizes[paper_size][0]
     paper_height = paper_sizes[paper_size][1]
@@ -50,12 +51,12 @@ def generate_badges(aggregate, folder, index, picture, paper_size):
 for input_file in input_files:
     config_json = 'default.config.json'
 
-    #check if custom config.json is present for the file
+    # check if custom config.json is present for the file
     config_json_uploaded = os.path.splitext(input_file)[0] + '.json'
     config_json_uploaded_path = './static/uploads/' + config_json_uploaded
     if os.path.isfile(config_json_uploaded_path):
         config_json = config_json_uploaded
-    config = json.loads(open(UPLOAD_FOLDER + '/'+ config_json).read())
+    config = json.loads(open(UPLOAD_FOLDER + '/' + config_json).read())
     options = config['options']
 
     picture = os.path.splitext(input_file)[0]
