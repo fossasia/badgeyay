@@ -4,7 +4,7 @@ import json
 import random
 
 if len(sys.argv) <= 1:
-    print("Please pass the name of the file with th exported json as "
+    print("Please pass the name of the file with the exported json as "
           "the first argument. A file with \"anonymous\" will be created"
           "next to it.")
     exit(1)
