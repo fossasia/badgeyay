@@ -10,8 +10,8 @@ The goal of badgeyay is to provide a simple badge generator with the following f
    * choose size of badges
    * choose background of badges and upload logo and background image
    * upload CSV or copy/paste text for badges including name, type of attendee, nick/handle, organization/project
-   
-   
+
+
 To get a better idea about the working of badgeyay ,you can check out the following:
 ![Alt text](app/working.gif)
 [![Alt Watch](https://user-images.githubusercontent.com/8705386/30831526-438f8c4c-a237-11e7-83fc-c12046f12e18.png)](https://www.youtube.com/watch?v=Gh8j_01LIoQ)
@@ -43,7 +43,7 @@ Badgeyay uses a number of open source projects:
 ### Input
 
 - The input is a set of csv files in the same folder, UTF-8.
-- The csv file is named after the badge type to take. 
+- The csv file is named after the badge type to take.
   Example: `vip.png.csv` uses the picture `vip.png`.
 - The CSV has up to 4 columns for the name and the twitter handle.
   They will be filled if this number is filled:
@@ -57,8 +57,7 @@ Badgeyay uses a number of open source projects:
 The output file is svg / pdf / multipage pdf of size A3.
 Each badge has the size A6.
 The outputs are in a folder derived form the input csv.
-The outputs can be either of the two types, viz ZIPs or PDFs, or both. User has the choice to choose from either of
-the two or from both of them.
+The outputs can be either of the two types, viz ZIPs or PDFs, or both. User may choose to output either or both types.
 
 ### Customization
 
@@ -70,11 +69,11 @@ Inkscape is generally used for editing of such files.
 You need Ubuntu.
 
 You can run the `merge_badges.py` file.
-It generates badges for every csv file and combines them to one.
-There is a travis build which build the badges automatically.
+It generates badges for every csv file and combines them into one.
+There is a travis build which builds the badges automatically.
 When a PR is merged into the master branch, the current badges can be downloaded.
 
-### Running locally 
+### Running locally
 1. [Fork the main repo](https://github.com/fossasia/badgeyay/fork).
 2. Clone your local repo. ```git clone https://github.com/<your_username>/badgeyay.git```
 3. Create a virtual environment. ```virtualenv -p python3 venv```
@@ -92,7 +91,7 @@ Also read [CONTRIBUTING.md](https://github.com/fossasia/badgeyay/blob/developmen
 
 Installation
 --------------
-Badgeyay can be easily deployed on a variety of platforms. Currently it can be deployed in following ways.
+Badgeyay can be easily deployed on a variety of platforms. Currently it can be deployed in following ways:
 
 1. [Local Installation](/docs/installation/local.md)
 
@@ -132,7 +131,7 @@ To join the team:
 3. A Badgeyay admin adds you.
 
 To stay a maintainer in the team:
-1. Follow the rules of [CCCC][cccc] or [Badgeyay](.github/CONTRIBUTING.md) and do not violate them willingly or in a harmful way. 
+1. Follow the rules of [CCCC][cccc] or [Badgeyay](.github/CONTRIBUTING.md) and do not violate them willingly or in a harmful way.
 
 To be removed from the team:
 1. Someone creates an issue to ask for removal, e.g. because if inactivity or a violation.
