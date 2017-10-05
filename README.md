@@ -74,6 +74,31 @@ It generates badges for every csv file and combines them to one.
 There is a travis build which build the badges automatically.
 When a PR is merged into the master branch, the current badges can be downloaded.
 
+### Install Dependencies
+
+Badgeyay requires the following dependencies to be installed
+- python3
+- rsvg-convert
+- pdftk
+
+For Ubuntu/Debian based Package Managers
+```
+sudo apt-get update
+sudo apt-get python3 librsvg2-bin pdftk
+```
+
+For Fedora/CentOS/RPM based package managers
+```
+sudo -i
+dnf install librsvg2 librsvg2-tools
+dnf install gcc gcc-c++ libXrandr gtk2 libXtst libart_lgpl
+wget http://mirror.centos.org/centos/6/os/x86_64/Packages/libgcj-4.4.7-18.el6.x86_64.rpm
+wget https://www.pdflabs.com/tools/pdftk-the-pdf-toolkit/pdftk-2.02-1.el6.x86_64.rpm
+rpm -ivh --nodeps libgcj-4.4.7-11.el6.x86_64.rpm
+rpm -i pdftk-2.02-1.el6.x86_64.rpm
+exit
+```
+
 ### Running locally 
 1. [Fork the main repo](https://github.com/fossasia/badgeyay/fork).
 2. Clone your local repo. ```git clone https://github.com/<your_username>/badgeyay.git```
