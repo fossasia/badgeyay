@@ -1,12 +1,35 @@
+sudo: true
+
 language: python3
+
+python:
+  - "3.5"
+
+cache:
+  # cache pip files, also directory used for Ensembl downloads of GTF and FASTA files
+  # along with the indexed db of intervals and ID mappings and pickles
+  # of sequence dictionaries
+  directories:
+    - /home/travis/.cache/pip
 
 before_install:
 - sudo apt-get -qq update
-- sudo apt-get -y install librsvg2-bin pdftk
+- sudo apt-get -y install librsvg2-bin pdftk python3-pip
 - sudo pip install -r requirements/test.txt
+- sudo pip3 install -r requirements.txt
+
+install:
+- sudo pip3 install -r requirements.txt
+
+before_script:
+- chmod +x ./start_server.sh
 
 script:
-- nosetests app/tests/test.py -v --with-coverage
+- ./start_server.sh
+- python app/main.py &
+- sleep 3
+- nosetests app/tests/test.py -v --with-coverage &
+- sleep 3
 - python -m pyflakes .
 
 deploy:

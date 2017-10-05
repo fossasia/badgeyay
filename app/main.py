@@ -179,4 +179,4 @@ def Internal_Server_Error(e):
     return render_template('500.html', exception=trace), 500
 
 if __name__ == '__main__':
-	app.run()
+	app.run(host='127.0.0.1', port=5000)
