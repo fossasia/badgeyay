@@ -106,6 +106,19 @@ Contributions, Bug Reports, Feature Requests
 --------------
 This is an Open Source project and we would be happy to see contributors who report bugs and file feature requests submitting pull requests as well. Please report issues in the [GitHub tracker](https://github.com/fossasia/badgeyay/issues/new).
 
+## Issue and Branch Policy
+
+Before making a pull request, please file an issue. So, other developers have the chance to give feedback or discuss details. Match every pull request with an issue please and add the issue number in description e.g. like "Fixes #123".
+
+We have the following branches   
+ * **development**   
+   All development goes on in this branch. If you're making a contribution,
+   you are supposed to make a pull request to _development_.
+   PRs to master must pass a build check and a unit-test check on Travis.
+ * **master**   
+   This contains shipped code. After significant features/bugfixes are accumulated on development, we make a version update, and make a release.
+
+
 Also read [CONTRIBUTING.md](https://github.com/fossasia/badgeyay/blob/development/.github/CONTRIBUTING.md)
 
 Installation
