@@ -5,6 +5,7 @@ except Exception:
     from urllib2 import urlopen
 import json
 import os
+import sys
 
 APP_ROOT = os.path.dirname(os.path.abspath(__file__))
 UPLOAD_FOLDER = os.path.join(APP_ROOT, 'static/uploads')
@@ -53,4 +54,4 @@ def tocsv(url_eventyay, filename):
 
 
 if __name__ == '__main__':
-    tocsv()
+    tocsv(sys.argv[1], sys.argv[2])
