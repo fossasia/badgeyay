@@ -4,19 +4,20 @@
 [![Codecov branch](https://img.shields.io/codecov/c/github/fossasia/badgeyay/development.svg?style=flat-square&label=Codecov+Coverage)](https://codecov.io/gh/fossasia/badgeyay)
 [![Gitter](https://img.shields.io/badge/chat-on%20gitter-ff006f.svg?style=flat-square)][gitter]
 
-The goal of badgeyay is to provide a simple badge generator with the following features:
-* a simple web UI to add data and generate printable badges in a zip
-* Fields should include:
-   * choose size of badges
-   * choose background of badges and upload logo and background image
-   * upload CSV or copy/paste text for badges including name, type of attendee, nick/handle, organization/project
-   
-   
-To get a better idea about the working of badgeyay ,you can check out the following:
-![Alt text](app/working.gif)
-[![Alt Watch](https://user-images.githubusercontent.com/8705386/30831526-438f8c4c-a237-11e7-83fc-c12046f12e18.png)](https://www.youtube.com/watch?v=Gh8j_01LIoQ)
+badgeyay is a simple badge generator with a simple web UI to add data and generate printable badges in a zip.
 
-This first step is to provide a simple script to generate the badges for the FOSSASIA conference. The next step is to provide a web UI.
+The user should be able to:
+  * Choose size of badges
+  * Choose background of badges and upload logo and background image
+  * Upload a CSV file or manually enter CSV data as: name, type of attendee, nick/handle, organization/project
+   
+Checkout badgeyay in action:
+
+![Demo GIF](app/working.gif)
+
+[![Demo YouTube](https://user-images.githubusercontent.com/8705386/30831526-438f8c4c-a237-11e7-83fc-c12046f12e18.png)](https://www.youtube.com/watch?v=Gh8j_01LIoQ)
+
+Our current goal is to provide an interface to generate badges for the FOSSASIA conference.
 
 If you like to join developing,
 
@@ -43,10 +44,8 @@ Badgeyay uses a number of open source projects:
 ### Input
 
 - The input is a set of csv files in the same folder, UTF-8.
-- The csv file is named after the badge type to take. 
-  Example: `vip.png.csv` uses the picture `vip.png`.
-- The CSV has up to 4 columns for the name and the twitter handle.
-  They will be filled if this number is filled:
+- The csv file is named after the badge type to take. Example: `vip.png.csv` uses the picture `vip.png`.
+- The CSV has up to 4 columns for the name and the twitter handle. They will be filled if this number is filled:
   - `__X_`
   - `__XX`
   - `_XXX`
@@ -57,8 +56,7 @@ Badgeyay uses a number of open source projects:
 The output file is svg / pdf / multipage pdf of size A3.
 Each badge has the size A6.
 The outputs are in a folder derived form the input csv.
-The outputs can be either of the two types, viz ZIPs or PDFs, or both. User has the choice to choose from either of
-the two or from both of them.
+The outputs can be either of the two types, viz ZIPs or PDFs, or both. User has the choice to choose from either of the two or from both of them.
 
 ### Customization
 
@@ -67,12 +65,7 @@ Inkscape is generally used for editing of such files.
 
 ### Usage
 
-You need Ubuntu.
-
-You can run the `merge_badges.py` file.
-It generates badges for every csv file and combines them to one.
-There is a travis build which build the badges automatically.
-When a PR is merged into the master branch, the current badges can be downloaded.
+You need Ubuntu to run the application. We are working on integrating vagrant to make it easier to run on windows. Check out the [User Input Guide](https://badgeyay-dev.herokuapp.com/guide) for more details.
 
 ### Install Dependencies
 
@@ -105,9 +98,9 @@ exit
 3. Create a virtual environment. ```virtualenv -p python3 venv```
 4. Activate the virtual environment. ```source activate venv```
 5. Install the requirements. ```pip install -r requirements.txt```
-6. Go to badgeyay/app directory. ```cd badgeyay/app```
-7. Run ```python main.py``` to start server.
-* Remember: ```main.py``` should only be executed from app directory.
+6. Go to badgeyay/app directory. ```cd badgeyay```
+7. Run ```python app/main.py``` to start server.
+* Remember: ```python app/main.py``` should only be executed from root directory.
 
 Contributions, Bug Reports, Feature Requests
 --------------
