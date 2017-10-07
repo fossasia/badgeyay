@@ -2,6 +2,7 @@
 import os
 import argparse
 import zipfile
+import subprocess
 from exceptions import PackageNotFoundError
 
 parser = argparse.ArgumentParser(description='Argument Parser for merge_badges')
@@ -12,17 +13,17 @@ arguments = parser.parse_args()
 _pdf = arguments.pdf
 _zip = arguments.zip
 
-if os.system('which rsvg-convert') != 0:
+if subprocess.run('which rsvg-convert') != 0:
     raise PackageNotFoundError("Package rsvg-convert not found")
-if os.system('which python3') != 0:
+if subprocess.run('which python3') != 0:
     raise PackageNotFoundError("Package python3 not found")
-if os.system('which pdftk') != 0:
+if subprocess.run('which pdftk') != 0:
     raise PackageNotFoundError("Package pdftk not found")
 
 APP_ROOT = os.path.dirname(os.path.abspath(__file__))
 BADGES_FOLDER = os.path.join(APP_ROOT, 'static/badges')
 
-os.system('python3 ' + APP_ROOT + '/generate-badges.py')
+subprocess.run('python3 ' + APP_ROOT + '/generate-badges.py')
 
 input_folders = [file for file in os.listdir(BADGES_FOLDER) if file.lower().endswith(".badges")]
 
@@ -30,7 +31,7 @@ input_folders = [file for file in os.listdir(BADGES_FOLDER) if file.lower().ends
 def _zipFile(src, dst, allowed):
     zf = zipfile.ZipFile("%s.zip" % (dst), "w", zipfile.ZIP_DEFLATED)
     abs_src = os.path.abspath(src)
-    for dirname, subdirs, files in os.walk(src):
+    for dirname, files in os.walk(src):
         for filename in files:
             if filename != dst + ".zip" and filename.split('.')[-1] in allowed:
                 absname = os.path.abspath(os.path.join(dirname, filename))
@@ -46,7 +47,7 @@ def generate_pdfs(folder_path):
         pdf_path = os.path.splitext(svg_path)[0] + '.pdf'
         print('svg: {}'.format(svg_path))
         print('pdf: {}'.format(pdf_path))
-        os.system('rsvg-convert -f pdf -o {} {}'.format(pdf_path, svg_path))
+        subprocess.run('rsvg-convert -f pdf -o {} {}'.format(pdf_path, svg_path))
 
 
 # Generating PDF files from svg.
@@ -64,10 +65,10 @@ for folder in input_folders:
     folder_path = os.path.join(BADGES_FOLDER, folder)
     out = folder.replace('.', '-') + '.pdf'
     out_path = os.path.join(BADGES_FOLDER, out)
-    os.system('pdftk ' + folder_path + '/*.pdf cat output ' + out_path)
+    subprocess.run('pdftk ' + folder_path + '/*.pdf cat output ' + out_path)
 
 final_path = os.path.join(BADGES_FOLDER, 'all-badges.pdf')
-os.system('pdftk ' + BADGES_FOLDER + '/*.pdf cat output ' + final_path)
+subprocess.run('pdftk ' + BADGES_FOLDER + '/*.pdf cat output ' + final_path)
 
 if _zip:
     print("Created {}".format(final_path))
