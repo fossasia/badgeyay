@@ -5,6 +5,8 @@ import csv
 import shutil
 import html
 import json
+from lxml import etree
+from defusedxml.lxml import parse
 
 NUMBER_OF_BADGES_PER_PAGE = 8
 APP_ROOT = os.path.dirname(os.path.abspath(__file__))
@@ -21,14 +23,21 @@ with open(APP_ROOT + "/../badges/8BadgesOnA3.svg", encoding="UTF-8") as f:
     CONTENT = f.read()
 
 
-def generate_badges(aggregate, folder, index, picture, paper_size):
+def configure_badge_page(badge_page, paper_size):
     paper_width = paper_sizes[paper_size][0]
     paper_height = paper_sizes[paper_size][1]
+    tree = parse(open(badge_page, 'r'))
+    root = tree.getroot()
+    path = root.xpath('//*[@id="svg2"]')[0]
+    path.set('width', paper_width)
+    path.set('height', paper_height)
+    etree.ElementTree(root).write(badge_page, pretty_print=True)
+
+
+def generate_badges(aggregate, folder, index, picture, paper_size):
     target = os.path.join(folder, "badges_{}.svg".format(index))
     print("Generating {}".format(target))
     content = CONTENT
-    content = content.replace("paper_width", paper_width)
-    content = content.replace("paper_height", paper_height)
     ext = os.path.splitext(picture)[1]
     picture_name = "badges_{}_background{}".format(index, ext)
     shutil.copyfile(picture, os.path.join(folder, picture_name))
@@ -46,6 +55,7 @@ def generate_badges(aggregate, folder, index, picture, paper_size):
         content = content.replace("badge_{}.png".format(i + 1), picture_name)
     with open(target, "w", encoding="UTF-8") as f:
         f.write(content)
+    configure_badge_page(target, paper_size)
 
 
 for input_file in input_files:
