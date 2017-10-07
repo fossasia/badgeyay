@@ -97,8 +97,8 @@ exit
 2. Clone your local repo. ```git clone https://github.com/<your_username>/badgeyay.git```
 3. Create a virtual environment. ```virtualenv -p python3 venv```
 4. Activate the virtual environment. ```source activate venv```
-5. Install the requirements. ```pip install -r requirements.txt```
-6. Go to badgeyay/app directory. ```cd badgeyay```
+5. Go to badgeyay directory. ```cd badgeyay```
+6. Install the requirements. ```pip install -r requirements.txt```
 7. Run ```python app/main.py``` to start server.
 * Remember: ```python app/main.py``` should only be executed from root directory.
 
