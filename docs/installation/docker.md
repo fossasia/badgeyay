@@ -12,7 +12,7 @@
 * Clone the project and cd into it.
 
 ```bash
-git clone https://github.com/fossasia/badgeyay && cd badgeyay
+git clone https://github.com/fossasia/badgeyay.git && cd badgeyay
 ```
 
 * In the terminal window, run `docker build -t badgeyay:latest` to build badgeyay's docker image. This process can take some time.
