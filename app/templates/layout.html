@@ -4,10 +4,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>BadgeYay</title>
-  <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.css') }}">  
-  <link rel="stylesheet" href="{{ url_for('static', filename='css/jquery.minicolors.css') }}">
-  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-  <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.css') }}" media="none" onload="this.media='all';">  
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/jquery.minicolors.css') }}" media="none" onload="this.media='all';">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" media="none" onload="this.media='all';">
+  <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}" media="none" onload="this.media='all';">
   {% block style %}{% endblock %}
 </head>
 <body>
