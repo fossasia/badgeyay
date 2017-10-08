@@ -1,0 +1,8 @@
+applications:
+- name: badgeyay
+memory: 256M
+command: python mongo-app.py
+buildpack: https://github.com/cloudfoundry/python-buildpack.git
+instances: 2
+services:
+- todo-mongo-db
