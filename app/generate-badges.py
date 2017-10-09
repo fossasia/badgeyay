@@ -23,9 +23,14 @@ with open(APP_ROOT + "/../badges/8BadgesOnA3.svg", encoding="UTF-8") as f:
     CONTENT = f.read()
 
 
-def configure_badge_page(badge_page, paper_size):
-    paper_width = paper_sizes[paper_size][0]
-    paper_height = paper_sizes[paper_size][1]
+def configure_badge_page(badge_page, options):
+    if options.get('width') and options.get('height'):
+        paper_width = options.get('width')
+        paper_height = options.get('height')
+    else:
+        paper_size_format = options.get('paper_size_format')
+        paper_width = paper_sizes[paper_size_format][0]
+        paper_height = paper_sizes[paper_size_format][1]
     tree = parse(open(badge_page, 'r'))
     root = tree.getroot()
     path = root.xpath('//*[@id="svg2"]')[0]
@@ -90,8 +95,8 @@ for input_file in input_files:
             if options['badge_wrap']:
                 aggregate.append(row)
             if len(aggregate) >= NUMBER_OF_BADGES_PER_PAGE:
-                generate_badges(aggregate, folder, i, picpath, options['paper_size'])
+                generate_badges(aggregate, folder, i, picpath, options)
                 aggregate = []
                 i += 1
         if aggregate:
-            generate_badges(aggregate, folder, i, picpath, options['paper_size'])
+            generate_badges(aggregate, folder, i, picpath, options)
