@@ -16,8 +16,7 @@ paper_sizes = {}
 paper_sizes['A3'] = ['297mm', '420mm']
 paper_sizes['A4'] = ['210mm', '297mm']
 
-input_files = [file for file in os.listdir(UPLOAD_FOLDER)
-               if file.lower().endswith(".csv")]
+input_files = [file for file in os.listdir(UPLOAD_FOLDER) if file.lower().endswith(".csv")]
 
 with open(APP_ROOT + "/../badges/8BadgesOnA3.svg", encoding="UTF-8") as f:
     CONTENT = f.read()

@@ -15,6 +15,7 @@ anonymous_file = file + "-anonymous.json"
 with open(file, encoding="UTF-8") as f:
     export = json.load(f)
 
+
 def walk(e):
     if isinstance(e, list):
         for i, v in enumerate(e):
@@ -23,6 +24,7 @@ def walk(e):
         for k, v in e.items():
             _walk(e, k, v)
 
+
 def _walk(element, key, value):
     if isinstance(value, str):
         element[key] = scramble(value)
@@ -30,6 +32,7 @@ def _walk(element, key, value):
         element[key] = random.randint(0, value * 2)
     else:
         walk(value)
+
 
 def scramble(string):
     result = []
@@ -42,6 +45,7 @@ def scramble(string):
             c = chr(random.randint(ord("0"), ord("9")))
         result.append(c)
     return "".join(result)
+
 
 walk(export)
 

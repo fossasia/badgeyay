@@ -18,8 +18,8 @@ def do_svg2png(filename, opacity, fill, text_):
     path = element.xpath('//*[@id="rect4504"]')[0]
     style_detail = path.get("style")
     style_detail = style_detail.split(";")
-    style_detail[0] = "opacity:"+str(opacity)
-    style_detail[1] = "fill:"+str(fill)
+    style_detail[0] = "opacity:" + str(opacity)
+    style_detail[1] = "fill:" + str(fill)
     style_detail = ';'.join(style_detail)
     path.set("style", style_detail)
     # changing text using XPath.
@@ -28,5 +28,5 @@ def do_svg2png(filename, opacity, fill, text_):
     # Saving in the original XML tree
     etree.ElementTree(element).write(filename, pretty_print=True)
     print("done")
-    svg2png(url=filename, write_to=UPLOAD_FOLDER+'/'+png_filename)
+    svg2png(url=filename, write_to=UPLOAD_FOLDER + '/' + png_filename)
     print("Image Saved")
