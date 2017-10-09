@@ -10,7 +10,7 @@ The user should be able to:
   * Choose size of badges
   * Choose background of badges and upload logo and background image
   * Upload a CSV file or manually enter CSV data as: name, type of attendee, nick/handle, organization/project
-   
+
 Checkout badgeyay in action:
 
 ![Demo GIF](app/working.gif)
@@ -77,7 +77,7 @@ Badgeyay requires the following dependencies to be installed
 For Ubuntu/Debian based Package Managers
 ```
 sudo apt-get update
-sudo apt-get python3 librsvg2-bin pdftk
+sudo apt-get install python3 librsvg2-bin pdftk
 ```
 
 For Fedora/CentOS/RPM based package managers
@@ -92,7 +92,7 @@ rpm -i pdftk-2.02-1.el6.x86_64.rpm
 exit
 ```
 
-### Running locally 
+### Running locally
 1. [Fork the main repo](https://github.com/fossasia/badgeyay/fork).
 2. Clone your local repo. ```git clone https://github.com/<your_username>/badgeyay.git```
 3. Create a virtual environment. ```virtualenv -p python3 venv```
@@ -169,7 +169,7 @@ To join the team:
 3. A Badgeyay admin adds you.
 
 To stay a maintainer in the team:
-1. Follow the rules of [CCCC][cccc] or [Badgeyay](.github/CONTRIBUTING.md) and do not violate them willingly or in a harmful way. 
+1. Follow the rules of [CCCC][cccc] or [Badgeyay](.github/CONTRIBUTING.md) and do not violate them willingly or in a harmful way.
 
 To be removed from the team:
 1. Someone creates an issue to ask for removal, e.g. because if inactivity or a violation.
