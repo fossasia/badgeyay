@@ -40,10 +40,10 @@ def tocsv(url_eventyay, filename):
                                 del fields[i]
                             else:
                                 print(huge_field)
-                                fields[i:i+1] = [" ".join(huge_field[:len(huge_field)//2]), " ".join(huge_field[len(huge_field)//2:])]
+                                fields[i:i + 1] = [" ".join(huge_field[:len(huge_field) // 2]), " ".join(huge_field[len(huge_field) // 2:])]
                         else:
                             del fields[i]
-                    elif field in fields[i+1:]:
+                    elif field in fields[i + 1:]:
                         del fields[i]
                     else:
                         fields[i] = field

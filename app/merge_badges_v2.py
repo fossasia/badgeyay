@@ -45,7 +45,7 @@ if _pdf:
 # Merge badges of different types
 input_folders = [file for file in os.listdir(BADGES_FOLDER) if file.lower().endswith(".badges")]
 
-print ('Merging badges of different types.')
+print('Merging badges of different types.')
 
 for folder in input_folders:
     folder_path = os.path.join(BADGES_FOLDER, folder)
@@ -59,8 +59,7 @@ for folder in input_folders:
         merger.write(fout)
 
 final_path = os.path.join(BADGES_FOLDER, 'all-badges.pdf')
-pdfs = [file for file in os.listdir(BADGES_FOLDER)
-        if file.lower().endswith('.pdf')]
+pdfs = [file for file in os.listdir(BADGES_FOLDER) if file.lower().endswith('.pdf')]
 merger = PdfFileMerger()
 for pdf in pdfs:
     merger.append(open(os.path.join(BADGES_FOLDER, pdf), 'rb'))

@@ -33,13 +33,13 @@ def index():
     return render_template('index.html', default_background=default_background)
 
 
-def generate_badges(_zip=False,_pdf=False):
-	if _zip == True and _pdf == True:
-		os.system('python3 ' + APP_ROOT + '/merge_badges.py -z -p')
-	elif _zip == True and _pdf == False:
-		os.system('python3 ' + APP_ROOT + '/merge_badges.py -z')
-	else:
-		os.system('python3 ' + APP_ROOT + '/merge_badges.py -p')
+def generate_badges(_zip=False, _pdf=False):
+    if _zip and _pdf:
+        os.system('python3 ' + APP_ROOT + '/merge_badges.py -z -p')
+    elif _zip == True and _pdf == False:
+        os.system('python3 ' + APP_ROOT + '/merge_badges.py -z')
+    else:
+        os.system('python3 ' + APP_ROOT + '/merge_badges.py -p')
 
 
 def empty_directory():
