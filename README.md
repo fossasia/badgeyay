@@ -50,6 +50,26 @@ Badgeyay uses a number of open source projects:
   - `__XX`
   - `_XXX`
   - `XXXX`
+- Optional configuration file in json format to customise badges.
+- A sample configuration file is shon below
+  ```
+  {
+    "options": {
+        "badge_wrap": true,
+        "paper_size_format": "A3"
+    }
+  }
+  ```
+
+  - badge_wrap: It can be **true** or **false**. If set to true then for each entry in the csv file two badges
+                will be generated so that they can be wrapped around the badge card.
+  - paper_size_format: As of now it's value can be either **"A3"** or **"A4"**. The value will decide the size
+                       of the page on which the badges (in groups of 8) will be printed. Not required if width
+                       and height of parameters are explicitly mentioned.
+  - width: Width of the page on which badges (in groups of 8) will be printed. Value should be in mm.
+           For example: **"297mm"**
+  - height: Height of the page on which badges (in groups of 8) will be printed. Value should be in mm.
+            For example: **"420mm"**.
 
 ### Output
 

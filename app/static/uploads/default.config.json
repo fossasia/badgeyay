@@ -1,6 +1,6 @@
 {
     "options": {
         "badge_wrap": true,
-        "paper_size": "A3"
+        "paper_size_format": "A3"
     }
 }
