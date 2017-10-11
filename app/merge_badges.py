@@ -30,11 +30,11 @@ input_folders = [file for file in os.listdir(BADGES_FOLDER) if file.lower().ends
 
 def _zipFile(src, dst, allowed):
     zf = zipfile.ZipFile("%s.zip" % (dst), "w", zipfile.ZIP_DEFLATED)
-    abs_src = os.path.abspath(src)
-    for dirname, files in os.walk(src):
+    abs_src = src
+    for root, dirs, files in list(os.walk(src)):
         for filename in files:
             if filename != dst + ".zip" and filename.split('.')[-1] in allowed:
-                absname = os.path.abspath(os.path.join(dirname, filename))
+                absname = os.path.abspath(os.path.join(root, filename))
                 arcname = absname[len(abs_src) + 1:]
                 zf.write(absname, arcname)
     zf.close()
@@ -74,7 +74,7 @@ if _zip:
     print("Created {}".format(final_path))
     print("Generating ZIP file")
 
-    _zipFile("static/badges", "static/badges/all-badges", ["svg", "pdf"])
+    _zipFile(BADGES_FOLDER, os.path.join(BADGES_FOLDER, 'all-badges'), ["svg", "pdf"])
 
     print('Generating ZIP of SVG files')
 
