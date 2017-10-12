@@ -21,11 +21,11 @@ $(document).on("ready", function() {
 	});
 
 	$("#picker").minicolors({
-		control: 'hue',		
-		format: 'hex',
-		letterCase: 'lowercase',
-		position: 'bottom left',
-		theme: 'bootstrap'
+		control: "hue",		
+		format: "hex",
+		letterCase: "lowercase",
+		position: "bottom left",
+		theme: "bootstrap"
 	});
 
 	var apiUrl = "https://api.github.com/repos/fossasia/badgeyay/git/refs/heads/development";
