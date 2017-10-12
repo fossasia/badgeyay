@@ -4,3 +4,4 @@
 *.pyc
 *.log
 .env
+.vagrant/
