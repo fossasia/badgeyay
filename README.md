@@ -51,7 +51,7 @@ Badgeyay uses a number of open source projects:
   - `_XXX`
   - `XXXX`
 - Optional configuration file in json format to customise badges.
-- A sample configuration file is shon below
+- A sample configuration file is shown below
   ```
   {
     "options": {
