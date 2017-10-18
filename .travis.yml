@@ -1,12 +1,30 @@
 language: python3
+sudo: required
+addons:
+  apt:
+    packages:
+      - python-dev
+python:
+  - '3.5'
 
 before_install:
 - sudo apt-get -qq update
-- sudo apt-get -y install librsvg2-bin pdftk
-- sudo pip install -r requirements/test.txt
+- sudo apt-get -y install librsvg2-bin
+- sudo apt-get -y install pdftk 
+- sudo apt-get -y install python3-pip
+- sudo apt-get install python-virtualenv
+
+install:
+- virtualenv  -p python3 flask_env
+- source flask_env/bin/activate
+- pip3 install -r requirements/test.txt
+- pip3 install -r requirements/dev.txt
+
+before_script:
+- chmod +x ./start_server.sh
 
 script:
-- nosetests app/tests/test.py -v --with-coverage
+- sh start_server.sh
 - python -m pyflakes .
 
 deploy:
@@ -19,4 +37,5 @@ deploy:
     branch: master
 
 after_success:
+- deactivate
 - 'bash <(curl -s https://codecov.io/bash)'
