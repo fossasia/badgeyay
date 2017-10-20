@@ -7,8 +7,8 @@ import html
 import json
 import traceback
 
-from defusedxml.lxml import etree
 from defusedxml.lxml import parse
+from lxml import etree
 
 NUMBER_OF_BADGES_PER_PAGE = 8
 APP_ROOT = os.path.dirname(os.path.abspath(__file__))
