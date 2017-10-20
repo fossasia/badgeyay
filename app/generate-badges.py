@@ -5,7 +5,7 @@ import csv
 import shutil
 import html
 import json
-from lxml import etree
+from defusedxml.lxml import etree
 from defusedxml.lxml import parse
 
 NUMBER_OF_BADGES_PER_PAGE = 8
