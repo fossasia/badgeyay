@@ -5,6 +5,8 @@ import csv
 import shutil
 import html
 import json
+import traceback
+
 from defusedxml.lxml import etree
 from defusedxml.lxml import parse
 
@@ -84,7 +86,7 @@ for input_file in input_files:
     try:
         os.makedirs(folder, exist_ok=True)
     except Exception:
-        pass
+        traceback.print_exc()
 
     with open(os.path.join(UPLOAD_FOLDER, input_file), encoding="UTF-8") as f:
         aggregate = []
