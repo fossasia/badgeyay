@@ -5,8 +5,10 @@ import csv
 import shutil
 import html
 import json
-from lxml import etree
+import traceback
+
 from defusedxml.lxml import parse
+from lxml import etree
 
 NUMBER_OF_BADGES_PER_PAGE = 8
 APP_ROOT = os.path.dirname(os.path.abspath(__file__))
@@ -84,7 +86,7 @@ for input_file in input_files:
     try:
         os.makedirs(folder, exist_ok=True)
     except Exception:
-        pass
+        traceback.print_exc()
 
     with open(os.path.join(UPLOAD_FOLDER, input_file), encoding="UTF-8") as f:
         aggregate = []
