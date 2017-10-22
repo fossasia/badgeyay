@@ -104,8 +104,20 @@
 			  	<div class="form-group">
 			  		<label for="inputFile">
 			  			<span class="label label-info">OPTIONAL</span>
+			  			<br>
+			  			<span title="The possible customisations are
+						'badge_wrap' : True if badges are duble-sided
+						'page_size_format' : A3 or A4
+						'width' : exact width of the page in mm
+						'height' : exact height of the page in mm
+						width and height are used if page_size_format
+						is not defined">
 			  			Upload a config file (JSON) to customise badges
-			  		</label>
+			  			</span>
+			  			<br>
+			  			 <a href="https://github.com/fossasia/badgeyay/blob/development/sample/sampleConfig.json" >Sample JSON config file</a>
+
+					</label>
 					<input type="file" id="inputFile" name="config">
 			  	</div>
 				<button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-upload"></span>  Upload</button>
