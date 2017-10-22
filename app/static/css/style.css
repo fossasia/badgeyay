@@ -1,3 +1,76 @@
+body, span, div, table, tr, tbody, tfoot, td, hr { 
+  background-color:  exact;
+  color: exact;
+}
+
+/* Begin Popover1 */
+.popover1 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1060;
+  display: none;
+  max-width: none;
+  width: wrap;
+  padding: 1px;
+  text-align: left;
+  white-space: normal;
+  background-color: #FFF;
+  color: #000000; 
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+  border: 2px solid #D3D3D3;
+  border-radius: 6px;
+  -webkit-box-shadow: 0 5px 10px rgba(0, 0, 0, .2);
+  box-shadow: 0 5px 10px rgba(0, 0, 0, .2);
+}
+.popover1.right {
+  margin-left: 10px;
+}
+.popover1-title {
+  background-color:  #FFF; 
+  color: #000000; 
+  font-size: 20px;
+  text-align:center;
+  padding: 8px 14px;
+  margin: 0;
+  font-weight: normal;
+  line-height: 18px;
+  border-bottom: 1px solid #ebebeb;
+  border-radius: 5px 5px 0 0;
+  border: 2px solid #D3D3D3
+}
+.popover1-content {
+  background-color:  #FFF;
+  color: #000000;
+  padding: 18px;
+  border-radius: 0 0 5px 5px;
+  border: 2px solid #D3D3D3
+}
+.popover1 > .arrow {
+  border-width: 11px;
+}
+.popover1 > .arrow:after {
+  content: "";
+  border-width: 10px;
+}
+.popover1.right > .arrow,
+.popover1.right > .arrow {
+  top: 50%;
+  left: -11px;
+  margin-top: -11px;
+  border-left-width: 0;
+  border-right-color: #D3D3D3;
+}
+.popover1.right > .arrow:after {
+  bottom: -10px;
+  left: 1px;
+  content: " ";
+  border-right-color: #fff;
+  border-left-width: 0;
+}
+/* End Popover11 */
+
 .board .col-md-4 {
   box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
   margin-top: 40px;
