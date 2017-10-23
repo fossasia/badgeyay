@@ -75,6 +75,9 @@ def upload():
     if not _pdf and not _zip:
         flash('Please select a download filetype!', 'error')
         return redirect(url_for('index'))
+    if file.filename == '' and csv == '':
+            flash('Please select a CSV file to Upload!', 'error')
+            return redirect(url_for('index'))
 
     # If default background is selected
     if img != '':
@@ -106,11 +109,7 @@ def upload():
         filename = 'speaker.png.csv'
         generate_csv_eventyay.tocsv(eventyay_url, filename)
     else:
-        if file.filename == '':
-            flash('Please select a CSV file to Upload!', 'error')
-            return redirect(url_for('index'))
-        else:
-            filename = str(uuid.uuid4()) + '.png.csv'
+        filename = str(uuid.uuid4()) + '.png.csv'
 
     # If a PNG is uploaded, push it to the folder
     if request.files['image'].filename != '':
