@@ -11,7 +11,6 @@ from svg_to_png import do_svg2png
 APP_ROOT = os.path.dirname(os.path.abspath(__file__))
 UPLOAD_FOLDER = os.path.join(APP_ROOT, 'static/uploads')
 BADGES_FOLDER = os.path.join(APP_ROOT, 'static/badges')
-SCRIPT = os.path.join(APP_ROOT, 'merge_badges.sh')
 
 app = Flask(__name__)
 app.config['DEBUG'] = True
@@ -67,7 +66,6 @@ def upload():
     csv = request.form['csv'].strip()
     img = request.form['img-default']
     eventyay_url = request.form['eventyay_url'].strip()
-    text_on_image = request.form['text_on_image']
     file = request.files['file']
     _pdf = True if request.form.get('pdf') == 'on' else False
     _zip = True if request.form.get('zip') == 'on' else False
@@ -85,8 +83,6 @@ def upload():
             bg_color = request.form['bg_color']
             text_on_image = request.form['text_on_image']
             do_svg2png(img, 1, bg_color, text_on_image)
-            filename = img + '.csv'
-
         filename = img + '.csv'
     # If the textbox is filled
     elif csv != '':
