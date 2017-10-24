@@ -7,7 +7,7 @@
 				{% if m %}
                     {% for cat,msg in m %}
                         {% if cat == 'success' %}
-                            <div class="flash-success">Your badges has been successfully generated!</div>
+                            <div class="flash-success">Your badges have been created successfully.</div>
                             <div class="text-center">
 	                            <a href="static/badges/all-badges.zip" class="btn btn-success" download="all-badges.zip">Download as ZIP</a>
 	                            <a href="static/badges/{{msg}}-badges.pdf" class="btn btn-success" download="{{msg}}.badges.pdf">Download as PDF</a>
@@ -16,13 +16,13 @@
 
 	                    {% elif cat == 'success-pdf' %}
 	                    	<div class="text-center">
-		                    	<div class="flash-success">Your badges has been successfully generated!</div>
+		                    	<div class="flash-success">Your badges have been created successfully.</div>
 		                    	<a href="static/badges/{{msg}}-badges.pdf" class="btn btn-success" download="{{msg}}.badges.pdf">Download as PDF</a>
 	                    	</div>
 
 	                    {% elif cat == 'success-zip' %}
 	                    	<div class="text-center">
-		                    	<div class="flash-success">Your badges has been successfully generated!</div>
+		                    	<div class="flash-success">Your badges have been created successfully.</div>
 		                    	<a href="static/badges/all-badges.zip" class="btn btn-success" download="all-badges.zip">Download as ZIP</a>
 		                    	<a href="static/badges/{{msg}}-badges-svg.zip" class="btn btn-success" download="{{msg}}.badges.svg.zip">Download as ZIP of SVGs</a>
 	                    	</div>
@@ -108,9 +108,14 @@
 			  		</label>
 					<input type="file" id="inputFile" name="config">
 			  	</div>
-				<button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-upload"></span>  Upload</button>
+				<button type="submit" class="btn btn-default btn-lg btn-block" style="background:#5BC0DE; color:#ffffff;"><span class="glyphicon glyphicon-upload"></span>  Generate Badges </button>
 			</form>
 		</div>
 	</div>
 </div>
+{% endblock %}
+{% block javascript %}
+<script>
+	
+</script>
 {% endblock %}
