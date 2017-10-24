@@ -26,12 +26,11 @@ install:
 - virtualenv  -p python3 ../flask_env
 - source ../flask_env/bin/activate
 - pip3 install -r requirements/test.txt
-- pip3 install -r requirements/dev.txt
 
 before_script:
 - "export DISPLAY=:99.0"
 - "sh -e /etc/init.d/xvfb start"
-- sleep 3 
+- sleep 3
 
 script:
 - python app/main.py >> log.txt 2>&1  &
@@ -50,4 +49,3 @@ deploy:
 after_success:
 - deactivate
 - 'bash <(curl -s https://codecov.io/bash)'
-
