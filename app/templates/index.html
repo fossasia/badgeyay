@@ -29,9 +29,6 @@
 
                         {% else %}
                             <div class="flash-{{cat}}">{{msg}}</div>
-                            <div class="text-center guide">
-								Check out our <a href="/guide" target="_blank">User Input Guide</a>
-                            </div>
                 		{% endif %}
 					{% endfor %}
 				{% endif %}
@@ -58,6 +55,9 @@
 					<textarea class="form-control" id="textArea" name="csv"></textarea>
 			  	</div>
 			  	<div class="form-group">
+						<div class="text-center guide">
+                 Check out our <a href="/guide" target="_blank">User Input Guide</a>
+						</div>
 			  		<label for="textField">Enter Eventyay URL and Type</label>
 					<input type="text" class="form-control" id="textField" name="eventyay_url">
 			  	</div>
