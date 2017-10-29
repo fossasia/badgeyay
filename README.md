@@ -41,6 +41,12 @@ Badgeyay uses a number of open source projects:
 * [Travis](travis-ci.org) - Continuous Integration of the project
 * [Github Release](https://help.github.com/articles/creating-releases/) - Releases are GitHub's way of packaging and providing software to the users
 
+### Testing Methodology Used
+
+* [Python Unit tests](https://docs.python.org/3/library/unittest.html) - for assertion, with the help of [Selenium](https://github.com/SeleniumHQ/Selenium) for web browser automation.
+
+The guidelines for setting up and running the tests are mentioned in the [testing docs](docs/test/testing.md).
+
 ### Input
 
 - The input is a set of csv files in the same folder, UTF-8.
