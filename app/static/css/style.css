@@ -179,3 +179,8 @@ margin-bottom: 20px;
     top: 20px;
   }
 }
+#error {
+  text-align: center;
+  color: red;
+  display:none;
+}

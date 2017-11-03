@@ -33,7 +33,7 @@
 					{% endfor %}
 				{% endif %}
 			{% endwith %}
-			<form action="{{ url_for('upload') }}" method="post" enctype="multipart/form-data">
+			<form action="{{ url_for('upload') }}" method="post" onsubmit="return validate()" enctype="multipart/form-data">
 				<label>Tick the download type(s):</label>
 				<div class="checkbox">
 			    	<label for="zip">
@@ -45,19 +45,24 @@
 			      		<input type="checkbox" id="pdf" name="pdf" checked="checked">PDF
 			      	</label>
 			  	</div>
+				<div id="error" class="option-error"> Please select atleast one option! </div>
 			  	<div class="form-group">
 			  		<label for="inputFile">Upload a CSV file to generate badges</label>
 			  		<input type="file" id="inputFile" name="file">
 			  	</div>
+				<div id="error" class="csvfile-error"> Please upload a CSV file! </div>
 			  	<div class="text-center"><strong>OR</strong></div>
 			  	<div class="form-group">
-			  		<label for="textArea">Enter data manually</label>
+				<label for="textArea">Enter data manually</label>
 					<textarea class="form-control" id="textArea" name="csv"></textarea>
-			  	</div>
-			  	<div class="form-group">
-						<div class="text-center guide">
-                 Check out our <a href="/guide" target="_blank">User Input Guide</a>
-						</div>
+				</div>
+				<div id="error" class="no-data-error"> Please upload a csv file or enter data! </div>
+				<div id="error" class="csv-error"> Please fill data in proper format
+					<div class="text-center guide">
+						<a href="/guide" target="_blank">User Input Guide</a>
+					</div>
+				</div>
+				<div class="form-group">
 			  		<label for="textField">Enter Eventyay URL and Type</label>
 					<input type="text" class="form-control" id="textField" name="eventyay_url">
 			  	</div>
@@ -67,6 +72,7 @@
 			  		</label>
 					<input type="file" id="imageFile" name="image">
 			  	</div>
+				<div id="error" class="image-error"> Please upload image in PNG format! </div>
 			  	<div class="text-center"><strong>OR</strong></div>
 			  	<div class="form-group">
 			  		<label for="inputFile">
@@ -93,6 +99,7 @@
 					<input id="image_text" type="text" class="form-control" placeholder="The text entered here will appear on badges" name="text_on_image"/>
 					<input type="hidden" name="img-default" value="">
 				</div>
+				<div id="error" class="no-image-error">Please select a default background or upload an image!</div>
 				<div class="text-center"><strong>OR</strong></div>
 				<div class="form-group">
 					<label for="inputFile">
@@ -108,6 +115,7 @@
 			  		</label>
 					<input type="file" id="inputFile" name="config">
 			  	</div>
+				<div id="error" class="config-error"> Please upload a JSON file </div>
 				<button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-upload"></span>  Upload</button>
 			</form>
 		</div>
