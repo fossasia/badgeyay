@@ -4,7 +4,7 @@
 [![Codecov branch](https://img.shields.io/codecov/c/github/fossasia/badgeyay/development.svg?style=flat-square&label=Codecov+Coverage)](https://codecov.io/gh/fossasia/badgeyay)
 [![Gitter](https://img.shields.io/badge/chat-on%20gitter-ff006f.svg?style=flat-square)][gitter]
 
-badgeyay is a simple badge generator with a simple web UI to add data and generate printable badges in a zip.
+`badgeyay` is a simple badge generator with a simple web UI to add data and generate printable badges in a zip.
 
 The user should be able to:
   * Choose size of badges
@@ -41,6 +41,12 @@ Badgeyay uses a number of open source projects:
 * [Travis](travis-ci.org) - Continuous Integration of the project
 * [Github Release](https://help.github.com/articles/creating-releases/) - Releases are GitHub's way of packaging and providing software to the users
 
+### Testing Methodology Used
+
+* [Python Unit tests](https://docs.python.org/3/library/unittest.html) - for assertion, with the help of [Selenium](https://github.com/SeleniumHQ/Selenium) for web browser automation.
+
+The guidelines for setting up and running the tests are mentioned in the [testing docs](docs/test/testing.md).
+
 ### Input
 
 - The input is a set of csv files in the same folder, UTF-8.
@@ -75,7 +81,7 @@ Badgeyay uses a number of open source projects:
 
 The output file is svg / pdf / multipage pdf of size A3.
 Each badge has the size A6.
-The outputs are in a folder derived form the input csv.
+The outputs are in a folder derived from the input csv.
 The outputs can be either of the two types, viz ZIPs or PDFs, or both. User has the choice to choose from either of the two or from both of them.
 
 ### Customization
@@ -141,7 +147,7 @@ exit
 
 Contributions, Bug Reports, Feature Requests
 --------------
-This is an Open Source project and we would be happy to see contributors who report bugs and file feature requests submitting pull requests as well. Please report issues in the [GitHub tracker](https://github.com/fossasia/badgeyay/issues/new).
+This is an Open Source project and we would be happy to see contributors who report bugs and file feature requests by submitting pull requests as well. Please report issues in the [GitHub tracker](https://github.com/fossasia/badgeyay/issues/new).
 
 ## Issue and Branch Policy
 
@@ -176,7 +182,7 @@ One-click Docker, Heroku, Scalingo and Bluemix deployment is also available:
 Implementation
 --------------
 
-[generate_badges.py](/app/generate_badges.py) creates svg files from the `csv`, `png` and
+[generate_badges.py](/app/generate-badges.py) creates svg files from the `csv`, `png` and
 [badges/8BadgesOnA3.svg](badges/8BadgesOnA3.svg).
 
 [merge_badges.py](/app/merge_badges.py) converts them into pdf files and merges
@@ -193,8 +199,7 @@ Badgeyay - A simple badge generator. Its main purpose is to generate badges for 
 Maintainers
 -------------------
 
-You can reach the maintainers,
-ping them personally by looking at the [Badgeyay team][team].
+You can reach the maintainers and ping them personally by looking at the [Badgeyay team][team].
 
 You can become a maintainer by following the project and contributing code to it.
 Please see your role in the [CCCC][cccc].
@@ -209,7 +214,7 @@ To stay a maintainer in the team:
 1. Follow the rules of [CCCC][cccc] or [Badgeyay](.github/CONTRIBUTING.md) and do not violate them willingly or in a harmful way.
 
 To be removed from the team:
-1. Someone creates an issue to ask for removal, e.g. because if inactivity or a violation.
+1. Someone creates an issue to ask for removal, e.g. because of inactivity or a violation.
 2. An admin removes you.
 
 

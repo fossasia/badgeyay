@@ -4,16 +4,13 @@ import time
 import os
 
 is_travis = 'TRAVIS' in os.environ
-
+os.environ['MOZ_HEADLESS'] = '1'
 
 class BadgeyayTest(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls):
-        if is_travis:
-            cls.driver = webdriver.PhantomJS()
-        else:
-            cls.driver = webdriver.Firefox()
+        cls.driver = webdriver.Firefox()
         cls.driver.get('http://localhost:5000')
         super(BadgeyayTest, cls).setUpClass()
 

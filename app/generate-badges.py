@@ -44,9 +44,6 @@ def generate_badges(aggregate, folder, index, picture, paper_size):
     target = os.path.join(folder, "badges_{}.svg".format(index))
     print("Generating {}".format(target))
     content = CONTENT
-    ext = os.path.splitext(picture)[1]
-    picture_name = "badges_{}_background{}".format(index, ext)
-    shutil.copyfile(picture, os.path.join(folder, picture_name))
     for i, row in enumerate(aggregate):
         row = [entry for entry in row if not entry.isspace()]
         if len(row) == 0:
@@ -58,7 +55,7 @@ def generate_badges(aggregate, folder, index, picture, paper_size):
         for j, text in enumerate(row):
             text = html.escape(text)
             content = content.replace("person_{}_line_{}".format(i + 1, j + 1), text)
-        content = content.replace("badge_{}.png".format(i + 1), picture_name)
+        content = content.replace("badge_{}.png".format(i + 1), picture)
     with open(target, "w", encoding="UTF-8") as f:
         f.write(content)
     configure_badge_page(target, paper_size)
@@ -69,7 +66,7 @@ for input_file in input_files:
 
     # check if custom config.json is present for the file
     config_json_uploaded = os.path.splitext(input_file)[0] + '.json'
-    config_json_uploaded_path = './static/uploads/' + config_json_uploaded
+    config_json_uploaded_path = os.path.join(UPLOAD_FOLDER, config_json_uploaded)
     if os.path.isfile(config_json_uploaded_path):
         config_json = config_json_uploaded
     config = json.loads(open(UPLOAD_FOLDER + '/' + config_json).read())
@@ -87,6 +84,9 @@ for input_file in input_files:
         os.makedirs(folder, exist_ok=True)
     except Exception:
         traceback.print_exc()
+    ext = os.path.splitext(picpath)[1]
+    badges_background = "badges_background{}".format(ext)
+    shutil.copyfile(picpath, os.path.join(folder, badges_background))
 
     with open(os.path.join(UPLOAD_FOLDER, input_file), encoding="UTF-8") as f:
         aggregate = []
@@ -96,8 +96,8 @@ for input_file in input_files:
             if options['badge_wrap']:
                 aggregate.append(row)
             if len(aggregate) >= NUMBER_OF_BADGES_PER_PAGE:
-                generate_badges(aggregate, folder, i, picpath, options)
+                generate_badges(aggregate, folder, i, badges_background, options)
                 aggregate = []
                 i += 1
         if aggregate:
-            generate_badges(aggregate, folder, i, picpath, options)
+            generate_badges(aggregate, folder, i, badges_background, options)
