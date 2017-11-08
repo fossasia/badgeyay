@@ -19,7 +19,8 @@ $(document).on("ready", function() {
 		$(".placeholder").text(i);
 		$("input[name='img-default']").val(i);
 	});
-
+	
+	
 	$("#picker").minicolors({
 		control: "hue",		
 		format: "hex",
@@ -27,7 +28,8 @@ $(document).on("ready", function() {
 		position: "bottom left",
 		theme: "bootstrap"
 	});
-
+	
+	
 	var apiUrl = "https://api.github.com/repos/fossasia/badgeyay/git/refs/heads/development";
 	$.ajax({
 		url: apiUrl,

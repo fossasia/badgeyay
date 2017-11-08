@@ -1,18 +1,16 @@
 #!usr/bin/python3
 import os
 import argparse
-import zipfile
 import subprocess
 from exceptions import PackageNotFoundError
 from cairosvg import svg2pdf
 
 parser = argparse.ArgumentParser(description='Argument Parser for merge_badges')
 parser.add_argument('-p', dest='pdf', action='store_true')
-parser.add_argument('-z', dest='zip', action='store_true')
-parser.set_defaults(pdf=False, zip=False)
+parser.set_defaults(pdf=True)
 arguments = parser.parse_args()
 _pdf = arguments.pdf
-_zip = arguments.zip
+
 
 if subprocess.call(['which', 'python3']) != 0:
     raise PackageNotFoundError("Package python3 not found")
@@ -25,18 +23,6 @@ BADGES_FOLDER = os.path.join(APP_ROOT, 'static/badges')
 subprocess.call(['python3', APP_ROOT + '/generate-badges.py'])
 
 input_folders = [file for file in os.listdir(BADGES_FOLDER) if file.lower().endswith(".badges")]
-
-
-def _zipFile(src, dst, allowed):
-    zf = zipfile.ZipFile("%s.zip" % (dst), "w", zipfile.ZIP_DEFLATED)
-    abs_src = src
-    for root, dirs, files in list(os.walk(src)):
-        for filename in files:
-            if filename != dst + ".zip" and filename.split('.')[-1] in allowed:
-                absname = os.path.abspath(os.path.join(root, filename))
-                arcname = absname[len(abs_src) + 1:]
-                zf.write(absname, arcname)
-    zf.close()
 
 
 def generate_pdfs(folder_path):
@@ -71,17 +57,3 @@ for folder in input_folders:
 final_path = os.path.join(BADGES_FOLDER, 'all-badges.pdf')
 subprocess.call('pdftk ' + BADGES_FOLDER + '/*.pdf cat output ' + final_path, shell=True)
 
-if _zip:
-    print("Created {}".format(final_path))
-    print("Generating ZIP file")
-
-    _zipFile(BADGES_FOLDER, os.path.join(BADGES_FOLDER, 'all-badges'), ["svg", "pdf"])
-
-    print('Generating ZIP of SVG files')
-
-    input_folders = [file for file in os.listdir(BADGES_FOLDER) if file.lower().endswith(".badges")]
-
-    for folder in input_folders:
-        folder_path = os.path.join(BADGES_FOLDER, folder)
-        file_name = folder_path.replace('.', '-') + '-svg'
-        _zipFile(folder_path, os.path.join(folder_path, file_name), ["svg"])
