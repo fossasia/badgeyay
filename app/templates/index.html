@@ -104,9 +104,23 @@
 			  	<div class="form-group">
 			  		<label for="inputFile">
 			  			<span class="label label-info">OPTIONAL</span>
-			  			Upload a config file (JSON) to customise badges
+			  			<br>
+
+					<div  data-container="body" data-template='<div class="popover1" role="tooltip"><div class="arrow"></div> <div class="popover1-title">The Possible
+							Customisations Are:</div> <div class="popover1-content">
+							"badge_wrap" : True if badges are duble-sided<br>
+							"page_size_format" : A3 or A4<br>
+							"width" : exact width of the page in mm<br>
+							"height" : exact height of the page in mm<br>
+							Note:- width and height are used if page_size_format<br>
+							is not defined"</div></div>' 
+					data-toggle="popover" data-placement="right" data-title=" " data-content=" ">Upload a config file (JSON) to customise badges
+			  		</div>
+			  		
 			  		</label>
+
 					<input type="file" id="inputFile" name="config">
+					<a href="https://github.com/fossasia/badgeyay/blob/development/sample/sampleConfig.json" >Sample JSON config file</a>
 			  	</div>
 				<button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-upload"></span>  Upload</button>
 			</form>
