@@ -1,5 +1,4 @@
 $(document).on("ready", function() {
-
 	$(document).mouseup(function(e) {
 		var container = $(".custom-menu-content");
 		var button = $(".glyphicon-th");
@@ -46,3 +45,70 @@ $(document).on("ready", function() {
 		}
 	});
 });
+
+function validate() {
+	$("[id=error]").hide();
+	var pdf = $("#pdf").is(":checked");
+	var zip = $("#zip").is(":checked");
+
+	if (!pdf && !zip) {
+		$(".option-error").show();
+		return false;
+	}
+
+	var csv = $("textarea[name='csv']").val();
+	var csvFile = $('input[type=file][name="file"]').val();
+
+	if (csv === "" && csvFile === "") {
+		$(".no-data-error").show();
+		return false;
+	}
+
+	if (csv !== undefined && csv !== null && csv !== "") {
+		var csvLines = csv.split("\n");
+		var countLines = 0;
+		csvLines.forEach(function(csvLine) {
+			var line = csvLine.split(",");
+			if (line.length === 4) {
+				countLines += 1
+			}
+		});
+		if (countLines !== csvLines.length) {
+			$(".csv-error").show();
+			return false;
+		}
+	}
+
+	if (csvFile !== "") {
+		if (csvFile.indexOf(".csv") === -1) {
+			$(".csvfile-error").show();
+			return false;
+		}
+	}
+
+	var imgDefault = $('input[type=hidden][name="img-default"]').val();
+	var imgUploaded = $('input[type=file][name="image"]').val();
+
+	if (imgDefault === "" && imgUploaded === "") {
+		$(".no-image-error").show();
+		return false;
+	}
+
+	if (imgUploaded !== "") {
+		if (imgUploaded.indexOf(".png") === -1) {
+			$(".image-error").show();
+			return false;
+		}
+	}
+
+	var configJson = $('input[type=file][name="config"]').val();
+	console.log(configJson);
+	if (configJson !== "") {
+	    if (configJson.indexOf(".json") === -1) {
+		    $(".config-error").show();
+		    return false;
+	    }
+	}
+
+	return true;
+}
