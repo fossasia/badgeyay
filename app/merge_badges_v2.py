@@ -7,11 +7,9 @@ from exceptions import PackageNotFoundError
 
 parser = argparse.ArgumentParser(description='Argument Parser for merge_badges')
 parser.add_argument('-p', dest='pdf', action='store_true')
-parser.add_argument('-z', dest='zip', action='store_true')
 parser.set_defaults(pdf=False, zip=False)
 arguments = parser.parse_args()
 _pdf = arguments.pdf
-_zip = arguments.zip
 
 if subprocess.run('which rsvg-convert') != 0:
     raise PackageNotFoundError("Package rsvg-convert not found")
@@ -66,21 +64,3 @@ for pdf in pdfs:
 
 with open(final_path, 'wb') as fout:
     merger.write(fout)
-
-if _zip:
-    print("Created {}".format(final_path))
-    print("Generating ZIP file")
-
-    subprocess.run('find static/badges/ \( -iname \*.svg -o -iname \*.pdf \) | zip  -@ static/badges/all-badges.zip')
-
-    print('Generating ZIP of SVG files')
-
-    os.system('find static/badges/ \( -iname \*.svg -o -iname \*.pdf \) | zip  -@ static/badges/all-badges.zip')
-    print('Generating ZIP of SVG files')
-
-    input_folders = [file for file in os.listdir(BADGES_FOLDER) if file.lower().endswith(".badges")]
-
-    for folder in input_folders:
-        folder_path = os.path.join(BADGES_FOLDER, folder)
-        file_name = folder_path + '.svg.zip'
-        subprocess.run('find ' + folder_path + ' -type f -name *.svg | zip -@ ' + file_name)
