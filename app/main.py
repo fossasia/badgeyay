@@ -89,7 +89,6 @@ def upload():
         else:
             flash('Write Data in Correct format!', 'error')
             return redirect(url_for('index'))
-
     # if user does not select file, browser submits an empty part without filename
     else:
         if file.filename == '':
@@ -162,3 +161,5 @@ def Internal_Server_Error(e):
 
 if __name__ == '__main__':
     app.run()
+
+    
