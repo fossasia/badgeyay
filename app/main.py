@@ -3,9 +3,7 @@ from flask_compress import Compress
 from werkzeug.utils import secure_filename
 import os
 import shutil
-# import uuid
 import traceback
-import generate_csv_eventyay
 from svg_to_png import do_svg2png
 
 APP_ROOT = os.path.dirname(os.path.abspath(__file__))
@@ -32,12 +30,7 @@ def index():
     return render_template('index.html', default_background=default_background)
 
 
-def generate_badges(_zip=False, _pdf=False):
-    if _zip and _pdf:
-        os.system('python3 ' + APP_ROOT + '/merge_badges.py -z -p')
-    elif _zip == True and _pdf == False:
-        os.system('python3 ' + APP_ROOT + '/merge_badges.py -z')
-    else:
+def generate_badges(_pdf=True):
         os.system('python3 ' + APP_ROOT + '/merge_badges.py -p')
 
 
@@ -65,15 +58,8 @@ def upload():
     empty_directory()
     csv = request.form['csv'].strip()
     img = request.form['img-default']
-    eventyay_url = request.form['eventyay_url'].strip()
     text_on_image = request.form['text_on_image']
     file = request.files['file']
-    _pdf = True if request.form.get('pdf') == 'on' else False
-    _zip = True if request.form.get('zip') == 'on' else False
-
-    if not _pdf and not _zip:
-        flash('Please select a download filetype!', 'error')
-        return redirect(url_for('index'))
 
     # If default background is selected
     if img != '':
@@ -82,10 +68,12 @@ def upload():
             text_on_image = request.form['text_on_image']
             do_svg2png(img, 1, bg_color, text_on_image)
         filename = img + '.csv'
+
     # If the textbox is filled
     if img == '':
         img = request.files['image'].filename
         filename = request.files['image'].filename + ".csv"
+
     if csv != '':
         check_csv = csv.splitlines()
         count_line = 0
@@ -101,10 +89,12 @@ def upload():
         else:
             flash('Write Data in Correct format!', 'error')
             return redirect(url_for('index'))
+    # if user does not select file, browser submits an empty part without filename
     else:
         if file.filename == '':
             flash('Please select a CSV file to Upload!', 'error')
             return redirect(url_for('index'))
+
     # if user does not select file, browser submits an empty part without filename
     if request.files['image'].filename != '':
         image = request.files['image']
@@ -116,20 +106,13 @@ def upload():
         else:
             flash('Please select a PNG image to Upload!', 'error')
             return redirect(url_for('index'))
-    elif eventyay_url != '':
-        filename = 'speaker.png.csv'
-        generate_csv_eventyay.tocsv(eventyay_url, filename)
 
     # If a PNG is uploaded, push it to the folder
-
-    if filename.find("png.csv") != -1:
+    if filename.find("png.csv") == -1:
         if img == '':
             flash('Please upload an image in \'PNG\' format!', 'error')
             return redirect(url_for('index'))
-    else:
-        flash('Please upload a file in \'CSV\' format! Each line is a badge and the lines on the badge are \
-        separated by commas. Try it out!', 'error')
-        return redirect(url_for('index'))
+
     # if config file is uploaded
     config_json = request.files['config']
     if config_json.filename != '':
@@ -142,9 +125,9 @@ def upload():
     # If the csv file is uploaded
     if '.' in filename and filename.rsplit('.', 1)[1] == 'csv':
         filename = secure_filename(filename)
-        if csv == '' and filename == img + ".csv" and eventyay_url == '':
+        if csv == '' and filename == img + ".csv":
             file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-        generate_badges(_zip, _pdf)
+        generate_badges()
 
         # Remove the uploaded files after job in done
         os.unlink(os.path.join(app.config['UPLOAD_FOLDER'], filename))
@@ -154,11 +137,7 @@ def upload():
         except Exception:
             traceback.print_exc()
 
-        if _zip and _pdf:
-            flash(filename.replace('.', '-'), 'success')
-        elif _zip and not _pdf:
-            flash(filename.replace('.', '-'), 'success-zip')
-        elif not _zip and _pdf:
+        if True:
             flash(filename.replace('.', '-'), 'success-pdf')
 
         return redirect(url_for('index'))
@@ -182,3 +161,5 @@ def Internal_Server_Error(e):
 
 if __name__ == '__main__':
     app.run()
+
+    
