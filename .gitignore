@@ -5,3 +5,5 @@
 *.log
 .env
 .vagrant/
+venv/
+app/static/badges/

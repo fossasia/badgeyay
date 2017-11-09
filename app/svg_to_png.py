@@ -9,6 +9,13 @@ UPLOAD_FOLDER = os.path.join(APP_ROOT, 'static/uploads')
 
 
 def do_svg2png(filename, opacity, fill, text_):
+    """
+    Module to convert svg to png
+    :param `filename` - Destination file name
+    :param `opacity` - Opacity for the output
+    :param `fill` -  Background fill for the output
+    :param `text_` - Text to be placed on the badge
+    """
     png_filename = filename
     filename = filename.rsplit(".", 1)[0] + '.svg'
     filename = os.path.join(SVGS_FOLDER, filename)

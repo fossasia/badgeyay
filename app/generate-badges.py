@@ -24,6 +24,12 @@ with open(APP_ROOT + "/../badges/8BadgesOnA3.svg", encoding="UTF-8") as f:
 
 
 def configure_badge_page(badge_page, options):
+    """
+    Configure the badge page according to the page
+    options as passed in the function
+    :param `badge_page` - Single Badge Sheet
+    :param `options` - Options for the page
+    """
     if options.get('width') and options.get('height'):
         paper_width = options.get('width')
         paper_height = options.get('height')
@@ -40,6 +46,14 @@ def configure_badge_page(badge_page, options):
 
 
 def generate_badges(aggregate, folder, index, picture, paper_size):
+    """
+    Generate the badges
+    :param `aggregate` - Aggregate collection of details of badge holders
+    :param `folder` - Destination folder to save
+    :param `index` - Index number for generating the image
+    :param `picture` - Picture file for background
+    :param `paper_size` - Size of the paper
+    """
     target = os.path.join(folder, "badges_{}.svg".format(index))
     print("Generating {}".format(target))
     content = CONTENT
