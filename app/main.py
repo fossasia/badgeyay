@@ -25,7 +25,7 @@ Compress(app)
 def index():
     default_background = []
     for file in os.listdir(UPLOAD_FOLDER):
-        if file.rsplit('.', 1)[1] == 'png':
+        if file.rsplit('.', 1)[1] == 'png' and file != 'user_defined.png':
             default_background.append(file)
     return render_template('index.html', default_background=default_background)
 
