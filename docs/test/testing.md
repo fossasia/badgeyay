@@ -9,12 +9,13 @@
 
 * Install the webdriver for Firefox used for browser automation.
     ```
-    wget https://github.com/mozilla/geckodriver/releases/download/v0.11.1/geckodriver-v0.11.1-linux64.tar.gz
+    wget https://github.com/mozilla/geckodriver/releases/download/v0.19.0/geckodriver-v0.19.0-linux64.tar.gz
     mkdir geckodriver
-    tar -xzf geckodriver-v0.11.1-linux64.tar.gz -C geckodriver
-    rm geckodriver-v0.11.1-linux64.tar.gz
+    tar -xzf geckodriver-v0.19.0-linux64.tar.gz -C geckodriver
+    rm geckodriver-v0.19.0-linux64.tar.gz
     export PATH=$PATH:$PWD/geckodriver
     ```
+  _*Make the changes in the download link of geckodriver if you are using a 32-bit machine*_
     
 ### Running
 
