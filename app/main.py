@@ -23,6 +23,9 @@ Compress(app)
 
 @app.route('/')
 def index():
+    """
+    Entry point to the app
+    """
     default_background = []
     for file in os.listdir(UPLOAD_FOLDER):
         if file.rsplit('.', 1)[1] == 'png' and file != 'user_defined.png':
@@ -31,10 +34,12 @@ def index():
 
 
 def generate_badges(_pdf=True):
-        os.system('python3 ' + APP_ROOT + '/merge_badges.py -p')
-
+    os.system('python3 ' + APP_ROOT + '/merge_badges.py -p')
 
 def empty_directory():
+    """
+    Function to check for empty directory existence
+    """
     # Creates 'badges' directory if not exists
     if not os.path.exists(BADGES_FOLDER):
         os.mkdir(BADGES_FOLDER)
@@ -55,6 +60,9 @@ def empty_directory():
 
 @app.route('/upload', methods=['POST'])
 def upload():
+    """
+    Function to upload the form data from the webpage
+    """
     empty_directory()
     csv = request.form['csv'].strip()
     img = request.form['img-default']
@@ -145,16 +153,25 @@ def upload():
 
 @app.route('/guide')
 def guide():
+    """
+    Entry point for guide webpage
+    """
     return render_template('guide.html')
 
 
 @app.errorhandler(404)
 def Not_Found(e):
+    """
+    Function for invalid page / Page not existence
+    """
     return render_template('404.html'), 404
 
 
 @app.errorhandler(500)
 def Internal_Server_Error(e):
+    """
+    Function for Internal_Server_Error
+    """
     trace = traceback.format_exc()
     return render_template('500.html', exception=trace), 500
 

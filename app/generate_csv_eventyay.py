@@ -13,6 +13,11 @@ MAX_STRING = "chaftsladen Potsdam (F"
 
 
 def tocsv(url_eventyay, filename):
+    """
+    Function to convert to csv format
+    :param `url_eventyay` - Eventyay url
+    :param `filename` - Destination file name
+    """
     with urlopen(url_eventyay) as url:
         data = json.loads(url.read().decode(url.info().get_param('charset') or 'utf8'))
         speakers = data['speakers']

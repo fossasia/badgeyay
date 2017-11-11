@@ -1,5 +1,8 @@
 class PackageNotFoundError(Exception):
-    """Exception class for Package not found"""
+    """
+    Exception class for Package not found
+    :param `Exception` - Exception parameter passed
+    """
 
     def __init__(self, value):
         self.value = value
