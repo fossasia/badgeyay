@@ -39,6 +39,7 @@ class BadgeyayTest(unittest.TestCase):
     def test_select_background_upload(self):
         CSVpath = os.path.abspath(os.path.join(os.getcwd(), 'sample/vip.png.csv'))
         self.driver.find_element_by_name("file").send_keys(CSVpath)
+        self.driver.find_element_by_css_selector("#defimage").click()
         self.driver.find_element_by_css_selector(".btn-group .dropdown-toggle").click()
         self.driver.find_element_by_css_selector("li[data-item='team.png']").click()
         self.driver.find_element_by_css_selector("form .btn-primary").click()
