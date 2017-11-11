@@ -7,14 +7,15 @@
   pip install -r requirements/test.txt
   ```
 
-* Install the webdriver for Firefox used for browser automation.
+* Install the webdriver for Chrome used for browser automation.
     ```
-    wget https://github.com/mozilla/geckodriver/releases/download/v0.11.1/geckodriver-v0.11.1-linux64.tar.gz
-    mkdir geckodriver
-    tar -xzf geckodriver-v0.11.1-linux64.tar.gz -C geckodriver
-    rm geckodriver-v0.11.1-linux64.tar.gz
-    export PATH=$PATH:$PWD/geckodriver
+    wget https://chromedriver.storage.googleapis.com/2.33/chromedriver_linux64.zip
+    mkdir chromedriver
+    unzip chromedriver_linux64.zip -d chromedriver
+    rm chromedriver_linux64.zip
+    export PATH=$PATH:$PWD/chromedriver
     ```
+  _*Make the changes in the download link of chromedriver if you are using a 32-bit machine*_
     
 ### Running
 
@@ -23,3 +24,4 @@
     python app/main.py >> log.txt 2>&1  & 
     nosetests app/tests/test.py -v --with-coverage
     ```
+  _*Make sure to run the server before running tests*_
