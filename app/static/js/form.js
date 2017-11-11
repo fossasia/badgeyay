@@ -23,6 +23,7 @@ $(document).ready(
           $("#upimage-input").css("display","none");
           $("#deimage-input").css("display","none");
           $("#background-input").css("display","block");
+          $("input[name='img-default']").val("user_defined.png");
         });
         $("#text").click(function(){
           $("#cutext-input").css("display","block");
@@ -32,7 +33,5 @@ $(document).ready(
           $("#cutext-input").css("display","none");
           $("#config-input").css("display","block");
         });
-
-        
 });
       

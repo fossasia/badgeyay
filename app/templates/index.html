@@ -66,14 +66,17 @@
             	<label for="inputFile">Select from default images</label>
             	<div class="btn-group"><button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="placeholder">Select a background</span> <span class="glyphicon glyphicon-chevron-down"></span></button>
             	<ul class="dropdown-menu">{% for i in default_background %}
-            	<li class="menu-options" data-item="{{i}}"><img src="static/uploads/{{i}}"> {{i}}</li>{% endfor %}
+               <li class="menu-options" data-item="{{i}}"><img src="static/uploads/{{i}}"> {{i}}</li>{% endfor %}
            		</ul>
             	</div>
           		</section>
 
-        	    <li><input type="radio" name="backsource" id="defback"> Add Background Color </li>
+              <li><input type="radio" name="backsource" id="defback"> Add Background with custom color </li>
 
               <section  id="background-input" style="display: none;">
+              <span class="user-defined-selected"> Using user_defined.png
+                <img src="static/uploads/user_defined.png" class="user-defined">
+              </span>
           		<label  for="inputFile">Select a background color</label>
           		<div>
           		<input type="text" id="picker" class="form-control" value="#4fc8db" name="bg_color" >

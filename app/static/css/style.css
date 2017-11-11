@@ -163,6 +163,11 @@ margin-bottom: 20px;
   max-width: 100%;
   border: 0.1em solid;
 }
+.user-defined {
+  width: 10%;
+  height: 20%;
+  margin-left: 10px;
+}
 @media screen and (max-width: 780px) {
   .navbar-header {
     margin-top: 5px;
