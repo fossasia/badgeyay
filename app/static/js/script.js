@@ -17,13 +17,14 @@ $(document).on("ready", function() {
 	$(".menu-options").click(function(){
 		var i = $(this).data("item");
 		$(".placeholder").text(i);
-		$("input[name='img-default']").val(i);
+		$("input[name='img-default']").val(i).trigger('change');
 	});
 	
 	
 	$("#picker").minicolors({
 		control: "hue",		
 		format: "hex",
+		defaultValue: '',
 		letterCase: "lowercase",
 		position: "bottom left",
 		theme: "bootstrap"
