@@ -17,7 +17,7 @@
 					{% endfor %}
 				{% endif %}
 			{% endwith %}
-      <form  action="{{ url_for('upload') }}"  method="post" enctype="multipart/form-data" >
+      <form  action="{{ url_for('upload') }}"  method="post" enctype="multipart/form-data" onsubmit="return validate()">
   			 <div class="row">
   			 <div class="container board">
   			 <div class="col-md-4 col-md-offset-4 col-sm-8 col-sm-offset-2 col-xs-10 col-xs-offset-1">
@@ -37,6 +37,7 @@
           		<label for="inputFile">Add CSV file containing fields Name,Organization and Handle</label>
           		<input type="file" id="inputFile" name="file" accept=".csv">
           		</div>
+              <div id="error" class="csvfile-error"> Please upload a CSV file! </div>
         		  </section>
 
         	    <li><input name="datasource" type="radio" id="manualdata"> Enter Data Manually </li>
@@ -46,9 +47,15 @@
           		<label for="textArea" >Enter One Name per Line </label>
           		<textarea  class = "form-control" type = "text" placeholder="Eg. Hong Phuc,Dang,@hpdang,FOSSASIA "  id= "textArea" name="csv"></textarea>
           		</div>
+              <div id="error" class="csv-error"> Please fill data in proper format
+                <div class="text-center guide">
+                  <a href="/guide" target="_blank">User Input Guide</a>
+                </div>
+              </div>
         		  </section>
 
       		  </ul>
+            <div id="error" class="no-data-error"> Please upload a csv file or enter data! </div>
 
     		  <label>Choose your Badge Background</label>
       		  <ul style="list-style-type:none">
@@ -84,6 +91,7 @@
         		  </section>
 
       		  </ul>
+            <div id="error" class="no-image-error">Please select a default background or upload an image!</div>
 
     		  <label> Customise Badges (Optional)</label>
     		    <ul style="list-style-type:none;">
@@ -98,11 +106,11 @@
       		    <li><input type="radio" name="text" id="json"> Add JSON file </li>
       			  <section id="config-input" style="display: none;">
         		  <label for="inputFile"> Upload a config file </label>
-        		  <input type="file" id="inputFile" name="config">
+              <input type="file" id="inputFile" name="config" accept=".json">
       			  </section>
 
     		    </ul>
-
+            <div id="error" class="config-error"> Please upload a JSON file </div>
     		    <button  for="pdf" type="submit" name="pdf" value="pdf" class="btn btn-primary"> Generate Badges </button>
 
     		</div>

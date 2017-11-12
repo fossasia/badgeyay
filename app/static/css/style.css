@@ -171,6 +171,12 @@ margin-bottom: 20px;
 ul, ol {
   padding: 0;
 }
+#error {
+  text-align: center;
+  color: red;
+  margin: 10px;
+  display: none;
+}
 @media screen and (max-width: 780px) {
   .navbar-header {
     margin-top: 5px;
