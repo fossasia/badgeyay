@@ -30,11 +30,11 @@
 }
 .navbar-brand{
   padding: 30px 15px;
-  font-size: 28px;  
+  font-size: 28px;
   font-weight: bold;
 }
 .navbar-nav,.navbar-nav>li>a{
-  font-weight: bold;  
+  font-weight: bold;
   padding-top:0px;
   padding-left:25px;
 }
@@ -167,6 +167,9 @@ margin-bottom: 20px;
   width: 10%;
   height: 20%;
   margin-left: 10px;
+}
+ul, ol {
+  padding: 0;
 }
 @media screen and (max-width: 780px) {
   .navbar-header {

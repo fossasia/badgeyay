@@ -45,7 +45,7 @@ class BadgeyayTest(unittest.TestCase):
         self.driver.find_element_by_css_selector("form .btn-primary").click()
         time.sleep(3)
         success = self.driver.find_element_by_css_selector(".flash-success")
-        self.assertIn(u'Your badges has been successfully generated!', success.text)
+        self.assertIn(u'Your badges have been successfully generated!', success.text)
 
     def test_png_upload(self):
         Imagepath = os.path.abspath(os.path.join(os.getcwd(), 'badges/badge_1.png'))
@@ -55,7 +55,7 @@ class BadgeyayTest(unittest.TestCase):
         self.driver.find_element_by_css_selector("form .btn-primary").click()
         time.sleep(3)
         success = self.driver.find_element_by_css_selector(".flash-success")
-        self.assertIn(u'Your badges has been successfully generated!', success.text)
+        self.assertIn(u'Your badges have been successfully generated!', success.text)
 
     def test_csv_upload(self):
         CSVpath = os.path.abspath(os.path.join(os.getcwd(), 'sample/vip.png.csv'))
