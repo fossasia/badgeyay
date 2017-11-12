@@ -107,7 +107,7 @@ def upload():
     if request.files['image'].filename != '':
         image = request.files['image']
         imgname = image.filename
-        if '.' in imgname and imgname.rsplit('.', 1)[1] == 'png':
+        if '.' in imgname:
             imgname = filename.rsplit('.', 1)[0]
             imgname = secure_filename(imgname)
             image.save(os.path.join(app.config['UPLOAD_FOLDER'], image.filename))
@@ -178,5 +178,3 @@ def Internal_Server_Error(e):
 
 if __name__ == '__main__':
     app.run()
-
-    
