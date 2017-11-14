@@ -18,7 +18,7 @@ $(document).on("ready", function () {
     $(".menu-options").click(function () {
         var i = $(this).data("item");
         $(".placeholder").text(i);
-        $('input[name=\'img-default\']').val(i).trigger('change');
+        $('input[name="img-default"]').val(i).trigger('change');
     });
 
 

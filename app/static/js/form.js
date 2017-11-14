@@ -36,9 +36,9 @@ $(document).ready(
 
         $("input[type=file], input[type=hidden], input[type=text], textarea").on("keyup change", function () {
             var csv = $("textarea[name='csv']").val();
-            var csvFile = $('input[type=file][name=\'file\']').val();
-            var imgDefault = $('input[type=hidden][name=\'img-default\']').val();
-            var imgUploaded = $('input[type=file][name=\'image\']').val();
+            var csvFile = $('input[type=file][name="file"]').val();
+            var imgDefault = $('input[type=hidden][name="img-default"]').val();
+            var imgUploaded = $('input[type=file][name="image"]').val();
             if ((csv || csvFile) && (imgDefault || imgUploaded)) {
                 $('button[type=submit]').removeAttr('disabled');
             } else {
@@ -51,7 +51,7 @@ function validate() {
     $("[id=error]").hide();
 
     var csv = $("textarea[name='csv']").val();
-    var csvFile = $('input[type=file][name=\'file\']').val();
+    var csvFile = $('input[type=file][name="file"]').val();
 
     if (csv === "" && csvFile === "") {
         $(".no-data-error").show();
@@ -80,15 +80,15 @@ function validate() {
         }
     }
 
-    var imgDefault = $('input[type=hidden][name=\'img-default\']').val();
-    var imgUploaded = $('input[type=file][name=\'image\']').val();
+    var imgDefault = $('input[type=hidden][name="img-default"]').val();
+    var imgUploaded = $('input[type=file][name="image"]').val();
 
     if (imgDefault === "" && imgUploaded === "") {
         $(".no-image-error").show();
         return false;
     }
 
-    var configJson = $('input[type=file][name=\'config\']').val();
+    var configJson = $('input[type=file][name="config"]').val();
     if (configJson !== "") {
         if (configJson.split(".")[configJson.split(".").length - 1] !== "json") {
             $(".config-error").show();
