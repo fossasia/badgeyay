@@ -33,6 +33,18 @@ $(document).ready(
           $("#cutext-input").css("display","none");
           $("#config-input").css("display","block");
         });
+
+        $("input[type=file], input[type=hidden], input[type=text], textarea").on("keyup change", function() {
+          var csv = $("textarea[name='csv']").val();
+          var csvFile = $('input[type=file][name="file"]').val();
+          var imgDefault = $('input[type=hidden][name="img-default"]').val();
+          var imgUploaded = $('input[type=file][name="image"]').val();
+          if((csv || csvFile) && (imgDefault || imgUploaded)) {
+            $('button[type=submit]').removeAttr("disabled");
+          } else {
+            $('button[type=submit]').attr('disabled', 'disabled');
+          }
+        });
 });
 
 function validate() {
@@ -86,4 +98,3 @@ function validate() {
 
   return true;
 }
-      
