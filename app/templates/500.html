@@ -1,4 +1,4 @@
-{% extends "layout.html" %} 
+{% extends "layout.html" %}
 {% block body %}
 <div class="container">
     <div class="well">
@@ -8,13 +8,16 @@
         </div>
         <div class="row">
             <h4 class="text-center">
-                It’s technical (500 error). It’s our fault. We’re going to sort this out right now, 
-                but you can let us know what you were trying to do if you like. If this issue still persists, 
-                please <a href="https://github.com/fossasia/badgeyay/issues">create an issue</a>.
+                It’s technical (500 error). It’s our fault. We’re going to sort this out right now, but you can let us know what you were
+                trying to do if you like. If this issue still persists, please
+                <a href="https://github.com/fossasia/badgeyay/issues">create an issue</a>.
             </h4>
             <br>
             <h4 class="text-center">
-                You can fix this issue too, <a href="https://gitter.im/fossasia/badgeyay" target="_blank"><img src="https://badges.gitter.im/gitterHQ/gitter.png" alt="gitter badge"></a> to resolve the issue. 
+                You can fix this issue too,
+                <a href="https://gitter.im/fossasia/badgeyay" target="_blank">
+                    <img src="https://badges.gitter.im/gitterHQ/gitter.png" alt="gitter badge">
+                </a> to resolve the issue.
             </h4>
         </div>
     </div>
@@ -25,20 +28,25 @@
         <div class="panel-body">
             <div class="container">
                 <div class="row">
-                    <strong>Git Commit/Version number: </strong><a class="version"></a><br>
-                    <strong>Python version: </strong> 3<br>
-                    <strong>Packages: </strong><code>librsvg2-bin pdftk</code><br>
+                    <strong>Git Commit/Version number: </strong>
+                    <a class="version"></a>
+                    <br>
+                    <strong>Python version: </strong> 3
+                    <br>
+                    <strong>Packages: </strong>
+                    <code>librsvg2-bin pdftk</code>
+                    <br>
                 </div>
             </div>
         </div>
     </div>
     <div class="panel panel-info">
-            <div class="panel-heading">
-                <h3 class="panel-title">Error Information</h3>
-            </div>
-            <div class="panel-body">
-                <pre class="pre-scrollable ">{{ exception }}</pre>
-            </div>
+        <div class="panel-heading">
+            <h3 class="panel-title">Error Information</h3>
         </div>
+        <div class="panel-body">
+            <pre class="pre-scrollable ">{{ exception }}</pre>
+        </div>
+    </div>
 </div>
 {% endblock %}
