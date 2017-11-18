@@ -46,6 +46,14 @@ deploy:
   on:
     branch: master
 
+- provider: heroku
+  api_key:
+    secure: RFY/G7i7bq9UnZRjIACCuRubtgG2V3GdKwwW/4Uec/2eFaRQ+XKeEqW9M28cZOWhCAroH1phN1cIyyTFfQmbljzQhNxgp/v1re4s0GRpEeZ8ilHZcdoUqr9TEkCFaBwhO5LmaaZR2t4gg91L+BZnRbEE2Rk6StITaC6aQydtbZNDKhEcabJUynh7j8Q8OuQWFlPHwgToUV4/EVI5bPU+ZlewebzkezvWSLkBjo8Q2z16dLR6JBr/72mrmrh1KPumr1Ef7NZuPEPtBZnjwn6ob4Qfi/Kovasy1MaAZl00mNeLIRtzT4TjKtIze7zoBGN1eykkmpn+5Jn4jG1BEtWdAEPxZX46dWUYkXmlvGeLOZUhL3zrf+AIDRCTA8ZX5c9/IEpcylU1F97B6jG9G3aXkDC1oT1QCuEXmA2Yzz6puyWt4Ym5MKDuBUnq+teWU5AhlgT9rsgik1zsADmduAYKgexbueVXYiYD6c/5SEQ1kMmQkMZQb/luO/KAVEj0QSHMkr0Vj83f0PSx9O/YAc7MCRH2dxXKB7BDiCzA9UMfXF+8C8GVIBqhs3FaBoo1pRnCliNxRwXODKEmi5tauZqD7egI0nSu23CAieSsDbDa715gWBxQRXpTRhGzYAVMxZJWRy6BfhRekrwEg0JwZM3qAJHsn2oumOnnSiOZBdO1BXY=
+  app: badgeyay-dev
+  on:
+    repo: fossasia/badgeyay
+    branch: development
+
 after_success:
 - deactivate
 - 'bash <(curl -s https://codecov.io/bash)'
