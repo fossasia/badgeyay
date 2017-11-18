@@ -127,6 +127,10 @@
     margin-top: 20px;
 }
 
+#in {
+    font-size: 24px;
+}
+
 .submit-btn {
     background: #5BC0DE;
     color: #ffffff;
