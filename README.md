@@ -118,32 +118,21 @@ rpm -i pdftk-2.02-1.el6.x86_64.rpm
 exit
 ```
 
-### Running locally
-1. [Fork the main repo](https://github.com/fossasia/badgeyay/fork).
-2. Clone your local repo. ```git clone https://github.com/<your_username>/badgeyay.git```
-3. Create a virtual environment. ```virtualenv -p python3 venv```
-4. Activate the virtual environment. ```source activate venv```
-5. Go to badgeyay directory. ```cd badgeyay```
-6. Install the requirements. ```pip install -r requirements.txt```
-7. Run ```python app/main.py``` to start server.
-* Remember: ```python app/main.py``` should only be executed from root directory.
+Installation
+--------------
+Badgeyay can be easily deployed on a variety of platforms. Currently it can be deployed in following ways.
 
+1. [Local Installation using Virtual environment](/docs/installation/localvir.md)
 
-### Vagrant Installation Instructions
-1. Install Vagrant from [Vagrant Download Page](https://www.vagrantup.com/downloads.html)
-2. Install Virtualbox from [Vitualbox Download Page](https://www.virtualbox.org/wiki/Downloads)
-3. Clone the project from `git clone https://github.com/<your_username>/badgeyay.git`
-4. Enter the directory using `cd badgeyay`
-5. In Terminal in the "badgeyay" directory, type `vagrant up` to bring up the virtual machine. This will start installation of a ubuntu box within which the server will run with all its components. If after typing "vagrant up" you received an error stating “valid providers not found ...", type `vagrant up --provider=virtualbox`
-6. After the installation is completed `ssh` into vagrant environment using `vagrant ssh`. This will bring you to the root directory of the Virtual Machine
-7. Move to your project using `cd /vagrant`
-8. To Run the flask server you need to be in the "app" directory. Do `cd app`
-9. Run flask server in port `0.0.0.0`
-   ```
-   export FLASK_APP=main.py
-   python -m flask run --host=0.0.0.0
-   ```
-10. Now your server is up and running. To view the badgeyay page go to localhost:8001
+2. [Local Installation using Vagrant environment](/docs/installation/localvag.md)
+
+3. [Deployment on Heroku](/docs/installation/heroku.md)
+
+4. [Deployment with Docker](/docs/installation/docker.md)
+
+One-click Docker, Heroku, Scalingo and Bluemix deployment is also available:
+
+[![Deploy to Docker Cloud](https://files.cloud.docker.com/images/deploy-to-dockercloud.svg)](https://cloud.docker.com/stack/deploy/?repo=https://github.com/fossasia/badgeyay) [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/fossasia/badgeyay/tree/development) [![Deploy on Scalingo](https://cdn.scalingo.com/deploy/button.svg)](https://my.scalingo.com/deploy?source=https://github.com/fossasia/badgeyay#development) [![Deploy to Bluemix](https://bluemix.net/deploy/button.png)](https://bluemix.net/deploy?repository=https://github.com/fossasia/badgeyay&branch=development)
 
 Contributions, Bug Reports, Feature Requests
 --------------
