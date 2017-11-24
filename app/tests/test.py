@@ -51,19 +51,6 @@ class BadgeyayTest(unittest.TestCase):
         success = self.driver.find_element_by_css_selector(".flash-success")
         self.assertIn(u'Your badges have been created successfully.', success.text)
 
-    '''
-    def test_csv_upload(self):
-        CSVpath = os.path.abspath(os.path.join(os.getcwd(), 'sample/vip.png.csv'))
-        self.driver.find_element_by_name("file").send_keys(CSVpath)
-        self.driver.execute_script("""
-        document.getElementById('btn-submit').removeAttribute("disabled");
-        """)
-        self.driver.find_element_by_css_selector("form .submit-btn").click()
-        time.sleep(3)
-        success = self.driver.find_element_by_css_selector(".flash-error")
-        self.assertIn(u'Please upload an image in \'PNG\' format!', success.text)
-    '''
-
     @classmethod
     def tearDownClass(cls):
         cls.driver.quit()
