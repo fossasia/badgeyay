@@ -118,6 +118,13 @@ rpm -i pdftk-2.02-1.el6.x86_64.rpm
 exit
 ```
 
+For Arch based package managers:
+```
+sudo pacman -S python-cairosvg
+sudo pacman -S python-lxml
+sudo yaourt -S pdftk
+```
+
 Installation
 --------------
 Badgeyay can be easily deployed on a variety of platforms. Currently it can be deployed in following ways.

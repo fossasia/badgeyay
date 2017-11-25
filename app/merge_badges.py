@@ -11,7 +11,6 @@ parser.set_defaults(pdf=True)
 arguments = parser.parse_args()
 _pdf = arguments.pdf
 
-
 if subprocess.call(['which', 'python3']) != 0:
     raise PackageNotFoundError("Package python3 not found")
 if subprocess.call(['which', 'pdftk']) != 0:
@@ -41,6 +40,7 @@ def generate_pdfs(folder_path):
         except Exception as e:
             pass
 
+
 # Generating PDF files from svg.
 if _pdf:
     for folder in input_folders:
@@ -60,4 +60,3 @@ for folder in input_folders:
 
 final_path = os.path.join(BADGES_FOLDER, 'all-badges.pdf')
 subprocess.call('pdftk ' + BADGES_FOLDER + '/*.pdf cat output ' + final_path, shell=True)
-
