@@ -36,6 +36,7 @@ def index():
 def generate_badges(_pdf=True):
     os.system('python3 ' + APP_ROOT + '/merge_badges.py -p')
 
+
 def empty_directory():
     """
     Function to check for empty directory existence
@@ -71,7 +72,7 @@ def upload():
 
     # If default background is selected
     if img != '':
-        if(img == 'user_defined.png'):
+        if (img == 'user_defined.png'):
             bg_color = request.form['bg_color']
             text_on_image = request.form['text_on_image']
             do_svg2png(img, 1, bg_color, text_on_image)
