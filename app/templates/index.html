@@ -36,18 +36,10 @@
                         <div id="error" class="no-data-error"> Please upload a csv file or enter data!</div>
                         <label> Choose your Badge Background</label>
                         <ul style="list-style-type:none">
-                            <li>
-                                <input type="radio" name="backsource" id="pngupload"> Add PNG file
-                                <i class="fa fa-info-circle" title="Best Suitable Image &#013; 1. Size(width x height) : 749 X 1049 Pixels &#013; 2. Resolution : 300 DPI" ></i>
-                            </li>
-								<section id="upimage-input"  style="display: none;">
-									<label for="imageFile"> Upload a PNG file for badge background </label>
-									<input type="file" id="imageFile" name="image" accept="image/*">
-								</section>
-                            <li>
-                                <input type="radio" name="backsource" id="defimage"> Add Default Image</li>
+                        	<li>
+                                <input type="radio" name="backsource" id="defimage"> Use Background Template</li>
 								<section id="deimage-input" style="display:none">
-									<label for="inputFile"> Select from default images</label>
+									<label for="inputFile"></label>
 									<div class="btn-group">
 										<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 											<span class="placeholder"> Select a background</span>
@@ -63,13 +55,21 @@
 									</div>
 								</section>
                             <li>
+                                <input type="radio" name="backsource" id="pngupload"> Add Background Image
+                                <i class="fa fa-info-circle" title="Best Suitable Image &#013; 1. Size(width x height) : 749 X 1049 Pixels &#013; 2. Resolution : 300 DPI" ></i>
+                            </li>
+								<section id="upimage-input"  style="display: none;">
+									<label for="imageFile"></label>
+									<input type="file" id="imageFile" name="image" accept="image/*">
+								</section>
+                            <li>
 							<li>
-								<input type="radio" name="backsource" id="defback"> Add Background with custom color</li>
+								<input type="radio" name="backsource" id="defback"> Choose Background Color</li>
 								<section id="background-input" style="display:none">
 									<span class="user-defined-selected"> Using user_defined.png
 										<img src="static/uploads/user_defined.png" class="user-defined">
 									</span>
-									<label for="inputFile"> Select a background color</label>
+									<label for="inputFile"></label>
 									<div>
 										<input type="text" id="picker" class="form-control" name="bg_color">
 									</div>
