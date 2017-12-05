@@ -21,6 +21,12 @@ $(document).on("ready", function () {
         $('input[name="img-default"]').val(i).trigger('change');
     });
 
+    $(".font-options").click(function () {
+        var i = $(this).data("item");
+        $(".placeholder2").text(i);
+        $("input[name='custfont']").val(i);
+    });
+
 
     $("#picker").minicolors({
         control: 'hue',

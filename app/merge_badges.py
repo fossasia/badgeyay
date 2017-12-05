@@ -14,8 +14,6 @@ _pdf = arguments.pdf
 
 if subprocess.call(['which', 'python3']) != 0:
     raise PackageNotFoundError("Package python3 not found")
-if subprocess.call(['which', 'pdftk']) != 0:
-    raise PackageNotFoundError("Package pdftk not found")
 
 APP_ROOT = os.path.dirname(os.path.abspath(__file__))
 BADGES_FOLDER = os.path.join(APP_ROOT, 'static/badges')

@@ -183,6 +183,11 @@
     border-bottom: 1px solid darkgray;
 }
 
+.font-options {
+  border-bottom: 1px solid darkgray;
+  padding: 9px;
+}
+
 .dropdown-menu>li:hover {
     background: #f1f9fd;
     cursor: pointer;
