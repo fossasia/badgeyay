@@ -46,10 +46,16 @@ $ workon badgeyay               # To activate it again
 cp .env.example .env
 ```
 
-* To run the project on a local machine.
+* To run the project on a local machine (default mode).
 
 ```sh
 (badgeyay) $ python app/main.py
+```
+
+* To run the project on a local machine (debug mode).
+
+```sh
+(badgeyay) $ python app/main.py --dev
 ```
 
 ## Preferred Development Workflow
