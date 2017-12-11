@@ -31,6 +31,7 @@ class BadgeyayTest(unittest.TestCase):
         self.assertFalse(elem.is_displayed())
 
     def test_select_background_upload(self):
+        self.driver.implicitly_wait(10)
         self.driver.execute_script("$('.submit-btn').removeAttr('disabled');")
         if self.driver.find_element_by_class_name("submit-btn").is_enabled():
             CSVpath = os.path.abspath(os.path.join(os.getcwd(), 'sample/vip.png.csv'))
