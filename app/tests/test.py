@@ -31,15 +31,19 @@ class BadgeyayTest(unittest.TestCase):
         self.assertFalse(elem.is_displayed())
 
     def test_select_background_upload(self):
-        CSVpath = os.path.abspath(os.path.join(os.getcwd(), 'sample/vip.png.csv'))
-        self.driver.find_element_by_name("file").send_keys(CSVpath)
-        self.driver.find_element_by_css_selector("#defimage").click()
-        self.driver.find_element_by_css_selector(".btn-group .dropdown-toggle").click()
-        self.driver.find_element_by_css_selector("li[data-item='team.png']").click()
-        self.driver.find_element_by_css_selector("form .submit-btn").click()
-        time.sleep(3)
-        success = self.driver.find_element_by_css_selector(".flash-success")
-        self.assertIn(u'Your badges have been created successfully.', success.text)
+        self.driver.execute_script("$('.submit-btn').removeAttr('disabled');")
+        if self.driver.find_element_by_class_name("submit-btn").is_enabled():
+            CSVpath = os.path.abspath(os.path.join(os.getcwd(), 'sample/vip.png.csv'))
+            self.driver.find_element_by_name("file").send_keys(CSVpath)
+            self.driver.find_element_by_css_selector("#defimage").click()
+            self.driver.find_element_by_css_selector(".btn-group .dropdown-toggle").click()
+            self.driver.find_element_by_css_selector("li[data-item='team.png']").click()
+            self.driver.find_element_by_css_selector(".submit-btn").click()
+            time.sleep(3)
+            success = self.driver.find_element_by_css_selector(".flash-success")
+            self.assertIn(u'Your badges have been created successfully.', success.text)
+        else:
+            raise Exception('Button is not enabled')
 
     def test_png_upload(self):
         Imagepath = os.path.abspath(os.path.join(os.getcwd(), 'badges/badge_1.png'))
