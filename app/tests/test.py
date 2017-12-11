@@ -12,6 +12,7 @@ class BadgeyayTest(unittest.TestCase):
     def setUpClass(cls):
         cls.driver = webdriver.Firefox()
         cls.driver.get('http://localhost:5000')
+        cls.driver.set_page_load_timeout(10)
         super(BadgeyayTest, cls).setUpClass()
 
     def test_title(self):
