@@ -5,13 +5,13 @@ import os
 import shutil
 import traceback
 from svg_to_png import do_svg2png
+from argparse import ArgumentParser
 
 APP_ROOT = os.path.dirname(os.path.abspath(__file__))
 UPLOAD_FOLDER = os.path.join(APP_ROOT, 'static/uploads')
 BADGES_FOLDER = os.path.join(APP_ROOT, 'static/badges')
 
 app = Flask(__name__)
-app.config['DEBUG'] = True
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 app.config['MAX_CONTENT_LENGTH'] = 16 * 1024 * 1024
 app.config['SECRET_KEY'] = 'secret'
@@ -20,6 +20,11 @@ COMPRESS_LEVEL = 6
 COMPRESS_MIN_SIZE = 500
 Compress(app)
 
+parser = ArgumentParser()
+parser.add_argument("--dev",
+                    help="Start the server in development mode with debug=True",
+                    action="store_true")
+args = parser.parse_args()
 
 @app.route('/')
 def index():
@@ -178,4 +183,4 @@ def Internal_Server_Error(e):
 
 
 if __name__ == '__main__':
-    app.run()
+    app.run(debug=args.dev)
