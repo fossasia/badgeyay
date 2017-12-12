@@ -55,5 +55,4 @@ deploy:
     branch: development
 
 after_success:
-- deactivate
 - bash <(curl -s https://codecov.io/bash)
