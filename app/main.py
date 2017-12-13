@@ -5,6 +5,7 @@ import os
 import shutil
 import traceback
 from svg_to_png import do_svg2png
+
 # from argparse import ArgumentParser
 
 APP_ROOT = os.path.dirname(os.path.abspath(__file__))
