@@ -5,7 +5,8 @@ import os
 import shutil
 import traceback
 from svg_to_png import do_svg2png
-from argparse import ArgumentParser
+
+# from argparse import ArgumentParser
 
 APP_ROOT = os.path.dirname(os.path.abspath(__file__))
 UPLOAD_FOLDER = os.path.join(APP_ROOT, 'static/uploads')
@@ -20,11 +21,11 @@ COMPRESS_LEVEL = 6
 COMPRESS_MIN_SIZE = 500
 Compress(app)
 
-parser = ArgumentParser()
-parser.add_argument("--dev",
-                    help="Start the server in development mode with debug=True",
-                    action="store_true")
-args = parser.parse_args()
+# parser = ArgumentParser()
+# parser.add_argument("--dev",
+#                     help="Start the server in development mode with debug=True",
+#                     action="store_true")
+# args = parser.parse_args()
 
 @app.route('/')
 def index():
@@ -183,4 +184,5 @@ def Internal_Server_Error(e):
 
 
 if __name__ == '__main__':
-    app.run(debug=args.dev)
+    # app.run(debug=args.dev)
+    app.run(debug=True)
