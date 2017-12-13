@@ -7,3 +7,4 @@
 .vagrant/
 venv/
 app/static/badges/
+.DS_Store

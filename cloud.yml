@@ -1,0 +1,16 @@
+apiVersion: extensions/v1beta1
+kind: deployment
+metadata:
+  name: badgeyay
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: badgeyay
+    spec:
+      containers:
+      - name: badgeyay
+        image: gcr.io/badgeyay
+        ports:
+        - containerPort: 8080
