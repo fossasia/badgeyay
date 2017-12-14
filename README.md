@@ -164,7 +164,7 @@ Installation
 --------------
 Badgeyay can be easily deployed on a variety of platforms. Currently it can be deployed in following ways.
 
-1. [Local Installation](/docs/installation/local.md)
+1. [Local Installation](/docs/installation/localvir.md)
 
 2. [Deployment on Heroku](/docs/installation/heroku.md)
 
