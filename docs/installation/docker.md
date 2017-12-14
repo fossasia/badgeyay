@@ -1,6 +1,6 @@
 # Docker
 
-[![Deploy to Docker Cloud](https://files.cloud.docker.com/images/deploy-to-dockercloud.svg)](https://cloud.docker.com/stack/deploy/?repo=https://github.com/fossasia/badgeyay)
+[![Deploy to Docker ](https://files.cloud.docker.com/images/deploy-to-dockercloud.svg)](https://cloud.docker.com/stack/deploy/?repo=https://github.com/fossasia/badgeyay)
 
 * Get the latest version of docker. See the [offical site](https://docs.docker.com/engine/installation/) for installation info for your platform.
 
@@ -15,6 +15,6 @@
 git clone https://github.com/fossasia/badgeyay.git && cd badgeyay
 ```
 
-* In the terminal window, run `docker build -t badgeyay:latest` to build badgeyay's docker image. This process can take some time.
+* In the terminal window, run `sudo docker build -t badgeyay:latest .` to build badgeyay's docker image. This process can take some time.
 
-* After build is done, run `docker run -d -p 5000:5000 badgeyay` to start the server.
+* After successful build is done, run `sudo docker run -d -p 5000:5000 badgeyay` to start the server.
