@@ -29,10 +29,13 @@ $ git remote add upstream https://github.com/fossasia/badgeyay.git
 and [`virtualenvwrapper`](https://virtualenvwrapper.readthedocs.io/en/latest/install.html) to maintain a clean Python 3 environment. Create a `virtualenv`:
 
 ```sh
+$ source `which virtualenvwrapper.sh`
 $ mkvirtualenv -p python3 badgeyay
 (badgeyay) $ deactivate         # To deactivate the virtual environment
 $ workon badgeyay               # To activate it again
 ```
+
+> **source `which virtualenvwrapper.sh`** is used to prevent from breaking the `mkvirtualenv` command, you can find more about the issue, [here](https://stackoverflow.com/questions/13855463/bash-mkvirtualenv-command-not-found).
 
 * Now, since you are inside a virtual environment, you can setup `badgeyay` as an editable package.
 
