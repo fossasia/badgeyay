@@ -4,6 +4,7 @@ import argparse
 import subprocess
 from exceptions import PackageNotFoundError
 from cairosvg import svg2pdf
+from PyPDF2 import PdfFileMerger
 
 parser = argparse.ArgumentParser(description='Argument Parser for merge_badges')
 parser.add_argument('-p', dest='pdf', action='store_true')
@@ -54,9 +55,20 @@ print('Merging badges of different types.')
 
 for folder in input_folders:
     folder_path = os.path.join(BADGES_FOLDER, folder)
-    out = folder.replace('.', '-') + '.pdf'
+    merger = PdfFileMerger()
+    pdfs = [file for file in os.listdir(folder_path) if file.lower().endswith('.pdf')]
+    for pdf in pdfs:
+        merger.append(open(os.path.join(folder_path, pdf), 'rb'))
+    out = folder + '.pdf'
     out_path = os.path.join(BADGES_FOLDER, out)
-    subprocess.call('pdftk ' + folder_path + '/*.pdf cat output ' + out_path, shell=True)
+    with open(out_path, 'wb') as fout:
+        merger.write(fout)
 
 final_path = os.path.join(BADGES_FOLDER, 'all-badges.pdf')
-subprocess.call('pdftk ' + BADGES_FOLDER + '/*.pdf cat output ' + final_path, shell=True)
+pdfs = [file for file in os.listdir(BADGES_FOLDER) if file.lower().endswith('.pdf')]
+merger = PdfFileMerger()
+for pdf in pdfs:
+    merger.append(open(os.path.join(BADGES_FOLDER, pdf), 'rb'))
+
+with open(final_path, 'wb') as fout:
+    merger.write(fout)
