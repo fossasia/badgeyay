@@ -97,24 +97,17 @@ You need Ubuntu to run the application. We are working on integrating vagrant to
 
 Badgeyay requires the following dependencies to be installed
 - python3
-- rsvg-convert
-- pdftk
 
 For Ubuntu/Debian based Package Managers
 ```
 sudo apt-get update
-sudo apt-get install python3 librsvg2-bin pdftk
+sudo apt-get install python3
 ```
 
 For Fedora/CentOS/RPM based package managers
 ```
 sudo -i
-dnf install librsvg2 librsvg2-tools
-dnf install gcc gcc-c++ libXrandr gtk2 libXtst libart_lgpl
-wget http://mirror.centos.org/centos/6/os/x86_64/Packages/libgcj-4.4.7-18.el6.x86_64.rpm
-wget https://www.pdflabs.com/tools/pdftk-the-pdf-toolkit/pdftk-2.02-1.el6.x86_64.rpm
-rpm -ivh --nodeps libgcj-4.4.7-11.el6.x86_64.rpm
-rpm -i pdftk-2.02-1.el6.x86_64.rpm
+yum install python3
 exit
 ```
 
@@ -122,7 +115,6 @@ For Arch based package managers:
 ```
 sudo pacman -S python-cairosvg
 sudo pacman -S python-lxml
-sudo yaourt -S pdftk
 ```
 
 Installation
