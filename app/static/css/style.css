@@ -197,7 +197,7 @@ textarea {
 }
 
 #footer {
-    position: absolute;
+    position: fixed;
     text-align: center;
     width: 100%;
     padding: 10px;
