@@ -1,10 +1,41 @@
 language: python3
 
+sudo: required
+
+addons:
+  firefox: "55.0"
+  apt:
+    packages:
+      - python-dev
+
+python:
+  - '3.5'
+
 before_install:
 - sudo apt-get -qq update
-- sudo apt-get -y install librsvg2-bin pdftk
+- sudo apt-get -y install librsvg2-bin
+- sudo apt-get -y install pdftk
+- sudo apt-get -y install python3-pip
+- sudo apt-get install python-virtualenv
+- wget https://github.com/mozilla/geckodriver/releases/download/v0.19.0/geckodriver-v0.19.0-linux64.tar.gz
+- mkdir geckodriver
+- tar -xzf geckodriver-v0.19.0-linux64.tar.gz -C geckodriver
+- export PATH=$PATH:$PWD/geckodriver
+
+install:
+- virtualenv  -p python3 ../flask_env
+- source ../flask_env/bin/activate
+- pip3 install -r requirements/test.txt
+
+before_script:
+- "export DISPLAY=:99.0"
+- "sh -e /etc/init.d/xvfb start"
+- sleep 3
+
 script:
-- ./merge_badges.sh
+- python app/main.py >> log.txt 2>&1  &
+- nosetests app/tests/test.py -v --with-coverage
+- python3 -m pyflakes .
 
 deploy:
 - provider: releases
@@ -15,3 +46,6 @@ deploy:
   on:
     branch: master
 
+after_success:
+- deactivate
+- 'bash <(curl -s https://codecov.io/bash)'

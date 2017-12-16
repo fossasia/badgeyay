@@ -1,2 +1,0 @@
-
-py generate-badges.py

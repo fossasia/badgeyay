@@ -1,4 +1,9 @@
-
 /*.csv#
 *.badges
 *.swp
+*.pyc
+*.log
+.env
+.vagrant/
+venv/
+app/static/badges/

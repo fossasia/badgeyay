@@ -1,0 +1,13 @@
+.git
+.dockerignore
+
+#####################
+# .gitignore copied
+#####################
+
+/*.csv#
+*.badges
+*.swp
+*.pyc
+*.log
+.env
