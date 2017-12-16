@@ -4,18 +4,24 @@ import time
 import os
 
 is_travis = 'TRAVIS' in os.environ
+# checking for an environment variable
 os.environ['MOZ_HEADLESS'] = '1'
+# setting an environment variable to 1
 
 class BadgeyayTest(unittest.TestCase):
-
+# defining a class named BadgeyayTest
     @classmethod
     def setUpClass(cls):
         cls.driver = webdriver.Firefox()
+		# opening up a firefox browser instance via selenium
         cls.driver.get('http://localhost:5000')
+		# navigating to `http://localhost:5000`
         super(BadgeyayTest, cls).setUpClass()
+		# return a proxy object that delegates method calls to `BadgeyayTest`
 
     def test_title(self):
         self.assertEqual(self.driver.title, 'BadgeYay')
+		# set a title
 
     def test_menu_visibility(self):
         # Check that menu is not visible initially
@@ -31,6 +37,7 @@ class BadgeyayTest(unittest.TestCase):
         self.assertFalse(elem.is_displayed())
 
     def test_select_background_upload(self):
+        # Check that background is visible when opened and upload is done
         CSVpath = os.path.abspath(os.path.join(os.getcwd(), 'sample/vip.png.csv'))
         self.driver.find_element_by_name("file").send_keys(CSVpath)
         self.driver.find_element_by_css_selector("#defimage").click()
@@ -42,6 +49,7 @@ class BadgeyayTest(unittest.TestCase):
         self.assertIn(u'Your badges have been created successfully.', success.text)
 
     def test_png_upload(self):
+        # Check that badges are created
         Imagepath = os.path.abspath(os.path.join(os.getcwd(), 'badges/badge_1.png'))
         CSVpath = os.path.abspath(os.path.join(os.getcwd(), 'sample/vip.png.csv'))
         self.driver.find_element_by_name("file").send_keys(CSVpath)

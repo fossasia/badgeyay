@@ -8,10 +8,14 @@ from svg_to_png import do_svg2png
 # from argparse import ArgumentParser
 
 APP_ROOT = os.path.dirname(os.path.abspath(__file__))
+# Get root folder
 UPLOAD_FOLDER = os.path.join(APP_ROOT, 'static/uploads')
+# Get Upload Folder
 BADGES_FOLDER = os.path.join(APP_ROOT, 'static/badges')
+# Get badges folder
 
 app = Flask(__name__)
+# initialize flask and the config(s)
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 app.config['MAX_CONTENT_LENGTH'] = 16 * 1024 * 1024
 app.config['SECRET_KEY'] = 'secret'
@@ -40,6 +44,7 @@ def index():
 
 def generate_badges(_pdf=True):
     os.system('python3 ' + APP_ROOT + '/merge_badges.py -p')
+	# execute merge_badges.py using os library
 
 
 def empty_directory():
@@ -158,6 +163,7 @@ def upload():
 
 
 @app.route('/guide')
+# route guide.html page
 def guide():
     """
     Entry point for guide webpage
@@ -166,6 +172,7 @@ def guide():
 
 
 @app.errorhandler(404)
+# route 404.html page
 def Not_Found(e):
     """
     Function for invalid page / Page not existence
@@ -174,6 +181,7 @@ def Not_Found(e):
 
 
 @app.errorhandler(500)
+# route 500.html page
 def Internal_Server_Error(e):
     """
     Function for Internal_Server_Error
@@ -183,5 +191,6 @@ def Internal_Server_Error(e):
 
 
 if __name__ == '__main__':
-    # app.run(debug=args.dev)
+    # use app.run(debug=args.dev) for development/debugging
     app.run(debug=True)
+	# run the flask app

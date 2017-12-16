@@ -10,17 +10,24 @@ from defusedxml.lxml import parse
 from lxml import etree
 
 NUMBER_OF_BADGES_PER_PAGE = 8
+# Initializing and setting global variable `NUMBER_OF_BADGES_PER_PAGE`
 APP_ROOT = os.path.dirname(os.path.abspath(__file__))
+# Get root folder
 UPLOAD_FOLDER = os.path.join(APP_ROOT, 'static/uploads')
+# Get Upload Folder
 
 paper_sizes = {}
+# Initialize a list
 paper_sizes['A3'] = ['297mm', '420mm']
 paper_sizes['A4'] = ['210mm', '297mm']
 
 input_files = [file for file in os.listdir(UPLOAD_FOLDER) if file.lower().endswith(".csv")]
+# check for .csv files in UPLOAD_FOLDER
 
 with open(APP_ROOT + "/../badges/8BadgesOnA3.svg", encoding="UTF-8") as f:
+# open the file "8BadgesOnA3.svg"
     CONTENT = f.read()
+	# load the svg-data to a variable
 
 
 def configure_badge_page(badge_page, options):
@@ -93,6 +100,7 @@ for input_file in input_files:
     print("READING: {}".format(input_file))
     folder = APP_ROOT + '/static/badges/' + input_file + ".badges"
     shutil.rmtree(folder, ignore_errors=True)
+	# Delete an entire directory tree named "folder"
     try:
         os.makedirs(folder, exist_ok=True)
     except Exception:
@@ -100,8 +108,10 @@ for input_file in input_files:
     ext = os.path.splitext(picpath)[1]
     badges_background = "badges_background{}".format(ext)
     shutil.copyfile(picpath, os.path.join(folder, badges_background))
+	# use shutil library to copy from `picpath` to `badges_background`
 
     with open(os.path.join(UPLOAD_FOLDER, input_file), encoding="UTF-8") as f:
+	# open the input file
         aggregate = []
         i = 1
         for row in csv.reader(f):

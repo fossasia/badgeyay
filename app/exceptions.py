@@ -9,3 +9,4 @@ class PackageNotFoundError(Exception):
 
     def __str__(self):
         return repr(self.value)
+		# get a string representation of self.value
