@@ -76,6 +76,6 @@ for pdf in pdfs:
     merger.append(open(os.path.join(BADGES_FOLDER, pdf), 'rb'))
 
 with open(final_path, 'wb') as fout:
-# open final path file
+    # open final path file
     merger.write(fout)
     # write data to the file

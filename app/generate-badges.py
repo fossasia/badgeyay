@@ -25,7 +25,7 @@ input_files = [file for file in os.listdir(UPLOAD_FOLDER) if file.lower().endswi
 # check for .csv files in UPLOAD_FOLDER
 
 with open(APP_ROOT + "/../badges/8BadgesOnA3.svg", encoding="UTF-8") as f:
-# open the file "8BadgesOnA3.svg"
+    # open the file "8BadgesOnA3.svg"
     CONTENT = f.read()
     # load the svg-data to a variable
 
@@ -111,7 +111,7 @@ for input_file in input_files:
     # use shutil library to copy from `picpath` to `badges_background`
 
     with open(os.path.join(UPLOAD_FOLDER, input_file), encoding="UTF-8") as f:
-    # open the input file
+        # open the input file
         aggregate = []
         i = 1
         for row in csv.reader(f):
