@@ -27,7 +27,7 @@ input_files = [file for file in os.listdir(UPLOAD_FOLDER) if file.lower().endswi
 with open(APP_ROOT + "/../badges/8BadgesOnA3.svg", encoding="UTF-8") as f:
 # open the file "8BadgesOnA3.svg"
     CONTENT = f.read()
-	# load the svg-data to a variable
+    # load the svg-data to a variable
 
 
 def configure_badge_page(badge_page, options):
@@ -100,7 +100,7 @@ for input_file in input_files:
     print("READING: {}".format(input_file))
     folder = APP_ROOT + '/static/badges/' + input_file + ".badges"
     shutil.rmtree(folder, ignore_errors=True)
-	# Delete an entire directory tree named "folder"
+    # Delete an entire directory tree named "folder"
     try:
         os.makedirs(folder, exist_ok=True)
     except Exception:
@@ -108,10 +108,10 @@ for input_file in input_files:
     ext = os.path.splitext(picpath)[1]
     badges_background = "badges_background{}".format(ext)
     shutil.copyfile(picpath, os.path.join(folder, badges_background))
-	# use shutil library to copy from `picpath` to `badges_background`
+    # use shutil library to copy from `picpath` to `badges_background`
 
     with open(os.path.join(UPLOAD_FOLDER, input_file), encoding="UTF-8") as f:
-	# open the input file
+    # open the input file
         aggregate = []
         i = 1
         for row in csv.reader(f):

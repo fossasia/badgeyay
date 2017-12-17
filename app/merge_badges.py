@@ -33,7 +33,7 @@ def generate_pdfs(folder_path):
     :param `folder_path` - Path of the folder for saving of the PDF's
     """
     svgs = [file for file in os.listdir(folder_path) if file.lower().endswith('.svg')]
-	# check for .svg files in folder_path
+    # check for .svg files in folder_path
     for svg in svgs:
         svg_path = os.path.join(folder_path, svg)
         pdf_path = os.path.splitext(svg_path)[0] + '.pdf'

@@ -33,14 +33,14 @@ def generate_pdfs(folder_path):
     :param `folder_path` - Folder path
     """
     svgs = [file for file in os.listdir(folder_path) if file.lower().endswith('.svg')]
-	# check for .svg files in folder_path
+    # check for .svg files in folder_path
     for svg in svgs:
         svg_path = os.path.join(folder_path, svg)
         pdf_path = os.path.splitext(svg_path)[0] + '.pdf'
         print('svg: {}'.format(svg_path))
         print('pdf: {}'.format(pdf_path))
         subprocess.run('rsvg-convert -f pdf -o {} {}'.format(pdf_path, svg_path))
-		# execute the generate-badges.py via subprocess, with parameters pdf_path & svg_path
+        # execute the generate-badges.py via subprocess, with parameters pdf_path & svg_path
 
 
 # Generating PDF files from svg.
@@ -48,7 +48,7 @@ if _pdf:
     for folder in input_folders:
         folder_path = os.path.join(BADGES_FOLDER, folder)
         generate_pdfs(folder_path)
-		# use generate_pdfs() function to generate pdf's
+        # use generate_pdfs() function to generate pdf's
 
 
 input_folders = [file for file in os.listdir(BADGES_FOLDER) if file.lower().endswith(".badges")]
@@ -78,4 +78,4 @@ for pdf in pdfs:
 with open(final_path, 'wb') as fout:
 # open final path file
     merger.write(fout)
-	# write data to the file
+    # write data to the file

@@ -13,15 +13,15 @@ class BadgeyayTest(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         cls.driver = webdriver.Firefox()
-		# opening up a firefox browser instance via selenium
+        # opening up a firefox browser instance via selenium
         cls.driver.get('http://localhost:5000')
-		# navigating to `http://localhost:5000`
+        # navigating to `http://localhost:5000`
         super(BadgeyayTest, cls).setUpClass()
-		# return a proxy object that delegates method calls to `BadgeyayTest`
+        # return a proxy object that delegates method calls to `BadgeyayTest`
 
     def test_title(self):
         self.assertEqual(self.driver.title, 'BadgeYay')
-		# set a title
+        # set a title
 
     def test_menu_visibility(self):
         # Check that menu is not visible initially

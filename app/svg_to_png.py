@@ -19,11 +19,11 @@ def do_svg2png(filename, opacity, fill, text_):
     :param `text_` - Text to be placed on the badge
     """
     png_filename = filename
-	# initialize filename to png_filename
+    # initialize filename to png_filename
     filename = filename.rsplit(".", 1)[0] + '.svg'
-	# get the filename, remove string after `.` and add .svg to it.
+    # get the filename, remove string after `.` and add .svg to it.
     filename = os.path.join(SVGS_FOLDER, filename)
-	# filename -> path
+    # filename -> path
     tree = parse(open(filename, 'r'))
     element = tree.getroot()
     # changing style using XPath.
@@ -41,5 +41,5 @@ def do_svg2png(filename, opacity, fill, text_):
     etree.ElementTree(element).write(filename, pretty_print=True)
     print("done")
     svg2png(url=filename, write_to=UPLOAD_FOLDER + '/' + png_filename)
-	# using svg2png, save the image
+    # using svg2png, save the image
     print("Image Saved")

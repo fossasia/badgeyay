@@ -44,7 +44,7 @@ def index():
 
 def generate_badges(_pdf=True):
     os.system('python3 ' + APP_ROOT + '/merge_badges.py -p')
-	# execute merge_badges.py using os library
+    # execute merge_badges.py using os library
 
 
 def empty_directory():
@@ -193,4 +193,4 @@ def Internal_Server_Error(e):
 if __name__ == '__main__':
     # use app.run(debug=args.dev) for development/debugging
     app.run(debug=True)
-	# run the flask app
+    # run the flask app
