@@ -1,5 +1,4 @@
-{% extends "layout.html" %}
-{% block body %}
+{% extends "layout.html" %} {% block body %}
 <div class="container board">
     <div class="row">
         <form action="{{ url_for('upload') }}" method="post" enctype="multipart/form-data" onsubmit="return validate()">
@@ -73,7 +72,28 @@
 								</section>
 							</li>
                         </ul>
-                        <div id="error" class="no-image-error"> Please select a default background or upload an image!</div>
+						<div id="error" class="no-image-error"> Please select a default background or upload an image!</div>
+						<label>Choose your font</label>
+						<ul style="list-style-type:none">
+							<li>
+								<input type="radio" name="fontsource" id="custfont"> Use Custom font
+                            </li>
+                            <section id="custom-font" style="display: none;">
+								<label for="inputFile">Select from following fonts</label>
+								<div class="btn-group">
+									<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+										<span class="placeholder2">Select a font</span>
+										<span class="glyphicon glyphicon-chevron-down"></span>
+									</button>
+									<ul class="dropdown-menu">
+										{% for i in custom_fonts %}
+										<li class="font-options" style="font-family:'{{i}}'" data-item="{{i}}">{{i}}</li>
+										{% endfor %}
+									</ul>
+								</div>
+							</section>
+							<input type="hidden" name="custfont" value="">
+						</ul>
                         <label> Customise Badges (Optional)</label>
                         <ul style="list-style-type:none">
                             <li>
@@ -105,7 +125,7 @@
 		   			{% if cat == 'success-pdf' %}
 		   				<div class="flash-success">Your badges have been created successfully.</div>
         					<div class="text-center">
-            					<a href="static/badges/{{msg}}-badges.pdf" class="btn btn-success" download="{{msg}}.badges.pdf">Download as PDF</a>
+            					<a href="static/badges/{{msg}}-badges.pdf" class="btn btn-success" download="{{msg}}-badges.pdf">Download as PDF</a>
         					</div>
         			{% else %}
        			 		<div class="flash-{{cat}}">{{msg}}</div>

@@ -21,13 +21,19 @@ paper_sizes = {}
 paper_sizes['A3'] = ['297mm', '420mm']
 paper_sizes['A4'] = ['210mm', '297mm']
 
-input_files = [file for file in os.listdir(UPLOAD_FOLDER) if file.lower().endswith(".csv")]
-# check for .csv files in UPLOAD_FOLDER
+input_files = [file for file in os.listdir(
+    UPLOAD_FOLDER) if file.lower().endswith(".csv")]
 
 with open(APP_ROOT + "/../badges/8BadgesOnA3.svg", encoding="UTF-8") as f:
     # open the file "8BadgesOnA3.svg"
     CONTENT = f.read()
     # load the svg-data to a variable
+
+
+font_choice = None
+if os.path.isfile(os.path.join(UPLOAD_FOLDER, 'fonts.json')):
+    DATA = json.load(open(os.path.join(UPLOAD_FOLDER, "fonts.json")))
+    font_choice = DATA['font']
 
 
 def configure_badge_page(badge_page, options):
@@ -64,6 +70,15 @@ def generate_badges(aggregate, folder, index, picture, paper_size):
     target = os.path.join(folder, "badges_{}.svg".format(index))
     print("Generating {}".format(target))
     content = CONTENT
+    if font_choice:
+        content = content.replace("font-family:sans-serif",
+                                  "font-family:" + font_choice)
+        content = content.replace("inkscape-font-specification:sans-serif",
+                                  "inkscape-font-specification:" + font_choice)
+        content = content.replace("font-family:ubuntu",
+                                  "font-family:" + font_choice)
+        content = content.replace("inkscape-font-specification:ubuntu",
+                                  "inkscape-font-specification:" + font_choice)
     for i, row in enumerate(aggregate):
         row = [entry for entry in row if not entry.isspace()]
         if len(row) == 0:
@@ -74,7 +89,8 @@ def generate_badges(aggregate, folder, index, picture, paper_size):
             row = [""] * (4 - len(row)) + row
         for j, text in enumerate(row):
             text = html.escape(text)
-            content = content.replace("person_{}_line_{}".format(i + 1, j + 1), text)
+            content = content.replace(
+                "person_{}_line_{}".format(i + 1, j + 1), text)
         content = content.replace("badge_{}.png".format(i + 1), picture)
     with open(target, "w", encoding="UTF-8") as f:
         f.write(content)
@@ -86,7 +102,8 @@ for input_file in input_files:
 
     # check if custom config.json is present for the file
     config_json_uploaded = os.path.splitext(input_file)[0] + '.json'
-    config_json_uploaded_path = os.path.join(UPLOAD_FOLDER, config_json_uploaded)
+    config_json_uploaded_path = os.path.join(
+        UPLOAD_FOLDER, config_json_uploaded)
     if os.path.isfile(config_json_uploaded_path):
         config_json = config_json_uploaded
     config = json.loads(open(UPLOAD_FOLDER + '/' + config_json).read())
@@ -119,8 +136,10 @@ for input_file in input_files:
             if options['badge_wrap']:
                 aggregate.append(row)
             if len(aggregate) >= NUMBER_OF_BADGES_PER_PAGE:
-                generate_badges(aggregate, folder, i, badges_background, options)
+                generate_badges(aggregate, folder, i,
+                                badges_background, options)
                 aggregate = []
                 i += 1
         if aggregate:
-            generate_badges(aggregate, folder, i, badges_background, options)
+            generate_badges(aggregate, folder, i,
+                            badges_background, options)
