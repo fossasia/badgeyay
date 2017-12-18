@@ -1,5 +1,5 @@
 
-# badgeyay
+# BadgeYAY
 
 [![Travis branch](https://img.shields.io/travis/fossasia/badgeyay/development.svg?style=flat-square)](https://travis-ci.org/fossasia/badgeyay)
 [![Codecov branch](https://img.shields.io/codecov/c/github/fossasia/badgeyay/development.svg?style=flat-square&label=Codecov+Coverage)](https://codecov.io/gh/fossasia/badgeyay)
@@ -12,11 +12,10 @@ The user should be able to:
   * Choose background of badges and upload logo and background image
   * Upload a CSV file or manually enter CSV data as: name, type of attendee, nick/handle, organization/project
 
-# deploy
+# Deploy
 One-click Docker, Heroku, Scalingo and Bluemix deployment is also available:
 
 [![Deploy to Docker Cloud](https://files.cloud.docker.com/images/deploy-to-dockercloud.svg)](https://cloud.docker.com/stack/deploy/?repo=https://github.com/fossasia/badgeyay) [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/fossasia/badgeyay/tree/development) [![Deploy on Scalingo](https://cdn.scalingo.com/deploy/button.svg)](https://my.scalingo.com/deploy?source=https://github.com/fossasia/badgeyay#development) [![Deploy to Bluemix](https://bluemix.net/deploy/button.png)](https://bluemix.net/deploy?repository=https://github.com/fossasia/badgeyay&branch=development)
-
 
 Checkout badgeyay in action:
 
