@@ -4,9 +4,11 @@ from cairosvg import svg2png
 import os
 
 APP_ROOT = os.path.dirname(os.path.abspath(__file__))
+# Get root folder
 SVGS_FOLDER = os.path.join(APP_ROOT, 'static/svgs')
+# Get SVG Folder
 UPLOAD_FOLDER = os.path.join(APP_ROOT, 'static/uploads')
-
+# Get Upload Folder
 
 def do_svg2png(filename, opacity, fill, text_):
     """
@@ -17,8 +19,11 @@ def do_svg2png(filename, opacity, fill, text_):
     :param `text_` - Text to be placed on the badge
     """
     png_filename = filename
+    # initialize filename to png_filename
     filename = filename.rsplit(".", 1)[0] + '.svg'
+    # get the filename, remove string after `.` and add .svg to it.
     filename = os.path.join(SVGS_FOLDER, filename)
+    # filename -> path
     tree = parse(open(filename, 'r'))
     element = tree.getroot()
     # changing style using XPath.
@@ -36,4 +41,5 @@ def do_svg2png(filename, opacity, fill, text_):
     etree.ElementTree(element).write(filename, pretty_print=True)
     print("done")
     svg2png(url=filename, write_to=UPLOAD_FOLDER + '/' + png_filename)
+    # using svg2png, save the image
     print("Image Saved")

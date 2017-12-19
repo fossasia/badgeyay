@@ -7,11 +7,13 @@ import json
 import os
 import sys
 
-# Get root folder
+
 APP_ROOT = os.path.dirname(os.path.abspath(__file__))
-# Get Upload Folder
+# Get root folder
 UPLOAD_FOLDER = os.path.join(APP_ROOT, 'static/uploads')
+# Get Upload Folder
 MAX_STRING = "chaftsladen Potsdam (F"
+# Initializing and setting global variable `MAX_STRING`
 
 
 def tocsv(url_eventyay, filename):
@@ -23,7 +25,7 @@ def tocsv(url_eventyay, filename):
     with urlopen(url_eventyay) as url:
         # load json, parse it using the utf charset
         data = json.loads(url.read().decode(url.info().get_param('charset') or 'utf8'))
-        # get list of speakers in separate vatiable
+        # get list of speakers in separate variable
         speakers = data['speakers']
         with open(os.path.join(UPLOAD_FOLDER, filename), "w+") as f:
         # iterate list one by one

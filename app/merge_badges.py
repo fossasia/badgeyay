@@ -16,12 +16,14 @@ if subprocess.call(['which', 'python3']) != 0:
     raise PackageNotFoundError("Package python3 not found")
 
 APP_ROOT = os.path.dirname(os.path.abspath(__file__))
+# Get root folder
 BADGES_FOLDER = os.path.join(APP_ROOT, 'static/badges')
-
+# Get badges folder
 subprocess.call(['python3', APP_ROOT + '/generate-badges.py'])
+# execute the generate-badges.py via subprocess
 
 input_folders = [file for file in os.listdir(BADGES_FOLDER) if file.lower().endswith(".badges")]
-
+# check for .badges files in BADGES_FOLDER
 
 def generate_pdfs(folder_path):
     """
@@ -29,6 +31,7 @@ def generate_pdfs(folder_path):
     :param `folder_path` - Path of the folder for saving of the PDF's
     """
     svgs = [file for file in os.listdir(folder_path) if file.lower().endswith('.svg')]
+    # check for .svg files in folder_path
     for svg in svgs:
         svg_path = os.path.join(folder_path, svg)
         pdf_path = os.path.splitext(svg_path)[0] + '.pdf'
@@ -65,6 +68,7 @@ for folder in input_folders:
 final_path = os.path.join(BADGES_FOLDER, 'all-badges.pdf')
 pdfs = [file for file in os.listdir(BADGES_FOLDER) if file.lower().endswith('.pdf')]
 merger = PdfFileMerger()
+
 for pdf in pdfs:
     merger.append(open(os.path.join(BADGES_FOLDER, pdf), 'rb'))
 
