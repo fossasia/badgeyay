@@ -1,8 +1,7 @@
 #!usr/bin/python3
 import os
 import argparse
-import subprocess
-from exceptions import PackageNotFoundError
+from generate_badges import GenerateBadges
 from cairosvg import svg2pdf
 from PyPDF2 import PdfFileMerger
 
@@ -12,13 +11,11 @@ parser.set_defaults(pdf=True)
 arguments = parser.parse_args()
 _pdf = arguments.pdf
 
-if subprocess.call(['which', 'python3']) != 0:
-    raise PackageNotFoundError("Package python3 not found")
-
 APP_ROOT = os.path.dirname(os.path.abspath(__file__))
 BADGES_FOLDER = os.path.join(APP_ROOT, 'static/badges')
 
-subprocess.call(['python3', APP_ROOT + '/generate-badges.py'])
+badge_generator = GenerateBadges()
+badge_generator.run_generator()
 
 input_folders = [file for file in os.listdir(BADGES_FOLDER) if file.lower().endswith(".badges")]
 

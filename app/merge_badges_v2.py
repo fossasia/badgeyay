@@ -2,6 +2,7 @@
 import os
 import argparse
 import subprocess
+from generate_badges import GenerateBadges
 from PyPDF2 import PdfFileMerger
 from exceptions import PackageNotFoundError
 
@@ -13,13 +14,12 @@ _pdf = arguments.pdf
 
 if subprocess.run('which rsvg-convert') != 0:
     raise PackageNotFoundError("Package rsvg-convert not found")
-if subprocess.run('which python3') != 0:
-    raise PackageNotFoundError("Package python3 not found")
 
 APP_ROOT = os.path.dirname(os.path.abspath(__file__))
 BADGES_FOLDER = os.path.join(APP_ROOT, 'static/badges')
 
-subprocess.run('python3 ' + APP_ROOT + '/generate-badges.py')
+badge_generator = GenerateBadges()
+badge_generator.run_generator()
 
 input_folders = [file for file in os.listdir(BADGES_FOLDER) if file.lower().endswith(".badges")]
 
