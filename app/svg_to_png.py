@@ -8,7 +8,7 @@ SVGS_FOLDER = os.path.join(APP_ROOT, 'static/svgs')
 UPLOAD_FOLDER = os.path.join(APP_ROOT, 'static/uploads')
 
 
-def do_svg2png(filename, opacity, fill, text_):
+def do_svg2png(filename, opacity, fill):
     """
     Module to convert svg to png
     :param `filename` - Destination file name
@@ -31,7 +31,6 @@ def do_svg2png(filename, opacity, fill, text_):
     path.set("style", style_detail)
     # changing text using XPath.
     path = element.xpath('//*[@id="tspan932"]')[0]
-    path.text = text_
     # Saving in the original XML tree
     etree.ElementTree(element).write(filename, pretty_print=True)
     print("done")
