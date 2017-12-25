@@ -4,6 +4,7 @@ import shutil
 import html
 import json
 import traceback
+import tempfile
 
 from defusedxml.lxml import parse
 from lxml import etree
@@ -12,21 +13,29 @@ from lxml import etree
 class GenerateBadges:
     def __init__(self):
         self.NUMBER_OF_BADGES_PER_PAGE = 8
-        self.APP_ROOT = os.path.dirname(os.path.abspath(__file__))
-        self.UPLOAD_FOLDER = os.path.join(self.APP_ROOT, 'static/uploads')
+        self.IMG = None
+        self.CONFIG = None
+        self.NAMES = None
+        self.TEMP_DIR = tempfile.gettempdir() + "/"
+        self.APP_ROOT = os.getcwd()
+        self.LIB_ROOT = os.path.abspath(os.path.join(os.path.abspath(os.path.join(__file__, os.pardir)), os.pardir))
+        self.UPLOAD_FOLDER = os.path.join(self.LIB_ROOT, 'static/badges')
 
         self.paper_sizes = {'A3': ['297mm', '420mm'], 'A4': ['210mm', '297mm']}
 
         self.input_files = [file for file in os.listdir(
-            self.UPLOAD_FOLDER) if file.lower().endswith(".csv")]
+            self.TEMP_DIR) if file.lower().endswith(".csv")]
 
-        with open(self.APP_ROOT + "/../badges/8BadgesOnA3.svg", encoding="UTF-8") as f:
+        with open(self.LIB_ROOT + "/static/8BadgesOnA3.svg", encoding="UTF-8") as f:
             self.CONTENT = f.read()
 
         self.font_choice = None
-        if os.path.isfile(os.path.join(self.UPLOAD_FOLDER, 'fonts.json')):
-            self.DATA = json.load(open(os.path.join(self.UPLOAD_FOLDER, "fonts.json")))
-            self.font_choice = self.DATA['font']
+
+    def override_param(self, font, img, config, names):
+        self.font_choice = font
+        self.IMG = img
+        self.CONFIG = config
+        self.NAMES = names
 
     def configure_badge_page(self, badge_page, options):
         """
@@ -96,21 +105,20 @@ class GenerateBadges:
             config_json = 'default.config.json'
 
             # check if custom config.json is present for the file
-            config_json_uploaded = os.path.splitext(input_file)[0] + '.json'
-            config_json_uploaded_path = os.path.join(
-                self.UPLOAD_FOLDER, config_json_uploaded)
-            if os.path.isfile(config_json_uploaded_path):
-                config_json = config_json_uploaded
-            config = json.loads(open(self.UPLOAD_FOLDER + '/' + config_json).read())
+            if self.CONFIG is not None:
+                config = json.loads(open(os.path.join(self.APP_ROOT, self.CONFIG)).read())
+            else:
+                badges_config_json = 'static/badges/' + config_json
+                config = json.loads(open(os.path.join(self.LIB_ROOT,
+                                                      badges_config_json)).read())
             options = config['options']
 
-            picture = os.path.splitext(input_file)[0]
-            picpath = self.UPLOAD_FOLDER + '/' + picture
+            picpath = os.path.join(self.APP_ROOT, self.IMG)
             if not os.path.isfile(picpath):
-                print("SKIP: {} has no picture {}".format(input_file, picture))
+                print("SKIP: {} no picture found.".format(input_file))
                 continue
             print("READING: {}".format(input_file))
-            folder = self.APP_ROOT + '/static/badges/' + input_file + ".badges"
+            folder = self.TEMP_DIR + 'static/badges/' + input_file + ".badges"
             shutil.rmtree(folder, ignore_errors=True)
             try:
                 os.makedirs(folder, exist_ok=True)
@@ -120,7 +128,8 @@ class GenerateBadges:
             badges_background = "badges_background{}".format(ext)
             shutil.copyfile(picpath, os.path.join(folder, badges_background))
 
-            with open(os.path.join(self.UPLOAD_FOLDER, input_file), encoding="UTF-8") as f:
+            data_file_path = os.path.abspath(os.path.join(self.APP_ROOT, self.NAMES))
+            with open(data_file_path, encoding="UTF-8") as f:
                 aggregate = []
                 i = 1
                 for row in csv.reader(f):
