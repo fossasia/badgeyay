@@ -76,15 +76,13 @@ def upload():
     csv = request.form['csv'].strip()
     img = request.form['img-default']
     custom_font = request.form['custfont']
-    text_on_image = request.form['text_on_image']
     file = request.files['file']
 
     # If default background is selected
     if img != '':
         if (img == 'user_defined.png'):
             bg_color = request.form['bg_color']
-            text_on_image = request.form['text_on_image']
-            do_svg2png(img, 1, bg_color, text_on_image)
+            do_svg2png(img, 1, bg_color)
         filename = img + '.csv'
 
     # Custom font is selected for the text
@@ -138,15 +136,6 @@ def upload():
     if filename.find("png.csv") == -1:
         if img == '':
             flash('Please upload an image in \'PNG\' format!', 'error')
-            return redirect(url_for('index'))
-
-    # if config file is uploaded
-    config_json = request.files['config']
-    if config_json.filename != '':
-        if '.' in config_json.filename and config_json.filename.rsplit('.', 1)[1] == 'json':
-            config_json.save(os.path.join(app.config['UPLOAD_FOLDER'], config_json.filename))
-        else:
-            flash('Only JSON file is accepted!', 'error')
             return redirect(url_for('index'))
 
     # If the csv file is uploaded

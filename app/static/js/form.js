@@ -25,14 +25,6 @@ $(document).ready(
             $("#background-input").css("display", "block");
             $("input[name='img-default']").val("user_defined.png");
         });
-        $("#text").click(function () {
-            $("#cutext-input").css("display", "block");
-            $("#config-input").css("display", "none");
-        });
-        $("#json").click(function () {
-            $("#cutext-input").css("display", "none");
-            $("#config-input").css("display", "block");
-        });
         $("#custfont").click(function(){
             $("#custom-font").css("display", "block");
         });
@@ -92,14 +84,6 @@ function validate() {
     if (imgDefault === "" && imgUploaded === "") {
         $(".no-image-error").show();
         return false;
-    }
-
-    var configJson = $('input[type=file][name="config"]').val();
-    if (configJson !== "") {
-        if (configJson.split(".")[configJson.split(".").length - 1] !== "json") {
-            $(".config-error").show();
-            return false;
-        }
     }
 
     return true;

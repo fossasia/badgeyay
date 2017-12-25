@@ -68,6 +68,7 @@
 									<label for="inputFile"></label>
 									<div>
 										<input type="text" id="picker" class="form-control" name="bg_color">
+										<input type="hidden" name="img-default" value="">
 									</div>
 								</section>
 							</li>
@@ -94,26 +95,6 @@
 							</section>
 							<input type="hidden" name="custfont" value="">
 						</ul>
-                        <label> Customise Badges (Optional)</label>
-                        <ul style="list-style-type:none">
-                            <li>
-                                <input type="radio" name="text" id="text"> Add Custom text</li>
-								<section id="cutext-input" style="display:none;">
-									<label for="inputFile"></label>
-									<input id="image_text" type="text" class="form-control" placeholder="The text entered here will appear on badges" name="text_on_image"
-									/>
-									<input type="hidden" name="img-default" value="">
-								</section>
-                            <li>
-							<li>
-								<input type="radio" name="text" id="json"> Add JSON file</li>
-								<section id="config-input" style="display:none">
-									<label for="inputFile"> Upload a config file</label>
-									<input type="file" id="inputFile" name="config" accept=".json">
-								</section>
-							</li>
-                        </ul>
-                        <div id="error" class="config-error"> Please upload a JSON file</div>
                         <button type="submit" disabled="disabled" class="btn btn-block submit-btn">Generate Badges</button>
                     </div>
                 </div>
