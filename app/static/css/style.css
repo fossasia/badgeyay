@@ -281,3 +281,24 @@ input[type="radio"] {
     vertical-align: middle;
     margin: 0 auto;
 }
+
+.preview-image{
+    height: 250px;
+    width: 180px;
+    margin-left: 80px;
+    background-size: cover;
+    padding: 140px 0 0 5px;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.preview-image-li{
+    list-style: none;
+    color: white;
+    font-size: 15px;
+}
+
+#preview-btn{
+    font-size: 18px;   
+}
+
