@@ -4,9 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>BadgeYay</title>
+    <title>BadgeYay Backend</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/jquery.minicolors.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}"> {% block style %}{% endblock %}
@@ -16,13 +15,11 @@
     {% include '_header.html' %} {% block body %}{% endblock %}
     <script src="{{ url_for('static', filename='js/jquery.js') }}"></script>
     <script src="{{ url_for('static', filename='js/bootstrap.js') }}"></script>
-    <script src="{{ url_for('static', filename='js/jquery.minicolors.min.js') }}"></script>
     <script src="{{ url_for('static', filename='js/script.js') }}"></script>
-    <script src="{{ url_for('static', filename='js/form.js') }}"></script>
 
     <div id="footer">
-        <span> <strong>Version: </strong></span>
-        <span> <a class="version"></a></span>
+        <span><strong>Version: </strong></span>
+        <span><a class="version"></a></span>
     </div>
 </body>
 
