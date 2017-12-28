@@ -36,6 +36,10 @@ script:
 - python app/main.py >> log.txt 2>&1  &
 - nosetests app/tests/test.py -v --with-coverage
 - python3 -m pyflakes .
+- cd cli
+- python setup.py install
+- cd ..
+- badgeyay -i app/static/uploads/businesspass.png -n sample/businesspass.png.csv
 
 after_success:
 - bash <(curl -s https://codecov.io/bash)
