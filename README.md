@@ -1,13 +1,13 @@
 
-# BadgeYAY
+# BadgeYAY Backend
 
 [![Travis branch](https://img.shields.io/travis/fossasia/badgeyay/development.svg?style=flat-square)](https://travis-ci.org/fossasia/badgeyay)
 [![Codecov branch](https://img.shields.io/codecov/c/github/fossasia/badgeyay/development.svg?style=flat-square&label=Codecov+Coverage)](https://codecov.io/gh/fossasia/badgeyay)
 [![Gitter](https://img.shields.io/badge/chat-on%20gitter-ff006f.svg?style=flat-square)][gitter]
 
-`badgeyay` is a simple badge generator with a simple web UI to add data and generate printable badges in a zip.
+`badgeyay` is a simple badge generator with a simple web UI to add data and generate printable badges in a pdf.
 
-The user should be able to:
+The user can:
   * Choose size of badges
   * Choose background of badges and upload logo and background image
   * Upload a CSV file or manually enter CSV data as: name, type of attendee, nick/handle, organization/project
@@ -16,12 +16,12 @@ The user should be able to:
 One-click Docker, Heroku, Scalingo and Bluemix deployment is also available:
 
 [![Deploy to Docker Cloud](https://files.cloud.docker.com/images/deploy-to-dockercloud.svg)](https://cloud.docker.com/stack/deploy/?repo=https://github.com/fossasia/badgeyay) [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/fossasia/badgeyay/tree/development) [![Deploy on Scalingo](https://cdn.scalingo.com/deploy/button.svg)](https://my.scalingo.com/deploy?source=https://github.com/fossasia/badgeyay#development) [![Deploy to Bluemix](https://bluemix.net/deploy/button.png)](https://bluemix.net/deploy?repository=https://github.com/fossasia/badgeyay&branch=development)
+<!-- Replace with backend specific demo
+Checkout badgeyay backend in action:
 
-Checkout badgeyay in action:
+ ![Demo GIF](app/working.gif)
 
-![Demo GIF](app/working.gif)
-
-[![Demo YouTube](https://user-images.githubusercontent.com/8705386/30831526-438f8c4c-a237-11e7-83fc-c12046f12e18.png)](https://www.youtube.com/watch?v=Gh8j_01LIoQ)
+[![Demo YouTube](https://user-images.githubusercontent.com/8705386/30831526-438f8c4c-a237-11e7-83fc-c12046f12e18.png)](https://www.youtube.com/watch?v=Gh8j_01LIoQ)-->
 
 Our current goal is to provide an interface to generate badges for the FOSSASIA conference.
 
@@ -33,12 +33,39 @@ If you like to join developing,
   - Discuss with others who work on the issue about the best solution. It is your responsibility, not the maintainer's to choose the best solution.
 - If in doubt, let's follow [CCCC][cccc].
 
+Data model
+----------
+
+### Request
+
+/api/v1.0/generate_badges</h2>
+    Method: POST
+    Parameters:
+    - custfont: Font to use. if it is null or not present the default font will be used.
+    - file: .csv which contains user data
+    - csv: CSV data as plain text seperated by a comma (,)
+    (Either file or csv must be present in the query if both are present, file will be processed)
+    - img-default: The dafault image to use. (Required)
+    - bg_color: Hex code of background colour of the badge. Will only be parsed if the value of img-default is "user-defined.png"
+    - image: The custom background image (in .png format) of the badge which will be uploaded.
+    (Either img-default or csv must be present in the query if both are present, image will be processed)
+
+### Response
+
+```json
+[{
+"type" : "success"
+"message" : "Pdf generation completed successfully"
+"download_link" : "https://badgeyay-dev.herokuapp.com/static/badges/team-png-csv-badges.pdf"
+}]
+```
+
 Specification
 -------------
 
 ### Technologies Used
 
-Badgeyay uses a number of open source projects:
+Badgeyay backend uses a number of open source projects:
 
 * [Flask](http://flask.pocoo.org/) - Microframework powered by python
 * [Bootstrap](https://getbootstrap.com/docs/3.3/) - Responsive frontend framework
@@ -53,42 +80,7 @@ Badgeyay uses a number of open source projects:
 
 The guidelines for setting up and running the tests are mentioned in the [testing docs](docs/test/testing.md).
 
-### Input
 
-- The input is a set of csv files in the same folder, UTF-8.
-- The csv file is named after the badge type to take. Example: `vip.png.csv` uses the picture `vip.png`.
-- The CSV has up to 4 columns for the name and the twitter handle. They will be filled if this number is filled:
-  - `__X_`
-  - `__XX`
-  - `_XXX`
-  - `XXXX`
-- Optional configuration file in json format to customise badges.
-- A sample configuration file is shown below
-  ```
-  {
-    "options": {
-        "badge_wrap": true,
-        "paper_size_format": "A3"
-    }
-  }
-  ```
-
-  - badge_wrap: It can be **true** or **false**. If set to true then for each entry in the csv file two badges
-                will be generated so that they can be wrapped around the badge card.
-  - paper_size_format: As of now it's value can be either **"A3"** or **"A4"**. The value will decide the size
-                       of the page on which the badges (in groups of 8) will be printed. Not required if width
-                       and height of parameters are explicitly mentioned.
-  - width: Width of the page on which badges (in groups of 8) will be printed. Value should be in mm.
-           For example: **"297mm"**
-  - height: Height of the page on which badges (in groups of 8) will be printed. Value should be in mm.
-            For example: **"420mm"**.
-
-### Output
-
-The output file is svg / pdf / multipage pdf of size A3.
-Each badge has the size A6.
-The outputs are in a folder derived from the input csv.
-The outputs can be either of the two types, viz ZIPs or PDFs, or both. User has the choice to choose from either of the two or from both of them.
 
 ### Customization
 
@@ -101,7 +93,7 @@ You need Ubuntu to run the application. We are working on integrating vagrant to
 
 ### Install Dependencies
 
-Badgeyay requires the following dependencies to be installed
+Badgeyay backend requires the following dependencies to be installed
 - python3
 
 For Ubuntu/Debian based Package Managers
@@ -125,7 +117,7 @@ sudo pacman -S python-lxml
 
 Installation
 --------------
-Badgeyay can be easily deployed on a variety of platforms. Currently it can be deployed in following ways.
+Badgeyay backend can be easily deployed on a variety of platforms. Currently it can be deployed in following ways.
 
 1. [Local Installation using Virtual environment](/docs/installation/localvir.md)
 
