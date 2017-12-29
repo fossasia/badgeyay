@@ -109,20 +109,20 @@
                 </div>
             </div>
         </form>
-		{% with m = get_flashed_messages(with_categories=true) %}
-			{% if m %}
-		  		{% for cat,msg in m %}
-		   			{% if cat == 'success-pdf' %}
-		   				<div class="flash-success">Your badges have been created successfully.</div>
-        					<div class="text-center">
-            					<a href="static/badges/{{msg}}-badges.pdf" class="btn btn-success" download="{{msg}}-badges.pdf">Download as PDF</a>
-        					</div>
-        			{% else %}
-       			 		<div class="flash-{{cat}}">{{msg}}</div>
-		   			{% endif %}
-				{% endfor %}
-			{% endif %}
-		{% endwith %}
+{#		{% with m = get_flashed_messages(with_categories=true) %}#}
+{#			{% if m %}#}
+{#		  		{% for cat,msg in m %}#}
+{#		   			{% if cat == 'success-pdf' %}#}
+{#		   				<div class="flash-success">Your badges have been created successfully.</div>#}
+{#        					<div class="text-center">#}
+{#            					<a href="static/badges/{{msg}}-badges.pdf" class="btn btn-success" download="{{msg}}-badges.pdf">Download as PDF</a>#}
+{#        					</div>#}
+{#        			{% else %}#}
+{#       			 		<div class="flash-{{cat}}">{{msg}}</div>#}
+{#		   			{% endif %}#}
+{#				{% endfor %}#}
+{#			{% endif %}#}
+{#		{% endwith %}#}
     </div>
 </div>
 {% endblock %}
