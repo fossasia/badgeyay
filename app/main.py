@@ -160,7 +160,13 @@ def upload():
             os.rename(os.path.join(BADGES_FOLDER + "/" + filename + ".badges.pdf"),
                       os.path.join(BADGES_FOLDER + "/" + filename.replace('.', '-') + "-badges.pdf"))
 
-        return redirect(url_for('index'))
+        # return redirect(url_for('index'))
+        return redirect(url_for('badges'))
+
+
+@app.route('/badges')
+def badges():
+    return render_template("badges.html")
 
 
 @app.route('/guide')
