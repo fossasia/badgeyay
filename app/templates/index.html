@@ -1,8 +1,7 @@
-{% extends "layout.html" %}
-{% block body %}
+{% extends "layout.html" %} {% block body %}
 <div class="container board">
     <div class="row">
-        <form action="{{ url_for('upload') }}" method="post" enctype="multipart/form-data" onsubmit="return validate()">
+        <form id="form1" action="{{ url_for('upload') }}" method="post" enctype="multipart/form-data" onsubmit="return validate()">
             <div class="row">
                 <div class="container board">
                     <div class="col-md-4 col-md-offset-4 col-sm-8 col-sm-offset-2 col-xs-10 col-xs-offset-1">
@@ -69,33 +68,44 @@
 									<label for="inputFile"></label>
 									<div>
 										<input type="text" id="picker" class="form-control" name="bg_color">
+										<input type="hidden" name="img-default" value="">
 									</div>
 								</section>
 							</li>
                         </ul>
-                        <div id="error" class="no-image-error"> Please select a default background or upload an image!</div>
-                        <label> Customise Badges (Optional)</label>
-                        <ul style="list-style-type:none">
-                            <li>
-                                <input type="radio" name="text" id="text"> Add Custom text</li>
-								<section id="cutext-input" style="display:none;">
-									<label for="inputFile"></label>
-									<input id="image_text" type="text" class="form-control" placeholder="The text entered here will appear on badges" name="text_on_image"
-									/>
-									<input type="hidden" name="img-default" value="">
-								</section>
-                            <li>
+						<div id="error" class="no-image-error"> Please select a default background or upload an image!</div>
+						<label>Choose your font</label>
+						<ul style="list-style-type:none">
 							<li>
-								<input type="radio" name="text" id="json"> Add JSON file</li>
-								<section id="config-input" style="display:none">
-									<label for="inputFile"> Upload a config file</label>
-									<input type="file" id="inputFile" name="config" accept=".json">
-								</section>
-							</li>
-                        </ul>
-                        <div id="error" class="config-error"> Please upload a JSON file</div>
+								<input type="radio" name="fontsource" id="custfont"> Use Custom font
+                            </li>
+                            <section id="custom-font" style="display: none;">
+								<label for="inputFile">Select from following fonts</label>
+								<div class="btn-group">
+									<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+										<span class="placeholder2">Select a font</span>
+										<span class="glyphicon glyphicon-chevron-down"></span>
+									</button>
+									<ul class="dropdown-menu">
+										{% for i in custom_fonts %}
+										<li class="font-options" style="font-family:'{{i}}'" data-item="{{i}}">{{i}}</li>
+										{% endfor %}
+									</ul>
+								</div>
+							</section>
+							<input type="hidden" name="custfont" value="">
+						</ul>
                         <button type="submit" disabled="disabled" class="btn btn-block submit-btn">Generate Badges</button>
+						<button type="button" disabled="disabled" class="btn btn-block btn-warning" id="preview-btn">Preview</button>
+                        <div id="preview" class="preview-image hidden">
+                        	<li class="preview-image-li" id="preview-li-1"></li>
+                        	<li class="preview-image-li" id="preview-li-2"></li>
+                        	<li class="preview-image-li" id="preview-li-3"></li>
+                        	<li class="preview-image-li" id="preview-li-4"></li>
+                        </div>
+
                     </div>
+
                 </div>
             </div>
         </form>
@@ -105,7 +115,7 @@
 		   			{% if cat == 'success-pdf' %}
 		   				<div class="flash-success">Your badges have been created successfully.</div>
         					<div class="text-center">
-            					<a href="static/badges/{{msg}}-badges.pdf" class="btn btn-success" download="{{msg}}.badges.pdf">Download as PDF</a>
+            					<a href="static/badges/{{msg}}-badges.pdf" class="btn btn-success" download="{{msg}}-badges.pdf">Download as PDF</a>
         					</div>
         			{% else %}
        			 		<div class="flash-{{cat}}">{{msg}}</div>

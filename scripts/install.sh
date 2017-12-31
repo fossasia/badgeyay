@@ -6,7 +6,7 @@ apt-get install -y build-essential python3 python3-dev python3-setuptools python
 apt-get install -y libssl-dev libffi-dev libjpeg-dev
 apt-get install -y libxml2-dev libxslt1-dev
 # Install dependencies
-apt-get install -y librsvg2-bin pdftk
+apt-get install -y librsvg2-bin
 
 # Set python3 as default
 echo "alias python=python3" >> .bashrc
