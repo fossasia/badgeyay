@@ -1,4 +1,5 @@
-# badgeyay
+
+# BadgeYAY
 
 [![Travis branch](https://img.shields.io/travis/fossasia/badgeyay/development.svg?style=flat-square)](https://travis-ci.org/fossasia/badgeyay)
 [![Codecov branch](https://img.shields.io/codecov/c/github/fossasia/badgeyay/development.svg?style=flat-square&label=Codecov+Coverage)](https://codecov.io/gh/fossasia/badgeyay)
@@ -10,6 +11,11 @@ The user should be able to:
   * Choose size of badges
   * Choose background of badges and upload logo and background image
   * Upload a CSV file or manually enter CSV data as: name, type of attendee, nick/handle, organization/project
+
+# Deploy
+One-click Docker, Heroku, Scalingo and Bluemix deployment is also available:
+
+[![Deploy to Docker Cloud](https://files.cloud.docker.com/images/deploy-to-dockercloud.svg)](https://cloud.docker.com/stack/deploy/?repo=https://github.com/fossasia/badgeyay) [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/fossasia/badgeyay/tree/development) [![Deploy on Scalingo](https://cdn.scalingo.com/deploy/button.svg)](https://my.scalingo.com/deploy?source=https://github.com/fossasia/badgeyay#development) [![Deploy to Bluemix](https://bluemix.net/deploy/button.png)](https://bluemix.net/deploy?repository=https://github.com/fossasia/badgeyay&branch=development)
 
 Checkout badgeyay in action:
 
@@ -97,24 +103,17 @@ You need Ubuntu to run the application. We are working on integrating vagrant to
 
 Badgeyay requires the following dependencies to be installed
 - python3
-- rsvg-convert
-- pdftk
 
 For Ubuntu/Debian based Package Managers
 ```
 sudo apt-get update
-sudo apt-get install python3 librsvg2-bin pdftk
+sudo apt-get install python3
 ```
 
 For Fedora/CentOS/RPM based package managers
 ```
 sudo -i
-dnf install librsvg2 librsvg2-tools
-dnf install gcc gcc-c++ libXrandr gtk2 libXtst libart_lgpl
-wget http://mirror.centos.org/centos/6/os/x86_64/Packages/libgcj-4.4.7-18.el6.x86_64.rpm
-wget https://www.pdflabs.com/tools/pdftk-the-pdf-toolkit/pdftk-2.02-1.el6.x86_64.rpm
-rpm -ivh --nodeps libgcj-4.4.7-11.el6.x86_64.rpm
-rpm -i pdftk-2.02-1.el6.x86_64.rpm
+yum install python3
 exit
 ```
 
@@ -122,7 +121,6 @@ For Arch based package managers:
 ```
 sudo pacman -S python-cairosvg
 sudo pacman -S python-lxml
-sudo yaourt -S pdftk
 ```
 
 Installation
@@ -137,9 +135,6 @@ Badgeyay can be easily deployed on a variety of platforms. Currently it can be d
 
 4. [Deployment with Docker](/docs/installation/docker.md)
 
-One-click Docker, Heroku, Scalingo and Bluemix deployment is also available:
-
-[![Deploy to Docker Cloud](https://files.cloud.docker.com/images/deploy-to-dockercloud.svg)](https://cloud.docker.com/stack/deploy/?repo=https://github.com/fossasia/badgeyay) [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/fossasia/badgeyay/tree/development) [![Deploy on Scalingo](https://cdn.scalingo.com/deploy/button.svg)](https://my.scalingo.com/deploy?source=https://github.com/fossasia/badgeyay#development) [![Deploy to Bluemix](https://bluemix.net/deploy/button.png)](https://bluemix.net/deploy?repository=https://github.com/fossasia/badgeyay&branch=development)
 
 Contributions, Bug Reports, Feature Requests
 --------------
@@ -159,20 +154,6 @@ We have the following branches
 
 
 Also read [CONTRIBUTING.md](https://github.com/fossasia/badgeyay/blob/development/.github/CONTRIBUTING.md)
-
-Installation
---------------
-Badgeyay can be easily deployed on a variety of platforms. Currently it can be deployed in following ways.
-
-1. [Local Installation](/docs/installation/local.md)
-
-2. [Deployment on Heroku](/docs/installation/heroku.md)
-
-3. [Deployment with Docker](/docs/installation/docker.md)
-
-One-click Docker, Heroku, Scalingo and Bluemix deployment is also available:
-
-[![Deploy to Docker Cloud](https://files.cloud.docker.com/images/deploy-to-dockercloud.svg)](https://cloud.docker.com/stack/deploy/?repo=https://github.com/fossasia/badgeyay) [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/fossasia/badgeyay/tree/development) [![Deploy on Scalingo](https://cdn.scalingo.com/deploy/button.svg)](https://my.scalingo.com/deploy?source=https://github.com/fossasia/badgeyay#development) [![Deploy to Bluemix](https://bluemix.net/deploy/button.png)](https://bluemix.net/deploy?repository=https://github.com/fossasia/badgeyay&branch=development)
 
 
 Implementation

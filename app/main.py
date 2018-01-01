@@ -2,16 +2,17 @@ from flask import Flask, render_template, request, redirect, url_for, flash
 from flask_compress import Compress
 from werkzeug.utils import secure_filename
 import os
+import json
 import shutil
 import traceback
 from svg_to_png import do_svg2png
+# from argparse import ArgumentParser
 
 APP_ROOT = os.path.dirname(os.path.abspath(__file__))
 UPLOAD_FOLDER = os.path.join(APP_ROOT, 'static/uploads')
 BADGES_FOLDER = os.path.join(APP_ROOT, 'static/badges')
 
 app = Flask(__name__)
-app.config['DEBUG'] = True
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 app.config['MAX_CONTENT_LENGTH'] = 16 * 1024 * 1024
 app.config['SECRET_KEY'] = 'secret'
@@ -19,6 +20,13 @@ COMPRESS_MIMETYPES = ['text/html', 'text/css', 'application/json']
 COMPRESS_LEVEL = 6
 COMPRESS_MIN_SIZE = 500
 Compress(app)
+
+# parser = ArgumentParser()
+# parser.add_argument("--dev",
+#                     help="Start the server in development mode with debug=True",
+#                     action="store_true")
+# args = parser.parse_args()
+CUSTOM_FONTS = ['monospace', 'sans-serif', 'sans', 'Courier 10 Pitch', 'Source Code Pro']
 
 
 @app.route('/')
@@ -30,7 +38,7 @@ def index():
     for file in os.listdir(UPLOAD_FOLDER):
         if file.rsplit('.', 1)[1] == 'png' and file != 'user_defined.png':
             default_background.append(file)
-    return render_template('index.html', default_background=default_background)
+    return render_template('index.html', default_background=default_background, custom_fonts=CUSTOM_FONTS)
 
 
 def generate_badges(_pdf=True):
@@ -67,16 +75,24 @@ def upload():
     empty_directory()
     csv = request.form['csv'].strip()
     img = request.form['img-default']
-    text_on_image = request.form['text_on_image']
+    custom_font = request.form['custfont']
     file = request.files['file']
 
     # If default background is selected
     if img != '':
         if (img == 'user_defined.png'):
             bg_color = request.form['bg_color']
-            text_on_image = request.form['text_on_image']
-            do_svg2png(img, 1, bg_color, text_on_image)
+            do_svg2png(img, 1, bg_color)
         filename = img + '.csv'
+
+    # Custom font is selected for the text
+    if custom_font != '':
+        json_str = json.dumps({
+            'font': custom_font
+        })
+        f = open(os.path.join(app.config['UPLOAD_FOLDER'], 'fonts.json'), "w+")
+        f.write(json_str)
+        f.close()
 
     # If the textbox is filled
     if img == '':
@@ -122,15 +138,6 @@ def upload():
             flash('Please upload an image in \'PNG\' format!', 'error')
             return redirect(url_for('index'))
 
-    # if config file is uploaded
-    config_json = request.files['config']
-    if config_json.filename != '':
-        if '.' in config_json.filename and config_json.filename.rsplit('.', 1)[1] == 'json':
-            config_json.save(os.path.join(app.config['UPLOAD_FOLDER'], config_json.filename))
-        else:
-            flash('Only JSON file is accepted!', 'error')
-            return redirect(url_for('index'))
-
     # If the csv file is uploaded
     if '.' in filename and filename.rsplit('.', 1)[1] == 'csv':
         filename = secure_filename(filename)
@@ -140,6 +147,8 @@ def upload():
 
         # Remove the uploaded files after job in done
         os.unlink(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+        if os.path.isfile(os.path.join(app.config['UPLOAD_FOLDER'], 'fonts.json')):
+            os.unlink(os.path.join(app.config['UPLOAD_FOLDER'], 'fonts.json'))
         try:
             if 'imgname' in locals():
                 os.unlink(os.path.join(app.config['UPLOAD_FOLDER'], imgname))
@@ -148,6 +157,8 @@ def upload():
 
         if True:
             flash(filename.replace('.', '-'), 'success-pdf')
+            os.rename(os.path.join(BADGES_FOLDER + "/" + filename + ".badges.pdf"),
+                      os.path.join(BADGES_FOLDER + "/" + filename.replace('.', '-') + "-badges.pdf"))
 
         return redirect(url_for('index'))
 
@@ -178,4 +189,5 @@ def Internal_Server_Error(e):
 
 
 if __name__ == '__main__':
-    app.run()
+    # app.run(debug=args.dev)
+    app.run(debug=True)
