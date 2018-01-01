@@ -1,33 +1,28 @@
 #!usr/bin/python3
-import os
 import argparse
-import subprocess
-from generate_badges import GenerateBadges
+import os
+import tempfile
+
 from PyPDF2 import PdfFileMerger
-from exceptions import PackageNotFoundError
+from cairosvg import svg2pdf
 
 parser = argparse.ArgumentParser(description='Argument Parser for merge_badges')
 parser.add_argument('-p', dest='pdf', action='store_true')
-parser.set_defaults(pdf=False, zip=False)
+parser.set_defaults(pdf=True)
 arguments = parser.parse_args()
 _pdf = arguments.pdf
 
-if subprocess.run('which rsvg-convert') != 0:
-    raise PackageNotFoundError("Package rsvg-convert not found")
-
 APP_ROOT = os.path.dirname(os.path.abspath(__file__))
-BADGES_FOLDER = os.path.join(APP_ROOT, 'static/badges')
-
-badge_generator = GenerateBadges()
-badge_generator.run_generator()
+TEMP_DIR = tempfile.gettempdir()
+BADGES_FOLDER = os.path.join(TEMP_DIR, 'static/badges')
 
 input_folders = [file for file in os.listdir(BADGES_FOLDER) if file.lower().endswith(".badges")]
 
 
 def generate_pdfs(folder_path):
     """
-    Generate PDF at the passed folder path
-    :param `folder_path` - Folder path
+    Function to generate the PDF for the badge
+    :param `folder_path` - Path of the folder for saving of the PDF's
     """
     svgs = [file for file in os.listdir(folder_path) if file.lower().endswith('.svg')]
     for svg in svgs:
@@ -35,7 +30,10 @@ def generate_pdfs(folder_path):
         pdf_path = os.path.splitext(svg_path)[0] + '.pdf'
         print('svg: {}'.format(svg_path))
         print('pdf: {}'.format(pdf_path))
-        subprocess.run('rsvg-convert -f pdf -o {} {}'.format(pdf_path, svg_path))
+        try:
+            svg2pdf(url=svg_path, write_to=pdf_path)
+        except Exception as e:
+            pass
 
 
 # Generating PDF files from svg.

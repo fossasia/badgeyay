@@ -1,11 +1,14 @@
-from lxml import etree
-from defusedxml.lxml import parse
-from cairosvg import svg2png
 import os
 
-APP_ROOT = os.path.dirname(os.path.abspath(__file__))
-SVGS_FOLDER = os.path.join(APP_ROOT, 'static/svgs')
-UPLOAD_FOLDER = os.path.join(APP_ROOT, 'static/uploads')
+import click
+from cairosvg import svg2png
+from defusedxml.lxml import parse
+from lxml import etree
+
+
+APP_ROOT = os.path.abspath(os.path.join(os.path.abspath(os.path.join(__file__, os.pardir)), os.pardir))
+STATIC_ASSET = os.path.join(APP_ROOT, 'static')
+GENERATED = os.path.join(os.getcwd(), 'generated')
 
 
 def do_svg2png(filename, opacity, fill):
@@ -18,7 +21,7 @@ def do_svg2png(filename, opacity, fill):
     """
     png_filename = filename
     filename = filename.rsplit(".", 1)[0] + '.svg'
-    filename = os.path.join(SVGS_FOLDER, filename)
+    filename = os.path.join(STATIC_ASSET, filename)
     tree = parse(open(filename, 'r'))
     element = tree.getroot()
     # changing style using XPath.
@@ -33,6 +36,5 @@ def do_svg2png(filename, opacity, fill):
     path = element.xpath('//*[@id="tspan932"]')[0]
     # Saving in the original XML tree
     etree.ElementTree(element).write(filename, pretty_print=True)
-    print("done")
-    svg2png(url=filename, write_to=UPLOAD_FOLDER + '/' + png_filename)
-    print("Image Saved")
+    svg2png(url=filename, write_to=GENERATED + '/' + png_filename)
+    click.echo('Custom Image Saved')

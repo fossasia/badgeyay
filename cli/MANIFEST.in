@@ -1,0 +1,4 @@
+include badgeyay/static/*
+include badgeyay/static/badges/*
+include badgeyay/utils/*.py
+exclude .gitignore

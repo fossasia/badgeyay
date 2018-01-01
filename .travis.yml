@@ -3,13 +3,13 @@ language: python3
 sudo: required
 
 addons:
-  firefox: "55.0"
+  firefox: 55.0
   apt:
     packages:
       - python-dev
 
 python:
-  - '3.5'
+  - 3.5
 
 before_install:
 - sudo apt-get -qq update
@@ -28,32 +28,18 @@ install:
 - pip3 install -r requirements/test.txt
 
 before_script:
-- "export DISPLAY=:99.0"
-- "sh -e /etc/init.d/xvfb start"
+- export DISPLAY=:99.0
+- sh -e /etc/init.d/xvfb start
 - sleep 3
 
 script:
 - python app/main.py >> log.txt 2>&1  &
 - nosetests app/tests/test.py -v --with-coverage
 - python3 -m pyflakes .
-
-deploy:
-- provider: releases
-  skip_cleanup: true
-  api_key:
-    secure: "xlbAXVbIkKtoQH78HgpFvURBR1B40qxuui6AB7WzPgDA8bQzW7FSNYghMBaJkRdVDKBbS9PFcwi9joCnJq3JoGmKDHdtBe5aYAsfiyDiLZTmThqX0we87tin3WcxefsOjUbDHZrR6R0XdOb4SxXYhn5pn1Xjf9I4/rWi6tuqLX2LkPNITxISnQVroO4NGAMsYDUGYxvaQf8zbC3rl8q8yjV9C+VhazKgWAcWEXB45nJtkGNpzuxldKQ6kANwssuSVB0g3P9UUuRhVs+m6Hz2fIpUjHCI7mhpPQxYHf6ajF4G1D3i1ACtpOd39+fygI3GEaejn1Ouni/ECan2TicQ72ujP5cOS6jl/7ZgxoYFR7XuuhFAaHn+RhXR9RP/MIFIVdjtBySxnmbxpObXqyzygcYUIn11fBrdixSO7f1UFbmT0hlJfG4Msbo0JSh0BSqwIEwG9Pvc+DWJjWOYyahRJZBrvt5CWAgs84frq/EXFnVckmjOsBD+iW0L/nZQnt8+ZrH9LAMM5Y2XiDDDJG7lx+yvk5oKmcr1n53XL64x3EMg7tuBdCbPiQcQc/13kDVkHW5PVhjtLzRZ2/yUtvUFuq+Lzzl9e/hJ+PW0ioTVa6ykkoPfhQhUxlPRRhOC4d+aPAP6t4km8JzMyGC2wPJqt7X83eKIbEVHsQHbzwyze3Q="
-  file: "all-badges.pdf"
-  on:
-    branch: master
-
-- provider: heroku
-  api_key:
-    secure: RFY/G7i7bq9UnZRjIACCuRubtgG2V3GdKwwW/4Uec/2eFaRQ+XKeEqW9M28cZOWhCAroH1phN1cIyyTFfQmbljzQhNxgp/v1re4s0GRpEeZ8ilHZcdoUqr9TEkCFaBwhO5LmaaZR2t4gg91L+BZnRbEE2Rk6StITaC6aQydtbZNDKhEcabJUynh7j8Q8OuQWFlPHwgToUV4/EVI5bPU+ZlewebzkezvWSLkBjo8Q2z16dLR6JBr/72mrmrh1KPumr1Ef7NZuPEPtBZnjwn6ob4Qfi/Kovasy1MaAZl00mNeLIRtzT4TjKtIze7zoBGN1eykkmpn+5Jn4jG1BEtWdAEPxZX46dWUYkXmlvGeLOZUhL3zrf+AIDRCTA8ZX5c9/IEpcylU1F97B6jG9G3aXkDC1oT1QCuEXmA2Yzz6puyWt4Ym5MKDuBUnq+teWU5AhlgT9rsgik1zsADmduAYKgexbueVXYiYD6c/5SEQ1kMmQkMZQb/luO/KAVEj0QSHMkr0Vj83f0PSx9O/YAc7MCRH2dxXKB7BDiCzA9UMfXF+8C8GVIBqhs3FaBoo1pRnCliNxRwXODKEmi5tauZqD7egI0nSu23CAieSsDbDa715gWBxQRXpTRhGzYAVMxZJWRy6BfhRekrwEg0JwZM3qAJHsn2oumOnnSiOZBdO1BXY=
-  app: badgeyay-dev
-  on:
-    repo: fossasia/badgeyay
-    branch: development
+- cd cli
+- python setup.py install
+- cd ..
+- badgeyay -i app/static/uploads/businesspass.png -n sample/businesspass.png.csv
 
 after_success:
-- deactivate
-- 'bash <(curl -s https://codecov.io/bash)'
+- bash <(curl -s https://codecov.io/bash)
