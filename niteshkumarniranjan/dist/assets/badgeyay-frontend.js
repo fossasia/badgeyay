@@ -8,10 +8,9 @@ define('badgeyay-frontend/app', ['exports', 'badgeyay-frontend/resolver', 'ember
   Object.defineProperty(exports, "__esModule", {
     value: true
   });
-  var Application = Ember.Application;
 
 
-  var App = Application.extend({
+  var App = Ember.Application.extend({
     modulePrefix: _environment.default.modulePrefix,
     podModulePrefix: _environment.default.podModulePrefix,
     Resolver: _resolver.default
@@ -27,8 +26,7 @@ define('badgeyay-frontend/components/badge-front', ['exports'], function (export
   Object.defineProperty(exports, "__esModule", {
     value: true
   });
-  var Component = Ember.Component;
-  exports.default = Component.extend({
+  exports.default = Ember.Component.extend({
     didInsertElement: function didInsertElement() {
       this._super.apply(this, arguments);
       var elemnt = this.$('#colorpick');
@@ -357,10 +355,9 @@ define('badgeyay-frontend/router', ['exports', 'badgeyay-frontend/config/environ
   Object.defineProperty(exports, "__esModule", {
     value: true
   });
-  var EmberRouter = Ember.Router;
 
 
-  var Router = EmberRouter.extend({
+  var Router = Ember.Router.extend({
     location: _environment.default.locationType,
     rootURL: _environment.default.rootURL
   });
@@ -422,6 +419,6 @@ catch(err) {
 });
 
 if (!runningTests) {
-  require("badgeyay-frontend/app")["default"].create({"name":"badgeyay-frontend","version":"0.0.0+ca5e7855"});
+  require("badgeyay-frontend/app")["default"].create({"name":"badgeyay-frontend","version":"0.0.0+862a432e"});
 }
 //# sourceMappingURL=badgeyay-frontend.map

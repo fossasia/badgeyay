@@ -1,4 +1,4 @@
-@import 'https://fonts.googleapis.com/css?family=Open+Sans|Quicksand:400,700';
+@import 'https://fonts.googleapis.com/css?family=PT+Sans|Berkshire+Swash';
 
 /* *** General Style *** */
 
@@ -14,7 +14,7 @@ html {
   margin: 0;
   min-height: 100vh;
   padding: 0;
-  font-family: 'Quicksand', sans-serif;
+  font-family: 'PT Sans', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -23,7 +23,7 @@ body {
   overflow: hidden;
   overflow-y: scroll;
   position: relative;
-  background: rgb(178, 56, 77);
+  background: #e24a64;
 }
 
 .backgorund {
@@ -36,10 +36,12 @@ body {
   display: flex;
   justify-content: space-between;
   padding: 10px 75px;
+  background: #fff;
 }
 
 .flex h2 {
-  color: rgba(255, 255, 255, 0.9);
+  color: rgba(250, 0, 0, 0.55);
+  font-family: 'Berkshire Swash', cursive;
 }
 
 .csv-upload, .manual-data, .png-background, .default-image-background, .custom-background, .custom-text, .config-json {
@@ -50,9 +52,14 @@ body {
   width: 400px;
   background: #ffffff;
   margin: 2rem auto;
-  -webkit-box-shadow: 15px 30px 30px rgba(0, 0, 0, 0.32);
-  -moz-box-shadow: 15px 30px 30px rgba(0, 0, 0, 0.32);
-  box-shadow: 15px 30px 30px rgba(0, 0, 0, 0.32);
+  -webkit-box-shadow: 15px 30px 30px rgba(0,0,0,.32);
+  -moz-box-shadow: 15px 30px 30px rgba(0,0,0,.32);
+  box-shadow: 15px 30px 30px rgba(0,0,0,.32);
+  transition: all .3s ease;
+}
+
+#app:hover {
+	box-shadow: 2px 4px 8px 0 rgba(46, 61, 73, .2);
 }
 
 #app .pad {
@@ -64,15 +71,16 @@ body {
   height: 48px;
   margin-top: 24px;
   padding: 0px 20px;
-  font-family: 'Quicksand', sans-serif;
-  font-weight: 700;
+  font-family: 'PT Sans', sans-serif;
+  font-weight: normal;
   font-size: 18px;
   color: #fff;
   line-height: 40px;
   text-align: center;
-  background-color: #87314e;
-  border: 1px #87314e solid;
+  background-color: #fc7373;
+  border: 1px transparent solid;
   opacity: 1;
+  outline: none;
   cursor: pointer;
 }
 
@@ -92,7 +100,7 @@ body {
 
 input[type="text"], textarea {
   width: 100%;
-  font-family: 'Quicksand', sans-serif;
+  font-family: 'PT Sans', sans-serif;
 }
 
 textarea {

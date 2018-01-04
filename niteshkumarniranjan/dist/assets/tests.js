@@ -32,9 +32,8 @@ define('badgeyay-frontend/tests/helpers/destroy-app', ['exports'], function (exp
     value: true
   });
   exports.default = destroyApp;
-  var run = Ember.run;
   function destroyApp(application) {
-    run(application, 'destroy');
+    Ember.run(application, 'destroy');
   }
 });
 define('badgeyay-frontend/tests/helpers/module-for-acceptance', ['exports', 'qunit', 'badgeyay-frontend/tests/helpers/start-app', 'badgeyay-frontend/tests/helpers/destroy-app'], function (exports, _qunit, _startApp, _destroyApp) {
@@ -59,14 +58,12 @@ define('badgeyay-frontend/tests/helpers/module-for-acceptance', ['exports', 'qun
         var _this = this;
 
         var afterEach = options.afterEach && options.afterEach.apply(this, arguments);
-        return resolve(afterEach).then(function () {
+        return Ember.RSVP.resolve(afterEach).then(function () {
           return (0, _destroyApp.default)(_this.application);
         });
       }
     });
   };
-
-  var resolve = Ember.RSVP.resolve;
 });
 define('badgeyay-frontend/tests/helpers/resolver', ['exports', 'badgeyay-frontend/resolver', 'badgeyay-frontend/config/environment'], function (exports, _resolver, _environment) {
   'use strict';
@@ -92,13 +89,11 @@ define('badgeyay-frontend/tests/helpers/start-app', ['exports', 'badgeyay-fronte
     value: true
   });
   exports.default = startApp;
-  var merge = Ember.merge;
-  var run = Ember.run;
   function startApp(attrs) {
-    var attributes = merge({}, _environment.default.APP);
-    attributes = merge(attributes, attrs); // use defaults, but you can override;
+    var attributes = Ember.merge({}, _environment.default.APP);
+    attributes = Ember.merge(attributes, attrs); // use defaults, but you can override;
 
-    return run(function () {
+    return Ember.run(function () {
       var application = _app.default.create(attributes);
       application.setupForTesting();
       application.injectTestHelpers();

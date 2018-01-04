@@ -73090,6 +73090,9 @@ function diffArray(oldArray, newArray) {
   };
 }
 
+/**
+  @module ember-data
+*/
 var get$5 = Ember.get;
 
 /**
@@ -74031,6 +74034,9 @@ var get$7 = Ember.get;
   @private
   @constructor
   @param {DS.Model} internalModel The model to create a snapshot from
+*/
+/**
+  @module ember-data
 */
 
 var Snapshot = function () {
@@ -78915,7 +78921,7 @@ function associateWithRecordArray(internalModels, array) {
 
 function _classCallCheck$12(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-var set$5 = Ember.set;
+var set$5 = Ember.set; /* global heimdall */
 
 /*
  * The `ContainerInstanceCache` serves as a lazy cache for looking up
@@ -81846,6 +81852,10 @@ function isArrayLike(obj) {
   return false;
 }
 
+/**
+  @module ember-data
+*/
+
 var get$14 = Ember.get;
 
 /**
@@ -83392,6 +83402,11 @@ Object.defineProperty(exports, '__esModule', { value: true });
     @namespace DS
     @extends DS.RESTAdapter
   */
+  /* global heimdall */
+  /**
+    @module ember-data
+  */
+
   var JSONAPIAdapter = _rest.default.extend({
     defaultSerializer: '-json-api',
 
@@ -85558,7 +85573,9 @@ Object.defineProperty(exports, '__esModule', { value: true });
   Object.defineProperty(exports, "__esModule", {
     value: true
   });
-
+  /**
+    @module ember-data
+  */
 
   var dasherize = Ember.String.dasherize;
 
