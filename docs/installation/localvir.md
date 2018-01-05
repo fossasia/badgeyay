@@ -8,7 +8,6 @@ These are some additional depencies that you will need:
 
 ```sh
 $ sudo apt-get update
-$ sudo apt-get install librsvg2-bin pdftk
 ```
 
 Make sure you have the dependencies mentioned above installed before proceeding further.
