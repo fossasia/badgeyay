@@ -6,6 +6,7 @@ import json
 import shutil
 import traceback
 from svg_to_png import do_svg2png
+from flask_swagger_ui import get_swaggerui_blueprint
 # from argparse import ArgumentParser
 
 APP_ROOT = os.path.dirname(os.path.abspath(__file__))
@@ -19,7 +20,18 @@ app.config['SECRET_KEY'] = 'secret'
 COMPRESS_MIMETYPES = ['text/html', 'text/css', 'application/json']
 COMPRESS_LEVEL = 6
 COMPRESS_MIN_SIZE = 500
+# SWAGER_URL = '/api/docs'
+# API_URL = 'http://petstore.swagger.io/v2/swagger.json'
 Compress(app)
+
+swaggerui_blueprint = get_swaggerui_blueprint(
+    '/api/docs',
+    'http://127.0.0.1:5000',
+    config={
+        'app_name': "Badgeyay"
+    },
+)
+
 
 @app.route('/')
 def index():
@@ -205,4 +217,5 @@ def Internal_Server_Error(e):
 
 if __name__ == '__main__':
     # app.run(debug=args.dev)
+    app.register_blueprint(swaggerui_blueprint, url_prefix='/api/docs')
     app.run(debug=True)
