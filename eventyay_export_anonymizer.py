@@ -3,15 +3,18 @@ import sys
 import json
 import random
 
+# function to check for command-line arguments
 if len(sys.argv) <= 1:
     print("Please pass the name of the file with the exported json as "
           "the first argument. A file with \"anonymous\" will be created"
           "next to it.")
     exit(1)
 
+# anonymous_file stores the input name given via command-line
 file = sys.argv[1]
 anonymous_file = file + "-anonymous.json"
 
+# function to load the file as json
 with open(file, encoding="UTF-8") as f:
     export = json.load(f)
 
@@ -34,6 +37,7 @@ def _walk(element, key, value):
         walk(value)
 
 
+# function to append random alphanumeric strings based on variable c
 def scramble(string):
     result = []
     for c in string:
@@ -46,8 +50,9 @@ def scramble(string):
         result.append(c)
     return "".join(result)
 
-
+# invoke walk function
 walk(export)
 
+# function to write json data to anonymous_file
 with open(anonymous_file, 'w', encoding="UTF-8") as f:
     json.dump(export, f)

@@ -35,7 +35,7 @@ class BadgeyayTest(unittest.TestCase):
         self.driver.find_element_by_name("file").send_keys(CSVpath)
         self.driver.find_element_by_css_selector("#defimage").click()
         self.driver.find_element_by_css_selector(".btn-group .dropdown-toggle").click()
-        self.driver.find_element_by_css_selector("li[data-item='team.png']").click()
+        self.driver.find_element_by_css_selector("li img").click()
         self.driver.find_element_by_css_selector("form .submit-btn").click()
         time.sleep(3)
         success = self.driver.find_element_by_css_selector(".flash-success")

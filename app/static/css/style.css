@@ -1,8 +1,9 @@
 #icon  > .fa {
-    left: 70%;
+    left: 60%;
+    color: #000;
     font-size: 24px;
     position: relative;
-    top: 2px;
+    top:3px;
 }
 
 .board .col-md-4 {
@@ -182,6 +183,11 @@
     border-bottom: 1px solid darkgray;
 }
 
+.font-options {
+  border-bottom: 1px solid darkgray;
+  padding: 9px;
+}
+
 .dropdown-menu>li:hover {
     background: #f1f9fd;
     cursor: pointer;
@@ -195,12 +201,12 @@ textarea {
     resize: vertical;
 }
 
-.footer {
-    position: relative;
+#footer {
+    position: fixed;
     text-align: center;
     width: 100%;
     padding: 10px;
-    bottom: -50px;
+    bottom: 0px;
     border-top: 1px solid #bfbfbf;
     background-color: #f9f9f9;
 }
@@ -236,6 +242,24 @@ ol {
     display: none;
 }
 
+@media screen and (max-width: 376px){
+    #icon > .fa {
+        left: 10% !important;
+    }
+}
+
+@media screen and (max-width: 1200px){
+    #icon  > .fa {
+        left: 30%;
+    }
+}
+
+@media screen and (max-width: 1570px){
+    #icon  > .fa {
+        left: 40%;
+    }
+}
+
 @media screen and (max-width: 780px) {
     .navbar-header {
         margin-top: 5px;
@@ -257,3 +281,24 @@ input[type="radio"] {
     vertical-align: middle;
     margin: 0 auto;
 }
+
+.preview-image{
+    height: 250px;
+    width: 180px;
+    margin-left: 80px;
+    background-size: cover;
+    padding: 140px 0 0 5px;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.preview-image-li{
+    list-style: none;
+    color: white;
+    font-size: 15px;
+}
+
+#preview-btn{
+    font-size: 18px;   
+}
+
