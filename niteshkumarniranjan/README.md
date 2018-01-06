@@ -15,8 +15,9 @@ You will need the following things properly installed on your computer.
 ## Installation
 
 * `git clone <repository-url>` this repository
-* `cd badgeyay-frontend`
+* `cd niteshkumarniranjan`
 * `npm install`
+* `npm install -g ember-cli`
 
 ## Running / Development
 
