@@ -419,6 +419,6 @@ catch(err) {
 });
 
 if (!runningTests) {
-  require("badgeyay-frontend/app")["default"].create({"name":"badgeyay-frontend","version":"0.0.0+862a432e"});
+  require("badgeyay-frontend/app")["default"].create({"name":"badgeyay-frontend","version":"0.0.0+b415b65a"});
 }
 //# sourceMappingURL=badgeyay-frontend.map

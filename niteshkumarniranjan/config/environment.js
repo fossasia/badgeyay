@@ -5,7 +5,7 @@ module.exports = function(environment) {
   let ENV = {
     modulePrefix: 'badgeyay-frontend',
     environment,
-    rootURL: '/BadgeYAY-EmberJS-FrontEnd/dist/',
+    rootURL: '/',
     locationType: 'auto',
     EmberENV: {
       FEATURES: {
