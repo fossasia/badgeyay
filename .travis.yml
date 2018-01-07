@@ -10,10 +10,7 @@ addons:
 
 python:
   - 3.5
-cache:
-  directories:
-    - $HOME/.pip-cache/
-    
+
 before_install:
 - sudo apt-get -qq update
 - sudo apt-get -y install librsvg2-bin
@@ -28,7 +25,7 @@ before_install:
 install:
 - virtualenv  -p python3 ../flask_env
 - source ../flask_env/bin/activate
-- pip3 install -r requirements/test.txt --cache-dir $HOME/.pip-cache
+- pip3 install -r requirements/test.txt
 
 before_script:
 - export DISPLAY=:99.0
