@@ -1,0 +1,82 @@
+{{yield}}
+
+<div id="app">
+  <form action="">
+    <div class="pad">
+
+      {{!-- Data Source --}}
+      <p>Choose your Data Source</p>
+      <label class="fieldset" >
+        <input type="radio" id="csv" name="data-source" onclick={{action 'datasourceChanged' 'csv'}}>
+        Add CSV file
+      </label>
+      <label class="fieldset">
+        <input type="radio" id="manual" name="data-source" onclick={{action 'datasourceChanged' 'manual'}}>
+        Enter Data Manually
+      </label>
+      {{!-- Sections --}}
+      <section class="csv-upload">
+        <p>Add CSV file containing fields Name,Organization and Handle</p>
+        <input type="file" name="csv-file" id="csv-file-upload">
+      </section>
+      <scetion class="manual-data">
+        <p>Enter One Name per Line</p>
+        <textarea name="names-csv" id="names-csv" placeholder="Eg. Hong Phuc,Dang,@hpdang,FOSSASIA "></textarea>
+      </scetion>
+
+
+      {{!-- Badge Background --}}
+      <p>Choose your Badge Background</p>
+      <label class="fieldset">
+        <input type="radio" id="png-image" name="badge-background" onclick={{action 'backgroundsourceChanged' 'png'}}>
+        Add PNG file
+      </label>
+      <label class="fieldset">
+        <input type="radio" id="default-image" name="badge-background" onclick={{action 'backgroundsourceChanged' 'defaults'}}>
+        Add Default Image
+      </label>
+      <label class="fieldset">
+        <input type="radio" id="background-custom" name="badge-background" onclick={{action 'backgroundsourceChanged' 'color'}}>
+        Add Background with custom color
+      </label>
+      {{!-- Sections --}}
+      <section class="png-background">
+        <p>Upload a PNG file for badge background</p>
+        <input type="file" name="png-background-file" id="csv-file-upload">
+      </section>
+      <section class="default-image-background">
+        {{!-- Dropdown --}}
+      </section>
+      <section class="custom-background">
+        {{!-- Color Picker --}}
+        <div class="ColorPicker">
+          <input type="text" id="colorpick">
+        </div>
+      </section>
+
+
+      {{!-- Badge Customize --}}
+      <p>Customise Badges (Optional)</p>
+      <label class="fieldset">
+        <input type="radio" id="text" name="text-source" onclick={{action 'textsourceChanged' 'text'}}>
+        Add Custom text
+      </label>
+      <label class="fieldset">
+        <input type="radio" id="json" name="text-source" onclick={{action 'textsourceChanged' 'json'}}>
+        Add JSON file
+      </label>
+      {{!-- Sections --}}
+      <section class="custom-text">
+        <input type="text" name="custom-text" id="custom-text" placeholder="The text entered here will appear on badges">
+      </section>
+      <section class="config-json">
+        <p>Upload a config file.</p>
+        <input type="file" name="config-json-file" id="config-json-file">
+      </section>
+    </div>
+
+    <div class="button">
+      <input type="submit" value="Generate" id="submit">
+    </div>
+  </form>
+</div>
