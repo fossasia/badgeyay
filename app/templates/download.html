@@ -1,0 +1,29 @@
+{% extends 'layout.html' %}
+{% block body %}
+    <div class="container board">
+        <div class="row">
+            {% with m = get_flashed_messages(with_categories=true) %}
+                {% if m %}
+                    {% for cat,msg in m %}
+                        {% if cat == 'success-pdf' %}
+                            <div class="flash-success">Your badges have been created successfully.</div>
+                            <div class="text-center">
+                                <a href="static/badges/{{ msg }}-badges.pdf" class="btn btn-success"
+                                   download="{{ msg }}-badges.pdf">Download as PDF</a>
+                            </div>
+                        {% else %}
+                            <div class="flash-{{ cat }}">{{ msg }}</div>
+                        {% endif %}
+                    {% endfor %}
+                {% else %}
+                    <div class="container">
+                        <div class="row text-center">
+                            <h1 class="not-found">404</h1>
+                            <h1>Page Not Found</h1>
+                        </div>
+                    </div>
+                {% endif %}
+            {% endwith %}
+        </div>
+    </div>
+{% endblock %}
