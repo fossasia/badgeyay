@@ -87,7 +87,7 @@ $(document).on("ready", function () {
         if($("#picker").val() !== ""){
             imageValue = $("#picker").val();
             $("#preview").css("background-color",imageValue.toString());
-	        $("#picker").val("");
+	         $("#picker").val("");
         }
         else if($("input[name=img-default]").val() !== ""){
             imageValue = "/static/uploads/" + $("input[name=img-default]").val();
