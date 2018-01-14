@@ -2,7 +2,7 @@
 
 One-click Heroku deployment is available:
 
-[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/fossasia/badgeyay)
 
 ### Steps for Manual Deployment
 
