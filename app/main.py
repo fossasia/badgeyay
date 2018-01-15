@@ -5,8 +5,7 @@ import os
 import json
 import shutil
 import traceback
-from svg_to_png import do_svg2png
-# from argparse import ArgumentParser
+from .svg_to_png import do_svg2png
 
 APP_ROOT = os.path.dirname(os.path.abspath(__file__))
 UPLOAD_FOLDER = os.path.join(APP_ROOT, 'static/uploads')
@@ -46,10 +45,8 @@ def empty_directory():
         file_path = os.path.join(BADGES_FOLDER, file)
         try:
             if os.path.isfile(file_path):
-                # removes the file
                 os.unlink(file_path)
             elif os.path.isdir(file_path):
-                # removes the directory
                 shutil.rmtree(file_path)
         except Exception:
             traceback.print_exc()
