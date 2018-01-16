@@ -61,7 +61,7 @@ function validate() {
         var countLines = 0;
         csvLines.forEach(function (csvLine) {
             var line = csvLine.split(",");
-            if (line.length === 4) {
+            if (line.length === 5) {
                 countLines += 1;
             }
         });

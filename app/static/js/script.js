@@ -106,9 +106,11 @@ $(document).on("ready", function () {
         $("#preview-li-2").text(textValues[1]);
         $("#preview-li-3").text(textValues[2]);
         $("#preview-li-4").text(textValues[3]);
+        $("#preview-li-5").text(textValues[4]);
+
 
         $("#preview").toggleClass("hidden");
-        
+
     });
 
     $("#form1").submit(function(e){
