@@ -25,6 +25,7 @@ before_install:
 install:
 - virtualenv  -p python3 ../flask_env
 - source ../flask_env/bin/activate
+- pip3 install pytest
 - pip3 install -r requirements/test.txt
 
 before_script:
@@ -34,8 +35,7 @@ before_script:
 
 script:
 - python app/main.py >> log.txt 2>&1  &
-# - nosetests app/tests/test.py -v --with-coverage | uncommented as tests are not ready yet.
-- python3 -m pyflakes .
+- pytest
 
 after_success:
 - bash <(curl -s https://codecov.io/bash)
