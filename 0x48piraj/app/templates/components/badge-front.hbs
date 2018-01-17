@@ -1,0 +1,120 @@
+{{yield}}
+<link href="https://fonts.googleapis.com/css?family=Roboto+Slab:700" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+<link rel="stylesheet" href="button/css/style.css">
+
+<script  src="js/color.js"></script>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+<link rel="stylesheet" href="textarea/css/style.css">
+<script  src="textarea/js/index.js"></script>
+
+
+<link rel="stylesheet" href="toggle/css/style.css">
+
+
+<div id="app">
+  <form action="">
+    <div class="pad">
+
+{{!-- Data Source --}}
+  <div style="width:100%" id="r8-balloon-radio" class="container">
+    <p style="font-family: 'Bungee';">Choose your Data Source</p><p style="font-family: 'Bangers';"><br><br>
+    <ul>
+        Add CSV file&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<li><input id="csv" class="radio r8-radio-float" type="radio" name="data-source" value="0" onclick={{action 'datasourceChanged' 'csv'}} /></li><br>
+        Enter Data Manually <li><input id="manual" class="radio r8-radio-float" type="radio" name="data-source" onclick={{action 'datasourceChanged' 'manual'}} value="1"/></li>
+      </ul>
+    </p><br><br>
+  </div>
+{{!-- Sections --}}
+<section class="csv-upload">
+        <p style="font-family: 'Chewy';">Add CSV file containing fields Name,Organization and Handle</p>
+        <input type="file" name="csv-file" id="csv-file-upload">
+</section>
+<section class="manual-data">
+        <p style="font-family: 'Chewy';">Enter One Name per Line</p>
+        <textarea style="resize: none;width:100%" name="names-csv" id="names-csv" placeholder="Eg. Hong Phuc,Dang,@hpdang,FOSSASIA "></textarea>
+</section>
+
+
+{{!-- Badge Background --}}
+
+<div style="width:100%" id="r8-balloon-radio" class="container">
+    <p style="font-family: 'Bungee';">Choose your Badge Background</p><p style="font-family: 'Bangers';"><br><br>
+    <ul>
+        Add PNG file&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<li><input class="radio r8-radio-float" type="radio" value="0" id="png-image" name="badge-background" onclick={{action 'backgroundsourceChanged' 'png'}} /></li><br>
+        Add Default Image<li><input class="radio r8-radio-float" type="radio" id="default-image" name="badge-background" onclick={{action 'backgroundsourceChanged' 'defaults'}} value="1"/></li><br>
+		Add Custom color<li><input class="radio r8-radio-float" type="radio" id="background-custom" name="badge-background" onclick={{action 'backgroundsourceChanged' 'color'}} value="2"/></li>
+      </ul>
+    </p>
+</div>
+
+{{!-- Sections --}}
+<section class="png-background">
+        <p>Upload a PNG file for badge background</p>
+        <input type="file" name="png-background-file" id="csv-file-upload">
+</section>
+
+<section class="custom-background">
+        {{!-- Color Picker --}}
+	<br><div id="wrapper" style="min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #aaa;">
+		<input id="in" type="color" value="#ffffff" oninput="changeColor()" style="background-color: #ffffff;
+  width: 150px;
+  height: 30px;
+  border: 10px outset #222;
+  border-radius: 15px;
+  padding: none;">
+	</div>
+</section>
+	  
+{{!-- Badge Customize --}}
+<div style="width:100%" id="r8-balloon-radio" class="container">
+      <br><br><p style="font-family: 'Bungee';">Customise Badges (Optional)</p><p style="font-family: 'Bangers';"><br><br>
+      <ul>
+        Add Custom text<li><input class="radio r8-radio-float" type="radio" id="text" name="text-source" onclick={{action 'textsourceChanged' 'text'}} value="0"/></li><br>
+        Add JSON file&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<li><input class="radio r8-radio-float" type="radio" id="json" name="text-source" onclick={{action 'textsourceChanged' 'json'}} value="1"/></li><br>
+      </ul>
+	  </p><br>
+</div>
+
+
+{{!-- Sections --}}
+<section class="custom-text">
+        <input type="text" name="custom-text" id="custom-text" placeholder="The text entered here will appear on badges">
+</section>
+<section class="config-json">
+        <p style="font-family: 'Chewy';">Upload a config file.</p>
+        <input type="file" name="config-json-file" id="config-json-file">
+</section>
+    </div>
+<div class="button">
+      <a href="loading.html" id="preview"><button style="font-family: 'Bangers';width:100%" class="btn draw-border">Preview Badges!</button></a>
+    </div>
+      <div>
+	  	<p style="font-family: 'Bangers';font-size: 25px !important;">Finalize Badges?</p>
+        <input onclick="finalize()" type="checkbox" id="pure-toggle-2" hidden />
+        <label class="pure-toggle impossible" for="pure-toggle-2"><span class="fontawesome-remove"></span><span class="fontawesome-ok"></span></label>
+      </div>
+</form>
+    <div class="button">
+      <a href="loading.html" style="display: none;"  id="gen"><button style="font-family: 'Bangers';font-size: 30px !important;width:100%" class="btn draw-border">Generate Badges!</button></a>
+    </div>
+<div id="r8-logo-coin" ></div>
+</div>
+
+
+<script>
+function finalize() {
+    var x = document.getElementById("gen");
+    if (x.style.display === "none") {
+        x.style.display = "block";
+    } else {
+        x.style.display = "none";
+    }
+}
+</script>

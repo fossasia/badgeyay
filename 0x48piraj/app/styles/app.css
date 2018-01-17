@@ -1,0 +1,150 @@
+@import url(https://fonts.googleapis.com/css?family=Bungee);
+@import url(https://fonts.googleapis.com/css?family=Bangers);
+@import url(https://fonts.googleapis.com/css?family=Pacifico);
+@import url(https://fonts.googleapis.com/css?family=Chewy);
+/* *** General Style *** */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body,
+html {
+  width: 100%;
+  margin: 0;
+  min-height: 100vh;
+  padding: 0;
+  font-family: 'Bangers';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  overflow: hidden;
+  overflow-y: scroll;
+  position: relative;
+  background: #87fff9; /*#26f2a7*/
+  
+}
+
+.backgorund {
+  /* overflow: hidden;
+  overflow-y: scroll; */
+  height: 100vh;
+}
+
+.flex {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 75px;
+  background: #fff;
+}
+
+.flex h2 {
+  color: rgba(250, 0, 0, 0.55);
+  font-family: 'Berkshire Swash', cursive;
+}
+
+.csv-upload, .manual-data, .png-background, .default-image-background, .custom-background, .custom-text, .config-json {
+  display: block;
+}
+
+#app {
+  width: 400px;
+  background: #ffffff;
+  margin: 2rem auto;
+  -webkit-box-shadow: 15px 30px 30px rgba(0,0,0,.32);
+  -moz-box-shadow: 15px 30px 30px rgba(0,0,0,.32);
+  box-shadow: 15px 30px 30px rgba(0,0,0,.32);
+  transition: all .3s ease;
+}
+
+#app:hover {
+	box-shadow: 2px 4px 8px 0 rgba(46, 61, 73, .2);
+}
+
+#app .pad {
+  padding: 1em;
+}
+
+#app input[type="submit"] {
+  width: 100%;
+  height: 48px;
+  margin-top: 24px;
+  padding: 0px 20px;
+  font-family: 'Pacifico';
+
+  font-weight: normal;
+  font-size: 18px;
+  color: #fff;
+  line-height: 40px;
+  text-align: center;
+  background-color: #fc7373;
+  border: 1px transparent solid;
+  opacity: 1;
+  outline: none;
+  cursor: pointer;
+}
+
+.fieldset {
+  display: block;
+}
+
+#app input[type="submit"]:hover {
+  background-color: #df405a;
+  border: 1px #df405a solid;
+}
+
+#app input[type="text"] {
+  padding: 5px;
+  font-size: 1em;
+}
+
+input[type="text"], textarea {
+  width: 100%;
+  font-family: 'Pacifico';
+
+}
+
+textarea {
+  font-size: 1em;
+}
+
+.csv-upload, .manual-data, .png-background, .default-image-background, .custom-background, .custom-text, .config-json {
+  display: none;
+  border: 1.5px dashed #424242;
+  padding: 10px;
+  margin-top: 5px;
+}
+
+.csv-upload p, .manual-data p, .png-background p, .default-image-background p, .custom-background p, .custom-text p, .config-json p{
+  margin-top: 0;
+}
+
+.manual-data  textarea {
+  width: 90%;
+  height: 50px;
+}
+
+
+.style {
+  text-shadow: 1px 2px 0px #ebebeb,
+               0 0 0 black,
+               -1px 1px 0 #ebebeb,
+               5px 5px 0 #333;
+  
+  color: rgba(64, 65, 63, 1.0000);
+}
+
+
+h1 {
+  font-size: 4.4em;
+  font-weight: bold;
+  letter-spacing: 3px; 
+  text-align: center;
+  margin-top: 50px;
+}
+
+
