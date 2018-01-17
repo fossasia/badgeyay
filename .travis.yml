@@ -42,7 +42,7 @@ script:
 - cd cli
 - python setup.py install
 - cd ..
-- badgeyay -i app/static/uploads/businesspass.png -n sample/businesspass.png.csv
+- badgeyay -i app/static/uploads/yellow_futuristic.png -n sample/businesspass.png.csv
 
 after_success:
 - bash <(curl -s https://codecov.io/bash)
