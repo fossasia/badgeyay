@@ -38,24 +38,26 @@ Data model
 
 ### Request
 
-/api/v1.0/generate_badges</h2>
-    Method: POST
-    Parameters:
-    - custfont: Font to use. if it is null or not present the default font will be used.
-    - file: .csv which contains user data
-    - csv: CSV data as plain text seperated by a comma (,)
-    (Either file or csv must be present in the query if both are present, file will be processed)
-    - img-default: The dafault image to use. (Required)
-    - bg_color: Hex code of background colour of the badge. Will only be parsed if the value of img-default is "user-defined.png"
-    - image: The custom background image (in .png format) of the badge which will be uploaded.
-    (Either img-default or csv must be present in the query if both are present, image will be processed)
+/api/v1.0/generate_badges
+- Method: POST
+- Parameters:
+   - custfont: Font to use. if it is null or not present the default font will be used.
+   - file: .csv which contains user data
+   - csv: CSV data as plain text seperated by a comma (,)
+   
+   (Either file or csv must be present in the query if both are present, file will be processed)
+   - img-default: The dafault image to use. (Required)
+   - bg_color: Hex code of background colour of the badge. Will only be parsed if the value of img-default is "user_defined.png"
+   - image: The custom background image (in .png format) of the badge which will be uploaded
+   
+   (Either img-default or image must be present in the query if both are present, image will be processed)
 
 ### Response
 
 ```json
 [{
-"type" : "success"
-"message" : "Pdf generation completed successfully"
+"type" : "success",
+"message" : "pdf generation completed successfully",
 "download_link" : "https://badgeyay-dev.herokuapp.com/static/badges/team-png-csv-badges.pdf"
 }]
 ```
@@ -190,3 +192,4 @@ To be removed from the team:
 [gitter]: https://gitter.im/fossasia/badgeyay
 [cccc]: https://rfc.zeromq.org/spec:42/C4
 [team]: https://github.com/orgs/fossasia/teams/badgeyay-admin/members
+
