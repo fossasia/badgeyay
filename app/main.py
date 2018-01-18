@@ -5,7 +5,7 @@ import os
 import json
 import shutil
 import traceback
-from .svg_to_png import do_svg2png
+from svg_to_png import do_svg2png
 
 APP_ROOT = os.path.dirname(os.path.abspath(__file__))
 UPLOAD_FOLDER = os.path.join(APP_ROOT, 'static/uploads')
