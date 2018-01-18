@@ -16,8 +16,6 @@ cache:
     
 before_install:
 - sudo apt-get -qq update
-- sudo apt-get -y install librsvg2-bin
-- sudo apt-get -y install pdftk
 - sudo apt-get -y install python3-pip
 - sudo apt-get install python-virtualenv
 - wget https://github.com/mozilla/geckodriver/releases/download/v0.19.0/geckodriver-v0.19.0-linux64.tar.gz
