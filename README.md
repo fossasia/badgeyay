@@ -155,6 +155,26 @@ We have the following branches
 
 Also read [CONTRIBUTING.md](https://github.com/fossasia/badgeyay/blob/development/.github/CONTRIBUTING.md)
 
+## CLI
+
+Badgeyay project can also be used as a cli application, and can also be imported as a library.
+
+Installation Steps
+------------------
+```bash
+cd cli\
+python setup.py install
+```
+
+When you execute `pip freeze` you will see badgeyay is installed as a library into your virtualenv.
+
+Verify
+------
+```bash
+badgeyay --help
+```
+This will show the information about the parameters to be supplied to the CLI application.
+
 
 Implementation
 --------------
