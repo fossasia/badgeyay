@@ -6,6 +6,7 @@ import os
 is_travis = 'TRAVIS' in os.environ
 os.environ['MOZ_HEADLESS'] = '1'
 
+# Not working class, this is for the front end and not for the backend
 class BadgeyayTest(unittest.TestCase):
 
     @classmethod

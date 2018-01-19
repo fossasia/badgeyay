@@ -1,0 +1,20 @@
+{
+    "name": "BadgeYay",
+    "description": "A fully functional badges generator using flask",
+    "repository": "https://github.com/fossasia/badgeyay/",
+    "env": {
+        "ENV_ROLE": {
+          "required": true
+        }
+      },
+    "keywords": [
+        "badgeyay",
+        "fossasia",
+        "flask"
+    ],
+    "buildpacks": [
+        {
+            "url": "heroku/python"
+        }
+    ]
+}
