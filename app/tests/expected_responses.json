@@ -1,0 +1,31 @@
+{
+    "test_user_entered_data" : [{
+        "type" : "success",
+        "message" : "pdf generation completed successfully",
+        "download_link" : "/static/badges/default-png-csv-badges.pdf"
+    }],
+
+    "test_csv_upload" : [{
+        "type" : "success",
+        "message" : "pdf generation completed successfully",
+        "download_link" : "/static/badges/default-png-csv-badges.pdf"
+    }],
+
+    "test_img_upload" : [{
+        "type" : "success",
+        "message" : "pdf generation completed successfully",
+        "download_link" : "/static/badges/badge_1-png-csv-badges.pdf"
+    }],
+
+    "test_bg_color" : [{
+        "type" : "success",
+        "message" : "pdf generation completed successfully",
+        "download_link" : "/static/badges/user_defined-png-csv-badges.pdf"
+    }],
+
+    "test_custom_font" : [{
+        "type" : "success",
+        "message" : "pdf generation completed successfully",
+        "download_link" : "/static/badges/default-png-csv-badges.pdf"
+    }]
+}

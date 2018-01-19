@@ -1,12 +1,11 @@
-from flask import Flask, render_template, request, redirect, url_for, flash
+from flask import Flask, render_template, request, jsonify
 from flask_compress import Compress
 from werkzeug.utils import secure_filename
 import os
 import json
 import shutil
 import traceback
-from svg_to_png import do_svg2png
-# from argparse import ArgumentParser
+from .svg_to_png import do_svg2png
 
 APP_ROOT = os.path.dirname(os.path.abspath(__file__))
 UPLOAD_FOLDER = os.path.join(APP_ROOT, 'static/uploads')
@@ -21,24 +20,12 @@ COMPRESS_LEVEL = 6
 COMPRESS_MIN_SIZE = 500
 Compress(app)
 
-# parser = ArgumentParser()
-# parser.add_argument("--dev",
-#                     help="Start the server in development mode with debug=True",
-#                     action="store_true")
-# args = parser.parse_args()
-CUSTOM_FONTS = ['monospace', 'sans-serif', 'sans', 'Courier 10 Pitch', 'Source Code Pro']
-
-
 @app.route('/')
 def index():
     """
-    Entry point to the app
+    An  index.html file which specifies that it's badgeyay's backend
     """
-    default_background = []
-    for file in os.listdir(UPLOAD_FOLDER):
-        if file.rsplit('.', 1)[1] == 'png' and file != 'user_defined.png':
-            default_background.append(file)
-    return render_template('index.html', default_background=default_background, custom_fonts=CUSTOM_FONTS)
+    return render_template('index.html')
 
 
 def generate_badges(_pdf=True):
@@ -58,34 +45,55 @@ def empty_directory():
         file_path = os.path.join(BADGES_FOLDER, file)
         try:
             if os.path.isfile(file_path):
-                # removes the file
                 os.unlink(file_path)
             elif os.path.isdir(file_path):
-                # removes the directory
                 shutil.rmtree(file_path)
         except Exception:
             traceback.print_exc()
 
 
-@app.route('/upload', methods=['POST'])
-def upload():
+def output(response_type, message, download_link):
+    if download_link == '':
+        response = [
+            {
+                'type': response_type,
+                'message': message
+            }
+        ]
+    else:
+        response = [
+            {
+                'type': response_type,
+                'message': message,
+                'download_link': download_link
+            }
+        ]
+    return jsonify({'response': response})
+
+
+@app.route('/api/v1.0/generate_badges', methods=['POST'])
+def main_task():
     """
-    Function to upload the form data from the webpage
+    Function to recive the input data from the user, process and send ouput
     """
     empty_directory()
-    csv = request.form['csv'].strip()
-    img = request.form['img-default']
-    custom_font = request.form['custfont']
-    file = request.files['file']
+    csv = request.form.get('csv', '').strip()
+    img = request.form.get('img-default', '')
+    custom_font = request.form.get('custfont', '')
 
-    # If default background is selected
+    if 'file' in request.files:
+        file = request.files['file']
+
+    # img-default is specified
     if img != '':
         if (img == 'user_defined.png'):
-            bg_color = request.form['bg_color']
+            bg_color = request.form.get('bg_color', '')
+            if bg_color == '':
+                return output('error', 'background color or image not specified', 0)
             do_svg2png(img, 1, bg_color)
         filename = img + '.csv'
 
-    # Custom font is selected for the text
+    # custom font is specified
     if custom_font != '':
         json_str = json.dumps({
             'font': custom_font
@@ -94,12 +102,15 @@ def upload():
         f.write(json_str)
         f.close()
 
-    # If the textbox is filled
     if img == '':
-        img = request.files['image'].filename
-        filename = request.files['image'].filename + ".csv"
+        if 'image' not in request.files:
+            return output('error', 'image and image-default are both empty or contains illegal data', '')
+        else:
+            img = request.files['image'].filename
+            filename = request.files['image'].filename + ".csv"
 
     if csv != '':
+        # CSV data was provided as plain text
         check_csv = csv.splitlines()
         count_line = 0
         for check in check_csv:
@@ -112,16 +123,12 @@ def upload():
             f.write(csv)
             f.close()
         else:
-            flash('Write Data in Correct format!', 'error')
-            return redirect(url_for('index'))
-    # if user does not select file, browser submits an empty part without filename
+            return output('error', 'CSV data was given in incorrect format', '')
     else:
-        if file.filename == '':
-            flash('Please select a CSV file to Upload!', 'error')
-            return redirect(url_for('index'))
+        if 'file' not in request.files:
+            return output('error', 'No proper CSV file was uploaded via POST nor a proper csv data as plain text was given', '')
 
-    # if user does not select file, browser submits an empty part without filename
-    if request.files['image'].filename != '':
+    if 'image' in request.files:
         image = request.files['image']
         imgname = image.filename
         if '.' in imgname:
@@ -129,16 +136,12 @@ def upload():
             imgname = secure_filename(imgname)
             image.save(os.path.join(app.config['UPLOAD_FOLDER'], image.filename))
         else:
-            flash('Please select a PNG image to Upload!', 'error')
-            return redirect(url_for('index'))
+            return output('error', 'No background was specified', '')
 
-    # If a PNG is uploaded, push it to the folder
     if filename.find("png.csv") == -1:
         if img == '':
-            flash('Please upload an image in \'PNG\' format!', 'error')
-            return redirect(url_for('index'))
+            return output('error', 'Image not in PNG format', '')
 
-    # If the csv file is uploaded
     if '.' in filename and filename.rsplit('.', 1)[1] == 'csv':
         filename = secure_filename(filename)
         if csv == '' and filename == img + ".csv":
@@ -156,12 +159,21 @@ def upload():
             traceback.print_exc()
 
         if True:
-            flash(filename.replace('.', '-'), 'success-pdf')
+            url = "/static/badges/" + filename.replace('.', '-') + "-badges.pdf"
             os.rename(os.path.join(BADGES_FOLDER + "/" + filename + ".badges.pdf"),
                       os.path.join(BADGES_FOLDER + "/" + filename.replace('.', '-') + "-badges.pdf"))
+            return output('success', 'pdf generation completed successfully', url)
+        else:
+            # Other unexpected error
+            return output('error', 'Internal error', '')
 
-        return redirect(url_for('index'))
 
+@app.route('/api/v1.0/generate_badges', methods=['GET'])
+def illiegal_request_type():
+    """
+    Only POST request is allowed, post error on GET request
+    """
+    return output('error', 'Invalid method, only POST is allowed', '')
 
 @app.route('/guide')
 def guide():

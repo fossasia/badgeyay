@@ -1,0 +1,10 @@
+{
+  "name": "Badgeyay",
+  "description": "Badgeyay is a simple badge generator with a simple web UI to add data and generate printable badges in a zip.",
+  "logo": "https://scalingo.com/logo.svg",
+  "repository": "https://github.com/fossasia/badgeyay",
+  "website": "https://badgeyay-dev.herokuapp.com/",
+  "env": {
+  },
+  "addons": ["scalingo-redis"]
+}

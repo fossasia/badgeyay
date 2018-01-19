@@ -125,5 +125,22 @@
 			{% endif %}
 		{% endwith %}
     </div>
+    <br><br>
+    <div class="row text-center">
+        <p class="col-xs-10 col-xs-offset-1
+             col-sm-8 col-sm-offset-2
+             col-lg-4 col-lg-offset-4">
+            All responses are to be made to "/api/generate_badges" with
+            appropriate paramters which on success returns a json response
+            holding the uri for the genreated pdf.
+        </p>
+    </div>
+    <br><br>
+    <div class="row text-center">
+        <button onClick="location.href='/guide'">Guide</button>
+        <button onClick="location.href='https://github.com/fossasia/badgeyay/blob/rest-api/README.md'">Documentation</button>
+        <button onClick="location.href='https://github.com/fossasia/badgeyay'">Source code</button>
+    </div>
+    <br><br><br><br>
 </div>
 {% endblock %}
