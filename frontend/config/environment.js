@@ -2,7 +2,7 @@
 
 module.exports = function(environment) {
   let ENV = {
-    modulePrefix: 'badgeyay-frontend',
+    modulePrefix: 'badgeyay',
     environment,
     rootURL: '/',
     locationType: 'auto',
