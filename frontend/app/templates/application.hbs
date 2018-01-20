@@ -1,97 +1,76 @@
 <nav class="navbar navbar-default">
-    <div class="container-fluid">
+    <div class="container">
         <div class="navbar-header">
-            <li class="navbar-brand">Badge-YAY Front-end</li>
+            <a class="navbar-brand" href="/">BadgeYAY</a>
         </div>
+        <ul class="nav navbar-nav navbar-right">
+            <li>
+                <i class="glyphicon glyphicon-th"></i>
+            </li>
+            <div class="custom-menu-content hidden">
+                <div class="custom-menu">
+                    <div class="hide-arrow"></div>
+                    <div class="custom-menu-cont">
+                        <div class="custom-menu-item">
+                            <a class="custom-icon" href="http://github.com/fossasia/badgeyay" target="_blank">
+                                <img src="/images/code.png">
+                                <p class="custom-title">Code</p>
+                            </a>
+                        </div>
+                        <div class="custom-menu-item">
+                            <a class="custom-icon" href="http://github.com/fossasia/badgeyay/issues" target="_blank">
+                                <img src="/images/bug.png">
+                                <p class="custom-title">Bug Report</p>
+                            </a>
+                        </div>
+                        <div class="custom-menu-item">
+                            <a class="custom-icon" href="http://blog.fossasia.org/tag/badgeyay" target="_blank">
+                                <img src="/images/blog.png">
+                                <p class="custom-title">Blogs</p>
+                            </a>
+                        </div>
+                        <hr>
+                        <div class="custom-menu-item">
+                            <a class="custom-icon" href="http://eventyay.com" target="_blank">
+                                <img src="/images/eventyay.png">
+                                <p class="custom-title">Eventyay</p>
+                            </a>
+                        </div>
+                        <div class="custom-menu-item">
+                            <a class="custom-icon" href="http://fossasia.org" target="_blank">
+                                <img src="/images/fossasia.png">
+                                <p class="custom-title">FOSSASIA</p>
+                            </a>
+                        </div>
+                        <div class="custom-menu-item">
+                            <a class="custom-icon" href="http://chat.susi.ai" target="_blank">
+                                <img src="/images/susi.png">
+                                <p class="custom-title">Susi</p>
+                            </a>
+                        </div>
+                        <div class="custom-menu-item">
+                            <a href="http://loklak.net" target="_blank">
+                                <img src="/images/loklak.png" width="30" height="40">
+                                <p class="custom-title">loklak</p>
+                            </a>
+                        </div>
+                        <div class="custom-menu-item">
+                            <a class="custom-icon" href="http://susper.com" target="_blank">
+                                <img src="/images/susper.png">
+                                <p class="custom-title">Susper</p>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="custom-arrow"></div>
+            </div>
+        </ul>
     </div>
 </nav>
 
-<div class="container">
-    <!-- Replace action with backend url -->
-    <form id="form1" action="" method="post" enctype="multipart/form-data" onsubmit="return validate()">
-        <div class="row">
-            <div class="container board">
-                <div class="col-md-4 col-md-offset-4 col-sm-8 col-sm-offset-2 col-xs-10 col-xs-offset-1">
-                    <!-- Replace action with backend url -->
-                    <form action="" method="post" enctype="multipart/form-data">
-                        <label>Choose your data source:</label>
-                        <div class="panel-group" id="accordion1">
-                            <div class="panel panel-default">
-                                <div class="panel-heading">
-                                    <h4 class="panel-title" data-toggle="collapse" data-parent="#accordion1" href="#collapse1">Add CSV file</h4>
-                                </div>
-                                <div id="collapse1" class="panel-collapse collapse">
-                                    <div class="panel-body"><input type="file" id="inputFile" name="file" accept=".csv"></div>
-                                </div>
-                            </div>
-                            <div class="panel panel-default">
-                                <div class="panel-heading">
-                                    <h4 class="panel-title" data-toggle="collapse" data-parent="#accordion1" href="#collapse2">Enter Data Manually</h4>
-                                </div>
-                                <div id="collapse2" class="panel-collapse collapse">
-                                    <div class="panel-body"><textarea class="form-control" type="text" placeholder="Eg. Hong Phuc,Dang,Organiser,@hpdang,FOSSASIA " id="textArea" name="csv"></textarea></div>
-                                </div>
-                            </div>
-                        </div>
-                        <label>Choose your Badge Background</label>
-                        <div class="panel-group" id="accordion2">
-                            <div class="panel panel-default">
-                                <div class="panel-heading">
-                                    <h4 class="panel-title" data-toggle="collapse" data-parent="#accordion2" href="#collapse3">Use Background Template</h4>
-                                </div>
-                                <div id="collapse3" class="panel-collapse collapse">
-                                    <div class="panel-body">
-                                        <select id="inputFile">
-                                            <option value="red_futuristic.png">red_futuristic.png</option>
-                                            <option value="blue_futuristic.png">blue_futuristic.png</option>
-                                            <option value="cyan_futuristic.png">cyan_futuristic.png</option>
-                                            <option value="gray_futuristic.png">gray_futuristic.png</option>
-                                            <option value="green_futuristic.png">green_futuristic.png</option>
-                                            <option value="black_futuristic.png">black_futuristic.png</option>
-                                            <option value="yellow_futuristic.png">yellow_futuristic.png</option>
-                                        </select>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="panel panel-default">
-                                <div class="panel-heading">
-                                    <h4 class="panel-title" data-toggle="collapse" data-parent="#accordion2" href="#collapse4">Add background image</h4>
-                                </div>
-                                <div id="collapse4" class="panel-collapse collapse">
-                                    <div class="panel-body"><input type="file" id="imageFile" name="image" accept="image/*"></div>
-                                </div>
-                            </div>
-                            <div class="panel panel-default">
-                                <div class="panel-heading">
-                                    <h4 class="panel-title" data-toggle="collapse" data-parent="#accordion2" href="#collapse5">Enter background color</h4>
-                                </div>
-                                <div id="collapse5" class="panel-collapse collapse">
-                                    <div class="panel-body"><input type="text" id="picker" class="form-control" name="bg_color" placeholder="#FFFFFF"></div>
-                                </div>
-                            </div>
-                        </div>
-                        <label>Choose your font:</label>
-                        <div class="panel-group" id="accordion3">
-                            <div class="panel panel-default">
-                                <div class="panel-heading">
-                                    <h4 class="panel-title" data-toggle="collapse" data-parent="#accordion3" href="#collapse6">Use custom font</h4>
-                                </div>
-                                <div id="collapse6" class="panel-collapse collapse">
-                                    <div class="panel-body">
-                                        <select name="customFont">
-                                            <option value="monospace" style="font-family:'monospace'">monospace</option>
-                                            <option value="sans-serif" style="font-family:'sans-serif'">sans-serif</option>
-                                            <option value="sans" style="font-family:'sans'">sans</option>
-                                            <option value="Courier 10 Pitch" style="font-family:'Courier 10 Pitch'">Courier 10 Pitch</option>
-                                        </select>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <button type="submit" class="btn submit-btn btn-primary">Generate Badges</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </form>
-</div><br><br>
+{{outlet}}
+
+<div id="footer">
+        <span> <strong>Version: </strong></span>
+        <span> <a class="version"></a></span>
+</div>

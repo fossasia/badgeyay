@@ -1,8 +1,8 @@
 {
-  "name": "badgeyay-frontend",
+  "name": "badgeyay",
   "version": "0.0.0",
   "private": true,
-  "description": "Small description for badgeyay-frontend goes here",
+  "description": "Small description for badgeyay goes here",
   "license": "MIT",
   "author": "",
   "directories": {

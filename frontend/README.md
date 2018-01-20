@@ -1,7 +1,8 @@
-# badgeyay-frontend
+# badgeyay frontend
 
-This README outlines the details of collaborating on this Ember application.
-A short introduction of this app could easily go here.
+badgeyay is a simple badge generator with a simple web UI to add data and generate printable badges in a zip.
+
+This direcotry contains the frontend for badgeyay.
 
 ## Prerequisites
 
@@ -10,23 +11,23 @@ You will need the following things properly installed on your computer.
 * [Git](https://git-scm.com/)
 * [Node.js](https://nodejs.org/) (with npm)
 * [Ember CLI](https://ember-cli.com/)
-* [Google Chrome](https://google.com/chrome/)
+* [Google Chrome](https://google.com/chrome/) (for testing purposes only)
 
 ## Installation
 
-* `git clone <repository-url>` this repository
-* `cd badgeyay-frontend`
+To install the app, run the following commands in a command line:
+
+* `git clone https://github.com/fossasia/badgeyay this repository
+* `cd badgeyay/frontend`
 * `npm install`
 
-## Running / Development
+## Running locally:
+
+To run the app locally on your machine, run the following commands in a command line:
 
 * `ember serve`
 * Visit your app at [http://localhost:4200](http://localhost:4200).
 * Visit your tests at [http://localhost:4200/tests](http://localhost:4200/tests).
-
-### Code Generators
-
-Make use of the many generators for code, try `ember help generate` for more details
 
 ### Running Tests
 
@@ -40,7 +41,7 @@ Make use of the many generators for code, try `ember help generate` for more det
 
 ### Deploying
 
-Specify what it takes to deploy your app.
+This section would need editing after proper deployment. Please wait till then.
 
 ## Further Reading / Useful Links
 
