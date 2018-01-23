@@ -8,9 +8,9 @@ class APITest(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls):
-        cls.CSVPath = os.path.abspath(os.path.join(os.getcwd(), 'sample/vip.png.csv'))
-        cls.ImagePath = os.path.abspath(os.path.join(os.getcwd(), 'badges/badge_1.png'))
-        cls.ResponsesPath = os.path.abspath(os.path.join(os.getcwd(), 'app/tests/expected_responses.json'))
+        cls.CSVPath = os.path.abspath(os.path.join(os.getcwd(), 'backend/sample/vip.png.csv'))
+        cls.ImagePath = os.path.abspath(os.path.join(os.getcwd(), 'backend/badges/badge_1.png'))
+        cls.ResponsesPath = os.path.abspath(os.path.join(os.getcwd(), 'backend/app/tests/expected_responses.json'))
         cls.Responses = json.load(open(cls.ResponsesPath))
         cls.URL = 'http://127.0.0.1:5000/api/v1.0/generate_badges'
         super(APITest, cls).setUpClass()
@@ -19,7 +19,8 @@ class APITest(unittest.TestCase):
         # Tests manual entering of data with a default image
         Data = {
             'csv': 'test,test,test,test',
-            'img-default': 'default.png'
+            'img-default': 'user_defined.png',
+            'bg_color': '000000'
         }
         r = requests.post(self.URL, data=Data)
         self.assertEqual(json.loads(r.text)['response'], self.Responses['test_user_entered_data'])
@@ -27,7 +28,10 @@ class APITest(unittest.TestCase):
     def test_csv_upload(self):
         # Tests uploading csv with a default image
         File = {'file': open(self.CSVPath, 'rb')}
-        Data = {'img-default': 'default.png'}
+        Data = {
+            'img-default': 'user_defined.png',
+            'bg_color': '000000'
+        }
         r = requests.post(self.URL, data=Data, files=File)
         self.assertEqual(json.loads(r.text)['response'], self.Responses['test_csv_upload'])
 
@@ -54,7 +58,8 @@ class APITest(unittest.TestCase):
         # Tests choosing custom font
         File = {'file': open(self.CSVPath, 'rb')}
         Data = {
-            'img-default': 'default.png',
+            'img-default': 'user_defined.png',
+            'bg_color': '000000',
             'custfont': 'sans'
         }
         r = requests.post(self.URL, data=Data, files=File)
