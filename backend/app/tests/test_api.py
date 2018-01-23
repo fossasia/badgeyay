@@ -8,8 +8,8 @@ class APITest(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls):
-        cls.CSVPath = os.path.abspath(os.path.join(os.getcwd(), 'sample/vip.png.csv'))
-        cls.ImagePath = os.path.abspath(os.path.join(os.getcwd(), 'badges/badge_1.png'))
+        cls.CSVPath = os.path.abspath(os.path.join(os.getcwd(), 'backend/sample/vip.png.csv'))
+        cls.ImagePath = os.path.abspath(os.path.join(os.getcwd(), 'backend/badges/badge_1.png'))
         cls.ResponsesPath = os.path.abspath(os.path.join(os.getcwd(), 'backend/app/tests/expected_responses.json'))
         cls.Responses = json.load(open(cls.ResponsesPath))
         cls.URL = 'http://127.0.0.1:5000/api/v1.0/generate_badges'
