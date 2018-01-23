@@ -70,7 +70,11 @@ matrix:
       - JOBS=1
 
     before_install:
+      - npm install
+      - npm install -g ember-cli
+      - npm install -g eslint
       - npm config set spin false
+
 
     script:
       - cd frontend
