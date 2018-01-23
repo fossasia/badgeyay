@@ -13,3 +13,4 @@ pypdf2==1.26.0
 defusedxml==0.5.0
 cairocffi==0.6.0
 cairosvg==2.0.3
+requests==2.16.0

@@ -1,46 +1,67 @@
-language: python3
-
 sudo: required
 
-addons:
-  firefox: 55.0
-  apt:
-    packages:
+matrix:
+  include:
+  - language: python3
+
+    apt:
+      packages:
       - python-dev
 
-python:
-  - 3.5
-cache:
-  directories:
-    - $HOME/.pip-cache/
+    python:
+      - 3.5
+    cache:
+      directories:
+        - $HOME/backend/.pip-cache/
     
-before_install:
-- sudo apt-get -qq update
-- sudo apt-get -y install python3-pip
-- sudo apt-get install python-virtualenv
-- wget https://github.com/mozilla/geckodriver/releases/download/v0.19.0/geckodriver-v0.19.0-linux64.tar.gz
-- mkdir geckodriver
-- tar -xzf geckodriver-v0.19.0-linux64.tar.gz -C geckodriver
-- export PATH=$PATH:$PWD/geckodriver
+    before_install:
+      - sudo apt-get -qq update
+      - sudo apt-get -y install python3-pip
+      - sudo apt-get install python-virtualenv
 
-install:
-- virtualenv  -p python3 ../flask_env
-- source ../flask_env/bin/activate
-- pip3 install -r requirements/test.txt --cache-dir $HOME/.pip-cache
+    install:
+      - virtualenv  -p python3 ../flask_env
+      - source ../flask_env/bin/activate
+      - pip3 install -r backend/requirements/test.txt --cache-dir $HOME/backend/.pip-cache
 
-before_script:
-- export DISPLAY=:99.0
-- sh -e /etc/init.d/xvfb start
-- sleep 3
+    before_script:
+      - export DISPLAY=:99.0
+      - sh -e /etc/init.d/xvfb start
+      - sleep 3
 
-script:
-- python app/main.py >> log.txt 2>&1  &
-- nosetests app/tests/test.py -v --with-coverage
-- python3 -m pyflakes .
-- cd cli
-- python setup.py install
-- cd ..
-- badgeyay -i app/static/uploads/yellow_futuristic.png -n sample/businesspass.png.csv
+    script:
+      - python backend/app/main.py >> log.txt 2>&1  &
+      - nosetests backend/app/tests/test_api.py -v --with-coverage
 
-after_success:
-- bash <(curl -s https://codecov.io/bash)
+    after_success:
+      - bash <(curl -s https://codecov.io/bash)
+
+  - language: node_js
+    node_js:
+      - "6"
+
+    dist: trusty
+
+    addons:
+      chrome: stable
+
+    cache:
+      directories:
+        - $HOME/frontend/.npm
+
+    env:
+      global:
+      # See https://git.io/vdao3 for details.
+      - JOBS=1
+
+    before_install:
+      - cd frontend
+      - npm install
+      - npm install -g ember-cli
+      - npm i eslint-plugin-ember@latest --save-dev
+      - npm config set spin false
+
+
+    script:
+      - npm run lint:js
+      - npm test
