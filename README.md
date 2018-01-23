@@ -19,8 +19,6 @@ One-click Docker, Heroku, Scalingo and Bluemix deployment is also available:
 
 Checkout badgeyay in action:
 
-![Demo GIF](app/working.gif)
-
 [![Demo YouTube](https://user-images.githubusercontent.com/8705386/30831526-438f8c4c-a237-11e7-83fc-c12046f12e18.png)](https://www.youtube.com/watch?v=Gh8j_01LIoQ)
 
 Our current goal is to provide an interface to generate badges for the FOSSASIA conference.
