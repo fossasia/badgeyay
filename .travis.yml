@@ -62,7 +62,7 @@ matrix:
 
     cache:
       directories:
-        - $HOME/.npm
+        - $HOME/frontend/.npm
 
     env:
       global:
