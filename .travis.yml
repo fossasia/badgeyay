@@ -2,7 +2,7 @@ sudo: required
 
 matrix:
   include:
-    - language: python3
+  - language: python3
   
     addons: 
       firefox: 55.0
@@ -10,6 +10,9 @@ matrix:
     apt:
       packages:
       - python-dev
+
+    python:
+      - 3.5
     cache:
       directories:
         - $HOME/.pip-cache/
@@ -48,7 +51,7 @@ matrix:
       - bash <(curl -s https://codecov.io/bash)
 
 
-    - language: node_js
+  - language: node_js
       node_js:
           - "6"
 
