@@ -3,7 +3,8 @@ sudo: required
 matrix:
   include:
     - language: python3
-    - addons: firefox: 55.0
+    - addons: 
+        firefox: 55.0
   
   apt:
     packages:
