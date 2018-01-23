@@ -70,13 +70,13 @@ matrix:
       - JOBS=1
 
     before_install:
+      - cd frontend
       - npm install
       - npm install -g ember-cli
-      - npm install -g eslint
+      - npm i eslint-plugin-ember@latest --save-dev
       - npm config set spin false
 
 
     script:
-      - cd frontend
       - npm run lint:js
       - npm test
