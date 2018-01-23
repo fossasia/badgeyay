@@ -160,7 +160,7 @@ def main_task():
             traceback.print_exc()
 
         if True:
-            url = "/static/badges/" + filename.replace('.', '-') + "-badges.pdf"
+            url = "backend/app/static/badges/" + filename.replace('.', '-') + "-badges.pdf"
             os.rename(os.path.join(BADGES_FOLDER + "/" + filename + ".badges.pdf"),
                       os.path.join(BADGES_FOLDER + "/" + filename.replace('.', '-') + "-badges.pdf"))
             return output('success', 'pdf generation completed successfully', url)
@@ -204,4 +204,4 @@ def Internal_Server_Error(e):
 
 if __name__ == '__main__':
     # app.run(debug=args.dev)
-    app.run(debug=True)
+    app.run(host='0.0.0.0',debug=True)
