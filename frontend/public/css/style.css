@@ -15,7 +15,7 @@
 
 .board .btn-success {
     margin-top: 10px;
-    margin-bottom: 10px;
+    margin-bottom: 50px;
     background: #4CAF50;
 }
 
@@ -206,9 +206,14 @@ textarea {
     text-align: center;
     width: 100%;
     padding: 10px;
+    margin-top: 10px;
     bottom: 0px;
     border-top: 1px solid #bfbfbf;
     background-color: #f9f9f9;
+}
+
+#json {
+    margin-bottom: 50px;
 }
 
 .options {
