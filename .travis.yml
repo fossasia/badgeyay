@@ -52,27 +52,27 @@ matrix:
 
 
   - language: node_js
-      node_js:
-          - "6"
+    node_js:
+      - "6"
 
-      dist: trusty
+    dist: trusty
 
-      addons:
-        chrome: stable
+    addons:
+      chrome: stable
 
-      cache:
-        directories:
-          - $HOME/.npm
+    cache:
+      directories:
+        - $HOME/.npm
 
-      env:
-        global:
-        # See https://git.io/vdao3 for details.
-        - JOBS=1
+    env:
+      global:
+      # See https://git.io/vdao3 for details.
+      - JOBS=1
 
-      before_install:
-        - npm config set spin false
+    before_install:
+      - npm config set spin false
 
-      script:
-        - cd frontend
-        - npm run lint:js
-        - npm test
+    script:
+      - cd frontend
+      - npm run lint:js
+      - npm test
