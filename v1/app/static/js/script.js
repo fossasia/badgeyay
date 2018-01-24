@@ -99,7 +99,7 @@ $(document).on("ready", function () {
         }
 
         var textValues = $("#textArea").val();
-        textValues = textValues.split("/n")[0].split(",");
+        textValues = textValues.split("\n")[0].split(",");
 
 
         $("#preview-li-1").text(textValues[0]);
