@@ -1,3 +1,4 @@
+from time import sleep
 import unittest
 import requests
 import os
@@ -22,7 +23,8 @@ class APITest(unittest.TestCase):
             'img-default': 'user_defined.png',
             'bg_color': '000000'
         }
-        r = requests.post(self.URL, data=Data)
+        sleep(2)
+        r = requests.post(self.URL, data=Data, timeout=10)
         self.assertEqual(json.loads(r.text)['response'], self.Responses['test_user_entered_data'])
 
     def test_csv_upload(self):
@@ -32,7 +34,8 @@ class APITest(unittest.TestCase):
             'img-default': 'user_defined.png',
             'bg_color': '000000'
         }
-        r = requests.post(self.URL, data=Data, files=File)
+        sleep(2)
+        r = requests.post(self.URL, data=Data, files=File, timeout=10)
         self.assertEqual(json.loads(r.text)['response'], self.Responses['test_csv_upload'])
 
     def test_img_upload(self):
@@ -41,7 +44,8 @@ class APITest(unittest.TestCase):
             'image': open(self.ImagePath, 'rb'),
             'file': open(self.CSVPath, 'rb')
         }
-        r = requests.post(self.URL, files=File)
+        sleep(2)
+        r = requests.post(self.URL, files=File, timeout=10)
         self.assertEqual(json.loads(r.text)['response'], self.Responses['test_img_upload'])
 
     def test_bg_color(self):
@@ -51,7 +55,8 @@ class APITest(unittest.TestCase):
             'img-default': 'user_defined.png',
             'bg_color': '000000'
         }
-        r = requests.post(self.URL, data=Data, files=File)
+        sleep(2)
+        r = requests.post(self.URL, data=Data, files=File, timeout=10)
         self.assertEqual(json.loads(r.text)['response'], self.Responses['test_bg_color'])
 
     def test_custom_font(self):
@@ -62,7 +67,8 @@ class APITest(unittest.TestCase):
             'bg_color': '000000',
             'custfont': 'sans'
         }
-        r = requests.post(self.URL, data=Data, files=File)
+        sleep(2)
+        r = requests.post(self.URL, data=Data, files=File, timeout=10)
         self.assertEqual(json.loads(r.text)['response'], self.Responses['test_custom_font'])
 
     @classmethod
