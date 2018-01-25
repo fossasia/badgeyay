@@ -19,7 +19,7 @@ class APITest(unittest.TestCase):
     def test_user_entered_data(self):
         # Tests manual entering of data with a default image
         Data = {
-            'csv': 'test,test,test,test',
+            'csv': 'test,test,test,test,test',
             'img-default': 'user_defined.png',
             'bg_color': '000000'
         }

@@ -116,7 +116,7 @@ def main_task():
         count_line = 0
         for check in check_csv:
             line = check.split(',')
-            if len(line) == 4:
+            if len(line) == 5:
                 count_line = count_line + 1
         if count_line == len(check_csv):
             filename = img + ".csv"
