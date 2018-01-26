@@ -90,7 +90,7 @@
                             </li>
                         </ul>
                         <div id="error" class="no-image-error">Please select a default background or upload an image!</div>
-                        <label>Choose your font</label>
+                        <label>Customize text</label>
                         <ul style="list-style-type:none">
                             <li><input type="radio" name="fontsource" id="custfont">&nbsp;Use Custom font</li>
                             <section id="custom-font" style="display:none">
@@ -109,6 +109,16 @@
                                 </div>
                             </section>
                             <input type="hidden" name="custfont" value="">
+                            <li>
+                            <li>
+                                <input type="radio" name="backsource" id="text-color"> Choose Text Color</li>
+                                <section id="text-fill-input" style="display:none">
+                                    <label for="inputFile"></label>
+                                    <div>
+                                        <input type="text" id="text-picker" class="form-control" name="txt_color">                                     
+                                    </div>
+                                </section>
+                            </li>
                         </ul>
                         <button type="submit" disabled="disabled" class="btn btn-block submit-btn">Generate Badges</button>
                         <button type="button" disabled="disabled" class="btn btn-block btn-warning" id="preview-btn">Preview</button>

@@ -5,7 +5,7 @@ import os
 import json
 import shutil
 import traceback
-from svg_to_png import do_svg2png
+from svg_to_png import do_svg2png, do_text_fill
 
 APP_ROOT = os.path.dirname(os.path.abspath(__file__))
 UPLOAD_FOLDER = os.path.join(APP_ROOT, 'static/uploads')
@@ -81,6 +81,9 @@ def main_task():
     csv = request.form.get('csv', '').strip()
     img = request.form.get('img-default', '')
     custom_font = request.form.get('custfont', '')
+    text_fill = request.form.get('txt_color', '#ffffff')
+
+    do_text_fill(APP_ROOT + "/../badges/8BadgesOnA3.svg", text_fill)
 
     if 'file' in request.files:
         file = request.files['file']

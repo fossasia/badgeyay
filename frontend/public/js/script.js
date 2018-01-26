@@ -37,6 +37,14 @@ $(document).ready(function () {
         theme: 'bootstrap'
     });
 
+    $("#text-picker").minicolors({
+        control: 'hue',
+        format: 'hex',
+        defaultValue: '#ffffff',
+        letterCase: 'lowercase',
+        position: 'bottom left',
+        theme: 'bootstrap'
+    });
 
     var apiUrl = "https://api.github.com/repos/fossasia/badgeyay/git/refs/heads/development";
     $.ajax({
