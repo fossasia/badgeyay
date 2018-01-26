@@ -55,21 +55,12 @@ The guidelines for setting up and running the tests are mentioned in the [testin
 
 - The input is a set of csv files in the same folder, UTF-8.
 - The csv file is named after the badge type to take. Example: `vip.png.csv` uses the picture `vip.png`.
-- The CSV has up to 4 columns for the name and the twitter handle. They will be filled if this number is filled:
-  - `__X_`
-  - `__XX`
-  - `_XXX`
-  - `XXXX`
-- Optional configuration file in json format to customise badges.
-- A sample configuration file is shown below
-  ```
-  {
-    "options": {
-        "badge_wrap": true,
-        "paper_size_format": "A3"
-    }
-  }
-  ```
+- The CSV has up to 5 columns for the name and the twitter handle. They will be filled if this number is filled:
+  - `___X_`
+  - `___XX`
+  - `__XXX`
+  - `_XXXX`
+  - `XXXXX`
 
   - badge_wrap: It can be **true** or **false**. If set to true then for each entry in the csv file two badges
                 will be generated so that they can be wrapped around the badge card.

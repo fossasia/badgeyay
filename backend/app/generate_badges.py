@@ -79,7 +79,7 @@ class GenerateBadges:
             if len(row) == 1:
                 row = ["", ""] + row + [""]
             else:
-                row = [""] * (4 - len(row)) + row
+                row = [""] * (5 - len(row)) + row
             for j, text in enumerate(row):
                 text = html.escape(text)
                 content = content.replace(
