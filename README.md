@@ -42,14 +42,14 @@ Badgeyay uses a number of open source projects:
 * [Bootstrap](https://getbootstrap.com/docs/3.3/) - Responsive frontend framework
 * [Shell](https://en.wikipedia.org/wiki/Unix_shell) - Script used for merging badges of different types
 * [Heroku](https://www.heroku.com/) - Webapp deployed here
-* [Travis](travis-ci.org) - Continuous Integration of the project
+* [Travis](https://travis-ci.org/) - Continuous Integration of the project
 * [Github Release](https://help.github.com/articles/creating-releases/) - Releases are GitHub's way of packaging and providing software to the users
 
 ### Testing Methodology Used
 
 * [Python Unit tests](https://docs.python.org/3/library/unittest.html) - for assertion, with the help of [Selenium](https://github.com/SeleniumHQ/Selenium) for web browser automation.
 
-The guidelines for setting up and running the tests are mentioned in the [testing docs](docs/test/testing.md).
+The guidelines for setting up and running the tests are mentioned in the [testing docs](backend/docs/test/testing.md).
 
 ### Input
 
@@ -116,13 +116,13 @@ Installation
 --------------
 Badgeyay can be easily deployed on a variety of platforms. Currently it can be deployed in following ways.
 
-1. [Local Installation using Virtual environment](/docs/installation/localvir.md)
+1. [Local Installation using Virtual environment](backend/docs/installation/localvir.md)
 
-2. [Local Installation using Vagrant environment](/docs/installation/localvag.md)
+2. [Local Installation using Vagrant environment](backend/docs/installation/localvag.md)
 
-3. [Deployment on Heroku](/docs/installation/heroku.md)
+3. [Deployment on Heroku](backend/docs/installation/heroku.md)
 
-4. [Deployment with Docker](/docs/installation/docker.md)
+4. [Deployment with Docker](backend/docs/installation/docker.md)
 
 
 Contributions, Bug Reports, Feature Requests
@@ -168,10 +168,10 @@ This will show the information about the parameters to be supplied to the CLI ap
 Implementation
 --------------
 
-[generate_badges.py](/app/generate-badges.py) creates svg files from the `csv`, `png` and
-[badges/8BadgesOnA3.svg](badges/8BadgesOnA3.svg).
+[generate_badges.py](/backend/app/generate-badges.py) creates svg files from the `csv`, `png` and
+[badges/8BadgesOnA3.svg](/backend/badges/8BadgesOnA3.svg).
 
-[merge_badges.py](/app/merge_badges.py) converts them into pdf files and merges
+[merge_badges.py](/backend/app/merge_badges.py) converts them into pdf files and merges
 them together into one.
 
 [Travis](https://github.com/fossasia/badgeyay/blob/development/.travis.yml) creates new releases with the `all-badges.pdf` file.
