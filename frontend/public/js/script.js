@@ -76,10 +76,12 @@ $(document).ready(function () {
 
     $("#picker").change(function(){
         $("#preview-btn").prop("disabled",false);
+        $("#preview").css("background","");
     });
 
     $("input[name=img-default]").change(function(){
         $("#preview-btn").prop("disabled",false);
+        $("#picker").val("");
     });
 
     $("#preview-btn").on("click",function(e){
