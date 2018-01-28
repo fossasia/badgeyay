@@ -14,6 +14,10 @@ module.exports = {
   env: {
     browser: true
   },
+  globals: {
+    module  : true,
+    process : true
+  },
   rules: {
   },
   overrides: [

@@ -1,7 +1,7 @@
-'use strict';
+/* eslint-env node */
 
 module.exports = function(environment) {
-  let ENV = {
+  var ENV = {
     modulePrefix: 'badgeyay',
     environment,
     rootURL: '/',
@@ -16,7 +16,6 @@ module.exports = function(environment) {
         Date: false
       }
     },
-
     APP: {
       // Here you can pass flags/options to your application instance
       // when it is created
@@ -43,8 +42,13 @@ module.exports = function(environment) {
     ENV.APP.autoboot = false;
   }
 
+  var deployTarget = process.env.DEPLOY_TARGET;
+
   if (environment === 'production') {
-    // here you can enable a production-specific feature
+    if (deployTarget && deployTarget === 'gh-pages') {
+      ENV.locationType = 'hash';
+      ENV.rootURL = `/${process.env.REPO_SLUG || 'badgeyay'}`;
+    }
   }
 
   return ENV;
