@@ -1,15 +1,15 @@
 {
   "name": "badgeyay",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "private": true,
-  "description": "Small description for badgeyay goes here",
+  "description": "Badgeyay is a simple badge generator which generates printable badges in a pdf.",
   "license": "MIT",
-  "author": "",
+  "author": "FOSSASIA",
   "directories": {
     "doc": "doc",
     "test": "tests"
   },
-  "repository": "",
+  "repository": "https://github.com/fossasia/badgeyay",
   "scripts": {
     "build": "ember build",
     "lint:js": "eslint ./*.js app config lib server tests",
@@ -23,6 +23,9 @@
     "ember-cli-app-version": "^3.0.0",
     "ember-cli-babel": "^6.6.0",
     "ember-cli-dependency-checker": "^2.0.0",
+    "ember-cli-deploy": "^1.0.0",
+    "ember-cli-deploy-build": "^1.0.0",
+    "ember-cli-deploy-git": "^1.2.0",
     "ember-cli-eslint": "^4.2.1",
     "ember-cli-htmlbars": "^2.0.1",
     "ember-cli-htmlbars-inline-precompile": "^1.0.0",
