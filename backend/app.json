@@ -1,0 +1,15 @@
+{
+    "name": "BadgeYay-API",
+    "description": "A fully functional REST API for badges generator using flask",
+    "repository": "https://github.com/fossasia/badgeyay/backend/",
+    "keywords": [
+        "badgeyay",
+        "fossasia",
+        "flask"
+    ],
+    "buildpacks": [
+        {
+            "url": "heroku/python"
+        }
+    ]
+}
