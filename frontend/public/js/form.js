@@ -29,7 +29,11 @@ $(document).ready(
             $("#text-fill-input").css("display", "block");
         });
         $("#custfont").click(function(){
+          if($("#custfont").is(":checked")){
             $("#custom-font").css("display", "block");
+          } else {
+            $("#custom-font").css("display", "none");
+          }
         });
         $("#deffont").click(function(){
             $("#custom-font").css("display", "none");
