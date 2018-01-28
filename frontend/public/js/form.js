@@ -25,6 +25,9 @@ $(document).ready(
             $("#background-input").css("display", "block");
             $("input[name='img-default']").val("user_defined.png");
         });
+        $("#text-color").click(function () {
+            $("#text-fill-input").css("display", "block");
+        });
         $("#custfont").click(function(){
             $("#custom-font").css("display", "block");
         });
