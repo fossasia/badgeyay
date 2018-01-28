@@ -61,7 +61,9 @@ matrix:
       - npm i eslint-plugin-ember@latest --save-dev
       - npm config set spin false
 
-
     script:
       - npm run lint:js
       - npm test
+
+    after_success:
+      - bash ./script/gh_deploy.sh
