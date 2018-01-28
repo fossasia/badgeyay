@@ -10,7 +10,7 @@ module.exports = function(deployTarget) {
 if (deployTarget === 'gh-pages') {
      ENV.build.environment = 'production'; 
      ENV.git = {
-       repo: `https://ParthS007:${process.env.GIT_ACCESS_KEY}@github.com/fossasia/badgeyay`,
+       repo: `https://ParthS007:${process.env.GH_TOKEN}@github.com/fossasia/badgeyay`,
        branch: 'gh-pages',
        commitMessage: 'Deployed %@'
      };
