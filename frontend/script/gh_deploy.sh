@@ -3,6 +3,7 @@
 git config --global user.name "Travis CI"
 git config --global user.email "noreply+travis@fossasia.org"
 
+
 export DEPLOY_BRANCH=${DEPLOY_BRANCH:-development}
 
 if [ "$TRAVIS_PULL_REQUEST" != "false" -o "$TRAVIS_REPO_SLUG" != "fossasia/badgeyay" -o "$TRAVIS_BRANCH" != "$DEPLOY_BRANCH" ]; then
@@ -10,4 +11,5 @@ if [ "$TRAVIS_PULL_REQUEST" != "false" -o "$TRAVIS_REPO_SLUG" != "fossasia/badge
     exit 0
 fi
 
-ember deploy gh-pages
+echo $DEPLOY_DOMAIN >> public/CNAME
+ember deploy gh-pages-with-domain
