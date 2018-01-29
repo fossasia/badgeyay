@@ -9,7 +9,7 @@
 The user can:
   * Choose size of badges
   * Choose background of badges and upload logo and background image
-  * Upload a CSV file or manually enter CSV data as: name, type of attendee, nick/handle, organization/project
+  * Upload a CSV file or manually enter CSV data as: name, type of attendee, nick/handle, organization/project, designation
 
 # Deploy
 One-click Docker, Heroku, Scalingo and Bluemix deployment is also available:
