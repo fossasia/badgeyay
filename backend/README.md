@@ -152,10 +152,10 @@ Also read [CONTRIBUTING.md](https://github.com/fossasia/badgeyay/blob/developmen
 Implementation
 --------------
 
-[generate_badges.py](/app/generate_badges.py) creates svg files from the `csv`, `png` and
+[generate_badges.py](app/generate_badges.py) creates svg files from the `csv`, `png` and
 [badges/8BadgesOnA3.svg](badges/8BadgesOnA3.svg).
 
-[merge_badges.py](/app/merge_badges.py) converts them into pdf files and merges
+[merge_badges.py](app/merge_badges.py) converts them into pdf files and merges
 them together into one.
 
 [Travis](https://github.com/fossasia/badgeyay/blob/development/.travis.yml) creates new releases with the `all-badges.pdf` file.
