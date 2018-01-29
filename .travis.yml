@@ -15,7 +15,7 @@ matrix:
     cache:
       directories:
         - $HOME/backend/.pip-cache/
-    
+
     before_install:
       - sudo apt-get -qq update
       - sudo apt-get -y install python3-pip
@@ -33,6 +33,7 @@ matrix:
 
     after_success:
       - bash <(curl -s https://codecov.io/bash)
+      - bash backend/scripts/gh_deploy.sh
 
   - language: node_js
     node_js:
