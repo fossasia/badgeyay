@@ -88,10 +88,6 @@ The guidelines for setting up and running the tests are mentioned in the [testin
 You can change the font style, font size, color etc from the `.svg` file in the folder badges.
 Inkscape is generally used for editing of such files.
 
-### Usage
-
-You need Ubuntu to run the application. We are working on integrating vagrant to make it easier to run on windows. Check out the [User Input Guide](https://badgeyay-dev.herokuapp.com/guide) for more details.
-
 ### Install Dependencies
 
 Badgeyay backend requires the following dependencies to be installed
