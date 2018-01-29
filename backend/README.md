@@ -177,7 +177,7 @@ To join the team:
 3. A Badgeyay admin adds you.
 
 To stay a maintainer in the team:
-1. Follow the rules of [CCCC][cccc] or [Badgeyay](.github/CONTRIBUTING.md) and do not violate them willingly or in a harmful way.
+1. Follow the rules of [CCCC][cccc] or [Badgeyay](../.github/CONTRIBUTING.md) and do not violate them willingly or in a harmful way.
 
 To be removed from the team:
 1. Someone creates an issue to ask for removal, e.g. because of inactivity or a violation.
