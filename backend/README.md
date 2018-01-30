@@ -9,8 +9,7 @@
 The user can:
   * Choose size of badges
   * Choose background of badges and upload logo and background image
-  * Upload a CSV file or manually enter CSV data as: name, type of attendee, nick/handle, organization/project
-
+  * Upload a CSV file or manually enter CSV data as: name, type of attendee, designation, nick/handle, organization/project
 # Deploy
 One-click Docker, Heroku, Scalingo and Bluemix deployment is also available:
 
@@ -88,10 +87,6 @@ The guidelines for setting up and running the tests are mentioned in the [testin
 You can change the font style, font size, color etc from the `.svg` file in the folder badges.
 Inkscape is generally used for editing of such files.
 
-### Usage
-
-You need Ubuntu to run the application. We are working on integrating vagrant to make it easier to run on windows. Check out the [User Input Guide](https://badgeyay-dev.herokuapp.com/guide) for more details.
-
 ### Install Dependencies
 
 Badgeyay backend requires the following dependencies to be installed
@@ -120,13 +115,13 @@ Installation
 --------------
 Badgeyay backend can be easily deployed on a variety of platforms. Currently it can be deployed in following ways.
 
-1. [Local Installation using Virtual environment](/docs/installation/localvir.md)
+1. [Local Installation using Virtual environment](docs/installation/localvir.md)
 
-2. [Local Installation using Vagrant environment](/docs/installation/localvag.md)
+2. [Local Installation using Vagrant environment](docs/installation/localvag.md)
 
-3. [Deployment on Heroku](/docs/installation/heroku.md)
+3. [Deployment on Heroku](docs/installation/heroku.md)
 
-4. [Deployment with Docker](/docs/installation/docker.md)
+4. [Deployment with Docker](docs/installation/docker.md)
 
 
 Contributions, Bug Reports, Feature Requests
@@ -152,10 +147,10 @@ Also read [CONTRIBUTING.md](https://github.com/fossasia/badgeyay/blob/developmen
 Implementation
 --------------
 
-[generate_badges.py](/app/generate-badges.py) creates svg files from the `csv`, `png` and
+[generate_badges.py](app/generate_badges.py) creates svg files from the `csv`, `png` and
 [badges/8BadgesOnA3.svg](badges/8BadgesOnA3.svg).
 
-[merge_badges.py](/app/merge_badges.py) converts them into pdf files and merges
+[merge_badges.py](app/merge_badges.py) converts them into pdf files and merges
 them together into one.
 
 [Travis](https://github.com/fossasia/badgeyay/blob/development/.travis.yml) creates new releases with the `all-badges.pdf` file.
@@ -164,29 +159,6 @@ License
 -------------------
 
 Badgeyay - A simple badge generator. Its main purpose is to generate badges for events/conferences under the Open Event project of FOSSASIA. The Open Event project aims to make server and client software required for hosting events/conferences easy to build and configure. Copyright (C) 2016, FOSSASIA. This program is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version. This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with this program. If not, see http://www.gnu.org/licenses/.
-
-
-Maintainers
--------------------
-
-You can reach the maintainers and ping them personally by looking at the [Badgeyay team][team].
-
-You can become a maintainer by following the project and contributing code to it.
-Please see your role in the [CCCC][cccc].
-
-The project is maintained by the [Badgeyay maintainer's team][team].
-To join the team:
-1. Contribute
-2. You or someone else proposes you in an issue to become a member of the team.
-3. A Badgeyay admin adds you.
-
-To stay a maintainer in the team:
-1. Follow the rules of [CCCC][cccc] or [Badgeyay](.github/CONTRIBUTING.md) and do not violate them willingly or in a harmful way.
-
-To be removed from the team:
-1. Someone creates an issue to ask for removal, e.g. because of inactivity or a violation.
-2. An admin removes you.
-
 
 [gitter]: https://gitter.im/fossasia/badgeyay
 [cccc]: https://rfc.zeromq.org/spec:42/C4
