@@ -9,8 +9,7 @@
 The user can:
   * Choose size of badges
   * Choose background of badges and upload logo and background image
-  * Upload a CSV file or manually enter CSV data as: name, type of attendee, nick/handle, organization/project, designation
-
+  * Upload a CSV file or manually enter CSV data as: name, type of attendee, designation, nick/handle, organization/project
 # Deploy
 One-click Docker, Heroku, Scalingo and Bluemix deployment is also available:
 
@@ -160,29 +159,6 @@ License
 -------------------
 
 Badgeyay - A simple badge generator. Its main purpose is to generate badges for events/conferences under the Open Event project of FOSSASIA. The Open Event project aims to make server and client software required for hosting events/conferences easy to build and configure. Copyright (C) 2016, FOSSASIA. This program is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version. This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with this program. If not, see http://www.gnu.org/licenses/.
-
-
-Maintainers
--------------------
-
-You can reach the maintainers and ping them personally by looking at the [Badgeyay team][team].
-
-You can become a maintainer by following the project and contributing code to it.
-Please see your role in the [CCCC][cccc].
-
-The project is maintained by the [Badgeyay maintainer's team][team].
-To join the team:
-1. Contribute
-2. You or someone else proposes you in an issue to become a member of the team.
-3. A Badgeyay admin adds you.
-
-To stay a maintainer in the team:
-1. Follow the rules of [CCCC][cccc] or [Badgeyay](../.github/CONTRIBUTING.md) and do not violate them willingly or in a harmful way.
-
-To be removed from the team:
-1. Someone creates an issue to ask for removal, e.g. because of inactivity or a violation.
-2. An admin removes you.
-
 
 [gitter]: https://gitter.im/fossasia/badgeyay
 [cccc]: https://rfc.zeromq.org/spec:42/C4
