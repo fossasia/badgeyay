@@ -72,6 +72,9 @@ The guidelines for setting up and running the tests are mentioned in the [testin
   - height: Height of the page on which badges (in groups of 8) will be printed. Value should be in mm.
             For example: **"420mm"**.
 
+- A set of sample csv files can be found [here](https://github.com/fossasia/badgeyay/tree/development/backend/sample).
+
+
 ### Output
 
 The output file is svg / pdf / multipage pdf of size A3.
