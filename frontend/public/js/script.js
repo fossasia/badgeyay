@@ -107,6 +107,10 @@ $(document).ready(function () {
             fontValue = $(".placeholder2")[0].innerText;
             $(".preview-image-li").css("font-family",fontValue.toString());
         }
+        if($("#text-picker").val() !== ""){
+            var fontColor = $("#text-picker").val();
+            $(".preview-image-li").css("color",fontColor.toString());
+        }
 
         var textValues = $("#textArea").val();
         textValues = textValues.split("\n")[0].split(",");
