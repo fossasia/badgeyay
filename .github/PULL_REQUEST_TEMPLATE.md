@@ -7,6 +7,11 @@ Fixes #
 - [ ] My branch is up-to-date with the Upstream `development` branch.
 - [ ] I have added necessary documentation (if appropriate)
 
+### Preview Link 
+
+- **Replace XXX with your PR no**
+- Link to live demo: http://pr-XXX-fossasia-badgeyay.surge.sh  
+
 #### Changes proposed in this pull request:
 
 -
