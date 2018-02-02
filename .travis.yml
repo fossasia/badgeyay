@@ -63,4 +63,5 @@ matrix:
       - npm test
 
     after_success:
-      - bash ./script/gh_deploy.sh
+      - bash ./scripts/pr_deploy.sh
+      - bash ./scripts/gh_deploy.sh
