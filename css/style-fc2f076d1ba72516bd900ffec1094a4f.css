@@ -290,11 +290,10 @@ input[type="radio"] {
 .preview-image{
     height: 250px;
     width: 180px;
-    margin-left: 80px;
     background-size: cover;
     padding: 140px 0 0 5px;
     text-align: center;
-    margin-top: 20px;
+    margin: 20px auto 0px;
 }
 
 .preview-image-li{
