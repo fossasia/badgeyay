@@ -49,12 +49,24 @@ $(document).ready(
             var imgDefault = $('input[type=hidden][name="img-default"]').val();
             var imgUploaded = $('input[type=file][name="image"]').val();
             if ((csv || csvFile) && (imgDefault || imgUploaded)) {
-                $('button[type=submit]').removeAttr('disabled');
+                $('button[type=submit]').removeAttr('disabled');               
             } else {
                 $('button[type=submit]').attr('disabled', 'disabled');
             }
         });
+
+        $('button[type=submit]').click(function () {
+            overlayOn(); 
+        });
     });
+
+function overlayOn() {
+    $("#overlay-loading").css("display", "block");
+}
+
+function overlayOff() {
+    $("#overlay-loading").css("display", "none");
+} 
 
 function validate() {
     $("[id=error]").hide();
