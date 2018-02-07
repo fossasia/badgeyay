@@ -153,6 +153,11 @@
   </div>
 </div>
 
+<div id="overlay-loading">
+	<div id="overlay-text">Generating badges ...</div>
+</div>
+
+
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
 <script src="{{rootURL}}js/jquery.minicolors.min.js"></script>
 <script src="{{rootURL}}js/script.js"></script>
@@ -172,6 +177,7 @@
         success: function (data) {
           if (data["response"][0]["type"] === "success") {
             $('#success').css('visibility', 'visible');
+            overlayOff();
             let link = data["response"][0]["download_link"];
             link = link.replace("backend/app/", "http://badgeyay-api.herokuapp.com/");
             $('#badge-link').attr("href", link);
