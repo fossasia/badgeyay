@@ -2,7 +2,9 @@
 
 badgeyay is a simple badge generator with a simple web UI to add data and generate printable badges in a zip.
 
-This direcotry contains the frontend for badgeyay.
+This directory contains the frontend for badgeyay.
+
+Note to mobile users: On google chrome of mobile device, you need to **disable data saver** option in settings to open the [website](http://badgeyay.com/). Try clearing cache and cookies if the problem still persists.
 
 ## Prerequisites
 
@@ -17,7 +19,7 @@ You will need the following things properly installed on your computer.
 
 To install the app, run the following commands in a command line:
 
-* `git clone https://github.com/fossasia/badgeyay this repository
+* `git clone https://github.com/fossasia/badgeyay`
 * `cd badgeyay/frontend`
 * `npm install`
 
