@@ -89,7 +89,7 @@ $(document).on("ready", function () {
             $("#preview").css("background-color",imageValue.toString());
         }
         else if($("input[name=img-default]").val() !== ""){
-            imageValue = "/static/uploads/" + $("input[name=img-default]").val();
+            imageValue = "/static/badge_backgrounds/" + $("input[name=img-default]").val();
             $("#preview").css("background","url(" + imageValue + ")");
             $("#preview").css("background-size","cover");
         }
