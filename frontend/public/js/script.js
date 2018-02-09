@@ -92,25 +92,44 @@ $(document).ready(function () {
         $("#picker").val("");
     });
 
+
+    var previewOff = true;
+
     $("#preview-btn").on("click",function(e){
-        var imageValue,fontValue;
-        if($("#picker").val() !== ""){
-            imageValue = $("#picker").val();
-            $("#preview").css("background-color",imageValue.toString());
+        $("#preview").toggleClass("hidden");
+        previewOff = !previewOff;
+        console.log(previewOff);
+        if(!previewOff){
+            $("#preview-btn")[0].innerHTML = "Close Preview";
+            var imageValue,fontValue;
+            if($("#picker").val() !== ""){
+                imageValue = $("#picker").val();
+                $("#preview").css("background-color",imageValue.toString());
+            }
+            else if($("input[name=img-default]").val() !== ""){
+                imageValue = "http://localhost:5000/static/uploads/" + $("input[name=img-default]").val();
+                $("#preview").css("background","url(" + imageValue + ")");
+                $("#preview").css("background-size","cover");
+            }
+            if($(".placeholder2")[0].innerText !== "Select a font"){
+                fontValue = $(".placeholder2")[0].innerText;
+                $(".preview-image-li").css("font-family",fontValue.toString());
+            }
+            if($("#text-picker").val() !== ""){
+                var fontColor = $("#text-picker").val();
+                $(".preview-image-li").css("color",fontColor.toString());
+            }
+
         }
-        else if($("input[name=img-default]").val() !== ""){
-            imageValue = "uploads/" + $("input[name=img-default]").val();
-            $("#preview").css("background","url(" + imageValue + ")");
-            $("#preview").css("background-size","cover");
+        else{
+            $("#preview-btn")[0].innerHTML = "Preview";
         }
-        if($(".placeholder2")[0].innerText !== "Select a font"){
-            fontValue = $(".placeholder2")[0].innerText;
-            $(".preview-image-li").css("font-family",fontValue.toString());
-        }
-        if($("#text-picker").val() !== ""){
-            var fontColor = $("#text-picker").val();
-            $(".preview-image-li").css("color",fontColor.toString());
-        }
+    });
+    
+    $("#text-input").on("keyup",realtimeChange);
+    
+
+    function realtimeChange(){
 
         var textValues = $("#textArea").val();
         textValues = textValues.split("\n")[0].split(",");
@@ -123,9 +142,7 @@ $(document).ready(function () {
         $("#preview-li-5").text(textValues[4]);
 
 
-        $("#preview").toggleClass("hidden");
-
-    });
+    }
 
     $("#form1").submit(function(e){
         $("#preview").addClass("hidden");
