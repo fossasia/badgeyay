@@ -13,7 +13,8 @@ class GenerateBadges:
     def __init__(self):
         self.NUMBER_OF_BADGES_PER_PAGE = 8
         self.APP_ROOT = os.path.dirname(os.path.abspath(__file__))
-        self.UPLOAD_FOLDER = os.path.join(self.APP_ROOT, 'static/uploads')
+        self.UPLOAD_FOLDER = os.path.join(
+        self.APP_ROOT, 'static/badge_backgrounds')
 
         self.paper_sizes = {}
         self.paper_sizes['A3'] = ['297mm', '420mm']

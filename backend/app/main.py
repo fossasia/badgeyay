@@ -1,4 +1,5 @@
 from flask import Flask, render_template, request, jsonify
+from flask_cors import CORS
 from flask_compress import Compress
 from werkzeug.utils import secure_filename
 import os
@@ -8,7 +9,7 @@ import traceback
 from svg_to_png import do_svg2png, do_text_fill
 
 APP_ROOT = os.path.dirname(os.path.abspath(__file__))
-UPLOAD_FOLDER = os.path.join(APP_ROOT, 'static/uploads')
+UPLOAD_FOLDER = os.path.join(APP_ROOT, 'static/badge_backgrounds')
 BADGES_FOLDER = os.path.join(APP_ROOT, 'static/badges')
 
 app = Flask(__name__)
@@ -20,6 +21,7 @@ COMPRESS_LEVEL = 6
 COMPRESS_MIN_SIZE = 500
 Compress(app)
 
+cors = CORS(app, resources={r"/api/*": {"origins": "*"}})
 
 @app.route('/')
 def index():
@@ -75,7 +77,7 @@ def output(response_type, message, download_link):
 @app.route('/api/v1.0/generate_badges', methods=['POST'])
 def main_task():
     """
-    Function to recive the input data from the user, process and send ouput
+    Function to receive the input data from the user, process and send ouput
     """
     empty_directory()
     csv = request.form.get('csv', '').strip()
@@ -90,7 +92,7 @@ def main_task():
 
     # img-default is specified
     if img != '':
-        if (img == 'user_defined.png'):
+        if img == 'user_defined.png':
             bg_color = request.form.get('bg_color', '')
             if bg_color == '':
                 return output('error', 'background color or image not specified', 0)

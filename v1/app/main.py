@@ -9,7 +9,7 @@ from svg_to_png import do_svg2png
 # from argparse import ArgumentParser
 
 APP_ROOT = os.path.dirname(os.path.abspath(__file__))
-UPLOAD_FOLDER = os.path.join(APP_ROOT, 'static/uploads')
+UPLOAD_FOLDER = os.path.join(APP_ROOT, 'static/badge_backgrounds')
 BADGES_FOLDER = os.path.join(APP_ROOT, 'static/badges')
 
 app = Flask(__name__)

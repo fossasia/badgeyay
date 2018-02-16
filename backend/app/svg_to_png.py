@@ -5,7 +5,7 @@ import os
 
 APP_ROOT = os.path.dirname(os.path.abspath(__file__))
 SVGS_FOLDER = os.path.join(APP_ROOT, 'static/svgs')
-UPLOAD_FOLDER = os.path.join(APP_ROOT, 'static/uploads')
+UPLOAD_FOLDER = os.path.join(APP_ROOT, 'static/badge_backgrounds')
 ids = ['text4611', 'text4585', 'text4559', 'text4533', 'text4399', 'text4373', 'text4347', 'text4313']
 
 def do_svg2png(filename, opacity, fill):
