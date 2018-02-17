@@ -10,7 +10,7 @@ import sys
 # Get root folder
 APP_ROOT = os.path.dirname(os.path.abspath(__file__))
 # Get Upload Folder
-UPLOAD_FOLDER = os.path.join(APP_ROOT, 'static/uploads')
+UPLOAD_FOLDER = os.path.join(APP_ROOT, 'static/badge_backgrounds')
 MAX_STRING = "chaftsladen Potsdam (F"
 
 

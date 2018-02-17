@@ -9,7 +9,7 @@ import traceback
 from svg_to_png import do_svg2png, do_text_fill
 
 APP_ROOT = os.path.dirname(os.path.abspath(__file__))
-UPLOAD_FOLDER = os.path.join(APP_ROOT, 'static/uploads')
+UPLOAD_FOLDER = os.path.join(APP_ROOT, 'static/badge_backgrounds')
 BADGES_FOLDER = os.path.join(APP_ROOT, 'static/badges')
 
 app = Flask(__name__)

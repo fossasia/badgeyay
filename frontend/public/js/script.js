@@ -92,7 +92,6 @@ $(document).ready(function () {
         $('#picker').val('');
     });
 
-
     var previewOff = true;
 
     $('#preview-btn').on('click',function(e){
@@ -119,7 +118,6 @@ $(document).ready(function () {
                 var fontColor = $('#text-picker').val();
                 $('.preview-image-li').css('color',fontColor.toString());
             }
-
         }
         else{
             $('#preview-btn')[0].innerHTML = 'Preview';
