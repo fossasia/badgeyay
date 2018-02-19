@@ -2,33 +2,33 @@
 $(document).ready(function () {
 
     $(document).mouseup(function (e) {
-        var container = $(".custom-menu-content");
-        var button = $(".glyphicon-th");
+        var container = $('.custom-menu-content');
+        var button = $('.glyphicon-th');
         // if the target of the click is not the button,
         // the container or a descendant of the container
         if (!button.is(e.target) && !container.is(e.target) && container.has(e.target).length === 0) {
-            container.addClass("hidden");
+            container.addClass('hidden');
         }
     });
 
-    $(".glyphicon-th").click(function () {
-        $(".custom-menu-content").toggleClass("hidden");
+    $('.glyphicon-th').click(function () {
+        $('.custom-menu-content').toggleClass('hidden');
     });
 
-    $(".menu-options").click(function () {
-        var i = $(this).data("item");
-        $(".placeholder").text(i);
-        $('input[name="img-default"]').val(i).trigger('change');
+    $('.menu-options').click(function () {
+        var i = $(this).data('item');
+        $('.placeholder').text(i);
+        $('input[name='img-default']').val(i).trigger('change');
     });
 
-    $(".font-options").click(function () {
-        var i = $(this).data("item");
-        $(".placeholder2").text(i);
-        $("input[name='custfont']").val(i);
+    $('.font-options').click(function () {
+        var i = $(this).data('item');
+        $('.placeholder2').text(i);
+        $('input[name='custfont']').val(i);
     });
 
 
-    $("#picker").minicolors({
+    $('#picker').minicolors({
         control: 'hue',
         format: 'hex',
         defaultValue: '',
@@ -37,7 +37,7 @@ $(document).ready(function () {
         theme: 'bootstrap'
     });
 
-    $("#text-picker").minicolors({
+    $('#text-picker').minicolors({
         control: 'hue',
         format: 'hex',
         defaultValue: '#ffffff',
@@ -46,21 +46,21 @@ $(document).ready(function () {
         theme: 'bootstrap'
     });
 
-    var apiUrl = "https://api.github.com/repos/fossasia/badgeyay/git/refs/heads/development";
+    var apiUrl = 'https://api.github.com/repos/fossasia/badgeyay/git/refs/heads/development';
     $.ajax({
         url: apiUrl,
         async: true,
         success(result) {
-            if (typeof result.object !== "undefined" && typeof result.object.sha !== "undefined") {
+            if (typeof result.object !== 'undefined' && typeof result.object.sha !== 'undefined') {
                 var version = result.object.sha;
-                var versionLink = "https://github.com/fossasia/badgeyay/tree/" + version;
-                var deployLink = $(".version").attr("href", versionLink).html(version);
+                var versionLink = 'https://github.com/fossasia/badgeyay/tree/' + version;
+                var deployLink = $('.version').attr('href', versionLink).html(version);
             } else {
-                $(".version").html("Failed to access version");
+                $('.version').html('Failed to access version');
             }
         },
         error(error) {
-            $(".version").html("Failed to access version");
+            $('.version').html('Failed to access version');
         }
     });
     function readURL(input) {
@@ -69,65 +69,80 @@ $(document).ready(function () {
             var reader = new FileReader();
 
             reader.onload = function (e) {
-                $("#preview").css("background","url(" +  e.target.result + ")");
-                $("#preview").css("background-size","cover");
-                $("#preview-btn").prop("disabled",false);
+                $('#preview').css('background','url(' +  e.target.result + ')');
+                $('#preview').css('background-size','cover');
+                $('#preview-btn').prop('disabled',false);
             };
 
             reader.readAsDataURL(input.files[0]);
         }
     }
 
-    $("#imageFile").change(function(){
+    $('#imageFile').change(function(){
         readURL(this);
     });
 
-    $("#picker").change(function(){
-        $("#preview-btn").prop("disabled",false);
-        $("#preview").css("background","");
+    $('#picker').change(function(){
+        $('#preview-btn').prop('disabled',false);
+        $('#preview').css('background','');
     });
 
-    $("input[name=img-default]").change(function(){
-        $("#preview-btn").prop("disabled",false);
-        $("#picker").val("");
+    $('input[name=img-default]').change(function(){
+        $('#preview-btn').prop('disabled',false);
+        $('#picker').val('');
     });
 
-    $("#preview-btn").on("click",function(e){
-        var imageValue,fontValue;
-        if($("#picker").val() !== ""){
-            imageValue = $("#picker").val();
-            $("#preview").css("background-color",imageValue.toString());
+    var previewOff = true;
+
+    $('#preview-btn').on('click',function(e){
+        $('#preview').toggleClass('hidden');
+        previewOff = !previewOff;
+        console.log(previewOff);
+        if(!previewOff){
+            $('#preview-btn')[0].innerHTML = 'Close Preview';
+            var imageValue,fontValue;
+            if($('#picker').val() !== ''){
+                imageValue = $('#picker').val();
+                $('#preview').css('background-color',imageValue.toString());
+            }
+            else if($('input[name=img-default]').val() !== ''){
+                imageValue = 'http://localhost:5000/static/uploads/' + $('input[name=img-default]').val();
+                $('#preview').css('background','url(' + imageValue + ')');
+                $('#preview').css('background-size','cover');
+            }
+            if($('.placeholder2')[0].innerText !== 'Select a font'){
+                fontValue = $('.placeholder2')[0].innerText;
+                $('.preview-image-li').css('font-family',fontValue.toString());
+            }
+            if($('#text-picker').val() !== ''){
+                var fontColor = $('#text-picker').val();
+                $('.preview-image-li').css('color',fontColor.toString());
+            }
         }
-        else if($("input[name=img-default]").val() !== ""){
-            imageValue = "badge_backgrounds/" + $("input[name=img-default]").val();
-            $("#preview").css("background","url(" + imageValue + ")");
-            $("#preview").css("background-size","cover");
+        else{
+            $('#preview-btn')[0].innerHTML = 'Preview';
         }
-        if($(".placeholder2")[0].innerText !== "Select a font"){
-            fontValue = $(".placeholder2")[0].innerText;
-            $(".preview-image-li").css("font-family",fontValue.toString());
-        }
-        if($("#text-picker").val() !== ""){
-            var fontColor = $("#text-picker").val();
-            $(".preview-image-li").css("color",fontColor.toString());
-        }
-
-        var textValues = $("#textArea").val();
-        textValues = textValues.split("\n")[0].split(",");
-
-
-        $("#preview-li-1").text(textValues[0]);
-        $("#preview-li-2").text(textValues[1]);
-        $("#preview-li-3").text(textValues[2]);
-        $("#preview-li-4").text(textValues[3]);
-        $("#preview-li-5").text(textValues[4]);
-
-
-        $("#preview").toggleClass("hidden");
-
     });
+    
+    $('#text-input').on('keyup',realtimeChange);
+    
 
-    $("#form1").submit(function(e){
-        $("#preview").addClass("hidden");
+    function realtimeChange(){
+
+        var textValues = $('#textArea').val();
+        textValues = textValues.split('\n')[0].split(',');
+
+
+        $('#preview-li-1').text(textValues[0]);
+        $('#preview-li-2').text(textValues[1]);
+        $('#preview-li-3').text(textValues[2]);
+        $('#preview-li-4').text(textValues[3]);
+        $('#preview-li-5').text(textValues[4]);
+
+
+    }
+
+    $('#form1').submit(function(e){
+        $('#preview').addClass('hidden');
     });
 });
