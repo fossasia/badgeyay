@@ -18,13 +18,13 @@ $(document).ready(function () {
     $('.menu-options').click(function () {
         var i = $(this).data('item');
         $('.placeholder').text(i);
-        $('input[name='img-default']').val(i).trigger('change');
+        $("input[name='img-default']").val(i).trigger('change');
     });
 
     $('.font-options').click(function () {
         var i = $(this).data('item');
         $('.placeholder2').text(i);
-        $('input[name='custfont']').val(i);
+        $("input[name='custfont']").val(i);
     });
 
 
