@@ -5,7 +5,7 @@
 [![Codecov branch](https://img.shields.io/codecov/c/github/fossasia/badgeyay/development.svg?style=flat-square&label=Codecov+Coverage)](https://codecov.io/gh/fossasia/badgeyay)
 [![Gitter](https://img.shields.io/badge/chat-on%20gitter-ff006f.svg?style=flat-square)][gitter]
 
-`badgeyay` is a simple badge generator with a simple web UI to add data and generate printable badges in a zip.
+`badgeyay` is a simple badge generator with a simple web UI to add data and generate printable badges in a pdf.
 
 The user should be able to:
   * Choose size of badges
