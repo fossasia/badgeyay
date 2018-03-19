@@ -89,6 +89,7 @@ $(document).ready(function () {
 
     $('input[name=img-default]').change(function(){
         $('#preview-btn').prop('disabled',false);
+        changePreviewBackground();
         $('#picker').val('');
     });
 
@@ -106,9 +107,7 @@ $(document).ready(function () {
                 $('#preview').css('background-color',imageValue.toString());
             }
             else if($('input[name=img-default]').val() !== ''){
-                imageValue = 'https://raw.githubusercontent.com/fossasia/badgeyay/development/frontend/public/images/badge_backgrounds/' + $('input[name=img-default]').val() + '?raw=true';
-                $('#preview').css('background','url(' + imageValue + ')');
-                $('#preview').css('background-size','cover');
+                changePreviewBackground();
             }
             if($('.placeholder2')[0].innerText !== 'Select a font'){
                 fontValue = $('.placeholder2')[0].innerText;
@@ -126,6 +125,11 @@ $(document).ready(function () {
     
     $('#text-input').on('keyup',realtimeChange);
     
+    function changePreviewBackground(){
+        var imageValue = 'https://raw.githubusercontent.com/fossasia/badgeyay/development/frontend/public/images/badge_backgrounds/' + $('input[name=img-default]').val() + '?raw=true';
+        $('#preview').css('background','url(' + imageValue + ')');
+        $('#preview').css('background-size','cover');
+    }
 
     function realtimeChange(){
 
