@@ -106,7 +106,7 @@ $(document).ready(function () {
                 $('#preview').css('background-color',imageValue.toString());
             }
             else if($('input[name=img-default]').val() !== ''){
-                imageValue = 'http://badgeyay-api.herokuapp.com/static/uploads/' + $('input[name=img-default]').val();
+                imageValue = 'https://raw.githubusercontent.com/fossasia/badgeyay/development/frontend/public/images/badge_backgrounds/' + $('input[name=img-default]').val() + '?raw=true';
                 $('#preview').css('background','url(' + imageValue + ')');
                 $('#preview').css('background-size','cover');
             }
