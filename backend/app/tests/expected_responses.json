@@ -27,6 +27,12 @@
         "type" : "success",
         "message" : "pdf generation completed successfully",
         "download_link" : "backend/app/static/badges/user_defined-png-csv-badges.pdf"
+    }],
+
+    "test_txt_color" : [{
+        "type" : "success",
+        "message" : "pdf generation completed successfully",
+        "download_link" : "backend/app/static/badges/user_defined-png-csv-badges.pdf"
     }]
 }
 
