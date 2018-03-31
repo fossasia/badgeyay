@@ -44,6 +44,17 @@
     text-align: center;
 }
 
+.flash-error-badge {
+    padding: 10px;
+    background-color: #D32F2F;
+    color: white;
+    font-weight: bold;
+    font-size: 14px;
+    max-width: 40%;
+    margin: 0 auto;
+    text-align: center;
+}
+
 .navbar {
     height: 80px;
     background-color: white;
@@ -308,7 +319,7 @@ input[type="radio"] {
 }
 
 #preview-btn{
-    font-size: 18px;   
+    font-size: 18px;
 }
 
 #overlay-loading {
