@@ -141,13 +141,19 @@
         </div>
       </div>
     </form>
-    <div id="success" style="visibility: hidden;">
+    <div id="success" style="display: none;">
       <div class="flash-success">Your badges have been created successfully.</div>
       <div class="text-center">
         <a id="badge-link" href="http://badgeyay-api.herokuapp.com/static/badges/{{msg}}-badges.pdf"
            class="btn btn-success"
            download="{{msg}}-badges.pdf">Download as
           PDF</a>
+      </div>
+    </div>
+    <div id="error-badge" style="display: none;">
+      <div class="flash-error-badge">
+        Following error was encountered while generating badges:-
+        <br>
       </div>
     </div>
   </div>
@@ -176,13 +182,18 @@
         type: 'POST',
         success: function (data) {
           if (data["response"][0]["type"] === "success") {
-            $('#success').css('visibility', 'visible');
+            $('#success').css('display', 'block');
             overlayOff();
             let link = data["response"][0]["download_link"];
             link = link.replace("backend/app/", "http://badgeyay-api.herokuapp.com/");
             $('#badge-link').attr("href", link);
             link = link.replace("static/badges/", "");
             $('#badge-link').attr("download", link);
+          }
+          else if (data["response"][0]["type"] === "error") {
+            $('#error-badge').css('display', 'block');
+            overlayOff();
+            $('div.flash-error-badge').append(data["response"][0]["message"]);
           }
         },
         error: function (error) {
