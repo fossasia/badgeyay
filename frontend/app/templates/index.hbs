@@ -181,6 +181,7 @@
         success: function (data) {
           if (data["response"][0]["type"] === "success") {
             $('#success').css('display', 'block');
+            $('#error-badge').css('display', 'none');
             overlayOff();
             let link = data["response"][0]["download_link"];
             link = link.replace("backend/app/", "http://badgeyay-api.herokuapp.com/");
@@ -190,6 +191,7 @@
           }
           else if (data["response"][0]["type"] === "error") {
             $('#error-badge').css('display', 'block');
+            $('#success').css('display', 'none');
             overlayOff();
             $('div.flash-error-badge').html("Following error was encountered while generating badges:- ");
             $('div.flash-error-badge').append(data["response"][0]["message"]);
