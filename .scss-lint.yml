@@ -210,7 +210,7 @@ linters:
 
   StringQuotes:
     enabled: true
-    style: double_quotes # or single_quotes
+    style: double_quotes or single_quotes
 
   TrailingSemicolon:
     enabled: true
