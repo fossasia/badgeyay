@@ -152,8 +152,6 @@
     </div>
     <div id="error-badge" style="display: none;">
       <div class="flash-error-badge">
-        Following error was encountered while generating badges:-
-        <br>
       </div>
     </div>
   </div>
@@ -193,6 +191,7 @@
           else if (data["response"][0]["type"] === "error") {
             $('#error-badge').css('display', 'block');
             overlayOff();
+            $('div.flash-error-badge').html("Following error was encountered while generating badges:- ");
             $('div.flash-error-badge').append(data["response"][0]["message"]);
           }
         },
