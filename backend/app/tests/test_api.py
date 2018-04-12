@@ -71,6 +71,20 @@ class APITest(unittest.TestCase):
         r = requests.post(self.URL, data=Data, files=File, timeout=10)
         self.assertEqual(json.loads(r.text)['response'], self.Responses['test_custom_font'])
 
+    def test_txt_color(self):
+        # Tests using a color as background
+        File = {'file': open(self.CSVPath, 'rb')}
+        Data = {
+            'img-default': 'user_defined.png',
+            'bg_color': '000000',
+            'txt_color': '000000'
+        }
+        sleep(2)
+        r = requests.post(self.URL, data=Data, files=File, timeout=10)
+        self.assertEqual(json.loads(r.text)['response'],
+            self.Responses['test_txt_color'])
+
+
     @classmethod
     def tearDownClass(cls):
         super(APITest, cls).tearDownClass()
