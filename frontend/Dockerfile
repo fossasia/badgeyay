@@ -8,9 +8,10 @@ RUN docker -d &
 RUN npm config set strict-ssl false
 RUN apt-get update
 RUN apt-get install -y nodejs
-RUN npm install -g -d ember-cli 
+RUN npm cache verify
+RUN npm install -g -D ember-cli 
 RUN npm config set registry=https://registry.npmjs.com/
-RUN npm install -d
+RUN npm install -D
 
 COPY . .
 
