@@ -1,6 +1,9 @@
+'use strict';
+
 $(document).ready(
 
     function () {
+        $('#csvupload').attr('disabled', true);
         $("#csvupload").click(function () {
             $("#csvupload-input").css("display", "block");
             $("#text-input").css("display", "none");
