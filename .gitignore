@@ -11,3 +11,4 @@ app/static/badges/
 cli/badgeyay.egg-info
 cli/build/
 cli/dist/
+.vscode/
