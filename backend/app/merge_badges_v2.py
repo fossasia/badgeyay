@@ -2,9 +2,9 @@
 import os
 import argparse
 import subprocess
-from generate_badges import GenerateBadges
+from .generate_badges import GenerateBadges
 from PyPDF2 import PdfFileMerger
-from exceptions import PackageNotFoundError
+from .exceptions import PackageNotFoundError
 
 parser = argparse.ArgumentParser(description='Argument Parser for merge_badges')
 parser.add_argument('-p', dest='pdf', action='store_true')
