@@ -1,5 +1,6 @@
 
-# BadgeYAY
+# Badgeyay
+![Badgeyay](/frontend/public/images/Badgeyay-artwork.png)
 
 [![Travis branch](https://img.shields.io/travis/fossasia/badgeyay/development.svg?style=flat-square)](https://travis-ci.org/fossasia/badgeyay)
 [![Codecov branch](https://img.shields.io/codecov/c/github/fossasia/badgeyay/development.svg?style=flat-square&label=Codecov+Coverage)](https://codecov.io/gh/fossasia/badgeyay)
