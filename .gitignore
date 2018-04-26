@@ -6,7 +6,7 @@
 .env
 .vagrant/
 venv/
-app/static/badges/
+backend/app/static/badges/
 .idea/
 cli/badgeyay.egg-info
 cli/build/
