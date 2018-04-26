@@ -147,6 +147,6 @@ $(document).ready(function () {
     }
 
     $('#form1').submit(function(e){
-        $('#preview').addClass('hidden');
+        $('#preview-btn').click();
     });
 });
