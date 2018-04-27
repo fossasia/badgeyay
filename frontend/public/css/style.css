@@ -55,6 +55,10 @@
     text-align: center;
 }
 
+#error-badge {
+  margin-bottom: 80px;
+}
+
 .navbar {
     height: 80px;
     background-color: white;
