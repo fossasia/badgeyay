@@ -93,7 +93,7 @@ class GenerateBadges:
 
     def run_generator(self):
         """
-        Run this class
+        Module to initiate generation of badges
         """
         for input_file in self.input_files:
             config_json = 'default.config.json'
