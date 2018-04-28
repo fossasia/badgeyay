@@ -8,7 +8,7 @@
 venv/
 backend/app/static/badges/
 .idea/
-cli/badgeyay.egg-info
-cli/build/
-cli/dist/
+package/badgeyay.egg-info
+package/build/
+package/dist/
 .vscode/
