@@ -6,7 +6,7 @@
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/1ac554483fac462797ffa5a8b9adf2fa?style=flat-square)](https://www.codacy.com/app/fossasia/badgeyay)
 [![Travis branch](https://api.travis-ci.org/fossasia/badgeyay.svg?branch=development&style=flat-square)](https://travis-ci.org/fossasia/badgeyay)
 [![Codecov branch](https://codecov.io/gh/fossasia/badgeyay/branch/development/graph/badge.svg?style=flat-square)](https://codecov.io/gh/fossasia/badgeyay)
-
+[![Gemnasium](https://gemnasium.com/fossasia/badgeyay.svg?style=flat-square)](https://gemnasium.com/github.com/fossasia/badgeyay)
 
 > **Badgeyay provide an interface to event organizers for generating badges of events from concerts to conferences and meet-ups.**
 
