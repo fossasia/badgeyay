@@ -6,7 +6,7 @@ import json
 import traceback
 
 from defusedxml.lxml import parse
-from lxml import etree
+from defusedxml.lxml import _etree as etree
 
 
 class GenerateBadges:
