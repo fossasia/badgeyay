@@ -16,7 +16,8 @@ class MergeBadges:
         self.input_folders = [file for file in os.listdir(self.BADGES_FOLDER) if file.lower().endswith(".badges")]
         print("Initialised")
 
-    def generatePDFS(self, folder_path):
+    @staticmethod
+    def generatePDFS(folder_path):
         svgs = [file for file in os.listdir(folder_path) if file.lower().endswith('.svg')]
         for svg in svgs:
             svg_path = os.path.join(folder_path, svg)
