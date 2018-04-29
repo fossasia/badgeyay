@@ -8,6 +8,7 @@ import shutil
 import traceback
 from svg_to_png import do_svg2png, do_text_fill
 
+
 APP_ROOT = os.path.dirname(os.path.abspath(__file__))
 UPLOAD_FOLDER = os.path.join(APP_ROOT, 'static/badge_backgrounds')
 BADGES_FOLDER = os.path.join(APP_ROOT, 'static/badges')
@@ -31,8 +32,10 @@ def index():
     return render_template('index.html')
 
 
-def generate_badges(_pdf=True):
-    os.system('python3 ' + APP_ROOT + '/merge_badges.py -p')
+def generate_badges():
+    from merge_badges_class import MergeBadges
+    merger = MergeBadges()
+    merger.mergePDFS()
 
 
 def empty_directory():
