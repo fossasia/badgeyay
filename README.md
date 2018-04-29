@@ -65,6 +65,9 @@ We have the following branches :
  * **master**
    This contains shipped code. After significant features/bug-fixes are accumulated on development, we make a version update, and make a release.
 
+ * **version-1**
+   This contains version-1 code. Further development of the project is carried out on `development` branch.
+
 ## Contributions Best Practices
 
 **Commits**
