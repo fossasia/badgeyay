@@ -1,4 +1,4 @@
-from lxml import etree
+from defusedxml.lxml import _etree as etree
 from defusedxml.lxml import parse
 from cairosvg import svg2png
 import os
