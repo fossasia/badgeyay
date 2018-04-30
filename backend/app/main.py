@@ -6,7 +6,6 @@ import os
 import json
 import shutil
 import traceback
-from svg_to_png import do_svg2png, do_text_fill
 
 
 APP_ROOT = os.path.dirname(os.path.abspath(__file__))
@@ -82,13 +81,15 @@ def main_task():
     """
     Function to receive the input data from the user, process and send ouput
     """
+    from svg_to_png import SVG2PNG
     empty_directory()
     csv = request.form.get('csv', '').strip()
     img = request.form.get('img-default', '')
     custom_font = request.form.get('custfont', '')
     text_fill = request.form.get('txt_color', '#ffffff')
 
-    do_text_fill(APP_ROOT + "/../badges/8BadgesOnA3.svg", text_fill)
+    svg2png = SVG2PNG()
+    svg2png.do_text_fill(APP_ROOT + "/../badges/8BadgesOnA3.svg", text_fill)
 
     if 'file' in request.files:
         file = request.files['file']
@@ -99,7 +100,7 @@ def main_task():
             bg_color = request.form.get('bg_color', '')
             if bg_color == '':
                 return output('error', 'background color or image not specified', 0)
-            do_svg2png(img, 1, bg_color)
+            svg2png.do_svg2png(img, 1, bg_color)
         filename = img + '.csv'
 
     # custom font is specified
