@@ -14,3 +14,5 @@ defusedxml==0.5.0
 cairocffi==0.6.0
 cairosvg==2.0.3
 flask-cors==3.0.3
+flask-socketio
+eventlet
