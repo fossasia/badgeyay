@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request, jsonify
-from flask_cors import CORS
+# from flask_cors import CORS
 from flask_compress import Compress
+from flask_socketio import SocketIO, emit
 from werkzeug.utils import secure_filename
 import os
 import json
@@ -22,7 +23,8 @@ COMPRESS_LEVEL = 6
 COMPRESS_MIN_SIZE = 500
 Compress(app)
 
-cors = CORS(app, resources={r"/api/*": {"origins": "*"}})
+# cors = CORS(app, resources={r"/api/*": {"origins": "*"}})
+socket = SocketIO(app)
 
 @app.route('/')
 def index():
@@ -74,19 +76,28 @@ def output(response_type, message, download_link):
                 'download_link': download_link
             }
         ]
-    return jsonify({'response': response})
+    return json.loads(json.dumps({'response': response}))
 
 
-@app.route('/api/v1.0/generate_badges', methods=['POST'])
-def main_task():
+def parse_json(params):
+    data = {}
+    for item in params:
+        data[item['name']] = item['value']
+    return data
+
+
+@socket.on('API', namespace='/api/v1.0/generate_badges')
+def main_task(params):
     """
     Function to receive the input data from the user, process and send ouput
     """
+    params = parse_json(params)
+    print(params)
     empty_directory()
-    csv = request.form.get('csv', '').strip()
-    img = request.form.get('img-default', '')
-    custom_font = request.form.get('custfont', '')
-    text_fill = request.form.get('txt_color', '#ffffff')
+    csv = params.get('csv', '').strip()
+    img = params.get('img-default', '')
+    custom_font = params.get('custfont', '')
+    text_fill = params.get('txt_color', '#ffffff')
 
     do_text_fill(APP_ROOT + "/../badges/8BadgesOnA3.svg", text_fill)
 
@@ -96,7 +107,7 @@ def main_task():
     # img-default is specified
     if img != '':
         if img == 'user_defined.png':
-            bg_color = request.form.get('bg_color', '')
+            bg_color = params.get('bg_color', '')
             if bg_color == '':
                 return output('error', 'background color or image not specified', 0)
             do_svg2png(img, 1, bg_color)
@@ -171,10 +182,14 @@ def main_task():
             url = "backend/app/static/badges/" + filename.replace('.', '-') + "-badges.pdf"
             os.rename(os.path.join(BADGES_FOLDER + "/" + filename + ".badges.pdf"),
                       os.path.join(BADGES_FOLDER + "/" + filename.replace('.', '-') + "-badges.pdf"))
-            return output('success', 'pdf generation completed successfully', url)
+            result = output('success', 'pdf generation completed successfully', url)
+            emit('API', result, json=True)
+            return result
         else:
             # Other unexpected error
-            return output('error', 'Internal error', '')
+            result = output('error', 'Internal error', '')
+            emit('API', result, json=True)
+            return result
 
 
 @app.route('/api/v1.0/generate_badges', methods=['GET'])
@@ -212,4 +227,5 @@ def Internal_Server_Error(e):
 
 if __name__ == '__main__':
     # app.run(debug=args.dev)
-    app.run(debug=True)
+    # app.run(debug=True)
+    socket.run(app, port=5000, debug=True)

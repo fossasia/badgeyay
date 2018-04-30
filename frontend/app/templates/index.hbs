@@ -170,17 +170,15 @@
 
 <script type="text/javascript">
   $(document).ready(function () {
+    var socket = io('http://badgeyay-api.herokuapp.com/api/v1.0/generate_badges');
+
     $('#form1').submit(function (event) {
-      event.preventDefault();
-      $.ajaxSetup({
-        headers: {"Access-Control-Allow-Origin": "*"}
-      });
-      $.ajax({
-        url: "http://badgeyay-api.herokuapp.com/api/v1.0/generate_badges",
-        data: $(this).serialize(),
-        type: 'POST',
-        success: function (data) {
-          if (data["response"][0]["type"] === "success") {
+        event.preventDefault();
+        socket.emit('API', $(this).serializeArray());
+    });
+
+    socket.on('API', function(data) {
+        if (data["response"][0]["type"] === "success") {
             $('#success').css('display', 'block');
             $('#error-badge').css('display', 'none');
             overlayOff();
@@ -189,19 +187,14 @@
             $('#badge-link').attr("href", link);
             link = link.replace("static/badges/", "");
             $('#badge-link').attr("download", link);
-          }
+        }
           else if (data["response"][0]["type"] === "error") {
             $('#error-badge').css('display', 'block');
             $('#success').css('display', 'none');
             overlayOff();
             $('div.flash-error-badge').html("Following error was encountered while generating badges:- ");
             $('div.flash-error-badge').append(data["response"][0]["message"]);
-          }
-        },
-        error: function (error) {
-          console.log(error);
         }
-      })
-    });
+    })
   })
 </script>
