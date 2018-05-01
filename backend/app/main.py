@@ -26,7 +26,7 @@ cors = CORS(app, resources={r"/api/*": {"origins": "*"}})
 @app.route('/')
 def index():
     """
-    An  index.html file which specifies that it's badgeyay's backend
+    An index.html file which specifies that it's badgeyay's backend
     """
     return render_template('index.html')
 
@@ -86,6 +86,7 @@ def main_task():
     img = request.form.get('img-default', '')
     custom_font = request.form.get('custfont', '')
     text_fill = request.form.get('txt_color', '#ffffff')
+    bg_color = request.form.get('bg_color', '')
 
     svg2png = SVG2PNG()
     svg2png.do_text_fill(APP_ROOT + "/../badges/8BadgesOnA3.svg", text_fill)
@@ -96,11 +97,24 @@ def main_task():
     # img-default is specified
     if img != '':
         if img == 'user_defined.png':
-            bg_color = request.form.get('bg_color', '')
             if bg_color == '':
-                return output('error', 'background color or image not specified', 0)
+                return output('error', 'background color or image not specified', '')
             svg2png.do_svg2png(img, 1, bg_color)
         filename = img + '.csv'
+    else:
+        if 'image' in request.files:
+            image = request.files['image']
+            img = image.filename
+            filename = img + ".csv"
+            imgname = img
+            if '.' in imgname:
+                imgname = filename.rsplit('.', 1)[0]
+                imgname = secure_filename(imgname)
+                image.save(os.path.join(app.config['UPLOAD_FOLDER'], image.filename))
+            else:
+                return output('error', 'No background was specified', '')
+        elif 'image' not in request.files:
+            return output('error', 'image and image-default are both empty or contains illegal data', '')
 
     # custom font is specified
     if custom_font != '':
@@ -111,15 +125,8 @@ def main_task():
         f.write(json_str)
         f.close()
 
-    if img == '':
-        if 'image' not in request.files:
-            return output('error', 'image and image-default are both empty or contains illegal data', '')
-        else:
-            img = request.files['image'].filename
-            filename = request.files['image'].filename + ".csv"
-
+    # CSV data was provided as plain text
     if csv != '':
-        # CSV data was provided as plain text
         check_csv = csv.splitlines()
         count_line = 0
         for check in check_csv:
@@ -136,16 +143,6 @@ def main_task():
     else:
         if 'file' not in request.files:
             return output('error', 'No proper CSV file was uploaded via POST nor a proper csv data as plain text was given', '')
-
-    if 'image' in request.files:
-        image = request.files['image']
-        imgname = image.filename
-        if '.' in imgname:
-            imgname = filename.rsplit('.', 1)[0]
-            imgname = secure_filename(imgname)
-            image.save(os.path.join(app.config['UPLOAD_FOLDER'], image.filename))
-        else:
-            return output('error', 'No background was specified', '')
 
     if filename.find("png.csv") == -1:
         if img == '':
