@@ -59,21 +59,20 @@ def empty_directory():
 
 
 def output(response_type, message, download_link):
-    if download_link == '':
-        response = [
-            {
-                'type': response_type,
-                'message': message
-            }
-        ]
-    else:
-        response = [
-            {
-                'type': response_type,
-                'message': message,
-                'download_link': download_link
-            }
-        ]
+    """ Function to generate the response for the API Call.
+    :param `response_type` : Type of response
+    :param `message` : Response message to the request
+    :param `download_link` : Download link for the badge generated
+    :return JSON Response of type Flask.Response
+    """
+    response = [
+        {
+            'type': response_type,
+            'message': message
+        }
+    ]
+    if download_link != '':
+        response[0]['download_link'] = download_link
     return jsonify({'response': response})
 
 
