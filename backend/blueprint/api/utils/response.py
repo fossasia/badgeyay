@@ -13,3 +13,9 @@ class Response(object):
         self.response['message'] = self.message
 
         return self.response
+
+    def generateToken(self, token):
+        self.token = token
+        self.response['token'] = self.token
+
+        return self.response
