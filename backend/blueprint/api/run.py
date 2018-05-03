@@ -7,6 +7,7 @@ from controllers import errorHandlers
 from controllers import registerUser
 from controllers import loginUser
 
+
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://%(user)s:%(pw)s@%(host)s:%(port)s/%(db)s' % config.POSTGRES
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
