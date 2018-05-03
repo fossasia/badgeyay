@@ -1,15 +1,18 @@
 class Response(object):
     """docstring for Response"""
+
     def __init__(self, statusCode):
         super(Response, self).__init__()
         self.status = statusCode
-        self.message = None
-        self.response = {
-            'status': self.status
-        }
 
     def generateMessage(self, message):
         self.message = message
-        self.response['message'] = self.message
+        return self.serialize()
 
-        return self.response
+    def generateURL(self, url, message):
+        self.message = message
+        self.URL = url
+        return self.serialize()
+
+    def serialize(self):
+        return self.__dict__
