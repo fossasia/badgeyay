@@ -14,7 +14,7 @@ def registerUser():
         data['name'])
 
     try:
-        newUser.save_to_db()   
+        newUser.save_to_db()
     except Exception as e:
         print(e)
         return jsonify(

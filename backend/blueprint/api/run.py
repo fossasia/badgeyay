@@ -27,4 +27,4 @@ def create_tables():
 
 
 db.init_app(app)
-app.run(debug=True)
+app.run()
