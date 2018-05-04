@@ -20,9 +20,11 @@ app.register_blueprint(loginUser.router, url_prefix='/user')
 app.register_blueprint(homePage.router)
 app.register_blueprint(errorHandlers.router)
 
+
 @app.before_first_request
 def create_tables():
     db.create_all()
+
 
 db.init_app(app)
 app.run(debug=True)

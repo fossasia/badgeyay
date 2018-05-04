@@ -1,13 +1,13 @@
 from db import db
 from werkzeug.security import generate_password_hash
 
+
 class User(db.Model):
     __tablename__ = 'User'
 
     username = db.Column(db.String(80), primary_key=True)
     password = db.Column(db.String(100))
     name = db.Column(db.String(80))
-
 
     def __init__(self, username, password, name):
         self.username = username

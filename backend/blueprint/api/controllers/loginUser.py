@@ -20,14 +20,14 @@ def login():
                 Response(403).generateMessage(
                     'Could not find the Username Specified'))
 
-        if not verifyPassword(user,data['password']):
+        if not verifyPassword(user, data['password']):
             return jsonify(
                 Response(401).generateMessage(
                     'Wrong username & password combination'))
 
         token = jwt.encode(
-            {'user' : user.username,
-            'exp' : datetime.datetime.utcnow() + datetime.timedelta(seconds=900)},
+            {'user': user.username,
+             'exp': datetime.datetime.utcnow() + datetime.timedelta(seconds=900)},
             app.config['SECRET_KEY'])
 
         return jsonify(
