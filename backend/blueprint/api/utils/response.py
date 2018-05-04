@@ -14,5 +14,9 @@ class Response(object):
         self.URL = url
         return self.serialize()
 
+    def generateToken(self, token):
+        self.token = token
+        return self.serialize()
+
     def serialize(self):
         return self.__dict__
