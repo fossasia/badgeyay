@@ -14,3 +14,7 @@ defusedxml==0.5.0
 cairocffi==0.8.0
 cairosvg==2.0.3
 flask-cors==3.0.3
+psycopg2==2.7.4
+PyJWT==1.4.2
+Flask-SQLAlchemy==2.1
+
