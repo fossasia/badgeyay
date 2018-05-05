@@ -116,16 +116,25 @@
               </section>
               <input type="hidden" name="custfont" value="">
               <li>
+                <li>
+                    <input type="checkbox" name="fontsource" id="text-color"> Choose Text Color
+                </li>
+                <section id="text-fill-input" style="display:none">
+                    <label for="inputFile"></label>
+                    <div>
+                    <input type="text" id="text-picker" class="form-control" name="txt_color">
+                    </div>
+                </section>
+              </li>
               <li>
-                <input type="checkbox" name="fontsource" id="text-color"> Choose Text Color
+                  <input type="checkbox" name="fontsize" id="font-size-picker"> Choose font size
               </li>
-              <section id="text-fill-input" style="display:none">
-                <label for="inputFile"></label>
-                <div>
-                  <input type="text" id="text-picker" class="form-control" name="txt_color">
-                </div>
+              <section id="font-size-input" style="display:none;">
+                  <label for="inputFile" id="size_print"></label>
+                  <div>
+                      <input type="range" id="font-size" max=45 min=15 step=5 value=30  class="form-control" name="font_size">
+                  </div>
               </section>
-              </li>
             </ul>
             <button type="submit" disabled="disabled" class="btn btn-block submit-btn">Generate Badges</button>
             <button type="button" disabled="disabled" class="btn btn-block btn-warning" id="preview-btn">Preview
@@ -175,6 +184,7 @@
       $.ajaxSetup({
         headers: {"Access-Control-Allow-Origin": "*"}
       });
+      console.log($(this).serialize());
       $.ajax({
         url: "http://badgeyay-api.herokuapp.com/api/v1.0/generate_badges",
         data: $(this).serialize(),
