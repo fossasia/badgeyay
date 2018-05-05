@@ -17,10 +17,10 @@ def loginRequired(func):
 
         try:
             jwt.decode(token, app.config['SECRET_KEY'])
-        except:
+        except Exception as e:
             return jsonify(
                 Response(403).generateMessage(
-                    'Token is invalid'))
+                    str(e)))
 
         return func(*args, **kwargs)
 
