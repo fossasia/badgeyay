@@ -1,3 +1,5 @@
+from config import urlConfig
+
 class Response(object):
     """docstring for Response"""
 
@@ -12,6 +14,10 @@ class Response(object):
     def generateURL(self, url, message):
         self.message = message
         self.URL = url
+        return self.sanitizeURL()
+
+    def sanitizeURL(self):
+        self.URL = self.URL.replace('backend/app/', urlConfig.BASE_URL)
         return self.serialize()
 
     def generateToken(self, token):

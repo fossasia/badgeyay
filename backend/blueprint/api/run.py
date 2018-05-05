@@ -12,6 +12,7 @@ app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://%(user)s:%(pw)s@%(host)s:%(port)s/%(db)s' % config.POSTGRES
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
 app.config['SECRET_KEY'] = config.POSTGRES['secret']
+app.config['DEBUG'] = config.DEBUG
 
 
 app.register_blueprint(generateBadges.router, url_prefix='/api')
