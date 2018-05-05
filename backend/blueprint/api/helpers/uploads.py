@@ -6,6 +6,7 @@ from flask import current_app as app
 def generateFileName():
     return str(uuid.uuid4())
 
+
 def saveToImage(imageFile=None, extension='.png'):
     imageName = generateFileName() + extension
     imageDirectory = os.path.join(app.config.get('BASE_DIR'), 'static', 'uploads', 'image')

@@ -4,8 +4,8 @@ from helpers.verifyToken import loginRequired
 from helpers.uploads import saveToImage
 
 
-
 router = Blueprint('fileUploader', __name__)
+
 
 @router.route('/image', methods=['POST'])
 @loginRequired
@@ -28,8 +28,6 @@ def uploadImage():
                 'Image could not be uploaded'))
 
     return jsonify(
-        Response(200).generateMessage(
-            {
+        Response(200).generateMessage({
             'message': 'Image Uploaded Successfully',
-            'unique_id': imageName
-            }))
+            'unique_id': imageName}))
