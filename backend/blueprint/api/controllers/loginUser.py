@@ -1,7 +1,7 @@
 from flask import Blueprint, jsonify, request
 from flask import current_app as app
 from utils.response import Response
-from utils.verifyPassword import verifyPassword
+from helpers.verifyPassword import verifyPassword
 from models.user import User
 import jwt
 import datetime
