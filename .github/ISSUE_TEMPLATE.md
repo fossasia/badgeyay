@@ -3,10 +3,10 @@
 - [ ] bug report
 - [ ] feature request
 
-**Current behavior:**
+**Current behaviour:**
 <!-- How the bug manifests. -->
 
-**Expected behavior:**
-<!-- Behavior would be without the bug. -->
+**Expected behaviour:**
+<!-- Behaviour would be without the bug. -->
 
 **Steps to reproduce:**
