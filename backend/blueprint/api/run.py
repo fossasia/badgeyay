@@ -9,13 +9,16 @@ from api.controllers import homePage
 from api.controllers import errorHandlers
 from api.controllers import registerUser
 from api.controllers import loginUser
+from controllers import fileUploader
 
-app = Flask(__name__)
+
+app = Flask(__name__, instance_relative_config=True)
 app.config['BASE_DIR'] = os.path.dirname(os.path.abspath(__file__))
 app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://%(user)s:%(pw)s@%(host)s:%(port)s/%(db)s' % config.POSTGRES
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
 app.config['SECRET_KEY'] = config.POSTGRES['secret']
 app.config['DEBUG'] = config.DEBUG
+app.config.from_object('config.mailConfig.MailConfig')
 
 db.init_app(app)
 migrate = Migrate(app, db)

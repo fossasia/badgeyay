@@ -17,4 +17,5 @@ flask-cors==3.0.3
 psycopg2==2.7.4
 PyJWT==1.4.2
 Flask-SQLAlchemy==2.1
+Flask-Mail==0.9.1
 
