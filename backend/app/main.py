@@ -87,6 +87,7 @@ def main_task():
     custom_font = request.form.get('custfont', '')
     text_fill = request.form.get('txt_color', '#ffffff')
     bg_color = request.form.get('bg_color', '')
+    font_size = request.form.get('font_size', '')
 
     svg2png = SVG2PNG()
     svg2png.do_text_fill(APP_ROOT + "/../badges/8BadgesOnA3.svg", text_fill)
@@ -116,11 +117,15 @@ def main_task():
         elif 'image' not in request.files:
             return output('error', 'image and image-default are both empty or contains illegal data', '')
 
+    font_config = {}
     # custom font is specified
     if custom_font != '':
-        json_str = json.dumps({
-            'font': custom_font
-        })
+        font_config['font'] = custom_font
+    if font_size != '':
+        font_config['font_size'] = font_size
+    if custom_font != '' or font_size != '':
+        json_str = json.dumps(font_config)
+        print(json_str)
         f = open(os.path.join(app.config['UPLOAD_FOLDER'], 'fonts.json'), "w+")
         f.write(json_str)
         f.close()
