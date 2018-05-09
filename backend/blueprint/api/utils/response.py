@@ -1,4 +1,4 @@
-from config import urlConfig
+from api.config import urlConfig
 
 class Response(object):
     """docstring for Response"""

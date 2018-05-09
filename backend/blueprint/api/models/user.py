@@ -1,5 +1,7 @@
-from db import db
 from werkzeug.security import generate_password_hash
+
+
+from api.db import db
 
 
 class User(db.Model):
