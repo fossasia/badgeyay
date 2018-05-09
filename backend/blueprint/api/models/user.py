@@ -18,7 +18,12 @@ class User(db.Model):
 
     def save_to_db(self):
         db.session.add(self)
-        db.session.commit()
+        try:
+            db.session.commit()
+        except Exception as e:
+            db.session.rollback()
+            db.session.flush()
+            print(e)
 
     @classmethod
     def getUser(cls, username):
