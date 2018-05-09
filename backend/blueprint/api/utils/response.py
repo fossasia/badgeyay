@@ -24,5 +24,10 @@ class Response(object):
         self.token = token
         return self.serialize()
 
+    def exceptWithMessage(self, exception, message):
+        self.message = message
+        self.exception = exception
+        return self.serialize()
+
     def serialize(self):
         return self.__dict__

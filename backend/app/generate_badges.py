@@ -27,9 +27,13 @@ class GenerateBadges:
             self.CONTENT = f.read()
 
         self.font_choice = None
+        self.font_size = None
         if os.path.isfile(os.path.join(self.UPLOAD_FOLDER, 'fonts.json')):
             self.DATA = json.load(open(os.path.join(self.UPLOAD_FOLDER, "fonts.json")))
-            self.font_choice = self.DATA['font']
+            if 'font' in self.DATA.keys():
+                self.font_choice = self.DATA['font']
+            if 'font_size' in self.DATA.keys():
+                self.font_size = self.DATA['font_size']
 
     def configure_badge_page(self, badge_page, options):
         """
@@ -73,6 +77,9 @@ class GenerateBadges:
                                       "font-family:" + self.font_choice)
             content = content.replace("inkscape-font-specification:ubuntu",
                                       "inkscape-font-specification:" + self.font_choice)
+        if self.font_size:
+            content = content.replace("font-size:31.25px",
+                                      "font-size:" + str(self.font_size) + "px")
         for i, row in enumerate(aggregate):
             row = [entry for entry in row if not entry.isspace()]
             if len(row) == 0:

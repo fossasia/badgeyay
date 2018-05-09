@@ -13,7 +13,12 @@ router = Blueprint('loginUser', __name__)
 
 @router.route('/login', methods=['POST'])
 def login():
-    data = request.get_json()
+    try:
+        data = request.get_json()
+    except Exception as e:
+        return jsonify(
+            Response(500).generateMessage(
+                str(e)))
 
     if data and data['username']:
         user = User.query.filter_by(username=data['username']).first()

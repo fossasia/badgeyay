@@ -28,20 +28,35 @@ $(document).ready(
             $("#background-input").css("display", "block");
             $("input[name='img-default']").val("user_defined.png");
         });
-        $("#custfont").click(function(){
+        $('#custfont').click(function () {
           if($("#custfont").is(":checked")){
             $("#custom-font").css("display", "block");
           } else {
             $("#custom-font").css("display", "none");
           }
         });
-        $("#text-color").click(function(){
+        $("#text-color").click(function () {
           if($("#text-color").is(":checked")){
             $("#text-fill-input").css("display", "block");
           } else {
             $("#text-fill-input").css("display", "none");
           }
         });
+
+        $("#size_print").text($("#font-size").val() + " px");
+
+        $("#font-size-picker").click(function () {
+            if ($(this).is(":checked")) {
+                $("#font-size-input").css("display", "block");
+            } else {
+                $("#font-size-input").css("display", "none");
+            }
+        });
+
+        $("#font-size").on('input', function () {
+            $("#size_print").text($(this).val() + " px");
+        });
+
         $("#deffont").click(function(){
             $("#custom-font").css("display", "none");
         });
@@ -52,14 +67,14 @@ $(document).ready(
             var imgDefault = $('input[type=hidden][name="img-default"]').val();
             var imgUploaded = $('input[type=file][name="image"]').val();
             if ((csv || csvFile) && (imgDefault || imgUploaded)) {
-                $('button[type=submit]').removeAttr('disabled');               
+                $('button[type=submit]').removeAttr('disabled');
             } else {
                 $('button[type=submit]').attr('disabled', 'disabled');
             }
         });
 
         $('button[type=submit]').click(function () {
-            overlayOn(); 
+            overlayOn();
         });
     });
 
@@ -69,7 +84,7 @@ function overlayOn() {
 
 function overlayOff() {
     $("#overlay-loading").css("display", "none");
-} 
+}
 
 function validate() {
     $("[id=error]").hide();
