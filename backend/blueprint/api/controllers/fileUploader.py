@@ -32,10 +32,11 @@ def uploadImage():
             'message': 'Image Uploaded Successfully',
             'unique_id': imageName}))
 
+
 @router.route('/file', methods=['POST'])
 @loginRequired
 def fileUpload():
-    if not 'file' in request.files:
+    if 'file' not in request.files:
         return jsonify(
             Response(401).generateMessage(
                 'No file is specified'))
