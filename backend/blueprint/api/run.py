@@ -10,6 +10,8 @@ from api.controllers import errorHandlers
 from api.controllers import registerUser
 from api.controllers import loginUser
 from controllers import fileUploader
+from controllers import modifyUser
+
 
 
 app = Flask(__name__, instance_relative_config=True)
@@ -27,6 +29,7 @@ app.register_blueprint(generateBadges.router, url_prefix='/api')
 app.register_blueprint(registerUser.router, url_prefix='/user')
 app.register_blueprint(loginUser.router, url_prefix='/user')
 app.register_blueprint(fileUploader.router, url_prefix='/api/upload')
+app.register_blueprint(modifyUser.router, url_prefix='/user/change')
 app.register_blueprint(homePage.router)
 app.register_blueprint(errorHandlers.router)
 

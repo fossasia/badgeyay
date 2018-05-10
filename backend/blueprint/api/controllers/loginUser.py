@@ -21,7 +21,7 @@ def login():
                 str(e)))
 
     if data and data['username']:
-        user = User.query.filter_by(username=data['username']).first()
+        user = User.getUser(data['username'])
         if not user:
             return jsonify(
                 Response(403).generateMessage(
