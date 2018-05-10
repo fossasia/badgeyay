@@ -1,10 +1,10 @@
 from flask import Blueprint, jsonify
-from api.utils.response import Response
+from utils.response import Response
 
 router = Blueprint('homePage', __name__)
 
 
-@router.route('/', methods=['POST'])
+@router.route('/', methods=['GET', 'POST'])
 def homePage():
     return jsonify(
         Response(200).generateMessage(

@@ -1,6 +1,6 @@
 from flask import Blueprint, jsonify, request
-from api.utils.response import Response
-from api.models.user import User
+from utils.response import Response
+from models.user import User
 
 router = Blueprint('registerUser', __name__)
 

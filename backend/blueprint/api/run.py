@@ -1,27 +1,17 @@
 import os
-from flask import Flask
-from flask_migrate import Migrate
-
-from api.db import db
-from api.config import config
-from api.controllers import generateBadges
-from api.controllers import homePage
-from api.controllers import errorHandlers
-from api.controllers import registerUser
-from api.controllers import loginUser
+from db import db
+from app import create_app
+from controllers import generateBadges
+from controllers import homePage
+from controllers import errorHandlers
+from controllers import registerUser
+from controllers import loginUser
 from controllers import fileUploader
 
 
-app = Flask(__name__, instance_relative_config=True)
-app.config['BASE_DIR'] = os.path.dirname(os.path.abspath(__file__))
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://%(user)s:%(pw)s@%(host)s:%(port)s/%(db)s' % config.POSTGRES
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
-app.config['SECRET_KEY'] = config.POSTGRES['secret']
-app.config['DEBUG'] = config.DEBUG
-app.config.from_object('config.mailConfig.MailConfig')
+config_name = os.getenv('APP_SETTINGS')  # config_name = "development"
+app = create_app(config_name)
 
-db.init_app(app)
-migrate = Migrate(app, db)
 
 app.register_blueprint(generateBadges.router, url_prefix='/api')
 app.register_blueprint(registerUser.router, url_prefix='/user')
@@ -29,6 +19,7 @@ app.register_blueprint(loginUser.router, url_prefix='/user')
 app.register_blueprint(fileUploader.router, url_prefix='/api/upload')
 app.register_blueprint(homePage.router)
 app.register_blueprint(errorHandlers.router)
+
 
 @app.before_first_request
 def create_tables():

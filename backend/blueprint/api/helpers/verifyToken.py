@@ -2,7 +2,7 @@ import jwt
 from functools import wraps
 from flask import request, jsonify
 from flask import current_app as app
-from api.utils.response import Response
+from utils.response import Response
 
 
 def loginRequired(func):
