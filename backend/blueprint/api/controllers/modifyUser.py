@@ -9,7 +9,13 @@ router = Blueprint('modifyUser', __name__)
 
 @router.route('/password', methods=['PUT'])
 def changePassword():
-    data = request.get_json()
+    try:
+        data = request.get_json()
+    except Exception as e:
+        return jsonify(
+            Response(500).generateMessage(
+                str(e)))
+
     if data and data['username']:
         user = User.getUser(data['username'])
         if user:
@@ -34,7 +40,13 @@ def changePassword():
 
 @router.route('/name', methods=['PUT'])
 def changeName():
-    data = request.get_json()
+    try:
+        data = request.get_json()
+    except Exception as e:
+        return jsonify(
+            Response(500).generateMessage(
+                str(e)))
+
     if data and data['username']:
         user = User.getUser(data['username'])
         if user:
