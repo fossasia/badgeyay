@@ -35,7 +35,7 @@ def login():
         token = jwt.encode(
             {'user': user.username,
              'exp': datetime.datetime.utcnow() + datetime.timedelta(seconds=900)},
-            app.config['SECRET_KEY'])
+            app.config.get('SECRET_KEY'))
 
         return jsonify(
             Response(200).generateToken(
