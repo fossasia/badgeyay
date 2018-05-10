@@ -1,4 +1,5 @@
-from api.config import urlConfig
+from instance import urlConfig
+
 
 
 class Response(object):
