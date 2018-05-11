@@ -7,7 +7,8 @@ from api.db import db
 class User(db.Model):
     __tablename__ = 'User'
 
-    username = db.Column(db.String(80), primary_key=True)
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    username = db.Column(db.String(80))
     password = db.Column(db.String(100))
     name = db.Column(db.String(80))
 
