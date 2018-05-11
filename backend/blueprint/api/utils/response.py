@@ -1,6 +1,7 @@
 from instance import urlConfig
 
 
+
 class Response(object):
     """docstring for Response"""
 

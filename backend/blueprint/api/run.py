@@ -7,19 +7,32 @@ from controllers import errorHandlers
 from controllers import registerUser
 from controllers import loginUser
 from controllers import fileUploader
+<<<<<<< HEAD
+from controllers import modifyUser
+=======
+from api.controllers import modifyUser
+>>>>>>> f7c1fd6... Fixes #437: Added Swagger UI
+from flasgger import Swagger
 
 
 config_name = os.getenv('APP_SETTINGS')  # config_name = "development"
 app = create_app(config_name)
 
+config_name = os.getenv('APP_SETTINGS')  # config_name = "development"
+app = create_app(config_name)
 
 app.register_blueprint(generateBadges.router, url_prefix='/api')
 app.register_blueprint(registerUser.router, url_prefix='/user')
 app.register_blueprint(loginUser.router, url_prefix='/user')
 app.register_blueprint(fileUploader.router, url_prefix='/api/upload')
+app.register_blueprint(modifyUser.router, url_prefix='/user/change')
 app.register_blueprint(homePage.router)
 app.register_blueprint(errorHandlers.router)
+swag = Swagger(app)
+<<<<<<< HEAD
 
+=======
+>>>>>>> f7c1fd6... Fixes #437: Added Swagger UI
 
 @app.before_first_request
 def create_tables():

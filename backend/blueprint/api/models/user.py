@@ -1,6 +1,6 @@
 from werkzeug.security import generate_password_hash
 
-
+from utils.mail import sendMail
 from db import db
 
 
@@ -10,11 +10,13 @@ class User(db.Model):
     username = db.Column(db.String(80), primary_key=True)
     password = db.Column(db.String(100))
     name = db.Column(db.String(80))
+    email = db.Column(db.String(100))
 
-    def __init__(self, username, password, name):
+    def __init__(self, username, password, name, email):
         self.username = username
         self.password = generate_password_hash(password)
         self.name = name
+        self.email = email
 
     def save_to_db(self):
         db.session.add(self)
@@ -28,3 +30,13 @@ class User(db.Model):
     @classmethod
     def getUser(cls, username):
         return cls.query.filter_by(username=username).first()
+
+
+@db.event.listens_for(User, "after_insert")
+def sendVerification(mapper, connection, target):
+    msg = {}
+    msg['subject'] = "Welcome to Badgeyay"
+    msg['receipent'] = target.username
+    msg['body'] = "It's good to have you onboard with Badgeyay. Welcome to " \
+        "FOSSASIA Family."
+    sendMail(msg)

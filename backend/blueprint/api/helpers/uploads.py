@@ -20,3 +20,16 @@ def saveToImage(imageFile=None, extension='.png'):
     image.close()
 
     return imageName
+
+
+def saveToCSV(csvFile=None, extension='.csv'):
+    csvName = generateFileName() + extension
+    csvDirectory = os.path.join(app.config.get('BASE_DIR'), 'static', 'uploads', 'csv')
+
+    if not os.path.isdir(csvDirectory):
+        os.makedirs(csvDirectory)
+
+    csvPath = os.path.join(csvDirectory, csvName)
+    csvFile.save(csvPath)
+
+    return csvName

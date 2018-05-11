@@ -14,6 +14,7 @@ def create_app(config_name):
     app.config.from_pyfile('config.py')
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
     app.config.from_object('instance.config.MailConfig')
+    app.config.from_object('instance.config.SwaggerConfig')
     db.init_app(app)
     Migrate(app, db)
 

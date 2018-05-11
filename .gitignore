@@ -14,3 +14,6 @@ cli/dist/
 .vscode/
 badgeyay/
 .coverage
+*.sublime-project
+*.sublime-workspace
+.DS_Store
