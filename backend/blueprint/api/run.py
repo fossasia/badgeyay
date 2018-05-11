@@ -7,6 +7,7 @@ from controllers import errorHandlers
 from controllers import registerUser
 from controllers import loginUser
 from controllers import fileUploader
+from flasgger import Swagger
 
 
 config_name = os.getenv('APP_SETTINGS')  # config_name = "development"
@@ -19,7 +20,7 @@ app.register_blueprint(loginUser.router, url_prefix='/user')
 app.register_blueprint(fileUploader.router, url_prefix='/api/upload')
 app.register_blueprint(homePage.router)
 app.register_blueprint(errorHandlers.router)
-
+swag = Swagger(app)
 
 @app.before_first_request
 def create_tables():
