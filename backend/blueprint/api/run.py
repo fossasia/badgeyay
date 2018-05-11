@@ -9,8 +9,8 @@ from api.controllers import homePage
 from api.controllers import errorHandlers
 from api.controllers import registerUser
 from api.controllers import loginUser
-from controllers import fileUploader
-from controllers import modifyUser
+from api.controllers import fileUploader
+from api.controllers import modifyUser
 
 
 
@@ -20,7 +20,7 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://%(user)s:%(pw)s@%(host)s:%
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
 app.config['SECRET_KEY'] = config.POSTGRES['secret']
 app.config['DEBUG'] = config.DEBUG
-app.config.from_object('config.mailConfig.MailConfig')
+app.config.from_object('api.config.mailConfig.MailConfig')
 
 db.init_app(app)
 migrate = Migrate(app, db)
