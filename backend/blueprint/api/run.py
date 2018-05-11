@@ -8,6 +8,7 @@ from controllers import registerUser
 from controllers import loginUser
 from controllers import fileUploader
 from api.controllers import modifyUser
+from flasgger import Swagger
 
 
 config_name = os.getenv('APP_SETTINGS')  # config_name = "development"
@@ -21,7 +22,7 @@ app.register_blueprint(fileUploader.router, url_prefix='/api/upload')
 app.register_blueprint(modifyUser.router, url_prefix='/user/change')
 app.register_blueprint(homePage.router)
 app.register_blueprint(errorHandlers.router)
-
+swag = Swagger(app)
 
 @app.before_first_request
 def create_tables():
