@@ -7,7 +7,13 @@ router = Blueprint('registerUser', __name__)
 
 @router.route('/register', methods=['POST'])
 def registerUser():
-    data = request.get_json()
+    try:
+        data = request.get_json()
+    except Exception as e:
+        return jsonify(
+            Response(500).generateMessage(
+                str(e)))
+
     newUser = User(
         data['username'],
         data['password'],
