@@ -95,6 +95,21 @@ $(document).ready(function () {
 
     var previewOff = true;
 
+    var changeTemplateBackground = function() {
+        imageValue = $('#picker').val();
+        $('#preview').css('background-color',imageValue.toString());
+    };
+
+    var changePreviewFont = function() {
+        fontValue = $('.placeholder2')[0].innerText;
+        $('.preview-image-li').css('font-family',fontValue.toString());
+    };
+
+    var changePreviewFontColor = function() {
+        var fontColor = $('#text-picker').val();
+        $('.preview-image-li').css('color',fontColor.toString());
+    };
+
     $('#preview-btn').on('click',function(e){
         $('#preview').toggleClass('hidden');
         previewOff = !previewOff;
@@ -103,19 +118,16 @@ $(document).ready(function () {
             $('#preview-btn')[0].innerHTML = 'Close Preview';
             var imageValue,fontValue;
             if($('#picker').val() !== ''){
-                imageValue = $('#picker').val();
-                $('#preview').css('background-color',imageValue.toString());
+                changeTemplateBackground();
             }
             else if($('input[name=img-default]').val() !== ''){
                 changePreviewBackground();
             }
             if($('.placeholder2')[0].innerText !== 'Select a font'){
-                fontValue = $('.placeholder2')[0].innerText;
-                $('.preview-image-li').css('font-family',fontValue.toString());
+                changePreviewFont();
             }
             if($('#text-picker').val() !== ''){
-                var fontColor = $('#text-picker').val();
-                $('.preview-image-li').css('color',fontColor.toString());
+                changePreviewFontColor();
             }
         }
         else{
