@@ -1,7 +1,7 @@
 from flask import Blueprint, request, jsonify
-from utils.response import Response
-from helpers.verifyToken import loginRequired
-from helpers.uploads import saveToImage, saveToCSV
+from api.utils.response import Response
+from api.helpers.verifyToken import loginRequired
+from api.helpers.uploads import saveToImage, saveToCSV
 
 
 router = Blueprint('fileUploader', __name__)

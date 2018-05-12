@@ -20,7 +20,7 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://%(user)s:%(pw)s@%(host)s:%
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
 app.config['SECRET_KEY'] = config.POSTGRES['secret']
 app.config['DEBUG'] = config.DEBUG
-app.config.from_object('config.mailConfig.MailConfig')
+app.config.from_object('api.config.mailConfig.MailConfig')
 
 db.init_app(app)
 migrate = Migrate(app, db)

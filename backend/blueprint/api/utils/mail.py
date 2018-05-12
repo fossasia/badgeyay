@@ -1,8 +1,8 @@
 from flask_mail import Mail, Message
 from flask import current_app as app
 from flask import jsonify
-from models.user import User
-from .response import Response
+from api.models.user import User
+from api.response import Response
 
 
 def send_mail(message):
