@@ -3,6 +3,6 @@ class MailConfig(object):
     MAIL_PORT = 465
     MAIL_USE_TLS = False
     MAIL_USE_SSL = True
-    MAIL_USERNAME = 'some@gmail.com'
-    MAIL_PASSWORD = 'asdasdasd'
-    MAIL_DEFAULT_SENDER = 'sadasdasd'
+    MAIL_USERNAME = ''
+    MAIL_PASSWORD = ''
+    MAIL_DEFAULT_SENDER = ''
