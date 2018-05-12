@@ -47,9 +47,10 @@
 	"noyield": false,
 	"browser": true,
 	"devel": false,
-	"node": false,
-  	"globals": {
-    	"module"  : true,
-    	"process" : true
+    "node": false,
+    "jquery": true,
+    "globals": {
+        "module"  : true,
+        "process" : true
     }
 }

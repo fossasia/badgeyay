@@ -117,14 +117,18 @@ $(document).ready(function () {
                 var fontColor = $('#text-picker').val();
                 $('.preview-image-li').css('color',fontColor.toString());
             }
+            if($('#font-size').val() !== '') {
+                var fontSize = $('#font-szie').val();
+                $('.preview-image-li').css('font-size', fontSize.toString());
+            }
         }
         else{
             $('#preview-btn')[0].innerHTML = 'Preview';
         }
     });
-    
+
     $('#text-input').on('keyup',realtimeChange);
-    
+
     function changePreviewBackground(){
         var imageValue = 'https://raw.githubusercontent.com/fossasia/badgeyay/development/frontend/public/images/badge_backgrounds/' + $('input[name=img-default]').val() + '?raw=true';
         $('#preview').css('background','url(' + imageValue + ')');
