@@ -9,8 +9,8 @@ from api.controllers import homePage
 from api.controllers import errorHandlers
 from api.controllers import registerUser
 from api.controllers import loginUser
-from controllers import fileUploader
-from controllers import modifyUser
+from api.controllers import fileUploader
+from api.controllers import modifyUser
 
 
 
