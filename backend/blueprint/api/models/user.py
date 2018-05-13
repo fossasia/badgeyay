@@ -11,11 +11,13 @@ class User(db.Model):
     username = db.Column(db.String(80))
     password = db.Column(db.String(100))
     name = db.Column(db.String(80))
+    email = db.Column(db.String(100))
 
-    def __init__(self, username, password, name):
+    def __init__(self, username, password, name, email):
         self.username = username
         self.password = generate_password_hash(password)
         self.name = name
+        self.email = email
 
     def save_to_db(self):
         db.session.add(self)

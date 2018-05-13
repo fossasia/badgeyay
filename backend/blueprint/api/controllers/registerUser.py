@@ -17,7 +17,8 @@ def registerUser():
     newUser = User(
         data['username'],
         data['password'],
-        data['name'])
+        data['name'],
+        data['email'])
 
     try:
         newUser.save_to_db()
