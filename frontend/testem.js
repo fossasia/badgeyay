@@ -1,7 +1,9 @@
+/* jshint camelcase: false */
+
 module.exports = {
-  test_page: 'tests/index.html?hidepassed',
-  disable_watching: true,
-  launch_in_ci: [
+  test_page        : 'tests/index.html?hidepassed',
+  disable_watching : true,
+  launch_in_ci     : [
     'Chrome'
   ],
   launch_in_dev: [
@@ -9,8 +11,8 @@ module.exports = {
   ],
   browser_args: {
     Chrome: {
-      mode: 'ci',
-      args: [
+      mode : 'ci',
+      args : [
         '--disable-gpu',
         '--headless',
         '--remote-debugging-port=0',
