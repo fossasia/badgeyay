@@ -1,6 +1,7 @@
 from flask import Blueprint, jsonify, request
 from api.utils.response import Response
 from api.models.user import User
+from helpers.verifyEmail import verifyEmail
 
 router = Blueprint('registerUser', __name__)
 
@@ -18,7 +19,7 @@ def registerUser():
         data['username'],
         data['password'],
         data['name'],
-        data['email'])
+        verifyEmail(data['email']))
 
     try:
         newUser.save_to_db()
