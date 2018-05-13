@@ -21,6 +21,11 @@ class Response(object):
         self.URL = self.URL.replace('backend/app/', urlConfig.BASE_URL)
         return self.serialize()
 
+    def generateResetURL(self, token):
+        self.token = token
+        self.URL = urlConfig.BASE_FRONTEND_URL + "reset/password/" + self.token
+        return self.serialize()
+
     def generateToken(self, token):
         self.token = token
         return self.serialize()
