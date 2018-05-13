@@ -1,17 +1,11 @@
 from flask_mail import Mail, Message
 from flask import current_app as app
 from flask import jsonify
-from api.models.user import User
 from api.response import Response
 
 
-def send_mail(message):
+def sendMail(message):
     if message and message.receipent:
-        user = User.getUser(message.receipent)
-        if not user:
-            return jsonify(
-                Response(403).generateMessage(
-                    'Couldn\'t find the username specified'))
         try:
             msg = Message(
                 subject=message.subject,
