@@ -1,7 +1,7 @@
 from werkzeug.security import generate_password_hash
 
-from api.utils.mail import sendMail
-from api.db import db
+from utils.mail import sendMail
+from db import db
 
 
 class User(db.Model):
