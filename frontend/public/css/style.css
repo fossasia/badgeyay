@@ -340,6 +340,10 @@ input[type="radio"] {
     cursor: pointer; /* Add a pointer on hover */
 }
 
+.column {
+    max-width: 450px;
+}
+
 #overlay-text{
     position: absolute;
     top: 50%;

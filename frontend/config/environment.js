@@ -5,8 +5,24 @@ module.exports = function(environment) {
     modulePrefix : 'badgeyay',
     environment,
     rootURL      : '/',
-    locationType : 'hash',
-    EmberENV     : {
+    locationType : 'auto',
+    // firebase     : {
+    //   apiKey            : '',
+    //   authDomain        : '',
+    //   databaseURL       : '',
+    //   projectId         : '',
+    //   storageBucket     : '',
+    //   messagingSenderId : ''
+    // },
+    torii        : {
+      sessionServiceName: 'session'
+    },
+    contentSecurityPolicy: {
+      'script-src'  : '\'self\' \'unsafe-eval\' apis.google.com',
+      'frame-src'   : '\'self\' https://*.firebaseapp.com',
+      'connect-src' : '\'self\' wss://*.firebaseio.com https://*.googleapis.com'
+    },
+    EmberENV: {
       FEATURES: {
         // Here you can enable experimental features on an ember canary build
         // e.g. 'with-controller': true
@@ -46,7 +62,7 @@ module.exports = function(environment) {
 
   if (environment === 'production') {
     if (deployTarget && deployTarget === 'gh-pages') {
-      ENV.locationType = 'hash';
+      ENV.locationType = 'auto';
       ENV.rootURL = `/${process.env.REPO_SLUG || 'badgeyay'}`;
     }
   }

@@ -1,0 +1,26 @@
+<div class="ui middle aligned center aligned grid">
+    <div class="column">
+        <h2 class="ui teal image header">
+        <div class="content">
+            Sign Up
+        </div>
+        </h2>
+        <form class="ui form">
+            <div class="ui stacked element">
+                <div class="field">
+                    <div class="ui left icon input">
+                        <i class="user icon"></i>
+                        {{input type="text" value=email name="email" placeholder="E-mail address"}}
+                    </div>
+                </div>
+                <div class="field">
+                    <div class="ui left icon input">
+                        <i class="lock icon"></i>
+                        {{input type="password" value=password name="password" placeholder="Password"}}
+                    </div>
+                </div>
+                <button class="ui button teal fluid" {{ action 'signIn' }}>Sign Up</button>
+            </div>
+        </form>
+    </div>
+</div>
