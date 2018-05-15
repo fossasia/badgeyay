@@ -37,7 +37,7 @@ class User(db.Model):
 def sendVerification(mapper, connection, target):
     msg = {}
     msg['subject'] = "Welcome to Badgeyay"
-    msg['receipent'] = target.username
-    msg['body'] = "It's good to have you onboard with Badgeyay. Welcome to " \
+    msg['receipent'] = target.email
+    msg['body'] = "It's good to have you onboard with Badgeyay. Welcome to the" \
         "FOSSASIA Family."
     sendMail(msg)
