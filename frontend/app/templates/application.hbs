@@ -1,10 +1,10 @@
 <div class="pusher">
     {{nav-bar}}
+    {{#if (eq currentRouteName 'index')}}
+      {{welcome-header}}
+    {{/if}}
     <div class="ui container main-container">
         {{outlet}}
-        <div>
-
-        </div>
     </div>
     {{footer-main}}
 </div>

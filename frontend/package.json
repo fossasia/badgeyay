@@ -32,16 +32,19 @@
     "ember-cli-htmlbars-inline-precompile": "^1.0.2",
     "ember-cli-inject-live-reload": "^1.7.0",
     "ember-cli-qunit": "^4.3.2",
+    "ember-cli-sass": "^7.1.7",
     "ember-cli-shims": "^1.2.0",
     "ember-cli-sri": "^2.1.1",
     "ember-data": "~3.1.1",
     "ember-export-application-global": "^2.0.0",
+    "ember-href-to": "^1.15.1",
     "ember-load-initializers": "^1.1.0",
     "ember-resolver": "^4.5.5",
     "ember-simple-auth": "^1.6.0",
     "ember-source": "~3.1.2",
+    "ember-truth-helpers": "^2.0.0",
     "ember-welcome-page": "^3.2.0",
-    "eslint-plugin-ember": "^5.1.0",
+    "eslint-plugin-ember": "^5.2.0",
     "loader.js": "^4.7.0",
     "semantic-ui-ember": "^3.0.3"
   },
@@ -54,6 +57,6 @@
     "ember-suave": "^4.0.1",
     "eslint": "^4.19.1",
     "eslint-plugin-ember-suave": "^1.0.0",
-    "minimatch": "^3.0.2"
+    "minimatch": "^3.0.4"
   }
 }

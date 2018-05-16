@@ -1,0 +1,30 @@
+$color1: rgba(0, 0, 0, 0.5);
+$color2: rgba(0, 0, 0, 0.6);
+$color3: #ffffff;
+
+.welcome-header {
+  background: linear-gradient($color1, $color1), url("/images/landing.jpg");
+  background-position: center;
+  color: $color3;
+  height: 500px;
+  overflow: hidden;
+  position: relative;
+
+  .content {
+    left: 20%;
+    position: absolute;
+    right: 20%;
+    text-align: center;
+    top: 260px;
+
+    .lead {
+      font-size: 50px;
+      text-shadow: 0 1px 2px $color2;
+    }
+
+    .button {
+      font-size: 16px;
+      margin-top: 20px;
+    }
+  }
+}
