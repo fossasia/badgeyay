@@ -1,6 +1,6 @@
 from flask import Blueprint, jsonify, request
 from api.utils.response import Response
-from api.models.user import User
+from firebase_admin import auth
 
 router = Blueprint('registerUser', __name__)
 
@@ -14,20 +14,15 @@ def registerUser():
             Response(500).generateMessage(
                 str(e)))
 
-    newUser = User(
-        data['username'],
-        data['password'],
-        data['name'],
-        data['email'])
-
     try:
-        newUser.save_to_db()
+        auth.create_user(
+            display_name=data['name'],
+            email=data['email'],
+            phone_number=data['phone_number'],
+            photo_url=data['photo_url'],
+            password=data['password']
+        )
     except Exception as e:
-        print(e)
-        return jsonify(
-            Response(401).generateMessage(
-                'User already exists with the same Username'))
+        auth.AuthError(500, e)
 
-    return jsonify(
-        Response(200).generateMessage(
-            'User created successfully'))
+    return jsonify(Response(200).generateMessage('Sucessfully created new user'))
