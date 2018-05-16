@@ -86,7 +86,8 @@ One-click Docker, Heroku, Scalingo and Bluemix deployment is also available:
 
 - [generate_badges.py](app/generate_badges.py) creates svg files from the `csv`, `png`.
 - [badges/8BadgesOnA3.svg](badges/8BadgesOnA3.svg).
-- [merge_badges.py](app/merge_badges.py) converts them into pdf files and merges them together into one.
+- [merge_badges_class.py](app/merge_badges_class.py) converts them into pdf files and merges them together into one.
+
 
 ### Output
 
