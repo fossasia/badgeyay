@@ -1,4 +1,6 @@
 import os
+import firebase_admin
+from firebase_admin import credentials
 from flask import Flask
 from flask_migrate import Migrate
 from api.db import db
@@ -14,6 +16,8 @@ def create_app():
     app.config.from_object(os.getenv('APP_CONFIG', default='api.config.config.ProductionConfig'))
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
     app.config.from_object('api.config.mailConfig.MailConfig')
+    cred = credentials.Certificate(os.getenv("FIREBASE_CONFIG"))
+    firebase_admin.initialize_app(cred)
     db.init_app(app)
     Migrate(app, db)
 
