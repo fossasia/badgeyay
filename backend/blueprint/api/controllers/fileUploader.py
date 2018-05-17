@@ -2,6 +2,7 @@ from flask import Blueprint, request, jsonify
 from api.utils.response import Response
 from api.helpers.verifyToken import loginRequired
 from api.helpers.uploads import saveToImage, saveToCSV
+from api.models.file import File
 
 
 router = Blueprint('fileUploader', __name__)
@@ -27,6 +28,8 @@ def uploadImage():
                 str(e),
                 'Image could not be uploaded'))
 
+    file_upload = File(imageName, 'image')
+    file_upload.save_to_db()
     return jsonify(
         Response(200).generateMessage({
             'message': 'Image Uploaded Successfully',
@@ -50,6 +53,8 @@ def fileUpload():
                 str(e),
                 'CSV File could not be uploaded'))
 
+    file_upload = File(csvName, 'csv')
+    file_upload.save_to_db()
     return jsonify(
         Response(200).generateMessage({
             'message': 'CSV Uploaded successfully',
