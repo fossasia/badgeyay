@@ -1,7 +1,6 @@
 from flask_migrate import Migrate
 from api import create_app
 from api.db import db
-from api.config import config
 from api.controllers import (
     generateBadges,
     homePage,
@@ -26,6 +25,7 @@ app.register_blueprint(modifyUser.router, url_prefix='/user/change')
 app.register_blueprint(homePage.router)
 app.register_blueprint(errorHandlers.router)
 app.register_blueprint(resetUser.router, url_prefix='/reset')
+
 
 @app.before_first_request
 def create_tables():

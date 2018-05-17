@@ -21,9 +21,9 @@ def reset_password():
         user = User.getUser(data['username'])
         expire = datetime.datetime.utcnow() + datetime.timedelta(seconds=600)
         token = jwt.encode({
-                'id': user.username,
-                'exp': expire
-            }, app.config.get('SECRET_KEY'))
+            'id': user.username,
+            'exp': expire
+        }, app.config.get('SECRET_KEY'))
         return jsonify(
             Response(200).generateResetURL(
                 token.decode('UTF-8')))

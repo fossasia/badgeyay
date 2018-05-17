@@ -1,7 +1,0 @@
-python:
-  enabled: true
-  config_file: backend/.flake8.ini
-
-scss:
-  config_file: .scss-lint.yml
-
