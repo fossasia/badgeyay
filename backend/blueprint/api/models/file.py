@@ -1,8 +1,4 @@
-import os
-
 from api.db import db
-from api.helpers.uploads.saveToImage import imageDirectory, imageName
-from api.helpers.uploads.saveToCSV import csvDirectory, csvName
 
 
 class File(db.Model):
