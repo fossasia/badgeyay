@@ -1,4 +1,6 @@
+from api.db import db
 import uuid
+
 
 class Badges(db.Model):
     __tablename__ = 'Badges'
@@ -8,7 +10,7 @@ class Badges(db.Model):
     badge_id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey('User.id', ondelete='CASCADE'))
 
-    def __init__(self, fileName=None, imageName=None):
+    def __init__(self, csvName=None, imageName=None):
         self.image = imageName
         self.csv = csvName
         self.badge_id = str(uuid.uuid4())
