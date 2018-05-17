@@ -1,21 +1,16 @@
-import os
-
 from api.db import db
-from api.helpers.uploads.saveToImage import imageDirectory, imageName
-from api.helpers.uploads.saveToCSV import csvDirectory, csvName
 
 
 class File(db.Model):
     __tablename__ = 'File'
 
-    image = db.Column(db.String(100), NULLABLE=False)
-    csv = db.Coloumn(db.string(100), NULLABLE=False)
-
+    filename = db.Column(db.String(100), NULLABLE=False)
+    filetype = db.Coloumn(db.string(100), NULLABLE=False)
     user_id = db.Column(db.Integer, db.ForeignKey('User.id', ondelete='CASCADE'))
 
-    def __init__(self, image, csv):
-        self.image = os.path.join(imageDirectory, imageName)
-        self.csv = os.path.join(csvDirectory, csvName)
+    def __init__(self, filename, filetype):
+        self.filename = filename
+        self.filetype = filetype
 
     def save_to_db(self):
         db.session.add(self)
