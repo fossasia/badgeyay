@@ -1,3 +1,5 @@
+/* jshint strict:false */
+
 import Ember from 'ember';
 import config from './config/environment';
 
@@ -9,7 +11,7 @@ const router = Router.extend({
 });
 
 router.map(function() {
-
+  this.route('signup');
 });
 
 export default router;
