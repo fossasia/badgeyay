@@ -38,16 +38,25 @@ def uploadImage():
 
 
 @router.route('/file', methods=['POST'])
-@loginRequired
 def fileUpload():
-    if 'file' not in request.files:
-        return jsonify(
-            Response(401).generateMessage(
-                'No file is specified'))
-
-    file = request.files['file']
     try:
-        csvName = saveToCSV(csvFile=file, extension='.csv')
+        data = request.json['csvFile']
+        csv = data['csvFile']
+    except Exception as e:
+        return jsonify(
+            Response(400).exceptWithMessage(
+                str(e),
+                'No CSV Specified'))
+    if 'extension' not in data.keys():
+        return jsonify(
+            Response(403).generateMessage(
+                'No extension key received'))
+    extension = data['extension']
+    if extension != 'csv':
+        return jsonify(Response(400).generateMessage(
+            'Bad extension! csv not found'))
+    try:
+        csvName = saveToCSV(csvFile=csv, extension='.csv')
     except Exception as e:
         return jsonify(
             Response(400).exceptWithMessage(
