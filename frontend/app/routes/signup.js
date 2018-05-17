@@ -12,6 +12,7 @@ export default Route.extend({
   actions: {
 
     signIn() {
+      const that = this;
       const ctrl = this.get('controller');
       this.get('session').open('firebase', {
         provider : 'password',
@@ -19,6 +20,7 @@ export default Route.extend({
         password : ctrl.get('password')
       }).then(function(userData) {
         console.log(userData);
+        that.transitionTo('/');
       }).catch(function(err) {
         console.log(err.message);
       });
