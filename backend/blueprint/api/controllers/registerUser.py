@@ -23,10 +23,10 @@ def registerUser():
     )
 
     newUser = User(
-        id=user.uid,
+        id_=user.uid,
         username=user.display_name,
         email=user.email,
-        password=user.password)
+        password=data['password'])
 
     try:
         newUser.save_to_db()

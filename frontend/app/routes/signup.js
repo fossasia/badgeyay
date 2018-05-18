@@ -11,19 +11,31 @@ export default Route.extend({
   },
   actions: {
 
-    signIn() {
-      const that = this;
-      const ctrl = this.get('controller');
-      this.get('session').open('firebase', {
-        provider : 'password',
-        email    : ctrl.get('email'),
-        password : ctrl.get('password')
-      }).then(function(userData) {
-        console.log(userData);
-        that.transitionTo('/');
-      }).catch(function(err) {
-        console.log(err.message);
-      });
+    signIn(provider) {
+      if (provider == 'password') {
+        const that = this;
+        const ctrl = this.get('controller');
+        this.get('session').open('firebase', {
+          provider : 'password',
+          email    : ctrl.get('email'),
+          password : ctrl.get('password')
+        }).then(function(userData) {
+          console.log(userData);
+          that.transitionTo('/');
+        }).catch(function(err) {
+          console.log(err.message);
+        });
+      } else {
+        const that = this;
+        this.get('session').open('firebase', {
+          provider
+        }).then(function(userData) {
+          console.log(userData);
+          that.transitionTo('/');
+        }).catch(function(err) {
+          console.log(err.message);
+        });
+      }
     },
 
     signOut() {

@@ -28,7 +28,7 @@
     </div>
     <div class="three column row">
         <div class="column">
-            <div class="ui vertical animated red button fluid">
+            <div class="ui vertical animated red button fluid" {{ action 'signIn' 'google' }}>
                 <div class="hidden content">Google</div>
                 <div class="visible content">
                     <i class="google plus icon"></i>
@@ -36,7 +36,7 @@
             </div>
         </div>
         <div class="column">
-            <div class="ui vertical animated violet button fluid" tabindex="0">
+            <div class="ui vertical animated violet button fluid" tabindex="0" {{ action 'signIn' 'facebook' }}>
                 <div class="hidden content">Facebook</div>
                 <div class="visible content">
                     <i class="facebook f icon"></i>
@@ -44,7 +44,7 @@
             </div>
         </div>
         <div class="column">
-            <div class="ui vertical animated blue button fluid" tabindex="0">
+            <div class="ui vertical animated blue button fluid" tabindex="0" {{ action 'signIn' 'twitter' }}>
                 <div class="hidden content">Twitter</div>
                 <div class="visible content">
                     <i class="twitter icon"></i>
