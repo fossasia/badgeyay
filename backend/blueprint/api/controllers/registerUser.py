@@ -12,8 +12,9 @@ def registerUser():
         data = request.get_json()
     except Exception as e:
         return jsonify(
-            Response(500).generateMessage(
-                str(e)))
+            Response(500).exceptWithMessage(
+                str(e),
+                'Unable to get json'))
 
     user = auth.create_user(
         email=data['email'],
