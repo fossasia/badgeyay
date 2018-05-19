@@ -1,16 +1,16 @@
 from werkzeug.security import generate_password_hash
-
-from api.utils.mail import sendMail
+# from api.utils.mail import sendMail
 from api.db import db
 
 
 class User(db.Model):
     __tablename__ = 'User'
 
-    id = db.Column(db.Integer, primary_key=True)
+    id = db.Column(db.String(100), primary_key=True)
     username = db.Column(db.String(80))
     password = db.Column(db.String(100))
     email = db.Column(db.String(100))
+    files = db.relationship('File', backref='uploader')
 
     def __init__(self, id_, username, password, email):
         self.id = id_
@@ -28,15 +28,18 @@ class User(db.Model):
             print(e)
 
     @classmethod
-    def getUser(cls, username):
-        return cls.query.filter_by(username=username).first()
+    def getUser(cls, user_id=None, username=None):
+        if username is None:
+            return cls.query.filter_by(id=user_id).first()
+        if user_id is None:
+            return cls.query.filter_by(username=username).first()
 
 
-@db.event.listens_for(User, "after_insert")
-def sendVerification(mapper, connection, target):
-    msg = {}
-    msg['subject'] = "Welcome to Badgeyay"
-    msg['receipent'] = target.email
-    msg['body'] = "It's good to have you onboard with Badgeyay. Welcome to the" \
-        "FOSSASIA Family."
-    sendMail(msg)
+# @db.event.listens_for(User, "after_insert")
+# def sendVerification(mapper, connection, target):
+#     msg = {}
+#     msg['subject'] = "Welcome to Badgeyay"
+#     msg['receipent'] = target.email
+#     msg['body'] = "It's good to have you onboard with Badgeyay. Welcome to the" \
+#         "FOSSASIA Family."
+#     sendMail(msg)

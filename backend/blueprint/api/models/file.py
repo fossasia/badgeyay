@@ -6,11 +6,7 @@ class File(db.Model):
 
     filename = db.Column(db.String(100), nullable=False, primary_key=True)
     filetype = db.Column(db.String(100), nullable=False)
-    user_id = db.Column(db.Integer, db.ForeignKey('User.id', ondelete='CASCADE'))
-
-    def __init__(self, filename, filetype):
-        self.filename = filename
-        self.filetype = filetype
+    user_id = db.Column(db.String(100), db.ForeignKey('User.id', ondelete='CASCADE'))
 
     def save_to_db(self):
         db.session.add(self)

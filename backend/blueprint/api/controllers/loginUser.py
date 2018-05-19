@@ -22,7 +22,7 @@ def login():
                 'Unable to get json'))
 
     if data and data['username']:
-        user = User.getUser(data['username'])
+        user = User.getUser(username=data['username'])
         if not user:
             return jsonify(
                 Response(403).generateMessage(
