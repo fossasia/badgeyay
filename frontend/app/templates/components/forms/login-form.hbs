@@ -1,0 +1,68 @@
+<div class="ui hidden divider"></div>
+<div class="ui raised segment">
+    <div class="ui stackable column doubling centered grid">
+        <div class="ui middle aligned center aligned grid">
+            <div class="row" >
+                <div class="column">
+                    <h1 class="ui orange header">
+                        Welcome back !
+                        <div class="sub header">We’re happy helping you get beautiful name badges.</div>
+                    </h1>
+                    <div class="ui hidden divider"></div>
+                    <form class="ui form">
+                        <div class="ui stacked element">
+                            <div class="field required">
+                                <div class="ui left icon input">
+                                    <i class="mail icon"></i>
+                                    {{input type="text" value=email name="email" placeholder="E-mail address"}}
+                                </div>
+                            </div>
+                            <div class="field required">
+                                <div class="ui left icon input">
+                                    <i class="lock icon"></i>
+                                    {{input type="password" value=password name="password" placeholder="Password"}}
+                                </div>
+                            </div>
+                            <button class="ui button orange fluid" style="margin-bottom: 10px;" {{ action 'logIn' 'password' }}>Log In</button>
+                            <a href="#" class="text muted"> Forgot your password ?</a>
+                            <div class="ui divider"></div>
+                            <a href="{{href-to 'signup'}}" class="text muted weight-800">Don’t have an account yet? Signup</a>
+                        </div>
+                    </form>
+                    <div class="ui horizontal divider">
+                        Or
+                    </div>
+                    <h1 class="ui header">
+                        <div class="sub header">Login with</div>
+                    </h1>
+                </div>
+            </div>
+            <div class="three column row">
+                <div class="column">
+                    <div class="ui vertical animated red button fluid" {{ action 'logIn' 'google' }}>
+                        <div class="hidden content">Google</div>
+                        <div class="visible content">
+                            <i class="google plus icon"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="column">
+                    <div class="ui vertical animated violet button fluid" tabindex="0" {{ action 'logIn' 'facebook' }}>
+                        <div class="hidden content">Facebook</div>
+                        <div class="visible content">
+                            <i class="facebook f icon"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="column">
+                    <div class="ui vertical animated blue button fluid" tabindex="0" {{ action 'logIn' 'twitter' }}>
+                        <div class="hidden content">Twitter</div>
+                        <div class="visible content">
+                            <i class="twitter icon"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
