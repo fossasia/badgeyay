@@ -4,8 +4,8 @@ from api.db import db
 class File(db.Model):
     __tablename__ = 'File'
 
-    filename = db.Column(db.String(100), NULLABLE=False)
-    filetype = db.Coloumn(db.string(100), NULLABLE=False)
+    filename = db.Column(db.String(100), nullable=False, primary_key=True)
+    filetype = db.Column(db.String(100), nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey('User.id', ondelete='CASCADE'))
 
     def __init__(self, filename, filetype):
