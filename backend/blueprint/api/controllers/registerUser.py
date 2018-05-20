@@ -19,13 +19,13 @@ def registerUser():
     user = auth.create_user(
         email=data['email'],
         email_verified=False,
-        password=data['example'],
+        password=data['password'],
         display_name=data['name'],
     )
 
     newUser = User(
         id_=user.uid,
-        username=user.display_name,
+        username=data['username'],
         email=user.email,
         password=data['password'])
 

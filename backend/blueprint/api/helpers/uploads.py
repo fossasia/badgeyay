@@ -33,3 +33,18 @@ def saveToCSV(csvFile=None, extension='.csv'):
     csvFile.save(csvPath)
 
     return csvName
+
+
+def saveAsCSV(csvData=None):
+    csvName = generateFileName() + '.csv'
+    csvDirectory = os.path.join(app.config.get('BASE_DIR'), 'static', 'uploads', 'csv')
+
+    if not os.path.isdir(csvDirectory):
+        os.makedirs(csvDirectory)
+
+    csvPath = os.path.join(csvDirectory, csvName)
+    with open(csvPath, 'w') as f:
+        f.write(csvData)
+    f.close()
+
+    return csvName
