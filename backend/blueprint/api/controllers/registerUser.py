@@ -25,7 +25,7 @@ def registerUser():
 
     newUser = User(
         id_=user.uid,
-        username=data['username'],
+        username=data['name'],
         email=user.email,
         password=data['password'])
 
