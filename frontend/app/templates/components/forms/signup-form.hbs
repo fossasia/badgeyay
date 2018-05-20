@@ -1,0 +1,41 @@
+<div class="ui hidden divider"></div>
+<div class="ui raised segment">
+    <div class="ui stackable column doubling centered grid">
+        <div class="ui middle aligned center aligned grid">
+            <div class="row" >
+                <div class="column">
+                    <h1 class="ui orange header">
+                        Sign up for Badgeyay !
+                        <div class="sub header">We’re happy helping you get beautiful name badges.</div>
+                    </h1>
+                    <div class="ui hidden divider"></div>
+                    <form class="ui form">
+                        <div class="ui stacked element">
+                            <div class="field required">
+                                <div class="ui left icon input">
+                                    <i class="mail icon"></i>
+                                    {{input type="text" value=email name="email" placeholder="E-mail address"}}
+                                </div>
+                            </div>
+                            <div class="field required">
+                                <div class="ui left icon input">
+                                    <i class="lock icon"></i>
+                                    {{input type="password" value=password name="password" placeholder="Password"}}
+                                </div>
+                            </div>
+                            <div class="field required">
+                                <div class="ui left icon input">
+                                    <i class="lock icon"></i>
+                                    {{input type="password" name="password_repeat" placeholder="Re-enter Password"}}
+                                </div>
+                            </div>
+                            <button class="ui fluid large orange submit button" style="margin-bottom: 10px;" {{ action 'signup' }}>Sign Up</button>
+                            <div class="ui divider"></div>
+                            <a href="{{href-to 'login'}}" class="text muted weight-800">Already have an account? Log in</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
