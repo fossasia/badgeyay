@@ -5,11 +5,6 @@
     {{/if}}
     <div class="ui container main-container">
         {{outlet}}
-        {{#data-component}}
-            {{ data-component/csv-component sendCSV=(action 'mutateCSV') }}
-            {{ data-component/text-component sendText=(action 'mutateText') }}
-            <br>
-        {{/data-component}}
     </div>
     {{footer-main}}
 </div>
