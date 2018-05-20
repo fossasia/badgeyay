@@ -1,6 +1,7 @@
 import uuid
 import os
 from flask import current_app as app
+import base64
 
 
 def generateFileName():
@@ -16,7 +17,7 @@ def saveToImage(imageFile=None, extension='.png'):
 
     imagePath = os.path.join(imageDirectory, imageName)
     image = open(imagePath, "wb")
-    image.write(imageFile.decode('base64'))
+    image.write(base64.b64decode(imageFile))
     image.close()
 
     return imageName
@@ -29,8 +30,11 @@ def saveToCSV(csvFile=None, extension='.csv'):
     if not os.path.isdir(csvDirectory):
         os.makedirs(csvDirectory)
 
+    csvFile = csvFile.replace('data:text/csv;base64,', '')
     csvPath = os.path.join(csvDirectory, csvName)
-    csvFile.save(csvPath)
+    csv = open(csvPath, "wb")
+    csv.write(base64.b64decode(csvFile))
+    csv.close()
 
     return csvName
 

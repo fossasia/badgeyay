@@ -1,4 +1,5 @@
 from api.config import urlConfig
+import uuid
 
 
 class Response(object):
@@ -9,8 +10,10 @@ class Response(object):
         self.status = statusCode
 
     def generateMessage(self, message):
-        self.message = message
-        return self.serialize()
+        self.id = uuid.uuid4()
+        self.attributes = message
+        self.type = 'csvResponse'
+        return {'data': self.serialize()}
 
     def generateURL(self, url, message):
         self.message = message

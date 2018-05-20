@@ -35,6 +35,7 @@ module.exports = {
     'object-curly-spacing': ['error', 'always'],
     'space-infix-ops': 'error',
     'no-multiple-empty-lines': ['error', { 'max': 2, 'maxEOF': 1 }],
+    'no-unused-vars': 0,
     'key-spacing': [
       'error', {
         'align': {

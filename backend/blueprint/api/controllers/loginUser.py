@@ -21,8 +21,8 @@ def login():
                 str(e),
                 'Unable to get json'))
 
-    if data and data['username']:
-        user = User.getUser(username=data['username'])
+    if 'name' in data.keys():
+        user = User.getUser(username=data['name'])
         if not user:
             return jsonify(
                 Response(403).generateMessage(
@@ -44,4 +44,4 @@ def login():
 
     return jsonify(
         Response(403).generateMessage(
-            'No data received'))
+            'No name key received'))

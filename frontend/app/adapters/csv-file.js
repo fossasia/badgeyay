@@ -1,11 +1,10 @@
 import DS from 'ember-data';
 
-const { JSONAPIAdapter } = DS;
+const { RESTAdapter } = DS;
 
-export default JSONAPIAdapter.extend({
+export default RESTAdapter.extend({
   host        : 'http://localhost:5000',
-  pathForType : type => {
-    console.log(type);
+  pathForType : () => {
     return 'api/upload/file';
   }
 });

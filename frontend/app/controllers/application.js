@@ -6,7 +6,8 @@ export default Controller.extend({
   actions : {
     mutateCSV(csvData) {
       let csv_ = this.get('store').createRecord('csv-file', {
-        csvFile: csvData
+        csvFile   : csvData,
+        extension : 'csv'
       });
       csv_.save();
     },
