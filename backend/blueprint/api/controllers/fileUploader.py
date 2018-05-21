@@ -29,7 +29,9 @@ def uploadImage():
                 str(e),
                 'Image could not be uploaded'))
 
-    file_upload = File(imageName, 'image')
+    uid = request.json['uid']
+    fetch_user = User.getUser(user_id=uid)
+    file_upload = File(filename=imageName, filetype='image', uploader=fetch_user)
     file_upload.save_to_db()
     return jsonify(
         Response(200).generateMessage({
@@ -63,7 +65,9 @@ def fileUpload():
                 str(e),
                 'CSV File could not be uploaded'))
 
-    file_upload = File(csvName, 'csv')
+    uid = data.get('uid')
+    fetch_user = User.getUser(user_id=uid)
+    file_upload = File(filename=csvName, filetype='csv', uploader=fetch_user)
     file_upload.save_to_db()
     return jsonify(
         Response(200).generateMessage({
