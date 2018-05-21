@@ -29,7 +29,7 @@ export default Controller.extend({
           provider
         }).then(function(userData) {
           console.log(userData);
-          that.transitionTo('/');
+          that.transitionToRoute('/');
         }).catch(function(err) {
           console.log(err.message);
         });
