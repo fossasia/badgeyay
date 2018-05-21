@@ -8,12 +8,13 @@ from defusedxml.lxml import _etree as etree
 
 
 class GenerateBadges:
-    def __init__(self, image_name, csv_name):
+    def __init__(self, image_name, csv_name, badge_size):
         self.APP_ROOT = app.config.get('BASE_DIR')
         self.image_name = image_name
         self.image = os.path.join(app.config.get('BASE_DIR'), 'static', 'uploads', 'image', image_name)
         self.csv = os.path.join(app.config.get('BASE_DIR'), 'static', 'uploads', 'csv', csv_name)
-        self.paper_size = 'A3'
+        self.paper_size = {'A3': ['297mm', '420mm'], 'A4': ['210mm', '297mm'], 'A5': ['148mm', '210mm'], 'A6': ['105mm', '148mm']}
+        self.badge_size = badge_size
         self.wrap = True
         self.NUMBER_OF_BADGES_PER_PAGE = 8
         with open(os.path.join(self.APP_ROOT, 'static/badges/8BadgesOnA3.svg'), encoding="UTF-8") as f:
@@ -65,9 +66,8 @@ class GenerateBadges:
         self.configure_badge_page(target)
 
     def configure_badge_page(self, badge_page):
-        if self.paper_size == 'A3':
-            paper_width = '297mm'
-            paper_height = '420mm'
+        paper_width = self.paper_size.get(self.badge_size)[0]
+        paper_height = self.paper_size.get(self.badge_size)[1]
         tree = parse(open(badge_page, 'r'))
         root = tree.getroot()
         path = root.xpath('//*[@id="svg2"]')[0]
