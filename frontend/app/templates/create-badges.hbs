@@ -1,0 +1,14 @@
+<div class="ui hidden divider"></div>
+  <div class="ui raised segment">
+      <div class="ui form">
+        <div class="column">
+            {{ data-component/csv-component sendCSV=(action 'mutateCSV') }}
+        </div>
+        <div class="ui horizontal divider">
+            Or
+        </div>
+        <div class="center aligned column">
+            {{ data-component/text-component sendText=(action 'mutateText') }} 
+        </div>
+      </div>
+  </div>

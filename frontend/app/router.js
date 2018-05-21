@@ -13,6 +13,7 @@ const router = Router.extend({
 router.map(function() {
   this.route('login');
   this.route('signup');
+  this.route('create-badges');
 });
 
 export default router;
