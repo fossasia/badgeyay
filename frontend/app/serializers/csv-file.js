@@ -7,6 +7,7 @@ export default JSONAPISerializer.extend({
   serialize(snapshot, options) {
     let json = this._super(...arguments);
     json.csvFile = {
+      'uid'       : json.data.attributes.uid,
       'csvFile'   : json.data.attributes['csv-file'],
       'extension' : json.data.attributes.extension
     };

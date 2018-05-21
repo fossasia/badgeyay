@@ -9,26 +9,52 @@ export default Controller.extend({
   beforeModel() {
     return this.get('session').fetch().catch(function() {});
   },
+  model() {
+    return this.get('store').fetch('user');
+  },
   actions: {
     login(provider, email, password) {
       const that = this;
       if (provider === 'password') {
-        this.get('session').open('firebase', {
+        that.get('session').open('firebase', {
           provider: 'password',
           email,
           password
         }).then(function(userData) {
-          console.log(userData);
+          let userObj = userData.currentUser;
+          that.get('store').pushPayload({
+            data: [{
+              id         : userData.uid,
+              type       : 'user',
+              attributes : {
+                'name'     : userObj.displayName,
+                'email'    : userObj.email,
+                'photoUrl' : userObj.photoURL
+              },
+              relationships: {}
+            }]
+          });
           that.transitionToRoute('/');
         }).catch(function(err) {
           console.log(err.message);
         });
       } else {
-        const that = this;
-        this.get('session').open('firebase', {
+        that.get('session').open('firebase', {
           provider
         }).then(function(userData) {
-          console.log(userData);
+          let userObj = userData.currentUser;
+          that.get('store').pushPayload({
+            data: [{
+              id         : userData.uid,
+              type       : 'user',
+              attributes : {
+                'name'     : userObj.displayName,
+                'email'    : userObj.email,
+                'photoUrl' : userObj.photoURL
+              },
+              relationships: {}
+            }]
+          });
           that.transitionToRoute('/');
         }).catch(function(err) {
           console.log(err.message);
