@@ -1,14 +1,36 @@
 <div class="ui hidden divider"></div>
-  <div class="ui raised segment">
-      <div class="ui form">
-        <div class="column">
-            {{ data-component/csv-component sendCSV=(action 'mutateCSV') }}
+<div class="center-width">
+    <div class="ui raised segment">
+        <div class="ui form width-container">
+            <div class="center aligned column">
+                {{ data-component/csv-component sendCSV=(action 'mutateCSV') }}
+            </div>
+            <div class="ui horizontal divider">
+                Or
+            </div>
+            <div class="center aligned column">
+                {{ data-component/text-component sendText=(action 'mutateText') }}
+            </div>
         </div>
-        <div class="ui horizontal divider">
-            Or
+    </div>
+    <div class="ui raised segment">
+        <div class="ui form width-container">
+            <div class="center aligned column">
+                {{ background-component/def-image-component }}
+            </div>
+            <div class="ui horizontal divider">
+                Or
+            </div>
+            <div class="center aligned column">
+                {{ background-component/color-bg-component }}
+            </div>
+            <div class="ui horizontal divider">
+                Or
+            </div>
+            <div class="center aligned column">
+                {{ background-component/image-component }}
+            </div>
         </div>
-        <div class="center aligned column">
-            {{ data-component/text-component sendText=(action 'mutateText') }} 
-        </div>
-      </div>
-  </div>
+    </div>
+</div>
+
