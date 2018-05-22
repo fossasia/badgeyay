@@ -6,9 +6,9 @@ from PyPDF2 import PdfFileMerger
 
 
 class MergeBadges:
-    def __init__(self, image_name, csv_name):
+    def __init__(self, image_name, csv_name, badge_size):
         self.APP_ROOT = app.config.get('BASE_DIR')
-        self.badge_generator = GenerateBadges(image_name, csv_name)
+        self.badge_generator = GenerateBadges(image_name, csv_name, badge_size)
         self.badge_generator.run_generator()
         self.folder = os.path.join(self.APP_ROOT, 'static', 'temporary', os.path.splitext(image_name)[0])
 

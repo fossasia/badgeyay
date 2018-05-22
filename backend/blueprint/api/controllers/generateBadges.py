@@ -30,10 +30,11 @@ def generateBadges():
                 'No Image filename found'))
     csv_name = data.get('csv')
     image_name = data.get('image')
-    text_color = data.get('text-color') or '#ffffff'
+    text_color = data.get('text-color', '#ffffff')
+    badge_size = data.get('badge_size', 'A3')
     svg2png = SVG2PNG()
     svg2png.do_text_fill('static/badges/8BadgesOnA3.svg', text_color)
-    merge_badges = MergeBadges(image_name, csv_name)
+    merge_badges = MergeBadges(image_name, csv_name, badge_size)
     merge_badges.merge_pdfs()
 
     output = os.path.join(app.config.get('BASE_DIR'), 'static', 'temporary', image_name)
