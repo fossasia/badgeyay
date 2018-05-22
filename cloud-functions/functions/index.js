@@ -29,23 +29,28 @@ const APP_NAME = 'Badgeyay';
 
 exports.sendVerificationMail = functions.auth.user().onCreate((user) => {
   const uid = user.uid;
-  return admin.auth().createCustomToken(uid)
-    .then((customToken) => {
-      return firebase.auth().signInWithCustomToken(customToken)
-    })
-    .then((curUser) => {
-      return firebase.auth().onAuthStateChanged((user_) => {
-        if (!user.emailVerified) {
-          user_.sendEmailVerification();
-          return console.log('Verification mail sent: ', user_.email);
-        } else {
-          return console.log('Email is already verified: ', user_.email);
-        }
+  if (user.emailVerified) {
+    console.log('User has email already verified: ', user.email);
+    return 0;
+  } else {
+    return admin.auth().createCustomToken(uid)
+      .then((customToken) => {
+        return firebase.auth().signInWithCustomToken(customToken)
       })
-    })
-    .catch((err) => {
-      console.error(err.message);
-    })
+      .then((curUser) => {
+        return firebase.auth().onAuthStateChanged((user_) => {
+          if (!user.emailVerified) {
+            user_.sendEmailVerification();
+            return console.log('Verification mail sent: ', user_.email);
+          } else {
+            return console.log('Email is already verified: ', user_.email);
+          }
+        })
+      })
+      .catch((err) => {
+        console.error(err.message);
+      })
+  }
 });
 
 exports.greetingMail = functions.auth.user().onCreate((user) => {
