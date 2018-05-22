@@ -11,6 +11,7 @@ class User(db.Model):
     password = db.Column(db.String(100))
     email = db.Column(db.String(100))
     files = db.relationship('File', backref='uploader')
+    badges = db.relationship('Badges', backref='creator')
 
     def __init__(self, id_, username, password, email):
         self.id = id_

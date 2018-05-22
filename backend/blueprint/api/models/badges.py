@@ -5,17 +5,15 @@ import uuid
 class Badges(db.Model):
     __tablename__ = 'Badges'
 
-    image = db.Column(db.String(100), NULLABLE=False)
-    csv = db.Column(db.String(100), NULLABLE=False)
-    badge_id = db.Column(db.Integer, primary_key=True)
-    user_id = db.Column(db.Integer, db.ForeignKey('User.id', ondelete='CASCADE'))
-
-    def __init__(self, csvName=None, imageName=None):
-        self.image = imageName
-        self.csv = csvName
-        self.badge_id = str(uuid.uuid4())
+    image = db.Column(db.String(100), nullable=False)
+    csv = db.Column(db.String(100), nullable=False)
+    badge_id = db.Column(db.String(100), primary_key=True)
+    text_color = db.Column(db.String(100), nullable=False)
+    badge_size = db.Column(db.String(100), nullable=False)
+    user_id = db.Column(db.String(100), db.ForeignKey('User.id', ondelete='CASCADE'))
 
     def save_to_db(self):
+        self.badge_id = str(uuid.uuid4())
         db.session.add(self)
         try:
             db.session.commit()
