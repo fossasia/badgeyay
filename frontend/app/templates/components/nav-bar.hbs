@@ -3,10 +3,16 @@
     <h2>Badgeyay</h2>
   {{/link-to}}
   <div class="right menu">
-    <div class="item">
-      {{#link-to 'login'}}
-        <div class="ui orange button" style="text-transform: uppercase; font-weight: 400">Login</div>
-      {{/link-to}}
-    </div>
+    {{#if session.isAuthenticated}} 
+      <div class="item">
+          <div class="circular ui red button"  style="text-transform: uppercase; font-weight: 400"  {{action 'logOut'}} >Logout</div>
+      </div>  
+    {{else}}
+      <div class="item">
+        {{#link-to 'login'}}
+          <div class="circular ui orange button" style="text-transform: uppercase; font-weight: 400">Login</div>
+        {{/link-to}}
+      </div>  
+    {{/if}}
   </div>
 </div>
