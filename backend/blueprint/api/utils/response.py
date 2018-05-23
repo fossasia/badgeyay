@@ -31,7 +31,7 @@ class Response(object):
 
     def generateToken(self, token):
         self.token = token
-        return self.serialize()
+        return {'data': self.serialize()}
 
     def exceptWithMessage(self, exception, message):
         self.message = message
