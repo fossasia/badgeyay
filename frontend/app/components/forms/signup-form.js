@@ -1,9 +1,23 @@
 import Component from '@ember/component';
 
 export default Component.extend({
+  init() {
+    this._super(...arguments);
+  },
+
   email     : '',
   password  : '',
   isLoading : false,
+
+  actions: {
+    signUp() {
+      let email = '';
+      let password = '';
+      email = this.get('email');
+      password = this.get('password');
+      this.get('signup')(email, password);
+    }
+  },
 
   didRender() {
     this.$('.ui.form')
