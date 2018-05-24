@@ -10,7 +10,8 @@ from api.controllers import (
     modifyUser,
     resetUser,
     registerUser,
-    oauthToken
+    oauthToken,
+    assetHelper
 )
 
 app = create_app()
@@ -25,6 +26,7 @@ app.register_blueprint(fileUploader.router, url_prefix='/api/upload')
 app.register_blueprint(modifyUser.router, url_prefix='/user/change')
 app.register_blueprint(homePage.router)
 app.register_blueprint(errorHandlers.router)
+app.register_blueprint(assetHelper.router, url_prefix='/api')
 app.register_blueprint(resetUser.router, url_prefix='/reset')
 app.register_blueprint(oauthToken.router, url_prefix='/api')
 

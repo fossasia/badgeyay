@@ -4,9 +4,10 @@
         <div class="default text">Select background from list</div>
         <i class="dropdown icon"></i>
         <div class="menu">
-            {{#each images as |image|}}
-                <div data-value="{{gender.id}}" class="item">
-                {{image.name}}
+            {{#each defImages as |image|}}
+                <div data-value="{{image.id}}" class="item">
+                    <img class="ui mini image" src="data:image/png;base64, {{image.imgData}}">
+                    {{image.name}}
                 </div>
             {{/each}}
         </div>

@@ -16,19 +16,19 @@
     <div class="ui raised segment">
         <div class="ui form width-container">
             <div class="center aligned column">
-                {{ background-component/def-image-component }}
+                {{ background-component/def-image-component defImages=defImages sendDefImage=(action 'mutateBackground') }}
             </div>
             <div class="ui horizontal divider">
                 Or
             </div>
             <div class="center aligned column">
-                {{ background-component/color-bg-component }}
+                {{ background-component/color-bg-component sendDefColor=(action 'mutateDefColor') }}
             </div>
             <div class="ui horizontal divider">
                 Or
             </div>
             <div class="center aligned column">
-                {{ background-component/image-component }}
+                {{ background-component/image-component sendImage=(action 'mutateCustomImage') }}
             </div>
         </div>
   </div>

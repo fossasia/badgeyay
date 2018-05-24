@@ -10,17 +10,17 @@ router = Blueprint('fileUploader', __name__)
 
 
 @router.route('/image', methods=['POST'])
-@loginRequired
 def uploadImage():
     try:
-        image = request.json['data']
+        data = request.json['imgFile']
+        image = data['imgFile']
     except Exception as e:
         return jsonify(
             Response(400).exceptWithMessage(
                 str(e),
                 'No Image is specified'))
 
-    extension = request.json['extension']
+    extension = data['extension']
     try:
         imageName = saveToImage(imageFile=image, extension=extension)
     except Exception as e:
@@ -29,7 +29,7 @@ def uploadImage():
                 str(e),
                 'Image could not be uploaded'))
 
-    uid = request.json['uid']
+    uid = data['uid']
     fetch_user = User.getUser(user_id=uid)
     file_upload = File(filename=imageName, filetype='image', uploader=fetch_user)
     file_upload.save_to_db()
