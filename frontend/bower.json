@@ -1,0 +1,21 @@
+{
+  "name": "badgeyay",
+  "description": "Badgeyay is a simple badge generator which generates printable badges in a pdf.",
+  "main": "",
+  "authors": [
+    "FOSSASIA"
+  ],
+  "license": "GNU GENERAL PUBLIC LICENSE Version 3",
+  "homepage": "https://github.com/fossasia/badgeyay",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "colpick": "2.0.2",
+    "seiyria-bootstrap-slider": "~6.0.6"
+  }
+}

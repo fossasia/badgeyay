@@ -1,0 +1,14 @@
+<div class="field">
+    <label>Select font</label>
+    {{#ui-dropdown class="selection" selected="Bob" onChange=(action (mut font))}}
+        <div class="default text">Select font from list</div>
+        <i class="dropdown icon"></i>
+        <div class="menu">
+            {{#each font as |font|}}
+                <div data-value="{{font.id}}" class="item">
+                {{font.name}}
+                </div>
+            {{/each}}
+        </div>
+    {{/ui-dropdown}}
+</div>

@@ -11,7 +11,10 @@ def create_app():
     cred = credentials.Certificate(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'config', 'ServiceAccountkey.json'))
     firebase_admin.initialize_app(cred)
     app.config['BASE_DIR'] = os.path.dirname(os.path.abspath(__file__))
-    app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://%(user)s:%(pw)s@%(host)s:%(port)s/%(db)s' % config.POSTGRES
+    if not config.DEBUG:
+        app.config['SQLALCHEMY_DATABASE_URI'] = os.environ['SQLALCHEMY_DATABASE_URI']
+    else:
+        app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://%(user)s:%(pw)s@%(host)s:%(port)s/%(db)s' % config.POSTGRES
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
     app.config['SECRET_KEY'] = config.POSTGRES['secret']
     app.config['DEBUG'] = config.DEBUG
