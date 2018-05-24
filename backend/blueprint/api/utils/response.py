@@ -22,12 +22,12 @@ class Response(object):
 
     def sanitizeURL(self):
         self.URL = self.URL.replace('backend/app/', urlConfig.BASE_URL)
-        return self.serialize()
+        return {'data': self.serialize()}
 
     def generateResetURL(self, token):
         self.token = token
         self.URL = urlConfig.BASE_FRONTEND_URL + "reset/password/" + self.token
-        return self.serialize()
+        return {'data': self.serialize()}
 
     def generateToken(self, token):
         self.token = token
@@ -36,7 +36,7 @@ class Response(object):
     def exceptWithMessage(self, exception, message):
         self.message = message
         self.exception = exception
-        return self.serialize()
+        return {'data': self.serialize()}
 
     def serialize(self):
         return self.__dict__
