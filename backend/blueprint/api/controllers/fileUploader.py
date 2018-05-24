@@ -4,13 +4,13 @@ from api.helpers.verifyToken import loginRequired
 from api.helpers.uploads import saveToImage, saveToCSV, saveAsCSV
 from api.models.file import File
 from api.models.user import User
+from api.schemas.file import FileSchema
 
 
 router = Blueprint('fileUploader', __name__)
 
 
 @router.route('/image', methods=['POST'])
-@loginRequired
 def uploadImage():
     try:
         image = request.json['data']
@@ -108,3 +108,10 @@ def upload_manual_data():
         Response(200).generateMessage({
             'message': 'Manual Data uploaded successfully',
             'unique_id': csvName}))
+
+
+@router.route('/get_file', methods=['GET'])
+def get_file():
+    input_data = request.args
+    file = File().query.filter_by(filename=input_data.get('filename')).first()
+    return jsonify(FileSchema().dump(file).data)

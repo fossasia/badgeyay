@@ -6,6 +6,7 @@ from flask import current_app as app
 from api.utils.response import Response
 from api.helpers.verifyPassword import verifyPassword
 from api.models.user import User
+from api.schemas.user import UserSchema
 
 
 router = Blueprint('loginUser', __name__)
@@ -45,3 +46,11 @@ def login():
     return jsonify(
         Response(403).generateMessage(
             'No name key received'))
+
+
+@router.route('/get_user', methods=['GET'])
+def index():
+    data = request.args
+    user = User.getUser(username=data.get('username'))
+    schema = UserSchema()
+    return jsonify(schema.dump(user).data)
