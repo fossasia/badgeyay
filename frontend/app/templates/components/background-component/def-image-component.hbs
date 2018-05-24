@@ -1,0 +1,15 @@
+<div class="field">
+    <label>Select from default backgrounds</label>
+    {{#ui-dropdown class="selection" selected="Bob" onChange=(action (mut image))}}
+        <div class="default text">Select background from list</div>
+        <i class="dropdown icon"></i>
+        <div class="menu">
+            {{#each images as |image|}}
+                <div data-value="{{gender.id}}" class="item">
+                {{image.name}}
+                </div>
+            {{/each}}
+        </div>
+    {{/ui-dropdown}}
+</div>
+

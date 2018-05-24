@@ -56,6 +56,10 @@ matrix:
     before_install:
       - cd frontend
       - npm install
+      - npm install --save ember-colpick
+      - npm install -g bower
+      - bower install
+      - ember g ember-colpick
       - npm config set spin false
 
     script:

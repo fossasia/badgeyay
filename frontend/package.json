@@ -43,8 +43,8 @@
     "ember-source": "~3.1.2",
     "ember-truth-helpers": "^2.0.0",
     "ember-welcome-page": "^3.2.0",
-    "eslint-plugin-ember": "^5.2.0",
     "emberfire": "^2.0.10",
+    "eslint-plugin-ember": "^5.2.0",
     "loader.js": "^4.7.0",
     "semantic-ui": "^2.2.14",
     "semantic-ui-ember": "^3.0.3",
@@ -56,6 +56,7 @@
   "dependencies": {
     "babel-eslint": "^8.2.3",
     "ember": "^1.0.3",
+    "ember-colpick": "^1.0.0",
     "ember-suave": "^4.0.1",
     "eslint": "^4.19.1",
     "eslint-plugin-ember-suave": "^1.0.0",
