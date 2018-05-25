@@ -40,21 +40,6 @@ Please get familiar with the different components of the project in order to be 
 * Backend Web Framework - [Flask](http://flask.pocoo.org/)
 * Frontend Web Framework - [Ember.js](https://emberjs.com/)
 
-## Command Line Interface(CLI)
-
-Badgeyay project can also be used as a CLI application, and can also be imported as a library.
-
-### Installation Steps
-
-* Change active directory to `cli`
-* Then `python setup.py install`
-* When you execute `pip freeze` you will see badgeyay is installed as a library into your virtualenv.
-
-### Verify
-
-* `badgeyay --help`
-> This will show the information about the parameters to be supplied to the CLI application.
-
 ## Branch Policy
 
 We have the following branches :
