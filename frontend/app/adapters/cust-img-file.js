@@ -1,7 +1,10 @@
 import ApplicationAdapter from './application';
+import ENV from '../config/environment';
+
+const { APP } = ENV;
 
 export default ApplicationAdapter.extend({
-  host        : 'http://localhost:5000',
+  host        : APP.backLink,
   pathForType : () => {
     return 'api/upload/image';
   }

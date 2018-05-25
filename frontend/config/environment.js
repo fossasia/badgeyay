@@ -35,6 +35,7 @@ module.exports = function(environment) {
     APP: {
       // Here you can pass flags/options to your application instance
       // when it is created
+      backLink: 'http://localhost:5000'
     }
   };
 
@@ -61,6 +62,7 @@ module.exports = function(environment) {
   var deployTarget = process.env.DEPLOY_TARGET;
 
   if (environment === 'production') {
+    ENV.APP.backLink = 'http://badgeyay-api.herokuapp.com';
     if (deployTarget && deployTarget === 'gh-pages') {
       ENV.locationType = 'auto';
       ENV.rootURL = `/${process.env.REPO_SLUG || 'badgeyay'}`;
