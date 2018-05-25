@@ -14,6 +14,8 @@ router.map(function() {
   this.route('login');
   this.route('signup');
   this.route('create-badges');
+  this.route('not-found');
+  this.route('not-found-catch', { path: '/*path' });
 });
 
 export default router;
