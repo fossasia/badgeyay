@@ -30,5 +30,5 @@ def reset_password():
                 token.decode('UTF-8')))
     else:
         return jsonify(
-            Response(403).generateMessage(
-                'No data received'))
+            Response(403).generateErrorMessage(
+                'No data received', 'error'))

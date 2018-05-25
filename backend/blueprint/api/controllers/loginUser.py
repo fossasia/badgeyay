@@ -25,13 +25,13 @@ def login():
         user = User.getUser(username=data['name'])
         if not user:
             return jsonify(
-                Response(403).generateMessage(
-                    'Could not find the Username Specified'))
+                Response(403).generateErrorMessage(
+                    'Could not find the Username Specified', 'error'))
 
         if not verifyPassword(user, data['password']):
             return jsonify(
-                Response(401).generateMessage(
-                    'Wrong username & password combination'))
+                Response(401).generateErrorMessage(
+                    'Wrong username & password combination', 'auth error'))
 
         token = jwt.encode(
             {'user': user.username,
@@ -43,5 +43,5 @@ def login():
                 token.decode('UTF-8')))
 
     return jsonify(
-        Response(403).generateMessage(
-            'No name key received'))
+        Response(403).generateErrorMessage(
+            'No name key received', 'error'))

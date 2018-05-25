@@ -12,15 +12,15 @@ def loginRequired(func):
 
         if not token:
             return jsonify(
-                Response(403).generateMessage(
-                    'No token has been specified'))
+                Response(403).generateErrorMessage(
+                    'No token has been specified', 'token error'))
 
         try:
             jwt.decode(token, app.config['SECRET_KEY'])
         except Exception as e:
             return jsonify(
-                Response(403).generateMessage(
-                    str(e)))
+                Response(403).generateErrorMessage(
+                    str(e), 'error'))
 
         return func(*args, **kwargs)
 
