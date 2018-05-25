@@ -6,9 +6,9 @@ export default JSONAPISerializer.extend({
 
   serialize(snapshot, options) {
     let json = this._super(...arguments);
-    json.csvFile = {
+    json.imgFile = {
       'uid'       : json.data.attributes.uid,
-      'csvFile'   : json.data.attributes['csv-file'],
+      'imgFile'   : json.data.attributes['image-data'],
       'extension' : json.data.attributes.extension
     };
 
@@ -19,6 +19,4 @@ export default JSONAPISerializer.extend({
   normalizeResponse(store, primaryModelClass, payload, id, requestType) {
     return payload;
   }
-
 });
-

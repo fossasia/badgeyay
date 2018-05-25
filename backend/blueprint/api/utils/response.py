@@ -12,7 +12,7 @@ class Response(object):
     def generateMessage(self, message):
         self.id = uuid.uuid4()
         self.attributes = message
-        self.type = 'csvResponse'
+        self.type = 'imgResponse'
         return {'data': self.serialize()}
 
     def generateURL(self, url, message):
