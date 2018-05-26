@@ -6,15 +6,15 @@ module.exports = function(environment) {
     environment,
     rootURL      : '/',
     locationType : 'auto',
-    // firebase     : {
-    //   apiKey            : '',
-    //   authDomain        : '',
-    //   databaseURL       : '',
-    //   projectId         : '',
-    //   storageBucket     : '',
-    //   messagingSenderId : ''
-    // },
-    torii        : {
+    firebase     : {
+      apiKey            : 'AIzaSyBZ6M-nLfy-Ig8esqfQmFn8FtF1OQ73VGQ',
+      authDomain        : 'badgeyay-195bf.firebaseapp.com',
+      databaseURL       : 'https://badgeyay-195bf.firebaseio.com',
+      projectId         : 'badgeyay-195bf',
+      storageBucket     : 'badgeyay-195bf.appspot.com',
+      messagingSenderId : '1033576063262'
+    },
+    torii: {
       sessionServiceName: 'session'
     },
     contentSecurityPolicy: {
