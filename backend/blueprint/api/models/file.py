@@ -1,5 +1,5 @@
-from api.db import db
 import uuid
+from api.db import db
 
 
 class File(db.Model):

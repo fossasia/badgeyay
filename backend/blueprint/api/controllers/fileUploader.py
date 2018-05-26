@@ -1,11 +1,11 @@
 from flask import Blueprint, request, jsonify
 from api.utils.response import Response
-from api.helpers.verifyToken import loginRequired
 from api.helpers.uploads import saveToImage, saveToCSV, saveAsCSV
 from api.models.file import File
 from api.models.user import User
 from api.schemas.file import FileSchema
 
+from api.schemas.file import ManualFileSchema
 
 router = Blueprint('fileUploader', __name__)
 
@@ -77,10 +77,9 @@ def fileUpload():
 
 
 @router.route('/manual_data', methods=['POST'])
-@loginRequired
 def upload_manual_data():
     try:
-        data = request.get_json()
+        data = request.get_json()['data']['attributes']
     except Exception as e:
         return(jsonify(
             Response(401).exceptWithMessage(
@@ -105,10 +104,7 @@ def upload_manual_data():
 
     file_upload = File(filename=csvName, filetype='csv', uploader=fetch_user)
     file_upload.save_to_db()
-    return jsonify(
-        Response(200).generateMessage({
-            'message': 'Manual Data uploaded successfully',
-            'unique_id': csvName}))
+    return jsonify(ManualFileSchema().dump(file_upload).data)
 
 
 @router.route('/get_file', methods=['GET'])
