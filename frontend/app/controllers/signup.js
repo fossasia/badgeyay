@@ -5,7 +5,7 @@ import { inject as service } from '@ember/service';
 export default Controller.extend({
   routing : service('-routing'),
   actions : {
-    signup(email, password) {
+    signUp(email, password) {
       this.get('store').createRecord('user-signup', {
         email,
         password

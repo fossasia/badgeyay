@@ -1,7 +1,7 @@
 <div class="pusher">
     {{nav-bar session=session}}
     {{#if (eq currentRouteName 'index')}}
-      {{welcome-header}}
+      {{welcome-header session=session}}
     {{/if}}
     <div class="ui container main-container">
         {{outlet}}

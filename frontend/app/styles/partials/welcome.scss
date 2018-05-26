@@ -1,6 +1,8 @@
 $color1: rgba(0, 0, 0, 0.5);
 $color2: rgba(0, 0, 0, 0.6);
 $color3: #ffffff;
+$color4: #ffa500;
+
 
 .welcome-header {
   background: linear-gradient($color1, $color1), url("/images/landing.jpg");
@@ -22,9 +24,34 @@ $color3: #ffffff;
       text-shadow: 0 1px 2px $color2;
     }
 
+    .create-badges {
+      font-weight: 400;
+      text-transform: uppercase;
+    }
+
     .button {
       font-size: 16px;
       margin-top: 20px;
     }
   }
+}
+
+.typewriter h1 {
+  animation: typing 3.5s steps(40, end), blink-caret 0.75s step-end infinite;
+  border-right: 0.15em solid $color4;
+  letter-spacing: 0.01em;
+  margin: 0 auto;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+@keyframes typing {
+  from { width: 0; }
+  to { width: 100%; }
+}
+
+@keyframes blink-caret {
+  from {border-color: transparent; }
+  to { border-color: transparent; }
+  50% { border-color: $color4; }
 }
