@@ -19,7 +19,7 @@ export default Controller.extend({
       let csv_ = this.get('store').createRecord('csv-file', {
         uid,
         csvFile   : csvData,
-        extension : 'csv'
+        extension : '.csv'
       });
       csv_.save();
     },
@@ -47,7 +47,7 @@ export default Controller.extend({
       let image_ = this.get('store').createRecord('cust-img-file', {
         uid,
         imageData,
-        extension: 'png'
+        extension: '.png'
       });
       image_.save();
     }
