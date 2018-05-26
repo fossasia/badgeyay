@@ -3,10 +3,12 @@ import Controller from '@ember/controller';
 import { inject as service } from '@ember/service';
 
 export default Controller.extend({
-  routing  : service('-routing'),
-  defColor : '',
-  uid      : '',
-  actions  : {
+  routing      : service('-routing'),
+  defColor     : '',
+  defFontColor : '',
+  defFontSize  : '',
+  uid          : '',
+  actions      : {
     mutateCSV(csvData) {
       const user = this.get('store').peekAll('user');
       let uid;
@@ -50,6 +52,18 @@ export default Controller.extend({
         extension: 'png'
       });
       image_.save();
+    },
+
+    mutateDefFontColor(fontcolor) {
+      this.set('defFontColor', fontcolor);
+    },
+
+    mutateCustomFont(id) {
+      console.log(id);
+    },
+
+    mutateFontSize(value) {
+      this.set('defFontSize', value);
     }
   }
 });

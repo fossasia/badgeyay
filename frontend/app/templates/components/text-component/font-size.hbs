@@ -1,10 +1,15 @@
 <div class="field">
     <label>Select font size</label>
+  <div class="ui segments">
   <div class="ui segment">
-  <input type="range" 
-    min={{min}} 
-    max={{max}} 
-    value={{size}} 
-    steps="1">
+  <input type="range"
+  oninput={{action (mut size)
+  value="target.value"}}
+  min={{min}}
+  max={{max}}
+  defFontSize={{size}}
+  steps="1">
+  </div>
+  <div class="ui raised segment">{{size}}</div>
   </div>
 </div>
