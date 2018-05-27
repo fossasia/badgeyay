@@ -4,11 +4,10 @@
         <div class="default text">Select font from list</div>
         <i class="dropdown icon"></i>
         <div class="menu">
-            {{#each font as |font|}}
-                <div data-value="{{font.id}}" class="item">
-                {{font.name}}
-                </div>
-            {{/each}}
+            <div class="item" data-item="sans" style="font-family:'sans'">sans</div>
+            <div class="item" data-item="sans-serif" style="font-family:'sans-serif'">sans-serif</div>
+            <div class="item" data-item="monospace" style="font-family:'monospace'">Mono space</div>
+            <div class="item" data-item="Courier 10 Pitch" style="font-family:'Courier 10 Pitch'">Courier 10 Pitch</div>
         </div>
     {{/ui-dropdown}}
 </div>

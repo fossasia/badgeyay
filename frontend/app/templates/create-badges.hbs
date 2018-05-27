@@ -35,19 +35,19 @@
   <div class="ui raised segment">
         <div class="ui form width-container">
             <div class="center aligned column">
-                {{ text-component/font-type }}
+                {{ text-component/font-type sendDefFont=(action 'mutateCustomFont')}}
             </div>
             <div class="ui horizontal divider">
                 Or
             </div>
             <div class="center aligned column">
-                {{ text-component/font-color }}
+                {{ text-component/font-color sendDefFontColor=(action 'mutateDefFontColor')}}
             </div>
             <div class="ui horizontal divider">
                 Or
             </div>
             <div class="center aligned column">
-                {{ text-component/font-size }}
+                {{ text-component/font-size sendDefSize=(action 'mutateFontSize')}}
             </div>
         </div>
   </div>
