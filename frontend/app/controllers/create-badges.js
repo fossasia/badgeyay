@@ -8,7 +8,28 @@ export default Controller.extend({
   defFontColor : '',
   defFontSize  : '',
   uid          : '',
+  textData     : '',
   actions      : {
+    submitForm() {
+      const _this = this;
+      const user = _this.get('store').peekAll('user');
+      let uid;
+      user.forEach(user_ => {
+        uid = user_.get('id');
+      });
+      if (uid !== undefined && uid !== '') {
+        _this.set('uid', uid);
+      }
+      let textEntry = _this.get('store').createRecord('text-data', {
+        uid,
+        manual_data : _this.get('textData'),
+        time        : new Date()
+      });
+      textEntry.save().then(record => {
+        console.log(record);
+      });
+    },
+
     mutateCSV(csvData) {
       const user = this.get('store').peekAll('user');
       let uid;
@@ -27,7 +48,7 @@ export default Controller.extend({
     },
 
     mutateText(txtData) {
-      console.log(txtData);
+      this.set('textData', txtData);
     },
 
     mutateBackground(id) {
