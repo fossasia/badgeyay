@@ -13,16 +13,16 @@ def changePassword():
         data = request.get_json()
     except Exception as e:
         return jsonify(
-            Response(500).generateMessage(
-                str(e)))
+            Response(500).generateErrorMessage(
+                str(e), 'error'))
 
     if data and data['username']:
         user = User.getUser(data['username'])
         if user:
             if not verifyPassword(user, data['password']):
                 return jsonify(
-                    Response(401).generateMessage(
-                        'Wrong username and password combination'))
+                    Response(401).generateErrorMessage(
+                        'Wrong username and password combination', 'auth error'))
             user.password = generate_password_hash(data['newPassword'])
             try:
                 user.save_to_db()
@@ -33,9 +33,9 @@ def changePassword():
                         'Unable to update password'))
             return jsonify(
                 Response(200).generateMessage(
-                    'Password Updated successfully'))
+                    'Password Updated successfully', 'message'))
     else:
-        return jsonify(Response(403).generateMessage('No data received'))
+        return jsonify(Response(403).generateErrorMessage('No data received', 'error'))
 
 
 @router.route('/name', methods=['PUT'])
@@ -44,16 +44,16 @@ def changeName():
         data = request.get_json()
     except Exception as e:
         return jsonify(
-            Response(500).generateMessage(
-                str(e)))
+            Response(500).generateErrorMessage(
+                str(e), 'error'))
 
     if data and data['username']:
         user = User.getUser(data['username'])
         if user:
             if not verifyPassword(user, data['password']):
                 return jsonify(
-                    Response(401).generateMessage(
-                        'Wrong username and password combination'))
+                    Response(401).generateErrorMessage(
+                        'Wrong username and password combination', 'auth error'))
             user.name = data['name']
             try:
                 user.save_to_db()
@@ -64,8 +64,8 @@ def changeName():
                         'Unable to update name'))
             return jsonify(
                 Response(200).generateMessage(
-                    'Name Updated successfully'))
+                    'Name Updated successfully', 'message'))
     else:
         return jsonify(
-            Response(403).generateMessage(
-                'No data received'))
+            Response(403).generateErrorMessage(
+                'No data received', 'error'))

@@ -1,6 +1,6 @@
 import os
 import base64
-
+from api.utils.response import Response
 from flask import Blueprint, jsonify
 
 router = Blueprint('assethelper', __name__)
@@ -26,4 +26,4 @@ def getDefaultBackgrounds():
             }
             resp.append(obj)
     resp_ = {'data': resp}
-    return jsonify(resp_)
+    return jsonify(Response(200).generateMessage(resp_, 'Image Response'))

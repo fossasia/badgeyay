@@ -9,11 +9,23 @@ class Response(object):
         super(Response, self).__init__()
         self.status = statusCode
 
-    def generateMessage(self, message):
+    def generateMessage(self, message, message_type, *args, **kwargs):
         self.id = uuid.uuid4()
-        self.attributes = message
-        self.type = 'imgResponse'
+        self.type = message_type
+        if isinstance(message, dict):
+            for key, value in iter(message.items()):
+                self.attributes = {
+                    key: value.format(*args, **kwargs)
+                }
+        else:
+            self.attributes = {
+                "message": message.format(*args, **kwargs)
+            }
         return {'data': self.serialize()}
+
+    def generateErrorMessage(self, message, message_type, *args, **kwargs):
+        self.generateMessage(message, message_type, *args, **kwargs)
+        return {'error': self.serialize()}
 
     def generateURL(self, url, message):
         self.message = message

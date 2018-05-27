@@ -20,8 +20,8 @@ def sendMail(message):
                     'Unable to send the mail'))
         return jsonify(
             Response(200).generateMessage(
-                'Mail Sent'))
+                'Mail Sent', 'message'))
     else:
         return jsonify(
-            Response(403).generateMessage(
-                'No data received'))
+            Response(403).generateErrorMessage(
+                'No data received', 'error'))

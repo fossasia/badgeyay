@@ -39,4 +39,4 @@ def registerUser():
 
     return jsonify(
         Response(200).generateMessage(
-            'User created successfully'))
+            'User created successfully', 'message'))

@@ -8,4 +8,4 @@ router = Blueprint('homePage', __name__)
 def homePage():
     return jsonify(
         Response(200).generateMessage(
-            'This is the homepage route. Please follow /api/generate_badges for badge creation'))
+            "This is the homepage route. Please follow /api/generate_badges for badge creation", 'message'))

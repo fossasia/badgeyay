@@ -36,7 +36,7 @@ def uploadImage():
     return jsonify(
         Response(200).generateMessage({
             'message': 'Image Uploaded Successfully',
-            'unique_id': imageName}))
+            'unique_id': imageName}, 'image response'))
 
 
 @router.route('/file', methods=['POST'])
@@ -51,12 +51,12 @@ def fileUpload():
                 'No CSV Specified'))
     if 'extension' not in data.keys():
         return jsonify(
-            Response(403).generateMessage(
-                'No extension key received'))
+            Response(403).generateErrorMessage(
+                'No extension key received', 'error'))
     extension = data['extension']
     if extension != 'csv':
-        return jsonify(Response(400).generateMessage(
-            'Bad extension! csv not found'))
+        return jsonify(Response(400).generateErrorMessage(
+            'Bad extension! csv not found', 'error'))
     try:
         csvName = saveToCSV(csvFile=csv, extension='.csv')
     except Exception as e:
@@ -72,7 +72,7 @@ def fileUpload():
     return jsonify(
         Response(200).generateMessage({
             'message': 'CSV Uploaded successfully',
-            'unique_id': csvName}))
+            'unique_id': csvName}, 'csv response'))
 
 
 @router.route('/manual_data', methods=['POST'])
@@ -88,8 +88,8 @@ def upload_manual_data():
 
     if not data.get('manual_data'):
         return(jsonify(
-            Response(400).generateMessage(
-                'No Manual Data is specified')))
+            Response(400).generateErrorMessage(
+                'No Manual Data is specified', 'error')))
 
     uid = data.get('uid')
     manual_data = data.get('manual_data')
@@ -107,4 +107,4 @@ def upload_manual_data():
     return jsonify(
         Response(200).generateMessage({
             'message': 'Manual Data uploaded successfully',
-            'unique_id': csvName}))
+            'unique_id': csvName}, 'csv response'))
