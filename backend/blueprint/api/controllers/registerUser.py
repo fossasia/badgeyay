@@ -1,21 +1,19 @@
 from flask import Blueprint, jsonify, request
 from firebase_admin import auth
-from api.utils.response import Response
 from api.models.user import User
+from api.schemas.user import UserSchema
+
 
 router = Blueprint('registerUser', __name__)
 
 
 @router.route('/register', methods=['POST'])
-def registerUser():
-    try:
-        data = request.get_json()
-    except Exception as e:
-        return jsonify(
-            Response(500).exceptWithMessage(
-                str(e),
-                'Unable to get json'))
-
+def register_user():
+    schema = UserSchema()
+    input_data = request.get_json()
+    data, err = schema.load(input_data)
+    if err:
+        return err
     user = auth.create_user(
         email=data['email'],
         email_verified=False,
@@ -29,14 +27,6 @@ def registerUser():
         email=user.email,
         password=data['password'])
 
-    try:
-        newUser.save_to_db()
-    except Exception as e:
-        return jsonify(
-            Response(401).exceptWithMessage(
-                str(e),
-                'User already exists with the same Username'))
+    newUser.save_to_db()
 
-    return jsonify(
-        Response(200).generateMessage(
-            'User created successfully'))
+    return jsonify(schema.dump(newUser))

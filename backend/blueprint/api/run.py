@@ -14,7 +14,9 @@ from api.controllers import (
     assetHelper
 )
 
+
 app = create_app()
+
 
 db.init_app(app)
 migrate = Migrate(app, db)
