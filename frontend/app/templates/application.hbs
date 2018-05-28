@@ -1,5 +1,5 @@
 <div class="pusher">
-    {{nav-bar session=session}}
+    {{nav-bar session=session logOut=(action 'logOut')}}
     {{#if (eq currentRouteName 'index')}}
       {{welcome-header session=session}}
     {{/if}}
