@@ -2,3 +2,4 @@ config/config.py
 static/uploads
 static/temporary
 config/ServiceAccountkey.json
+app.yaml
