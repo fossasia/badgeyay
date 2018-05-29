@@ -1,58 +1,56 @@
 <div class="ui hidden divider"></div>
-<div class="center-width">
-    <div class="ui raised segment">
-        <div class="ui form width-container">
-            <div class="center aligned column">
-                {{ data-component/csv-component sendCSV=(action 'mutateCSV') }}
-            </div>
-            <div class="ui horizontal divider">
-                Or
-            </div>
-            <div class="center aligned column">
-                {{ data-component/text-component sendText=(action 'mutateText') }}
-            </div>
+<div class="ui raised segment">
+    <div class="ui form width-container">
+        <div class="center aligned">
+            {{ data-component/csv-component sendCSV=(action 'mutateCSV') }}
+        </div>
+        <div class="ui horizontal divider">
+            Or
+        </div>
+        <div class="center aligned">
+            {{ data-component/text-component sendText=(action 'mutateText') }}
         </div>
     </div>
-    <div class="ui raised segment">
-        <div class="ui form width-container">
-            <div class="center aligned column">
-                {{ background-component/def-image-component defImages=defImages sendDefImage=(action 'mutateBackground') }}
-            </div>
-            <div class="ui horizontal divider">
-                Or
-            </div>
-            <div class="center aligned column">
-                {{ background-component/color-bg-component sendDefColor=(action 'mutateDefColor') }}
-            </div>
-            <div class="ui horizontal divider">
-                Or
-            </div>
-            <div class="center aligned column">
-                {{ background-component/image-component sendImage=(action 'mutateCustomImage') }}
-            </div>
-        </div>
-    </div>
-    <div class="ui raised segment">
-        <div class="ui form width-container">
-            <div class="center aligned column">
-                {{ text-component/font-type sendDefFont=(action 'mutateCustomFont')}}
-            </div>
-            <div class="ui horizontal divider">
-                Or
-            </div>
-            <div class="center aligned column">
-                {{ text-component/font-color sendDefFontColor=(action 'mutateDefFontColor')}}
-            </div>
-            <div class="ui horizontal divider">
-                Or
-            </div>
-            <div class="center aligned column">
-                {{ text-component/font-size sendDefSize=(action 'mutateFontSize')}}
-            </div>
-        </div>
-    </div>
-    <button {{action "submitForm"}} class="ui button">Submit form</button>
-    {{#each userError as |error|}}
-    <p>{{error.message}}</p>
-    {{/each}}
 </div>
+<div class="ui raised segment">
+    <div class="ui form width-container">
+        <div class="center aligned">
+            {{ background-component/def-image-component defImages=defImages sendDefImage=(action 'mutateBackground') }}
+        </div>
+        <div class="ui horizontal divider">
+            Or
+        </div>
+        <div class="center aligned">
+            {{ background-component/color-bg-component sendDefColor=(action 'mutateDefColor') }}
+        </div>
+        <div class="ui horizontal divider">
+            Or
+        </div>
+        <div class="center aligned">
+            {{ background-component/image-component sendImage=(action 'mutateCustomImage') }}
+        </div>
+    </div>
+</div>
+<div class="ui raised segment">
+    <div class="ui form width-container">
+        <div class="center aligned">
+            {{ text-component/font-type sendDefFont=(action 'mutateCustomFont')}}
+        </div>
+        <div class="ui horizontal divider">
+            Or
+        </div>
+        <div class="center aligned">
+            {{ text-component/font-color sendDefFontColor=(action 'mutateDefFontColor')}}
+        </div>
+        <div class="ui horizontal divider">
+            Or
+        </div>
+        <div class="center aligned">
+            {{ text-component/font-size sendDefSize=(action 'mutateFontSize')}}
+        </div>
+    </div>
+</div>
+<button {{action "submitForm"}} class="ui fluid button">Create Badges</button>
+{{#each userError as |error|}}
+<p>{{error.message}}</p>
+{{/each}}
