@@ -6,12 +6,6 @@ export default JSONAPISerializer.extend({
 
   serialize(snapshot, options) {
     let json = this._super(...arguments);
-    json.userSignup = {
-      'email'    : json.data.attributes.email,
-      'password' : json.data.attributes.password
-    };
-
-    delete json.data;
     return json;
   },
 

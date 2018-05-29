@@ -7,6 +7,6 @@ const { JSONAPIAdapter } = DS;
 export default JSONAPIAdapter.extend({
   host        : APP.backLink,
   pathForType : () => {
-    return 'api/user/signup';
+    return 'user/register';
   }
 });

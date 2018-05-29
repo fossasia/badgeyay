@@ -5,11 +5,20 @@ import { inject as service } from '@ember/service';
 export default Controller.extend({
   routing : service('-routing'),
   actions : {
-    signUp(email, password) {
-      this.get('store').createRecord('user-signup', {
+    signUp(email, username, password) {
+      const _this = this;
+      let user_ = this.get('store').createRecord('user-signup', {
         email,
+        username,
         password
-      }).push();
+      });
+      user_.save()
+        .then(record => {
+          _this.transitionToRoute('/');
+        })
+        .catch(err => {
+          console.log(err);
+        });
     }
   }
 });

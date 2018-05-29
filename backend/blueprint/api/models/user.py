@@ -6,18 +6,24 @@ from api.db import db
 class User(db.Model):
     __tablename__ = 'User'
 
-    id = db.Column(db.String(100))
-    username = db.Column(db.String(80), primary_key=True)
+    id = db.Column(db.String(100), primary_key=True)
+    username = db.Column(db.String(80))
     password = db.Column(db.String(100))
     email = db.Column(db.String(100))
+    photoURL = db.Column(db.String())
     files = db.relationship('File', backref='uploader')
     badges = db.relationship('Badges', backref='creator')
 
-    def __init__(self, id_, username, password, email):
+    def __init__(self, id_, username, password, email, photoURL=None):
         self.id = id_
         self.username = username
-        self.password = generate_password_hash(password)
+        if password:
+            self.password = generate_password_hash(password)
         self.email = email
+        if photoURL:
+            self.photoURL = photoURL
+        else:
+            self.photoURL = 'Some default asset'
 
     def save_to_db(self):
         db.session.add(self)

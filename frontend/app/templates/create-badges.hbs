@@ -31,8 +31,8 @@
                 {{ background-component/image-component sendImage=(action 'mutateCustomImage') }}
             </div>
         </div>
-  </div>
-  <div class="ui raised segment">
+    </div>
+    <div class="ui raised segment">
         <div class="ui form width-container">
             <div class="center aligned column">
                 {{ text-component/font-type sendDefFont=(action 'mutateCustomFont')}}
@@ -50,6 +50,9 @@
                 {{ text-component/font-size sendDefSize=(action 'mutateFontSize')}}
             </div>
         </div>
-  </div>
-  <button {{action "submitForm"}} class="ui button">Submit form</button>
+    </div>
+    <button {{action "submitForm"}} class="ui button">Submit form</button>
+    {{#each userError as |error|}}
+    <p>{{error.message}}</p>
+    {{/each}}
 </div>
