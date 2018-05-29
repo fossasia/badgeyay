@@ -13,7 +13,7 @@ router = Blueprint('fileUploader', __name__)
 @router.route('/image', methods=['POST'])
 def uploadImage():
     try:
-        data = request.json['imgFile']
+        data = request.get_json()
         image = data['imgFile']
     except Exception as e:
         return jsonify(
