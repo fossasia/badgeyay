@@ -13,9 +13,10 @@ export default Route.extend({
           id         : uid,
           type       : 'user',
           attributes : {
-            'name'     : userObj.displayName,
+            uid,
+            'username' : userObj.displayName,
             'email'    : userObj.email,
-            'photoUrl' : userObj.photoURL
+            'photoURL' : userObj.photoURL
           },
           relationships: {}
         }]

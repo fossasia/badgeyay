@@ -5,9 +5,12 @@ from api.utils.response import Response
 from api.helpers.uploads import saveToImage, saveToCSV, saveAsCSV
 from api.models.file import File
 from api.models.user import User
-from api.schemas.file import FileSchema
+from api.schemas.file import (
+    FileSchema,
+    ManualFileSchema
+)
 from flask import current_app as app
-from api.schemas.file import ManualFileSchema
+from api.schemas.errors import UserNotFound
 
 router = Blueprint('fileUploader', __name__)
 
@@ -15,7 +18,7 @@ router = Blueprint('fileUploader', __name__)
 @router.route('/image', methods=['POST'])
 def uploadImage():
     try:
-        data = request.json['imgFile']
+        data = request.get_json()
         image = data['imgFile']
     except Exception as e:
         return jsonify(
@@ -34,6 +37,9 @@ def uploadImage():
 
     uid = data['uid']
     fetch_user = User.getUser(user_id=uid)
+    if fetch_user is None:
+        return jsonify(UserNotFound(uid).message), 422, {'Content-Type': 'application/json'}
+
     file_upload = File(filename=imageName, filetype='image', uploader=fetch_user)
     file_upload.save_to_db()
     return jsonify(
@@ -70,6 +76,9 @@ def fileUpload():
 
     uid = data.get('uid')
     fetch_user = User.getUser(user_id=uid)
+    if fetch_user is None:
+        return jsonify(UserNotFound(uid).message), 422, {'Content-Type': 'application/json'}
+
     file_upload = File(filename=csvName, filetype='csv', uploader=fetch_user)
     file_upload.save_to_db()
     return jsonify(
@@ -96,6 +105,9 @@ def upload_manual_data():
     uid = data.get('uid')
     manual_data = data.get('manual_data')
     fetch_user = User.getUser(user_id=uid)
+    if fetch_user is None:
+        return jsonify(UserNotFound(uid).message), 422, {'Content-Type': 'application/json'}
+
     try:
         csvName = saveAsCSV(csvData=manual_data)
     except Exception as e:

@@ -10,12 +10,15 @@ export default Component.extend({
   isLoading : false,
 
   actions: {
-    signUp() {
+    signUp(event) {
+      event.preventDefault();
       let email = '';
       let password = '';
+      let username = '';
       email = this.get('email');
       password = this.get('password');
-      this.get('signup')(email, password);
+      username = this.get('username');
+      this.get('signUp')(email, username, password);
     }
   },
 
