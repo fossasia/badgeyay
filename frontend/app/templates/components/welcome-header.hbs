@@ -1,10 +1,10 @@
 <div class="ui content">
-  <div class="typewriter">
+  <div>
     <h1 class="weight-300 lead">The simplest way to create Badges.</h1>
   </div>
   {{#if session.isAuthenticated}}
   {{#link-to 'create-badges'}}
-    <a class="create-badges ui orange button">Create Badges</a>
+    <a class="create-badges ui orange button" style="font-weight: bold; line-spacing: 30px;">Create Badges</a>
   {{/link-to}}
   {{else}}
     <a class="create-badges ui orange button"href="{{href-to 'login'}}">Create Badges</a>
