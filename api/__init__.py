@@ -14,11 +14,10 @@ def create_app():
     if not config.DEBUG:
         app.config['SQLALCHEMY_DATABASE_URI'] = os.environ['SQLALCHEMY_DATABASE_URI']
     else:
-        app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://%(user)s:%(pw)s@%(host)s:%(port)s/%(db)s' % config.POSTGRES
+        app.config['SQLALCHEMY_DATABASE_URI'] = os.environ['DATABASE_URL']
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
     app.config['SECRET_KEY'] = config.POSTGRES['secret']
     app.config['DEBUG'] = config.DEBUG
-    app.config.from_object('api.config.mailConfig.MailConfig')
     CORS(app, resources={r"*": {"origins": "*"}})
 
     return app

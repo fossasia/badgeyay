@@ -5,7 +5,7 @@ from marshmallow_jsonapi import fields
 class UserSchema(Schema):
     class Meta:
         type_ = 'user-signups'
-        self_view = 'loginUser.login'
+        self_view = 'registerUser.register_user'
         kwargs = {'id': '<id>'}
 
     id = fields.Str(required=True, dump_only=True)

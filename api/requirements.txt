@@ -36,6 +36,7 @@ msgpack-python==0.5.6
 Pillow==5.1.0
 protobuf==3.5.2.post1
 psycopg2==2.7.4
+psycopg2-binary==2.7.4
 pyasn1==0.4.2
 pyasn1-modules==0.2.1
 pycparser==2.18
@@ -52,3 +53,4 @@ tinycss2==0.6.1
 urllib3==1.22
 webencodings==0.5.1
 Werkzeug==0.14.1
+marshmallow-jsonapi
