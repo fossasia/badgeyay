@@ -27,7 +27,7 @@ matrix:
       - pip3 install flake8
 
     script:
-      - flake8 backend/blueprint/api
+      - flake8 backend/
 
     after_success:
       - bash <(curl -s https://codecov.io/bash)
