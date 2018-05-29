@@ -25,13 +25,9 @@ matrix:
       - virtualenv  -p python3 ../flask_env
       - source ../flask_env/bin/activate
       - pip3 install flake8
-      - pip3 install -r backend/requirements/test.txt --cache-dir $HOME/backend/.pip-cache
 
     script:
-      - python backend/app/main.py >> log.txt 2>&1  &
-      - python backend/app/main.py > /dev/null &
       - flake8 backend/blueprint/api
-      - py.test --cov ../  ./backend/app/tests/test_api.py
 
     after_success:
       - bash <(curl -s https://codecov.io/bash)
