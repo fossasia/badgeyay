@@ -1,3 +1,5 @@
+import base64
+import os
 from flask import Blueprint, request, jsonify
 from api.utils.response import Response
 from api.helpers.uploads import saveToImage, saveToCSV, saveAsCSV
@@ -7,6 +9,7 @@ from api.schemas.file import (
     FileSchema,
     ManualFileSchema
 )
+from flask import current_app as app
 from api.schemas.errors import UserNotFound
 
 router = Blueprint('fileUploader', __name__)
@@ -123,3 +126,36 @@ def get_file():
     input_data = request.args
     file = File().query.filter_by(filename=input_data.get('filename')).first()
     return jsonify(FileSchema().dump(file).data)
+
+
+@router.route('/upload_default', methods=['POST'])
+def upload_default():
+    try:
+        data = request.get_json()['data']['attributes']
+    except Exception as e:
+        return(jsonify(
+            Response(401).exceptWithMessage(
+                str(e),
+                'No data was provided')))
+
+    uid = data.get('uid')
+    image_name = data.get('default_image')
+    image_data = None
+    with open(os.path.join(app.config.get('BASE_DIR'), 'badge_backgrounds', image_name), "rb") as image_file:
+        image_data = base64.b64encode(image_file.read())
+
+    try:
+        imageName = saveToImage(imageFile=image_data, extension=".png")
+    except Exception as e:
+        return jsonify(
+            Response(400).exceptWithMessage(
+                str(e),
+                'Image could not be uploaded'))
+
+    fetch_user = User.getUser(user_id=uid)
+    file_upload = File(filename=imageName, filetype='image', uploader=fetch_user)
+    file_upload.save_to_db()
+    return jsonify(
+        Response(200).generateMessage({
+            'message': 'Image Uploaded Successfully',
+            'unique_id': imageName}))
