@@ -9,6 +9,7 @@ export default Controller.extend({
   defFontSize  : '',
   uid          : '',
   textData     : '',
+  userError    : '',
   actions      : {
     submitForm() {
       const _this = this;
@@ -27,10 +28,16 @@ export default Controller.extend({
       });
       textEntry.save().then(record => {
         console.log(record);
+      }).catch(err => {
+        let userErrors = textEntry.get('errors.user');
+        if (userErrors !== undefined) {
+          _this.set('userError', userErrors);
+        }
       });
     },
 
     mutateCSV(csvData) {
+      const _this = this;
       const user = this.get('store').peekAll('user');
       let uid;
       user.forEach(user_ => {
@@ -44,7 +51,13 @@ export default Controller.extend({
         csvFile   : csvData,
         extension : '.csv'
       });
-      csv_.save();
+      csv_.save()
+        .catch(err => {
+          let userErrors = csv_.get('errors.user');
+          if (userErrors !== undefined) {
+            _this.set('userError', userErrors);
+          }
+        });
     },
 
     mutateText(txtData) {
@@ -60,6 +73,7 @@ export default Controller.extend({
     },
 
     mutateCustomImage(imageData) {
+      const _this = this;
       let uid = this.get('uid');
       if (uid === undefined || uid === '') {
         const user = this.get('store').peekAll('user');
@@ -72,7 +86,13 @@ export default Controller.extend({
         imageData,
         extension: '.png'
       });
-      image_.save();
+      image_.save()
+        .catch(err => {
+          let userErrors = image_.get('errors.user');
+          if (userErrors !== undefined) {
+            _this.set('userError', userErrors);
+          }
+        });
     },
 
     mutateDefFontColor(fontcolor) {

@@ -52,4 +52,7 @@
         </div>
   </div>
   <button {{action "submitForm"}} class="ui button">Submit form</button>
+  {{#each userError as |error|}}
+    <p>{{error.message}}</p>
+  {{/each}}
 </div>
