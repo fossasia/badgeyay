@@ -35,23 +35,3 @@ $color4: #ffa500;
     }
   }
 }
-
-.typewriter h1 {
-  animation: typing 3.5s steps(40, end), blink-caret 0.75s step-end infinite;
-  border-right: 0.15em solid $color4;
-  letter-spacing: 0.01em;
-  margin: 0 auto;
-  overflow: hidden;
-  white-space: nowrap;
-}
-
-@keyframes typing {
-  from { width: 0; }
-  to { width: 100%; }
-}
-
-@keyframes blink-caret {
-  from {border-color: transparent; }
-  to { border-color: transparent; }
-  50% { border-color: $color4; }
-}
