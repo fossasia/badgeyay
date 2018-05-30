@@ -8,7 +8,7 @@ router = Blueprint('assethelper', __name__)
 
 @router.route('/default_images', methods=['GET'])
 def getDefaultBackgrounds():
-    bgDir = os.path.abspath(os.path.join(os.getcwd(), 'badge_backgrounds/'))
+    bgDir = os.path.abspath(os.path.join(os.getcwd(), 'api/badge_backgrounds/'))
     resp = []
     for root, dir_, files in os.walk(os.path.normpath(bgDir)):
         for idx, file_ in enumerate(files):
