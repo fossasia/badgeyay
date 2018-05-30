@@ -9,7 +9,7 @@
                         <div class="sub header">Lets make some badges!</div>
                     </h1>
                     <div class="ui hidden divider"></div>
-                    <form class="ui form">
+                    <form class="ui form" {{ action 'logIn' 'password' on="submit" }}>
                         <div class="ui stacked element">
                             <div class="field required">
                                 <div class="ui left icon input">
@@ -23,7 +23,7 @@
                                     {{input type="password" value=password name="password" placeholder="Password"}}
                                 </div>
                             </div>
-                            <button class="ui button orange fluid" style="margin-bottom: 10px;" {{ action 'logIn' 'password' }}>Log In</button>
+                            <button class="ui button orange fluid" style="margin-bottom: 10px;" type="submit">Log In</button>
                             <a href="#" class="text muted"> Forgot password</a>
                             <div class="ui divider"></div>
                             <a href="{{href-to 'signup'}}" class="text muted weight-800">Create an Account</a>

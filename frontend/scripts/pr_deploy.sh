@@ -4,7 +4,7 @@ if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then
     exit 0
 fi
 
-ember build production
+ember build --environment=production
 
 npm i -g surge
 

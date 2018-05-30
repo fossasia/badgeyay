@@ -6,6 +6,7 @@ export default Component.extend({
   },
 
   actions: {
+
     logIn(provider) {
       let email = '';
       let password = '';
@@ -19,6 +20,7 @@ export default Component.extend({
     logOut() {
       this.get('session').close();
     }
+
   },
 
   didRender() {

@@ -1,16 +1,12 @@
 <div class="ui menu">
-  {{#link-to 'index' class="header item"}}
+    {{#link-to 'index' class="header item"}}
     <h2 style="line-spacing: 1px">Badgeyay</h2>
-  {{/link-to}}
-  <div class="right menu">
-    {{#if session.isAuthenticated}} 
-      <div class="item">
-          <div class="circular ui red button"  style="text-transform: uppercase; font-weight: 400"  {{action 'logOut'}} >Logout</div>
-      </div>  
-    {{else}}
-      {{#link-to 'login'}}
-        <div class="item ui button"style="text-transform: uppercase; font-weight: 400; line-spacing: 0.5px; line-height: 30px">Login</div>  
-      {{/link-to}}
-    {{/if}}
-  </div>
+    {{/link-to}}
+    <div class="right menu">
+        {{#if session.isAuthenticated}}
+        <div class="right item ui button" style="text-transform: uppercase; font-weight: 400" {{action 'logOut'}}>Logout</div>
+        {{else}} {{#link-to 'login'}}
+        <div class="right item ui button" style="text-transform: uppercase; font-weight: 400; line-spacing: 0.5px; line-height: 30px">Login</div>
+        {{/link-to}} {{/if}}
+    </div>
 </div>
