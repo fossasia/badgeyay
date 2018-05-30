@@ -14,6 +14,17 @@ class UserSchema(Schema):
     password = fields.Str(required=True, load_only=True)
 
 
+class AllUsersSchema(Schema):
+    class Meta:
+        type_ = 'all-users'
+        self_views = 'admin.show_all_users'
+        kwargs = {'id': '<id>'}
+
+    id = fields.Str(required=True, dump_only=True)
+    username = fields.Str(required=True)
+    email = fields.Str(required=True)
+
+
 class OAuthUserSchema(Schema):
     class Meta:
         type_ = 'users'
