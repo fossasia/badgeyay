@@ -7,7 +7,8 @@ from api.models.file import File
 from api.models.user import User
 from api.schemas.file import (
     FileSchema,
-    ManualFileSchema
+    ManualFileSchema,
+    CSVUploadSchema
 )
 from flask import current_app as app
 from api.schemas.errors import UserNotFound
@@ -81,10 +82,7 @@ def fileUpload():
 
     file_upload = File(filename=csvName, filetype='csv', uploader=fetch_user)
     file_upload.save_to_db()
-    return jsonify(
-        Response(200).generateMessage({
-            'message': 'CSV Uploaded successfully',
-            'unique_id': csvName}))
+    return jsonify(CSVUploadSchema().dump(file_upload).data)
 
 
 @router.route('/manual_data', methods=['POST'])

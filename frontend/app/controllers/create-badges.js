@@ -49,7 +49,7 @@ export default Controller.extend({
       let csv_ = this.get('store').createRecord('csv-file', {
         uid,
         csvFile   : csvData,
-        extension : '.csv'
+        extension : 'csv'
       });
       csv_.save()
         .catch(err => {
