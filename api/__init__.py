@@ -13,6 +13,8 @@ def create_app():
     app.config['BASE_DIR'] = os.path.dirname(os.path.abspath(__file__))
     if not config.DEBUG:
         app.config['SQLALCHEMY_DATABASE_URI'] = os.environ['SQLALCHEMY_DATABASE_URI']
+    elif config.ENV == 'LOCAL':
+        app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://%(user)s:%(pw)s@%(host)s:%(port)s/%(db)s' % config.POSTGRES
     else:
         app.config['SQLALCHEMY_DATABASE_URI'] = os.environ['DATABASE_URL']
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
