@@ -1,4 +1,4 @@
-config/config.py
+static/
 config/ServiceAccountkey.json
 static/uploads
 static/temporary
