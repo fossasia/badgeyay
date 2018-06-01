@@ -1,5 +1,9 @@
 # DEBUG variable
 DEBUG = True
+
+# Environment for working, can be LOCAL/PROD
+ENV = 'LOCAL'
+
 # Sample config for PostgreSQL Database
 POSTGRES = {
     'user': 'badgeyay',

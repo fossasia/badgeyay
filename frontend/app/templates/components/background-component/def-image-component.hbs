@@ -6,7 +6,7 @@
         <div class="menu">
             {{#each defImages as |image|}}
                 <div data-value="{{image.id}}" class="item">
-                    <img class="ui mini image" src="data:image/png;base64, {{image.imgData}}">
+                    <img class="ui mini image" src="/images/badge_backgrounds/{{image.name}}">
                     {{image.name}}
                 </div>
             {{/each}}
