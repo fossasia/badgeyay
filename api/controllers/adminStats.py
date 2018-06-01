@@ -3,7 +3,7 @@ from api.models.user import User
 from api.schemas.user import AllUsersSchema
 
 
-router = Blueprint('admin', __name__)
+router = Blueprint('admin_stats', __name__)
 
 
 @router.route('/show_all_users', methods=['GET'])

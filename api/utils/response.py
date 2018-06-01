@@ -9,9 +9,9 @@ class Response(object):
         super(Response, self).__init__()
         self.status = statusCode
 
-    def generateMessage(self, message):
+    def generateMessage(self, message, *args, **kwargs):
         self.id = uuid.uuid4()
-        self.attributes = message
+        self.attributes = message.format(*args, **kwargs)
         self.type = 'imgResponse'
         return {'data': self.serialize()}
 

@@ -12,9 +12,9 @@ from api.controllers import (
     registerUser,
     oauthToken,
     assetHelper,
-    admin
+    adminStats
 )
-
+from api.admin import users
 
 app = create_app()
 
@@ -32,7 +32,8 @@ app.register_blueprint(errorHandlers.router)
 app.register_blueprint(assetHelper.router, url_prefix='/api')
 app.register_blueprint(resetUser.router, url_prefix='/reset')
 app.register_blueprint(oauthToken.router, url_prefix='/api')
-app.register_blueprint(admin.router, url_prefix='/admin')
+app.register_blueprint(adminStats.router, url_prefix='/admin/stats')
+app.register_blueprint(users.router, url_prefix='/admin')
 
 
 @app.before_first_request
