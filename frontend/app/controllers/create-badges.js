@@ -1,19 +1,25 @@
 import Controller from '@ember/controller';
+import ENV from '../config/environment';
+
+const { APP } = ENV;
 
 import { inject as service } from '@ember/service';
 
 export default Controller.extend({
-  routing      : service('-routing'),
-  defColor     : '',
-  defFontColor : '',
-  defFontSize  : '',
-  uid          : '',
-  textData     : '',
-  userError    : '',
-  csvFile      : '',
-  custImgFile  : '',
-  badgeSize    : '',
-  actions      : {
+  routing        : service('-routing'),
+  defColor       : '',
+  defFontColor   : '',
+  defFontSize    : '',
+  uid            : '',
+  textData       : '',
+  userError      : '',
+  csvFile        : '',
+  custImgFile    : '',
+  badgeSize      : '',
+  badgeGenerated : false,
+  backLink       : APP.backLink,
+  genBadge       : '',
+  actions        : {
     submitForm() {
       const _this = this;
       const user = _this.get('store').peekAll('user');
@@ -51,6 +57,10 @@ export default Controller.extend({
       });
 
       badgeRecord.save()
+        .then(record => {
+          _this.set('badgeGenerated', true);
+          _this.set('genBadge', record.id);
+        })
         .catch(err => {
           console.error(err.message);
         });

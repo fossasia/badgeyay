@@ -12,6 +12,7 @@ from api.controllers import (
     registerUser,
     oauthToken,
     assetHelper,
+    staticHelper,
     admin
 )
 from flasgger import Swagger
@@ -32,6 +33,7 @@ app.register_blueprint(errorHandlers.router)
 app.register_blueprint(assetHelper.router, url_prefix='/api')
 app.register_blueprint(resetUser.router, url_prefix='/reset')
 app.register_blueprint(oauthToken.router, url_prefix='/api')
+app.register_blueprint(staticHelper.router, url_prefix='/static')
 app.register_blueprint(admin.router, url_prefix='/admin')
 swag = Swagger(app)
 
