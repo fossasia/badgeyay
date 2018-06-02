@@ -13,7 +13,7 @@ router = Blueprint('generateBadges', __name__)
 @router.route('/generate_badges', methods=['POST'])
 def generateBadges():
     try:
-        data = request.get_json()
+        data = request.get_json()['badge']
     except Exception as e:
         return jsonify(
             Response(401).exceptWithMessage(
@@ -31,7 +31,7 @@ def generateBadges():
 
     csv_name = data.get('csv')
     image_name = data.get('image')
-    text_color = data.get('text-color', '#ffffff')
+    text_color = data.get('font_color', '#ffffff')
     badge_size = data.get('badge_size', 'A3')
     svg2png = SVG2PNG()
     svg2png.do_text_fill('static/badges/8BadgesOnA3.svg', text_color)

@@ -8,7 +8,8 @@ from api.models.user import User
 from api.schemas.file import (
     FileSchema,
     ManualFileSchema,
-    CSVUploadSchema
+    CSVUploadSchema,
+    ImageFileSchema
 )
 from flask import current_app as app
 from api.schemas.errors import UserNotFound
@@ -19,7 +20,7 @@ router = Blueprint('fileUploader', __name__)
 @router.route('/image', methods=['POST'])
 def uploadImage():
     try:
-        data = request.get_json()
+        data = request.get_json()['imgFile']
         image = data['imgFile']
     except Exception as e:
         return jsonify(
@@ -43,10 +44,7 @@ def uploadImage():
 
     file_upload = File(filename=imageName, filetype='image', uploader=fetch_user)
     file_upload.save_to_db()
-    return jsonify(
-        Response(200).generateMessage({
-            'message': 'Image Uploaded Successfully',
-            'unique_id': imageName}))
+    return jsonify(ImageFileSchema().dump(file_upload).data)
 
 
 @router.route('/file', methods=['POST'])

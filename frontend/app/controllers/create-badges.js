@@ -10,6 +10,9 @@ export default Controller.extend({
   uid          : '',
   textData     : '',
   userError    : '',
+  csvFile      : '',
+  custImgFile  : '',
+  badgeSize    : '',
   actions      : {
     submitForm() {
       const _this = this;
@@ -21,6 +24,7 @@ export default Controller.extend({
       if (uid !== undefined && uid !== '') {
         _this.set('uid', uid);
       }
+
       let textEntry = _this.get('store').createRecord('text-data', {
         uid,
         manual_data : _this.get('textData'),
@@ -34,6 +38,22 @@ export default Controller.extend({
           _this.set('userError', userErrors);
         }
       });
+
+      let fontColorCode = '#' + _this.defFontColor;
+      let badgeRecord = _this.get('store').createRecord('badge', {
+        csv        : _this.csvFile,
+        image      : _this.custImgFile,
+        font_color : fontColorCode,
+        uid        : _this.uid,
+        badge_size : 'A3',
+        font_size  : '20',
+        font_type  : 'sans'
+      });
+
+      badgeRecord.save()
+        .catch(err => {
+          console.error(err.message);
+        });
     },
 
     mutateCSV(csvData) {
@@ -44,7 +64,7 @@ export default Controller.extend({
         uid = user_.get('id');
       });
       if (uid !== undefined && uid !== '') {
-        this.set('uid', uid);
+        _this.set('uid', uid);
       }
       let csv_ = this.get('store').createRecord('csv-file', {
         uid,
@@ -52,6 +72,9 @@ export default Controller.extend({
         extension : 'csv'
       });
       csv_.save()
+        .then(record => {
+          _this.set('csvFile', record.filename);
+        })
         .catch(err => {
           let userErrors = csv_.get('errors.user');
           if (userErrors !== undefined) {
@@ -79,6 +102,7 @@ export default Controller.extend({
         const user = this.get('store').peekAll('user');
         user.forEach(user_ => {
           uid = user_.get('id');
+          _this.set('uid', uid);
         });
       }
       let image_ = this.get('store').createRecord('cust-img-file', {
@@ -87,6 +111,9 @@ export default Controller.extend({
         extension: '.png'
       });
       image_.save()
+        .then(record => {
+          _this.set('custImgFile', record.filename);
+        })
         .catch(err => {
           let userErrors = image_.get('errors.user');
           if (userErrors !== undefined) {

@@ -57,3 +57,22 @@ class CSVUploadSchema(Schema):
         include_resource_linkage=True,
         type_='User'
     )
+
+
+class ImageFileSchema(Schema):
+    class Meta:
+        type_ = 'img-file'
+        self_view = 'fileUploader.uploadImage'
+        kwargs = {'id': '<id>'}
+
+    id = fields.Str(required=True, dump_only=True)
+    filename = fields.Str(required=True)
+    filetype = fields.Str(required=True)
+    user_id = fields.Relationship(
+        self_url='/api/upload/manual_data',
+        self_url_kwargs={'file_id': '<id>'},
+        related_url='/user/register',
+        related_url_kwargs={'id': '<id>'},
+        include_resource_linkage=True,
+        type_='User'
+    )
