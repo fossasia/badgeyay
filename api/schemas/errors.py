@@ -9,6 +9,8 @@ class BaseError(JSONAPIError, ValueError):
             self.detail = '{0} not found : {1}'.format(attr, uid)
         else:
             self.detail = '{0} not found'.format(attr)
+        if attr == 'operation':
+            self.detail = 'Operation not successful'
         self.status = status
         super(BaseError, self).__init__(self.detail, self.pointer, self.status)
 
@@ -61,3 +63,9 @@ class ImageNotFound(BaseError):
 
     def __init__(self):
         super(ImageNotFound, self).__init__(attr='image')
+
+
+class OperationNotFound(BaseError):
+
+    def __init__(self):
+        super(OperationNotFound, self).__init__(attr='operation')
