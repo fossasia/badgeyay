@@ -10,6 +10,7 @@ export default Controller.extend({
   defColor       : '',
   defFontColor   : '',
   defFontSize    : '',
+  defFont        : '',
   uid            : '',
   textData       : '',
   userError      : '',
@@ -19,6 +20,12 @@ export default Controller.extend({
   badgeGenerated : false,
   backLink       : APP.backLink,
   genBadge       : '',
+  defImageName   : '',
+  csvEnable      : false,
+  manualEnable   : false,
+  defImage       : false,
+  custImage      : false,
+  colorImage     : false,
   actions        : {
     submitForm() {
       const _this = this;
@@ -31,31 +38,78 @@ export default Controller.extend({
         _this.set('uid', uid);
       }
 
-      let textEntry = _this.get('store').createRecord('text-data', {
-        uid,
-        manual_data : _this.get('textData'),
-        time        : new Date()
-      });
-      textEntry.save().then(record => {
-        console.log(record);
-      }).catch(err => {
-        let userErrors = textEntry.get('errors.user');
-        if (userErrors !== undefined) {
-          _this.set('userError', userErrors);
-        }
-      });
-
-      let fontColorCode = '#' + _this.defFontColor;
-      let badgeRecord = _this.get('store').createRecord('badge', {
-        csv        : _this.csvFile,
-        image      : _this.custImgFile,
-        font_color : fontColorCode,
+      let badgeData = {
         uid        : _this.uid,
-        badge_size : 'A3',
-        font_size  : '20',
-        font_type  : 'sans'
-      });
+        badge_size : 'A3'
+      };
 
+      if (_this.csvEnable) {
+        badgeData.csv = _this.csvFile;
+      }
+      if (_this.defFontColor !== '' && _this.defFontColor !== undefined) {
+        badgeData.font_color = '#' + _this.defFontColor;
+      }
+      if (_this.defFontSize !== '' && _this.defFontSize !== undefined) {
+        badgeData.font_size = _this.defFontSize.toString();
+      }
+      if (_this.defFont !== '' && _this.defFont !== undefined) {
+        badgeData.font_type = _this.defFont;
+      }
+
+      _this.send('sendManualData', badgeData);
+
+    },
+
+    sendManualData(badgeData) {
+      const _this = this;
+      if (_this.manualEnable) {
+        let textEntry = _this.get('store').createRecord('text-data', {
+          uid         : _this.uid,
+          manual_data : _this.get('textData'),
+          time        : new Date()
+        });
+        textEntry.save().then(record => {
+          _this.set('csvFile', record.filename);
+          badgeData.csv = _this.csvFile;
+          _this.send('sendDefaultImg', badgeData);
+        }).catch(err => {
+          let userErrors = textEntry.get('errors.user');
+          if (userErrors !== undefined) {
+            _this.set('userError', userErrors);
+          }
+        });
+      } else {
+        _this.send('sendDefaultImg', badgeData);
+      }
+    },
+
+    sendDefaultImg(badgeData) {
+      const _this = this;
+      if (_this.defImage) {
+        let imageRecord = _this.get('store').createRecord('def-image-upload', {
+          uid          : _this.uid,
+          defaultImage : _this.defImageName
+        });
+        imageRecord.save()
+          .then(record => {
+            _this.set('custImgFile', record.filename);
+            badgeData.image = _this.custImgFile;
+            _this.send('sendBadge', badgeData);
+          })
+          .catch(error => {
+            let userErrors = imageRecord.get('errors.user');
+            if (userErrors !== undefined) {
+              _this.set('userError', userErrors);
+            }
+          });
+      } else {
+        _this.send('sendBadge', badgeData);
+      }
+    },
+
+    sendBadge(badgeData) {
+      const _this = this;
+      let badgeRecord = _this.get('store').createRecord('badge', badgeData);
       badgeRecord.save()
         .then(record => {
           _this.set('badgeGenerated', true);
@@ -96,9 +150,9 @@ export default Controller.extend({
     mutateText(txtData) {
       this.set('textData', txtData);
     },
-
     mutateBackground(id) {
-      console.log(id);
+      let defImageRecord = this.get('store').peekRecord('def-image', id);
+      this.set('defImageName', defImageRecord.name + '.png');
     },
 
     mutateDefColor(color) {
@@ -137,11 +191,39 @@ export default Controller.extend({
     },
 
     mutateCustomFont(id) {
-      console.log(id);
+      this.set('defFont', id);
     },
 
     mutateFontSize(value) {
       this.set('defFontSize', value);
+    },
+
+    csvClicked() {
+      this.set('csvEnable', !this.csvEnable);
+      this.set('manualEnable', false);
+    },
+
+    manualClicked() {
+      this.set('manualEnable', !this.manualEnable);
+      this.set('csvEnable', false);
+    },
+
+    defImageClicked() {
+      this.set('defImage', !this.defImage);
+      this.set('colorImage', false);
+      this.set('custImage', false);
+    },
+
+    bgColorClicked() {
+      this.set('colorImage', !this.colorImage);
+      this.set('defImage', false);
+      this.set('custImage', false);
+    },
+
+    custImgClicked() {
+      this.set('custImage', !this.custImage);
+      this.set('defImage', false);
+      this.set('colorImage', false);
     }
   }
 });

@@ -6,7 +6,6 @@ export default JSONAPISerializer.extend({
 
   serialize(snapshot, options) {
     let json = this._super(...arguments);
-    console.log(json);
     json.badge = {
       'uid'        : json.data.attributes.uid,
       'csv'        : json.data.attributes.csv,

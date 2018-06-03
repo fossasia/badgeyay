@@ -34,7 +34,7 @@ def generateBadges():
         return ErrorResponse(CSVNotFound(uid).message, 422, {'Content-Type': 'application/json'})
 
     if not data['image']:
-        return ErrorResponse(ImageNotFound(uid).message, 422, {'Content-Type': 'application/json'})
+        return ErrorResponse(ImageNotFound().message, 422, {'Content-Type': 'application/json'}).respond()
 
     csv_name = data.get('csv')
     image_name = data.get('image')
@@ -42,7 +42,7 @@ def generateBadges():
     badge_size = data.get('badge_size', 'A3')
     svg2png = SVG2PNG()
     if config.ENV == 'PROD':
-        svg2png.do_text_fill(os.getcwd()+ '/api/static/badges/8BadgesOnA3.svg', text_color)
+        svg2png.do_text_fill(os.getcwd() + '/api/static/badges/8BadgesOnA3.svg', text_color)
     else:
         svg2png.do_text_fill('static/badges/8BadgesOnA3.svg', text_color)
     merge_badges = MergeBadges(image_name, csv_name, badge_size)
