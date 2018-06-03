@@ -2,11 +2,16 @@
     <label>Select font size</label>
   <input type="range"
   class="max-width"
-  oninput={{action (mut size)
+  oninput={{action (mut defFontSize)
   value="target.value"}}
   min={{min}}
   max={{max}}
-  defFontSize={{size}}
   steps="1">
-  <div>{{size}}</div>
+  <div style="text-align: center;">
+  {{#if textZoom}}
+    <div class="text-zoom">{{defFontSize}}</div>
+  {{else}}
+    <div >{{defFontSize}}</div>
+  {{/if}}
+  </div>
 </div>
