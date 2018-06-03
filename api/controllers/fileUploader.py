@@ -2,6 +2,7 @@ import base64
 import os
 from flask import Blueprint, request, jsonify
 from api.utils.response import Response
+from api.utils.errors import ErrorResponse
 from api.helpers.uploads import saveToImage, saveToCSV, saveAsCSV
 from api.models.file import File
 from api.models.user import User
@@ -12,7 +13,16 @@ from api.schemas.file import (
     ImageFileSchema
 )
 from flask import current_app as app
-from api.schemas.errors import UserNotFound
+from api.schemas.errors import (
+    UserNotFound,
+    ImageNotFound,
+    PayloadNotFound,
+    OperationNotFound,
+    ManualDataNotFound,
+    ExtensionNotFound,
+    CSVNotFound
+)
+
 
 router = Blueprint('fileUploader', __name__)
 
@@ -22,25 +32,20 @@ def uploadImage():
     try:
         data = request.get_json()['imgFile']
         image = data['imgFile']
-    except Exception as e:
-        return jsonify(
-            Response(400).exceptWithMessage(
-                str(e),
-                'No Image is specified'))
+        uid = data['uid']
+    except Exception:
+        return ErrorResponse(PayloadNotFound(uid).message, 422, {'Content-Type': 'application/json'})
 
     extension = data['extension']
     try:
         imageName = saveToImage(imageFile=image, extension=extension)
-    except Exception as e:
-        return jsonify(
-            Response(400).exceptWithMessage(
-                str(e),
-                'Image could not be uploaded'))
+    except Exception:
+        return ErrorResponse(ImageNotFound(uid).message, 422, {'Content-Type': 'application/json'})
 
     uid = data['uid']
     fetch_user = User.getUser(user_id=uid)
     if fetch_user is None:
-        return jsonify(UserNotFound(uid).message), 422, {'Content-Type': 'application/json'}
+        return ErrorResponse(UserNotFound(uid).message, 422, {'Content-Type': 'application/json'})
 
     file_upload = File(filename=imageName, filetype='image', uploader=fetch_user)
     file_upload.save_to_db()
@@ -52,31 +57,25 @@ def fileUpload():
     try:
         data = request.json['csvFile']
         csv = data['csvFile']
-    except Exception as e:
-        return jsonify(
-            Response(400).exceptWithMessage(
-                str(e),
-                'No CSV Specified'))
+        uid = data.get('uid')
+    except Exception:
+        return ErrorResponse(PayloadNotFound(uid).message, 422, {'Content-Type': 'application/json'})
+
     if 'extension' not in data.keys():
-        return jsonify(
-            Response(403).generateMessage(
-                'No extension key received'))
+        return ErrorResponse(ExtensionNotFound(uid).message, 422, {'Content-Type': 'application/json'})
+
     extension = data['extension']
     if extension != 'csv':
-        return jsonify(Response(400).generateMessage(
-            'Bad extension! csv not found'))
+        return ErrorResponse(CSVNotFound(uid).message, 422, {'Content-Type': 'application/json'})
     try:
         csvName = saveToCSV(csvFile=csv, extension='.csv')
-    except Exception as e:
-        return jsonify(
-            Response(400).exceptWithMessage(
-                str(e),
-                'CSV File could not be uploaded'))
+    except Exception:
+        return ErrorResponse(OperationNotFound(uid).message, 422, {'Content-Type': 'application/json'})
 
     uid = data.get('uid')
     fetch_user = User.getUser(user_id=uid)
     if fetch_user is None:
-        return jsonify(UserNotFound(uid).message), 422, {'Content-Type': 'application/json'}
+        return ErrorResponse(UserNotFound(uid).message, 422, {'Content-Type': 'application/json'})
 
     file_upload = File(filename=csvName, filetype='csv', uploader=fetch_user)
     file_upload.save_to_db()
@@ -87,30 +86,23 @@ def fileUpload():
 def upload_manual_data():
     try:
         data = request.get_json()['data']['attributes']
-    except Exception as e:
-        return(jsonify(
-            Response(401).exceptWithMessage(
-                str(e),
-                'No data was provided')))
+        uid = data.get('uid')
+    except Exception:
+        return ErrorResponse(PayloadNotFound(uid).message, 422, {'Content-Type': 'application/json'})
 
     if not data.get('manual_data'):
-        return(jsonify(
-            Response(400).generateMessage(
-                'No Manual Data is specified')))
+        return ErrorResponse(ManualDataNotFound(uid).message, 422, {'Content-Type': 'application/json'})
 
     uid = data.get('uid')
     manual_data = data.get('manual_data')
     fetch_user = User.getUser(user_id=uid)
     if fetch_user is None:
-        return jsonify(UserNotFound(uid).message), 422, {'Content-Type': 'application/json'}
+        return ErrorResponse(UserNotFound(uid).message, 422, {'Content-Type': 'application/json'})
 
     try:
         csvName = saveAsCSV(csvData=manual_data)
-    except Exception as e:
-        return(jsonify(
-            Response(401).exceptWithMessage(
-                str(e),
-                'Manual Data could not be uploaded')))
+    except Exception:
+        return ErrorResponse(OperationNotFound(uid).message, 422, {'Content-Type': 'application/json'})
 
     file_upload = File(filename=csvName, filetype='csv', uploader=fetch_user)
     file_upload.save_to_db()
@@ -128,11 +120,9 @@ def get_file():
 def upload_default():
     try:
         data = request.get_json()['data']['attributes']
-    except Exception as e:
-        return(jsonify(
-            Response(401).exceptWithMessage(
-                str(e),
-                'No data was provided')))
+        uid = data.get('uid')
+    except Exception:
+        return ErrorResponse(PayloadNotFound(uid).message, 422, {'Content-Type': 'application/json'})
 
     uid = data.get('uid')
     image_name = data.get('default_image')
@@ -142,11 +132,8 @@ def upload_default():
 
     try:
         imageName = saveToImage(imageFile=image_data, extension=".png")
-    except Exception as e:
-        return jsonify(
-            Response(400).exceptWithMessage(
-                str(e),
-                'Image could not be uploaded'))
+    except Exception:
+        return ErrorResponse(ImageNotFound(uid).message, 422, {'Content-Type': 'application/json'})
 
     fetch_user = User.getUser(user_id=uid)
     file_upload = File(filename=imageName, filetype='image', uploader=fetch_user)

@@ -7,6 +7,13 @@ from api.utils.response import Response
 from api.helpers.verifyPassword import verifyPassword
 from api.models.user import User
 from api.schemas.user import UserSchema
+from api.utils.errors import ErrorResponse
+from api.schemas.errors import (
+    JsonNotFound,
+    UserNotFound,
+    OperationNotFound,
+    PasswordNotFound
+)
 
 
 router = Blueprint('loginUser', __name__)
@@ -16,23 +23,17 @@ router = Blueprint('loginUser', __name__)
 def login():
     try:
         data = request.get_json()
-    except Exception as e:
-        return jsonify(
-            Response(500).exceptWithMessage(
-                str(e),
-                'Unable to get json'))
+        uid = data['uid']
+    except Exception:
+        return ErrorResponse(JsonNotFound(uid).message, 422, {'Content-Type': 'application/json'})
 
     if 'name' in data.keys():
         user = User.getUser(username=data['name'])
         if not user:
-            return jsonify(
-                Response(403).generateMessage(
-                    'Could not find the Username Specified'))
+            return ErrorResponse(UserNotFound(uid).message, 422, {'Content-Type': 'application/json'})
 
         if not verifyPassword(user, data['password']):
-            return jsonify(
-                Response(401).generateMessage(
-                    'Wrong username & password combination'))
+            return ErrorResponse(PasswordNotFound(uid).message, 422, {'Content-Type': 'application/json'})
 
         token = jwt.encode(
             {'user': user.username,
@@ -43,9 +44,7 @@ def login():
             Response(200).generateToken(
                 token.decode('UTF-8')))
 
-    return jsonify(
-        Response(403).generateMessage(
-            'No name key received'))
+    return ErrorResponse(OperationNotFound(uid).message, 422, {'Content-Type': 'application/json'})
 
 
 @router.route('/get_user', methods=['GET'])

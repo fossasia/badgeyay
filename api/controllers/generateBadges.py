@@ -6,12 +6,18 @@ from api.config import config
 
 from flask import Blueprint, jsonify, request
 
+from api.utils.errors import ErrorResponse
 from api.models.badges import Badges
 from api.models.user import User
 from api.schemas.badges import BadgeSchema
 from api.utils.merge_badges import MergeBadges
-from api.utils.response import Response
 from api.utils.svg_to_png import SVG2PNG
+from api.schemas.errors import (
+    ImageNotFound,
+    JsonNotFound,
+    CSVNotFound
+)
+
 
 router = Blueprint('generateBadges', __name__)
 
@@ -20,20 +26,15 @@ router = Blueprint('generateBadges', __name__)
 def generateBadges():
     try:
         data = request.get_json()['badge']
-    except Exception as e:
-        return jsonify(
-            Response(401).exceptWithMessage(
-                str(e),
-                'Could not find any JSON'))
+        uid = data['uid']
+    except Exception:
+        return ErrorResponse(JsonNotFound(uid).message, 422, {'Content-Type': 'application/json'})
 
     if not data['csv']:
-        return jsonify(
-            Response(401).generateMessage(
-                'No CSV filename found'))
+        return ErrorResponse(CSVNotFound(uid).message, 422, {'Content-Type': 'application/json'})
+
     if not data['image']:
-        return jsonify(
-            Response(401).generateMessage(
-                'No Image filename found'))
+        return ErrorResponse(ImageNotFound(uid).message, 422, {'Content-Type': 'application/json'})
 
     csv_name = data.get('csv')
     image_name = data.get('image')
