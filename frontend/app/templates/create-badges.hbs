@@ -51,6 +51,13 @@
     </div>
 </div>
 <button {{action "submitForm"}} class="ui fluid button">Create Badges</button>
-{{#each userError as |error|}}
+{{#if badgeGenerated}}
+<div class="ui floating positive message">
+    <div class="header">
+        Badge generated successfully
+    </div>
+    <p>Visit this <b><a href="{{backLink}}/static/badges/{{genBadge}}.pdf">link</a></b> to download badge</p>
+</div>
+{{/if}} {{#each userError as |error|}}
 <p>{{error.message}}</p>
 {{/each}}

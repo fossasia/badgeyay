@@ -1,11 +1,17 @@
-from flask import Blueprint, jsonify, request
 # from api.helpers.verifyToken import loginRequired
-from api.utils.response import Response
-from api.utils.svg_to_png import SVG2PNG
-from api.utils.merge_badges import MergeBadges
+import os
+
+from shutil import copyfile
+from api.config import config
+
+from flask import Blueprint, jsonify, request
+
 from api.models.badges import Badges
 from api.models.user import User
 from api.schemas.badges import BadgeSchema
+from api.utils.merge_badges import MergeBadges
+from api.utils.response import Response
+from api.utils.svg_to_png import SVG2PNG
 
 router = Blueprint('generateBadges', __name__)
 
@@ -42,5 +48,18 @@ def generateBadges():
     user_creator = User.getUser(user_id=uid)
     badge_created = Badges(image=image_name, csv=csv_name, text_color=text_color, badge_size='A3', creator=user_creator)
     badge_created.save_to_db()
+
+    badgeFolder = badge_created.image.split('.')[0]
+    badgePath = ''
+    destFile = ''
+    if config.ENV == 'LOCAL':
+        badgePath = os.getcwd() + '/static/temporary/' + badgeFolder
+        destFile = os.getcwd() + '/static/badges/' + badge_created.id + '.pdf'
+    else:
+        badgePath = os.getcwd() + '/api/static/temporary/' + badgeFolder
+        destFile = os.getcwd() + '/api/static/badges/' + badge_created.id + '.pdf'
+    if os.path.isdir(badgePath):
+        print(badgePath)
+        copyfile(badgePath + '/all-badges.pdf', destFile)
 
     return jsonify(BadgeSchema().dump(badge_created).data)
