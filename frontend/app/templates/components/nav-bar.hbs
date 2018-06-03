@@ -4,9 +4,19 @@
     {{/link-to}}
     <div class="right menu">
         {{#if session.isAuthenticated}}
-        <div class="right item ui button" style="text-transform: uppercase; font-weight: 400" {{action 'logOut'}}>Logout</div>
-        {{else}} {{#link-to 'login'}}
-        <div class="right item ui button" style="text-transform: uppercase; font-weight: 400; line-spacing: 0.5px; line-height: 30px">Login</div>
-        {{/link-to}} {{/if}}
+            {{#ui-dropdown class='large item' action='hide'}}
+                <div>Welcome</div><i class="dropdown icon"></i>
+                <div class="menu profile-dropdown-menu">
+                    <a class="item"><i class="clone outline icon"></i>My Badges</a>
+                    <a class="item"><i class="user outline icon"></i>Profile</a>
+                    <a class="item"><i class="cog icon"></i>Settings</a>
+                    <a class="item" {{action 'logOut'}}><i class="sign out alternate icon"></i>Logout</a>
+                </div>
+            {{/ui-dropdown}}
+        {{else}} 
+            {{#link-to 'login'}}
+                <div class="right item ui button" style="text-transform: uppercase; font-weight: 400; line-spacing: 0.5px; line-height: 30px">Login</div>
+            {{/link-to}} 
+        {{/if}}
     </div>
 </div>
