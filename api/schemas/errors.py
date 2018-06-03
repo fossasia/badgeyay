@@ -11,6 +11,14 @@ class BaseError(JSONAPIError, ValueError):
             self.detail = '{0} not found'.format(attr)
         if attr == 'operation':
             self.detail = 'Operation not successful'
+        elif attr == 'extension':
+            self.detail = 'No extension key received'
+        elif attr == 'manual_data':
+            self.detail = 'No Manual Data is specified'
+        elif attr == 'json':
+            self.detail = 'Unable to get JSON'
+        elif attr == 'pass':
+            self.detail = 'Wrong username and password combination'
         self.status = status
         super(BaseError, self).__init__(self.detail, self.pointer, self.status)
 
@@ -69,3 +77,27 @@ class OperationNotFound(BaseError):
 
     def __init__(self):
         super(OperationNotFound, self).__init__(attr='operation')
+
+
+class ExtensionNotFound(BaseError):
+
+    def __init__(self):
+        super(ExtensionNotFound, self).__init__(attr='extension')
+
+
+class ManualDataNotFound(BaseError):
+
+    def __init__(self):
+        super(ManualDataNotFound, self).__init__(attr='manual_data')
+
+
+class JsonNotFound(BaseError):
+
+    def __init__(self):
+        super(JsonNotFound, self).__init__(attr='json')
+
+
+class PasswordNotFound(BaseError):
+
+    def __init__(self):
+        super(PasswordNotFound, self).__init__(attr='pass')

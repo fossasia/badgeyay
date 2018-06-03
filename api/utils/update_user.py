@@ -16,7 +16,7 @@ def update_user(uid, password, photoURL, username):
             photoURL=photoURL
         )
     except Exception:
-        ErrorResponse(OperationNotFound(uid).message, 422, {'Content-Type': 'application/json'})
+        return ErrorResponse(OperationNotFound(uid).message, 422, {'Content-Type': 'application/json'})
 
     if user is not None:
         update = User.getUser(user_id=user.uid)
