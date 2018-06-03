@@ -3,7 +3,7 @@ import Component from '@ember/component';
 export default Component.extend({
   init() {
     // To be inflated from the backend data
-    this.host = 'http://localhost:5000/';
+    this.fingerPrint = window.ASSET_FINGERPRINT_HASH;
     return this._super(...arguments);
   },
   click() {

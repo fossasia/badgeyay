@@ -40,7 +40,10 @@ def generateBadges():
     text_color = data.get('font_color', '#ffffff')
     badge_size = data.get('badge_size', 'A3')
     svg2png = SVG2PNG()
-    svg2png.do_text_fill('static/badges/8BadgesOnA3.svg', text_color)
+    if config.ENV == 'PROD':
+        svg2png.do_text_fill(os.getcwd()+ '/api/static/badges/8BadgesOnA3.svg', text_color)
+    else:
+        svg2png.do_text_fill('static/badges/8BadgesOnA3.svg', text_color)
     merge_badges = MergeBadges(image_name, csv_name, badge_size)
     merge_badges.merge_pdfs()
 
