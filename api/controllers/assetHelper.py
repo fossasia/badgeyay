@@ -21,7 +21,7 @@ def getDefaultBackgrounds():
             obj['id'] = idx
             obj['type'] = 'def-image'
             obj['attributes'] = {
-                'name': file_,
+                'name': file_.split('.')[0],
             }
             resp.append(obj)
     resp_ = {'data': resp}
