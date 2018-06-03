@@ -1,8 +1,10 @@
 from flask import jsonify, Blueprint
 from api.models.user import User
 from api.models.badges import Badges
+from api.models.file import File
 from api.schemas.user import AllUsersSchema
 from api.schemas.badges import AllBadges
+from api.schemas.files import FileSchema
 
 
 router = Blueprint('admin', __name__)
@@ -22,3 +24,9 @@ def get_all_badges():
     schema = AllBadges(many=True)
     result = schema.dump(all_badges)
     return jsonify(result.data)
+
+
+@router.route('/get_all_files', methods=['GET'])
+def get_all_files():
+    file = File().query.all()
+    return jsonify(FileSchema(many=True).dump(file).data)
