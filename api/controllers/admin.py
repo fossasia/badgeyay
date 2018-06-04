@@ -4,7 +4,7 @@ from api.models.badges import Badges
 from api.models.file import File
 from api.schemas.user import AllUsersSchema
 from api.schemas.badges import AllBadges
-from api.schemas.files import FileSchema
+from api.schemas.file import FileSchema
 
 
 router = Blueprint('admin', __name__)
