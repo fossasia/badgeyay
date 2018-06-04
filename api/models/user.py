@@ -1,5 +1,4 @@
 from werkzeug.security import generate_password_hash
-# from api.utils.mail import sendMail
 from api.db import db
 
 
@@ -40,13 +39,3 @@ class User(db.Model):
             return cls.query.filter_by(id=user_id).first()
         if user_id is None:
             return cls.query.filter_by(username=username).first()
-
-
-# @db.event.listens_for(User, "after_insert")
-# def sendVerification(mapper, connection, target):
-#     msg = {}
-#     msg['subject'] = "Welcome to Badgeyay"
-#     msg['receipent'] = target.email
-#     msg['body'] = "It's good to have you onboard with Badgeyay. Welcome to the" \
-#         "FOSSASIA Family."
-#     sendMail(msg)
