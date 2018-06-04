@@ -1,7 +1,6 @@
 import base64
 import os
 from flask import Blueprint, request, jsonify
-from api.utils.response import Response
 from api.utils.errors import ErrorResponse
 from api.helpers.uploads import saveToImage, saveToCSV, saveAsCSV
 from api.models.file import File
@@ -33,7 +32,6 @@ def uploadImage():
     try:
         data = request.get_json()['imgFile']
         image = data['imgFile']
-        uid = data['uid']
     except Exception:
         return ErrorResponse(PayloadNotFound().message, 422, {'Content-Type': 'application/json'}).respond()
 
@@ -46,7 +44,7 @@ def uploadImage():
     uid = data['uid']
     fetch_user = User.getUser(user_id=uid)
     if fetch_user is None:
-        return ErrorResponse(UserNotFound().message, 422, {'Content-Type': 'application/json'}).respond()
+        return ErrorResponse(UserNotFound(uid).message, 422, {'Content-Type': 'application/json'}).respond()
 
     file_upload = File(filename=imageName, filetype='image', uploader=fetch_user)
     file_upload.save_to_db()
@@ -58,7 +56,6 @@ def fileUpload():
     try:
         data = request.json['csvFile']
         csv = data['csvFile']
-        uid = data.get('uid')
     except Exception:
         return ErrorResponse(PayloadNotFound().message, 422, {'Content-Type': 'application/json'}).respond()
 
@@ -76,7 +73,7 @@ def fileUpload():
     uid = data.get('uid')
     fetch_user = User.getUser(user_id=uid)
     if fetch_user is None:
-        return ErrorResponse(UserNotFound().message, 422, {'Content-Type': 'application/json'}).respond()
+        return ErrorResponse(UserNotFound(uid).message, 422, {'Content-Type': 'application/json'}).respond()
 
     file_upload = File(filename=csvName, filetype='csv', uploader=fetch_user)
     file_upload.save_to_db()
@@ -87,7 +84,6 @@ def fileUpload():
 def upload_manual_data():
     try:
         data = request.get_json()['data']['attributes']
-        uid = data.get('uid')
     except Exception:
         return ErrorResponse(PayloadNotFound().message, 422, {'Content-Type': 'application/json'}).respond()
 
@@ -98,7 +94,7 @@ def upload_manual_data():
     manual_data = data.get('manual_data')
     fetch_user = User.getUser(user_id=uid)
     if fetch_user is None:
-        return ErrorResponse(UserNotFound().message, 422, {'Content-Type': 'application/json'}).respond()
+        return ErrorResponse(UserNotFound(uid).message, 422, {'Content-Type': 'application/json'}).respond()
 
     try:
         csvName = saveAsCSV(csvData=manual_data)
@@ -121,7 +117,6 @@ def get_file():
 def upload_default():
     try:
         data = request.get_json()['data']['attributes']
-        uid = data.get('uid')
     except Exception:
         return ErrorResponse(PayloadNotFound().message, 422, {'Content-Type': 'application/json'}).respond()
 

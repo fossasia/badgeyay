@@ -18,9 +18,8 @@ router = Blueprint('resetUser', __name__)
 def reset_password():
     try:
         data = request.get_json()
-        uid = data['uid']
     except Exception:
-        return ErrorResponse(PayloadNotFound(uid).message, 422, {'Content-Type': 'application/json'})
+        return ErrorResponse(PayloadNotFound().message, 422, {'Content-Type': 'application/json'}).respond()
 
     if data and data['username']:
         user = User.getUser(data['username'])
@@ -33,4 +32,4 @@ def reset_password():
             Response(200).generateResetURL(
                 token.decode('UTF-8')))
     else:
-        return ErrorResponse(JsonNotFound(uid).message, 422, {'Content-Type': 'application/json'})
+        return ErrorResponse(JsonNotFound().message, 422, {'Content-Type': 'application/json'}).respond()

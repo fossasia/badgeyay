@@ -16,7 +16,7 @@ def update_user(uid, password, photoURL, username):
             photoURL=photoURL
         )
     except Exception:
-        return ErrorResponse(OperationNotFound(uid).message, 422, {'Content-Type': 'application/json'})
+        return ErrorResponse(OperationNotFound().message, 422, {'Content-Type': 'application/json'}).respond()
 
     if user is not None:
         update = User.getUser(user_id=user.uid)
@@ -27,9 +27,9 @@ def update_user(uid, password, photoURL, username):
         try:
             update.save_to_db()
         except Exception:
-            return ErrorResponse(OperationNotFound(uid).message, 422, {'Content-Type': 'application/json'})
+            return ErrorResponse(OperationNotFound().message, 422, {'Content-Type': 'application/json'}).respond()
 
         return make_response(jsonify('Change Successful'), user.uid)
 
     else:
-        return ErrorResponse(OperationNotFound(uid).message, 422, {'Content-Type': 'application/json'})
+        return ErrorResponse(OperationNotFound().message, 422, {'Content-Type': 'application/json'}).respond()

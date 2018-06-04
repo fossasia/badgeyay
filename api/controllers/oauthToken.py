@@ -19,9 +19,8 @@ router = Blueprint('oAuthToken', __name__)
 def oauth_token():
     try:
         data = request.get_json()
-        uid = data['uid']
     except Exception:
-        return ErrorResponse(PayloadNotFound(uid).message, 422, {'Content-Type': 'application/json'})
+        return ErrorResponse(PayloadNotFound().message, 422, {'Content-Type': 'application/json'}).respond()
 
     try:
         token = jwt.encode(
@@ -30,7 +29,7 @@ def oauth_token():
             app.config.get('SECRET_KEY'))
 
     except Exception:
-        return ErrorResponse(OperationNotFound(uid).message, 422, {'Content-Type': 'application/json'})
+        return ErrorResponse(OperationNotFound().message, 422, {'Content-Type': 'application/json'}).respond()
 
     return jsonify(
         Response(200).generateToken(
