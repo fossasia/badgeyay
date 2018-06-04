@@ -76,3 +76,22 @@ class ImageFileSchema(Schema):
         include_resource_linkage=True,
         type_='User'
     )
+
+
+class DefImageSchem(Schema):
+    class Meta:
+        type_ = 'def-image-uploads'
+        self_view = 'fileUploader.upload_default'
+        kwargs = {'id': '<id>'}
+
+    id = fields.Str(required=True, dump_only=True)
+    filename = fields.Str(required=True)
+    filetype = fields.Str(required=True)
+    user_id = fields.Relationship(
+        self_url='/api/upload/manual_data',
+        self_url_kwargs={'file_id': '<id>'},
+        related_url='/user/register',
+        related_url_kwargs={'id': '<id>'},
+        include_resource_linkage=True,
+        type_='User'
+    )

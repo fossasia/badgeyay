@@ -8,16 +8,14 @@ export default Component.extend({
   },
 
   input(defFontSize) {
-    console.log('DefFontSize', this.defFontSize);
+    this.get('sendDefSize')(this.defFontSize);
   },
 
   mouseUp() {
-    console.log('Mouse up');
     this.set('textZoom', false);
   },
 
   mouseDown() {
-    console.log('Mouse down');
     this.set('textZoom', true);
   }
 });
