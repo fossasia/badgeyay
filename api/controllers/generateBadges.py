@@ -26,12 +26,11 @@ router = Blueprint('generateBadges', __name__)
 def generateBadges():
     try:
         data = request.get_json()['badge']
-        uid = data['uid']
     except Exception:
-        return ErrorResponse(JsonNotFound(uid).message, 422, {'Content-Type': 'application/json'})
+        return ErrorResponse(JsonNotFound().message, 422, {'Content-Type': 'application/json'}).respond()
 
     if not data['csv']:
-        return ErrorResponse(CSVNotFound(uid).message, 422, {'Content-Type': 'application/json'})
+        return ErrorResponse(CSVNotFound().message, 422, {'Content-Type': 'application/json'}).respond()
 
     if not data['image']:
         return ErrorResponse(ImageNotFound().message, 422, {'Content-Type': 'application/json'}).respond()

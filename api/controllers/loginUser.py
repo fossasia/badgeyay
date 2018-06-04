@@ -23,17 +23,17 @@ router = Blueprint('loginUser', __name__)
 def login():
     try:
         data = request.get_json()
-        uid = data['uid']
     except Exception:
-        return ErrorResponse(JsonNotFound(uid).message, 422, {'Content-Type': 'application/json'})
+        return ErrorResponse(JsonNotFound().message, 422, {'Content-Type': 'application/json'}).respond()
 
     if 'name' in data.keys():
         user = User.getUser(username=data['name'])
+        uid = data['uid']
         if not user:
-            return ErrorResponse(UserNotFound(uid).message, 422, {'Content-Type': 'application/json'})
+            return ErrorResponse(UserNotFound(uid).message, 422, {'Content-Type': 'application/json'}).respond()
 
         if not verifyPassword(user, data['password']):
-            return ErrorResponse(PasswordNotFound(uid).message, 422, {'Content-Type': 'application/json'})
+            return ErrorResponse(PasswordNotFound().message, 422, {'Content-Type': 'application/json'}).respond()
 
         token = jwt.encode(
             {'user': user.username,
@@ -44,7 +44,7 @@ def login():
             Response(200).generateToken(
                 token.decode('UTF-8')))
 
-    return ErrorResponse(OperationNotFound(uid).message, 422, {'Content-Type': 'application/json'})
+    return ErrorResponse(OperationNotFound().message, 422, {'Content-Type': 'application/json'}).respond()
 
 
 @router.route('/get_user', methods=['GET'])
