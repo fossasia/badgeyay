@@ -78,8 +78,13 @@ export default Controller.extend({
             _this.set('userError', userErrors);
           }
         });
+      } else if (_this.csvEnable) {
+        if (_this.csvFile !== undefined && _this.csvFile !== '') {
+          badgeData.csv = _this.csvFile;
+          _this.send('sendDefaultImg', badgeData);
+        }
       } else {
-        _this.send('sendDefaultImg', badgeData);
+        // No Input Source specified Error
       }
     },
 
