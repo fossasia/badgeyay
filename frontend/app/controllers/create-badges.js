@@ -7,6 +7,7 @@ import { inject as service } from '@ember/service';
 
 export default Controller.extend({
   routing        : service('-routing'),
+  notify         : service('notify'),
   defColor       : '',
   defFontColor   : '',
   defFontSize    : '',
@@ -72,6 +73,7 @@ export default Controller.extend({
           _this.set('csvFile', record.filename);
           badgeData.csv = _this.csvFile;
           _this.send('sendDefaultImg', badgeData);
+          _this.get('notify').success('Text saved Successfully');
         }).catch(err => {
           let userErrors = textEntry.get('errors.user');
           if (userErrors !== undefined) {
@@ -119,6 +121,7 @@ export default Controller.extend({
         .then(record => {
           _this.set('badgeGenerated', true);
           _this.set('genBadge', record.id);
+          _this.get('notify').success('Badge generated Successfully');
         })
         .catch(err => {
           console.error(err.message);
@@ -143,6 +146,7 @@ export default Controller.extend({
       csv_.save()
         .then(record => {
           _this.set('csvFile', record.filename);
+          _this.get('notify').success('CSV uploaded Successfully');
         })
         .catch(err => {
           let userErrors = csv_.get('errors.user');
@@ -182,6 +186,7 @@ export default Controller.extend({
       image_.save()
         .then(record => {
           _this.set('custImgFile', record.filename);
+          _this.get('notify').success('Image uploaded Successfully');
         })
         .catch(err => {
           let userErrors = image_.get('errors.user');
