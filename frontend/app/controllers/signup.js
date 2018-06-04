@@ -4,6 +4,7 @@ import { inject as service } from '@ember/service';
 
 export default Controller.extend({
   routing : service('-routing'),
+  notify  : service('notify'),
   actions : {
     signUp(email, username, password) {
       const _this = this;
@@ -15,9 +16,11 @@ export default Controller.extend({
       user_.save()
         .then(record => {
           _this.transitionToRoute('/');
+          _this.get('notify').success('Sign Up Successful');
         })
         .catch(err => {
           console.log(err);
+          _this.get('notify').error('Sign Up Failed ! Please try again');
         });
     }
   }

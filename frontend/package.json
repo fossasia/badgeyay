@@ -39,6 +39,7 @@
     "ember-export-application-global": "^2.0.0",
     "ember-href-to": "^1.14.0",
     "ember-load-initializers": "^1.1.0",
+    "ember-notify": "^5.2.1",
     "ember-resolver": "^4.5.5",
     "ember-source": "~3.1.2",
     "ember-truth-helpers": "^2.0.0",

@@ -5,15 +5,16 @@ import Controller from '@ember/controller';
 const { inject } = Ember;
 
 export default Controller.extend({
-  session: inject.service(),
+  session : inject.service(),
+  notify  : inject.service('notify'),
   beforeModel() {
     return this.get('session').fetch().catch(function() {});
   },
   actions: {
     logOut() {
-      const that = that;
       this.get('session').close();
-      that.transitionToRoute('/');
+      this.transitionToRoute('/');
+      this.get('notify').warning('Log Out Successful');
     }
   }
 });
