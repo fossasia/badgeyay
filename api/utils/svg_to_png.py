@@ -1,5 +1,8 @@
-from defusedxml.lxml import _etree as etree
 import os
+import uuid
+from defusedxml.lxml import _etree as etree
+from defusedxml.lxml import parse
+from cairosvg import svg2png
 from flask import current_app as app
 
 
@@ -42,3 +45,29 @@ class SVG2PNG:
                 t.set("style", text_style_detail)
         etree.ElementTree(element).write(filename, pretty_print=True)
         print("Text Fill saved!")
+
+    def do_svg2png(self, opacity, fill):
+        """
+        Module to convert svg to png
+        :param `opacity` - Opacity for the output
+        :param `fill` -  Background fill for the output
+        """
+        filename = os.path.join(self.APP_ROOT, 'svg', 'user_defined.svg')
+        tree = parse(open(filename, 'r'))
+        element = tree.getroot()
+        # changing style using XPath.
+        path = element.xpath('//*[@id="rect4504"]')[0]
+        style_detail = path.get("style")
+        style_detail = style_detail.split(";")
+        style_detail[0] = "opacity:" + str(opacity)
+        style_detail[1] = "fill:" + str(fill)
+        style_detail = ';'.join(style_detail)
+        path.set("style", style_detail)
+        # changing text using XPath.
+        path = element.xpath('//*[@id="tspan932"]')[0]
+        # Saving in the original XML tree
+        etree.ElementTree(element).write(filename, pretty_print=True)
+        print("done")
+        png_name = os.path.join(self.APP_ROOT, 'static', 'uploads', 'image', str(uuid.uuid4())) + ".png"
+        svg2png(url=filename, write_to=png_name)
+        return png_name
