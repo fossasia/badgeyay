@@ -39,12 +39,14 @@ def generateBadges():
     image_name = data.get('image')
     text_color = data.get('font_color', '#ffffff')
     badge_size = data.get('badge_size', 'A3')
+    font_size = data.get('font_size') or None
+    font_choice = data.get('font_type') or None
     svg2png = SVG2PNG()
     if config.ENV == 'PROD':
         svg2png.do_text_fill(os.getcwd() + '/api/static/badges/8BadgesOnA3.svg', text_color)
     else:
         svg2png.do_text_fill('static/badges/8BadgesOnA3.svg', text_color)
-    merge_badges = MergeBadges(image_name, csv_name, badge_size)
+    merge_badges = MergeBadges(image_name, csv_name, badge_size, font_size, font_choice)
     merge_badges.merge_pdfs()
 
     uid = data.get('uid')

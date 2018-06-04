@@ -8,7 +8,7 @@ from defusedxml.lxml import _etree as etree
 
 
 class GenerateBadges:
-    def __init__(self, image_name, csv_name, badge_size):
+    def __init__(self, image_name, csv_name, badge_size, font_size, font_choice):
         self.APP_ROOT = app.config.get('BASE_DIR')
         self.image_name = image_name
         self.image = os.path.join(app.config.get('BASE_DIR'), 'static', 'uploads', 'image', image_name)
@@ -16,6 +16,8 @@ class GenerateBadges:
         self.paper_size = {'A3': ['297mm', '420mm'], 'A4': ['210mm', '297mm'], 'A5': ['148mm', '210mm'], 'A6': ['105mm', '148mm']}
         self.badge_size = badge_size
         self.wrap = True
+        self.font_size = font_size
+        self.font_choice = font_choice
         self.NUMBER_OF_BADGES_PER_PAGE = 8
         with open(os.path.join(self.APP_ROOT, 'static/badges/8BadgesOnA3.svg'), encoding="UTF-8") as f:
             self.CONTENT = f.read()
@@ -47,6 +49,13 @@ class GenerateBadges:
     def generate_badges(self, rows, index):
         target = os.path.join(self.folder, 'badges_{}.svg'.format(index))
         content = self.CONTENT
+        if self.font_choice:
+            content = content.replace("font-family:sans-serif", "font-family:" + self.font_choice)
+            content = content.replace("inkscape-font-specification:sans-serif", "inkscape-font-specification:" + self.font_choice)
+            content = content.replace("font-family:ubuntu", "font-family:" + self.font_choice)
+            content = content.replace("inkscape-font-specification:ubuntu", "inkscape-font-specification:" + self.font_choice)
+        if self.font_size:
+            content = content.replace("font-size:31.25px", "font-size:" + str(self.font_size) + "px")
         for i, row in enumerate(rows):
             row = [entry for entry in row if not entry.isspace()]
             if len(row) == 0:
