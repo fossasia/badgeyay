@@ -10,6 +10,7 @@ class Badges(db.Model):
     csv = db.Column(db.String(100), nullable=False)
     text_color = db.Column(db.String(100), nullable=False)
     badge_size = db.Column(db.String(100), nullable=False)
+    download_link = db.Column(db.String)
     user_id = db.Column(db.String(100), db.ForeignKey('User.id', ondelete='CASCADE'))
 
     def save_to_db(self):
