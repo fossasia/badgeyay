@@ -9,7 +9,7 @@ from flask import Blueprint, jsonify, request
 from api.utils.errors import ErrorResponse
 from api.models.badges import Badges
 from api.models.user import User
-from api.schemas.badges import BadgeSchema
+from api.schemas.badges import BadgeSchema, UserBadges
 from api.utils.merge_badges import MergeBadges
 from api.utils.svg_to_png import SVG2PNG
 from api.schemas.errors import (
@@ -68,3 +68,11 @@ def generateBadges():
         copyfile(badgePath + '/all-badges.pdf', destFile)
 
     return jsonify(BadgeSchema().dump(badge_created).data)
+
+
+@router.route('/get_badges', methods=['GET'])
+def get_badges():
+    input_data = request.args
+    user = User.getUser(user_id=input_data.get('uid'))
+    badges = Badges().query.filter_by(creator=user)
+    return jsonify(UserBadges(many=True).dump(badges).data)
