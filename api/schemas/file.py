@@ -96,6 +96,7 @@ class DefImageSchem(Schema):
         type_='User'
     )
 
+
 class ColorImageSchema(Schema):
     class Meta:
         type_ = 'bg-color'
