@@ -15,7 +15,8 @@ from api.utils.svg_to_png import SVG2PNG
 from api.schemas.errors import (
     ImageNotFound,
     JsonNotFound,
-    CSVNotFound
+    CSVNotFound,
+    BadgeNotFound
 )
 
 
@@ -65,6 +66,9 @@ def generateBadges():
         destFile = os.getcwd() + '/api/static/badges/' + badge_created.id + '.pdf'
     if os.path.isdir(badgePath):
         print(badgePath)
-        copyfile(badgePath + '/all-badges.pdf', destFile)
+        try:
+            copyfile(badgePath + '/all-badges.pdf', destFile)
+        except Exception:
+            return ErrorResponse(BadgeNotFound(uid).message, 422, {'Content-Type': 'application/json'}).respond()
 
     return jsonify(BadgeSchema().dump(badge_created).data)
