@@ -14,7 +14,6 @@ def saveToImage(imageFile=None, extension='.png'):
 
     if not os.path.isdir(imageDirectory):
         os.makedirs(imageDirectory)
-
     imageFile = imageFile.replace('data:image/png;base64,', '')
     imagePath = os.path.join(imageDirectory, imageName)
     image = open(imagePath, "wb")

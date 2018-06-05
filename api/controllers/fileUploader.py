@@ -1,5 +1,6 @@
 import base64
 import os
+from api.utils.svg_to_png import SVG2PNG
 from flask import Blueprint, request, jsonify
 from api.utils.errors import ErrorResponse
 from api.helpers.uploads import saveToImage, saveToCSV, saveAsCSV
@@ -10,7 +11,8 @@ from api.schemas.file import (
     ManualFileSchema,
     CSVUploadSchema,
     ImageFileSchema,
-    DefImageSchem
+    DefImageSchem,
+    ColorImageSchema
 )
 from flask import current_app as app
 from api.schemas.errors import (
@@ -136,3 +138,34 @@ def upload_default():
     file_upload = File(filename=imageName, filetype='image', uploader=fetch_user)
     file_upload.save_to_db()
     return jsonify(DefImageSchem().dump(file_upload).data)
+
+
+@router.route('/background_color', methods=['POST'])
+def background_color():
+    try:
+        data = request.get_json()['data']['attributes']
+        bg_color = data['bg_color']
+    except Exception:
+        return ErrorResponse(PayloadNotFound().message, 422, {'Content-Type': 'application/json'}).respond()
+
+    svg2png = SVG2PNG()
+
+    bg_color = '#' + str(bg_color)
+    user_defined_path = svg2png.do_svg2png(1, bg_color)
+    with open(user_defined_path, "rb") as image_file:
+        image_data = base64.b64encode(image_file.read())
+        os.remove(user_defined_path)
+
+    try:
+        imageName = saveToImage(imageFile=image_data.decode('utf-8'), extension=".png")
+    except Exception:
+        return ErrorResponse(ImageNotFound().message, 422, {'Content-Type': 'application/json'}).respond()
+
+    uid = data['uid']
+    fetch_user = User.getUser(user_id=uid)
+    if fetch_user is None:
+        return ErrorResponse(UserNotFound(uid).message, 422, {'Content-Type': 'application/json'}).respond()
+
+    file_upload = File(filename=imageName, filetype='image', uploader=fetch_user)
+    file_upload.save_to_db()
+    return jsonify(ColorImageSchema().dump(file_upload).data)

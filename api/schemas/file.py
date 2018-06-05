@@ -95,3 +95,21 @@ class DefImageSchem(Schema):
         include_resource_linkage=True,
         type_='User'
     )
+
+class ColorImageSchema(Schema):
+    class Meta:
+        type_ = 'bg-color'
+        self_view = 'fileUploader.background_color'
+        kwargs = {'id': '<id>'}
+
+    id = fields.Str(required=True, dump_only=True)
+    filename = fields.Str(required=True)
+    filetype = fields.Str(required=True)
+    user_id = fields.Relationship(
+        self_url='/api/upload/background_color',
+        self_url_kwargs={'file_id': '<id>'},
+        related_url='/user/register',
+        related_url_kwargs={'id': '<id>'},
+        include_resource_linkage=True,
+        type_='User'
+    )
