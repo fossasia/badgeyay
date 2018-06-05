@@ -109,8 +109,29 @@ export default Controller.extend({
               _this.set('userError', userErrors);
             }
           });
+      } else if (_this.custImage) {
+        if (_this.custImgFile !== undefined && _this.custImgFile !== '') {
+          badgeData.image = _this.custImgFile;
+          _this.send('sendBadge', badgeData);
+        }
+      } else if (_this.colorImage && _this.defColor !== undefined && _this.defColor !== '') {
+        let imageRecord = _this.get('store').createRecord('bg-color', {
+          uid      : _this.uid,
+          bg_color : _this.defColor
+        });
+        imageRecord.save()
+          .then(record => {
+            badgeData.image = record.filename;
+            _this.send('sendBadge', badgeData);
+          })
+          .catch(error => {
+            let userErrors = imageRecord.get('errors.user');
+            if (userErrors !== undefined) {
+              _this.set('userError', userErrors);
+            }
+          });
       } else {
-        _this.send('sendBadge', badgeData);
+        // Inflate error for No Image source.
       }
     },
 
