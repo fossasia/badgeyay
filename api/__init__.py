@@ -20,6 +20,7 @@ def create_app():
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
     app.config['SECRET_KEY'] = config.POSTGRES['secret']
     app.config['DEBUG'] = config.DEBUG
+    app.config.from_object('api.config.swaggerConfig.SwaggerConfig')
     CORS(app, resources={r"*": {"origins": "*"}})
 
     return app

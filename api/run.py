@@ -15,6 +15,7 @@ from api.controllers import (
     staticHelper,
     admin
 )
+from flasgger import Swagger
 
 
 app = create_app()
@@ -35,6 +36,7 @@ app.register_blueprint(resetUser.router, url_prefix='/reset')
 app.register_blueprint(oauthToken.router, url_prefix='/api')
 app.register_blueprint(staticHelper.router, url_prefix='/static')
 app.register_blueprint(admin.router, url_prefix='/admin')
+swag = Swagger(app)
 
 
 @app.before_first_request
