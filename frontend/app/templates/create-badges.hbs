@@ -26,6 +26,22 @@
 </div>
 <div class="ui raised segment">
     <div class="ui form width-container">
+        <p><b>Select from one of the Badge Sizes</b></p>
+        {{#ui-accordion class="styled fluid"}}
+        <div class="title">
+            <i class="plus icon"></i>
+            Badge Size
+        </div>
+        <div class="content">
+            <div class="center aligned">
+                {{ badge-component/badge-size sendBadgeSize=(action 'mutateBadgeSize') }}
+            </div>
+        </div>
+        {{/ui-accordion}}
+    </div>
+</div>
+<div class="ui raised segment">
+    <div class="ui form width-container">
         <p><b>Select from one of the background sources</b></p>
         {{#ui-accordion class="styled fluid"}}
         <div class="title" onclick={{action 'defImageClicked'}}>

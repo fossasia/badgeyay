@@ -44,6 +44,10 @@ export default Controller.extend({
         badge_size : 'A3'
       };
 
+      if (_this.defBadgeSize !== '' && _this.defBadgeSize !== undefined) {
+        badgeData.badge_size = _this.defBadgeSize;
+      }
+
       if (_this.csvEnable) {
         badgeData.csv = _this.csvFile;
       }
@@ -227,6 +231,10 @@ export default Controller.extend({
 
     mutateFontSize(value) {
       this.set('defFontSize', value);
+    },
+
+    mutateBadgeSize(value) {
+      this.set('defBadgeSize', value);
     },
 
     csvClicked() {
