@@ -49,7 +49,7 @@ class AllBadges(Schema):
 
 class UserBadges(Schema):
     class Meta:
-        type_ = 'user-badges'
+        type_ = 'my-badges'
         self_view = 'generateBadges.get_badges'
         kwargs = {'id': '<id>'}
 
@@ -59,6 +59,7 @@ class UserBadges(Schema):
     badge_id = fields.Str(required=True)
     text_color = fields.Str(required=True)
     badge_size = fields.Str(required=True)
+    download_link = fields.Str(required=True)
     user_id = fields.Relationship(
         self_url='/api/upload/get_file',
         self_url_kwargs={'file_id': '<id>'},

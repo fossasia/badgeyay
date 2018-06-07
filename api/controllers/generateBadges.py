@@ -1,11 +1,11 @@
 # from api.helpers.verifyToken import loginRequired
 import os
 
-from shutil import copyfile
 from api.config import config
 
 from flask import Blueprint, jsonify, request
 
+from api.db import db
 from api.utils.errors import ErrorResponse
 from api.models.badges import Badges
 from api.models.user import User
@@ -16,7 +16,6 @@ from api.schemas.errors import (
     ImageNotFound,
     JsonNotFound,
     CSVNotFound,
-    BadgeNotFound
 )
 from api.utils.firebaseUploader import fileUploader
 
@@ -39,7 +38,7 @@ def generateBadges():
 
     csv_name = data.get('csv')
     image_name = data.get('image')
-    text_color = data.get('font_color', '#ffffff')
+    text_color = data.get('font_color') or '#ffffff'
     badge_size = data.get('badge_size', 'A3')
     font_size = data.get('font_size') or None
     font_choice = data.get('font_type') or None
@@ -58,16 +57,15 @@ def generateBadges():
 
     badgeFolder = badge_created.image.split('.')[0]
     badgePath = ''
-    destFile = ''
     if config.ENV == 'LOCAL':
         badgePath = os.getcwd() + '/static/temporary/' + badgeFolder
-        destFile = os.getcwd() + '/static/badges/' + badge_created.id + '.pdf'
     else:
         badgePath = os.getcwd() + '/api/static/temporary/' + badgeFolder
-        destFile = os.getcwd() + '/api/static/badges/' + badge_created.id + '.pdf'
     if os.path.isdir(badgePath):
         link = fileUploader(badgePath + '/all-badges.pdf', badge_created.id)
         badge_created.download_link = link
+
+    db.session.commit()
 
     return jsonify(BadgeSchema().dump(badge_created).data)
 
