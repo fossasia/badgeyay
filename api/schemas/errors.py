@@ -101,3 +101,9 @@ class PasswordNotFound(BaseError):
 
     def __init__(self):
         super(PasswordNotFound, self).__init__(attr='pass')
+
+
+class PNGNotFound(BaseError):
+
+    def __init__(self):
+        super(PNGNotFound, self).__init__(attr='png')

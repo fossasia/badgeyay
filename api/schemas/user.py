@@ -35,3 +35,14 @@ class OAuthUserSchema(Schema):
     username = fields.Str(required=True)
     email = fields.Str(required=True)
     photoURL = fields.Str(required=True)
+
+
+class UpdateUserSchema(Schema):
+    class Meta:
+        type_ = 'users'
+        kwargs = {'id': '<id>'}
+
+    id = fields.Str(required=True, dump_only=True)
+    username = fields.Str(required=True)
+    email = fields.Str(required=True)
+    photoURL = fields.Str(required=True)

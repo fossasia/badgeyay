@@ -1,9 +1,9 @@
 from firebase_admin import storage
 
 
-def fileUploader(file_path, file_name):
+def fileUploader(file_path, blob_path):
     bucket = storage.bucket()
-    fileUploaderBlob = bucket.blob('badges/' + file_name + '.pdf')
+    fileUploaderBlob = bucket.blob(blob_path)
     try:
         with open(file_path, 'rb') as file_:
             fileUploaderBlob.upload_from_file(file_)

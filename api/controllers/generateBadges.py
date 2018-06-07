@@ -1,7 +1,6 @@
 # from api.helpers.verifyToken import loginRequired
 import os
 
-from shutil import copyfile
 from api.config import config
 
 from flask import Blueprint, jsonify, request
@@ -15,8 +14,7 @@ from api.utils.svg_to_png import SVG2PNG
 from api.schemas.errors import (
     ImageNotFound,
     JsonNotFound,
-    CSVNotFound,
-    BadgeNotFound
+    CSVNotFound
 )
 from api.utils.firebaseUploader import fileUploader
 
@@ -58,15 +56,12 @@ def generateBadges():
 
     badgeFolder = badge_created.image.split('.')[0]
     badgePath = ''
-    destFile = ''
     if config.ENV == 'LOCAL':
         badgePath = os.getcwd() + '/static/temporary/' + badgeFolder
-        destFile = os.getcwd() + '/static/badges/' + badge_created.id + '.pdf'
     else:
         badgePath = os.getcwd() + '/api/static/temporary/' + badgeFolder
-        destFile = os.getcwd() + '/api/static/badges/' + badge_created.id + '.pdf'
     if os.path.isdir(badgePath):
-        link = fileUploader(badgePath + '/all-badges.pdf', badge_created.id)
+        link = fileUploader(badgePath + '/all-badges.pdf', 'badges/' + badge_created.id + '.pdf')
         badge_created.download_link = link
 
     return jsonify(BadgeSchema().dump(badge_created).data)
