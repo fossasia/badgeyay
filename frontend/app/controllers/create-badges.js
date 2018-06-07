@@ -119,6 +119,7 @@ export default Controller.extend({
           _this.send('sendBadge', badgeData);
         }
       } else if (_this.colorImage && _this.defColor !== undefined && _this.defColor !== '') {
+        console.log(_this.defColor);
         let imageRecord = _this.get('store').createRecord('bg-color', {
           uid      : _this.uid,
           bg_color : _this.defColor
@@ -145,7 +146,7 @@ export default Controller.extend({
       badgeRecord.save()
         .then(record => {
           _this.set('badgeGenerated', true);
-          _this.set('genBadge', record.id);
+          _this.set('genBadge', record);
           _this.get('notify').success('Badge generated Successfully');
         })
         .catch(err => {

@@ -18,6 +18,7 @@ from api.schemas.errors import (
     CSVNotFound,
     BadgeNotFound
 )
+from api.utils.firebaseUploader import fileUploader
 
 
 router = Blueprint('generateBadges', __name__)
@@ -65,11 +66,8 @@ def generateBadges():
         badgePath = os.getcwd() + '/api/static/temporary/' + badgeFolder
         destFile = os.getcwd() + '/api/static/badges/' + badge_created.id + '.pdf'
     if os.path.isdir(badgePath):
-        print(badgePath)
-        try:
-            copyfile(badgePath + '/all-badges.pdf', destFile)
-        except Exception:
-            return ErrorResponse(BadgeNotFound(uid).message, 422, {'Content-Type': 'application/json'}).respond()
+        link = fileUploader(badgePath + '/all-badges.pdf', badge_created.id)
+        badge_created.download_link = link
 
     return jsonify(BadgeSchema().dump(badge_created).data)
 
