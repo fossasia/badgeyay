@@ -2,9 +2,9 @@ import DS from 'ember-data';
 import ENV from '../config/environment';
 
 const { APP } = ENV;
-const { RESTAdapter } = DS;
+const { JSONAPIAdapter } = DS;
 
-export default RESTAdapter.extend({
+export default JSONAPIAdapter.extend({
   host        : APP.backLink,
   pathForType : () => {
     return 'api/upload/upload_default';
