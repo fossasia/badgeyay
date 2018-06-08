@@ -19,6 +19,8 @@ class BaseError(JSONAPIError, ValueError):
             self.detail = 'Unable to get JSON'
         elif attr == 'pass':
             self.detail = 'Wrong username and password combination'
+        elif attr == 'not_allowed':
+            self.detail = 'Usage is not allowed anymore'
         self.status = status
         super(BaseError, self).__init__(self.detail, self.pointer, self.status)
 
@@ -107,3 +109,9 @@ class PNGNotFound(BaseError):
 
     def __init__(self):
         super(PNGNotFound, self).__init__(attr='png')
+
+
+class UsageNotAllowed(BaseError):
+
+    def __init__(self):
+        super(UsageNotAllowed, self).__init__(attr='not_allowed')

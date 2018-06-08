@@ -14,7 +14,8 @@ from api.utils.svg_to_png import SVG2PNG
 from api.schemas.errors import (
     ImageNotFound,
     JsonNotFound,
-    CSVNotFound
+    CSVNotFound,
+    UsageNotAllowed
 )
 from api.utils.firebaseUploader import fileUploader
 
@@ -51,6 +52,11 @@ def generateBadges():
 
     uid = data.get('uid')
     user_creator = User.getUser(user_id=uid)
+
+    if user_creator.allowed_usage == 0:
+        return ErrorResponse(UsageNotAllowed().message, 403, {'Content-Type': 'application/json'}).respond()
+
+    user_creator.allowed_usage = user_creator.allowed_usage - 1
     badge_created = Badges(image=image_name, csv=csv_name, text_color=text_color, badge_size='A3', creator=user_creator)
     badge_created.save_to_db()
 
