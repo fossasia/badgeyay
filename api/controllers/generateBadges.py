@@ -39,8 +39,8 @@ def generateBadges():
 
     csv_name = data.get('csv')
     image_name = data.get('image')
-    text_color = data.get('font_color', '#ffffff')
-    badge_size = data.get('badge_size', 'A3')
+    text_color = data.get('font_color') or '#ffffff'
+    badge_size = data.get('badge_size') or 'A3'
     font_size = data.get('font_size') or None
     font_choice = data.get('font_type') or None
     svg2png = SVG2PNG()
