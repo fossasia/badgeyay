@@ -33,3 +33,4 @@ def update_user(uid, password, photoURL, username):
 
     else:
         return ErrorResponse(OperationNotFound().message, 422, {'Content-Type': 'application/json'}).respond()
+

@@ -15,7 +15,7 @@ from api.utils.svg_to_png import SVG2PNG
 from api.schemas.errors import (
     ImageNotFound,
     JsonNotFound,
-    CSVNotFound,
+    CSVNotFound
 )
 from api.utils.firebaseUploader import fileUploader
 
@@ -39,7 +39,7 @@ def generateBadges():
     csv_name = data.get('csv')
     image_name = data.get('image')
     text_color = data.get('font_color') or '#ffffff'
-    badge_size = data.get('badge_size', 'A3')
+    badge_size = data.get('badge_size') or 'A3'
     font_size = data.get('font_size') or None
     font_choice = data.get('font_type') or None
     svg2png = SVG2PNG()
@@ -62,7 +62,7 @@ def generateBadges():
     else:
         badgePath = os.getcwd() + '/api/static/temporary/' + badgeFolder
     if os.path.isdir(badgePath):
-        link = fileUploader(badgePath + '/all-badges.pdf', badge_created.id)
+        link = fileUploader(badgePath + '/all-badges.pdf', 'badges/' + badge_created.id + '.pdf')
         badge_created.download_link = link
 
     db.session.commit()

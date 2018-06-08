@@ -17,6 +17,7 @@ router.map(function() {
   this.route('my-badges');
   this.route('not-found');
   this.route('not-found-catch', { path: '/*path' });
+  this.route('my-profile');
 });
 
 export default router;
