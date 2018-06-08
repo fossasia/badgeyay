@@ -11,3 +11,12 @@ def fileUploader(file_path, blob_path):
         print(e)
     fileUploaderBlob.make_public()
     return fileUploaderBlob.public_url
+
+
+def deleteFile(blob_path):
+    bucket = storage.bucket()
+    fileDeleteBlob = bucket.blob(blob_path)
+    try:
+        fileDeleteBlob.delete()
+    except Exception as e:
+        print(e)

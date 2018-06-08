@@ -23,6 +23,15 @@ class Badges(db.Model):
             db.session.flush()
             print(e)
 
+    def delete_from_db(self):
+        try:
+            db.session.delete(self)
+            db.session.commit()
+        except Exception as e:
+            db.session.rollback()
+            db.session.flush()
+            print(e)
+
     @classmethod
     def getBadge(cls, badge_id):
-        return cls.query.filter_by(badge_id=badge_id).first()
+        return cls.query.filter_by(id=badge_id).first()
