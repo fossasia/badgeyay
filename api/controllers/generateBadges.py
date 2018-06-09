@@ -9,7 +9,7 @@ from api.db import db
 from api.utils.errors import ErrorResponse
 from api.models.badges import Badges
 from api.models.user import User
-from api.schemas.badges import BadgeSchema, UserBadges
+from api.schemas.badges import BadgeSchema, UserBadges, DeletedBadges
 from api.utils.merge_badges import MergeBadges
 from api.utils.svg_to_png import SVG2PNG
 from api.schemas.errors import (
@@ -18,7 +18,7 @@ from api.schemas.errors import (
     CSVNotFound,
     UsageNotAllowed
 )
-from api.utils.firebaseUploader import fileUploader
+from api.utils.firebaseUploader import fileUploader, deleteFile
 
 
 router = Blueprint('generateBadges', __name__)
@@ -82,3 +82,15 @@ def get_badges():
     user = User.getUser(user_id=input_data.get('uid'))
     badges = Badges().query.filter_by(creator=user)
     return jsonify(UserBadges(many=True).dump(badges).data)
+
+
+@router.route('/generate_badges/<badgeId>', methods=['DELETE'])
+def delete_badge(badgeId):
+    badge = Badges.getBadge(badgeId)
+    temp_badge = badge
+    if not badge:
+        print('No badge found with the specified ID')
+
+    deleteFile('badges/' + badgeId + '.pdf')
+    badge.delete_from_db()
+    return jsonify(DeletedBadges().dump(temp_badge).data)
