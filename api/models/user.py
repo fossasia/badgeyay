@@ -10,12 +10,14 @@ class User(db.Model):
     password = db.Column(db.String(100))
     email = db.Column(db.String(100))
     photoURL = db.Column(db.String())
+    allowed_usage = db.Column(db.Integer)
     files = db.relationship('File', backref='uploader')
     badges = db.relationship('Badges', backref='creator')
 
     def __init__(self, id_, username, password, email, photoURL=None):
         self.id = id_
         self.username = username
+        self.allowed_usage = 200
         if password:
             self.password = generate_password_hash(password)
         self.email = email
