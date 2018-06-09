@@ -4,5 +4,5 @@ ignore = W191
 exclude =
     .git,
     __pycache__,
-    backend/migrations,
+    api/migrations,
 	site-packages

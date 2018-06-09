@@ -90,4 +90,3 @@ class DeletedBadges(Schema):
         include_resource_linkage=True,
         type_='User'
     )
-
