@@ -1,0 +1,47 @@
+<div class="ui hidden divider"></div>
+
+{{#each model as |badge|}}
+
+  <div class="ui card">
+    <div class="content">
+      <div class="header">Badge</div>
+    </div>
+    <div class="content">
+      <h4 class="ui sub header">Badge Details</h4>
+      <div class="ui small feed">
+        <div class="event">
+          <div class="content">
+            <div class="summary">
+               Image : {{badge.image}}
+            </div>
+          </div>
+        </div>
+        <div class="event">
+          <div class="content">
+            <div class="summary">
+               CSV : {{badge.csv}}
+            </div>
+          </div>
+        </div>
+        <div class="event">
+          <div class="content">
+            <div class="summary">
+               Badge Size : {{badge.badge_size}}
+            </div>
+          </div>
+        </div>
+        <div class="event">
+          <div class="content">
+            <div class="summary">
+               Text Color : {{badge.text_color}}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="extra content">
+      <a href="{{badge.download_link}}" class="ui button">Download Badge</a>
+    </div>
+  </div>
+
+{{/each}}

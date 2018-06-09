@@ -5,6 +5,7 @@ from api.config import config
 
 from flask import Blueprint, jsonify, request
 
+from api.db import db
 from api.utils.errors import ErrorResponse
 from api.models.badges import Badges
 from api.models.user import User
@@ -63,6 +64,8 @@ def generateBadges():
     if os.path.isdir(badgePath):
         link = fileUploader(badgePath + '/all-badges.pdf', 'badges/' + badge_created.id + '.pdf')
         badge_created.download_link = link
+
+    db.session.commit()
 
     return jsonify(BadgeSchema().dump(badge_created).data)
 
