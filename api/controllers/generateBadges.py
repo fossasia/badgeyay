@@ -1,6 +1,7 @@
 # from api.helpers.verifyToken import loginRequired
 import os
 
+from shutil import rmtree
 from api.config import config
 
 from flask import Blueprint, jsonify, request
@@ -70,6 +71,8 @@ def generateBadges():
     if os.path.isdir(badgePath):
         link = fileUploader(badgePath + '/all-badges.pdf', 'badges/' + badge_created.id + '.pdf')
         badge_created.download_link = link
+        rmtree(badgePath, ignore_errors=True)
+
 
     db.session.commit()
 
