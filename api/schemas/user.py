@@ -46,3 +46,12 @@ class UpdateUserSchema(Schema):
     username = fields.Str(required=True)
     email = fields.Str(required=True)
     photoURL = fields.Str(required=True)
+
+
+class UserAllowedUsage(Schema):
+    class Meta:
+        type_ = 'user_allowed_usage'
+        kwargs = {'id': '<id>'}
+
+    id = fields.Str(required=True, dump_only=True)
+    allowed_usage = fields.Str(required=True, dump_only=True)
