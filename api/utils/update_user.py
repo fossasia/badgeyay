@@ -1,35 +1,37 @@
 from firebase_admin import auth
-from flask import jsonify, make_response
-from werkzeug.security import generate_password_hash
-
-from api.utils.errors import ErrorResponse
-from api.models.user import User
-from api.schemas.errors import OperationNotFound
 
 
-def update_user(uid, password, photoURL, username):
+def update_firebase_photoURL(uid, photoURL):
     try:
-        user = auth.update_user(
+        auth.update_user(
             uid=uid,
-            password=password,
-            username=username,
             photoURL=photoURL
         )
-    except Exception:
-        return ErrorResponse(OperationNotFound().message, 422, {'Content-Type': 'application/json'}).respond()
+        return True
+    except Exception as e:
+        print(e)
+        return False
 
-    if user is not None:
-        update = User.getUser(user_id=user.uid)
-        update.password = generate_password_hash(user.password)
-        update.username = user.username
-        update.photoURL = user.photoURL
 
-        try:
-            update.save_to_db()
-        except Exception:
-            return ErrorResponse(OperationNotFound().message, 422, {'Content-Type': 'application/json'}).respond()
+def update_firebase_password(uid, pwd):
+    try:
+        auth.update_user(
+            uid=uid,
+            password=pwd
+        )
+        return True
+    except Exception as e:
+        print(e)
+        return False
 
-        return make_response(jsonify('Change Successful'), user.uid)
 
-    else:
-        return ErrorResponse(OperationNotFound().message, 422, {'Content-Type': 'application/json'}).respond()
+def update_firebase_username(uid, username):
+    try:
+        auth.update_user(
+            uid=uid,
+            username=username
+        )
+        return True
+    except Exception as e:
+        print(e)
+        return False

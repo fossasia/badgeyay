@@ -5,10 +5,24 @@
   box-shadow: none;
 }
 
-.ui.container.main-container {
-  width: 720px;
+.main-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 720px;
 }
 
 .max-width {
   width: 100%;
+}
+
+.my-badge-width {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 1000px;
 }
