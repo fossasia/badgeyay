@@ -9,8 +9,7 @@ from api.schemas.errors import (
     PayloadNotFound,
     ImageNotFound,
     UserNotFound,
-    ExtensionNotFound,
-    PNGNotFound
+    ExtensionNotFound
 )
 from api.schemas.user import UpdateUserSchema
 from api.models.user import User
@@ -18,7 +17,7 @@ from api.models.user import User
 router = Blueprint('updateUserProfile', __name__)
 
 
-@router.route('/profileImage')
+@router.route('/profileImage', methods=['POST'])
 def update_profile_image():
     try:
         data = request.get_json()['data']['attributes']
@@ -30,9 +29,6 @@ def update_profile_image():
 
     if not data['extension']:
         return ErrorResponse(ExtensionNotFound().message, 422, {'Content-Type': 'application/json'}).respond()
-
-    if data['extension'] != 'png':
-        return ErrorResponse(PNGNotFound().message, 422, {'Content-Type': 'application/json'}).respond()
 
     image = data['image']
     extension = data['extension']
