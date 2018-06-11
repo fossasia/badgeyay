@@ -55,3 +55,15 @@ class UserAllowedUsage(Schema):
 
     id = fields.Str(required=True, dump_only=True)
     allowed_usage = fields.Str(required=True, dump_only=True)
+
+
+class FTLUserSchema(Schema):
+    class Meta:
+        type_ = 'users'
+        kwargs = {'id': '<id>'}
+
+    id = fields.Str(required=True, dump_only=True)
+    username = fields.Str(required=True)
+    email = fields.Str(required=True)
+    photoURL = fields.Str(required=True)
+    ftl = fields.Boolean(required=True)

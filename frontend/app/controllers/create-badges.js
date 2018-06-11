@@ -222,6 +222,23 @@ export default Controller.extend({
         });
     },
 
+    removeFTL() {
+      const _this = this;
+      const user = _this.get('store').peekAll('user');
+      let uid;
+      user.forEach(user_ => {
+        uid = user_.get('id');
+      });
+      if (uid !== undefined && uid !== '') {
+        _this.set('uid', uid);
+      }
+      this.get('store').findRecord('user', uid)
+        .then(record => {
+          record.set('ftl', false);
+          record.save();
+        });
+    },
+
     mutateDefFontColor(fontcolor) {
       this.set('defFontColor', fontcolor);
     },
