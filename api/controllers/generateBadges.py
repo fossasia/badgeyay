@@ -73,7 +73,6 @@ def generateBadges():
         badge_created.download_link = link
         rmtree(badgePath, ignore_errors=True)
 
-
     db.session.commit()
 
     return jsonify(BadgeSchema().dump(badge_created).data)
