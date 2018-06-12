@@ -14,7 +14,7 @@ matrix:
       - 3.5
     cache:
       directories:
-        - $HOME/backend/.pip-cache/
+        - $HOME/api/.pip-cache/
 
     before_install:
       - sudo apt-get -qq update
@@ -27,7 +27,7 @@ matrix:
       - pip3 install flake8
 
     script:
-      - flake8 backend/
+      - flake8 api/
 
     after_success:
       - bash <(curl -s https://codecov.io/bash)
