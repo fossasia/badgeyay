@@ -30,14 +30,20 @@ def update_profile_image():
     if not data['extension']:
         return ErrorResponse(ExtensionNotFound().message, 422, {'Content-Type': 'application/json'}).respond()
 
+    uid = data['uid']
     image = data['image']
     extension = data['extension']
+
     try:
         imageName = saveToImage(imageFile=image, extension=extension)
     except Exception:
         return ErrorResponse(ImageNotFound().message, 422, {'Content-Type': 'application/json'}).respond()
 
-    uid = data['uid']
+    fetch_user, imageLink = update_database(uid, imageName)
+    return jsonify(UpdateUserSchema().dump(fetch_user).data)
+
+
+def update_database(uid, imageName):
     fetch_user = User.getUser(user_id=uid)
     if fetch_user is None:
         return ErrorResponse(UserNotFound(uid).message, 422, {'Content-Type': 'application/json'}).respond()
@@ -45,8 +51,10 @@ def update_profile_image():
     imageLink = fileUploader(imagePath, 'profile/images/' + imageName)
     fetch_user.photoURL = imageLink
     fetch_user.save_to_db()
+
     try:
         os.unlink(imagePath)
     except Exception:
         print('Unable to delete the temporary file')
-    return jsonify(UpdateUserSchema().dump(fetch_user).data)
+
+    return fetch_user, imageLink

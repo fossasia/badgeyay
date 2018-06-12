@@ -35,3 +35,39 @@ $color4: #ffa500;
     }
   }
 }
+
+.overlay-visible {
+  background-color: $color1;
+  bottom: 0;
+  cursor: pointer;
+  height: 100%;
+  left: 0;
+  position: fixed;
+  right: 0;
+  top: 0;
+  width: 100%;
+  z-index: 2;
+}
+
+.overlay-none {
+  display: none;
+}
+
+.ui.segment.center-place {
+  bottom: 25%;
+  height: auto;
+  margin-left: 30%;
+  margin-right: 30%;
+  top: 25%;
+}
+
+.welcome-text {
+  font-size: 1.1em;
+  font-weight: 600;
+  justify-content: center;
+  text-align: left;
+}
+
+.visible-overlay {
+  display: block;
+}

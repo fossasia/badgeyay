@@ -1,0 +1,26 @@
+{{#if user.ftl}}
+<div class="overlay-{{visibility}}">
+    <div class="ui segment center-place">
+        <div class="ui centered grid">
+            <div class="row">
+                <img class="ui circular small image" src="{{user.photoURL}}">
+            </div>
+            <div class="row">
+                <p class="welcome-text">Welcome {{user.username}} to Badgeyay. Let's create some awesome badges.
+                    <br>
+                    <br> Please follow steps mentioned to generate badges:
+                    <br> Step 1 : Select from one of the Input Sources
+                    <br> Step 2 : Select Badge Size
+                    <br> Step 3 : Select from one of the background sources
+                    <br> Step 4 : Choose from font customization
+                    <br> Step 5 : Click on generate badges to generate badge
+                    <br>
+                </p>
+            </div>
+            <div class="row">
+                <button class="ui button blue" {{action 'dismissOverlay'}}>Click to Dismiss</button>
+            </div>
+        </div>
+    </div>
+</div>
+{{/if}}

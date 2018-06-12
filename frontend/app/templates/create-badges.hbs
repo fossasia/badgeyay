@@ -1,126 +1,135 @@
 <div class="main-container">
     <div class="ui hidden divider"></div>
-<div class="ui raised segment">
-    <div class="ui form width-container">
-        <p><b>Select from one of the Input Sources</b></p>
-        {{#ui-accordion class="styled fluid"}}
-        <div class="title" onclick={{action "csvClicked"}}>
-            <i class="plus icon"></i>
-            Add CSV File
-        </div>
-        <div class="content">
-            <div class="center aligned">
-                {{ data-component/csv-component sendCSV=(action 'mutateCSV') }}
+    <div class="ui raised segment">
+        <div class="ui form width-container">
+            <p>
+                <b>Select from one of the Input Sources</b>
+            </p>
+            {{#ui-accordion class="styled fluid"}}
+            <div class="title" onclick={{action "csvClicked"}}>
+                <i class="plus icon"></i>
+                Add CSV File
             </div>
-        </div>
-        <div class="title" onclick={{action "manualClicked"}}>
-            <i class="plus icon"></i>
-            Add Manual Data
-        </div>
-        <div class="content">
-            <div class="center aligned">
-                {{ data-component/text-component sendText=(action 'mutateText') }}
+            <div class="content">
+                <div class="center aligned">
+                    {{ data-component/csv-component sendCSV=(action 'mutateCSV') }}
+                </div>
             </div>
+            <div class="title" onclick={{action "manualClicked"}}>
+                <i class="plus icon"></i>
+                Add Manual Data
+            </div>
+            <div class="content">
+                <div class="center aligned">
+                    {{ data-component/text-component sendText=(action 'mutateText') }}
+                </div>
+            </div>
+            {{/ui-accordion}}
         </div>
-        {{/ui-accordion}}
     </div>
-</div>
-<div class="ui raised segment">
-    <div class="ui form width-container">
-        <p><b>Select from one of the Badge Sizes</b></p>
-        {{#ui-accordion class="styled fluid"}}
-        <div class="title">
-            <i class="plus icon"></i>
-            Badge Size
-        </div>
-        <div class="content">
-            <div class="center aligned">
-                {{ badge-component/badge-size sendBadgeSize=(action 'mutateBadgeSize') }}
+    <div class="ui raised segment">
+        <div class="ui form width-container">
+            <p>
+                <b>Select from one of the Badge Sizes</b>
+            </p>
+            {{#ui-accordion class="styled fluid"}}
+            <div class="title">
+                <i class="plus icon"></i>
+                Badge Size
             </div>
+            <div class="content">
+                <div class="center aligned">
+                    {{ badge-component/badge-size sendBadgeSize=(action 'mutateBadgeSize') }}
+                </div>
+            </div>
+            {{/ui-accordion}}
         </div>
-        {{/ui-accordion}}
     </div>
-</div>
-<div class="ui raised segment">
-    <div class="ui form width-container">
-        <p><b>Select from one of the background sources</b></p>
-        {{#ui-accordion class="styled fluid"}}
-        <div class="title" onclick={{action 'defImageClicked'}}>
-            <i class="plus icon"></i>
-            Default Images
-        </div>
-        <div class="content">
-            <div class="center aligned">
-                {{ background-component/def-image-component defImages=defImages sendDefImage=(action 'mutateBackground') }}
+    <div class="ui raised segment">
+        <div class="ui form width-container">
+            <p>
+                <b>Select from one of the background sources</b>
+            </p>
+            {{#ui-accordion class="styled fluid"}}
+            <div class="title" onclick={{action 'defImageClicked'}}>
+                <i class="plus icon"></i>
+                Default Images
             </div>
-        </div>
-        <div class="title" onclick={{action 'bgColorClicked'}}>
-            <i class="plus icon"></i>
-            Select from Background color
-        </div>
-        <div class="content">
-            <div class="center aligned">
-                {{ background-component/color-bg-component sendDefColor=(action 'mutateDefColor') }}
+            <div class="content">
+                <div class="center aligned">
+                    {{ background-component/def-image-component defImages=defImages sendDefImage=(action 'mutateBackground') }}
+                </div>
             </div>
-        </div>
-        <div class="title" onclick={{action 'custImgClicked'}}>
-            <i class="plus icon"></i>
-            Upload a custom image
-        </div>
-        <div class="content">
-            <div class="center aligned">
-                {{ background-component/image-component sendImage=(action 'mutateCustomImage') }}
+            <div class="title" onclick={{action 'bgColorClicked'}}>
+                <i class="plus icon"></i>
+                Select from Background color
             </div>
+            <div class="content">
+                <div class="center aligned">
+                    {{ background-component/color-bg-component sendDefColor=(action 'mutateDefColor') }}
+                </div>
+            </div>
+            <div class="title" onclick={{action 'custImgClicked'}}>
+                <i class="plus icon"></i>
+                Upload a custom image
+            </div>
+            <div class="content">
+                <div class="center aligned">
+                    {{ background-component/image-component sendImage=(action 'mutateCustomImage') }}
+                </div>
+            </div>
+            {{/ui-accordion}}
         </div>
-        {{/ui-accordion}}
     </div>
-</div>
-<div class="ui raised segment">
-    <div class="ui form width-container">
-        <p><b>Select from following font customizations</b></p>
-        {{#ui-accordion class="styled fluid"}}
-        <div class="title">
-            <i class="plus icon"></i>
-            Font Family
-        </div>
-        <div class="content">
-            <div class="center aligned">
-                {{ text-component/font-type sendDefFont=(action 'mutateCustomFont')}}
+    <div class="ui raised segment">
+        <div class="ui form width-container">
+            <p>
+                <b>Select from following font customizations</b>
+            </p>
+            {{#ui-accordion class="styled fluid"}}
+            <div class="title">
+                <i class="plus icon"></i>
+                Font Family
             </div>
-        </div>
-        <div class="title">
-            <i class="plus icon"></i>
-            Font Color
-        </div>
-        <div class="content">
-            <div class="center aligned">
-                {{ text-component/font-color sendDefFontColor=(action 'mutateDefFontColor')}}
+            <div class="content">
+                <div class="center aligned">
+                    {{ text-component/font-type sendDefFont=(action 'mutateCustomFont')}}
+                </div>
             </div>
-        </div>
-        <div class="title">
-            <i class="plus icon"></i>
-            Font Size
-        </div>
-        <div class="content">
-            <div class="center aligned">
-                {{ text-component/font-size sendDefSize=(action 'mutateFontSize')}}
+            <div class="title">
+                <i class="plus icon"></i>
+                Font Color
             </div>
+            <div class="content">
+                <div class="center aligned">
+                    {{ text-component/font-color sendDefFontColor=(action 'mutateDefFontColor')}}
+                </div>
+            </div>
+            <div class="title">
+                <i class="plus icon"></i>
+                Font Size
+            </div>
+            <div class="content">
+                <div class="center aligned">
+                    {{ text-component/font-size sendDefSize=(action 'mutateFontSize')}}
+                </div>
+            </div>
+            {{/ui-accordion}}
         </div>
-        {{/ui-accordion}}
     </div>
-</div>
-<button {{action "submitForm"}} class="ui fluid button">Create Badges</button>
-{{#if badgeGenerated}}
-<div class="ui floating positive message">
-    <div class="header">
-        Badge generated successfully
+    <button {{action "submitForm"}} class="ui fluid button">Create Badges</button>
+    {{#if badgeGenerated}}
+    <div class="ui floating positive message">
+        <div class="header">
+            Badge generated successfully
+        </div>
+        <p>Visit this
+            <b>
+                <a href="{{genBadge.download_link}}">link</a>
+            </b> to download badge</p>
     </div>
-    <p>Visit this
-        <b>
-            <a href="{{genBadge.download_link}}">link</a>
-        </b> to download badge</p>
+    {{/if}} {{#each userError as |error|}}
+    <p>{{error.message}}</p>
+    {{/each}}
 </div>
-{{/if}} {{#each userError as |error|}}
-<p>{{error.message}}</p>
-{{/each}}
-</div>
+{{overlay-welcome user=user removeFTL=(action 'removeFTL')}}

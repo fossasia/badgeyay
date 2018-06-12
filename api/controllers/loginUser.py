@@ -6,7 +6,7 @@ from flask import current_app as app
 from api.utils.response import Response
 from api.helpers.verifyPassword import verifyPassword
 from api.models.user import User
-from api.schemas.user import UserSchema
+from api.schemas.user import FTLUserSchema
 from api.utils.errors import ErrorResponse
 from api.schemas.errors import (
     JsonNotFound,
@@ -47,9 +47,8 @@ def login():
     return ErrorResponse(OperationNotFound().message, 422, {'Content-Type': 'application/json'}).respond()
 
 
-@router.route('/get_user', methods=['GET'])
-def index():
-    data = request.args
-    user = User.getUser(username=data.get('username'))
-    schema = UserSchema()
+@router.route('/register/<uid>', methods=['GET'])
+def index(uid):
+    user = User.getUser(user_id=uid)
+    schema = FTLUserSchema()
     return jsonify(schema.dump(user).data)
