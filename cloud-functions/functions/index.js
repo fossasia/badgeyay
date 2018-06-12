@@ -74,3 +74,24 @@ function sendGreetingMail(email, displayName) {
     console.error(err.message);
   });
 }
+
+exports.sendResetMail = functions.https.onRequest((req, res) => {
+  let token = req.query['token'];
+  let email = req.query['email'];
+  return sendResetMail(token, email);
+});
+
+function sendResetMail(token, email) {
+  const mailOptions = {
+    from: `${APP_NAME}<noreply@firebase.com>`,
+    to: email,
+  };
+
+  mailOptions.subject = `Password reset link`;
+  mailOptions.html = '<p>Hey ' + email + '! Here is your password reset Link<a href=' + '></a><p>';
+  return mailTransport.sendMail(mailOptions).then(() => {
+    return console.log('Welcome mail sent to: ', email)
+  }).catch((err) => {
+    console.error(err.message);
+  });
+}

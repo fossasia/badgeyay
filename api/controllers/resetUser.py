@@ -7,8 +7,11 @@ from api.utils.errors import ErrorResponse
 from api.models.user import User
 from api.schemas.errors import (
     PayloadNotFound,
-    JsonNotFound
+    JsonNotFound,
+    UserNotFound
 )
+from api.schemas.token import TokenSchema
+from api.models.token import ResetPasswordToken
 
 
 router = Blueprint('resetUser', __name__)
@@ -33,3 +36,22 @@ def reset_password():
                 token.decode('UTF-8')))
     else:
         return ErrorResponse(JsonNotFound().message, 422, {'Content-Type': 'application/json'}).respond()
+
+
+@router.route('/token', methods=['POST'])
+def pwd_reset_token():
+    data = request.get_json()['data']['attributes']
+    if 'email' not in data.keys():
+        print('Email not found')
+    email = data['email']
+    user = User.getUser(email=email)
+    if not user:
+        return ErrorResponse(UserNotFound().message, 422, {'Content-Type': 'application/json'}).respond()
+    expire = datetime.datetime.utcnow() + datetime.timedelta(seconds=900)
+    token = jwt.encode({
+        'id': user.id,
+        'exp': expire
+    }, app.config.get('SECRET_KEY'))
+    resetObj = ResetPasswordToken(user.id, token.decode('UTF-8'))
+    resetObj.save_to_db()
+    return jsonify(TokenSchema().dump(resetObj).data)

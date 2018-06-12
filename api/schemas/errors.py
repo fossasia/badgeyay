@@ -41,7 +41,7 @@ class BaseError(JSONAPIError, ValueError):
 
 class UserNotFound(BaseError):
 
-    def __init__(self, uid):
+    def __init__(self, uid=None):
         super(UserNotFound, self).__init__(uid=uid, attr='user')
 
 
