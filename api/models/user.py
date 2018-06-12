@@ -9,8 +9,10 @@ class User(db.Model):
     username = db.Column(db.String(80))
     password = db.Column(db.String(100))
     email = db.Column(db.String(100))
-    photoURL = db.Column(db.String())
+    photoURL = db.Column(db.String, default='https://encrypted-tbn0.gstatic.com/' +
+                         'images?q=tbn:ANd9GcRWnJC8FyOPb9J-EjhQStzIZt_dk-dxuK-VyEnwQDdqIBKj4p7R8A')
     allowed_usage = db.Column(db.Integer)
+    ftl = db.Column(db.Boolean, default=True)
     files = db.relationship('File', backref='uploader')
     badges = db.relationship('Badges', backref='creator')
 
@@ -23,8 +25,6 @@ class User(db.Model):
         self.email = email
         if photoURL:
             self.photoURL = photoURL
-        else:
-            self.photoURL = 'Some default asset'
 
     def save_to_db(self):
         db.session.add(self)

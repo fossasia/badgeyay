@@ -3,7 +3,8 @@ from firebase_admin import auth
 from api.models.user import User
 from api.schemas.user import (
     UserSchema,
-    OAuthUserSchema
+    OAuthUserSchema,
+    FTLUserSchema
 )
 
 
@@ -54,3 +55,13 @@ def register_user():
         else:
             newUser = user_
         return jsonify(schema.dump(newUser).data)
+
+
+@router.route('/register/<uid>', methods=['PATCH'])
+def patchUser(uid):
+    data = request.get_json()['data']['attributes']
+    user = User.getUser(user_id=uid)
+    if 'ftl' in data.keys():
+        user.ftl = data['ftl']
+    user.save_to_db()
+    return jsonify(FTLUserSchema().dump(user).data)
