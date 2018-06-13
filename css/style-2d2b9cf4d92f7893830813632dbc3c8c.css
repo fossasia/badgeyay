@@ -1,0 +1,136 @@
+#icon  > .fa {
+    left: 60%;
+    color: #000;
+    font-size: 24px;
+    position: relative;
+    top:3px;
+}
+
+.footer {
+    margin: 10px 0 20px 0;
+    padding-bottom: 20px;
+}
+
+.board .col-md-4 {
+    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+    margin-top: 40px;
+    margin-bottom: 50px;
+    padding-bottom: 20px;
+}
+
+.board .btn-success {
+    margin-top: 10px;
+    margin-bottom: 50px;
+    background: #4CAF50;
+}
+
+.navbar {
+    height: 80px;
+    background-color: white;
+}
+
+.navbar-brand {
+    padding: 30px 15px;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.navbar-nav,
+.navbar-nav>li>a {
+    font-weight: bold;
+    padding-top: 0px;
+    padding-left: 25px;
+}
+
+.not-found {
+    font-size: 18em;
+    color: crimson;
+}
+
+.btn-primary {
+    width: 100%;
+}
+
+.form-group label {
+    margin-top: 20px;
+}
+
+.navbar .glyphicon-th {
+    font-size: 30px;
+    margin-top: 20px;
+}
+
+.navbar hr {
+    margin-bottom: 0;
+    margin-top: 10px;
+}
+
+.custom-menu {
+    min-height: 350px;
+    overflow: auto;
+    width: 300px;
+    position: absolute;
+    border: 1px solid #bfbfbf;
+    position: absolute;
+    right: 20px;
+    top: 0px;
+    box-shadow: 0px 0px 5px 5px #f2f2f2;
+    background-color: white;
+}
+
+.dropdown-menu>li:hover {
+    background: #f1f9fd;
+    cursor: pointer;
+}
+
+.custom-icon img {
+    width: 60%;
+}
+
+textarea {
+    resize: vertical;
+}
+
+ul,
+ol {
+    padding: 0;
+}
+
+@media screen and (max-width: 376px){
+    #icon > .fa {
+        left: 10% !important;
+    }
+}
+
+@media screen and (max-width: 1200px){
+    #icon  > .fa {
+        left: 30%;
+    }
+}
+
+@media screen and (max-width: 1570px){
+    #icon  > .fa {
+        left: 40%;
+    }
+}
+
+@media screen and (max-width: 780px) {
+    .navbar-header {
+        margin-top: 5px;
+        margin-left: 5px !important;
+    }
+    .navbar .container {
+        display: flex;
+    }
+    .navbar-right {
+        position: absolute;
+        right: 50px !important;
+    }
+    .custom-menu-content {
+        top: 20px;
+    }
+}
+
+.column {
+    max-width: 450px;
+}
