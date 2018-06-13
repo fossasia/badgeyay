@@ -57,7 +57,7 @@ def register_admin():
 
     return jsonify(schema.dump(admin).data)
 
-  
+
 @router.route('/add_usage', methods=['POST'])
 def admin_add_usage():
     try:
