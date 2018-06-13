@@ -9,3 +9,12 @@ class TokenSchema(Schema):
 
     id = fields.Str(required=True, dump_only=True)
     token = fields.Str(required=True)
+
+
+class ValidTokenSchema(Schema):
+    class Meta:
+        type_ = 'valid-tokens'
+        kwargs = {'id': '<id>'}
+
+    id = fields.Str(required=True, dump_only=True)
+    valid = fields.Bool(required=True)

@@ -26,6 +26,7 @@ const mailTransport = nodemailer.createTransport({
 });
 
 const APP_NAME = 'Badgeyay';
+const PASSWORD_RESET_LINK = 'http://badgeyay.com/reset/password?token='
 
 exports.sendVerificationMail = functions.auth.user().onCreate((user) => {
   const uid = user.uid;
@@ -78,7 +79,18 @@ function sendGreetingMail(email, displayName) {
 exports.sendResetMail = functions.https.onRequest((req, res) => {
   let token = req.query['token'];
   let email = req.query['email'];
-  return sendResetMail(token, email);
+  res.setHeader('Content-Type', 'application/json');
+  sendResetMail(token, email)
+    .then(() => {
+      console.log('Reset mail sent to', email);
+      res.json({ data: { attributes: { status: 200 }, id: token, type: 'reset-mails' } });
+      return 0;
+    })
+    .catch(err => {
+      console.error(err);
+      res.json({ data: { attributes: { status: 500 }, id: token, type: 'reset-mails' } });
+      return -1;
+    });
 });
 
 function sendResetMail(token, email) {
@@ -88,10 +100,7 @@ function sendResetMail(token, email) {
   };
 
   mailOptions.subject = `Password reset link`;
-  mailOptions.html = '<p>Hey ' + email + '! Here is your password reset Link<a href=' + '></a><p>';
-  return mailTransport.sendMail(mailOptions).then(() => {
-    return console.log('Welcome mail sent to: ', email)
-  }).catch((err) => {
-    console.error(err.message);
-  });
+  mailOptions.html = '<p>Hey ' + email + '! Here is your password reset <a href=\'' + PASSWORD_RESET_LINK
+    + token + '\'>Link</a><p>';
+  return mailTransport.sendMail(mailOptions);
 }
