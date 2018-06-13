@@ -1,12 +1,15 @@
+import uuid
 from flask import jsonify, Blueprint, request
 from api.db import db
 from api.models.user import User
 from api.models.badges import Badges
 from api.models.file import File
+from api.models.admin import Admin
 from api.schemas.user import AllUsersSchema, UserAllowedUsage
 from api.schemas.badges import AllBadges
 from api.schemas.file import FileSchema
 from api.schemas.errors import JsonNotFound
+from api.schemas.admin import AdminSchema
 from api.utils.errors import ErrorResponse
 
 
@@ -33,6 +36,26 @@ def get_all_badges():
 def get_all_files():
     file = File().query.all()
     return jsonify(FileSchema(many=True).dump(file).data)
+
+
+@router.route('/register_admin', methods=['POST'])
+def register_admin():
+    schema = AdminSchema()
+    input_data = request.get_json()
+    data, err = schema.load(input_data)
+    if err:
+        return jsonify(err)
+    admin = Admin(
+        id_=str(uuid.uuid4()),
+        username=data['username'],
+        password=data['password'],
+        email=data['email'])
+    try:
+        admin.save_to_db()
+    except Exception as e:
+        return jsonify(e)
+
+    return jsonify(schema.dump(admin).data)
 
 
 @router.route('/add_usage', methods=['POST'])
