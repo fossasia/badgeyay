@@ -18,6 +18,7 @@ router.map(function() {
   this.route('not-found');
   this.route('not-found-catch', { path: '/*path' });
   this.route('my-profile');
+  this.route('forgotpwd');
 });
 
 export default router;

@@ -36,8 +36,10 @@ class User(db.Model):
             print(e)
 
     @classmethod
-    def getUser(cls, user_id=None, username=None):
-        if username is None:
+    def getUser(cls, user_id=None, username=None, email=None):
+        if user_id:
             return cls.query.filter_by(id=user_id).first()
-        if user_id is None:
+        if username:
             return cls.query.filter_by(username=username).first()
+        if email:
+            return cls.query.filter_by(email=email).first()

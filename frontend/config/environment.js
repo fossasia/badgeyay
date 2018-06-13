@@ -35,7 +35,8 @@ module.exports = function(environment) {
     APP: {
       // Here you can pass flags/options to your application instance
       // when it is created
-      backLink: 'http://localhost:5000'
+      backLink      : 'http://localhost:5000',
+      resetFunction : 'http://localhost:8090/badgeyay-195bf/us-central1/sendResetMail'
     }
   };
 
