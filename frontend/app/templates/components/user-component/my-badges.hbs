@@ -1,4 +1,4 @@
-<div class="ui hidden divider"></div>
+<div class="my-badge">
 {{#if model.length}}
     <div class="ui pointing menu">
       <div class="active item">My Badges</div>
@@ -78,7 +78,8 @@
         </div>
       </div>
     </div>
-{{else}}
+  {{else}}
   <h2>Looks like you've not generated any badges yet!</h2>
   <h3>Click <a href="{{href-to 'create-badges'}}">here</a> to generate some badges!</h3>
 {{/if}}
+</div>

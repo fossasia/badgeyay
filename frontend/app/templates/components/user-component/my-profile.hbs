@@ -1,31 +1,32 @@
-<div class="ui hidden divider"></div>
-<div class="ui width-container">
-    <div class="left column">
-      <div class="ui small circular image profile-image">
-          <img src="{{user.photoURL}}">
-          <input style="display: none;" id="profileImageSelector" type="file" onchange={{action "profileImageSelected"}}>
-          <div class="profile-change" onclick={{action "updateProfileImage"}}><b>Change</b></div>
+<div class="my-profile">
+  <div class="ui width-container">
+      <div class="left column">
+        <div class="ui small circular image profile-image">
+            <img src="{{user.photoURL}}">
+            <input style="display: none;" id="profileImageSelector" type="file" onchange={{action "profileImageSelected"}}>
+            <div class="profile-change" onclick={{action "updateProfileImage"}}><b>Change</b></div>
+        </div>
       </div>
+    <div class="ui hidden divider"></div>
+    <div class="ui pointing menu">
+      <a class="active item">
+        Personal
+      </a>
+      <a class="item">
+        Statistics
+      </a>
+      <a class="item">
+        Notifictions
+      </a>
     </div>
-<div class="ui hidden divider"></div>
-<div class="ui pointing menu">
-  <a class="active item">
-    Personal
-  </a>
-  <a class="item">
-    Statistics
-  </a>
-  <a class="item">
-    Notifictions
-  </a>
-</div>
-<div class="ui segment">
-  <p></p>
-</div>
-<div class="ui segment">
-  <p></p>
-</div>
-<div class="ui segment">
-  <p></p>
-</div>
+    <div class="ui segment">
+      <p></p>
+    </div>
+    <div class="ui segment">
+      <p></p>
+    </div>
+    <div class="ui segment">
+      <p></p>
+    </div>
+  </div>
 </div>
