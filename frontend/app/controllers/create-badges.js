@@ -82,6 +82,9 @@ export default Controller.extend({
           let userErrors = textEntry.get('errors.user');
           if (userErrors !== undefined) {
             _this.set('userError', userErrors);
+            userErrors.forEach(error => {
+              _this.get('notify').error(error.message);
+            });
           }
         });
       } else if (_this.csvEnable) {
@@ -90,7 +93,7 @@ export default Controller.extend({
           _this.send('sendDefaultImg', badgeData);
         }
       } else {
-        // No Input Source specified Error
+        _this.get('notify').error('No Input source specified');
       }
     },
 
@@ -111,6 +114,9 @@ export default Controller.extend({
             let userErrors = imageRecord.get('errors.user');
             if (userErrors !== undefined) {
               _this.set('userError', userErrors);
+              userErrors.forEach(error => {
+                _this.get('notify').error(error.message);
+              });
             }
           });
       } else if (_this.custImage) {
@@ -133,10 +139,13 @@ export default Controller.extend({
             let userErrors = imageRecord.get('errors.user');
             if (userErrors !== undefined) {
               _this.set('userError', userErrors);
+              userErrors.forEach(error => {
+                _this.get('notify').error(error.message);
+              });
             }
           });
       } else {
-        // Inflate error for No Image source.
+        _this.get('notify').error('No background source specified');
       }
     },
 
@@ -150,7 +159,7 @@ export default Controller.extend({
           _this.get('notify').success('Badge generated Successfully');
         })
         .catch(err => {
-          console.error(err.message);
+          _this.get('notify').error('Unable to generate badge');
         });
     },
 
@@ -178,6 +187,9 @@ export default Controller.extend({
           let userErrors = csv_.get('errors.user');
           if (userErrors !== undefined) {
             _this.set('userError', userErrors);
+            userErrors.forEach(error => {
+              _this.get('notify').error(error.message);
+            });
           }
         });
     },
@@ -218,6 +230,9 @@ export default Controller.extend({
           let userErrors = image_.get('errors.user');
           if (userErrors !== undefined) {
             _this.set('userError', userErrors);
+            userErrors.forEach(error => {
+              _this.get('notify').error(error.message);
+            });
           }
         });
     },
