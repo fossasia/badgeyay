@@ -3,7 +3,6 @@ from api import create_app
 from api.db import db
 from api.controllers import (
     generateBadges,
-    homePage,
     errorHandlers,
     loginUser,
     fileUploader,
@@ -29,7 +28,6 @@ app.register_blueprint(registerUser.router, url_prefix='/user')
 app.register_blueprint(loginUser.router, url_prefix='/user')
 app.register_blueprint(fileUploader.router, url_prefix='/api/upload')
 app.register_blueprint(modifyUser.router, url_prefix='/user/change')
-app.register_blueprint(homePage.router)
 app.register_blueprint(errorHandlers.router)
 app.register_blueprint(assetHelper.router, url_prefix='/api')
 app.register_blueprint(resetUser.router, url_prefix='/reset')
