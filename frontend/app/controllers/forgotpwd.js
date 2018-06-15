@@ -5,6 +5,7 @@ const { inject } = Ember;
 
 export default Controller.extend({
   session : inject.service(),
+  notify  : inject.service('notify'),
   actions : {
     sendResetMail(email) {
       // Get Token from backend
@@ -20,13 +21,9 @@ export default Controller.extend({
           this_.get('store').query('reset-mail', {
             token,
             email
-          }).then(record => {
-            console.log(record.res);
           });
-        }).catch(err => {
-          console.error(err);
+          this_.get('notify').success('Reset mail sent to ' + email);
         });
-
     }
   }
 });

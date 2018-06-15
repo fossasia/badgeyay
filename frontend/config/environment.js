@@ -64,6 +64,7 @@ module.exports = function(environment) {
 
   if (environment === 'production') {
     ENV.APP.backLink = 'http://badgeyay-api.herokuapp.com';
+    ENV.resetFunction = 'https://us-central1-badgeyay-195bf.cloudfunctions.net/sendResetMail';
     if (deployTarget && deployTarget === 'gh-pages') {
       ENV.locationType = 'auto';
       ENV.rootURL = `/${process.env.REPO_SLUG || 'badgeyay'}`;
