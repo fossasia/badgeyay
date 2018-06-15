@@ -134,3 +134,8 @@ ol {
 .column {
     max-width: 450px;
 }
+
+.ui.card {
+    display: inline-block;
+    margin-right: 50px;
+}
