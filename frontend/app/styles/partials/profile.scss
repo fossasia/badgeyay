@@ -1,3 +1,9 @@
+.image {
+  left: 2%;
+  top: 60px;
+}
+
+
 .profile-image:hover {
   .profile-change {
     opacity: 1;
@@ -20,4 +26,10 @@
   top: 0;
   transition: 0.5s ease;
   width: 100%;
+}
+
+.stats {
+  left: 105%;
+  position: relative;
+  top: 105px;
 }
