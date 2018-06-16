@@ -6,8 +6,8 @@ from werkzeug.security import generate_password_hash
 from api.models.user import User
 from api.schemas.errors import PayloadNotFound, SignatureExpired, PasswordNotFound
 from api.utils.errors import ErrorResponse
-from api.schemas.user import UpdateUserSchema
 from api.utils.update_user import update_firebase_password
+from api.schemas.operation import ResetPasswordOperation
 
 router = Blueprint('Change Meta', __name__)
 
@@ -18,30 +18,32 @@ def changePwd():
         data = request.get_json()['data']['attributes']
     except Exception as e:
         print(e)
-        return ErrorResponse(PayloadNotFound().message, 422, {'Content-Type': 'application/json'})
+        return ErrorResponse(PayloadNotFound().message, 422, {'Content-Type': 'application/json'}).respond()
 
     token = data['token']
     try:
         decoded_res = jwt.decode(token, app.config['SECRET_KEY'])
     except Exception as e:
         print(e)
-        return ErrorResponse(SignatureExpired().message, 422, {'Content-Type': 'application/json'})
+        return ErrorResponse(SignatureExpired().message, 422, {'Content-Type': 'application/json'}).respond()
 
-    user_email = decoded_res['email']
-    user = User.getUser(username=user_email)
+    user = User.getUser(user_id=decoded_res['id'])
 
     if 'pwd' not in data.keys():
-        return ErrorResponse(PasswordNotFound().message, 422, {'Content-Type': 'application/json'})
+        return ErrorResponse(PasswordNotFound().message, 422, {'Content-Type': 'application/json'}).respond()
 
     pwd = data['pwd']
     oldPwd = user.password
     user.password = generate_password_hash(pwd)
     user.save_to_db()
 
-    if update_firebase_password(user.uid, pwd):
-        return jsonify(UpdateUserSchema().dump(user).data)
+    resp = {'id': token}
+    if update_firebase_password(user.id, pwd):
+        resp['status'] = 'Changed'
+        return jsonify(ResetPasswordOperation().dump(resp).data)
     else:
         print('Firebase not uploaded')
         user.password = oldPwd
         user.save_to_db()
-        return jsonify(UpdateUserSchema().dump(user).data)
+        resp['status'] = 'Not Changed'
+        return jsonify(ResetPasswordOperation().dump(resp).data)
