@@ -21,6 +21,8 @@ class BaseError(JSONAPIError, ValueError):
             self.detail = 'Wrong username and password combination'
         elif attr == 'not_allowed':
             self.detail = 'Usage is not allowed anymore'
+        elif attr == 'sign_expired':
+            self.detail = 'Token Invalidated'
         self.status = status
         super(BaseError, self).__init__(self.detail, self.pointer, self.status)
 
@@ -115,3 +117,9 @@ class UsageNotAllowed(BaseError):
 
     def __init__(self):
         super(UsageNotAllowed, self).__init__(attr='not_allowed')
+
+
+class SignatureExpired(BaseError):
+
+    def __init__(self):
+        super(SignatureExpired, self).__init__(attr='sign_expired')

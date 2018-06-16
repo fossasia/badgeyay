@@ -14,7 +14,8 @@ from api.controllers import (
     staticHelper,
     updateProfile,
     admin,
-    validation
+    validation,
+    changeMeta
 )
 
 
@@ -37,6 +38,7 @@ app.register_blueprint(staticHelper.router, url_prefix='/static')
 app.register_blueprint(admin.router, url_prefix='/admin')
 app.register_blueprint(updateProfile.router, url_prefix='/update')
 app.register_blueprint(validation.router, url_prefix='/validate')
+app.register_blueprint(changeMeta.router, url_prefix='/change')
 
 
 @app.before_first_request
