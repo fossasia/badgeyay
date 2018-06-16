@@ -35,6 +35,15 @@ class User(db.Model):
             db.session.flush()
             print(e)
 
+    def delete_user(self):
+        db.session.delete(self)
+        try:
+            db.session.commit()
+        except Exception as e:
+            db.session.rollback()
+            db.session.flush()
+            print(e)
+
     @classmethod
     def getUser(cls, user_id=None, username=None, email=None):
         if user_id:
