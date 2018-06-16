@@ -5,6 +5,7 @@ const admin = require('firebase-admin');
 const firebase = require('firebase');
 var serviceAccount = require('./config/serviceKey.json');
 var clientAccount = require('./config/clientKey.json');
+const fs = require('fs');
 
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount),
@@ -26,7 +27,16 @@ const mailTransport = nodemailer.createTransport({
 });
 
 const APP_NAME = 'Badgeyay';
-const PASSWORD_RESET_LINK = 'http://badgeyay.com/reset/password?token='
+const PASSWORD_RESET_LINK = 'http://badgeyay.com/reset/password?token=';
+
+String.prototype.format = function() {
+  var formatted = this;
+  for (var prop in arguments[0]) {
+      var regexp = new RegExp('\\{' + prop + '\\}', 'gi');
+      formatted = formatted.replace(regexp, arguments[0][prop]);
+  }
+  return formatted;
+};
 
 exports.sendVerificationMail = functions.auth.user().onCreate((user) => {
   const uid = user.uid;
@@ -67,12 +77,22 @@ function sendGreetingMail(email, displayName) {
     to: email,
   };
 
-  mailOptions.subject = `Welcome to Badgeyay`;
-  mailOptions.text = `Hey ${displayName || ''}! Welcome to Badgeyay. We welcome you onboard and pleased to offer you service.`;
-  return mailTransport.sendMail(mailOptions).then(() => {
-    return console.log('Welcome mail sent to: ', email)
-  }).catch((err) => {
-    console.error(err.message);
+  var user = {
+    name: displayName
+  };
+  fs.readFile('./greeting.html', (err, data) => {
+    if (err) {
+      console.error(err.message);
+      return -1;
+    } else {
+      mailOptions.subject = `Welcome to Badgeyay`;
+      mailOptions.html = data.toString().format(user);
+      return mailTransport.sendMail(mailOptions).then(() => {
+        return console.log('Welcome mail sent to: ', email)
+      }).catch((err) => {
+        console.error(err.message);
+      });
+    }
   });
 }
 
