@@ -9,7 +9,7 @@ export default Controller.extend({
   actions : {
     sendResetMail(email) {
       // Get Token from backend
-      const this_ = this;
+      const _this = this;
       let resetUserPromise = this.get('store').createRecord('reset-user', {
         email
       });
@@ -18,11 +18,19 @@ export default Controller.extend({
         .then(record => {
           const { token } = record;
           // Send Token and email to cloud function
-          this_.get('store').query('reset-mail', {
+          _this.get('store').query('reset-mail', {
             token,
             email
           });
-          this_.get('notify').success('Reset mail sent to ' + email);
+          _this.get('notify').success('Reset mail sent to ' + email);
+        })
+        .catch(err => {
+          let userErrors = resetUserPromise.get('errors.user');
+          if (userErrors !== undefined) {
+            userErrors.forEach(error => {
+              _this.get('notify').error(error.message);
+            });
+          }
         });
     }
   }
