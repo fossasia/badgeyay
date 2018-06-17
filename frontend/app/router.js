@@ -23,6 +23,7 @@ router.map(function() {
   this.route('reset', function() {
     this.route('password');
   });
+  this.route('user-guide');
 });
 
 export default router;
