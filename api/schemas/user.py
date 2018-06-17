@@ -67,3 +67,12 @@ class FTLUserSchema(Schema):
     email = fields.Str(required=True)
     photoURL = fields.Str(required=True)
     ftl = fields.Boolean(required=True)
+
+
+class DeleteUserSchema(Schema):
+    class Meta:
+        type_ = 'delete-user'
+        kwargs = {'id': '<id>'}
+
+    id = fields.Str(required=True, dump_only=True)
+    uid = fields.Str(required=True)
