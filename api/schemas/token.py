@@ -18,3 +18,12 @@ class ValidTokenSchema(Schema):
 
     id = fields.Str(required=True, dump_only=True)
     valid = fields.Bool(required=True)
+
+
+class LoginTokenSchema(Schema):
+    class Meta:
+        type_ = 'login-tokens'
+        kwargs = {'id': '<id>'}
+
+    id = fields.Str(required=True, dump_only=True)
+    token = fields.Str(required=True)

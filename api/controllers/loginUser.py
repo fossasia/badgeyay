@@ -1,48 +1,39 @@
 import jwt
-import datetime
 
 from flask import Blueprint, jsonify, request
 from flask import current_app as app
-from api.utils.response import Response
-from api.helpers.verifyPassword import verifyPassword
 from api.models.user import User
 from api.schemas.user import FTLUserSchema
+from api.schemas.token import LoginTokenSchema
 from api.utils.errors import ErrorResponse
 from api.schemas.errors import (
-    JsonNotFound,
     UserNotFound,
     OperationNotFound,
-    PasswordNotFound
 )
 
 
 router = Blueprint('loginUser', __name__)
 
 
-@router.route('/login', methods=['POST'])
+@router.route('/login')
 def login():
-    try:
-        data = request.get_json()
-    except Exception:
-        return ErrorResponse(JsonNotFound().message, 422, {'Content-Type': 'application/json'}).respond()
-
-    if 'name' in data.keys():
-        user = User.getUser(username=data['name'])
-        uid = data['uid']
+    args = request.args
+    if 'id' in args.keys():
+        user = User.getUser(user_id=args['id'])
+        uid = user.id
         if not user:
             return ErrorResponse(UserNotFound(uid).message, 422, {'Content-Type': 'application/json'}).respond()
 
-        if not verifyPassword(user, data['password']):
-            return ErrorResponse(PasswordNotFound().message, 422, {'Content-Type': 'application/json'}).respond()
-
+        # Token that is not expiring and validated for the whole session
         token = jwt.encode(
-            {'user': user.username,
-             'exp': datetime.datetime.utcnow() + datetime.timedelta(seconds=900)},
+            {'user': user.username},
             app.config.get('SECRET_KEY'))
 
-        return jsonify(
-            Response(200).generateToken(
-                token.decode('UTF-8')))
+        resp = {
+            'id': user.id,
+            'token': token.decode('UTF-8')}
+
+        return jsonify(LoginTokenSchema().dump(resp).data)
 
     return ErrorResponse(OperationNotFound().message, 422, {'Content-Type': 'application/json'}).respond()
 
