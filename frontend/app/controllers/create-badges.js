@@ -149,6 +149,7 @@ export default Controller.extend({
       }
     },
 
+
     sendBadge(badgeData) {
       const _this = this;
       let badgeRecord = _this.get('store').createRecord('badge', badgeData);
@@ -156,12 +157,22 @@ export default Controller.extend({
         .then(record => {
           _this.set('badgeGenerated', true);
           _this.set('genBadge', record);
-          _this.get('notify').success('Badge generated Successfully');
+          var notify = _this.get('notify');
+          var link   = record.download_link;
+          var message = notify.success(
+            { html:
+            '<div class="header">Badge generated successfully.</div>'
+            + '<p>Visit this<b>'
+            + '<a href='
+            + link
+            + '> Link </a></b> to download badge.</p>',
+            closeAfter: 10000 });
         })
         .catch(err => {
           _this.get('notify').error('Unable to generate badge');
         });
     },
+
 
     mutateCSV(csvData) {
       const _this = this;
