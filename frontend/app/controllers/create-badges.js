@@ -27,10 +27,12 @@ export default Controller.extend({
   defImage       : false,
   custImage      : false,
   colorImage     : false,
+  overlay        : false,
   actions        : {
     submitForm() {
       const _this = this;
       const user = _this.get('store').peekAll('user');
+      _this.set('overlay', true);
       let uid;
       user.forEach(user_ => {
         uid = user_.get('id');
@@ -154,11 +156,14 @@ export default Controller.extend({
       let badgeRecord = _this.get('store').createRecord('badge', badgeData);
       badgeRecord.save()
         .then(record => {
+          _this.set('overlay', false);
           _this.set('badgeGenerated', true);
           _this.set('genBadge', record);
           _this.get('notify').success('Badge generated Successfully');
+
         })
         .catch(err => {
+          _this.set('overlay', false);
           _this.get('notify').error('Unable to generate badge');
         });
     },
