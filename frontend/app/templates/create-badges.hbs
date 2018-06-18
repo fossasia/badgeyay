@@ -118,19 +118,12 @@
             {{/ui-accordion}}
         </div>
     </div>
-    <button {{action "submitForm"}} class="ui fluid orange button">Create Badges</button>
-    {{#if badgeGenerated}}
-    <div class="ui floating positive message">
-        <div class="header">
-            Badge generated successfully
-        </div>
-        <p>Visit this
-            <b>
-                <a href="{{genBadge.download_link}}">link</a>
-            </b> to download badge</p>
-    </div>
-    {{/if}} {{#each userError as |error|}}
-    <p>{{error.message}}</p>
+    <button {{action "submitForm"}} class="ui fluid button">Create Badges</button>
+
+    {{#each userError as |error|}}
+        <p>{{error.message}}</p>
     {{/each}}
+
 </div>
+
 {{overlay-welcome user=user removeFTL=(action 'removeFTL')}}
