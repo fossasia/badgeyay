@@ -13,6 +13,18 @@ def update_firebase_photoURL(uid, photoURL):
         return False
 
 
+def update_firebase_emailVerified(uid):
+    try:
+        auth.update_user(
+            uid=uid,
+            email_verified=True
+        )
+        return True
+    except Exception as e:
+        print(e)
+        return False
+
+
 def update_firebase_password(uid, pwd):
     try:
         auth.update_user(
