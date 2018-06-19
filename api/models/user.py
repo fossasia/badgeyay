@@ -1,4 +1,5 @@
 from werkzeug.security import generate_password_hash
+from datetime import datetime
 from api.db import db
 
 
@@ -13,6 +14,7 @@ class User(db.Model):
                          'images?q=tbn:ANd9GcRWnJC8FyOPb9J-EjhQStzIZt_dk-dxuK-VyEnwQDdqIBKj4p7R8A')
     allowed_usage = db.Column(db.Integer)
     ftl = db.Column(db.Boolean, default=True)
+    created_at = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
     files = db.relationship('File', backref='uploader')
     badges = db.relationship('Badges', backref='creator')
 
