@@ -1,3 +1,5 @@
+from datetime import datetime
+import pytz
 from werkzeug.security import generate_password_hash
 from datetime import datetime
 from api.db import db
@@ -17,6 +19,11 @@ class User(db.Model):
     created_at = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
     files = db.relationship('File', backref='uploader')
     badges = db.relationship('Badges', backref='creator')
+    is_super_admin = db.Column(db.Boolean, default=False)
+    is_admin = db.Column(db.Boolean, default=False)
+    created_at = db.Column(db.DateTime(timezone=True), default=datetime.now(pytz.utc))
+    deleted_at = db.Column(db.DateTime(timezone=True))
+    last_accessed_at = db.Column(db.DateTime(timezone=True))
 
     def __init__(self, id_, username, password, email, photoURL=None):
         self.id = id_
