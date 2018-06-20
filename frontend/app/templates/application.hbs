@@ -2,6 +2,7 @@
     {{nav-bar session=session logOut=(action 'logOut')}}
     {{#if (eq currentRouteName 'index')}}
       {{welcome-header session=session}}
+      {{pricing-component}}
     {{/if}}
     <div class="ui container">
         {{outlet}}
