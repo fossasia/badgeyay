@@ -6,6 +6,7 @@ from api.schemas.user import (
     OAuthUserSchema,
     FTLUserSchema
 )
+from api.helpers.verifyToken import loginRequired
 
 
 router = Blueprint('registerUser', __name__)
@@ -57,6 +58,7 @@ def register_user():
         return jsonify(schema.dump(newUser).data)
 
 
+@loginRequired
 @router.route('/register/<uid>', methods=['PATCH'])
 def patchUser(uid):
     data = request.get_json()['data']['attributes']

@@ -4,6 +4,7 @@ from flask import Blueprint, request, jsonify
 from api.utils.errors import ErrorResponse
 from flask import current_app as app
 from api.helpers.uploads import saveToImage
+from api.helpers.verifyToken import loginRequired
 from api.utils.firebaseUploader import fileUploader
 from api.schemas.errors import (
     PayloadNotFound,
@@ -17,6 +18,7 @@ from api.models.user import User
 router = Blueprint('updateUserProfile', __name__)
 
 
+@loginRequired
 @router.route('/profileImage', methods=['POST'])
 def update_profile_image():
     try:

@@ -3,6 +3,7 @@ import os
 from api.utils.svg_to_png import SVG2PNG
 from flask import Blueprint, request, jsonify
 from api.utils.errors import ErrorResponse
+from api.helpers.verifyToken import loginRequired
 from api.helpers.uploads import saveToImage, saveToCSV, saveAsCSV
 from api.models.file import File
 from api.models.user import User
@@ -29,6 +30,7 @@ from api.schemas.errors import (
 router = Blueprint('fileUploader', __name__)
 
 
+@loginRequired
 @router.route('/image', methods=['POST'])
 def uploadImage():
     try:
@@ -53,6 +55,7 @@ def uploadImage():
     return jsonify(ImageFileSchema().dump(file_upload).data)
 
 
+@loginRequired
 @router.route('/file', methods=['POST'])
 def fileUpload():
     try:
@@ -82,6 +85,7 @@ def fileUpload():
     return jsonify(CSVUploadSchema().dump(file_upload).data)
 
 
+@loginRequired
 @router.route('/manual_data', methods=['POST'])
 def upload_manual_data():
     try:
@@ -108,6 +112,7 @@ def upload_manual_data():
     return jsonify(ManualFileSchema().dump(file_upload).data)
 
 
+@loginRequired
 @router.route('/get_file', methods=['GET'])
 def get_file():
     input_data = request.args
@@ -115,6 +120,7 @@ def get_file():
     return jsonify(FileSchema().dump(file).data)
 
 
+@loginRequired
 @router.route('/upload_default', methods=['POST'])
 def upload_default():
     try:
@@ -140,6 +146,7 @@ def upload_default():
     return jsonify(DefImageSchem().dump(file_upload).data)
 
 
+@loginRequired
 @router.route('/background_color', methods=['POST'])
 def background_color():
     try:
