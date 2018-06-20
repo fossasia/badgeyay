@@ -15,6 +15,7 @@ class BadgeSchema(Schema):
     text_color = fields.Str(required=True)
     badge_size = fields.Str(required=True)
     download_link = fields.Str(required=True)
+    created_at = fields.Date(required=True)
     user_id = fields.Relationship(
         self_url='/api/upload/get_file',
         self_url_kwargs={'file_id': '<id>'},
@@ -37,6 +38,7 @@ class AllBadges(Schema):
     badge_id = fields.Str(required=True)
     text_color = fields.Str(required=True)
     badge_size = fields.Str(required=True)
+    created_at = fields.Date(required=True)
     user_id = fields.Relationship(
         self_url='/api/upload/get_file',
         self_url_kwargs={'file_id': '<id>'},
@@ -60,6 +62,7 @@ class UserBadges(Schema):
     text_color = fields.Str(required=True)
     badge_size = fields.Str(required=True)
     download_link = fields.Str(required=True)
+    created_at = fields.Date(required=True)
     user_id = fields.Relationship(
         self_url='/api/upload/get_file',
         self_url_kwargs={'file_id': '<id>'},
@@ -90,3 +93,13 @@ class DeletedBadges(Schema):
         include_resource_linkage=True,
         type_='User'
     )
+
+
+class DatedBadgeSchema(Schema):
+    class Meta:
+        type_ = 'dated-badges'
+        kwargs = {'id': '<id>'}
+
+    id = fields.Str(required=True, dump_only=True)
+    start_date = fields.Date(required=True)
+    end_date = fields.Date(required=True)

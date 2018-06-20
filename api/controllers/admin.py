@@ -6,7 +6,7 @@ from api.models.badges import Badges
 from api.models.file import File
 from api.models.admin import Admin
 from api.schemas.user import AllUsersSchema, UserAllowedUsage
-from api.schemas.badges import AllBadges
+from api.schemas.badges import AllBadges, DatedBadgeSchema
 from api.schemas.file import FileSchema
 from api.schemas.errors import JsonNotFound
 from api.schemas.admin import AdminSchema
@@ -73,3 +73,14 @@ def admin_add_usage():
     db.session.commit()
 
     return jsonify(UserAllowedUsage().dump(user).data)
+
+
+@router.route('/get_badges_dated', methods=['POST'])
+def get_badges_dated():
+    schema = DatedBadgeSchema()
+    input_data = request.get_json()
+    data, err = schema.load(input_data)
+    if err:
+        return jsonify(err)
+    dated_badges = Badges.query.filter(Badges.created_at <= data.get('end_date')).filter(Badges.created_at >= data.get('start_date'))
+    return jsonify(AllBadges(many=True).dump(dated_badges).data)
