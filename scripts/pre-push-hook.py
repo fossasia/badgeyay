@@ -8,11 +8,15 @@ import sys
 # deviate from develop.
 # To bypass the validation upon `git push` use the following command:
 # `git push REMOTE BRANCH --no-verify`
+# Change the first line of this file if your python3 installation
+# is elsewhere.
 
 
 def main():
 
-    # flake8 linting tests for backend
+    # flake8 linting tests for backend.
+    # Make sure flake8 is installed in the virtual environment or give
+    # the path where flake8 is installed.
     print('Running flake8 tests...')
     result = subprocess.run([os.getcwd() + '/venv/bin/flake8', 'api/'], stdout=subprocess.PIPE)
     check = result.stdout.decode('utf-8')
@@ -22,7 +26,7 @@ def main():
         sys.exit(1)
     print('Flake8 tests passed.')
 
-    # ember tests for frontend
+    # ember tests for frontend.
     print('Running ember tests...')
     result_front = subprocess.run(['ember', 'test'], cwd='frontend', stdout=subprocess.PIPE)
     if result_front.returncode:
