@@ -5,8 +5,9 @@ import Controller from '@ember/controller';
 const { inject } = Ember;
 
 export default Controller.extend({
-  session : inject.service(),
-  notify  : inject.service('notify'),
+  session   : inject.service(),
+  notify    : inject.service('notify'),
+  authToken : inject.service('auth-session'),
   beforeModel() {
     return this.get('session').fetch().catch(function() {});
   },
@@ -36,8 +37,7 @@ export default Controller.extend({
               relationships: {}
             }]
           });
-          this_.transitionToRoute('/');
-          this_.get('notify').success('Log In Successful');
+          this_.send('generateLoginToken', userData.uid);
         }).catch(function(err) {
           console.log(err.message);
           this_.get('notify').error('Log In Failed ! Please try again');
@@ -55,8 +55,7 @@ export default Controller.extend({
           });
           user_.save()
             .then(obj => {
-              this_.transitionToRoute('/');
-              this_.get('notify').success('Log In Successful');
+              this_.send('generateLoginToken', obj.id);
             })
             .catch(err => {
               console.log(err);
@@ -66,6 +65,21 @@ export default Controller.extend({
           this_.get('notify').error('Log In Failed ! Please try again');
         });
       }
+    },
+
+    generateLoginToken(id) {
+      const this_ = this;
+      this.get('store').queryRecord('login-token', {
+        id
+      })
+        .then(record => {
+          this_.get('authToken').updateToken(record.token);
+          this_.transitionToRoute('/');
+          this_.get('notify').success('Log In Successful');
+        })
+        .catch(err => {
+          this_.get('notify').error('Unable to validate user');
+        });
     }
   }
 });
