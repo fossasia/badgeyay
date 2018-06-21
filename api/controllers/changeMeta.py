@@ -8,10 +8,12 @@ from api.schemas.errors import PayloadNotFound, SignatureExpired, PasswordNotFou
 from api.utils.errors import ErrorResponse
 from api.utils.update_user import update_firebase_password
 from api.schemas.operation import ResetPasswordOperation
+from api.helpers.verifyToken import loginRequired
 
 router = Blueprint('Change Meta', __name__)
 
 
+@loginRequired
 @router.route('/password', methods=['POST'])
 def changePwd():
     try:

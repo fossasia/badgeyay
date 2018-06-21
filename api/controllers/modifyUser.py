@@ -1,6 +1,7 @@
 from flask import Blueprint, jsonify, request
 from api.utils.response import Response
 from api.models.user import User
+from api.helpers.verifyToken import loginRequired
 from api.utils.errors import ErrorResponse
 from api.helpers.verifyPassword import verifyPassword
 from werkzeug.security import generate_password_hash
@@ -16,6 +17,7 @@ from api.schemas.errors import (
 router = Blueprint('modifyUser', __name__)
 
 
+@loginRequired
 @router.route('/password', methods=['PUT'])
 def changePassword():
     try:
@@ -42,6 +44,7 @@ def changePassword():
         return ErrorResponse(JsonNotFound().message, 422, {'Content-Type': 'application/json'}).respond()
 
 
+@loginRequired
 @router.route('/name', methods=['PUT'])
 def changeName():
     try:
@@ -68,6 +71,7 @@ def changeName():
         return ErrorResponse(JsonNotFound().message, 422, {'Content-Type': 'application/json'}).respond()
 
 
+@loginRequired
 @router.route('/delete', methods=['DELETE'])
 def delete_user():
     schema = DeleteUserSchema()

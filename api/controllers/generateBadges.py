@@ -7,6 +7,7 @@ from api.config import config
 from flask import Blueprint, jsonify, request
 
 from api.db import db
+from api.helpers.verifyToken import loginRequired
 from api.utils.errors import ErrorResponse
 from api.models.badges import Badges
 from api.models.user import User
@@ -25,6 +26,7 @@ from api.utils.firebaseUploader import fileUploader, deleteFile
 router = Blueprint('generateBadges', __name__)
 
 
+@loginRequired
 @router.route('/generate_badges', methods=['POST'])
 def generateBadges():
     try:
@@ -78,6 +80,7 @@ def generateBadges():
     return jsonify(BadgeSchema().dump(badge_created).data)
 
 
+@loginRequired
 @router.route('/get_badges', methods=['GET'])
 def get_badges():
     input_data = request.args
@@ -86,6 +89,7 @@ def get_badges():
     return jsonify(UserBadges(many=True).dump(badges).data)
 
 
+@loginRequired
 @router.route('/generate_badges/<badgeId>', methods=['DELETE'])
 def delete_badge(badgeId):
     badge = Badges.getBadge(badgeId)

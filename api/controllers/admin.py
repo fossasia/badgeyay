@@ -11,11 +11,13 @@ from api.schemas.file import FileSchema
 from api.schemas.errors import JsonNotFound
 from api.schemas.admin import AdminSchema
 from api.utils.errors import ErrorResponse
+from api.helpers.verifyToken import loginRequired
 
 
 router = Blueprint('admin', __name__)
 
 
+@loginRequired
 @router.route('/show_all_users', methods=['GET'])
 def show_all_users():
     users = User.query.all()
@@ -24,6 +26,7 @@ def show_all_users():
     return jsonify(result.data)
 
 
+@loginRequired
 @router.route('/get_all_badges', methods=['GET'])
 def get_all_badges():
     all_badges = Badges.query.all()
@@ -32,12 +35,14 @@ def get_all_badges():
     return jsonify(result.data)
 
 
+@loginRequired
 @router.route('/get_all_files', methods=['GET'])
 def get_all_files():
     file = File().query.all()
     return jsonify(FileSchema(many=True).dump(file).data)
 
 
+@loginRequired
 @router.route('/register_admin', methods=['POST'])
 def register_admin():
     schema = AdminSchema()
@@ -58,6 +63,7 @@ def register_admin():
     return jsonify(schema.dump(admin).data)
 
 
+@loginRequired
 @router.route('/add_usage', methods=['POST'])
 def admin_add_usage():
     try:
