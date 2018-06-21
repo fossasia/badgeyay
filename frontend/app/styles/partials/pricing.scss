@@ -1,10 +1,10 @@
 .wrapper {
-  margin-top: 10px;
-
   .heading-alpha {
     font-size: 40px;
     text-align: center;
   }
+
+  margin-top: 10px;
 }
 
 .pdf-div {
@@ -16,17 +16,17 @@
 }
 
 .icon-pdf {
+  border-bottom: 1px dotted;
+  float: left;
+  margin-bottom: 10px;
+  margin-left: 28%;
   text-align: center;
   width: 20%;
-  float: left;
-  margin-left: 28%;
-  margin-bottom: 10px;
-  border-bottom: 1px dotted;
 
   .bullets {
-    text-align: center;
-    list-style: none;
     font-size: 20px;
+    list-style: none;
+    text-align: center;
   }
 }
 
@@ -35,33 +35,31 @@
 }
 
 .shipped {
+  .bullets {
+    font-size: 20px;
+    list-style: none;
+    text-align: center;
+  }
+
+  border-bottom: 1px dotted;
+  float: right;
+  margin-bottom: 10px;
+  margin-right: 28%;
   text-align: center;
   width: 20%;
-  float: right;
-  margin-right: 28%;
-  margin-bottom: 10px;
-  border-bottom: 1px dotted;
 
-  .bullets {
-    text-align: center;
-    list-style: none;
-    font-size: 20px;
-  }
 }
 
 .grp-div {
-  margin-bottom: 10px;
-
   .grp-img {
     height: 60px;
   }
+
+  margin-bottom: 10px;
+
 }
 
 .cb-price {
-  text-align: center;
-  margin-top: 30px;
-  margin-bottom: 30px;
-
   .cb-price-number {
     font-size: 30px;
   }
@@ -77,4 +75,8 @@
       font-size: 25px;
     }
   }
+
+  margin-top: 30px;
+  margin-bottom: 30px;
+  text-align: center;
 }
