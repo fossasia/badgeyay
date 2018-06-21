@@ -10,6 +10,7 @@
     "logs": "firebase functions:log"
   },
   "dependencies": {
+    "crypto": "^1.0.1",
     "firebase": "^5.0.4",
     "firebase-admin": "^5.12.1",
     "firebase-functions": "^1.0.4",
