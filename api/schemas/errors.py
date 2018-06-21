@@ -123,3 +123,9 @@ class SignatureExpired(BaseError):
 
     def __init__(self):
         super(SignatureExpired, self).__init__(attr='sign_expired')
+
+
+class AdminNotFound(BaseError):
+
+    def __init__(self):
+        super(AdminNotFound, self).__init__(attr='Admin')

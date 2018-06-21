@@ -22,6 +22,7 @@ def create_app():
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
     app.config['SECRET_KEY'] = config.POSTGRES['secret']
     app.config['DEBUG'] = config.DEBUG
+    app.config["POSTS_PER_PAGE"] = config.POSTS_PER_PAGE
     CORS(app, resources={r"*": {"origins": "*"}})
 
     return app

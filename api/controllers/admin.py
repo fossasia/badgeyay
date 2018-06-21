@@ -5,31 +5,36 @@ from api.models.user import User
 from api.models.badges import Badges
 from api.models.file import File
 from api.models.admin import Admin
+from api.helpers.verifyToken import adminRequired
 from api.schemas.user import AllUsersSchema, UserAllowedUsage, DatedUserSchema
-from api.schemas.badges import AllBadges, DatedBadgeSchema
+from api.schemas.badges import DatedBadgeSchema
+from api.schemas.badges import AllBadges
 from api.schemas.file import FileSchema
 from api.schemas.errors import JsonNotFound
 from api.schemas.admin import AdminSchema
 from api.utils.errors import ErrorResponse
 from api.helpers.verifyToken import loginRequired
+from flask import current_app as app
 
 
 router = Blueprint('admin', __name__)
 
 
-@loginRequired
 @router.route('/show_all_users', methods=['GET'])
+@adminRequired
 def show_all_users():
-    users = User.query.all()
+    page = request.args.get('page', 1, type=int)
     schema = AllUsersSchema(many=True)
-    result = schema.dump(users)
+    users = User.query.paginate(page, app.config['POSTS_PER_PAGE'], False)
+    result = schema.dump(users.items)
     return jsonify(result.data)
 
 
 @loginRequired
 @router.route('/get_all_badges', methods=['GET'])
 def get_all_badges():
-    all_badges = Badges.query.all()
+    page = request.args.get('page', 1, type=int)
+    all_badges = Badges.query.paginate(page, app.config['POSTS_PER_PAGE'], False).items
     schema = AllBadges(many=True)
     result = schema.dump(all_badges)
     return jsonify(result.data)
@@ -38,8 +43,9 @@ def get_all_badges():
 @loginRequired
 @router.route('/get_all_files', methods=['GET'])
 def get_all_files():
-    file = File().query.all()
-    return jsonify(FileSchema(many=True).dump(file).data)
+    page = request.args.get('page', 1, type=int)
+    files = File.query.paginate(page, app.config['POSTS_PER_PAGE'], False).items
+    return jsonify(FileSchema(many=True).dump(files).data)
 
 
 @loginRequired

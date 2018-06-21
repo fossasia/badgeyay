@@ -24,9 +24,12 @@ def login():
         if not user:
             return ErrorResponse(UserNotFound(uid).message, 422, {'Content-Type': 'application/json'}).respond()
 
+        tokenObj = {'user': user.username}
+        if user.siteAdmin:
+            tokenObj = {'adminStatus': True}
         # Token that is not expiring and validated for the whole session
         token = jwt.encode(
-            {'user': user.username},
+            tokenObj,
             app.config.get('SECRET_KEY'))
 
         resp = {
