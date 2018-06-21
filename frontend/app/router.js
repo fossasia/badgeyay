@@ -24,10 +24,10 @@ router.map(function() {
     this.route('password');
   });
   this.route('user-guide');
-
   this.route('verify', function() {
     this.route('email');
   });
+  this.route('admin');
 });
 
 export default router;
