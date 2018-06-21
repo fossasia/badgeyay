@@ -1,10 +1,10 @@
 .wrapper {
+  margin-top: 10px;
+
   .heading-alpha {
     font-size: 40px;
     text-align: center;
   }
-
-  margin-top: 10px;
 }
 
 .pdf-div {
@@ -35,12 +35,6 @@
 }
 
 .shipped {
-  .bullets {
-    font-size: 20px;
-    list-style: none;
-    text-align: center;
-  }
-
   border-bottom: 1px dotted;
   float: right;
   margin-bottom: 10px;
@@ -48,18 +42,26 @@
   text-align: center;
   width: 20%;
 
+  .bullets {
+    font-size: 20px;
+    list-style: none;
+    text-align: center;
+  }
 }
 
 .grp-div {
+  margin-bottom: 10px;
+
   .grp-img {
     height: 60px;
   }
-
-  margin-bottom: 10px;
-
 }
 
 .cb-price {
+  margin-bottom: 30px;
+  margin-top: 30px;
+  text-align: center;
+
   .cb-price-number {
     font-size: 30px;
   }
@@ -75,8 +77,4 @@
       font-size: 25px;
     }
   }
-
-  margin-top: 30px;
-  margin-bottom: 30px;
-  text-align: center;
 }
