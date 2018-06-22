@@ -2,6 +2,10 @@ import jwt
 from flask import Blueprint, request, jsonify
 from flask import current_app as app
 from api.schemas.token import ValidTokenSchema
+from api.schemas.operation import EmailVerificationOperation
+from api.utils.encryptUtil import _decrypt, password
+from api.utils.update_user import update_firebase_emailVerified
+from api.models.user import User
 
 router = Blueprint('Validator', __name__)
 
@@ -20,3 +24,21 @@ def validate_reset_token():
         resp['valid'] = False
         print(e)
         return jsonify(ValidTokenSchema().dump(resp).data)
+
+
+@router.route('/email')
+def validate_email():
+    args = request.args
+    if 'id' in args.keys():
+        encryptID = args['id']
+        email = _decrypt(encryptID, "", password)
+        user = User.getUser(email=email)
+        if not user:
+            print('User not found')
+        resp = {'id': user.id}
+        if not update_firebase_emailVerified(user.uid):
+            print('Email not verified')
+            resp['status'] = 'Not verified'
+        else:
+            resp['status'] = 'Verified'
+        return jsonify(EmailVerificationOperation().dump(resp).data)

@@ -1,4 +1,3 @@
-import datetime
 import jwt
 
 
@@ -24,8 +23,7 @@ def oauth_token():
 
     try:
         token = jwt.encode(
-            {'user': data.get('username'),
-             'exp': datetime.datetime.utcnow() + datetime.timedelta(seconds=900)},
+            {'user': data.get('username')},
             app.config.get('SECRET_KEY'))
 
     except Exception:

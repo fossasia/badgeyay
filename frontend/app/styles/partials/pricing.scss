@@ -1,0 +1,80 @@
+.wrapper {
+  margin-top: 10px;
+
+  .heading-alpha {
+    font-size: 40px;
+    text-align: center;
+  }
+}
+
+.pdf-div {
+  margin-bottom: 10px;
+
+  .pdf-img {
+    height: 60px;
+  }
+}
+
+.icon-pdf {
+  border-bottom: 1px dotted;
+  float: left;
+  margin-bottom: 10px;
+  margin-left: 28%;
+  text-align: center;
+  width: 20%;
+
+  .bullets {
+    font-size: 20px;
+    list-style: none;
+    text-align: center;
+  }
+}
+
+.heading-bravo {
+  font-size: 25px;
+}
+
+.shipped {
+  border-bottom: 1px dotted;
+  float: right;
+  margin-bottom: 10px;
+  margin-right: 28%;
+  text-align: center;
+  width: 20%;
+
+  .bullets {
+    font-size: 20px;
+    list-style: none;
+    text-align: center;
+  }
+}
+
+.grp-div {
+  margin-bottom: 10px;
+
+  .grp-img {
+    height: 60px;
+  }
+}
+
+.cb-price {
+  margin-bottom: 30px;
+  margin-top: 30px;
+  text-align: center;
+
+  .cb-price-number {
+    font-size: 30px;
+  }
+
+  .cb-price-label {
+    font-size: 25px;
+  }
+
+  .coming-soon {
+    font-size: 20px;
+
+    .cap-coming-soon {
+      font-size: 25px;
+    }
+  }
+}

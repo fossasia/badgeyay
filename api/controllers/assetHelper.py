@@ -2,10 +2,12 @@ import os
 
 from api.config import config
 from flask import Blueprint, jsonify
+from api.helpers.verifyToken import loginRequired
 
 router = Blueprint('assethelper', __name__)
 
 
+@loginRequired
 @router.route('/default_images', methods=['GET'])
 def getDefaultBackgrounds():
     if config.ENV == 'LOCAL':
