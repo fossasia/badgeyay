@@ -76,3 +76,13 @@ class DeleteUserSchema(Schema):
 
     id = fields.Str(required=True, dump_only=True)
     uid = fields.Str(required=True)
+
+
+class DatedUserSchema(Schema):
+    class Meta:
+        type_ = 'dated-users'
+        kwargs = {'id': '<id>'}
+
+    id = fields.Str(required=True, dump_only=True)
+    start_date = fields.Date(required=True)
+    end_date = fields.Date(required=True)

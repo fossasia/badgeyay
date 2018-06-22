@@ -5,7 +5,7 @@ from api.models.user import User
 from api.models.badges import Badges
 from api.models.file import File
 from api.models.admin import Admin
-from api.schemas.user import AllUsersSchema, UserAllowedUsage
+from api.schemas.user import AllUsersSchema, UserAllowedUsage, DatedUserSchema
 from api.schemas.badges import AllBadges, DatedBadgeSchema
 from api.schemas.file import FileSchema
 from api.schemas.errors import JsonNotFound
@@ -90,3 +90,14 @@ def get_badges_dated():
         return jsonify(err)
     dated_badges = Badges.query.filter(Badges.created_at <= data.get('end_date')).filter(Badges.created_at >= data.get('start_date'))
     return jsonify(AllBadges(many=True).dump(dated_badges).data)
+
+
+@router.route('/get_users_dated', methods=['POST'])
+def get_user_dated():
+    schema = DatedUserSchema()
+    input_data = request.get_json()
+    data, err = schema.load(input_data)
+    if err:
+        return jsonify(err)
+    dated_users = User.query.filter(User.created_at <= data.get('end_date')).filter(User.created_at >= data.get('start_date'))
+    return jsonify(AllUsersSchema(many=True).dump(dated_users).data)
