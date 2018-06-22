@@ -54,3 +54,4 @@ urllib3==1.22
 webencodings==0.5.1
 Werkzeug==0.14.1
 marshmallow-jsonapi
+pycrypto==2.6.1
