@@ -24,6 +24,7 @@ router.map(function() {
     this.route('password');
   });
   this.route('user-guide');
+  this.route('admin-panel');
 });
 
 export default router;
