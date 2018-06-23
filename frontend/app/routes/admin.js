@@ -7,8 +7,6 @@ export default Route.extend({
   templateName : '',
   authSession  : inject.service('auth-session'),
   beforeModel(transition) {
-    // Will be removed after admin registration
-    this.get('authSession').enableAdmin();
     if (this.get('authSession.adminValid')) {
       this.set('templateName', '');
     } else {
