@@ -1,10 +1,19 @@
 import Service from '@ember/service';
 
 export default Service.extend({
-  sessionToken: null,
+  sessionToken : null,
+  adminValid   : false,
 
   init() {
     this._super(...arguments);
+  },
+
+  enableAdmin() {
+    this.set('adminValid', true);
+  },
+
+  toggleAdmin() {
+    this.set('adminValid', !this.adminValid);
   },
 
   updateToken(token) {

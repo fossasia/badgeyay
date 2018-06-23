@@ -5,9 +5,9 @@ const { inject } = Ember;
 
 export default Route.extend({
   templateName : '',
-  session      : inject.service(),
+  authSession  : inject.service('auth-session'),
   beforeModel(transition) {
-    if (this.get('session.isAuthenticated')) {
+    if (this.get('authSession.adminValid')) {
       this.set('templateName', '');
     } else {
       this.set('templateName', 'not-found');
