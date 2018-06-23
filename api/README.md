@@ -4,34 +4,6 @@
 
 Badgeyay is a Badge generator with a simple web UI to add data and generate printable badges in a PDF.
 
-## Data model
-
-### Request
-
-`/api/v1.0/generate_badges`
-- Method: POST
-- Parameters:
-   - custfont: Font to use. if it is null or not present the default font will be used.
-   - file: .csv which contains user data
-   - csv: CSV data as plain text seperated by a comma (,)
-   
-   (Either file or csv must be present in the query if both are present, file will be processed)
-   - img-default: The dafault image to use. (Required)
-   - bg_color: Hex code of background colour of the badge. Will only be parsed if the value of img-default is "user_defined.png"
-   - image: The custom background image (in .png format) of the badge which will be uploaded
-   
-   (Either img-default or image must be present in the query if both are present, image will be processed)
-
-### Response
-
-```json
-[{
-"type" : "success",
-"message" : "pdf generation completed successfully",
-"download_link" : "https://badgeyay-dev.herokuapp.com/static/badges/team-png-csv-badges.pdf"
-}]
-```
-
 ## Prerequisites
 
 Badgeyay backend requires the following dependencies to be installed.
@@ -81,13 +53,6 @@ One-click Docker, Heroku, Scalingo and Bluemix deployment is also available:
 
 - The input can be a set of csv files(UTF-8) or a manual entry.
 - Detailed Information on Correct format of Input can be found at [Badgeyay User-Input Guide](http://badgeyay.com/#/guide).
-
-### Implementation
-
-- [generate_badges.py](app/generate_badges.py) creates svg files from the `csv`, `png`.
-- [badges/8BadgesOnA3.svg](badges/8BadgesOnA3.svg).
-- [merge_badges_class.py](app/merge_badges_class.py) converts them into pdf files and merges them together into one.
-
 
 ### Output
 
