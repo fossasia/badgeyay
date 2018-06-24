@@ -13,3 +13,6 @@ POSTGRES = {
     'db': 'badgeyay',
     'secret': 'thisisaverysupersecretkeyforfossasiabadgeyay'
 }
+
+# Posts per page to be shown
+POSTS_PER_PAGE = 10

@@ -11,7 +11,6 @@ from api.controllers import (
     registerUser,
     oauthToken,
     assetHelper,
-    staticHelper,
     updateProfile,
     admin,
     validation,
@@ -34,7 +33,6 @@ app.register_blueprint(errorHandlers.router)
 app.register_blueprint(assetHelper.router, url_prefix='/api')
 app.register_blueprint(resetUser.router, url_prefix='/reset')
 app.register_blueprint(oauthToken.router, url_prefix='/api')
-app.register_blueprint(staticHelper.router, url_prefix='/static')
 app.register_blueprint(admin.router, url_prefix='/admin')
 app.register_blueprint(updateProfile.router, url_prefix='/update')
 app.register_blueprint(validation.router, url_prefix='/validate')

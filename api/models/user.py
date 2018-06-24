@@ -17,6 +17,7 @@ class User(db.Model):
     created_at = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
     files = db.relationship('File', backref='uploader')
     badges = db.relationship('Badges', backref='creator')
+    siteAdmin = db.Column(db.Boolean, default=False)
 
     def __init__(self, id_, username, password, email, photoURL=None):
         self.id = id_
@@ -27,6 +28,10 @@ class User(db.Model):
         self.email = email
         if photoURL:
             self.photoURL = photoURL
+
+    def create_site_admin(self):
+        self.siteAdmin = True
+        self.save_to_db()
 
     def save_to_db(self):
         db.session.add(self)
