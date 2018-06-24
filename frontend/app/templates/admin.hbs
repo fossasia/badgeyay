@@ -1,0 +1,29 @@
+<div class="admin-top-margin">
+    <div class="admin-container">
+        <div class="ui top attached tabular menu">
+            <div class="active item" data-tab="cloud-deployment">Cloud Deployment</div>
+            <div class="item" data-tab="firebase">Firebase</div>
+            <div class="item" data-tab="users">Users</div>
+            <div class="item" data-tab="pricing">Pricing</div>
+            <div class="item" data-tab="usage-stat">Usage statistics</div>
+        </div>
+        <div class="ui bottom active attached tab segment" data-tab="cloud-deployment">
+            {{admin/deployment-comp}}
+        </div>
+        <div class="ui bottom attached tab segment" data-tab="firebase">
+            {{admin/firebase-comp}}
+        </div>
+        <div class="ui bottom attached tab segment" data-tab="users">
+            {{admin/user-comp}}
+        </div>
+        <div class="ui bottom attached tab segment" data-tab="pricing">
+            {{admin/pricing-comp}}
+        </div>
+        <div class="ui bottom attached tab segment" data-tab="usage-stat">
+            {{admin/usage-stat-comp}}
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    $('.tabular.menu .item').tab();
+</script>
