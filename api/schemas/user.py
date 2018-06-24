@@ -23,6 +23,7 @@ class AllUsersSchema(Schema):
     id = fields.Str(required=True, dump_only=True)
     username = fields.Str(required=True)
     email = fields.Str(required=True)
+    photoURL = fields.Str(required=True)
 
 
 class OAuthUserSchema(Schema):

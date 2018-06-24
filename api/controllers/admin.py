@@ -5,7 +5,7 @@ from api.models.user import User
 from api.models.badges import Badges
 from api.models.file import File
 from api.models.admin import Admin
-from api.helpers.verifyToken import adminRequired
+# from api.helpers.verifyToken import adminRequired
 from api.schemas.user import AllUsersSchema, UserAllowedUsage, DatedUserSchema
 from api.schemas.badges import DatedBadgeSchema
 from api.schemas.badges import AllBadges
@@ -21,7 +21,6 @@ router = Blueprint('admin', __name__)
 
 
 @router.route('/show_all_users', methods=['GET'])
-@adminRequired
 def show_all_users():
     page = request.args.get('page', 1, type=int)
     schema = AllUsersSchema(many=True)
