@@ -86,3 +86,15 @@ class DatedUserSchema(Schema):
     id = fields.Str(required=True, dump_only=True)
     start_date = fields.Date(required=True)
     end_date = fields.Date(required=True)
+
+
+class UpdateProfileSchema(Schema):
+    class Meta:
+        type_ = 'update-user'
+        kwargs = {'id': '<id>'}
+
+    id = fields.Str(required=True, dump_only=True)
+    uid = fields.Str(required=True)
+    username = fields.Str(required=True)
+    email = fields.Str(required=True)
+    password = fields.Str(required=True)
