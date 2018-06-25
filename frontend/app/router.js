@@ -27,7 +27,12 @@ router.map(function() {
   this.route('verify', function() {
     this.route('email');
   });
-  this.route('admin');
+  this.route('admin', function() {
+    this.route('users');
+    this.route('mail');
+    this.route('reports');
+    this.route('settings');
+  });
 });
 
 export default router;

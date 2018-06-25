@@ -1,35 +1,24 @@
-<div class="admin-top-margin">
-    <div class="admin-container">
-        <div class="ui top attached tabular menu">
-            <div class="active item" data-tab="cloud-deployment">Cloud Deployment</div>
-            <div class="item" data-tab="firebase">Firebase</div>
-            <div class="item" data-tab="users">Users</div>
-            <div class="item" data-tab="pricing">Pricing</div>
-            <div class="item" data-tab="usage-stat">Usage statistics</div>
-        </div>
-        <div class="ui bottom active attached tab segment" data-tab="cloud-deployment">
-            {{admin/deployment-comp}}
-        </div>
-        <div class="ui bottom attached tab segment" data-tab="firebase">
-            {{admin/firebase-comp}}
-        </div>
-        <div class="ui bottom attached tab segment" data-tab="users">
-            {{admin/user-comp users=users}}
-            <div class="grid">
-                <div class="column">
-                    <button class="ui inactive button" onclick={{action 'previousPageUsers'}}><i class="angle left icon"></i></button>
-                    <button class="ui button" onclick={{action 'nextPageUsers'}}><i class="angle right icon"></i></button>
-                </div>
-            </div>
-        </div>
-        <div class="ui bottom attached tab segment" data-tab="pricing">
-            {{admin/pricing-comp}}
-        </div>
-        <div class="ui bottom attached tab segment" data-tab="usage-stat">
-            {{admin/usage-stat-comp}}
-        </div>
-    </div>
+<div class="row">
+  <div class="x-scrollable sixteen wide column">
+    {{#tabbed-navigation}}
+      {{#link-to 'admin.index' class='item'}}
+        {{'Admin'}}
+      {{/link-to}}
+      {{#link-to 'admin.users' class='item'}}
+        {{'Users'}}
+      {{/link-to}}
+      {{#link-to 'admin.mail' class='item'}}
+        {{'Mail'}}
+      {{/link-to}}
+      {{#link-to 'admin.reports' class='item'}}
+        {{'Reports'}}
+      {{/link-to}}
+      {{#link-to 'admin.settings' class='item'}}
+        {{'Settings'}}
+      {{/link-to}}
+    {{/tabbed-navigation}}
+  </div>
 </div>
-<script type="text/javascript">
-    $('.tabular.menu .item').tab();
-</script>
+<div class="ui segment">
+  {{outlet}}
+</div>
