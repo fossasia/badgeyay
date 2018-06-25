@@ -36,7 +36,8 @@ module.exports = function(environment) {
       // Here you can pass flags/options to your application instance
       // when it is created
       backLink      : 'http://localhost:5000',
-      resetFunction : 'http://localhost:8090/badgeyay-195bf/us-central1/sendResetMail'
+      resetFunction : 'http://localhost:8090/badgeyay-195bf/us-central1/sendResetMail',
+      adminAccess   : false
     }
   };
 
@@ -46,6 +47,11 @@ module.exports = function(environment) {
     // ENV.APP.LOG_TRANSITIONS = true;
     // ENV.APP.LOG_TRANSITIONS_INTERNAL = true;
     // ENV.APP.LOG_VIEW_LOOKUPS = true;
+  }
+
+  if (environment === 'admin') {
+    ENV.APP.adminAccess = true;
+    ENV.APP.backLink = 'http://badgeyay-api.herokuapp.com';
   }
 
   if (environment === 'test') {

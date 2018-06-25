@@ -6,6 +6,12 @@ const md5 = require('md5');
 
 module.exports = function(defaults) {
   const fingerprintHash = md5(Date.now());
+  var env = process.env.EMBER_ENV || 'development';
+  var fingerprintEnabled = false;
+
+  if (env === 'production') {
+    fingerprintEnabled = true;
+  }
 
   let app = new EmberApp(defaults, {
     // Add options here
@@ -13,6 +19,7 @@ module.exports = function(defaults) {
       includePolyfill: true
     },
     fingerprint: {
+      enabled    : fingerprintEnabled,
       extensions : ['js', 'css', 'png'], // list of extensions to fingerprint
       customHash : fingerprintHash // use a single fingeprint/hash for all assets
     }

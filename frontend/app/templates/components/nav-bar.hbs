@@ -10,14 +10,15 @@
                      <a href="{{href-to 'create-badges'}}" class="item"><i class="pencil alternate icon"></i>Create Badges</a>
                     <a href="{{href-to 'my-badges'}}" class="item"><i class="clone outline icon"></i>My Badges</a>
                     <a href="{{href-to 'my-profile'}}" class="item"><i class="user outline icon"></i>Profile</a>
+                    <a href="{{href-to 'admin'}}" class="item"><i class="user icon"></i>Admin</a>
                     <a class="item"><i class="cog icon"></i>Settings</a>
                     <a class="item" {{action 'logOut'}}><i class="sign out alternate icon"></i>Logout</a>
                 </div>
             {{/ui-dropdown}}
-        {{else}} 
+        {{else}}
             {{#link-to 'login'}}
                 <div class="right item ui button" style="text-transform: uppercase; font-weight: 400; line-spacing: 0.5px; line-height: 30px">Login</div>
-            {{/link-to}} 
+            {{/link-to}}
         {{/if}}
     </div>
 </div>
