@@ -8,7 +8,7 @@ $color4: #ffa500;
   background: linear-gradient($color1, $color1), url("/images/landing.jpg");
   background-position: center;
   color: $color3;
-  height: 60vh;
+  height: 500px;
   overflow: hidden;
   position: relative;
 
@@ -18,14 +18,16 @@ $color4: #ffa500;
     right: 20%;
     text-align: center;
     top: 25vh;
+    vertical-align: center;
 
     .lead {
-      font-size: 65px;
+      font-size: 3.5rem;
+      font-weight: 300 !important;
       text-shadow: 0 1px 2px $color2;
     }
 
     .create-badges {
-      font-weight: 800;
+      font-weight: 400 !important;
       text-transform: uppercase;
     }
 
