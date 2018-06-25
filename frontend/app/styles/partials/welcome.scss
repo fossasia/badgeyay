@@ -32,8 +32,50 @@ $color4: #ffa500;
     }
 
     .button {
-      font-size: 18px;
+      font-size: 1.5em;
       margin-top: 20px;
+    }
+  }
+}
+
+@media screen and (max-width: 1800px) {
+  .welcome-header {
+    .content {
+      .lead {
+        font-size: 3.5em;
+      }
+
+      .button {
+        font-size: 1.2em;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 1300px) {
+  .welcome-header {
+    .content {
+      .lead {
+        font-size: 3em;
+      }
+
+      .button {
+        font-size: 1.1em;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .welcome-header {
+    .content {
+      .lead {
+        font-size: 2.2em;
+      }
+
+      .button {
+        font-size: 1em;
+      }
     }
   }
 }
