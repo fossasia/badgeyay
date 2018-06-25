@@ -21,6 +21,6 @@ module('Integration | Component | admin/user-comp', function(hooks) {
       {{/admin/user-comp}}
     `);
 
-    assert.equal(this.element.textContent.trim(), 'template block text');
+    assert.equal(this.element.textContent.trim(), '');
   });
 });
