@@ -1,0 +1,82 @@
+<div class="ui celled grid">
+    <div class="row">
+        <div class="column">
+            <h5>Mail Templates</h5>
+        </div>
+    </div>
+    <div class="three column row">
+        <div class="two wide column">
+            <h5>Greeting Mail template</h5>
+        </div>
+        <div class="twelve wide column">
+            {{#if greetingMailEn }} {{textarea value=greetingMailVal rows="4" cols="70"}} {{else}}
+            <p>{{greetingMailVal}}</p>
+            {{/if}}
+        </div>
+        <div class="two wide column">
+            <button class="ui fluid button primary" onclick={{action 'toggleGreetingMailEn'}}>{{greetingMailBtn}}</button>
+        </div>
+    </div>
+    <div class="three column row">
+        <div class="two wide column">
+            <h5>Verification Mail template</h5>
+        </div>
+        <div class="twelve wide column">
+            {{#if verificationMailEn }} {{textarea value=verificationMailVal rows="4" cols="70"}} {{else}}
+            <p>{{verificationMailVal}}</p>
+            {{/if}}
+        </div>
+        <div class="two wide column">
+            <button class="ui fluid button primary" onclick={{action 'toggleVerificationMailEn'}}>{{verificationMailBtn}}</button>
+        </div>
+    </div>
+    <div class="three column row">
+        <div class="two wide column">
+            <h5>Forgot Password template</h5>
+        </div>
+        <div class="twelve wide column">
+            {{#if forgotMailEn }} {{textarea value=forgotMailVal rows="4" cols="70"}} {{else}}
+            <p>{{forgotMailVal}}</p>
+            {{/if}}
+        </div>
+        <div class="two wide column">
+            <button class="ui fluid button primary" onclick={{action 'toggleForgotMailEn'}}>{{forgotMailBtn}}</button>
+        </div>
+    </div>
+</div>
+
+<br>
+
+<div class="ui celled grid">
+    <div class="row">
+        <div class="column">
+            <h5>Mail Configuration</h5>
+        </div>
+    </div>
+    <div class="two column row">
+        <div class="two wide column">
+            <h5>Senders Email</h5>
+        </div>
+        <div class="twelve wide column">
+            <div class="ui fluid input">
+                {{input value=senderEmail type="email"}}
+            </div>
+        </div>
+        <div class="two wide column">
+            <button class="ui fluid button primary" onclick={{action 'changeSenderEmail'}}>{{senderEmailBtn}}</button>
+        </div>
+    </div>
+    <div class="two column row">
+        <div class="two wide column">
+            <h5>Senders Password</h5>
+        </div>
+        <div class="twelve wide column">
+            <div class="ui fluid input">
+                {{input value=senderPassword type="password"}}
+            </div>
+        </div>
+        <div class="two wide column">
+            <button class="ui fluid button primary" onclick={{action 'changeSenderPassword'}}>{{senderPasswordBtn}}</button>
+        </div>
+    </div>
+</div>
