@@ -2,3 +2,34 @@
   position: relative;
   top: 80px;
 }
+
+.image {
+  left: 2%;
+  top: 60px;
+}
+
+
+.profile-image:hover {
+  .profile-change {
+    opacity: 1;
+  }
+
+  img {
+    opacity: 0.3;
+  }
+}
+
+
+.profile-change {
+  left: 50px;
+  opacity: 0;
+  position: absolute;
+  top: 80px;
+  transition: 0.5s ease;
+}
+
+.stats {
+  left: 105%;
+  position: relative;
+  top: 105px;
+}

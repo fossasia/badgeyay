@@ -1,48 +1,35 @@
-<div class="ui hidden divider"></div>
-<div class="left column image">
+<div class="my-profile">
   <div class="ui small circular image profile-image">
       <img src="{{user.photoURL}}">
       <input style="display: none;" id="profileImageSelector" type="file" onchange={{action "profileImageSelected"}}>
       <div class="profile-change" onclick={{action "updateProfileImage"}}><b>Change</b></div>
   </div>
-</div>
-<div class="stats">
-  <div class="ui card">
-    <div class="ui statistic">
-        <div class="value">
-          100
-        </div>
-        <div class="label">
-          Badges Generated
-        </div>
-      </div>
+  <div class="ui hidden divider"></div>
+  <div class="ui pointing menu">
+    <a class="active item">
+      Profile
+    </a>
   </div>
-</div>
-<div class="ui hidden divider"></div>
-<div class="ui pointing menu">
-  <a class="active item">
-    Profile
-  </a>
-</div>
-<div class="ui segment">
-  <form class="ui form">
-    <h4 class="ui dividing header">Personal Information</h4>
-      <div class="field">
-        <label>Username</label>
-        <div class="fields">
-          <div class="ten wide field">
-            <input placeholder="Default User Name" type="text">
+  <div class="ui segment">
+    <form class="ui form">
+      <h4 class="ui dividing header">Personal Information</h4>
+        <div class="field">
+          <label>Username</label>
+          <div class="fields">
+            <div class="ten wide field">
+              <input placeholder="Default User Name" type="text">
+            </div>
           </div>
         </div>
-      </div>
-      <div class="field">
-        <label>Email</label>
-        <div class="fields">
-          <div class="ten wide field">
-            <input placeholder="Default User Email" type="text">
+        <div class="field">
+          <label>Email</label>
+          <div class="fields">
+            <div class="ten wide field">
+              <input placeholder="Default User Email" type="text">
+            </div>
           </div>
         </div>
-      </div>
-      <div class="ui button" tabindex="0">Save Changes</div>
-  </form>
+        <div class="ui button" tabindex="0">Save Changes</div>
+    </form>
+  </div>
 </div>
