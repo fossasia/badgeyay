@@ -5,6 +5,7 @@ from api.models.user import User
 from api.models.badges import Badges
 from api.models.file import File
 from api.models.admin import Admin
+from api.models.utils import Utilities
 # from api.helpers.verifyToken import adminRequired
 from api.schemas.user import AllUsersSchema, UserAllowedUsage, DatedUserSchema
 from api.schemas.badges import DatedBadgeSchema
@@ -12,6 +13,7 @@ from api.schemas.badges import AllBadges
 from api.schemas.file import FileSchema
 from api.schemas.errors import JsonNotFound
 from api.schemas.admin import AdminSchema
+from api.schemas.utils import SetPricingSchema, ReturnSetPricing
 from api.utils.errors import ErrorResponse
 from api.helpers.verifyToken import loginRequired
 from flask import current_app as app
@@ -106,3 +108,20 @@ def get_user_dated():
         return jsonify(err)
     dated_users = User.query.filter(User.created_at <= data.get('end_date')).filter(User.created_at >= data.get('start_date'))
     return jsonify(AllUsersSchema(many=True).dump(dated_users).data)
+
+
+@router.route('/pricing', methods=['POST'])
+def set_pricing():
+    schema = SetPricingSchema()
+    input_data = request.get_json()
+    data, err = schema.load(input_data)
+    if err:
+        return jsonify(err)
+    utils = Utilities(pricing=data['pricing'])
+    utils.save_to_db()
+    ret_data = {
+        'status': 200,
+        'pricing': data['pricing'],
+        'message': 'Pricing Set Successfully'
+    }
+    return jsonify(ReturnSetPricing().dump(ret_data).data)
