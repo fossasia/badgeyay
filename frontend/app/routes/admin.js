@@ -5,11 +5,9 @@ const { inject, RSVP, set } = Ember;
 
 export default Route.extend({
   templateName : '',
-  authSession  : inject.service('auth-session'),
+  authToken    : inject.service('auth-session'),
   beforeModel(transition) {
-    // Will be removed after admin registration
-    this.get('authSession').enableAdmin();
-    if (this.get('authSession.adminValid')) {
+    if (this.get('authToken.adminValid')) {
       this.set('templateName', '');
     } else {
       this.set('templateName', 'not-found');

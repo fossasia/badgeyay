@@ -1,8 +1,9 @@
 import Ember from 'ember';
-
+import ENV from '../config/environment';
 import Controller from '@ember/controller';
 
 const { inject } = Ember;
+const { APP } = ENV;
 
 export default Controller.extend({
   session   : inject.service(),
@@ -69,11 +70,18 @@ export default Controller.extend({
 
     generateLoginToken(id) {
       const this_ = this;
-      this.get('store').queryRecord('login-token', {
+      let queryPayload = {
         id
-      })
+      };
+      if (APP.adminAccess) {
+        queryPayload.admin = true;
+      }
+      this.get('store').queryRecord('login-token', queryPayload)
         .then(record => {
           this_.get('authToken').updateToken(record.token);
+          if (APP.adminAccess) {
+            this_.get('authToken').enableAdmin();
+          }
           this_.transitionToRoute('/');
           this_.get('notify').success('Log In Successful');
         })
