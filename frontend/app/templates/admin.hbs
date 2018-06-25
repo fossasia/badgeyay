@@ -14,7 +14,13 @@
             {{admin/firebase-comp}}
         </div>
         <div class="ui bottom attached tab segment" data-tab="users">
-            {{admin/user-comp}}
+            {{admin/user-comp users=users}}
+            <div class="grid">
+                <div class="column">
+                    <button class="ui inactive button" onclick={{action 'previousPageUsers'}}><i class="angle left icon"></i></button>
+                    <button class="ui button" onclick={{action 'nextPageUsers'}}><i class="angle right icon"></i></button>
+                </div>
+            </div>
         </div>
         <div class="ui bottom attached tab segment" data-tab="pricing">
             {{admin/pricing-comp}}

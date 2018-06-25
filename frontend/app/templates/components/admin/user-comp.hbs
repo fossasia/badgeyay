@@ -1,1 +1,3 @@
-{{yield}}
+{{#each users as |user|}}
+    {{user-card user=user}}
+{{/each}}
