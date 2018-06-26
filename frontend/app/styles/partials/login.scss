@@ -1,5 +1,5 @@
-$color_links: #33587d;
-$color_white: #ffffff;
+$colorlinks: #33587d;
+$colorwhite: #ffffff;
 
 .login {
   position: relative;
@@ -18,6 +18,7 @@ $color_white: #ffffff;
     .capital {
       text-transform: uppercase;
     }
+
     .large-oauth {
       padding-bottom: 15px;
       padding-left: 50px;
@@ -46,9 +47,9 @@ $color_white: #ffffff;
   }
 
   .no-border {
-    background-color: $color_white;
-    box-shadow: none;
+    background-color: $colorwhite;
     border: 0;
+    box-shadow: none;
   }
 }
 
@@ -56,13 +57,13 @@ $color_white: #ffffff;
   text-align: center;
 
   .form-title {
-    color: $color_links;
+    color: $colorlinks;
     font-size: 20px;
     font-weight: 300;
   }
 
   .form-subtitle {
-    color: $color_links;
+    color: $colorlinks;
     font-size: 15px;
     font-weight: 300;
   }
@@ -73,7 +74,7 @@ $color_white: #ffffff;
   margin-top: 5px;
 
   .links {
-    color: $color_links;
+    color: $colorlinks;
     margin-top: 50px;
   }
 }
