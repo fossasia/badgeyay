@@ -9,15 +9,24 @@ $color_links: #33587D;
 
 .oauth-buttons {
   .buttons {
-    margin: 10px 10px 0 10px;
+    margin-top: 10px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    margin-left: 0;
+
     .capital {
       text-transform: uppercase;
     }
     .large-oauth {
-      padding: 15px 50px 15px 50px;
+      padding-top: 15px;
+      padding-right: 50px;
+      padding-bottom: 15px;
+      padding-left: 50px;
+
       .log-text {
         text-align: center;
       }
+
       .o-icon {
         font-size: 20px;
         text-align: left;
@@ -34,33 +43,37 @@ $color_links: #33587D;
   .ending-border {
     border-bottom: 0.01rem dotted;
   }
+
   .no-border {
-    background-color:white;
-    box-shadow:none;
-    border: 0px;
+    background-color: #ffffff;
+    box-shadow: none;
+    border: 0;
   }
 }
 
-.form-div{
+.form-div {
   text-align: center;
+
   .form-title {
+    color: $color_links;
     font-size: 20px;
     font-weight: 300;
-    color: $color_links;
   }
+
   .form-subtitle {
+    color: $color_links;
     font-size: 15px;
     font-weight: 300;
-    color: $color_links;
   }
 }
 
 .div-links {
-  margin-top: 5px;
   margin-bottom: 5px;
-  .links{
-    margin-top: 50px;
+  margin-top: 5px;
+
+  .links {
     color: $color_links;
+    margin-top: 50px;
   }
 }
 
