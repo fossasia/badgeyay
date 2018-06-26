@@ -1,4 +1,5 @@
-$color_links: #33587D;
+$color_links: #33587d;
+$color_white: #ffffff;
 
 .login {
   position: relative;
@@ -9,19 +10,19 @@ $color_links: #33587D;
 
 .oauth-buttons {
   .buttons {
-    margin-top: 10px;
-    margin-right: 10px;
     margin-bottom: 10px;
     margin-left: 0;
+    margin-right: 10px;
+    margin-top: 10px;
 
     .capital {
       text-transform: uppercase;
     }
     .large-oauth {
-      padding-top: 15px;
-      padding-right: 50px;
       padding-bottom: 15px;
       padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 15px;
 
       .log-text {
         text-align: center;
@@ -45,7 +46,7 @@ $color_links: #33587D;
   }
 
   .no-border {
-    background-color: #ffffff;
+    background-color: $color_white;
     box-shadow: none;
     border: 0;
   }
