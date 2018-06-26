@@ -24,20 +24,25 @@ export default Controller.extend({
           password
         }).then(function(userData) {
           let userObj = userData.currentUser;
-          this_.get('store').pushPayload({
-            data: [{
-              id         : userData.uid,
-              type       : 'user',
-              attributes : {
-                'uid'      : userData.uid,
-                'username' : userObj.displayName,
-                'email'    : userObj.email,
-                'photoURL' : userObj.photoURL
-              },
-              relationships: {}
-            }]
-          });
-          this_.send('generateLoginToken', userData.uid);
+          if (!userObj.emailVerified) {
+            this_.session.close();
+            this_.notify.error('Please verify your email');
+          } else {
+            this_.get('store').pushPayload({
+              data: [{
+                id         : userData.uid,
+                type       : 'user',
+                attributes : {
+                  'uid'      : userData.uid,
+                  'username' : userObj.displayName,
+                  'email'    : userObj.email,
+                  'photoURL' : userObj.photoURL
+                },
+                relationships: {}
+              }]
+            });
+            this_.send('generateLoginToken', userData.uid);
+          }
         }).catch(function(err) {
           console.log(err.message);
           this_.get('notify').error('Log In Failed ! Please try again');

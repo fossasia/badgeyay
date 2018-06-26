@@ -36,7 +36,7 @@ def validate_email():
         if not user:
             print('User not found')
         resp = {'id': user.id}
-        if not update_firebase_emailVerified(user.uid):
+        if not update_firebase_emailVerified(user.id):
             print('Email not verified')
             resp['status'] = 'Not verified'
         else:
