@@ -12,6 +12,7 @@ class UserSchema(Schema):
     username = fields.Str(required=True)
     email = fields.Str(required=True)
     password = fields.Str(required=True, load_only=True)
+    siteAdmin = fields.Bool()
 
 
 class AllUsersSchema(Schema):
@@ -36,6 +37,7 @@ class OAuthUserSchema(Schema):
     username = fields.Str(required=True)
     email = fields.Str(required=True)
     photoURL = fields.Str(required=True)
+    siteAdmin = fields.Bool()
 
 
 class UpdateUserSchema(Schema):

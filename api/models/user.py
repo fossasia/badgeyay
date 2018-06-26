@@ -15,6 +15,7 @@ class User(db.Model):
     allowed_usage = db.Column(db.Integer)
     ftl = db.Column(db.Boolean, default=True)
     created_at = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
+    deleted_at = db.Column(db.DateTime, nullable=True)
     files = db.relationship('File', backref='uploader')
     badges = db.relationship('Badges', backref='creator')
     siteAdmin = db.Column(db.Boolean, default=False)

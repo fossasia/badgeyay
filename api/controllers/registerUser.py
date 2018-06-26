@@ -1,6 +1,7 @@
 from flask import Blueprint, jsonify, request
 from firebase_admin import auth
 from api.models.user import User
+from api.config.config import admins
 from api.schemas.user import (
     UserSchema,
     OAuthUserSchema,
@@ -33,6 +34,9 @@ def register_user():
             email=user.email,
             password=data['password'])
 
+        if user.email in admins:
+            newUser.siteAdmin = True
+
         newUser.save_to_db()
 
         return jsonify(schema.dump(newUser).data)
@@ -52,6 +56,8 @@ def register_user():
                 password=None,
                 photoURL=data['photoURL']
             )
+            if data['email'] in admins:
+                newUser.siteAdmin = True
             newUser.save_to_db()
         else:
             newUser = user_

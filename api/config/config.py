@@ -16,3 +16,5 @@ POSTGRES = {
 
 # Posts per page to be shown
 POSTS_PER_PAGE = 10
+
+admins = ['badgeyayofficial@gmail.com']

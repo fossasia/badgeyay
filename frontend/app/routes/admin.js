@@ -11,18 +11,6 @@ export default Route.extend({
       this.set('templateName', '');
     } else {
       this.set('templateName', 'not-found');
-      transition.abort();
     }
-  },
-
-  model() {
-    return RSVP.hash({
-      users: this.get('store').query('all-user', { page: 1 })
-    });
-  },
-
-  setupController(controller, model) {
-    this._super(...arguments);
-    set(controller, 'users', model.users);
   }
 });

@@ -4,9 +4,10 @@ import Controller from '@ember/controller';
 const { inject } = Ember;
 
 export default Controller.extend({
-  session : inject.service(),
-  notify  : inject.service('notify'),
-  actions : {
+  session   : inject.service(),
+  notify    : inject.service('notify'),
+  authToken : inject.service('auth-session'),
+  actions   : {
     logOut() {
       this.get('store').unloadAll('user');
       this.get('session').close();

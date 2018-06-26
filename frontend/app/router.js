@@ -28,7 +28,10 @@ router.map(function() {
     this.route('email');
   });
   this.route('admin', function() {
-    this.route('users');
+    this.route('users', function() {
+      this.route('list', { path: '/:users_status' });
+      this.route('view');
+    });
     this.route('mail');
     this.route('reports');
     this.route('settings');
