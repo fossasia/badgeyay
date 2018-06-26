@@ -20,13 +20,20 @@
                     <a class="large item navbar-dropdown upper" {{action 'logOut'}}>Logout</a>
                 </div>
             {{/ui-dropdown}}
-            {{#link-to 'create-badges' class='item ui orange text'}}
-                CREATE BADGE
-            {{/link-to}}
         {{else}} 
             {{#link-to 'login'}}
                 <div class="right item ui button" style="text-transform: uppercase; font-weight: 400; line-spacing: 0.5px; line-height: 30px">Login</div>
             {{/link-to}} 
         {{/if}}
+        {{#if session.isAuthenticated}}
+          {{#link-to 'create-badges' class='item ui orange text'}}
+                CREATE BADGE
+            {{/link-to}}
+        {{else}}
+            {{#link-to 'login' class='item ui orange text'}}
+                CREATE BADGE
+            {{/link-to}}
+        {{/if}}
+            
     </div>
 </div>
