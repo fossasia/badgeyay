@@ -1,5 +1,66 @@
+$color_links: #33587D;
+
 .login {
   position: relative;
   text-align: center;
   top: 40px;
 }
+
+
+.oauth-buttons {
+  .buttons {
+    margin: 10px 10px 0 10px;
+    .capital {
+      text-transform: uppercase;
+    }
+    .large-oauth {
+      padding: 15px 50px 15px 50px;
+      .log-text {
+        text-align: center;
+      }
+      .o-icon {
+        font-size: 20px;
+        text-align: left;
+      }
+    }
+  }
+}
+
+.oauth-methods {
+  margin-top: 55px;
+}
+
+.form {
+  .ending-border {
+    border-bottom: 0.01rem dotted;
+  }
+  .no-border {
+    background-color:white;
+    box-shadow:none;
+    border: 0px;
+  }
+}
+
+.form-div{
+  text-align: center;
+  .form-title {
+    font-size: 20px;
+    font-weight: 300;
+    color: $color_links;
+  }
+  .form-subtitle {
+    font-size: 15px;
+    font-weight: 300;
+    color: $color_links;
+  }
+}
+
+.div-links {
+  margin-top: 5px;
+  margin-bottom: 5px;
+  .links{
+    margin-top: 50px;
+    color: $color_links;
+  }
+}
+
