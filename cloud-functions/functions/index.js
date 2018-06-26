@@ -29,7 +29,7 @@ const mailTransport = nodemailer.createTransport({
 
 const APP_NAME = 'Badgeyay';
 const BASE_URL = 'http://badgeyay.com/';
-const PASSWORD_RESET_LINK = 'http://badgeyay.com/reset/password?token=';
+const PASSWORD_RESET_LINK = 'http://badgeyay.com/#/reset/password?token=';
 var password = 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa';
 
 
@@ -121,7 +121,7 @@ exports.sendVerificationMail = functions.auth.user().onCreate((user) => {
 
     encrypt(userEmail, password, encoded => {
       var resp = {
-        link: BASE_URL + 'verify/email?id=' + encoded
+        link: BASE_URL + '#/verify/email?id=' + encoded
       }
       mailOptions.subject = 'Please verify your Email | Badgeyay';
       mailOptions.html = '<p>Please verify your email ID by clicking on this <a href={link}>Link</a></p>'.format(resp);
