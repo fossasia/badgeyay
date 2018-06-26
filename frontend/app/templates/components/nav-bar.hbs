@@ -1,19 +1,28 @@
-<div class="ui top fixed menu">
+<div class="ui top absolute menu">
     {{#link-to 'index' class="header item"}}
-    <h2 style="line-spacing: 1px">Badgeyay</h2>
+    <h2 style="font-weight: normal;">badgeyay</h2>
     {{/link-to}}
     <div class="right menu">
         {{#if session.isAuthenticated}}
             {{#ui-dropdown class='large item' action='hide'}}
-                <div>Welcome</div><i class="dropdown icon"></i>
+                <div class="upper">{{session.currentUser.displayName}}</div><i class="dropdown icon"></i>
                 <div class="menu profile-dropdown-menu">
-                     <a href="{{href-to 'create-badges'}}" class="item"><i class="pencil alternate icon"></i>Create Badges</a>
-                    <a href="{{href-to 'my-badges'}}" class="item"><i class="clone outline icon"></i>My Badges</a>
-                    <a href="{{href-to 'my-profile'}}" class="item"><i class="user outline icon"></i>Profile</a>
-                    <a class="item"><i class="cog icon"></i>Settings</a>
-                    <a class="item" {{action 'logOut'}}><i class="sign out alternate icon"></i>Logout</a>
+                    {{#link-to 'create-badges' class="large item navbar-dropdown upper"}}
+                        Create Badges
+                    {{/link-to}} 
+                    {{#link-to 'my-badges' class="large item navbar-dropdown upper"}}
+                        My Badges
+                    {{/link-to}}
+                    {{#link-to 'my-profile' class="large item navbar-dropdown upper"}}
+                        Settings
+                    {{/link-to}}
+                    <div class="divider"></div>
+                    <a class="large item navbar-dropdown upper" {{action 'logOut'}}>Logout</a>
                 </div>
             {{/ui-dropdown}}
+            {{#link-to 'create-badges' class='item ui orange text'}}
+                CREATE BADGE
+            {{/link-to}}
         {{else}} 
             {{#link-to 'login'}}
                 <div class="right item ui button" style="text-transform: uppercase; font-weight: 400; line-spacing: 0.5px; line-height: 30px">Login</div>
