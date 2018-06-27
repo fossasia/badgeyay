@@ -5,9 +5,7 @@
 
 .image {
   left: 2%;
-  top: 60px;
 }
-
 
 .profile-image:hover {
   .profile-change {
@@ -21,15 +19,19 @@
 
 
 .profile-change {
-  left: 50px;
+  left: 60px;
   opacity: 0;
   position: absolute;
   top: 80px;
   transition: 0.5s ease;
 }
 
-.stats {
-  left: 105%;
+.account {
+  left: 250px;
   position: relative;
-  top: 105px;
+}
+
+.password {
+  left: 243px;
+  position: relative;
 }

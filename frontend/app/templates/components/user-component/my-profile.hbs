@@ -1,35 +1,35 @@
 <div class="my-profile">
-  <div class="ui small circular image profile-image">
-      <img src="{{user.photoURL}}">
-      <input style="display: none;" id="profileImageSelector" type="file" onchange={{action "profileImageSelected"}}>
-      <div class="profile-change" onclick={{action "updateProfileImage"}}><b>Change</b></div>
-  </div>
-  <div class="ui hidden divider"></div>
-  <div class="ui pointing menu">
-    <a class="active item">
-      Profile
-    </a>
-  </div>
-  <div class="ui segment">
-    <form class="ui form">
-      <h4 class="ui dividing header">Personal Information</h4>
-        <div class="field">
-          <label>Username</label>
-          <div class="fields">
-            <div class="ten wide field">
-              <input placeholder="Default User Name" type="text">
+    <div class="ui internally celled grid">
+      <div class="four wide column">
+        <div class="ui small segment">
+            <div class="ui small circular image profile-image">
+                <img src="{{user.photoURL}}">
+                <input style="display: none;" id="profileImageSelector" type="file" onchange={{action "profileImageSelected"}}>
+                <div class="profile-change" onclick={{action "updateProfileImage"}}><b>Change</b></div>
             </div>
+        </div>
+        <div class="ui segment">
+          <div class="ui vertical attached tabular menu">
+              <div class="active item" data-tab="account">
+                Account
+              </div>
+              <div class="item" data-tab="password">
+                Password
+              </div>
           </div>
         </div>
-        <div class="field">
-          <label>Email</label>
-          <div class="fields">
-            <div class="ten wide field">
-              <input placeholder="Default User Email" type="text">
-            </div>
-          </div>
+      </div>
+      <div class="ten wide column">
+        <div class="ui active attached tab segment" data-tab="account">
+          {{user-component/user-account}}
         </div>
-        <div class="ui button" tabindex="0">Save Changes</div>
-    </form>
-  </div>
+        <div class="ui attached tab segment" data-tab="password">
+          {{user-component/user-password}}
+        </div>
+      </div>
+    </div>
 </div>
+
+<script type="text/javascript">
+    $('.tabular.menu .item').tab();
+</script>
