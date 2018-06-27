@@ -13,6 +13,10 @@ export default Controller.extend({
       this.get('session').close();
       this.transitionToRoute('/');
       this.get('notify').success('Log Out Successful');
+
+      // Remove localStorage items
+      localStorage.removeItem('adminStatus');
+      localStorage.removeItem('loginToken');
     }
   }
 });
