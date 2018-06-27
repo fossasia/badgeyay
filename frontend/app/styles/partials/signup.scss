@@ -1,5 +1,49 @@
+$colorlinks: #33587d;
+$colorwhite: #ffffff;
+
+
 .signup {
   position: relative;
   text-align: center;
   top: 40px;
+}
+
+.form {
+  .ending-border {
+    border-bottom: 0.01rem dotted;
+    padding-bottom: 10px;
+    padding-top: 10px;
+  }
+
+  .no-border {
+    background-color: $colorwhite;
+    border: 0;
+    box-shadow: none;
+  }
+}
+
+.form-div {
+  text-align: center;
+
+  .form-title {
+    color: $colorlinks;
+    font-size: 20px;
+    font-weight: 300;
+  }
+
+  .form-subtitle {
+    color: $colorlinks;
+    font-size: 15px;
+    font-weight: 300;
+  }
+}
+
+.div-links {
+  margin-bottom: 5px;
+  margin-top: 5px;
+
+  .links {
+    color: $colorlinks;
+    margin-top: 50px;
+  }
 }
