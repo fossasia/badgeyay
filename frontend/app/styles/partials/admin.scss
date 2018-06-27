@@ -10,3 +10,26 @@
 .column.align-center {
   text-align: center;
 }
+
+.ui.grid.user-grid {
+  max-width: inherit;
+  padding: 1%;
+}
+
+.ui.card.user-card {
+  padding: 4px;
+  width: 100%;
+}
+
+img.user-card-circle {
+  border-radius: 50%;
+}
+
+p.margin-remove {
+  margin-bottom: 0.5em;
+}
+
+.two.wide.column.center-avatar {
+  margin: auto;
+  text-align: center;
+}

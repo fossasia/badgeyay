@@ -1,0 +1,17 @@
+{{#each users as |user|}}
+    <div class="row">
+        <div class="ui card user-card">
+            <div class="ui grid">
+                <div class="row">
+                    <div class="two wide column center-avatar">
+                        <img class="user-card-circle" src={{user.photoURL}}>
+                    </div>
+                    <div class="fourteen wide column">
+                        <p class="margin-remove">Username: <b>{{user.username}}</b></p>
+                        <p class="margin-remove">Email: <b>{{user.email}}</b></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{{/each}}
