@@ -18,7 +18,9 @@ export default Component.extend({
       email = this.get('email');
       password = this.get('password');
       username = this.get('username');
-      this.get('signUp')(email, username, password);
+      if (email !== undefined && password !== undefined && username !== undefined) {
+        this.get('signUp')(email, username, password);
+      }
     }
   },
 
