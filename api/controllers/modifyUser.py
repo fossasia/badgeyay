@@ -19,8 +19,8 @@ from api.schemas.errors import (
 router = Blueprint('modifyUser', __name__)
 
 
-@loginRequired
 @router.route('/password', methods=['PUT'])
+@loginRequired
 def changePassword():
     try:
         data = request.get_json()
@@ -46,8 +46,8 @@ def changePassword():
         return ErrorResponse(JsonNotFound().message, 422, {'Content-Type': 'application/json'}).respond()
 
 
-@loginRequired
 @router.route('/name', methods=['PUT'])
+@loginRequired
 def changeName():
     try:
         data = request.get_json()
@@ -73,8 +73,8 @@ def changeName():
         return ErrorResponse(JsonNotFound().message, 422, {'Content-Type': 'application/json'}).respond()
 
 
-@loginRequired
 @router.route('/delete', methods=['DELETE'])
+@loginRequired
 def delete_user():
     schema = DeleteUserSchema()
     input_data = request.get_json()
@@ -87,8 +87,8 @@ def delete_user():
     return jsonify(DeleteUserSchema().dump(temp_user).data)
 
 
-@loginRequired
 @router.route('/update_profile', methods=['POST'])
+@loginRequired
 def update_profile():
     schema = UpdateProfileSchema()
     input_data = request.get_json()

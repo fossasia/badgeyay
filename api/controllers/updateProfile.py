@@ -18,8 +18,8 @@ from api.models.user import User
 router = Blueprint('updateUserProfile', __name__)
 
 
-@loginRequired
 @router.route('/profileImage', methods=['POST'])
+@loginRequired
 def update_profile_image():
     try:
         data = request.get_json()['data']['attributes']

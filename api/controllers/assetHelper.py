@@ -7,8 +7,8 @@ from api.helpers.verifyToken import loginRequired
 router = Blueprint('assethelper', __name__)
 
 
-@loginRequired
 @router.route('/default_images', methods=['GET'])
+@loginRequired
 def getDefaultBackgrounds():
     if config.ENV == 'LOCAL':
         bgDir = os.path.abspath(os.path.join(os.getcwd(), 'badge_backgrounds/'))

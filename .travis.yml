@@ -65,5 +65,3 @@ matrix:
 
     after_success:
       - bash ./scripts/gh_deploy.sh
-      - ember build --environment=production
-      - firebase deploy --token ${FIREBASE_TOKEN}

@@ -64,8 +64,8 @@ def register_user():
         return jsonify(schema.dump(newUser).data)
 
 
-@loginRequired
 @router.route('/register/<uid>', methods=['PATCH'])
+@loginRequired
 def patchUser(uid):
     data = request.get_json()['data']['attributes']
     user = User.getUser(user_id=uid)

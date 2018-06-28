@@ -54,8 +54,8 @@ def all_users_stat():
     return jsonify(AllUserStat().dump(payload).data)
 
 
-@loginRequired
 @router.route('/get_all_badges', methods=['GET'])
+@loginRequired
 def get_all_badges():
     page = request.args.get('page', 1, type=int)
     all_badges = Badges.query.paginate(page, app.config['POSTS_PER_PAGE'], False).items
@@ -64,16 +64,16 @@ def get_all_badges():
     return jsonify(result.data)
 
 
-@loginRequired
 @router.route('/get_all_files', methods=['GET'])
+@loginRequired
 def get_all_files():
     page = request.args.get('page', 1, type=int)
     files = File.query.paginate(page, app.config['POSTS_PER_PAGE'], False).items
     return jsonify(FileSchema(many=True).dump(files).data)
 
 
-@loginRequired
 @router.route('/register_admin', methods=['POST'])
+@loginRequired
 def register_admin():
     schema = AdminSchema()
     input_data = request.get_json()
@@ -93,8 +93,8 @@ def register_admin():
     return jsonify(schema.dump(admin).data)
 
 
-@loginRequired
 @router.route('/add_usage', methods=['POST'])
+@loginRequired
 def admin_add_usage():
     try:
         data = request.get_json()['data']
