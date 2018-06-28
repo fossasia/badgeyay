@@ -54,6 +54,7 @@ matrix:
       - npm install
       - npm install --save ember-colpick
       - npm install -g bower
+      - npm install -g firebase-tools
       - bower install
       - ember g ember-colpick
       - npm config set spin false
@@ -64,4 +65,5 @@ matrix:
 
     after_success:
       - bash ./scripts/gh_deploy.sh
-      #- bash ./scripts/pr_deploy.sh
+      - ember build --environment=production
+      - firebase deploy --token ${FIREBASE_TOKEN}
