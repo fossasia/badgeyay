@@ -13,8 +13,8 @@ from api.helpers.verifyToken import loginRequired
 router = Blueprint('Change Meta', __name__)
 
 
-@loginRequired
 @router.route('/password', methods=['POST'])
+@loginRequired
 def changePwd():
     try:
         data = request.get_json()['data']['attributes']

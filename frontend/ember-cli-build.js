@@ -2,6 +2,8 @@
 
 const EmberApp = require('ember-cli/lib/broccoli/ember-app');
 const writeFile = require('broccoli-file-creator');
+const MergeTrees = require('broccoli-merge-trees');
+const Funnel = require('broccoli-funnel');
 const md5 = require('md5');
 
 module.exports = function(defaults) {
@@ -32,5 +34,11 @@ module.exports = function(defaults) {
   // along with the exports of each module as its value.
 
   var assetFingerprintTree = writeFile('./assets/assets-fingerprint.js', `(function(_window){ _window.ASSET_FINGERPRINT_HASH = "${(app.env === 'production' ? `-${fingerprintHash}` : '')}"; })(window);`);
-  return app.toTree(assetFingerprintTree);
+  var appTree = app.toTree(assetFingerprintTree);
+  return new MergeTrees([appTree, new Funnel(appTree, {
+    files: ['index.html'],
+    getDestinationPath() {
+      return '404.html';
+    }
+  })]);
 };

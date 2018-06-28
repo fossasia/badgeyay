@@ -30,8 +30,8 @@ from api.schemas.errors import (
 router = Blueprint('fileUploader', __name__)
 
 
-@loginRequired
 @router.route('/image', methods=['POST'])
+@loginRequired
 def uploadImage():
     try:
         data = request.get_json()['imgFile']
@@ -55,8 +55,8 @@ def uploadImage():
     return jsonify(ImageFileSchema().dump(file_upload).data)
 
 
-@loginRequired
 @router.route('/file', methods=['POST'])
+@loginRequired
 def fileUpload():
     try:
         data = request.json['csvFile']
@@ -85,8 +85,8 @@ def fileUpload():
     return jsonify(CSVUploadSchema().dump(file_upload).data)
 
 
-@loginRequired
 @router.route('/manual_data', methods=['POST'])
+@loginRequired
 def upload_manual_data():
     try:
         data = request.get_json()['data']['attributes']
@@ -112,16 +112,16 @@ def upload_manual_data():
     return jsonify(ManualFileSchema().dump(file_upload).data)
 
 
-@loginRequired
 @router.route('/get_file', methods=['GET'])
+@loginRequired
 def get_file():
     input_data = request.args
     file = File().query.filter_by(filename=input_data.get('filename')).first()
     return jsonify(FileSchema().dump(file).data)
 
 
-@loginRequired
 @router.route('/upload_default', methods=['POST'])
+@loginRequired
 def upload_default():
     try:
         data = request.get_json()['data']['attributes']
@@ -146,8 +146,8 @@ def upload_default():
     return jsonify(DefImageSchem().dump(file_upload).data)
 
 
-@loginRequired
 @router.route('/background_color', methods=['POST'])
+@loginRequired
 def background_color():
     try:
         data = request.get_json()['data']['attributes']

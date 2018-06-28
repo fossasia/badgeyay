@@ -26,8 +26,8 @@ from api.utils.firebaseUploader import fileUploader, deleteFile
 router = Blueprint('generateBadges', __name__)
 
 
-@loginRequired
 @router.route('/generate_badges', methods=['POST'])
+@loginRequired
 def generateBadges():
     try:
         data = request.get_json()['badge']
@@ -80,8 +80,8 @@ def generateBadges():
     return jsonify(BadgeSchema().dump(badge_created).data)
 
 
-@loginRequired
 @router.route('/get_badges', methods=['GET'])
+@loginRequired
 def get_badges():
     input_data = request.args
     user = User.getUser(user_id=input_data.get('uid'))
@@ -89,8 +89,8 @@ def get_badges():
     return jsonify(UserBadges(many=True).dump(badges).data)
 
 
-@loginRequired
 @router.route('/generate_badges/<badgeId>', methods=['DELETE'])
+@loginRequired
 def delete_badge(badgeId):
     badge = Badges.getBadge(badgeId)
     temp_badge = badge
