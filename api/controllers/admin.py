@@ -6,17 +6,18 @@ from api.models.badges import Badges
 from api.models.file import File
 from api.models.admin import Admin
 from api.models.utils import Utilities
-# from api.helpers.verifyToken import adminRequired
+from api.helpers.verifyToken import adminRequired
 from api.schemas.user import AllUsersSchema, UserAllowedUsage, DatedUserSchema
 from api.schemas.badges import DatedBadgeSchema
-from api.schemas.badges import AllBadges
+from api.schemas.badges import AllBadges, AllGenBadges
 from api.schemas.file import FileSchema
 from api.schemas.errors import JsonNotFound
-from api.schemas.admin import AdminSchema
+from api.schemas.admin import AdminSchema, AllUserStat
 from api.schemas.utils import SetPricingSchema, ReturnSetPricing
 from api.utils.errors import ErrorResponse
 from api.helpers.verifyToken import loginRequired
 from flask import current_app as app
+import datetime
 
 
 router = Blueprint('admin', __name__)
@@ -29,6 +30,28 @@ def show_all_users():
     users = User.query.paginate(page, app.config['POSTS_PER_PAGE'], False)
     result = schema.dump(users.items)
     return jsonify(result.data)
+
+
+@router.route('/all-badge', methods=['GET'])
+@adminRequired
+def all_generated_badges():
+    badge_cnt = len(Badges.query.all())
+    dataPayload = {
+        'id': datetime.datetime.now(),
+        'cnt': str(badge_cnt)}
+    return jsonify(AllGenBadges().dump(dataPayload).data)
+
+
+@router.route('/all-user', methods=['GET'])
+@adminRequired
+def all_users_stat():
+    admin_cnt = len(User.query.filter_by(siteAdmin=True).all())
+    reg_users = len(User.query.all()) - admin_cnt
+    payload = {
+        'id': datetime.datetime.now(),
+        'superAdmin': str(admin_cnt),
+        'registered': str(reg_users)}
+    return jsonify(AllUserStat().dump(payload).data)
 
 
 @loginRequired

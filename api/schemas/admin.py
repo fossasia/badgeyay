@@ -11,3 +11,13 @@ class AdminSchema(Schema):
     username = fields.Str(required=True)
     email = fields.Str(required=True)
     password = fields.Str(required=True, load_only=True)
+
+
+class AllUserStat(Schema):
+    class Meta:
+        type_ = 'admin-stat-users'
+        kwargs = {'id': '<id>'}
+
+    id = fields.Date(required=True, dump_only=True)
+    superAdmin = fields.Str(required=True)
+    registered = fields.Str(required=True)

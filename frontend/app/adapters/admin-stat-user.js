@@ -15,6 +15,6 @@ export default JSONAPIAdapter.extend({
     };
   }),
   pathForType: () => {
-    return 'admin/show_all_users';
+    return 'admin/all-user';
   }
 });

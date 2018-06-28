@@ -103,3 +103,12 @@ class DatedBadgeSchema(Schema):
     id = fields.Str(required=True, dump_only=True)
     start_date = fields.Date(required=True)
     end_date = fields.Date(required=True)
+
+
+class AllGenBadges(Schema):
+    class Meta:
+        type_ = 'all-badges'
+        kwargs = {'id': '<id>'}
+
+    id = fields.Date(required=True, dump_only=True)
+    cnt = fields.Str(required=True)

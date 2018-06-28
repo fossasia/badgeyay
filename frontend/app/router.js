@@ -35,6 +35,9 @@ router.map(function() {
     this.route('mail');
     this.route('reports');
     this.route('settings');
+    this.route('permissions', function() {
+      this.route('system-roles');
+    });
   });
 });
 

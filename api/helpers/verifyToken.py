@@ -36,14 +36,13 @@ def adminRequired(func):
     @wraps(func)
     def decorated(*args, **kwargs):
         token = request.headers.get('x-access-token')
-
         if not token:
             return ErrorResponse(PayloadNotFound().message, 422, {'Content-Type': 'application/json'}).respond()
         try:
             data = jwt.decode(token, app.config['SECRET_KEY'])
             if 'adminStatus' in data.keys():
                 return func(*args, **kwargs)
-            return ErrorResponse(AdminNotFound().message, 422, {'Content-Type': 'application/json'})
+            return ErrorResponse(AdminNotFound().message, 422, {'Content-Type': 'application/json'}).respond()
         except Exception as e:
             print(e)
 
