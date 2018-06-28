@@ -79,6 +79,15 @@ export default Controller.extend({
       })
         .then(record => {
           this_.get('authToken').updateToken(record.token);
+
+          let loginPayload = {
+            id    : record.id,
+            token : record.token
+          };
+
+          // Saving the token to persist in the device, will be deleted at logout
+          localStorage.setItem('loginToken', JSON.stringify(loginPayload));
+
           this_.transitionToRoute('/');
           this_.get('notify').success('Log In Successful');
         })
