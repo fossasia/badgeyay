@@ -16,6 +16,7 @@
   ],
   "dependencies": {
     "colpick": "2.0.2",
-    "seiyria-bootstrap-slider": "~6.0.6"
+    "seiyria-bootstrap-slider": "~6.0.6",
+    "pace": "^1.0.2"
   }
 }

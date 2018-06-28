@@ -17,6 +17,11 @@ module.exports = function(environment) {
     torii: {
       sessionServiceName: 'session'
     },
+    pace: {
+      // addon-specific options to configure theme
+      theme : 'minimal',
+      color : 'orange'
+    },
     contentSecurityPolicy: {
       'script-src'  : '\'self\' \'unsafe-eval\' apis.google.com',
       'frame-src'   : '\'self\' https://*.firebaseapp.com',
