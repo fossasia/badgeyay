@@ -118,6 +118,7 @@ def set_pricing():
     if err:
         return jsonify(err)
     utils = Utilities(pricing=data['pricing'])
+    Utilities.query.delete()
     utils.save_to_db()
     ret_data = {
         'status': 200,
