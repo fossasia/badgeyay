@@ -1,0 +1,52 @@
+<div class="header">
+    Add New Admin Role
+</div>
+<br>
+<div class="content">
+    <form class="ui {{if isLoading 'loading'}} form" id="add-system-role-form" autocomplete="off" {{action 'checkEmail' on='submit'
+        preventDefault=true}}>
+        <div class="field">
+            <label class="required">
+                Email
+            </label>
+            {{input type='text' name='role_email' value=roleEmail placeholder='Enter Role Email'}}
+        </div>
+    </form>
+</div>
+<br> {{#if userFounded}}
+<table class="ui celled table">
+    <thead>
+        <tr>
+            <th>User Information</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+                <h5>{{userFounded.email}}</h5>
+                <p>{{userFounded.username}}</p>
+                <p>{{userFounded.created_at}}</p>
+            </td>
+            <td>
+                {{ui-checkbox class="toggle" label="Enable Admin Role" checked=pre_checked onChange=(action (mut pre_checked))}}
+            </td>
+        </tr>
+    </tbody>
+</table>
+{{/if}}
+<div class="actions">
+    <button type="button" class="ui black button" {{action 'close'}}>
+        Cancel
+    </button>
+    {{#if userFounded}}
+    <button type="submit" {{action 'addSystemRole'}} class="ui green right labeled icon button">
+        Save
+        <i class="checkmark icon"></i>
+    </button>
+    {{else}}
+    <button type="submit" form="add-system-role-form" class="ui blue button">
+        Check
+    </button>
+    {{/if}}
+</div>
