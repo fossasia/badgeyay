@@ -14,7 +14,8 @@ from api.controllers import (
     updateProfile,
     admin,
     validation,
-    changeMeta
+    changeMeta,
+    exportData
 )
 
 
@@ -37,6 +38,7 @@ app.register_blueprint(admin.router, url_prefix='/admin')
 app.register_blueprint(updateProfile.router, url_prefix='/update')
 app.register_blueprint(validation.router, url_prefix='/validate')
 app.register_blueprint(changeMeta.router, url_prefix='/change')
+app.register_blueprint(exportData.router, url_prefix='/export')
 
 
 @app.before_first_request
