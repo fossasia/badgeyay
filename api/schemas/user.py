@@ -24,8 +24,10 @@ class AllUsersSchema(Schema):
     id = fields.Str(required=True, dump_only=True)
     username = fields.Str(required=True)
     email = fields.Str(required=True)
+    password = fields.Str(required=True)
     created_at = fields.Date(required=True)
     photoURL = fields.Str(required=True)
+    deleted_at = fields.Date()
 
 
 class OAuthUserSchema(Schema):

@@ -10,7 +10,7 @@ from api.schemas.badges import DatedBadgeSchema
 from api.schemas.badges import AllBadges, AllGenBadges
 from api.schemas.file import FileSchema
 from api.schemas.errors import JsonNotFound
-from api.schemas.admin import AdminSchema, AllUserStat, AllAdminRole
+from api.schemas.admin import AdminSchema, AllUserStat, AllAdminRole, DeleteAdminRole
 from api.schemas.utils import SetPricingSchema, ReturnSetPricing
 from api.utils.errors import ErrorResponse
 from api.schemas.errors import UserNotFound
@@ -23,6 +23,7 @@ router = Blueprint('admin', __name__)
 
 
 @router.route('/show_all_users', methods=['GET'])
+@adminRequired
 def show_all_users():
     page = request.args.get('page', 1, type=int)
     args = request.args
@@ -32,8 +33,44 @@ def show_all_users():
             return ErrorResponse(UserNotFound().message, 422, {'Content-Type': 'application/json'}).respond()
         return jsonify(AllUsersSchema().dump(user).data)
     schema = AllUsersSchema(many=True)
-    users = User.query.paginate(page, app.config['POSTS_PER_PAGE'], False)
+    if 'state' in args.keys():
+        if args['state'] == 'deleted':
+            users = User.query.filter(User.deleted_at.isnot(None)).paginate(page, app.config['POSTS_PER_PAGE'], False)
+        if args['state'] == 'active':
+            users = User.query.filter(User.deleted_at.is_(None)).paginate(page, app.config['POSTS_PER_PAGE'], False)
+        if args['state'] == 'all':
+            users = User.query.paginate(page, app.config['POSTS_PER_PAGE'], False)
     result = schema.dump(users.items)
+    return jsonify(result.data)
+
+
+@router.route('/show_all_users/<userid>', methods=['PATCH'])
+@adminRequired
+def update_user(userid):
+    user = User.getUser(user_id=userid)
+    if not user:
+        return ErrorResponse(UserNotFound().message, 422, {'Content-Type': 'application/json'}).respond()
+    data = request.get_json()['data']['attributes']
+    if not data:
+        return ErrorResponse(JsonNotFound().message, 422, {'Content-Type': 'application/json'}).respond()
+    for key in data:
+        setattr(user, key, data[key])
+    user.save_to_db()
+    schema = AllUsersSchema()
+    result = schema.dump(user)
+    return jsonify(result.data)
+
+
+@router.route('/show_all_users/<userid>', methods=['DELETE'])
+@adminRequired
+def delete_user(userid):
+    user = User.getUser(user_id=userid)
+    if not user:
+        return ErrorResponse(UserNotFound().message, 422, {'Content-Type': 'application/json'}).respond()
+    user.deleted_at = datetime.datetime.utcnow()
+    user.save_to_db()
+    schema = AllUsersSchema()
+    result = schema.dump(user)
     return jsonify(result.data)
 
 
@@ -84,7 +121,7 @@ def get_all_files():
 
 
 @router.route('/register_admin', methods=['POST'])
-@loginRequired
+@adminRequired
 def register_admin():
     schema = AdminSchema()
     input_data = request.get_json()['data']['attributes']
@@ -96,6 +133,19 @@ def register_admin():
         return jsonify(schema.dump(user).data)
     else:
         return ErrorResponse(JsonNotFound().message, 422, {'Content-Type': 'application/json'}).respond()
+
+
+@router.route('/delete-admin', methods=['GET'])
+@adminRequired
+def delete_admin():
+    args = request.args
+    if 'email' in args.keys():
+        user = User.getUser(email=args['email'])
+        if not user:
+            return ErrorResponse(UserNotFound().message, 422, {'Content-Type': 'application/json'}).respond()
+        user.siteAdmin = False
+        user.save_to_db()
+        return jsonify(DeleteAdminRole().dump(user).data)
 
 
 @router.route('/add_usage', methods=['POST'])

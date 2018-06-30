@@ -22,15 +22,30 @@ export default Controller.extend({
     },
 
     enableAdmin(user, boolFlag) {
-      this.get('store').createRecord('create-admin', {
-        email     : user.email,
-        adminStat : boolFlag
-      }).save().then(() => {
-        this.notify.success('Admin created');
-      }).catch(() => {
-        this.notify.error('Unable to set admin');
-      }).finally(() => {
-        this.set('isAddSystemRoleModalOpen', false);
+      if (boolFlag) {
+        this.get('store').createRecord('create-admin', {
+          email     : user.email,
+          adminStat : boolFlag
+        }).save().then(() => {
+          this.notify.success('Admin created');
+        }).catch(() => {
+          this.notify.error('Unable to set admin');
+        }).finally(() => {
+          this.set('isAddSystemRoleModalOpen', false);
+        });
+      } else {
+        this.notify.error('Admin not enabled');
+      }
+    },
+
+    deleteAdmin(email) {
+      this.get('store').queryRecord('delete-admin', {
+        email
+      }).then(() => {
+        this.notify.success('Admin deleted successfully');
+      }).catch(err => {
+        console.error(err);
+        this.notify.error('Unable to delete admin');
       });
     }
   }

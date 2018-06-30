@@ -1,17 +1,102 @@
-{{#each users as |user|}}
-    <div class="row">
-        <div class="ui card user-card">
-            <div class="ui grid">
-                <div class="row">
-                    <div class="two wide column center-avatar">
-                        <img class="user-card-circle" src={{user.photoURL}}>
+<table class="ui celled table">
+    <thead>
+        <tr>
+            <th>User Photo</th>
+            <th>User Info</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {{#each users as |user|}}
+        <tr>
+            <td>
+                <img class="ui tiny centered circular image" src="{{user.photoURL}}">
+            </td>
+            <td>
+                <div class="ui list">
+                    <div class="item">
+                        <i class="user icon"></i>
+                        <div class="content">
+                            {{user.username}}
+                        </div>
                     </div>
-                    <div class="fourteen wide column">
-                        <p class="margin-remove">Username: <b>{{user.username}}</b></p>
-                        <p class="margin-remove">Email: <b>{{user.email}}</b></p>
+                    <div class="item">
+                        <i class="envelope outline icon"></i>
+                        <div class="content">
+                            {{user.email}}
+                        </div>
+                    </div>
+                    <div class="item">
+                        <i class="calendar check outline icon"></i>
+                        <div class="content">
+                            {{user.created_at}}
+                        </div>
+                    </div>
+                    <div class="item">
+                        <i class="window close icon"></i>
+                        <div class="content">
+                            {{#if user.deleted_at}}
+                            {{user.deleted_at}}
+                            {{else}}
+                            Not yet
+                            {{/if}}
+                        </div>
                     </div>
                 </div>
-            </div>
-        </div>
+            </td>
+            <td>
+                <div class="ui horizontal compact basic buttons">
+                    {{#ui-popup content='Edit' class='ui icon button' click=(action 'openModal' 'user-edit' user)}}
+                    <i class="edit icon"></i>
+                    {{/ui-popup}}
+                    {{#ui-popup content='Delete' class='ui icon button' click=(action 'deleteUser' user)}}
+                    <i class="trash alternate outline icon"></i>
+                    {{/ui-popup}}
+                </div>
+            </td>
+        </tr>
+        {{/each}}
+    </tbody>
+</table>
+
+{{#ui-modal name="user-edit" class="user-edit" detachable=true onApprove=(action 'approveModal') onDeny=(action 'denyModal')}}
+  <i class="close icon"></i>
+  <div class="header">
+    Edit User Details
+  </div>
+  <div class="image content">
+    <div class="ui medium image">
+      <img class="ui circular image" src="{{userEdit.photoURL}}">
     </div>
-{{/each}}
+    <div class="description">
+      <div class="ui header">{{userEdit.username}}</div>
+      <form class="ui form">
+          <div class="ui field">
+              <label>Email</label>
+              {{input type=email value=userEdit.email}}
+          </div>
+          <div class="ui field">
+              <label>Username</label>
+              {{input type=text value=userEdit.username}}
+          </div>
+          <div class="ui field">
+              <label>PhotoURL</label>
+              {{input type=text value=userEdit.photoURL}}
+          </div>
+          <div class="ui field">
+              <label>Password</label>
+              {{input type=password value=userEdit.password}}
+          </div>
+      </form>
+    </div>
+  </div>
+  <div class="actions">
+    <div class="ui black deny button">
+      Close
+    </div>
+    <div class="ui positive right labeled icon button">
+      Submit
+      <i class="checkmark icon"></i>
+    </div>
+  </div>
+{{/ui-modal}}

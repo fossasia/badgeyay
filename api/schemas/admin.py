@@ -31,3 +31,13 @@ class AllAdminRole(Schema):
     username = fields.Str(required=True)
     email = fields.Str(required=True)
     created_at = fields.Str(required=True)
+
+
+class DeleteAdminRole(Schema):
+    class Meta:
+        type_ = 'delete-admins'
+        kwargs = {'id': '<id>'}
+
+    id = fields.Str(required=True, dump_only=True)
+    email = fields.Str(required=True)
+    siteAdmin = fields.Bool(required=True)
