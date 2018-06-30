@@ -1,10 +1,8 @@
-import uuid
 from flask import jsonify, Blueprint, request
 from api.db import db
 from api.models.user import User
 from api.models.badges import Badges
 from api.models.file import File
-from api.models.admin import Admin
 from api.models.utils import Utilities
 from api.helpers.verifyToken import adminRequired
 from api.schemas.user import AllUsersSchema, UserAllowedUsage, DatedUserSchema
@@ -12,9 +10,10 @@ from api.schemas.badges import DatedBadgeSchema
 from api.schemas.badges import AllBadges, AllGenBadges
 from api.schemas.file import FileSchema
 from api.schemas.errors import JsonNotFound
-from api.schemas.admin import AdminSchema, AllUserStat
+from api.schemas.admin import AdminSchema, AllUserStat, AllAdminRole
 from api.schemas.utils import SetPricingSchema, ReturnSetPricing
 from api.utils.errors import ErrorResponse
+from api.schemas.errors import UserNotFound
 from api.helpers.verifyToken import loginRequired
 from flask import current_app as app
 import datetime
@@ -26,6 +25,12 @@ router = Blueprint('admin', __name__)
 @router.route('/show_all_users', methods=['GET'])
 def show_all_users():
     page = request.args.get('page', 1, type=int)
+    args = request.args
+    if 'email' in args.keys():
+        user = User.getUser(email=args['email'])
+        if not user:
+            return ErrorResponse(UserNotFound().message, 422, {'Content-Type': 'application/json'}).respond()
+        return jsonify(AllUsersSchema().dump(user).data)
     schema = AllUsersSchema(many=True)
     users = User.query.paginate(page, app.config['POSTS_PER_PAGE'], False)
     result = schema.dump(users.items)
@@ -40,6 +45,12 @@ def all_generated_badges():
         'id': datetime.datetime.now(),
         'cnt': str(badge_cnt)}
     return jsonify(AllGenBadges().dump(dataPayload).data)
+
+
+@router.route('/all-admin', methods=['GET'])
+def get_all_admin():
+    admin_users = User.query.filter_by(siteAdmin=True).all()
+    return jsonify(AllAdminRole(many=True).dump(admin_users).data)
 
 
 @router.route('/all-user', methods=['GET'])
@@ -76,21 +87,15 @@ def get_all_files():
 @loginRequired
 def register_admin():
     schema = AdminSchema()
-    input_data = request.get_json()
-    data, err = schema.load(input_data)
-    if err:
-        return jsonify(err)
-    admin = Admin(
-        id_=str(uuid.uuid4()),
-        username=data['username'],
-        password=data['password'],
-        email=data['email'])
-    try:
-        admin.save_to_db()
-    except Exception as e:
-        return jsonify(e)
-
-    return jsonify(schema.dump(admin).data)
+    input_data = request.get_json()['data']['attributes']
+    if 'email' in input_data.keys():
+        user = User.getUser(email=input_data['email'])
+        if 'adminStat' in input_data.keys():
+            user.siteAdmin = input_data['adminStat']
+        user.save_to_db()
+        return jsonify(schema.dump(user).data)
+    else:
+        return ErrorResponse(JsonNotFound().message, 422, {'Content-Type': 'application/json'}).respond()
 
 
 @router.route('/add_usage', methods=['POST'])

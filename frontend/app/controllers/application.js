@@ -10,6 +10,7 @@ export default Controller.extend({
   actions   : {
     logOut() {
       this.get('store').unloadAll('user');
+      this.get('store').unloadAll('login-token');
       this.get('session').close();
       this.transitionToRoute('/');
       this.get('notify').success('Log Out Successful');

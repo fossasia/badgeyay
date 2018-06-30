@@ -1,1 +1,55 @@
-{{outlet}}
+<div class="ui basic segment less padding">
+  <div class="ui {{if isLoading 'active'}} inverted dimmer">
+    <div class="ui loader"></div>
+  </div>
+  <div>
+    <h3 class="ui left aligned header">
+      {{'System Roles'}}
+    </h3>
+    <div class="ui divider"></div>
+  </div>
+  <div>
+    <h3 class="ui left aligned header">
+      {{'Admin Permissions'}}
+    </h3>
+  </div>
+  <table class="ui celled table">
+    <thead>
+      <tr>
+        <th>{{'Admin Role'}}</th>
+        <th>{{'Actions'}}</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{#each model.admins as |admin|}}
+        <tr>
+          <td>
+              {{admin.username}}
+              <br>
+              {{admin.email}}
+          </td>
+          <td>
+            <div class="ui horizontal compact basic buttons">
+              {{#ui-popup content='Delete' class='ui icon button'}}
+                <i class="trash alternate outline icon"></i>
+              {{/ui-popup}}
+            </div>
+          </td>
+        </tr>
+      {{/each}}
+      <tr>
+        <td>
+          <button class="ui basic button" {{action 'openAddSystemRoleModal'}}>{{'Add new Role'}}</button>
+        </td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+{{#if isAddSystemRoleModalOpen}}
+    {{modals/add-system-role-modal
+        userFounded=roleFounded
+        isOpen=isAddSystemRoleModalOpen
+        enableAdmin=(action 'enableAdmin')
+        checkEmail=(action 'checkEmail')}}
+{{/if}}
