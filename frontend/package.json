@@ -36,7 +36,7 @@
     "ember-cli-sass": "^7.2.0",
     "ember-cli-shims": "^1.2.0",
     "ember-cli-sri": "^2.1.1",
-    "ember-data": "~3.1.1",
+    "ember-data": "~3.2.0",
     "ember-export-application-global": "^2.0.0",
     "ember-href-to": "^1.15.1",
     "ember-load-initializers": "^1.1.0",

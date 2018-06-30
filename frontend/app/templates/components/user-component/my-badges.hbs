@@ -1,26 +1,21 @@
-<div class="my-badge">
 {{#if model.length}}
-    <div class="ui pointing menu">
-      <div class="active item">My Badges</div>
-        <div class="right menu">
-            {{#ui-dropdown class='item' action='hide'}}
-                <div>Sort By </div>&nbsp;
-                <i class="sort icon"></i>
-                  <div class="menu profile-dropdown-menu">
-                    <a class="item">First Created</a>
-                    <a class="item">Recently Created</a>
-                  </div>
-            {{/ui-dropdown}}
-        </div>
+    <div class="ui secondary pointing menu">
+      <a class="active item">
+        My Badges
+      </a>
     </div>
-    <div class="ui bottom attached active tab segment">
+    <div class="ui segment">
       {{#each model as |badge|}}
-        <div class="ui raised card">
+        <div class="ui basic orange card">
           <div class="content">
-            <div class="header">Badge</div>
+            <div class="header">
+              Badge
+            </div>
           </div>
           <div class="content">
-            <h4 class="ui header">Badge Details:</h4>
+            <h4 class="ui header">
+              Badge Details:
+            </h4>
             <div class="ui small feed">
               <div class="event">
                 <div class="content">
@@ -52,34 +47,31 @@
               </div>
             </div>
           </div>
-          <div class="ui bottom attached button">
+          <div class="ui bottom attached basic orange button">
             <i class="download icon"></i>
-            <a href="{{badge.download_link}}">Download Badge</a>
+            <a href="{{badge.download_link}}">
+              Download Badge
+            </a>
           </div>
         </div>
       {{/each}}
-    </div>
-    <div class="ui centered grid">
-      <div class="computer only row">
-        <div class="column"></div>
-      </div>
-      <div class="six wide tablet eight wide computer column">
-        <div class="ui menu">
-          <div class="ui pagination menu">
-            <a class="active item">
-              1
-            </a>
-            <div class="right menu">
-              <div class="disabled item">
-                ...
+      <div class="ui horizontal divider"></div>
+      <div class="ui grid">
+        <div class="row">
+          <div class="column">
+              <div onclick={{action 'prevPage'}}>
+                  <i class="angle left icon"></i>
               </div>
-            </div>
+          </div>
+          <div class="column">
+              <div onclick={{action 'nextPage'}}>
+                  <i class="angle right icon"></i>
+              </div>
           </div>
         </div>
       </div>
     </div>
-  {{else}}
+{{else}}
   <h2>Looks like you've not generated any badges yet!</h2>
   <h3>Click <a href="{{href-to 'create-badges'}}">here</a> to generate some badges!</h3>
 {{/if}}
-</div>
