@@ -121,7 +121,7 @@ exports.sendVerificationMail = functions.auth.user().onCreate((user) => {
 
     encrypt(userEmail, password, encoded => {
       var resp = {
-        link: BASE_URL + '#/verify/email?id=' + encoded
+        link: BASE_URL + '#/verify/email?id=' + encodeURIComponent(encoded)
       }
       mailOptions.subject = 'Please verify your Email | Badgeyay';
       mailOptions.html = '<p>Please verify your email ID by clicking on this <a href={link}>Link</a></p>'.format(resp);
