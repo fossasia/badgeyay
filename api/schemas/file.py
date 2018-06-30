@@ -114,3 +114,14 @@ class ColorImageSchema(Schema):
         include_resource_linkage=True,
         type_='User'
     )
+
+
+class ExportFileSchema(Schema):
+    class Meta:
+        type_ = 'export-data'
+        kwargs = {'id': '<id>'}
+
+    id = fields.Str(required=True, dump_only=True)
+    filename = fields.Str(required=True, dump_only=True)
+    filetype = fields.Str(required=True, dump_only=True)
+    file_data = fields.Str(required=True, dump_only=True)
