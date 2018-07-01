@@ -10,12 +10,14 @@ from api.schemas.badges import DatedBadgeSchema
 from api.schemas.badges import AllBadges, AllGenBadges
 from api.schemas.file import FileSchema
 from api.schemas.errors import JsonNotFound
-from api.schemas.admin import AdminSchema, AllUserStat, AllAdminRole, DeleteAdminRole
+from api.schemas.admin import AdminSchema, AllUserStat, AdminMailStat, AllAdminRole, DeleteAdminRole
 from api.schemas.utils import SetPricingSchema, ReturnSetPricing
 from api.utils.errors import ErrorResponse
 from api.schemas.errors import UserNotFound
 from api.helpers.verifyToken import loginRequired
 from flask import current_app as app
+from firebase_admin import db as firebasedb
+from dateutil.relativedelta import relativedelta
 import datetime
 
 
@@ -72,6 +74,37 @@ def delete_user(userid):
     schema = AllUsersSchema()
     result = schema.dump(user)
     return jsonify(result.data)
+
+
+@router.route('/admin-stat-mail', methods=['GET'])
+def get_admin_stat():
+    mail_ref = firebasedb.reference('mails')
+    mail_resp = mail_ref.get()
+    mail_list = []
+    for key in mail_resp:
+        mail_list.append(mail_resp[key])
+    mail_list.sort(key=lambda e: e['date'], reverse=True)
+    for item in mail_list:
+        item['date'] = datetime.datetime.strptime(item['date'], '%Y-%m-%dT%H:%M:%SZ')
+    curr_date = datetime.datetime.utcnow()
+    prev_month_date = curr_date - relativedelta(months=1)
+    last_three_days_date = curr_date - relativedelta(days=3)
+    last_seven_days_date = curr_date - relativedelta(days=7)
+    last_day_date = curr_date - relativedelta(days=1)
+
+    prev_month_cnt = len([mail for mail in mail_list if mail['date'] >= prev_month_date])
+    last_three_days_cnt = len([mail for mail in mail_list if mail['date'] >= last_three_days_date])
+    last_day_cnt = len([mail for mail in mail_list if mail['date'] >= last_day_date])
+    last_seven_days_cnt = len([mail for mail in mail_list if mail['date'] >= last_seven_days_date])
+
+    payload = {
+        'id': datetime.datetime.utcnow(),
+        'lastDayCount': last_day_cnt,
+        'lastThreeDays': last_three_days_cnt,
+        'lastMonth': prev_month_cnt,
+        'lastSevenDays': last_seven_days_cnt}
+
+    return jsonify(AdminMailStat().dump(payload).data)
 
 
 @router.route('/all-badge', methods=['GET'])

@@ -12,6 +12,18 @@ class AdminSchema(Schema):
     email = fields.Str(required=True)
 
 
+class AdminMailStat(Schema):
+    class Meta:
+        type_ = 'admin-stat-mails'
+        kwargs = {'id': '<id>'}
+
+    id = fields.Date(required=True, dump_only=True)
+    lastDayCount = fields.Str(required=True, default='0')
+    lastThreeDays = fields.Str(required=True, default='0')
+    lastSevenDays = fields.Str(required=True, default='0')
+    lastMonth = fields.Str(required=True, default='0')
+
+
 class AllUserStat(Schema):
     class Meta:
         type_ = 'admin-stat-users'

@@ -4,6 +4,7 @@ const functions = require('firebase-functions');
 const admin = require('firebase-admin');
 const firebase = require('firebase');
 const crypto = require('crypto');
+const moment = require('moment');
 var serviceAccount = require('./config/serviceKey.json');
 var clientAccount = require('./config/clientKey.json');
 const fs = require('fs');
@@ -31,6 +32,8 @@ const APP_NAME = 'Badgeyay';
 const BASE_URL = 'http://badgeyay.com/';
 const PASSWORD_RESET_LINK = 'http://badgeyay.com/#/reset/password?token=';
 var password = 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa';
+var db = admin.database();
+var REASONS = ['verificaton', 'greeting', 'passwordReset'];
 
 
 var encrypt = function (input, password, callback) {
@@ -128,6 +131,7 @@ exports.sendVerificationMail = functions.auth.user().onCreate((user) => {
       return mailTransport.sendMail(mailOptions)
         .then(() => {
           console.log('Verification Mail Sent');
+          writeMailData(uid, "success", 0);
           return 0;
         })
         .catch(err => {
@@ -139,7 +143,29 @@ exports.sendVerificationMail = functions.auth.user().onCreate((user) => {
   }
 });
 
-function sendGreetingMail(email, displayName) {
+function writeMailData(uid, state, reason) {
+  if (state === 'success') {
+    db.ref('mails')
+      .push()
+      .set({
+        uid: uid,
+        state: state,
+        reason: reason,
+        date: moment.utc().format()
+      }, err => {
+        if (err) {
+          console.log('Unable to save to database');
+        } else {
+          console.log('Mail data saved successfully');
+        }
+      });
+  }
+  if (state === 'error') {
+    console.log('Unable to send Mail');
+  }
+}
+
+function sendGreetingMail(uid, email, displayName) {
   const mailOptions = {
     from: `${APP_NAME}<noreply@firebase.com>`,
     to: email,
@@ -148,6 +174,7 @@ function sendGreetingMail(email, displayName) {
   mailOptions.subject = `Welcome to Badgeyay`;
   mailOptions.text = `Hey ${displayName || ''}! Welcome to Badgeyay. We welcome you onboard and pleased to offer you service.`;
   return mailTransport.sendMail(mailOptions).then(() => {
+    writeMailData(uid, "success", 1);
     return console.log('Welcome mail sent to: ', email)
   }).catch((err) => {
     console.error(err.message);
@@ -161,7 +188,7 @@ exports.sendWelcomeMail = functions.https.onRequest((req, res) => {
     .then(userRecord => {
       let email = userRecord.email;
       let displayName = userRecord.displayName;
-      return sendGreetingMail(email, displayName);
+      return sendGreetingMail(uid, email, displayName);
     })
     .catch(err => {
       console.log(err);
