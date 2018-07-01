@@ -10,7 +10,8 @@ def create_app():
     app = Flask(__name__, instance_relative_config=True, static_folder='static')
     cred = credentials.Certificate(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'config', 'ServiceAccountkey.json'))
     firebase_admin.initialize_app(cred, {
-        'storageBucket': 'badgeyay-195bf.appspot.com'
+        'storageBucket': 'badgeyay-195bf.appspot.com',
+        'databaseURL': 'https://badgeyay-195bf.firebaseio.com'
     })
     app.config['BASE_DIR'] = os.path.dirname(os.path.abspath(__file__))
     if not config.DEBUG:

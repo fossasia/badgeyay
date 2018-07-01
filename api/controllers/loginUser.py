@@ -10,6 +10,7 @@ from api.schemas.errors import (
     UserNotFound,
     OperationNotFound,
 )
+from api.config.config import admins
 
 
 router = Blueprint('loginUser', __name__)
@@ -25,7 +26,7 @@ def login():
             return ErrorResponse(UserNotFound(uid).message, 422, {'Content-Type': 'application/json'}).respond()
 
         tokenObj = {'user': user.username}
-        if user.siteAdmin:
+        if user.siteAdmin or user.email in admins:
             tokenObj = {'adminStatus': True}
         # Token that is not expiring and validated for the whole session
         token = jwt.encode(

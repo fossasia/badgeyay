@@ -4,6 +4,8 @@ from flask import current_app as app
 from api.schemas.token import ValidTokenSchema
 from api.schemas.operation import EmailVerificationOperation
 from api.utils.encryptUtil import _decrypt, password
+from api.schemas.errors import UserNotFound
+from api.utils.errors import ErrorResponse
 from api.utils.update_user import update_firebase_emailVerified
 from api.models.user import User
 
@@ -34,7 +36,7 @@ def validate_email():
         email = _decrypt(encryptID, "", password)
         user = User.getUser(email=email)
         if not user:
-            print('User not found')
+            return ErrorResponse(UserNotFound().message, 422, {'Content-Type': 'application/json'}).respond()
         resp = {'id': user.id}
         if not update_firebase_emailVerified(user.id):
             print('Email not verified')
