@@ -24,7 +24,7 @@ export default Controller.extend({
           }
         })
         .catch(err => {
-          console.log(err);
+          this.get('notify').error('Please try again!');
         });
     },
     prevPage() {
@@ -38,7 +38,7 @@ export default Controller.extend({
             this.set('page', this.page - 1);
           })
           .catch(err => {
-            console.log(err);
+            this.get('notify').error('Please try again!');
           });
       } else {
         this.notify.error('Cannot Go Down');
