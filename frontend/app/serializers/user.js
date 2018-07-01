@@ -11,7 +11,7 @@ export default JSONAPISerializer.extend({
   },
 
   normalizeResponse(store, primaryModelClass, payload, id, requestType) {
-    if (payload.data.attributes.siteAdmin) {
+    if (payload.data.attributes.siteAdmin == 'true') {
       this.authToken.enableAdmin();
       localStorage.setItem('adminStatus', true);
     } else {
