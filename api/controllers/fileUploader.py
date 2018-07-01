@@ -151,7 +151,7 @@ def upload_default():
 def background_color():
     try:
         data = request.get_json()['data']['attributes']
-        bg_color = data['bg-color']
+        bg_color = data['bg_color']
     except Exception:
         return ErrorResponse(PayloadNotFound().message, 422, {'Content-Type': 'application/json'}).respond()
 
