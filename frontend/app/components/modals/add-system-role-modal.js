@@ -18,7 +18,6 @@ export default Component.extend({
 
     addSystemRole() {
       let user = this.get('userFounded');
-      console.log(user);
       this.get('enableAdmin')(user, this.get('pre_checked'));
     }
   }
