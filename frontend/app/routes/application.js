@@ -13,7 +13,7 @@ export default Route.extend({
     if (userObj !== undefined) {
       const uid = this.get('session.uid');
       const adminStatus = localStorage.getItem('adminStatus');
-      if (adminStatus) {
+      if (adminStatus === 'true') {
         this.authToken.enableAdmin();
       }
 
