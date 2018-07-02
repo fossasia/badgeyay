@@ -5,11 +5,11 @@
       </a>
     </div>
     <div class="ui segment">
-      {{#each model as |badge|}}
+      {{#each model as |badge index|}}
         <div class="ui basic orange card">
           <div class="content">
             <div class="header">
-              Badge
+              Badge {{increment index}}
             </div>
           </div>
           <div class="content">
