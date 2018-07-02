@@ -1,55 +1,113 @@
 <div class="ui basic segment less padding">
-  <div class="ui {{if isLoading 'active'}} inverted dimmer">
-    <div class="ui loader"></div>
-  </div>
-  <div>
-    <h3 class="ui left aligned header">
-      {{'System Roles'}}
-    </h3>
-    <div class="ui divider"></div>
-  </div>
-  <div>
-    <h3 class="ui left aligned header">
-      {{'Admin Permissions'}}
-    </h3>
-  </div>
-  <table class="ui celled table">
-    <thead>
-      <tr>
-        <th>{{'Admin Role'}}</th>
-        <th>{{'Actions'}}</th>
-      </tr>
-    </thead>
-    <tbody>
-      {{#each model.admins as |admin|}}
-        <tr>
-          <td>
-              {{admin.username}}
-              <br>
-              {{admin.email}}
-          </td>
-          <td>
-            <div class="ui horizontal compact basic buttons">
-              {{#ui-popup content='Delete' class='ui icon button' click=(action 'deleteAdmin' admin.email)}}
-                <i class="trash alternate outline icon"></i>
-              {{/ui-popup}}
-            </div>
-          </td>
-        </tr>
-      {{/each}}
-      <tr>
-        <td>
-          <button class="ui basic button" {{action 'openAddSystemRoleModal'}}>{{'Add new Role'}}</button>
-        </td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
+    <div class="ui {{if isLoading 'active'}} inverted dimmer">
+        <div class="ui loader"></div>
+    </div>
+    <div>
+        <h3 class="ui left aligned header">
+            System Roles
+        </h3>
+        <div class="ui divider"></div>
+    </div>
+    <div>
+        <h3 class="ui left aligned header">
+            Pannel Permissions
+        </h3>
+    </div>
+    <table class="ui celled table">
+        <thead>
+            <tr>
+                <th>System Role</th>
+                <th>Panels</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>
+                    Super Admin
+                    <br> (Built-in-Role)
+                </td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>
+                    Admin
+                    <br> (Built-in-Role)
+                </td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>
+                    Sales
+                    <br> (Built-in-Role)
+                </td>
+                <td></td>
+                <td></td>
+            </tr>
+            {{#each model.roles as |role|}}
+            <tr>
+                <td>{{role.titleName}}</td>
+                <td>
+                    <div class="ui bulleted list">
+                        <div class="item">{{role.name}}</div>
+                    </div>
+                </td>
+                <td>
+                    <div class="ui horizontal compact basic buttons">
+                        {{#ui-popup content='Edit' class='ui icon button'}}
+                        <i class="edit icon"></i>
+                        {{/ui-popup}} {{#ui-popup content='Delete' class='ui icon button'}}
+                        <i class="trash outline icon"></i>
+                        {{/ui-popup}}
+                    </div>
+                </td>
+            </tr>
+            {{/each}}
+            <tr>
+                <td>
+                    <button class="ui basic button">Add new Role</button>
+                </td>
+                <td></td>
+                <td></td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="ui hidden divider"></div>
+    <form class="ui form">
+        <h3 class="ui left aligned header">
+            User Permissions
+        </h3>
+        <table class="ui celled table">
+            <thead>
+                <tr>
+                    <th>Permission</th>
+                    <th>Unverified User</th>
+                    <th>Anonymous User</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each model.userPermissions as |userPermission|}}
+                <tr>
+                    <td>
+                        {{userPermission.name}}
+                        <div class="muted text">
+                            {{userPermission.description}}
+                        </div>
+                    </td>
+                    <td>{{ui-checkbox label='Unverified User' checked=userPermission.unverifiedUser}}</td>
+                    <td>
+                        {{ui-checkbox label='Anonymous User' checked=userPermission.anonymousUser}}
+                    </td>
+                </tr>
+                {{/each}}
+            </tbody>
+        </table>
+        <div>
+            <button class="ui teal button" type="submit">
+                Save
+            </button>
+        </div>
+    </form>
 </div>
-{{#if isAddSystemRoleModalOpen}}
-    {{modals/add-system-role-modal
-        userFounded=roleFounded
-        isOpen=isAddSystemRoleModalOpen
-        enableAdmin=(action 'enableAdmin')
-        checkEmail=(action 'checkEmail')}}
-{{/if}}
