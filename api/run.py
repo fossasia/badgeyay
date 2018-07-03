@@ -1,6 +1,7 @@
 from flask_migrate import Migrate
 from api import create_app
 from api.db import db
+from api.models.utils import set_pricing
 from api.controllers import (
     generateBadges,
     errorHandlers,
@@ -48,6 +49,7 @@ app.register_blueprint(stripePay.router, url_prefix='/payment')
 def create_tables():
     db.create_all()
     Module.set_default()
+    set_pricing()
 
 
 if __name__ == '__main__':

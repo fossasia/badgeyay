@@ -17,3 +17,10 @@ class Utilities(db.Model):
             db.session.rollback()
             db.session.flush()
             print(e)
+
+
+def set_pricing():
+    record = Utilities.query.first()
+    if record is None:
+        util = Utilities(pricing=0.00)
+        util.save_to_db()
