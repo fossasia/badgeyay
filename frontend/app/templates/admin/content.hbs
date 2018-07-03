@@ -1,0 +1,19 @@
+<div class="ui grid">
+  <div class="row">
+    <div class="sixteen wide column">
+      {{#tabbed-navigation isNonPointing=true}}
+        {{#link-to 'admin.content.index' class='item'}}
+          Social Links
+        {{/link-to}}
+        {{#link-to 'admin.content.system-images' class='item'}}
+          System Images
+        {{/link-to}}
+      {{/tabbed-navigation}}
+    </div>
+  </div>
+  <div class="row">
+    <div class="sixteen wide column">
+      {{outlet}}
+    </div>
+  </div>
+</div>
