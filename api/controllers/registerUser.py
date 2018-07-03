@@ -1,6 +1,7 @@
 from flask import Blueprint, jsonify, request
 from firebase_admin import auth
 from api.models.user import User
+from api.models.permissions import Permissions
 from api.config.config import admins
 from api.schemas.user import (
     UserSchema,
@@ -38,6 +39,9 @@ def register_user():
 
         newUser.save_to_db()
 
+        perm = Permissions(isUser=True, user_permissions=newUser)
+        perm.save_to_db()
+
         return jsonify(schema.dump(newUser).data)
     else:
         schema = OAuthUserSchema()
@@ -58,6 +62,8 @@ def register_user():
             if data['email'] in admins:
                 newUser.siteAdmin = True
             newUser.save_to_db()
+            perm = Permissions(isUser=True, user_permissions=newUser)
+            perm.save_to_db()
         else:
             newUser = user_
         return jsonify(schema.dump(newUser).data)

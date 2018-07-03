@@ -2,8 +2,8 @@ from api.db import db
 import uuid
 
 
-class Permissiona(db.Model):
-    __tablename__ = 'permissions'
+class Permissions(db.Model):
+    __tablename__ = 'Permissions'
 
     id = db.Column(db.String(100), primary_key=True)
     isUser = db.Column(db.Boolean, default=False)
