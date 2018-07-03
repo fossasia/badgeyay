@@ -4,6 +4,8 @@ from api.models.user import User
 from api.models.badges import Badges
 from api.models.file import File
 from api.models.utils import Utilities
+from api.models.modules import Module
+from api.schemas.modules import ModuleSchema
 from api.helpers.verifyToken import adminRequired
 from api.schemas.user import AllUsersSchema, UserAllowedUsage, DatedUserSchema
 from api.schemas.badges import DatedBadgeSchema
@@ -44,6 +46,25 @@ def show_all_users():
             users = User.query.paginate(page, app.config['POSTS_PER_PAGE'], False)
     result = schema.dump(users.items)
     return jsonify(result.data)
+
+
+@router.route('/all-modules', methods=['GET'])
+@adminRequired
+def get_all_modules():
+    module = Module.query.all()[0]
+    return jsonify(ModuleSchema().dump(module).data)
+
+
+@router.route('/all-modules/<id_>', methods=['PATCH'])
+@adminRequired
+def patch_module(id_):
+    module = Module.query.filter_by(id=id_).first()
+    data = request.get_json()['data']['attributes']
+    module.ticketInclude = data['ticketInclude']
+    module.paymentInclude = data['ticketInclude']
+    module.donationInclude = data['donationInclude']
+    module.save_to_db()
+    return jsonify(ModuleSchema().dump(module).data)
 
 
 @router.route('/show_all_users/<userid>', methods=['PATCH'])
