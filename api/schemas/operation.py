@@ -16,3 +16,11 @@ class EmailVerificationOperation(Schema):
 
     id = fields.Str(required=True, dump_only=True)
     status = fields.Str(required=True)
+
+
+class StripePaymentSchema(Schema):
+    class Meta:
+        type_ = 'stripe-payment'
+
+    id = fields.Str(required=True, dump_only=True)
+    status = fields.Str(required=True)

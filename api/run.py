@@ -15,7 +15,8 @@ from api.controllers import (
     admin,
     validation,
     changeMeta,
-    exportData
+    exportData,
+    stripePay
 )
 from api.models.modules import Module
 
@@ -40,6 +41,7 @@ app.register_blueprint(updateProfile.router, url_prefix='/update')
 app.register_blueprint(validation.router, url_prefix='/validate')
 app.register_blueprint(changeMeta.router, url_prefix='/change')
 app.register_blueprint(exportData.router, url_prefix='/export')
+app.register_blueprint(stripePay.router, url_prefix='/payment')
 
 
 @app.before_first_request
