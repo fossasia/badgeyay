@@ -38,6 +38,7 @@ router.map(function() {
     this.route('permissions', function() {
       this.route('system-roles');
     });
+    this.route('modules');
   });
 });
 

@@ -17,6 +17,7 @@ from api.controllers import (
     changeMeta,
     exportData
 )
+from api.models.modules import Module
 
 
 app = create_app()
@@ -44,6 +45,7 @@ app.register_blueprint(exportData.router, url_prefix='/export')
 @app.before_first_request
 def create_tables():
     db.create_all()
+    Module.set_default()
 
 
 if __name__ == '__main__':
