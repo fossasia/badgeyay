@@ -47,6 +47,12 @@ class UserNotFound(BaseError):
         super(UserNotFound, self).__init__(uid=uid, attr='user')
 
 
+class FieldNotFound(BaseError):
+
+    def __init__(self):
+        super(FieldNotFound, self).__init__(attr='field-missing')
+
+
 class FileNotFound(BaseError):
 
     def __init__(self, uid):
