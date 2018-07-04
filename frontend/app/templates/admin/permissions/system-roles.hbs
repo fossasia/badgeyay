@@ -24,9 +24,9 @@
       {{#each model.admins as |admin|}}
         <tr>
           <td>
-              {{admin.username}}
+              <i class="user icon"></i>{{admin.username}}
               <br>
-              {{admin.email}}
+              <i class="envelope outline icon"></i>{{admin.email}}
           </td>
           <td>
             <div class="ui horizontal compact basic buttons">
@@ -39,7 +39,7 @@
       {{/each}}
       <tr>
         <td>
-          <button class="ui basic button" {{action 'openAddSystemRoleModal'}}>{{'Add new Role'}}</button>
+          <button class="ui green button" {{action 'openAddSystemRoleModal'}}>{{'Add new Role'}}</button>
         </td>
         <td></td>
       </tr>
