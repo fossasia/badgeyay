@@ -3,6 +3,7 @@ import { inject as service } from '@ember/service';
 
 export default Controller.extend({
   routing : service('-routing'),
+  notify  : service('notify'),
   uid     : '',
   actions : {
     updateProfileImage(profileImageData, extension) {
@@ -28,6 +29,17 @@ export default Controller.extend({
             _this.set('userError', userErrors);
           }
         });
+    },
+
+
+    updateUserName(profileName) {
+      const _this = this;
+      const user = this.get('store').peekAll('user');
+      user.forEach(user_ => {
+        _this.set('uid', user_.get('id'));
+      });
+      _this.get('user').save();
+      _this.get('notify').success('Username Successfully Updated!');
     }
   }
 });

@@ -20,7 +20,7 @@
   </div>
   <div class="ten wide column">
     <div class="ui active attached tab segment" data-tab="account">
-      {{user-component/user-account session=session user=user}}
+      {{user-component/user-account session=session user=user sendUserName=(action 'updateUserName')}}
     </div>
     <div class="ui attached tab segment" data-tab="password">
       {{user-component/user-password}}
