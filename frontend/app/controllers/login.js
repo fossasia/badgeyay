@@ -28,20 +28,18 @@ export default Controller.extend({
             this_.session.close();
             this_.notify.error('Please verify your email');
           } else {
-            this_.get('store').pushPayload({
-              data: [{
-                id         : userData.uid,
-                type       : 'user',
-                attributes : {
-                  'uid'      : userData.uid,
-                  'username' : userObj.displayName,
-                  'email'    : userObj.email,
-                  'photoURL' : userObj.photoURL
-                },
-                relationships: {}
-              }]
-            });
-            this_.send('generateLoginToken', userData.uid);
+            this_.get('store').createRecord('user', {
+              uid      : userData.uid,
+              username : userObj.displayName,
+              email    : userObj.email,
+              photoURL : userObj.photoURL
+            }).save()
+              .then(() => {
+                this_.notify.success('Login successfull');
+                this_.send('generateLoginToken', userData.uid);
+              }).catch(() => {
+                this_.notify.error('Unable to login');
+              });
           }
         }).catch(function(err) {
           console.log(err.message);
@@ -93,6 +91,23 @@ export default Controller.extend({
         })
         .catch(err => {
           this_.get('notify').error('Unable to validate user');
+        });
+
+      this.get('store').queryRecord('permission', {
+        id
+      })
+        .then(record => {
+          let permissionPayload = {
+            id      : record.id,
+            isUser  : record.isUser,
+            isAdmin : record.isAdmin,
+            isSales : record.isSales
+          };
+
+          localStorage.setItem('permissions', JSON.stringify(permissionPayload));
+        })
+        .catch(() => {
+          this.notify.error('Unable to fetch permission');
         });
     }
   }

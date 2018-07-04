@@ -6,7 +6,8 @@ from api.config.config import admins
 from api.schemas.user import (
     UserSchema,
     OAuthUserSchema,
-    FTLUserSchema
+    FTLUserSchema,
+    PermissionSchema
 )
 
 
@@ -67,6 +68,14 @@ def register_user():
         else:
             newUser = user_
         return jsonify(schema.dump(newUser).data)
+
+
+@router.route('/permission', methods=['GET'])
+def user_permissions():
+    args = request.args
+    if 'id' in args.keys():
+        perm = Permissions.getPermissions(args['id'])
+        return jsonify(PermissionSchema().dump(perm).data)
 
 
 @router.route('/register/<uid>', methods=['PATCH'])
