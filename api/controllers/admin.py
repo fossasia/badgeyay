@@ -242,7 +242,7 @@ def get_user_dated():
     return jsonify(AllUsersSchema(many=True).dump(dated_users).data)
 
 
-@router.route('/pricing', methods=['POST'])
+@router.route('/set_pricing', methods=['POST'])
 def set_pricing():
     schema = SetPricingSchema()
     input_data = request.get_json()
@@ -256,5 +256,16 @@ def set_pricing():
         'status': 200,
         'pricing': data['pricing'],
         'message': 'Pricing Set Successfully'
+    }
+    return jsonify(ReturnSetPricing().dump(ret_data).data)
+
+
+@router.route('/get_pricing', methods=['GET'])
+def get_pricing():
+    utils = Utilities.query.first()
+    ret_data = {
+        'status': 200,
+        'pricing': utils.pricing,
+        'message': 'Pricing Information'
     }
     return jsonify(ReturnSetPricing().dump(ret_data).data)
