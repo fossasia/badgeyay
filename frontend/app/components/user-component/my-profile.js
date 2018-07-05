@@ -21,6 +21,11 @@ export default Component.extend({
       };
 
       reader.readAsDataURL(file);
+    },
+
+    updateUserName() {
+      let profileName = this.get('profileName');
+      this.get('sendUserName')(profileName);
     }
   }
 });
