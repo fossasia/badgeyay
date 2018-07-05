@@ -20,5 +20,24 @@ export default Component.extend({
       let user = this.get('userFounded');
       this.get('enableAdmin')(user, this.get('pre_checked'));
     }
+  },
+
+  didRender() {
+    this.$('.ui.form')
+      .form({
+        inline : true,
+        delay  : false,
+        fields : {
+          email: {
+            identifier : 'role_email',
+            rules      : [
+              {
+                type   : 'email',
+                prompt : 'Please enter a valid email address'
+              }
+            ]
+          }
+        }
+      });
   }
 });
