@@ -23,4 +23,4 @@ class Permissions(db.Model):
 
     @classmethod
     def getPermissions(cls, permissions_id):
-        return cls.query.filter_by(id=permissions_id).first()
+        return cls.query.filter_by(user_id=permissions_id).first()

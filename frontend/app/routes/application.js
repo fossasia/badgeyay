@@ -34,6 +34,23 @@ export default Route.extend({
         this.authToken.updateToken(loginToken.token);
       }
 
+      const permission = JSON.parse(localStorage.getItem('permissions'));
+
+      if (permission && permission !== undefined) {
+        // Persist the permissions in the cache
+        this.get('store').pushPayload({
+          data: [{
+            id         : permission.id,
+            type       : 'permission',
+            attributes : {
+              isUser  : permission.isUser,
+              isAdmin : permission.isAdmin,
+              isSales : performance.isSales
+            }
+          }]
+        });
+      }
+
       this.get('store').pushPayload({
         data: [{
           id         : uid,
