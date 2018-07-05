@@ -32,13 +32,15 @@ router.map(function() {
       this.route('list', { path: '/:users_status' });
       this.route('view');
     });
-    this.route('mail');
     this.route('reports');
     this.route('settings');
     this.route('permissions', function() {
       this.route('system-roles');
     });
     this.route('modules');
+    this.route('content', function() {
+      this.route('system-images');
+    });
   });
 });
 

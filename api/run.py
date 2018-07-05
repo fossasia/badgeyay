@@ -1,6 +1,7 @@
 from flask_migrate import Migrate
 from api import create_app
 from api.db import db
+from api.models.utils import set_pricing
 from api.controllers import (
     generateBadges,
     errorHandlers,
@@ -19,6 +20,7 @@ from api.controllers import (
     stripePay
 )
 from api.models.modules import Module
+from api.models.socialContent import SocialContent
 
 
 app = create_app()
@@ -48,6 +50,8 @@ app.register_blueprint(stripePay.router, url_prefix='/payment')
 def create_tables():
     db.create_all()
     Module.set_default()
+    set_pricing()
+    SocialContent.populate_initial()
 
 
 if __name__ == '__main__':

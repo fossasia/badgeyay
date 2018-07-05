@@ -8,7 +8,7 @@ export default Route.extend({
   beforeModel() {
     return this.get('session').fetch().catch(function() {});
   },
-  model() {
+  async model() {
     const userObj = this.get('session.currentUser');
     if (userObj !== undefined) {
       const uid = this.get('session.uid');
@@ -48,5 +48,8 @@ export default Route.extend({
         }]
       });
     }
+    return {
+      'socialMedia': await this.get('store').findAll('social-content')
+    };
   }
 });
