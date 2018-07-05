@@ -8,6 +8,7 @@ import { inject as service } from '@ember/service';
 export default Controller.extend({
   routing        : service('-routing'),
   notify         : service('notify'),
+  authToken      : service('auth-session'),
   defColor       : '',
   defFontColor   : '',
   defFontSize    : '',

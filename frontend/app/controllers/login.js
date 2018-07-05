@@ -24,10 +24,11 @@ export default Controller.extend({
           password
         }).then(function(userData) {
           let userObj = userData.currentUser;
-          if (!userObj.emailVerified) {
-            this_.session.close();
-            this_.notify.error('Please verify your email');
+          if (userObj.emailVerified) {
+            localStorage.setItem('emailVerified', true);
+            this_.authToken.emailVerified();
           } else {
+            localStorage.setItem('emailVerified', false);
             this_.get('store').createRecord('user', {
               uid      : userData.uid,
               username : userObj.displayName,
@@ -50,6 +51,8 @@ export default Controller.extend({
           provider
         }).then(function(userData) {
           let userObj = userData.currentUser;
+          localStorage.setItem('emailVerified', true);
+          this_.authToken.emailVerified();
           let user_ = this_.get('store').createRecord('user', {
             uid      : userData.uid,
             username : userObj.displayName,

@@ -119,7 +119,7 @@
             {{/ui-accordion}}
         </div>
     </div>
-    <button {{action "submitForm"}} class="ui fluid orange button">Create Badges</button>
+    <button {{action "submitForm"}} class="ui fluid orange {{if authToken.isEmailVerified '' 'disabled'}} button">Create Badges</button>
     {{#each userError as |error|}}
     <p>{{error.message}}</p>
     {{/each}}

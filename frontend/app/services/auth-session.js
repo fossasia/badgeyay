@@ -1,8 +1,9 @@
 import Service from '@ember/service';
 
 export default Service.extend({
-  sessionToken : null,
-  adminValid   : false,
+  sessionToken    : null,
+  adminValid      : false,
+  isEmailVerified : false,
 
   init() {
     this._super(...arguments);
@@ -26,5 +27,9 @@ export default Service.extend({
 
   removeToken() {
     this.set('sessionToken', null);
+  },
+
+  emailVerified() {
+    this.set('isEmailVerified', true);
   }
 });

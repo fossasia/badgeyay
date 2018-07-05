@@ -18,6 +18,7 @@ export default Controller.extend({
       // Remove localStorage items
       localStorage.removeItem('adminStatus');
       localStorage.removeItem('loginToken');
+      localStorage.removeItem('emailVerified');
     }
   }
 });
