@@ -1,22 +1,20 @@
 <h2 class="ui dividing header">Account</h2>
-<form class="ui form">
-    <div class="field">
+<form class="ui form" {{action 'updateUserName' on="submit"}}>
+    <div class="ui field">
     <label>Username</label>
-    <div class="fields">
-        <div class="ten wide disabled field">
-        <input type="text" value={{user.username}}>
+        <div class="ui fields">
+            <div class="ten wide field">
+                {{input type="text" id="profileName" name=profileName value=user.username}}
+            </div>
         </div>
     </div>
-    </div>
-    <div class="field">
+    <div class="ui field">
     <label>Email</label>
-    <div class="fields">
+        <div class="ui fields">
         <div class="ten wide disabled field">
-        <input type="text" value={{user.email}}>
+            {{input type="email" name=email value=user.email}}
         </div>
     </div>
     </div>
-    <div class="ui button" tabindex="0">
-    Save Changes
-    </div>
+    <button type="submit" class="ui basic orange button" tabindex="0" >Save Changes</button>
 </form>

@@ -3,6 +3,11 @@ from datetime import datetime
 from api.db import db
 
 
+def _photoURL():
+    return 'https://encrypted-tbn0.gstatic.com/' \
+        'images?q=tbn:ANd9GcRWnJC8FyOPb9J-EjhQStzIZt_dk-dxuK-VyEnwQDdqIBKj4p7R8A'
+
+
 class User(db.Model):
     __tablename__ = 'User'
 
@@ -10,11 +15,11 @@ class User(db.Model):
     username = db.Column(db.String(80))
     password = db.Column(db.String(100))
     email = db.Column(db.String(100))
-    photoURL = db.Column(db.String, default='https://encrypted-tbn0.gstatic.com/' +
-                         'images?q=tbn:ANd9GcRWnJC8FyOPb9J-EjhQStzIZt_dk-dxuK-VyEnwQDdqIBKj4p7R8A')
+    photoURL = db.Column(db.String, default=_photoURL)
     allowed_usage = db.Column(db.Integer)
     ftl = db.Column(db.Boolean, default=True)
-    created_at = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
+    created_at = db.Column(db.DateTime, nullable=False,
+                           default=datetime.utcnow)
     deleted_at = db.Column(db.DateTime, nullable=True)
     files = db.relationship('File', backref='uploader')
     badges = db.relationship('Badges', backref='creator')

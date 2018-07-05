@@ -53,3 +53,14 @@ class DeleteAdminRole(Schema):
     id = fields.Str(required=True, dump_only=True)
     email = fields.Str(required=True)
     siteAdmin = fields.Bool(required=True)
+
+
+class SocialMedia(Schema):
+    class Meta:
+        type_ = 'social-contents'
+        kwargs = {'id': '<id>'}
+
+    id = fields.Str(required=True, dump_only=True, attribute='name')
+    description = fields.Str(required=True)
+    link = fields.Str(required=True)
+    icon = fields.Str(required=True)

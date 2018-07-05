@@ -21,6 +21,7 @@ from api.controllers import (
     changePermissions
 )
 from api.models.modules import Module
+from api.models.socialContent import SocialContent
 
 
 app = create_app()
@@ -52,6 +53,7 @@ def create_tables():
     db.create_all()
     Module.set_default()
     set_pricing()
+    SocialContent.populate_initial()
 
 
 if __name__ == '__main__':

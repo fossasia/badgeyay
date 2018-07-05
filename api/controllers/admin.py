@@ -1,6 +1,7 @@
 from flask import jsonify, Blueprint, request
 from api.db import db
 from api.models.user import User
+from api.models.socialContent import SocialContent
 from api.models.badges import Badges
 from api.models.file import File
 from api.models.utils import Utilities
@@ -12,7 +13,14 @@ from api.schemas.badges import DatedBadgeSchema
 from api.schemas.badges import AllBadges, AllGenBadges
 from api.schemas.file import FileSchema
 from api.schemas.errors import JsonNotFound
-from api.schemas.admin import AdminSchema, AllUserStat, AdminMailStat, AllAdminRole, DeleteAdminRole
+from api.schemas.admin import (
+    AdminSchema,
+    AllUserStat,
+    AdminMailStat,
+    AllAdminRole,
+    DeleteAdminRole,
+    SocialMedia
+)
 from api.schemas.utils import SetPricingSchema, ReturnSetPricing
 from api.utils.errors import ErrorResponse
 from api.schemas.errors import UserNotFound
@@ -242,7 +250,7 @@ def get_user_dated():
     return jsonify(AllUsersSchema(many=True).dump(dated_users).data)
 
 
-@router.route('/pricing', methods=['POST'])
+@router.route('/set_pricing', methods=['POST'])
 def set_pricing():
     schema = SetPricingSchema()
     input_data = request.get_json()
@@ -258,3 +266,31 @@ def set_pricing():
         'message': 'Pricing Set Successfully'
     }
     return jsonify(ReturnSetPricing().dump(ret_data).data)
+
+
+@router.route('/get_pricing', methods=['GET'])
+def get_pricing():
+    utils = Utilities.query.first()
+    ret_data = {
+        'status': 200,
+        'pricing': utils.pricing,
+        'message': 'Pricing Information'
+    }
+    return jsonify(ReturnSetPricing().dump(ret_data).data)
+
+  
+@router.route('/social-media', methods=['GET'])
+def get_all_social_media():
+    social_media = SocialContent.query.all()
+    return jsonify(SocialMedia(many=True).dump(social_media).data)
+
+
+@router.route('/social-media/<media>', methods=['PATCH'])
+@adminRequired
+def patch_social_media(media):
+    social_media = SocialContent.check_key(media)
+    if social_media:
+        data = request.get_json()['data']['attributes']
+        social_media.link = data['link']
+        social_media.save_to_db()
+        return jsonify(SocialMedia().dump(social_media).data)

@@ -3,10 +3,12 @@ from firebase_admin import auth
 from api.models.user import User
 from api.models.permissions import Permissions
 from api.config.config import admins
+from api.utils.update_user import update_firebase_username
 from api.schemas.user import (
     UserSchema,
     OAuthUserSchema,
-    FTLUserSchema
+    FTLUserSchema,
+    PermissionSchema
 )
 
 
@@ -69,11 +71,25 @@ def register_user():
         return jsonify(schema.dump(newUser).data)
 
 
+@router.route('/permission', methods=['GET'])
+def user_permissions():
+    args = request.args
+    if 'id' in args.keys():
+        perm = Permissions.getPermissions(args['id'])
+        return jsonify(PermissionSchema().dump(perm).data)
+
+
 @router.route('/register/<uid>', methods=['PATCH'])
 def patchUser(uid):
     data = request.get_json()['data']['attributes']
     user = User.getUser(user_id=uid)
     if 'ftl' in data.keys():
         user.ftl = data['ftl']
-    user.save_to_db()
+        user.save_to_db()
+
+    if 'username' in data.keys():
+        user.username = data['username']
+        update_firebase_username(user.id, user.username)
+        user.save_to_db()
+
     return jsonify(FTLUserSchema().dump(user).data)
