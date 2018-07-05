@@ -64,3 +64,17 @@ class SocialMedia(Schema):
     description = fields.Str(required=True)
     link = fields.Str(required=True)
     icon = fields.Str(required=True)
+
+
+class AdminBadgeSchema(Schema):
+    class Meta:
+        type_ = 'all-admin-badges'
+
+    id = fields.Str(required=True, dump_only=True)
+    image = fields.Str(required=True)
+    csv = fields.Str(required=True)
+    text_colour = fields.Str(required=True)
+    badge_size = fields.Str(required=True)
+    download_link = fields.Str(required=True)
+    created_at = fields.Date(required=True)
+    user_id = fields.Str(required=True)
