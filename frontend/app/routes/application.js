@@ -42,6 +42,10 @@ export default Route.extend({
       const permission = JSON.parse(localStorage.getItem('permissions'));
 
       if (permission && permission !== undefined) {
+
+        // Sets the permission in service
+        this.authToken.setPermission(permission);
+
         // Persist the permissions in the cache
         this.get('store').pushPayload({
           data: [{
@@ -50,7 +54,7 @@ export default Route.extend({
             attributes : {
               isUser  : permission.isUser,
               isAdmin : permission.isAdmin,
-              isSales : performance.isSales
+              isSales : permission.isSales
             }
           }]
         });

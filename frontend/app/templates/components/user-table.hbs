@@ -45,14 +45,18 @@
                 </div>
             </td>
             <td>
-                <div class="ui horizontal compact basic buttons">
-                    {{#ui-popup content='Edit' class='ui icon button' click=(action 'openModal' 'user-edit' user)}}
-                    <i class="edit icon"></i>
-                    {{/ui-popup}}
-                    {{#ui-popup content='Delete' class='ui icon button' click=(action 'deleteUser' user)}}
-                    <i class="trash alternate outline icon"></i>
-                    {{/ui-popup}}
-                </div>
+                {{#if authToken.permissions.isAdmin}}
+                    <div class="ui horizontal compact basic buttons">
+                        {{#ui-popup content='Edit' class="ui icon button" click=(action 'openModal' 'user-edit' user)}}
+                            <i class="edit icon"></i>
+                        {{/ui-popup}}
+                        {{#ui-popup content='Delete' class='ui icon button' click=(action 'deleteUser' user)}}
+                        <i class="trash alternate outline icon"></i>
+                        {{/ui-popup}}
+                    </div>
+                {{else}}
+                    <p>You donot have the permission to edit role</p>
+                {{/if}}
             </td>
         </tr>
         {{/each}}

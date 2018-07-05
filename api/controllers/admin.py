@@ -48,11 +48,14 @@ def show_all_users():
     schema = AllUsersSchema(many=True)
     if 'state' in args.keys():
         if args['state'] == 'deleted':
-            users = User.query.filter(User.deleted_at.isnot(None)).paginate(page, app.config['POSTS_PER_PAGE'], False)
+            users = User.query.filter(User.deleted_at.isnot(None)).paginate(
+                page, app.config['POSTS_PER_PAGE'], False)
         if args['state'] == 'active':
-            users = User.query.filter(User.deleted_at.is_(None)).paginate(page, app.config['POSTS_PER_PAGE'], False)
+            users = User.query.filter(User.deleted_at.is_(None)).paginate(
+                page, app.config['POSTS_PER_PAGE'], False)
         if args['state'] == 'all':
-            users = User.query.paginate(page, app.config['POSTS_PER_PAGE'], False)
+            users = User.query.paginate(
+                page, app.config['POSTS_PER_PAGE'], False)
     result = schema.dump(users.items)
     return jsonify(result.data)
 
@@ -131,17 +134,22 @@ def get_admin_stat():
         mail_list.append(mail_resp[key])
     mail_list.sort(key=lambda e: e['date'], reverse=True)
     for item in mail_list:
-        item['date'] = datetime.datetime.strptime(item['date'], '%Y-%m-%dT%H:%M:%SZ')
+        item['date'] = datetime.datetime.strptime(
+            item['date'], '%Y-%m-%dT%H:%M:%SZ')
     curr_date = datetime.datetime.utcnow()
     prev_month_date = curr_date - relativedelta(months=1)
     last_three_days_date = curr_date - relativedelta(days=3)
     last_seven_days_date = curr_date - relativedelta(days=7)
     last_day_date = curr_date - relativedelta(days=1)
 
-    prev_month_cnt = len([mail for mail in mail_list if mail['date'] >= prev_month_date])
-    last_three_days_cnt = len([mail for mail in mail_list if mail['date'] >= last_three_days_date])
-    last_day_cnt = len([mail for mail in mail_list if mail['date'] >= last_day_date])
-    last_seven_days_cnt = len([mail for mail in mail_list if mail['date'] >= last_seven_days_date])
+    prev_month_cnt = len(
+        [mail for mail in mail_list if mail['date'] >= prev_month_date])
+    last_three_days_cnt = len(
+        [mail for mail in mail_list if mail['date'] >= last_three_days_date])
+    last_day_cnt = len(
+        [mail for mail in mail_list if mail['date'] >= last_day_date])
+    last_seven_days_cnt = len(
+        [mail for mail in mail_list if mail['date'] >= last_seven_days_date])
 
     payload = {
         'id': datetime.datetime.utcnow(),
@@ -185,7 +193,8 @@ def all_users_stat():
 @loginRequired
 def get_all_badges():
     page = request.args.get('page', 1, type=int)
-    all_badges = Badges.query.paginate(page, app.config['POSTS_PER_PAGE'], False).items
+    all_badges = Badges.query.paginate(
+        page, app.config['POSTS_PER_PAGE'], False).items
     schema = AllBadges(many=True)
     result = schema.dump(all_badges)
     return jsonify(result.data)
@@ -195,7 +204,8 @@ def get_all_badges():
 @loginRequired
 def get_all_files():
     page = request.args.get('page', 1, type=int)
-    files = File.query.paginate(page, app.config['POSTS_PER_PAGE'], False).items
+    files = File.query.paginate(
+        page, app.config['POSTS_PER_PAGE'], False).items
     return jsonify(FileSchema(many=True).dump(files).data)
 
 
@@ -252,7 +262,8 @@ def get_badges_dated():
     data, err = schema.load(input_data)
     if err:
         return jsonify(err)
-    dated_badges = Badges.query.filter(Badges.created_at <= data.get('end_date')).filter(Badges.created_at >= data.get('start_date'))
+    dated_badges = Badges.query.filter(Badges.created_at <= data.get(
+        'end_date')).filter(Badges.created_at >= data.get('start_date'))
     return jsonify(AllBadges(many=True).dump(dated_badges).data)
 
 
@@ -263,7 +274,8 @@ def get_user_dated():
     data, err = schema.load(input_data)
     if err:
         return jsonify(err)
-    dated_users = User.query.filter(User.created_at <= data.get('end_date')).filter(User.created_at >= data.get('start_date'))
+    dated_users = User.query.filter(User.created_at <= data.get(
+        'end_date')).filter(User.created_at >= data.get('start_date'))
     return jsonify(AllUsersSchema(many=True).dump(dated_users).data)
 
 

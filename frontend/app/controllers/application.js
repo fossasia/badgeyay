@@ -9,8 +9,7 @@ export default Controller.extend({
   authToken : inject.service('auth-session'),
   actions   : {
     logOut() {
-      this.get('store').unloadAll('user');
-      this.get('store').unloadAll('login-token');
+      this.get('store').unloadAll();
       this.get('session').close();
       this.transitionToRoute('/');
       this.get('notify').success('Log Out Successful');
@@ -19,6 +18,7 @@ export default Controller.extend({
       localStorage.removeItem('adminStatus');
       localStorage.removeItem('loginToken');
       localStorage.removeItem('emailVerified');
+      localStorage.removeItem('permissions');
     }
   }
 });

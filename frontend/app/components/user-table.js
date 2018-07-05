@@ -4,8 +4,9 @@ import Component from '@ember/component';
 const { $, inject } = Ember;
 
 export default Component.extend({
-  notify  : inject.service('notify'),
-  actions : {
+  notify    : inject.service('notify'),
+  authToken : inject.service('auth-session'),
+  actions   : {
     openModal(name, user) {
       $('.ui.' + name + '.modal').modal('show');
       this.set('userEdit', user);
