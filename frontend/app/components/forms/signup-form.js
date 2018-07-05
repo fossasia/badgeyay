@@ -39,6 +39,15 @@ export default Component.extend({
               }
             ]
           },
+          username: {
+            identifier : 'username',
+            rules      : [
+              {
+                type   : 'empty',
+                prompt : 'Please enter a valid username'
+              }
+            ]
+          },
           password: {
             identifier : 'password',
             rules      : [
