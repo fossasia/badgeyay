@@ -5,8 +5,9 @@
         </div>
         <div class="right menu">
             <strong class="item">Follow us on</strong>
-            <a class="item" href="https://twitter.com/badgeyay" target="_blank">Twitter</a>
-            <a class="item" href="https://github.com/fossasia/badgeyay" target="_blank">Github</a>
+            {{#each socialMedia as |media|}}
+                <a class="item" href={{media.link}} target="_blank">{{media.id}}</a>
+            {{/each}}
         </div>
     </div>
 </footer>

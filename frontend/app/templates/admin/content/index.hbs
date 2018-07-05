@@ -1,0 +1,11 @@
+<form class="ui form" {{action 'submitForm' on='submit'}}>
+    {{#each model as |socialMedia|}}
+    <div class="field">
+        <div class="ui left icon input">
+            {{input type="text" value=socialMedia.link }}
+            <i class={{socialMedia.icon}}></i>
+        </div>
+    </div>
+    {{/each}}
+     <button class="ui teal button" type="submit">Submit</button>
+</form>
