@@ -278,7 +278,7 @@ def get_pricing():
     }
     return jsonify(ReturnSetPricing().dump(ret_data).data)
 
-  
+
 @router.route('/social-media', methods=['GET'])
 def get_all_social_media():
     social_media = SocialContent.query.all()
