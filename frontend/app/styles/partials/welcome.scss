@@ -45,6 +45,12 @@ $color4: #ffa500;
   text-align: left;
 }
 
+.image-overlay {
+  border-radius: 50%;
+  height: 120px;
+  width: 120px;
+}
+
 @media screen and (max-width: 1800px) {
   .welcome-header {
     .content {
@@ -74,6 +80,11 @@ $color4: #ffa500;
       }
     }
   }
+  .image-overlay {
+    border-radius: 50%;
+    height: 80px;
+    width: 80px;
+  }
   .welcome-text {
     font-size: 1em;
   }
@@ -90,6 +101,11 @@ $color4: #ffa500;
         font-size: 1em;
       }
     }
+  }
+  .image-overlay {
+    border-radius: 50%;
+    height: 60px;
+    width: 60px;
   }
   .welcome-text {
     font-size: 0.8em;
@@ -129,7 +145,7 @@ $color4: #ffa500;
   top: 25%;
 
   .welcome-text {
-    font-size: 1.1em;
+    font-size: 1em;
     font-weight: 600;
     justify-content: center;
     text-align: left;
