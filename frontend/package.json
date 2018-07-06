@@ -19,7 +19,7 @@
   "devDependencies": {
     "broccoli-asset-rev": "^2.7.0",
     "ember-ajax": "^3.1.0",
-    "ember-cli": "~3.1.4",
+    "ember-cli": "~3.2.0",
     "ember-cli-app-version": "^3.2.0",
     "ember-cli-babel": "^6.14.1",
     "ember-cli-babili": "~0.2.0",
@@ -66,6 +66,6 @@
     "eslint-plugin-ember-suave": "^1.0.0",
     "md5": "^2.2.1",
     "minimatch": "^3.0.4",
-    "node-sass": "^4.9.0"
+    "node-sass": "^4.9.1"
   }
 }

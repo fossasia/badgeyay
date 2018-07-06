@@ -1,45 +1,37 @@
 <table class="ui celled table">
     <thead>
         <tr>
-            <th>Badge Creator ID</th>
-            <th>Badge Info</th>
-            <th>Actions</th>
+            <th rowspan="2">Badge Creator ID</th>
+            <th class="center aligned" colspan="2">Badge Info</th>
+            <th class="center aligned" rowspan="2">Actions</th>
+        </tr>
+        <tr>
+            <th>Badge ID</th>
+            <th>Created at</th>
         </tr>
     </thead>
     <tbody>
         {{#each badges as |badge|}}
-        <tr>
-            <td>{{badge.user_id}}</td>
-            <td>
-                <div class="ui list">
-                    <div class="item">
-                        <div class="content">
-                            {{badge.id}}
-                        </div>
+            <tr>
+                <td>{{badge.user_id}}</td>
+                <td>{{badge.id}}</td>
+                <td>{{badge.created_at}}</td>
+                <td class="center aligned">
+                    <div class="ui horizontal compact basic buttons">
+                        {{#ui-popup content='Edit' class='ui icon button'}}
+                            <i class="edit icon"></i>
+                        {{/ui-popup}}
+                        {{#ui-popup content='Delete' class='ui icon button'}}
+                            <i class="trash alternate outline icon"></i>
+                        {{/ui-popup}}
+                        {{#ui-popup content='Download Badge' class='ui icon button'}}
+                            <a href={{badge.download_link}}>
+                                <i class="ui download icon"></i>
+                            </a>
+                        {{/ui-popup}}
                     </div>
-                    <div class="item">
-                        <div class="content">
-                            {{badge.creaetd_at}}
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="content">
-                            {{badge.download_link}}
-                        </div>
-                    </div>
-                </div>
-            </td>
-            <td>
-                <div class="ui horizontal compact basic buttons">
-                    {{#ui-popup content='Edit' class='ui icon button'}}
-                        <i class="edit icon"></i>
-                    {{/ui-popup}}
-                    {{#ui-popup content='Delete' class='ui icon button'}}
-                        <i class="trash alternate outline icon"></i>
-                    {{/ui-popup}}
-                </div>
-            </td>
-        </tr>
+                </td>
+            </tr>
         {{/each}}
     </tbody>
 </table>
