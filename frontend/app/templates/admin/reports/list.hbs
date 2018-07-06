@@ -1,0 +1,34 @@
+<table class="ui celled table">
+    <thead>
+        <tr>
+            <th>Date</th>
+            <th>Badges Generated</th>
+            <th>Users Created</th>
+            <th>Users Deleted</th>
+        </tr>
+    </thead>
+    <tbody>
+        {{#each reports as |report|}}
+            <tr>
+                <td>{{sanitizeDate report.id}}</td>
+                <td>{{report.badgeCount}}</td>
+                <td>{{report.userCreationCount}}</td>
+                <td>{{report.userDeletionCount}}</td>
+            </tr>
+        {{/each}}
+    </tbody>
+    <tfoot>
+        <tr>
+            <th colspan="4">
+                <div class="ui right floated pagination menu">
+                    <a class="icon item">
+                        <i class="left chevron icon"></i>
+                    </a>
+                    <a class="icon item">
+                        <i class="right chevron icon"></i>
+                    </a>
+                </div>
+            </th>
+        </tr>
+    </tfoot>
+</table>
