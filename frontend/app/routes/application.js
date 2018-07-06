@@ -17,6 +17,11 @@ export default Route.extend({
         this.authToken.enableAdmin();
       }
 
+      const emailStatus = localStorage.getItem('emailVerified');
+      if (emailStatus === 'true') {
+        this.authToken.emailVerified();
+      }
+
       const loginToken = JSON.parse(localStorage.getItem('loginToken'));
 
       if (loginToken && loginToken !== undefined) {
