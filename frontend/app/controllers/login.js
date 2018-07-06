@@ -36,7 +36,6 @@ export default Controller.extend({
               photoURL : userObj.photoURL
             }).save()
               .then(() => {
-                this_.notify.success('Login successfull');
                 this_.send('generateLoginToken', userData.uid);
               }).catch(() => {
                 this_.notify.error('Unable to login');
