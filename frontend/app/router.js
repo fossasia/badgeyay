@@ -32,7 +32,9 @@ router.map(function() {
       this.route('list', { path: '/:users_status' });
       this.route('view');
     });
-    this.route('reports');
+    this.route('reports', function() {
+      this.route('list');
+    });
     this.route('settings');
     this.route('permissions', function() {
       this.route('system-roles');

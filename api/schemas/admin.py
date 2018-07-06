@@ -78,3 +78,13 @@ class AdminBadgeSchema(Schema):
     download_link = fields.Str(required=True)
     created_at = fields.Date(required=True)
     user_id = fields.Str(required=True)
+
+
+class AdminReportSchema(Schema):
+    class Meta:
+        type_ = 'admin-reports'
+
+    id = fields.Date(required=True, dump_only=True)
+    badgeCount = fields.Int(as_string=True)
+    userCreationCount = fields.Int(as_string=True)
+    userDeletionCount = fields.Int(as_string=True)
