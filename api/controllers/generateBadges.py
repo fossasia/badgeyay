@@ -71,6 +71,8 @@ def generateBadges():
     else:
         badgePath = os.getcwd() + '/api/static/temporary/' + badgeFolder
     if os.path.isdir(badgePath):
+        imageDirectory = os.path.join(badgePath, '../../uploads/image', image_name)
+        link = fileUploader(imageDirectory, 'images/' + image_name)
         link = fileUploader(badgePath + '/all-badges.pdf', 'badges/' + badge_created.id + '.pdf')
         badge_created.download_link = link
         rmtree(badgePath, ignore_errors=True)
