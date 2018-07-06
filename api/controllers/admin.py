@@ -19,7 +19,8 @@ from api.schemas.admin import (
     AdminMailStat,
     AllAdminRole,
     DeleteAdminRole,
-    SocialMedia
+    SocialMedia,
+    AdminBadgeSchema
 )
 from api.schemas.utils import SetPricingSchema, ReturnSetPricing
 from api.utils.errors import ErrorResponse
@@ -61,6 +62,22 @@ def show_all_users():
 def get_all_modules():
     module = Module.query.all()[0]
     return jsonify(ModuleSchema().dump(module).data)
+
+
+@router.route('/all-badge-detail', methods=['GET'])
+@adminRequired
+def get_all_badge_detail():
+    args = request.args
+    page = request.args.get('page', 1, type=int)
+    if 'state' in args.keys():
+        schema = AdminBadgeSchema(many=True)
+        if args['state'] == 'all':
+            badges = Badges.query.paginate(page, app.config['POSTS_PER_PAGE'], False)
+        if args['state'] == 'created':
+            badges = Badges.query.paginate(page, app.config['POSTS_PER_PAGE'], False)
+        if args['state'] == 'deleted':
+            badges = Badges.query.paginate(page, app.config['POSTS_PER_PAGE'], False)
+        return jsonify(schema.dump(badges.items).data)
 
 
 @router.route('/all-modules/<id_>', methods=['PATCH'])

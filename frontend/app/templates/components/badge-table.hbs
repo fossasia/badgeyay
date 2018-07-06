@@ -1,0 +1,45 @@
+<table class="ui celled table">
+    <thead>
+        <tr>
+            <th>Badge Creator ID</th>
+            <th>Badge Info</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {{#each badges as |badge|}}
+        <tr>
+            <td>{{badge.user_id}}</td>
+            <td>
+                <div class="ui list">
+                    <div class="item">
+                        <div class="content">
+                            {{badge.id}}
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="content">
+                            {{badge.creaetd_at}}
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="content">
+                            {{badge.download_link}}
+                        </div>
+                    </div>
+                </div>
+            </td>
+            <td>
+                <div class="ui horizontal compact basic buttons">
+                    {{#ui-popup content='Edit' class='ui icon button'}}
+                        <i class="edit icon"></i>
+                    {{/ui-popup}}
+                    {{#ui-popup content='Delete' class='ui icon button'}}
+                        <i class="trash alternate outline icon"></i>
+                    {{/ui-popup}}
+                </div>
+            </td>
+        </tr>
+        {{/each}}
+    </tbody>
+</table>

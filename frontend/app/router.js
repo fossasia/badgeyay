@@ -41,6 +41,9 @@ router.map(function() {
     this.route('content', function() {
       this.route('system-images');
     });
+    this.route('badges', function() {
+      this.route('list', { path: '/:badge_status' });
+    });
   });
 });
 

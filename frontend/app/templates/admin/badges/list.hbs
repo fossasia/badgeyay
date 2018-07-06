@@ -1,0 +1,19 @@
+<div class="ui grid user-grid">
+    <div class="row">
+        <div class="sixteen wide column">
+            {{badge-table badges=badges}}
+        </div>
+    </div>
+    <div class="row">
+        <div class="column">
+            <div onclick={{action 'prevPage'}}>
+                <i class="angle left icon"></i>
+            </div>
+        </div>
+        <div class="column">
+            <div onclick={{action 'nextPage'}}>
+                <i class="angle right icon"></i>
+            </div>
+        </div>
+    </div>
+</div>
