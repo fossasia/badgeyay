@@ -47,6 +47,7 @@ router.map(function() {
       this.route('list', { path: '/:badge_status' });
     });
   });
+  this.route('sitemap');
 });
 
 export default router;
