@@ -7,5 +7,6 @@ export default Model.extend({
   csv           : attr('string'),
   download_link : attr('string'),
   image         : attr('string'),
-  text_color    : attr('string')
+  text_color    : attr('string'),
+  image_link    : attr('string')
 });

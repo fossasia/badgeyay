@@ -63,6 +63,7 @@ class UserBadges(Schema):
     badge_size = fields.Str(required=True)
     download_link = fields.Str(required=True)
     created_at = fields.Date(required=True)
+    image_link = fields.Str(required=True)
     user_id = fields.Relationship(
         self_url='/api/upload/get_file',
         self_url_kwargs={'file_id': '<id>'},
