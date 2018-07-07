@@ -61,6 +61,20 @@
         </tr>
         {{/each}}
     </tbody>
+    <tfoot>
+        <tr>
+            <th colspan="3">
+                <div class="ui right floated pagination menu">
+                    <a class="icon item" {{action 'prevPage'}}>
+                        <i class="left chevron icon"></i>
+                    </a>
+                    <a class="icon item" {{action 'nextPage'}}>
+                        <i class="right chevron icon"></i>
+                    </a>
+                </div>
+            </th>
+        </tr>
+    </tfoot>
 </table>
 
 {{#ui-modal name="user-edit" class="user-edit" detachable=true onApprove=(action 'approveModal') onDeny=(action 'denyModal')}}

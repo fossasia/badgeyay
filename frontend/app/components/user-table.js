@@ -38,6 +38,14 @@ export default Component.extend({
         .catch(() => {
           this.notify.error('Unable to delete user');
         });
+    },
+
+    nextPage() {
+      this.get('nextPage')();
+    },
+
+    prevPage() {
+      this.get('prevPage')();
     }
   }
 });

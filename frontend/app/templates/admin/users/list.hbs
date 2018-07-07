@@ -1,19 +1,7 @@
 <div class="ui grid user-grid">
     <div class="row">
         <div class="sixteen wide column">
-            {{user-table users=users}}
-        </div>
-    </div>
-    <div class="row">
-        <div class="column">
-            <div onclick={{action 'prevPage'}}>
-                <i class="angle left icon"></i>
-            </div>
-        </div>
-        <div class="column">
-            <div onclick={{action 'nextPage'}}>
-                <i class="angle right icon"></i>
-            </div>
+            {{user-table users=users prevPage=(action 'prevPage') nextPage=(action 'nextPage')}}
         </div>
     </div>
 </div>
