@@ -1,3 +1,4 @@
+
 {{#if model.length}}
     <div class="ui secondary pointing menu">
       <a class="active item">
@@ -5,56 +6,35 @@
       </a>
     </div>
     <div class="ui segment">
+    <div class="ui link cards">
       {{#each model as |badge index|}}
-        <div class="ui basic orange card">
-          <div class="content">
-            <div class="header">
-              Badge {{increment index}}
-            </div>
+        <div class="card">
+          <div class="image">
+            <img src="{{badge.image_link}}">
           </div>
           <div class="content">
-            <h4 class="ui header">
-              Badge Details:
-            </h4>
-            <div class="ui small feed">
-              <div class="event">
-                <div class="content">
-                  <div class="summary">
-                    Image : {{badge.image}}
-                  </div>
-                </div>
-              </div>
-              <div class="event">
-                <div class="content">
-                  <div class="summary">
-                    CSV : {{badge.csv}}
-                  </div>
-                </div>
-              </div>
-              <div class="event">
-                <div class="content">
-                  <div class="summary">
-                    Badge Size : {{badge.badge_size}}
-                  </div>
-                </div>
-              </div>
-              <div class="event">
-                <div class="content">
-                  <div class="summary">
-                    Text Color : {{badge.text_color}}
-                  </div>
-                </div>
-              </div>
+            <div class="header">Badge {{increment index}}</div>
+            <div class="meta">
+              <a>Badge Size : {{badge.badge_size}}</a>
+            </div>
+            <div class="meta">
+              <a>Text Color : {{badge.text_color}}</a>
+            </div>
+            <div class="description">
+              Data : {{badge.csv}}
             </div>
           </div>
-          <div class="ui bottom attached basic orange button">
-            <i class="download icon"></i>
-            <a href="{{badge.download_link}}">
-              Download Badge
-            </a>
+          <div class="extra content">
+            <div class="ui bottom attached basic orange button">
+              <i class="download icon"></i>
+              <a href="{{badge.download_link}}">
+                Download Badge
+              </a>
+            </div>
           </div>
         </div>
       {{/each}}
+      </div>
       <div class="ui horizontal divider"></div>
       <div class="ui grid">
         <div class="row">
