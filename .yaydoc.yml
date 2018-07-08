@@ -1,8 +1,0 @@
-metadata:
-  author: FOSSASIA
-  projectname: "Open Event"
-  version: development
-
-build:
-  theme:
-    name: sphinx_fossasia_theme
