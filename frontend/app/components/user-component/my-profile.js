@@ -26,6 +26,11 @@ export default Component.extend({
     updateUserName() {
       let profileName = this.get('profileName');
       this.get('sendUserName')(profileName);
+    },
+
+    updateUserPassword() {
+      let password = this.get('newPassword');
+      this.get('sendUserPassword')(password);
     }
   }
 });

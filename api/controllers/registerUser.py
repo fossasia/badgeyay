@@ -3,7 +3,10 @@ from firebase_admin import auth
 from api.models.user import User
 from api.models.permissions import Permissions
 from api.config.config import admins
-from api.utils.update_user import update_firebase_username
+from api.utils.update_user import (
+    update_firebase_username,
+    update_firebase_password
+)
 from api.schemas.user import (
     UserSchema,
     OAuthUserSchema,
@@ -90,6 +93,11 @@ def patchUser(uid):
     if 'username' in data.keys():
         user.username = data['username']
         update_firebase_username(user.id, user.username)
+        user.save_to_db()
+
+    if 'password' in data.keys():
+        user.password = data['password']
+        update_firebase_password(user.id, user.password)
         user.save_to_db()
 
     return jsonify(FTLUserSchema().dump(user).data)
