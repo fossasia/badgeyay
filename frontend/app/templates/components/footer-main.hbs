@@ -1,7 +1,9 @@
 <footer>
     <div class="ui bottom inverted menu">
         <div class="left menu">
-            <a class="item" href="#" target="_blank">Sitemap</a>
+            {{#link-to 'sitemap' class='item'}}
+                {{init-cap 'sitemap'}}
+            {{/link-to}}
         </div>
         <div class="right menu">
             <strong class="item">Follow us on</strong>
