@@ -22,8 +22,9 @@
     <div class="ui active attached tab segment" data-tab="account">
       {{user-component/user-account session=session user=user sendUserName=(action 'updateUserName')}}
     </div>
+    <div class="ui horizontal divider"></div>
     <div class="ui attached tab segment" data-tab="password">
-      {{user-component/user-password}}
+      {{user-component/user-password session=session user=user sendUserPassword=(action 'updateUserPassword')}}
     </div>
   </div>
 </div>

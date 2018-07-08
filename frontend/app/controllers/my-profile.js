@@ -40,6 +40,16 @@ export default Controller.extend({
       });
       _this.get('user').save();
       _this.get('notify').success('Username Successfully Updated!');
+    },
+
+    updateUserPassword(password) {
+      const _this = this;
+      const user = this.get('store').peekAll('user');
+      user.forEach(user_ => {
+        _this.set('uid', user_.get('id'));
+      });
+      _this.get('user').save();
+      _this.get('notify').success('Password Successfully Updated!');
     }
   }
 });
