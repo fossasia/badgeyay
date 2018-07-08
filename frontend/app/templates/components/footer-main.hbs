@@ -9,9 +9,8 @@
             <strong class="item">Follow us on</strong>
             {{#each socialMedia as |media|}}
                 <a class="item" href={{media.link}} target="_blank">
-                    <i class="fa fa-{{media.id}}" aria-hidden="true">
-                    {{first-cap media.id }}
-                    </i>
+                    <i class="{{media.id}} icon"></i>
+                    {{ first-cap media.id}}
                 </a>
             {{/each}}
         </div>

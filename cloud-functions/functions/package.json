@@ -11,9 +11,9 @@
   },
   "dependencies": {
     "crypto": "^1.0.1",
-    "firebase": "^5.0.4",
+    "firebase": "^5.2.0",
     "firebase-admin": "^5.12.1",
-    "firebase-functions": "^1.0.4",
+    "firebase-functions": "^1.1.0",
     "moment": "^2.22.2",
     "nodemailer": "^4.6.7"
   },
