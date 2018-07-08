@@ -78,7 +78,7 @@ def register_user():
 def user_permissions():
     args = request.args
     if 'id' in args.keys():
-        perm = Permissions.getPermissions(args['id'])
+        perm = Permissions.get_by_uid(args['id'])
         return jsonify(PermissionSchema().dump(perm).data)
 
 
