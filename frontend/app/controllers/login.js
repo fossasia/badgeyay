@@ -107,6 +107,7 @@ export default Controller.extend({
           };
 
           localStorage.setItem('permissions', JSON.stringify(permissionPayload));
+          this.authToken.setPermission(permissionPayload);
         })
         .catch(() => {
           this.notify.error('Unable to fetch permission');
