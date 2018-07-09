@@ -7,7 +7,8 @@ export default Controller.extend({
   notify                   : inject.service('notify'),
   isAddSystemRoleModalOpen : false,
   actions                  : {
-    openAddSystemRoleModal() {
+    openAddSystemRoleModal(state) {
+      this.set('state', state);
       this.set('isAddSystemRoleModalOpen', true);
     },
 
@@ -36,6 +37,34 @@ export default Controller.extend({
       } else {
         this.notify.error('Admin not enabled');
       }
+    },
+
+    enableSales(user, boolFlag) {
+      if (boolFlag) {
+        this.get('store').createRecord('create-sale', {
+          email     : user.email,
+          salesStat : boolFlag
+        }).save().then(() => {
+          this.notify.success('Sales created');
+        }).catch(() => {
+          this.notify.error('Unable to set Sales roles');
+        }).finally(() => {
+          this.set('isAddSystemRoleModalOpen', false);
+        });
+      } else {
+        this.notify.error('Sales not enabled');
+      }
+    },
+
+    deleteSaleRole(email) {
+      this.get('store').queryRecord('delete-sale', {
+        email
+      }).then(() => {
+        this.notify.success('Sales Role deleted successfully');
+      }).catch(err => {
+        console.error(err);
+        this.notify.error('Unable to delete sales role');
+      });
     },
 
     deleteAdmin(email) {

@@ -1,5 +1,5 @@
 <div class="header">
-    Add New Admin Role
+    Add New {{state}} Role
 </div>
 <br>
 <div class="content">
@@ -29,7 +29,11 @@
                 <p>{{userFounded.created_at}}</p>
             </td>
             <td>
-                {{ui-checkbox class="toggle" label="Enable Admin Role" checked=pre_checked onChange=(action (mut pre_checked))}}
+                {{#if (if-equal state 'Admin')}}
+                    <tr>{{ui-checkbox class="toggle" label="Enable Admin Role" checked=admin_checked onChange=(action (mut admin_checked))}}</tr>
+                {{else}}
+                    <tr>{{ui-checkbox class="toggle" label="Enable Sales Role" checked=sales_checked onChange=(action (mut sales_checked))}}</tr>
+                {{/if}}
             </td>
         </tr>
     </tbody>
