@@ -23,7 +23,7 @@ class User(db.Model):
     deleted_at = db.Column(db.DateTime, nullable=True)
     files = db.relationship('File', backref='uploader')
     badges = db.relationship('Badges', backref='creator')
-    permissions = db.relationship('Permissions', backref='user_permissions')
+    permissions = db.relationship('Permissions', backref='user_permissions', lazy='dynamic')
     siteAdmin = db.Column(db.Boolean, default=False)
 
     def __init__(self, id_, username, password, email, photoURL=None):

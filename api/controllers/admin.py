@@ -1,6 +1,7 @@
 from flask import jsonify, Blueprint, request
 from api.db import db
 from api.models.user import User
+from api.models.permissions import Permissions
 from api.models.socialContent import SocialContent
 from api.models.badges import Badges
 from api.models.file import File
@@ -21,7 +22,10 @@ from api.schemas.admin import (
     DeleteAdminRole,
     SocialMedia,
     AdminBadgeSchema,
-    AdminReportSchema
+    AdminReportSchema,
+    RoleSchema,
+    SalesSchema,
+    DeleteSales
 )
 from api.schemas.utils import SetPricingSchema, ReturnSetPricing
 from api.utils.errors import ErrorResponse
@@ -207,6 +211,17 @@ def get_all_admin():
     return jsonify(AllAdminRole(many=True).dump(admin_users).data)
 
 
+@router.route('/all-role', methods=['GET'])
+def get_all_roles():
+    args = request.args
+    if 'class' in args.keys():
+        if args['class'] == 'admin':
+            users = User.query.join(Permissions).filter(Permissions.isAdmin.is_(True)).all()
+        if args['class'] == 'sales':
+            users = User.query.join(Permissions).filter(Permissions.isSales.is_(True)).all()
+        return jsonify(RoleSchema(many=True).dump(users).data)
+
+
 @router.route('/all-user', methods=['GET'])
 @adminRequired
 def all_users_stat():
@@ -248,6 +263,9 @@ def register_admin():
         user = User.getUser(email=input_data['email'])
         if 'adminStat' in input_data.keys():
             user.siteAdmin = input_data['adminStat']
+            permission = Permissions.get_by_uid(user.id)
+            permission.isAdmin = input_data['adminStat']
+            permission.save_to_db()
         user.save_to_db()
         return jsonify(schema.dump(user).data)
     else:
@@ -263,8 +281,44 @@ def delete_admin():
         if not user:
             return ErrorResponse(UserNotFound().message, 422, {'Content-Type': 'application/json'}).respond()
         user.siteAdmin = False
+        permissions = Permissions.get_by_uid(user.id)
+        permissions.isAdmin = False
+        permissions.save_to_db()
         user.save_to_db()
         return jsonify(DeleteAdminRole().dump(user).data)
+
+
+@router.route('/register_sales', methods=['POST'])
+@adminRequired
+def register_sales():
+    schema = SalesSchema()
+    input_data = request.get_json()['data']['attributes']
+    if 'email' in input_data.keys():
+        user = User.getUser(email=input_data['email'])
+        if 'salesStat' in input_data.keys():
+            permission = Permissions.get_by_uid(user.id)
+            permission.isSales = input_data['salesStat']
+            permission.save_to_db()
+        user.save_to_db()
+        return jsonify(schema.dump(user).data)
+    else:
+        return ErrorResponse(JsonNotFound().message, 422, {'Content-Type': 'application/json'}).respond()
+
+
+@router.route('/delete-sales', methods=['GET'])
+@adminRequired
+def delete_sales():
+    args = request.args
+    if 'email' in args.keys():
+        user = User.getUser(email=args['email'])
+        if not user:
+            return ErrorResponse(UserNotFound().message, 422, {'Content-Type': 'application/json'}).respond()
+        user.siteAdmin = False
+        permissions = Permissions.get_by_uid(user.id)
+        permissions.isSales = False
+        permissions.save_to_db()
+        user.save_to_db()
+        return jsonify(DeleteSales().dump(user).data)
 
 
 @router.route('/add_usage', methods=['POST'])

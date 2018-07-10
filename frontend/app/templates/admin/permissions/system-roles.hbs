@@ -39,7 +39,39 @@
       {{/each}}
       <tr>
         <td>
-          <button class="ui green button" {{action 'openAddSystemRoleModal'}}>{{'Add new Role'}}</button>
+          <button class="ui green button" {{action 'openAddSystemRoleModal' 'Admin'}}>{{'Add new Role'}}</button>
+        </td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <table class="ui celled table">
+    <thead>
+      <tr>
+        <th>{{'Sales Role'}}</th>
+        <th>{{'Actions'}}</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{#each model.sales as |sale|}}
+        <tr>
+          <td>
+              <i class="user icon"></i>{{sale.username}}
+              <br>
+              <i class="envelope outline icon"></i>{{sale.email}}
+          </td>
+          <td>
+            <div class="ui horizontal compact basic buttons">
+              {{#ui-popup content='Delete' class='ui icon button' click=(action 'deleteSaleRole' sale.email)}}
+                <i class="trash alternate outline icon"></i>
+              {{/ui-popup}}
+            </div>
+          </td>
+        </tr>
+      {{/each}}
+      <tr>
+        <td>
+          <button class="ui green button" {{action 'openAddSystemRoleModal' 'Sales'}}>{{'Add new Role'}}</button>
         </td>
         <td></td>
       </tr>
@@ -49,7 +81,9 @@
 {{#if isAddSystemRoleModalOpen}}
     {{modals/add-system-role-modal
         userFounded=roleFounded
+        state=state
         isOpen=isAddSystemRoleModalOpen
         enableAdmin=(action 'enableAdmin')
+        enableSales=(action 'enableSales')
         checkEmail=(action 'checkEmail')}}
 {{/if}}

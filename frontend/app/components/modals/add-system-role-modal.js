@@ -1,6 +1,10 @@
 import Component from '@ember/component';
+import Ember from 'ember';
+
+const { inject } = Ember;
 
 export default Component.extend({
+  notify: inject.service('notify'),
   init() {
     this._super(...arguments);
   },
@@ -18,7 +22,14 @@ export default Component.extend({
 
     addSystemRole() {
       let user = this.get('userFounded');
-      this.get('enableAdmin')(user, this.get('pre_checked'));
+      let adminChecked = this.get('admin_checked');
+      let salesChecked = this.get('sales_checked');
+      let state = this.get('state');
+      if (state === 'Admin') {
+        this.get('enableAdmin')(user, adminChecked);
+      } else {
+        this.get('enableSales')(user, salesChecked);
+      }
     }
   },
 

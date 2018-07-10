@@ -88,3 +88,32 @@ class AdminReportSchema(Schema):
     badgeCount = fields.Int(as_string=True)
     userCreationCount = fields.Int(as_string=True)
     userDeletionCount = fields.Int(as_string=True)
+
+
+class RoleSchema(Schema):
+    class Meta:
+        type_ = 'roles'
+        kwargs = {'id': '<id>'}
+
+    id = fields.Str(required=True, dump_only=True)
+    username = fields.Str(required=True)
+    email = fields.Str(required=True)
+    created_at = fields.Str(required=True)
+
+
+class SalesSchema(Schema):
+    class Meta:
+        type_ = 'create-sales'
+
+    id = fields.Str(required=True, dump_only=True)
+    username = fields.Str(required=True)
+    email = fields.Str(required=True)
+
+
+class DeleteSales(Schema):
+    class Meta:
+        type_ = 'delete-sales'
+        kwargs = {'id': '<id>'}
+
+    id = fields.Str(required=True, dump_only=True)
+    email = fields.Str(required=True)
