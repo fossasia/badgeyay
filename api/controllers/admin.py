@@ -96,7 +96,7 @@ def get_all_badge_detail():
 def get_admin_report():
     page = request.args.get('page', 1, type=int)
 
-    curr_date = datetime.datetime.utcnow() - relativedelta(days=app.config["POSTS_PER_PAGE"] * (page - 1))
+    curr_date = datetime.datetime.utcnow() - relativedelta(days=(app.config["POSTS_PER_PAGE"] - 1) * (page - 1))
     payload = []
     schema = AdminReportSchema(many=True)
     for i in range(1, app.config['POSTS_PER_PAGE']):
@@ -160,6 +160,7 @@ def delete_user(userid):
 
 
 @router.route('/admin-stat-mail', methods=['GET'])
+@adminRequired
 def get_admin_stat():
     mail_ref = firebasedb.reference('mails')
     mail_resp = mail_ref.get()
