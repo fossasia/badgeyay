@@ -12,7 +12,7 @@ class UserSchema(Schema):
     username = fields.Str(required=True)
     email = fields.Str(required=True)
     password = fields.Str(required=True, load_only=True)
-    photoURL = fields.Str(required=True)
+    photoURL = fields.Str()
     siteAdmin = fields.Bool()
 
 

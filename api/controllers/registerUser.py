@@ -1,6 +1,8 @@
 from flask import Blueprint, jsonify, request
 from firebase_admin import auth
 from api.models.user import User
+from api.schemas.errors import FirebaseError
+from api.utils.errors import ErrorResponse
 from api.models.permissions import Permissions
 from api.config.config import admins
 from api.utils.update_user import (
@@ -26,12 +28,17 @@ def register_user():
         data, err = schema.load(input_data)
         if err:
             return jsonify(err)
-        user = auth.create_user(
-            email=data['email'],
-            email_verified=False,
-            password=data['password'],
-            display_name=data['username'],
-        )
+        try:
+            user = auth.create_user(
+                email=data['email'],
+                email_verified=False,
+                password=data['password'],
+                display_name=data['username'],
+            )
+        except auth.AuthError as e:
+            if e.code == 'USER_CREATE_ERROR':
+                errmsg = 'User with email already exists'
+            return ErrorResponse(FirebaseError(errmsg).message, 422, {'Content-Type': 'application/json'}).respond()
 
         newUser = User(
             id_=user.uid,

@@ -19,8 +19,14 @@ export default Controller.extend({
           _this.get('notify').success('Sign Up Successful');
         })
         .catch(err => {
-          console.log(err);
-          _this.get('notify').error('Sign Up Failed ! Please try again');
+          let firebaseErrors = user_.get('errors.firebase');
+          if (firebaseErrors !== undefined) {
+            firebaseErrors.forEach(error => {
+              _this.get('notify').error(error.message);
+            });
+          } else {
+            _this.get('notify').error('Sign Up Failed ! Please try again');
+          }
         });
     }
   }

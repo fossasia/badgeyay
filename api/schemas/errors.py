@@ -3,7 +3,7 @@ from marshmallow_jsonapi.exceptions import JSONAPIError
 
 class BaseError(JSONAPIError, ValueError):
 
-    def __init__(self, uid=None, attr=None, status=422):
+    def __init__(self, uid=None, attr=None, status=422, **kwargs):
         self.pointer = '/data/attributes/{0}'.format(attr)
         if uid:
             self.detail = '{0} not found : {1}'.format(attr, uid)
@@ -23,6 +23,8 @@ class BaseError(JSONAPIError, ValueError):
             self.detail = 'Usage is not allowed anymore'
         elif attr == 'sign_expired':
             self.detail = 'Token Invalidated'
+        elif attr == 'firebase':
+            self.detail = kwargs['msg']
         self.status = status
         super(BaseError, self).__init__(self.detail, self.pointer, self.status)
 
@@ -135,3 +137,9 @@ class AdminNotFound(BaseError):
 
     def __init__(self):
         super(AdminNotFound, self).__init__(attr='Admin')
+
+
+class FirebaseError(BaseError):
+
+    def __init__(self, code):
+        super(FirebaseError, self).__init__(attr='firebase', msg=code)
