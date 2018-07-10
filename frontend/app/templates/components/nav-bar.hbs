@@ -7,9 +7,6 @@
             {{#ui-dropdown class='large item' action='hide'}}
                 <div class="upper">{{session.currentUser.displayName}}</div><i class="dropdown icon"></i>
                 <div class="menu profile-dropdown-menu">
-                    {{#link-to 'create-badges' class="large item navbar-dropdown upper"}}
-                        Create Badges
-                    {{/link-to}}
                     {{#link-to 'my-badges' class="large item navbar-dropdown upper"}}
                         My Badges
                     {{/link-to}}
@@ -28,6 +25,15 @@
         {{else}}
             {{#link-to 'login'}}
                 <div class="right item ui button" style="text-transform: uppercase; font-weight: 400; line-spacing: 0.5px; line-height: 30px">Login</div>
+            {{/link-to}}
+        {{/if}}
+        {{#if session.isAuthenticated}}
+          {{#link-to 'create-badges' class='item ui orange text'}}
+                CREATE BADGE
+            {{/link-to}}
+        {{else}}
+            {{#link-to 'login' class='item ui orange text'}}
+                CREATE BADGE
             {{/link-to}}
         {{/if}}
     </div>
