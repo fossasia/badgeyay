@@ -11,7 +11,8 @@ const fs = require('fs');
 
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount),
-  databaseURL: clientAccount.databaseURL
+  databaseURL: clientAccount.databaseURL,
+  storageBucket: clientAccount.storageBucket
 });
 
 firebase.initializeApp(clientAccount);
@@ -33,7 +34,7 @@ const BASE_URL = 'http://badgeyay.com/';
 const PASSWORD_RESET_LINK = 'http://badgeyay.com/#/reset/password?token=';
 var password = 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa';
 var db = admin.database();
-var REASONS = ['verificaton', 'greeting', 'passwordReset'];
+var REASONS = ['verificaton', 'greeting', 'passwordReset', 'badgeGeneration'];
 
 
 var encrypt = function (input, password, callback) {
@@ -142,6 +143,35 @@ exports.sendVerificationMail = functions.auth.user().onCreate((user) => {
     return 0;
   }
 });
+
+exports.sendBadgeMail = functions.database.ref('/badgeMails/{userId}/{date}')
+  .onCreate((snapshot, context) => {
+    const payload = snapshot.val();
+    const uid = context.params.userId;
+    return admin.auth().getUser(uid)
+      .then(record => {
+        return sendBadgeGenMail(uid, record.email, record.displayName, payload['badgeId'], payload['badgeLink']);
+      })
+      .catch(() => { return -1 });
+  });
+
+function sendBadgeGenMail(uid, email, displayName, badgeId, badgeLink) {
+  const mailOptions = {
+    from: `${APP_NAME}<noreply@firebase.com>`,
+    to: email,
+  };
+
+  mailOptions.subject = `Badge Generated ${badgeId}`;
+  mailOptions.html = `<p> Hello ${displayName || ''}! Your badge is generated successfully, please visit the <a href=${badgeLink}>link</a> to download badge</p>`;
+  return mailTransport.sendMail(mailOptions).then(() => {
+    writeMailData(uid, "success", 3);
+    return console.log('Badge mail sent to: ', email)
+  }).catch((err) => {
+    console.error(err.message);
+    return -1;
+  });
+}
+
 
 function writeMailData(uid, state, reason) {
   if (state === 'success') {

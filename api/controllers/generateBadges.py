@@ -1,5 +1,5 @@
-# from api.helpers.verifyToken import loginRequired
 import os
+import datetime
 
 from shutil import rmtree
 from api.config import config
@@ -20,6 +20,7 @@ from api.schemas.errors import (
     CSVNotFound,
     UsageNotAllowed
 )
+from firebase_admin import db as firebase_db
 from api.utils.firebaseUploader import fileUploader, deleteFile
 
 
@@ -48,10 +49,12 @@ def generateBadges():
     font_choice = data.get('font_type') or None
     svg2png = SVG2PNG()
     if config.ENV == 'PROD':
-        svg2png.do_text_fill(os.getcwd() + '/api/static/badges/8BadgesOnA3.svg', text_color)
+        svg2png.do_text_fill(
+            os.getcwd() + '/api/static/badges/8BadgesOnA3.svg', text_color)
     else:
         svg2png.do_text_fill('static/badges/8BadgesOnA3.svg', text_color)
-    merge_badges = MergeBadges(image_name, csv_name, badge_size, font_size, font_choice)
+    merge_badges = MergeBadges(
+        image_name, csv_name, badge_size, font_size, font_choice)
     merge_badges.merge_pdfs()
 
     uid = data.get('uid')
@@ -61,7 +64,8 @@ def generateBadges():
         return ErrorResponse(UsageNotAllowed().message, 403, {'Content-Type': 'application/json'}).respond()
 
     user_creator.allowed_usage = user_creator.allowed_usage - 1
-    badge_created = Badges(image=image_name, csv=csv_name, text_color=text_color, badge_size='A3', creator=user_creator)
+    badge_created = Badges(image=image_name, csv=csv_name,
+                           text_color=text_color, badge_size='A3', creator=user_creator)
     badge_created.save_to_db()
 
     badgeFolder = badge_created.image.split('.')[0]
@@ -71,16 +75,29 @@ def generateBadges():
     else:
         badgePath = os.getcwd() + '/api/static/temporary/' + badgeFolder
     if os.path.isdir(badgePath):
-        imageDirectory = os.path.join(badgePath, '../../uploads/image', image_name)
+        imageDirectory = os.path.join(
+            badgePath, '../../uploads/image', image_name)
         link = fileUploader(imageDirectory, 'images/' + image_name)
         badge_created.image_link = link
-        link = fileUploader(badgePath + '/all-badges.pdf', 'badges/' + badge_created.id + '.pdf')
+        link = fileUploader(badgePath + '/all-badges.pdf',
+                            'badges/' + badge_created.id + '.pdf')
+        send_badge_mail(badge_created.id, user_creator.id, link)
         badge_created.download_link = link
         rmtree(badgePath, ignore_errors=True)
 
     db.session.commit()
 
     return jsonify(BadgeSchema().dump(badge_created).data)
+
+
+def send_badge_mail(badgeId, userId, badgeLink):
+    ref = firebase_db.reference('badgeMails')
+    print('Pushing badge generation mail to : ', badgeId)
+    ref.child(userId).child(datetime.datetime.utcnow().isoformat().replace('-', '_').replace(':', 'U').replace('.', 'D')).set({
+        'badgeId': badgeId,
+        'badgeLink': badgeLink
+    })
+    print('Pushed badge generation mail to : ', badgeId)
 
 
 @router.route('/get_badges', methods=['GET'])
