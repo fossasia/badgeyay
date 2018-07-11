@@ -9,6 +9,7 @@ class BadgeSchema(Schema):
         kwargs = {'id': '<id>'}
 
     id = fields.Str(required=True, dump_only=True)
+    badge_name = fields.Str(required=True)
     image = fields.Str(required=True)
     csv = fields.Str(required=True)
     badge_id = fields.Str(required=True)
@@ -33,6 +34,7 @@ class AllBadges(Schema):
         kwargs = {'id': '<id>'}
 
     id = fields.Str(required=True, dump_only=True)
+    badge_name = fields.Str(required=True)
     image = fields.Str(required=True)
     csv = fields.Str(required=True)
     badge_id = fields.Str(required=True)
@@ -56,6 +58,7 @@ class UserBadges(Schema):
         kwargs = {'id': '<id>'}
 
     id = fields.Str(required=True, dump_only=True)
+    badge_name = fields.Str(required=True)
     image = fields.Str(required=True)
     csv = fields.Str(required=True)
     badge_id = fields.Str(required=True)

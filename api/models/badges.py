@@ -14,6 +14,7 @@ class Badges(db.Model):
     download_link = db.Column(db.String)
     image_link = db.Column(db.String)
     created_at = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
+    badge_name = db.Column(db.String(100), default='My Badge')
     user_id = db.Column(db.String(100), db.ForeignKey('User.id', ondelete='CASCADE'))
 
     def save_to_db(self):
