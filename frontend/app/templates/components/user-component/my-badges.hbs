@@ -4,57 +4,46 @@
         My Badges
       </a>
     </div>
-    <table>
-      <tbody>
-        <div class="ui top attached segment">
-          <div class="ui link cards">
-            {{#each model as |badge index|}}
-              <div class="card">
-                <div class="image">
-                  <img src="{{badge.image_link}}">
-                </div>
-                <div class="content">
-                  <div class="header">Badge {{increment index}}</div>
-                  <div class="meta">
-                    <a>Badge Size : {{badge.badge_size}}</a>
-                  </div>
-                  <div class="meta">
-                    <a>Text Color : {{badge.text_color}}</a>
-                  </div>
-                  <div class="description">
-                    Data : {{badge.csv}}
-                  </div>
-                </div>
-                <div class="extra content">
-                  <div class="ui bottom attached basic orange button">
-                    <i class="download icon"></i>
-                    <a href="{{badge.download_link}}">
-                      Download Badge
-                    </a>
-                  </div>
-                </div>
+    <div class="ui segment">
+      <div class="ui link cards">
+        {{#each model as |badge index|}}
+          <div class="card">
+            <div class="image">
+              <img src="{{badge.image_link}}">
+            </div>
+            <div class="content">
+              <div class="header">Badge {{increment index}}</div>
+              <div class="description">
+                Badge Size: {{badge.badge_size}}
               </div>
-            {{/each}}
+              <div class="description">
+                Text Color: {{badge.text_color}}
+              </div>
+              <div class="description">
+                Data: {{badge.csv}}
+              </div>
+            </div>
+            <div class="extra content">
+              <div class="ui bottom attached basic orange button">
+                <i class="download icon"></i>
+                <a href="{{badge.download_link}}">
+                  Download Badge
+                </a>
+              </div>
             </div>
           </div>
-        </tbody>
-        <tfoot>
-          <tr>
-              <div class="ui bottom attached secondary segment">
-                  <th colspan="4">
-                      <div class="ui right floated pagination menu">
-                          <a class="icon item" {{action 'prevPage'}}>
-                              <i class="left chevron icon"></i>
-                          </a>
-                          <a class="icon item" {{action 'nextPage'}}>
-                              <i class="right chevron icon"></i>
-                          </a>
-                      </div>
-                  </th>
-              </div>
-          </tr>
-        </tfoot>
-      </table>
+        {{/each}}
+        </div>
+      </div>
+      <div class="ui horizontal divider"></div>
+      <div class="ui left floated pagination menu">
+          <a class="icon item" {{action 'prevPage'}}>
+              <i class="left chevron icon"></i>
+          </a>
+          <a class="icon item" {{action 'nextPage'}}>
+              <i class="right chevron icon"></i>
+          </a>
+      </div>
 {{else}}
   <h2>Looks like you've not generated any badges yet!</h2>
   <h3>Click <a href="{{href-to 'create-badges'}}">here</a> to generate some badges!</h3>
