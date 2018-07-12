@@ -41,6 +41,7 @@ class OAuthUserSchema(Schema):
     email = fields.Str(required=True)
     photoURL = fields.Str(required=True, allow_none=True)
     siteAdmin = fields.Bool()
+    password = fields.Str(allow_none=True)
 
 
 class UpdateUserSchema(Schema):
