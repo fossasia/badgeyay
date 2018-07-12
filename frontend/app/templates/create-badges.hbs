@@ -123,6 +123,14 @@
     {{#each userError as |error|}}
     <p>{{error.message}}</p>
     {{/each}}
+    <div class="ui divider"></div>
+    {{#if showProgress}}
+        <div class="ui segment">
+            <div class="ui centered aligned grid">{{progressState}}</div>
+            <div class="ui divider"></div>
+            {{ember-progress-bar progress=progress options=(hash color='orange')}}
+        </div>
+    {{/if}}
 </div>
 
 {{overlay-welcome user=user removeFTL=(action 'removeFTL')}}
