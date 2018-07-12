@@ -2,9 +2,9 @@
   <div class="four wide column">
     <div class="ui small segment">
         <div class="ui small circular image profile-image">
-            <img src="{{user.photoURL}}">
+            <img onclick={{action "updateProfileImage"}} src="{{user.photoURL}}">
             <input style="display: none;" id="profileImageSelector" type="file" onchange={{action "profileImageSelected"}}>
-            <div class="profile-change" onclick={{action "updateProfileImage"}}><b>Change</b></div>
+            <div class="profile-change"><b>Change</b></div>
         </div>
     </div>
       <div class="ui vertical attached tabular menu">
@@ -18,7 +18,7 @@
           </div>
       </div>
   </div>
-  <div class="ten wide column">
+  <div class="twelve wide column">
     <div class="ui active attached tab segment" data-tab="account">
       {{user-component/user-account session=session user=user sendUserName=(action 'updateUserName')}}
     </div>
