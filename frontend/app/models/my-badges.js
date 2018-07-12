@@ -8,5 +8,6 @@ export default Model.extend({
   download_link : attr('string'),
   image         : attr('string'),
   text_color    : attr('string'),
-  image_link    : attr('string')
+  image_link    : attr('string'),
+  badge_name    : attr('string')
 });
