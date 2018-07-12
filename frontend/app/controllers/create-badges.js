@@ -29,6 +29,9 @@ export default Controller.extend({
   custImage      : false,
   colorImage     : false,
   overlay        : false,
+  showProgress   : false,
+  progress       : 0,
+  progressState  : '',
   actions        : {
     submitForm() {
       const _this = this;
@@ -71,32 +74,46 @@ export default Controller.extend({
     sendManualData(badgeData) {
       const _this = this;
       if (_this.manualEnable) {
+        this.set('showProgress', true);
+        this.set('progress', 0.1);
+        this.set('progressState', 'Setting Paper Size');
         let textEntry = _this.get('store').createRecord('text-data', {
           uid         : _this.uid,
           manual_data : _this.get('textData'),
           time        : new Date()
         });
+        this.set('progress', 0.2);
+        this.set('progressState', 'Generating CSV');
         textEntry.save().then(record => {
           _this.set('csvFile', record.filename);
           badgeData.csv = _this.csvFile;
           _this.send('sendDefaultImg', badgeData);
           _this.get('notify').success('Text saved Successfully');
+          this.set('progress', 0.4);
+          this.set('progressState', 'Gathering background');
         }).catch(err => {
           let userErrors = textEntry.get('errors.user');
           if (userErrors !== undefined) {
             _this.set('userError', userErrors);
             userErrors.forEach(error => {
               _this.get('notify').error(error.message);
+              this.set('showProgress', false);
+              this.set('progress', 0);
+              this.set('progressState', '');
             });
           }
         });
       } else if (_this.csvEnable) {
         if (_this.csvFile !== undefined && _this.csvFile !== '') {
           badgeData.csv = _this.csvFile;
+          this.set('progress', 0.4);
+          this.set('progressState', 'Gathering background');
           _this.send('sendDefaultImg', badgeData);
         }
       } else {
         _this.get('notify').error('No Input source specified');
+        this.set('showProgress', false);
+        this.set('progress', 0);
       }
     },
 
@@ -112,6 +129,8 @@ export default Controller.extend({
             _this.set('custImgFile', record.filename);
             badgeData.image = _this.custImgFile;
             _this.send('sendBadge', badgeData);
+            this.set('progress', 0.7);
+            this.set('progressState', 'Preparing your badges');
           })
           .catch(error => {
             let userErrors = imageRecord.get('errors.user');
@@ -119,6 +138,9 @@ export default Controller.extend({
               _this.set('userError', userErrors);
               userErrors.forEach(error => {
                 _this.get('notify').error(error.message);
+                this.set('showProgress', false);
+                this.set('progress', 0);
+                this.set('progressState', '');
               });
             }
           });
@@ -126,6 +148,8 @@ export default Controller.extend({
         if (_this.custImgFile !== undefined && _this.custImgFile !== '') {
           badgeData.image = _this.custImgFile;
           _this.send('sendBadge', badgeData);
+          this.set('progress', 0.7);
+          this.set('progressState', 'Preparing your badges');
         }
       } else if (_this.colorImage && _this.defColor !== undefined && _this.defColor !== '') {
         console.log(_this.defColor);
@@ -137,6 +161,8 @@ export default Controller.extend({
           .then(record => {
             badgeData.image = record.filename;
             _this.send('sendBadge', badgeData);
+            this.set('progress', 0.7);
+            this.set('progressState', 'Preparing your badges');
           })
           .catch(error => {
             let userErrors = imageRecord.get('errors.user');
@@ -144,11 +170,17 @@ export default Controller.extend({
               _this.set('userError', userErrors);
               userErrors.forEach(error => {
                 _this.get('notify').error(error.message);
+                this.set('showProgress', false);
+                this.set('progress', 0);
+                this.set('progressState', '');
               });
             }
           });
       } else {
         _this.get('notify').error('No background source specified');
+        this.set('showProgress', false);
+        this.set('progress', 0);
+        this.set('progressState', '');
       }
     },
 
@@ -156,6 +188,7 @@ export default Controller.extend({
     sendBadge(badgeData) {
       const _this = this;
       let badgeRecord = _this.get('store').createRecord('badge', badgeData);
+      this.set('progress', 0.8);
       badgeRecord.save()
         .then(record => {
           _this.set('overlay', false);
@@ -163,6 +196,8 @@ export default Controller.extend({
           _this.set('genBadge', record);
           var notify = _this.get('notify');
           var link   = record.download_link;
+          this.set('progress', 1);
+          this.set('progressState', 'Badges Generated!');
           var message = notify.success(
             { html:
             '<div class="header">Badge generated successfully.</div>'
@@ -175,6 +210,8 @@ export default Controller.extend({
         .catch(err => {
           _this.set('overlay', false);
           _this.get('notify').error('Unable to generate badge');
+          this.set('showProgress', false);
+          this.set('progress', 0);
         });
     },
 
