@@ -39,9 +39,7 @@ router.map(function() {
       this.route('system-roles');
     });
     this.route('modules');
-    this.route('content', function() {
-      this.route('system-images');
-    });
+    this.route('content', function() {});
     this.route('badges', function() {
       this.route('list', { path: '/:badge_status' });
     });
