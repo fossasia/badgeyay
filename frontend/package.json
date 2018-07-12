@@ -40,7 +40,7 @@
     "ember-export-application-global": "^2.0.0",
     "ember-href-to": "^1.15.1",
     "ember-load-initializers": "^1.1.0",
-    "ember-notify": "^5.2.1",
+    "ember-notify": "^5.3.0",
     "ember-resolver": "^4.5.6",
     "ember-source": "^3.2.2",
     "ember-truth-helpers": "^2.0.0",
@@ -48,7 +48,7 @@
     "emberfire": "^2.0.10",
     "eslint-plugin-ember": "^5.2.0",
     "loader.js": "^4.7.0",
-    "semantic-ui": "^2.3.2",
+    "semantic-ui": "^2.3.3",
     "semantic-ui-ember": "^3.0.3",
     "torii": "^0.10.1"
   },
@@ -66,6 +66,6 @@
     "eslint-plugin-ember-suave": "^1.0.0",
     "md5": "^2.2.1",
     "minimatch": "^3.0.4",
-    "node-sass": "^4.9.1"
+    "node-sass": "^4.9.2"
   }
 }
