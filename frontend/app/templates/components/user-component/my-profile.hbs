@@ -20,11 +20,11 @@
   </div>
   <div class="twelve wide column">
     <div class="ui active attached tab segment" data-tab="account">
-      {{user-component/user-account session=session user=user sendUserName=(action 'updateUserName')}}
+      {{user-component/user-account session=session isLoading=isLoadingName user=user sendUserName=(action 'updateUserName')}}
     </div>
     <div class="ui horizontal divider"></div>
     <div class="ui attached tab segment" data-tab="password">
-      {{user-component/user-password session=session user=user sendUserPassword=(action 'updateUserPassword')}}
+      {{user-component/user-password session=session isLoading=isLoadingPassword user=user sendUserPassword=(action 'updateUserPassword')}}
     </div>
   </div>
 </div>

@@ -1,5 +1,5 @@
 <h2 class="ui dividing header">Account</h2>
-<form class="ui form" {{action 'updateUserName' on="submit"}}>
+<form class="ui {{if isLoading 'loading'}} form" {{action 'updateUserName' on="submit"}}>
     <div class="ui field">
     <label>Username</label>
         <div class="ui fields">

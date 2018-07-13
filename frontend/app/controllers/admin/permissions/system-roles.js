@@ -13,13 +13,14 @@ export default Controller.extend({
     },
 
     checkEmail(email) {
+      this.set('isLoading', true);
       this.get('store').queryRecord('all-user', {
         email
       }).then(recordObj => {
         this.set('roleFounded', recordObj);
       }).catch(err => {
         this.notify.error('Unable to find user');
-      });
+      }).finally(() => this.set('isLoading', false));
     },
 
     enableAdmin(user, boolFlag) {
