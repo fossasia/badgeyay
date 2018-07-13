@@ -52,6 +52,8 @@ def register_user():
         newUser.save_to_db()
 
         perm = Permissions(isUser=True, user_permissions=newUser)
+        if newUser.email in admins:
+            perm.isAdmin = True
         perm.save_to_db()
 
         return jsonify(schema.dump(newUser).data)
@@ -75,6 +77,8 @@ def register_user():
                 newUser.siteAdmin = True
             newUser.save_to_db()
             perm = Permissions(isUser=True, user_permissions=newUser)
+            if newUser.email in admins:
+                perm.isAdmin = True
             perm.save_to_db()
         else:
             newUser = user_

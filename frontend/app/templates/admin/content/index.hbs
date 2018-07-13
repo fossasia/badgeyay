@@ -1,4 +1,4 @@
-<form class="ui form" {{action 'submitForm' on='submit'}}>
+<form class="ui {{if isLoading 'loading'}} form" {{action 'submitForm' on='submit'}}>
     {{#each model as |socialMedia|}}
     <div class="field">
         <div class="ui left icon input">

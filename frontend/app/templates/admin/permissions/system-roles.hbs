@@ -81,6 +81,7 @@
 {{#if isAddSystemRoleModalOpen}}
     {{modals/add-system-role-modal
         userFounded=roleFounded
+        isLoading=isLoading
         state=state
         isOpen=isAddSystemRoleModalOpen
         enableAdmin=(action 'enableAdmin')

@@ -8,8 +8,7 @@ export default Component.extend({
 
   actions: {
     updateUserPassword() {
-      let password = this.get('newPassword');
-      this.get('sendUserPassword')(password);
+      this.get('sendUserPassword')();
     }
   },
 

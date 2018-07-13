@@ -32,24 +32,18 @@ export default Controller.extend({
     },
 
 
-    updateUserName(profileName) {
-      const _this = this;
-      const user = this.get('store').peekAll('user');
-      user.forEach(user_ => {
-        _this.set('uid', user_.get('id'));
-      });
-      _this.get('user').save();
-      _this.get('notify').success('Username Successfully Updated!');
+    updateUserName() {
+      this.set('isLoadingName', true);
+      this.get('user').save()
+        .then(() => this.get('notify').success('Username Successfully Updated!'))
+        .finally(() => this.set('isLoadingName', false));
     },
 
-    updateUserPassword(password) {
-      const _this = this;
-      const user = this.get('store').peekAll('user');
-      user.forEach(user_ => {
-        _this.set('uid', user_.get('id'));
-      });
-      _this.get('user').save();
-      _this.get('notify').success('Password Successfully Updated!');
+    updateUserPassword() {
+      this.set('isLoadingPassword', true);
+      this.get('user').save()
+        .then(() => this.get('notify').success('Password Successfully Updated!'))
+        .finally(() => this.set('isLoadingPassword', false));
     }
   }
 });

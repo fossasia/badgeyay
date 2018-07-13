@@ -6,8 +6,7 @@ export default Component.extend({
   },
   actions: {
     updateUserName() {
-      let profileName = this.get('profileName');
-      this.get('sendUserName')(profileName);
+      this.get('sendUserName')();
     }
   },
 
