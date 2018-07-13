@@ -67,6 +67,12 @@ class GenerateBadges:
 
             for j, text in enumerate(row):
                 text = html.escape(text)
+                if len(text) > 15:
+                    text = text.split()
+                    last = text[-1].capitalize()
+                    text = text[:-1]
+                    initials = ' '.join(list(map(make_initials, text)))
+                    text = initials + ' ' + last
                 content = content.replace(
                     'person_{}_line_{}'.format(i + 1, j + 1), text)
             content = content.replace('badge_{}.png'.format(i + 1), os.path.join(self.folder, 'background.png'))
@@ -83,3 +89,7 @@ class GenerateBadges:
         path.set('width', paper_width)
         path.set('height', paper_height)
         etree.ElementTree(root).write(badge_page, pretty_print=True)
+
+
+def make_initials(val):
+    return val[0].capitalize()
