@@ -6,13 +6,13 @@
     </div>
     <div class="ui segment">
       <div class="ui link cards">
-        {{#each model as |badge index|}}
+        {{#each model as |badge|}}
           <div class="card">
             <div class="image">
               <img src="{{badge.image_link}}">
             </div>
             <div class="content">
-              <div class="header">Badge {{increment index}}</div>
+              <div class="header">{{badge.badge_name}}</div>
               <div class="description">
                 Badge Size: {{badge.badge_size}}
               </div>
