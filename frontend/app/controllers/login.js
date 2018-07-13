@@ -2,7 +2,7 @@ import Ember from 'ember';
 
 import Controller from '@ember/controller';
 
-const { inject } = Ember;
+const { inject, $ } = Ember;
 
 export default Controller.extend({
   session   : inject.service(),
@@ -60,7 +60,12 @@ export default Controller.extend({
           });
           user_.save()
             .then(obj => {
-              this_.send('generateLoginToken', obj.id);
+              this_.set('userLoggedIn', obj);
+              if (obj.password === null) {
+                $('.ui.passwordForm.modal').modal('show');
+              } else {
+                this_.send('generateLoginToken', obj.id);
+              }
             })
             .catch(err => {
               console.log(err);
@@ -69,6 +74,26 @@ export default Controller.extend({
           console.log(err.message);
           this_.get('notify').error('Log In Failed ! Please try again');
         });
+      }
+    },
+
+    denyModal(element, component) {
+      this.session.close();
+      this.notify.error('Please set your password');
+      return true;
+    },
+
+    approveModal(element, component) {
+      let formPassword = this.get('formPassword');
+      let confirmPassword = this.get('formConfirmPassword');
+      if (formPassword !== null && confirmPassword !== null && formPassword === confirmPassword) {
+        this.get('userLoggedIn')
+          .set('password', formPassword);
+        this.get('userLoggedIn')
+          .save()
+          .then(obj => this.send('generateLoginToken', obj.id))
+          .catch(() => this.notify.error('Unable to save password'))
+          .finally(() => { return true });
       }
     },
 
