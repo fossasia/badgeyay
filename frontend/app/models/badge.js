@@ -4,6 +4,7 @@ const { Model, attr } = DS;
 
 export default Model.extend({
   uid           : attr('string'),
+  badge_name    : attr('string'),
   csv           : attr('string'),
   image         : attr('string'),
   font_type     : attr('string'),
