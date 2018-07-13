@@ -2,6 +2,7 @@
   <div class="column">
     {{forms/login-form login=(action 'login')}}
   </div>
+  {{dimmer-loader loaderText=loaderText isDimmerVisible=isDimmerVisible}}
 </div>
 
 {{#ui-modal name='passwordForm' class='passwordForm' detachable=true onApprove=(action 'approveModal') onDeny=(action 'denyModal')}}
