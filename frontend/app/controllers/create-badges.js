@@ -15,6 +15,7 @@ export default Controller.extend({
   defFont        : '',
   uid            : '',
   textData       : '',
+  nameData       : '',
   userError      : '',
   csvFile        : '',
   custImgFile    : '',
@@ -47,8 +48,13 @@ export default Controller.extend({
 
       let badgeData = {
         uid        : _this.uid,
-        badge_size : 'A3'
+        badge_size : 'A3',
+        badgename  : ''
       };
+
+      if (_this.nameData !== '') {
+        badgeData.badgename = _this.nameData;
+      }
 
       if (_this.defBadgeSize !== '' && _this.defBadgeSize !== undefined) {
         badgeData.badge_size = _this.defBadgeSize;
@@ -57,12 +63,15 @@ export default Controller.extend({
       if (_this.csvEnable) {
         badgeData.csv = _this.csvFile;
       }
+
       if (_this.defFontColor !== '' && _this.defFontColor !== undefined) {
         badgeData.font_color = '#' + _this.defFontColor;
       }
+
       if (_this.defFontSize !== '' && _this.defFontSize !== undefined) {
         badgeData.font_size = _this.defFontSize.toString();
       }
+
       if (_this.defFont !== '' && _this.defFont !== undefined) {
         badgeData.font_type = _this.defFont;
       }
@@ -250,6 +259,11 @@ export default Controller.extend({
     mutateText(txtData) {
       this.set('textData', txtData);
     },
+
+    mutateName(namData) {
+      this.set('nameData', namData);
+    },
+
     mutateBackground(id) {
       let defImageRecord = this.get('store').peekRecord('def-image', id);
       this.set('defImageName', defImageRecord.name + '.png');

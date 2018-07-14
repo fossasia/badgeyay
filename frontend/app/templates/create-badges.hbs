@@ -2,6 +2,24 @@
     <div class="ui raised segment">
         <div class="ui form width-container">
             <p>
+                <b>Name your Badges</b>
+            </p>
+            {{#ui-accordion class="styled fluid"}}
+            <div class="title">
+                <i class="plus icon"></i>
+                Enter Name
+            </div>
+            <div class="content">
+                <div class="center aligned">
+                    {{ data-component/name-component sendName=(action 'mutateName')}}
+                </div>
+            </div>
+            {{/ui-accordion}}
+        </div>
+    </div>
+    <div class="ui raised segment">
+        <div class="ui form width-container">
+            <p>
                 <b>Select from one of the Input Sources</b>
                 <a class="ui icon orange basic button guide" href="{{href-to 'user-guide'}}" data-tooltip="User Input Guide" data-position="right center">
                     <i class="info icon"></i>
