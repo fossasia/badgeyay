@@ -49,11 +49,11 @@ export default Controller.extend({
       let badgeData = {
         uid        : _this.uid,
         badge_size : 'A3',
-        badge_name : ''
+        badgename  : ''
       };
 
       if (_this.nameData !== '') {
-        badgeData.badge_name = _this.nameData;
+        badgeData.badgename = _this.nameData;
       }
 
       if (_this.defBadgeSize !== '' && _this.defBadgeSize !== undefined) {

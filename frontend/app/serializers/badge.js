@@ -10,6 +10,7 @@ export default JSONAPISerializer.extend({
       'uid'        : json.data.attributes.uid,
       'csv'        : json.data.attributes.csv,
       'image'      : json.data.attributes.image,
+      'badge_name' : json.data.attributes.badgename,
       'font_type'  : json.data.attributes['font-type'],
       'font_color' : json.data.attributes['font-color'],
       'font_size'  : json.data.attributes['font-size'],

@@ -21,6 +21,6 @@ module('Integration | Component | data-component/name-component', function(hooks
       {{/data-component/name-component}}
     `);
 
-    assert.equal(this.element.textContent.trim(), 'template block text');
+    assert.equal(this.element.textContent.trim(), '');
   });
 });
