@@ -8,5 +8,10 @@ export default Model.extend({
   photoURL   : attr('string'),
   created_at : attr('date'),
   password   : attr('string'),
-  deleted_at : attr('date')
+  deleted_at : attr('date'),
+
+  // Permissions
+  isAdmin : attr('boolean'),
+  isSales : attr('boolean'),
+  isUser  : attr('boolean')
 });

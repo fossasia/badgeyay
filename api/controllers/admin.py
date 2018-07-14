@@ -53,13 +53,13 @@ def show_all_users():
     schema = AllUsersSchema(many=True)
     if 'state' in args.keys():
         if args['state'] == 'deleted':
-            users = User.query.filter(User.deleted_at.isnot(None)).paginate(
+            users = db.session.query(User, Permissions).filter(User.deleted_at.isnot(None)).paginate(
                 page, app.config['POSTS_PER_PAGE'], False)
         if args['state'] == 'active':
-            users = User.query.filter(User.deleted_at.is_(None)).paginate(
+            users = db.session.query(User, Permissions).filter(User.deleted_at.is_(None)).paginate(
                 page, app.config['POSTS_PER_PAGE'], False)
         if args['state'] == 'all':
-            users = User.query.paginate(
+            users = db.session.query(User, Permissions).join(Permissions, Permissions.user_id == User.id).paginate(
                 page, app.config['POSTS_PER_PAGE'], False)
     result = schema.dump(users.items)
     return jsonify(result.data)
@@ -133,13 +133,17 @@ def patch_module(id_):
 @adminRequired
 def update_user(userid):
     user = User.getUser(user_id=userid)
+    permissions = Permissions.get_by_uid(userid)
     if not user:
         return ErrorResponse(UserNotFound().message, 422, {'Content-Type': 'application/json'}).respond()
     data = request.get_json()['data']['attributes']
     if not data:
         return ErrorResponse(JsonNotFound().message, 422, {'Content-Type': 'application/json'}).respond()
     for key in data:
-        setattr(user, key, data[key])
+        if key in User.__table__.columns.keys():
+            setattr(user, key, data[key])
+        if key in Permissions.__table__.columns.keys():
+            setattr(permissions, key, data[key])
     user.save_to_db()
     schema = AllUsersSchema()
     result = schema.dump(user)
