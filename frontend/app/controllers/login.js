@@ -89,6 +89,8 @@ export default Controller.extend({
       if (formPassword !== null && confirmPassword !== null && formPassword === confirmPassword) {
         this.get('userLoggedIn')
           .set('password', formPassword);
+        this.set('isDimmerVisible', true);
+        this.set('loaderText', 'Setting Password');
         this.get('userLoggedIn')
           .save()
           .then(obj => this.send('generateLoginToken', obj.id))
@@ -109,6 +111,8 @@ export default Controller.extend({
             id    : record.id,
             token : record.token
           };
+
+          this.set('isDimmerVisible', false);
 
           // Saving the token to persist in the device, will be deleted at logout
           localStorage.setItem('loginToken', JSON.stringify(loginPayload));
