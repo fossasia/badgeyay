@@ -203,18 +203,9 @@ export default Controller.extend({
           _this.set('overlay', false);
           _this.set('badgeGenerated', true);
           _this.set('genBadge', record);
-          var notify = _this.get('notify');
-          var link   = record.download_link;
           this.set('progress', 1);
           this.set('progressState', 'Badges Generated!');
-          var message = notify.success(
-            { html:
-            '<div class="header">Badge generated successfully.</div>'
-            + '<p>Visit this<b>'
-            + '<a href='
-            + link
-            + '> Link </a></b> to download badge.</p>',
-            closeAfter: 10000 });
+          this.set('badgeGeneratedLink', record.download_link);
         })
         .catch(err => {
           _this.set('overlay', false);
