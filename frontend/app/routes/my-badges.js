@@ -11,9 +11,13 @@ export default Route.extend({
 
   model(params) {
     let filter = {};
+    const uid = this.get('session.uid');
     this.set('params', params);
     filter.state = 'all';
     filter.page = params.page;
-    return this.get('store').query('my-badges', filter);
+    return this.get('store').query('my-badges', {
+      uid,
+      filter
+    });
   }
 });

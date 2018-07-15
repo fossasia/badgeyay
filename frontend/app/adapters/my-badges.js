@@ -14,7 +14,6 @@ export default ApplicationAdapter.extend({
     };
   }),
   pathForType() {
-    const user = this.get('session.currentUser');
-    return 'api/get_badges?uid=' + user.uid;
+    return 'api/get_badges';
   }
 });
