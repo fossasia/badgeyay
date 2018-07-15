@@ -22,13 +22,16 @@ class AllUsersSchema(Schema):
         self_views = 'admin.show_all_users'
         kwargs = {'id': '<id>'}
 
-    id = fields.Str(required=True, dump_only=True)
-    username = fields.Str(required=True)
-    email = fields.Str(required=True)
-    password = fields.Str(required=True)
-    created_at = fields.Date(required=True)
-    photoURL = fields.Str(required=True)
-    deleted_at = fields.Date()
+    id = fields.Str(required=True, dump_only=True, attribute='User.id')
+    username = fields.Str(required=True, attribute='User.username')
+    email = fields.Str(required=True, attribute='User.email')
+    password = fields.Str(required=True, attribute='User.password')
+    created_at = fields.Date(required=True, attribute='User.created_at')
+    photoURL = fields.Str(required=True, attribute='User.photoURL')
+    deleted_at = fields.Date(attribute='User.deleted_at')
+    isAdmin = fields.Bool(attribute='Permissions.isAdmin')
+    isUser = fields.Bool(attribute='Permissions.isUser')
+    isSales = fields.Bool(attribute='Permissions.isSales')
 
 
 class OAuthUserSchema(Schema):

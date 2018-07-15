@@ -35,27 +35,22 @@
                     <div class="item">
                         <i class="window close icon"></i>
                         <div class="content">
-                            {{#if user.deleted_at}}
-                            {{user.deleted_at}}
-                            {{else}}
-                            Not yet
-                            {{/if}}
+                            {{#if user.deleted_at}} {{user.deleted_at}} {{else}} Not yet {{/if}}
                         </div>
                     </div>
                 </div>
             </td>
             <td>
                 {{#if authToken.permissions.isAdmin}}
-                    <div class="ui horizontal compact basic buttons">
-                        {{#ui-popup content='Edit' class="ui icon button" click=(action 'openModal' 'user-edit' user)}}
-                            <i class="edit icon"></i>
-                        {{/ui-popup}}
-                        {{#ui-popup content='Delete' class='ui icon button' click=(action 'deleteUser' user)}}
-                        <i class="trash alternate outline icon"></i>
-                        {{/ui-popup}}
-                    </div>
+                <div class="ui horizontal compact basic buttons">
+                    {{#ui-popup content='Edit' class="ui icon button" click=(action 'openModal' 'user-edit' user)}}
+                    <i class="edit icon"></i>
+                    {{/ui-popup}} {{#ui-popup content='Delete' class='ui icon button' click=(action 'deleteUser' user)}}
+                    <i class="trash alternate outline icon"></i>
+                    {{/ui-popup}}
+                </div>
                 {{else}}
-                    <p>You donot have the permission to edit role</p>
+                <p>You donot have the permission to edit role</p>
                 {{/if}}
             </td>
         </tr>
@@ -78,39 +73,54 @@
 </table>
 
 {{#ui-modal name="user-edit" class="user-edit" detachable=true onApprove=(action 'approveModal') onDeny=(action 'denyModal')}}
-  <i class="close icon"></i>
-  <div class="header">
+<i class="close icon"></i>
+<div class="header">
     Edit User Details
-  </div>
-  <div class="image content">
+</div>
+<div class="image content">
     <div class="ui medium image">
-      <img class="ui circular image" src="{{userEdit.photoURL}}">
+        <img class="ui circular image" src="{{userEdit.photoURL}}">
     </div>
     <div class="description">
-      <div class="ui header">{{userEdit.username}}</div>
-      <form class="ui form">
-          <div class="ui field">
-              <label>Email</label>
-              {{input type='email' value=userEdit.email}}
-          </div>
-          <div class="ui field">
-              <label>Username</label>
-              {{input type='text' value=userEdit.username}}
-          </div>
-          <div class="ui field">
-              <label>PhotoURL</label>
-              {{input type='text' value=userEdit.photoURL}}
-          </div>
-      </form>
+        <div class="ui header">{{userEdit.username}}</div>
+        <form class="ui form">
+            <div class="ui field">
+                <label>Email</label>
+                {{input type='email' value=userEdit.email}}
+            </div>
+            <div class="ui field">
+                <label>Username</label>
+                {{input type='text' value=userEdit.username}}
+            </div>
+            <div class="ui field">
+                <label>PhotoURL</label>
+                {{input type='text' value=userEdit.photoURL}}
+            </div>
+            <div class="ui field">
+                <div class="ui toggle checkbox">
+                    {{input type="checkbox" tabindex="0" class="hidden" checked=userEdit.isSales}}
+                    <label>Sales</label>
+                </div>
+                <div class="ui toggle checkbox">
+                    {{input type="checkbox" tabindex="0" class="hidden" checked=userEdit.isAdmin}}
+                    <label>Admin</label>
+                </div>
+            </div>
+        </form>
     </div>
-  </div>
-  <div class="actions">
+</div>
+<div class="actions">
     <div class="ui black deny button">
-      Close
+        Close
     </div>
     <div class="ui positive right labeled icon button">
-      Submit
-      <i class="checkmark icon"></i>
+        Submit
+        <i class="checkmark icon"></i>
     </div>
-  </div>
+</div>
 {{/ui-modal}}
+
+<script type="text/javascript">
+    $('.ui.checkbox')
+        .checkbox();
+</script>
