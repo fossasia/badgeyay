@@ -404,7 +404,6 @@ def get_all_social_media():
 
 
 @router.route('/social-media/<media>', methods=['PATCH'])
-@adminRequired
 def patch_social_media(media):
     social_media = SocialContent.check_key(media)
     if social_media:
