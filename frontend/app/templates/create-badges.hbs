@@ -146,11 +146,16 @@
         <p>{{error.message}}</p>
     {{/each}}
     {{#if showProgress}}
-    <div class="ui segment">
-        <div class="ui centered aligned grid">{{progressState}}</div>
-        <div class="ui divider"></div>
-        {{ember-progress-bar progress=progress options=(hash color='orange')}}
-    </div>
+        <div class="ui hidden divider"></div>
+        <div>
+            <div class="ui centered aligned grid">{{progressState}}</div>
+            <div class="ui hidden divider"></div>
+            {{#ui-progress percent=progress class="teal indicating"}}
+                <div class="bar">
+                    <div class="progress"></div>
+                </div>
+            {{/ui-progress}}
+        </div>
     {{/if}}
     {{#if badgeGenerated}}
     <div class="ui positive message">
