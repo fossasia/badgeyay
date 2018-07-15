@@ -5,10 +5,10 @@ export default Component.extend({
     this._super(...arguments);
   },
 
-
   actions: {
     updateUserPassword() {
-      this.get('sendUserPassword')();
+      let password = this.get('newPassword');
+      this.get('sendUserPassword')(password);
     }
   },
 

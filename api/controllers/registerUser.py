@@ -70,7 +70,7 @@ def register_user():
                 id_=uid,
                 username=data['username'],
                 email=data['email'],
-                password=None,
+                password=data['password'],
                 photoURL=data['photoURL']
             )
             if data['email'] in admins:

@@ -1,7 +1,15 @@
+
 .my-profile {
   position: relative;
   top: 10px;
 }
+
+// scss-lint:disable all
+#place {
+  position: relative;
+  top: -7%;
+}
+// scss-lint:enable all
 
 .image {
   left: 2%;
@@ -39,3 +47,4 @@
   left: 243px;
   position: relative;
 }
+

@@ -23,7 +23,7 @@
       {{user-component/user-account session=session isLoading=isLoadingName user=user sendUserName=(action 'updateUserName')}}
     </div>
     <div class="ui horizontal divider"></div>
-    <div class="ui attached tab segment" data-tab="password">
+    <div class="ui attached tab segment" id="place" data-tab="password">
       {{user-component/user-password session=session isLoading=isLoadingPassword user=user sendUserPassword=(action 'updateUserPassword')}}
     </div>
   </div>
