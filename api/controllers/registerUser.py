@@ -51,10 +51,12 @@ def register_user():
 
         newUser.save_to_db()
 
-        perm = Permissions(isUser=True, user_permissions=newUser)
         if newUser.email in admins:
-            perm.isAdmin = True
-        perm.save_to_db()
+            perm = Permissions(isUser=True, isAdmin=True, user_permissions=newUser)
+            perm.save_to_db()
+        else:
+            perm = Permissions(isUser=True, user_permissions=newUser)
+            perm.save_to_db()
 
         return jsonify(schema.dump(newUser).data)
     else:
@@ -78,8 +80,11 @@ def register_user():
             newUser.save_to_db()
             perm = Permissions(isUser=True, user_permissions=newUser)
             if newUser.email in admins:
-                perm.isAdmin = True
-            perm.save_to_db()
+                perm = Permissions(isUser=True, isAdmin=True, user_permissions=newUser)
+                perm.save_to_db()
+            else:
+                perm = Permissions(isUser=True, user_permissions=newUser)
+                perm.save_to_db()
         else:
             newUser = user_
         return jsonify(schema.dump(newUser).data)
