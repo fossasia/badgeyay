@@ -158,34 +158,17 @@
         </div>
     {{/if}}
     {{#if badgeGenerated}}
-    <div class="ui positive message">
-        <i class="close icon"></i>
-        <div class="header">
-            Badge generated successfully
-        </div>
-        <p>Please visit this link to download badges
-            <a href="{{badgeGeneratedLink}}">Link</a>
-        </p>
-        <script type="text/javascript">
-            $('.message .close')
-                .on('click', function () {
-                    $(this)
-                        .closest('.message')
-                        .transition('fade')
-                        ;
-                });
-        </script>
-    </div>
-    {{/if}}
-    {{#if badgeGenerated}}
         <div class="ui positive message">
             <i class="close icon"></i>
-            <div class="header">
-                Badge generated successfully
-            </div>
-            <p>Please visit this link to download badges
-                <a href="{{badgeGeneratedLink}}">Link</a>
-            </p>
+                <div class="ui center aligned header">
+                    Badge generated successfully!
+                </div>
+                <div class="ui horizontal divider"></div>
+                <div class="ui center aligned secondary header">
+                    <a class="ui green basic button" href="{{badgeGeneratedLink}}">
+                        Download as PDF
+                    </a>
+                </div>
             <script type="text/javascript">
                 $('.message .close')
                     .on('click', function () {
