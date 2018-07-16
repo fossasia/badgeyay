@@ -85,6 +85,7 @@ class AdminReportSchema(Schema):
         type_ = 'admin-reports'
 
     id = fields.Date(required=True, dump_only=True)
+    mailSentCount = fields.Int(as_string=True)
     badgeCount = fields.Int(as_string=True)
     userCreationCount = fields.Int(as_string=True)
     userDeletionCount = fields.Int(as_string=True)

@@ -2,6 +2,7 @@
     <thead>
         <tr>
             <th>Date</th>
+            <th>Mails Sent</th>
             <th>Badges Generated</th>
             <th>Users Created</th>
             <th>Users Deleted</th>
@@ -11,6 +12,7 @@
         {{#each reports as |report|}}
             <tr>
                 <td>{{sanitizeDate report.id}}</td>
+                <td>{{report.mailSentCount}}</td>
                 <td>{{report.badgeCount}}</td>
                 <td>{{report.userCreationCount}}</td>
                 <td>{{report.userDeletionCount}}</td>
@@ -19,7 +21,7 @@
     </tbody>
     <tfoot>
         <tr>
-            <th colspan="4">
+            <th colspan="5">
                 <div class="ui right floated pagination menu">
                     <a class="icon item" {{action 'prevPage'}}>
                         <i class="left chevron icon"></i>
