@@ -205,6 +205,7 @@ export default Controller.extend({
           _this.set('genBadge', record);
           this.set('progress', 100);
           this.set('progressState', 'Badges Generated!');
+          _this.get('notify').success('Badge generated successfully!');
           this.set('badgeGeneratedLink', record.download_link);
         })
         .catch(err => {
