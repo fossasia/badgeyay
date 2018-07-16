@@ -251,6 +251,6 @@ function sendResetMail(token, email) {
 
   mailOptions.subject = `Password reset link`;
   mailOptions.html = '<p>Hey ' + email + '! Here is your password reset <a href=\'' + PASSWORD_RESET_LINK
-    + token + '\'>Link</a><p>';
+    + token + '\'>Link</a> and it will expire in 30 minutes.<p>';
   return mailTransport.sendMail(mailOptions);
 }

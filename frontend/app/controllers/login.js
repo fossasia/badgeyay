@@ -29,18 +29,18 @@ export default Controller.extend({
             this_.authToken.emailVerified();
           } else {
             localStorage.setItem('emailVerified', false);
-            this_.get('store').createRecord('user', {
-              uid      : userData.uid,
-              username : userObj.displayName,
-              email    : userObj.email,
-              photoURL : userObj.photoURL
-            }).save()
-              .then(() => {
-                this_.send('generateLoginToken', userData.uid);
-              }).catch(() => {
-                this_.notify.error('Unable to login');
-              });
           }
+          this_.get('store').createRecord('user', {
+            uid      : userData.uid,
+            username : userObj.displayName,
+            email    : userObj.email,
+            photoURL : userObj.photoURL
+          }).save()
+            .then(() => {
+              this_.send('generateLoginToken', userData.uid);
+            }).catch(() => {
+              this_.notify.error('Unable to login');
+            });
         }).catch(function(err) {
           console.log(err.message);
           this_.get('notify').error('Log In Failed ! Please try again');
