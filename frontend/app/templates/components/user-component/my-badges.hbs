@@ -23,13 +23,20 @@
                 Data: {{badge.csv}}
               </div>
             </div>
-            <div class="extra content">
-              <div class="ui bottom attached basic orange button">
-                <i class="download icon"></i>
-                <a href="{{badge.download_link}}">
-                  Download Badge
-                </a>
-              </div>
+            <div class="extra center aligned content">
+                <div class="ui horizontal compact basic buttons">
+                    {{#ui-popup content='Download' class="ui icon button"}}
+                        <a href="{{badge.download_link}}">
+                          <i class="download icon"></i>
+                        </a>
+                    {{/ui-popup}}                  
+                    {{#ui-popup content='Edit' class="ui icon button"}}
+                        <i class="edit icon"></i>
+                    {{/ui-popup}}
+                    {{#ui-popup content='Delete' class='ui icon button' click=(action 'deleteBadge' badge)}}
+                        <i class="trash alternate outline icon"></i>
+                    {{/ui-popup}}
+                </div>
             </div>
           </div>
         {{/each}}

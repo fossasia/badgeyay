@@ -1,7 +1,19 @@
 import Controller from '@ember/controller';
-import Ember from 'ember';
+import { inject as service } from '@ember/service';
 
-const { inject } = Ember;
 
 export default Controller.extend({
+  routing : service('-routing'),
+  notify  : service('notify'),
+  actions : {
+    deleteBadge(badge) {
+      badge.destroyRecord()
+        .then(() => {
+          this.notify.success('Badge Deleted successfully');
+        })
+        .catch(() => {
+          this.notify.error('Unable to delete Badge');
+        });
+    }
+  }
 });

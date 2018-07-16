@@ -113,7 +113,7 @@ def get_badges():
     return jsonify(UserBadges(many=True).dump(badges).data)
 
 
-@router.route('/generate_badges/<badgeId>', methods=['DELETE'])
+@router.route('/get_badges/<badgeId>', methods=['DELETE'])
 @loginRequired
 def delete_badge(badgeId):
     badge = Badges.getBadge(badgeId)
