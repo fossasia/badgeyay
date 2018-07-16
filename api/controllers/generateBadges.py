@@ -67,7 +67,7 @@ def generateBadges():
     user_creator.allowed_usage = user_creator.allowed_usage - 1
 
     badge_created = Badges(image=image_name, csv=csv_name,
-                           text_color=text_color, badge_size='A3',
+                           text_color=text_color, badge_size=badge_size,
                            badge_name=badge_name, creator=user_creator)
 
     badge_created.save_to_db()
