@@ -84,21 +84,21 @@ export default Controller.extend({
       const _this = this;
       if (_this.manualEnable) {
         this.set('showProgress', true);
-        this.set('progress', 0.1);
+        this.set('progress', 10);
         this.set('progressState', 'Setting Paper Size');
         let textEntry = _this.get('store').createRecord('text-data', {
           uid         : _this.uid,
           manual_data : _this.get('textData'),
           time        : new Date()
         });
-        this.set('progress', 0.2);
+        this.set('progress', 20);
         this.set('progressState', 'Generating CSV');
         textEntry.save().then(record => {
           _this.set('csvFile', record.filename);
           badgeData.csv = _this.csvFile;
           _this.send('sendDefaultImg', badgeData);
           _this.get('notify').success('Text saved Successfully');
-          this.set('progress', 0.4);
+          this.set('progress', 40);
           this.set('progressState', 'Gathering background');
         }).catch(err => {
           let userErrors = textEntry.get('errors.user');
@@ -115,7 +115,7 @@ export default Controller.extend({
       } else if (_this.csvEnable) {
         if (_this.csvFile !== undefined && _this.csvFile !== '') {
           badgeData.csv = _this.csvFile;
-          this.set('progress', 0.4);
+          this.set('progress', 40);
           this.set('progressState', 'Gathering background');
           _this.send('sendDefaultImg', badgeData);
         }
@@ -138,7 +138,7 @@ export default Controller.extend({
             _this.set('custImgFile', record.filename);
             badgeData.image = _this.custImgFile;
             _this.send('sendBadge', badgeData);
-            this.set('progress', 0.7);
+            this.set('progress', 70);
             this.set('progressState', 'Preparing your badges');
           })
           .catch(error => {
@@ -157,7 +157,7 @@ export default Controller.extend({
         if (_this.custImgFile !== undefined && _this.custImgFile !== '') {
           badgeData.image = _this.custImgFile;
           _this.send('sendBadge', badgeData);
-          this.set('progress', 0.7);
+          this.set('progress', 70);
           this.set('progressState', 'Preparing your badges');
         }
       } else if (_this.colorImage && _this.defColor !== undefined && _this.defColor !== '') {
@@ -170,7 +170,7 @@ export default Controller.extend({
           .then(record => {
             badgeData.image = record.filename;
             _this.send('sendBadge', badgeData);
-            this.set('progress', 0.7);
+            this.set('progress', 70);
             this.set('progressState', 'Preparing your badges');
           })
           .catch(error => {
@@ -197,13 +197,13 @@ export default Controller.extend({
     sendBadge(badgeData) {
       const _this = this;
       let badgeRecord = _this.get('store').createRecord('badge', badgeData);
-      this.set('progress', 0.8);
+      this.set('progress', 80);
       badgeRecord.save()
         .then(record => {
           _this.set('overlay', false);
           _this.set('badgeGenerated', true);
           _this.set('genBadge', record);
-          this.set('progress', 1);
+          this.set('progress', 100);
           this.set('progressState', 'Badges Generated!');
           this.set('badgeGeneratedLink', record.download_link);
         })

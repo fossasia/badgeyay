@@ -146,11 +146,36 @@
         <p>{{error.message}}</p>
     {{/each}}
     {{#if showProgress}}
-        <div class="ui segment">
+        <div class="ui hidden divider"></div>
+        <div>
             <div class="ui centered aligned grid">{{progressState}}</div>
-            <div class="ui divider"></div>
-            {{ember-progress-bar progress=progress options=(hash color='orange')}}
+            <div class="ui hidden divider"></div>
+            {{#ui-progress percent=progress class="teal indicating"}}
+                <div class="bar">
+                    <div class="progress"></div>
+                </div>
+            {{/ui-progress}}
         </div>
+    {{/if}}
+    {{#if badgeGenerated}}
+    <div class="ui positive message">
+        <i class="close icon"></i>
+        <div class="header">
+            Badge generated successfully
+        </div>
+        <p>Please visit this link to download badges
+            <a href="{{badgeGeneratedLink}}">Link</a>
+        </p>
+        <script type="text/javascript">
+            $('.message .close')
+                .on('click', function () {
+                    $(this)
+                        .closest('.message')
+                        .transition('fade')
+                        ;
+                });
+        </script>
+    </div>
     {{/if}}
     {{#if badgeGenerated}}
         <div class="ui positive message">

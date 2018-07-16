@@ -16,5 +16,6 @@ export default Route.extend({
     set(controller, 'defImages', model.def_images);
     set(controller, 'user', model.user);
     this.set('controller.badgeGenerated', false);
+    this.set('controller.showProgress', false);
   }
 });
