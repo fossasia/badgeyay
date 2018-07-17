@@ -1,4 +1,5 @@
 from flask import jsonify, Blueprint, request
+from math import floor
 from api.db import db
 from api.models.user import User
 from api.models.permissions import Permissions
@@ -99,9 +100,11 @@ def get_admin_report():
     curr_date = datetime.datetime.utcnow() - relativedelta(days=(app.config["POSTS_PER_PAGE"] - 1) * (page - 1))
     payload = []
     schema = AdminReportSchema(many=True)
+    mail_list = get_mail_list()
     for i in range(1, app.config['POSTS_PER_PAGE']):
         date_start = curr_date - relativedelta(days=i)
         date_end = curr_date - relativedelta(days=i - 1)
+        mail_sent_count = find_mail_count(mail_list, date_start) - find_mail_count(mail_list, date_end)
         badge_count = Badges.query.filter(
             Badges.created_at.between(date_start, date_end)).count()
         user_creation_count = User.query.filter(
@@ -110,6 +113,7 @@ def get_admin_report():
             User.deleted_at.between(date_start, date_end)).count()
         report = {
             'id': date_start,
+            'mailSentCount': mail_sent_count,
             'badgeCount': badge_count,
             'userCreationCount': user_creation_count,
             'userDeletionCount': user_deletion_count}
@@ -166,29 +170,17 @@ def delete_user(userid):
 @router.route('/admin-stat-mail', methods=['GET'])
 @adminRequired
 def get_admin_stat():
-    mail_ref = firebasedb.reference('mails')
-    mail_resp = mail_ref.get()
-    mail_list = []
-    for key in mail_resp:
-        mail_list.append(mail_resp[key])
-    mail_list.sort(key=lambda e: e['date'], reverse=True)
-    for item in mail_list:
-        item['date'] = datetime.datetime.strptime(
-            item['date'], '%Y-%m-%dT%H:%M:%SZ')
+    mail_list = get_mail_list()
     curr_date = datetime.datetime.utcnow()
     prev_month_date = curr_date - relativedelta(months=1)
     last_three_days_date = curr_date - relativedelta(days=3)
     last_seven_days_date = curr_date - relativedelta(days=7)
     last_day_date = curr_date - relativedelta(days=1)
 
-    prev_month_cnt = len(
-        [mail for mail in mail_list if mail['date'] >= prev_month_date])
-    last_three_days_cnt = len(
-        [mail for mail in mail_list if mail['date'] >= last_three_days_date])
-    last_day_cnt = len(
-        [mail for mail in mail_list if mail['date'] >= last_day_date])
-    last_seven_days_cnt = len(
-        [mail for mail in mail_list if mail['date'] >= last_seven_days_date])
+    prev_month_cnt = find_mail_count(mail_list, prev_month_date)
+    last_three_days_cnt = find_mail_count(mail_list, last_three_days_date)
+    last_day_cnt = find_mail_count(mail_list, last_day_date)
+    last_seven_days_cnt = find_mail_count(mail_list, last_seven_days_date)
 
     payload = {
         'id': datetime.datetime.utcnow(),
@@ -198,6 +190,32 @@ def get_admin_stat():
         'lastSevenDays': last_seven_days_cnt}
 
     return jsonify(AdminMailStat().dump(payload).data)
+
+
+def get_mail_list():
+    mail_ref = firebasedb.reference('mails')
+    mail_resp = mail_ref.get()
+    mail_list = []
+    for key in mail_resp:
+        mail_list.append(mail_resp[key])
+    mail_list.sort(key=lambda e: e['date'])
+    for item in mail_list:
+        item['date'] = datetime.datetime.strptime(
+            item['date'], '%Y-%m-%dT%H:%M:%SZ')
+    return mail_list
+
+
+# Finding the successor node from the date passed
+def find_mail_count(mail_list, date):
+    low = 0
+    high = len(mail_list) - 1
+    while low < high:
+        mid = floor((low + high) / 2)
+        if mail_list[mid]['date'] > date:
+            high = mid
+        else:
+            low = mid + 1
+    return len(mail_list[low:])
 
 
 @router.route('/all-badge', methods=['GET'])
@@ -221,9 +239,11 @@ def get_all_roles():
     args = request.args
     if 'class' in args.keys():
         if args['class'] == 'admin':
-            users = User.query.join(Permissions).filter(Permissions.isAdmin.is_(True)).all()
+            users = User.query.join(Permissions).filter(
+                Permissions.isAdmin.is_(True)).all()
         if args['class'] == 'sales':
-            users = User.query.join(Permissions).filter(Permissions.isSales.is_(True)).all()
+            users = User.query.join(Permissions).filter(
+                Permissions.isSales.is_(True)).all()
         return jsonify(RoleSchema(many=True).dump(users).data)
 
 
