@@ -10,7 +10,7 @@
                     {{#link-to 'my-badges' class="large item navbar-dropdown upper"}}
                         My Badges
                     {{/link-to}}
-                    {{#if authToken.adminValid}}
+                    {{#if authToken.permissions.isAdmin}}
                         {{#link-to 'admin' class="large item navbar-dropdown upper"}}
                             Admin
                         {{/link-to}}
