@@ -1,6 +1,6 @@
 {
   "name": "badgeyay",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "private": true,
   "description": "Badgeyay is a simple badge generator which generates printable badges in a pdf.",
   "license": "GNU GENERAL PUBLIC LICENSE Version 3",
