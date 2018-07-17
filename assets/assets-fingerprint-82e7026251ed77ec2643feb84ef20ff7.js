@@ -1,1 +1,0 @@
-(function(a){a.ASSET_FINGERPRINT_HASH="-82e7026251ed77ec2643feb84ef20ff7"})(window);
