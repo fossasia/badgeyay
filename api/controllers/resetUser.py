@@ -26,7 +26,7 @@ def reset_password():
 
     if data and data['username']:
         user = User.getUser(data['username'])
-        expire = datetime.datetime.utcnow() + datetime.timedelta(hours=1)
+        expire = datetime.datetime.utcnow() + datetime.timedelta(hours=24)
         token = jwt.encode({
             'id': user.username,
             'exp': expire
@@ -47,7 +47,7 @@ def pwd_reset_token():
     user = User.getUser(email=email)
     if not user:
         return ErrorResponse(UserNotFound().message, 422, {'Content-Type': 'application/json'}).respond()
-    expire = datetime.datetime.utcnow() + datetime.timedelta(seconds=900)
+    expire = datetime.datetime.utcnow() + datetime.timedelta(hours=24)
     token = jwt.encode({
         'id': user.id,
         'exp': expire
