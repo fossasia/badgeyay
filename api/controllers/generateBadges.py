@@ -124,3 +124,13 @@ def delete_badge(badgeId):
     deleteFile('badges/' + badgeId + '.pdf')
     badge.delete_from_db()
     return jsonify(DeletedBadges().dump(temp_badge).data)
+
+
+@router.route('/get_badges', methods=['PATCH'])
+@loginRequired
+def change_name():
+    data = request.get_json()['data']['attributes']
+    badge = Badges.getBadge(data['badge_id'])
+    badge.badge_name = data['badge_name']
+    badge.save_to_db()
+    return jsonify(BadgeSchema().dump(badge).data)
