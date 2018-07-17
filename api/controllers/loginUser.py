@@ -3,6 +3,7 @@ import jwt
 from flask import Blueprint, jsonify, request
 from flask import current_app as app
 from api.models.user import User
+from api.models.permissions import Permissions
 from api.schemas.user import FTLUserSchema
 from api.schemas.token import LoginTokenSchema
 from api.utils.errors import ErrorResponse
@@ -10,7 +11,6 @@ from api.schemas.errors import (
     UserNotFound,
     OperationNotFound,
 )
-from api.config.config import admins
 
 
 router = Blueprint('loginUser', __name__)
@@ -26,8 +26,10 @@ def login():
             return ErrorResponse(UserNotFound(uid).message, 422, {'Content-Type': 'application/json'}).respond()
 
         tokenObj = {'user': user.username}
-        if user.siteAdmin or user.email in admins:
-            tokenObj = {'adminStatus': True}
+        perm = Permissions.get_by_uid(user.id)
+        if perm:
+            if perm.isAdmin:
+                tokenObj = {'adminStatus': True}
         # Token that is not expiring and validated for the whole session
         token = jwt.encode(
             tokenObj,
