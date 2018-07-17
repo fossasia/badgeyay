@@ -78,7 +78,7 @@ def register_user():
             if data['email'] in admins:
                 newUser.siteAdmin = True
             newUser.save_to_db()
-            perm = Permissions(isUser=True, user_permissions=newUser)
+
             if newUser.email in admins:
                 perm = Permissions(isUser=True, isAdmin=True, user_permissions=newUser)
                 perm.save_to_db()
