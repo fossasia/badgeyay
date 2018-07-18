@@ -2,19 +2,16 @@
     <thead>
         <tr>
             <th rowspan="2">Badge Creator ID</th>
-            <th class="center aligned" colspan="2">Badge Info</th>
+            <th rowspan="2">Badge Name</th>
+            <th rowspan="2">Created at</th>
             <th class="center aligned" rowspan="2">Actions</th>
-        </tr>
-        <tr>
-            <th>Badge ID</th>
-            <th>Created at</th>
         </tr>
     </thead>
     <tbody>
         {{#each badges as |badge|}}
             <tr>
                 <td>{{badge.user_id}}</td>
-                <td>{{badge.id}}</td>
+                <td>{{badge.badge_name}}</td>
                 <td>{{badge.created_at}}</td>
                 <td class="center aligned">
                     <div class="ui horizontal compact basic buttons">
@@ -36,7 +33,7 @@
     </tbody>
     <tfoot>
         <tr>
-            <th colspan="4">
+            <th colspan="5">
                 <div class="ui right floated pagination menu">
                     <a class="icon item" {{action 'prevPage'}}>
                         <i class="left chevron icon"></i>
