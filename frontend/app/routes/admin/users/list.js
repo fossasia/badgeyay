@@ -6,10 +6,6 @@ const { set } = Ember;
 export default Route.extend({
   beforeModel(transition) {
     this._super(...arguments);
-    const userState = transition.params[transition.targetName].users_status;
-    if (!['all', 'deleted', 'active'].includes(userState)) {
-      this.replaceWith('admin.users.view', userState);
-    }
   },
 
   model(params) {

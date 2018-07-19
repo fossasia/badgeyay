@@ -53,15 +53,13 @@ def show_all_users():
         return jsonify(AllUsersSchema().dump(user).data)
     schema = AllUsersSchema(many=True)
     if 'state' in args.keys():
+        base_query = db.session.query(User, Permissions).join(Permissions, Permissions.user_id == User.id)
         if args['state'] == 'deleted':
-            users = db.session.query(User, Permissions).filter(User.deleted_at.isnot(None)).paginate(
-                page, app.config['POSTS_PER_PAGE'], False)
+            users = base_query.filter(User.deleted_at.isnot(None)).paginate(page, app.config['POSTS_PER_PAGE'], False)
         if args['state'] == 'active':
-            users = db.session.query(User, Permissions).filter(User.deleted_at.is_(None)).paginate(
-                page, app.config['POSTS_PER_PAGE'], False)
+            users = base_query.filter(User.deleted_at.is_(None)).paginate(page, app.config['POSTS_PER_PAGE'], False)
         if args['state'] == 'all':
-            users = db.session.query(User, Permissions).join(Permissions, Permissions.user_id == User.id).paginate(
-                page, app.config['POSTS_PER_PAGE'], False)
+            users = base_query.paginate(page, app.config['POSTS_PER_PAGE'], False)
     result = schema.dump(users.items)
     return jsonify(result.data)
 
