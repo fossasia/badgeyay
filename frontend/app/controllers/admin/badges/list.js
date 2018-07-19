@@ -10,6 +10,17 @@ export default Controller.extend({
   badges      : null,
   notify      : inject.service('notify'),
   actions     : {
+
+    deleteBadge(badge) {
+      badge.destroyRecord()
+        .then(() => {
+          this.notify.success('Badge Deleted successfully');
+        })
+        .catch(() => {
+          this.notify.error('Unable to delete Badge');
+        });
+    },
+
     nextPage() {
       let filter = {};
       filter.page = this.page + 1;
