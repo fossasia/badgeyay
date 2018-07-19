@@ -26,8 +26,6 @@ from api.models.socialContent import SocialContent
 
 app = create_app()
 
-
-db.init_app(app)
 migrate = Migrate(app, db)
 
 app.register_blueprint(generateBadges.router, url_prefix='/api')
@@ -50,7 +48,6 @@ app.register_blueprint(changePermissions.router, url_prefix='/admin/modify')
 
 @app.before_first_request
 def create_tables():
-    db.create_all()
     Module.set_default()
     set_pricing()
     SocialContent.populate_initial()

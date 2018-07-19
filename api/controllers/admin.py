@@ -2,6 +2,7 @@ from flask import jsonify, Blueprint, request
 from math import floor
 from api.db import db
 from api.models.user import User
+from api.models.settings import Settings
 from api.models.permissions import Permissions
 from api.models.socialContent import SocialContent
 from api.models.badges import Badges
@@ -29,7 +30,8 @@ from api.schemas.admin import (
     AdminReportSchema,
     RoleSchema,
     SalesSchema,
-    DeleteSales
+    DeleteSales,
+    SettingsSchema
 )
 from api.schemas.utils import SetPricingSchema, ReturnSetPricing
 from api.utils.errors import ErrorResponse
@@ -42,6 +44,31 @@ import datetime
 
 
 router = Blueprint('admin', __name__)
+
+
+@router.route('/settings', methods=['GET'])
+@adminRequired
+def get_application_settings():
+    args = request.args
+    if 'filter' in args.keys():
+        if args['filter'] == 'latest':
+            settings = Settings.latest_settings()
+            return jsonify(SettingsSchema().dump(settings).data)
+
+
+@router.route('/settings', methods=['POST'])
+@adminRequired
+def post_settings():
+    data, err = SettingsSchema().load(request.get_json())
+    if err:
+        print(err)
+    settings = Settings(data['appEnvironment'],
+                        data['appName'],
+                        data['secretKey'],
+                        data['firebaseDatabaseURL'],
+                        data['firebaseStorageBucket'])
+    settings.save_to_db()
+    return jsonify(SettingsSchema().dump(settings).data)
 
 
 @router.route('/show_all_users', methods=['GET'])
