@@ -7,7 +7,7 @@ export default Route.extend({
   templateName : '',
   authSession  : inject.service('auth-session'),
   beforeModel(transition) {
-    if (this.get('authSession.adminValid')) {
+    if (this.get('authSession.permissions.isAdmin')) {
       this.set('templateName', '');
     } else {
       this.set('templateName', 'not-found');
