@@ -57,6 +57,23 @@
           </a>
       </div>
 {{else}}
-  <h2>Looks like you've not generated any badges yet!</h2>
-  <h3>Click <a href="{{href-to 'create-badges'}}">here</a> to generate some badges!</h3>
+    <div class="ui secondary pointing menu">
+      <a class="active item">
+        My Badges
+      </a>
+    </div>
+    <div class="ui basic segment">
+      <div class="ui card">
+          <div class="noimage">
+            <a href="{{href-to 'create-badges'}}">
+              <img src="/images/add_more.png">
+            </a>
+          </div>
+          <div class="content">
+            <div class="header">
+              Click to generate some badges.
+            </div>
+          </div>
+      </div>
+    </div>
 {{/if}}
