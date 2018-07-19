@@ -1,79 +1,65 @@
-{{#if model.length}}
-    <div class="ui secondary pointing menu">
-      <a class="active item">
-        My Badges
-      </a>
-    </div>
-    <div class="ui basic segment">
-      <div class="ui cards">
-        {{#each model as |badge|}}
-          <div class="card">
-            <div class="image">
-              <img src="{{badge.image_link}}">
-            </div>
-            <div class="content">
-              <div class="header">{{badge.badge_name}}</div>
-              <div class="description">
-                Badge Size: {{badge.badge_size}}
-              </div>
-              <div class="description">
-                Text Color: {{badge.text_color}}
-              </div>
-              <div class="description">
-                Data: {{badge.csv}}
-              </div>
-            </div>
-            <div class="extra center aligned content">
-                <div class="ui horizontal compact basic buttons">
-                    {{#ui-popup content='Download' class="ui icon button"}}
-                        <a href="{{badge.download_link}}">
-                          <i class="download icon"></i>
-                        </a>
-                    {{/ui-popup}}                  
-                    {{#ui-popup content='Edit' class="ui icon button"}}
-                        <i class="edit icon"></i>
-                    {{/ui-popup}}
-                    {{#ui-popup content='Delete' class='ui icon button' click=(action 'deleteBadge' badge)}}
-                        <i class="trash alternate outline icon"></i>
-                    {{/ui-popup}}
-                </div>
-            </div>
-          </div>
-        {{/each}}
+<div class="ui secondary pointing menu">
+<a class="active item">
+  My Badges
+</a>
+</div>
+<div class="ui basic segment">
+  <div class="ui cards">
+    {{#if model.length}}
+      {{#each model as |badge|}}
         <div class="card">
-          <a class="" href="/create-badges">
-            <img src="/images/add_more.png" style="margin-top: 70px">
-          </a>
-        </div>
-        </div>
-      </div>
-      <div class="ui horizontal divider"></div>
-      <div class="ui left floated pagination menu">
-          <a class="icon item" {{action 'prevPage'}}>
-              <i class="left chevron icon"></i>
-          </a>
-          <a class="icon item" {{action 'nextPage'}}>
-              <i class="right chevron icon"></i>
-          </a>
-      </div>
-{{else}}
-    <div class="ui secondary pointing menu">
-      <a class="active item">
-        My Badges
-      </a>
-    </div>
-    <div class="ui basic segment">
-      <div class="ui card">
-          <div class="noimage">
-            <a href="{{href-to 'create-badges'}}">
-              <img src="/images/add_more.png">
-            </a>
+          <div class="image">
+            <img src="{{badge.image_link}}">
           </div>
           <div class="content">
-            <div class="header">
-              Click to generate some badges.
+            <div class="header">{{badge.badge_name}}</div>
+            <div class="description">
+              Badge Size: {{badge.badge_size}}
+            </div>
+            <div class="description">
+              Text Color: {{badge.text_color}}
+            </div>
+            <div class="description">
+              Data: {{badge.csv}}
             </div>
           </div>
-      </div>
+          <div class="extra center aligned content">
+              <div class="ui horizontal compact basic buttons">
+                  {{#ui-popup content='Download' class="ui icon button"}}
+                      <a href="{{badge.download_link}}">
+                        <i class="download icon"></i>
+                      </a>
+                  {{/ui-popup}}                  
+                  {{#ui-popup content='Edit' class="ui icon button"}}
+                      <i class="edit icon"></i>
+                  {{/ui-popup}}
+                  {{#ui-popup content='Delete' class='ui icon button' click=(action 'deleteBadge' badge)}}
+                      <i class="trash alternate outline icon"></i>
+                  {{/ui-popup}}
+              </div>
+          </div>
+        </div>
+      {{/each}}
+    {{/if}}
+    <div class="card">
+      <a class="" href="/create-badges">
+        {{#if model.length}}
+        <img src="/images/add_more.png" style="margin-top: 70px">
+        {{else}}
+        <img src="/images/add_more.png" style="margin-top: 70px; margin-bottom: 90px">
+        {{/if}}
+      </a>
     </div>
+  </div>
+</div>
+{{#if model.length}}
+  <div class="ui horizontal divider"></div>
+  <div class="ui left floated pagination menu">
+      <a class="icon item" {{action 'prevPage'}}>
+          <i class="left chevron icon"></i>
+      </a>
+      <a class="icon item" {{action 'nextPage'}}>
+          <i class="right chevron icon"></i>
+      </a>
+  </div>
 {{/if}}
