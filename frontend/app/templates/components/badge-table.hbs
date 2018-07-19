@@ -1,10 +1,11 @@
 <table class="ui celled table">
     <thead>
         <tr>
-            <th rowspan="2">Badge Creator ID</th>
-            <th rowspan="2">Badge Name</th>
-            <th rowspan="2">Created at</th>
-            <th class="center aligned" rowspan="2">Actions</th>
+            <th>Badge Creator ID</th>
+            <th>Badge Name</th>
+            <th>Created At</th>
+            <th>Deleted At</th>
+            <th class="center aligned">Actions</th>
         </tr>
     </thead>
     <tbody>
@@ -12,7 +13,12 @@
             <tr>
                 <td>{{badge.user_id}}</td>
                 <td>{{badge.badge_name}}</td>
-                <td>{{badge.created_at}}</td>
+                <td>{{sanitizeDate badge.created_at}}</td>
+                {{#if badge.deleted_at}}
+                    <td>{{sanitizeDate badge.deleted_at}}</td>
+                {{else}}
+                    <td>Not Deleted</td>
+                {{/if}}
                 <td class="center aligned">
                     <div class="ui horizontal compact basic buttons">
                         {{#ui-popup content='Edit' class='ui icon button'}}

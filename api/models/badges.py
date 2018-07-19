@@ -14,6 +14,7 @@ class Badges(db.Model):
     download_link = db.Column(db.String)
     image_link = db.Column(db.String)
     created_at = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
+    deleted_at = db.Column(db.DateTime, nullable=True)
     badge_name = db.Column(db.String(100), default='My Badge')
     user_id = db.Column(db.String(100), db.ForeignKey('User.id', ondelete='CASCADE'))
 
@@ -28,13 +29,8 @@ class Badges(db.Model):
             print(e)
 
     def delete_from_db(self):
-        try:
-            db.session.delete(self)
-            db.session.commit()
-        except Exception as e:
-            db.session.rollback()
-            db.session.flush()
-            print(e)
+        self.deleted_at = datetime.utcnow()
+        self.save_to_db()
 
     @classmethod
     def getBadge(cls, badge_id):
