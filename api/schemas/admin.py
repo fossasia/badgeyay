@@ -119,3 +119,15 @@ class DeleteSales(Schema):
 
     id = fields.Str(required=True, dump_only=True)
     email = fields.Str(required=True)
+
+
+class SettingsSchema(Schema):
+    class Meta:
+        type_ = 'settings'
+
+    id = fields.DateTime()
+    appEnvironment = fields.Integer(as_string=True)
+    appName = fields.Str()
+    secretKey = fields.Str()
+    firebaseStorageBucket = fields.Str()
+    firebaseDatabaseURL = fields.Str()
