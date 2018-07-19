@@ -96,14 +96,28 @@
                 <label>PhotoURL</label>
                 {{input type='text' value=userEdit.photoURL}}
             </div>
-            <div class="ui field">
-                <div class="ui toggle checkbox">
-                    {{input type="checkbox" tabindex="0" class="hidden" checked=userEdit.isSales}}
-                    <label>Sales</label>
-                </div>
-                <div class="ui toggle checkbox">
-                    {{input type="checkbox" tabindex="0" class="hidden" checked=userEdit.isAdmin}}
-                    <label>Admin</label>
+            <div class="ui compact menu">
+                <div class="ui simple dropdown item">
+                    Role
+                    <i class="dropdown icon"></i>
+                    <div class="menu">
+                         <div class="item">
+                            <div class="ui toggle checkbox">
+                                {{input type="checkbox" tabindex="0" class="hidden" checked=userEdit.isSales}}
+                                <label>
+                                    Sales
+                                </label>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class="ui toggle checkbox">
+                                {{input type="checkbox" tabindex="0" class="hidden" checked=userEdit.isAdmin}}
+                                <label>
+                                    Admin
+                                </label>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </form>
