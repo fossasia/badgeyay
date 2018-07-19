@@ -78,6 +78,7 @@ class AdminBadgeSchema(Schema):
     download_link = fields.Str(required=True)
     created_at = fields.Date(required=True)
     user_id = fields.Str(required=True)
+    badge_name = fields.Str(required=True)
 
 
 class AdminReportSchema(Schema):

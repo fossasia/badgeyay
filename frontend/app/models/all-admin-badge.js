@@ -7,6 +7,7 @@ export default Model.extend({
   csv           : attr('string'),
   text_colour   : attr('string'),
   badge_size    : attr('string'),
+  badge_name    : attr('string'),
   download_link : attr('string'),
   created_at    : attr('date'),
   user_id       : attr('string')
