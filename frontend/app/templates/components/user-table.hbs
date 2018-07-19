@@ -2,7 +2,10 @@
     <thead>
         <tr>
             <th>User Photo</th>
-            <th>User Info</th>
+            <th>User Name</th>
+            <th>User Email</th>
+            <th>User Created At</th>
+            <th>User Deleted At</th>
             <th>Actions</th>
         </tr>
     </thead>
@@ -12,34 +15,14 @@
             <td>
                 <img class="ui tiny centered circular image" src="{{user.photoURL}}">
             </td>
-            <td>
-                <div class="ui list">
-                    <div class="item">
-                        <i class="user icon"></i>
-                        <div class="content">
-                            {{user.username}}
-                        </div>
-                    </div>
-                    <div class="item">
-                        <i class="envelope outline icon"></i>
-                        <div class="content">
-                            {{user.email}}
-                        </div>
-                    </div>
-                    <div class="item">
-                        <i class="calendar check outline icon"></i>
-                        <div class="content">
-                            {{user.created_at}}
-                        </div>
-                    </div>
-                    <div class="item">
-                        <i class="window close icon"></i>
-                        <div class="content">
-                            {{#if user.deleted_at}} {{user.deleted_at}} {{else}} Not yet {{/if}}
-                        </div>
-                    </div>
-                </div>
-            </td>
+            <td>{{user.username}}</td>
+            <td>{{user.email}}</td>
+            <td>{{sanitizeDate user.created_at}}</td>
+            {{#if user.deleted_at}}
+                <td>{{sanitizeDate user.deleted_at}}</td>
+            {{else}}
+                <td>Not Yet</td>
+            {{/if}}
             <td>
                 {{#if authToken.permissions.isAdmin}}
                 <div class="ui horizontal compact basic buttons">
@@ -58,7 +41,7 @@
     </tbody>
     <tfoot>
         <tr>
-            <th colspan="3">
+            <th colspan="6">
                 <div class="ui right floated pagination menu">
                     <a class="icon item" {{action 'prevPage'}}>
                         <i class="left chevron icon"></i>

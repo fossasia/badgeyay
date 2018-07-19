@@ -14,16 +14,17 @@ export default Controller.extend({
       let filter = {};
       filter.page = this.page + 1;
       filter.state = this.state;
-      this.get('store').query('all-user', filter)
+      this.get('store')
+        .query('all-user', filter)
         .then(records => {
           if (records.length > 0) {
+            this.set('page', filter.page);
             this.set('users', records);
-            this.set('page', this.page + 1);
           } else {
             this.notify.error('No users found');
           }
         })
-        .catch(err => {
+        .catch(() => {
           this.get('notify').error('Please try again!');
         });
     },
@@ -32,12 +33,13 @@ export default Controller.extend({
       if (this.page - 1 > 0) {
         filter.page = this.page - 1;
         filter.state = this.state;
-        this.get('store').query('all-user', filter)
+        this.get('store')
+          .query('all-user', filter)
           .then(records => {
+            this.set('page', filter.page);
             this.set('users', records);
-            this.set('page', this.page - 1);
           })
-          .catch(err => {
+          .catch(() => {
             this.get('notify').error('Please try again!');
           });
       } else {
