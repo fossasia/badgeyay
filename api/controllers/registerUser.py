@@ -1,5 +1,6 @@
 from flask import Blueprint, jsonify, request
 from firebase_admin import auth
+from werkzeug.security import generate_password_hash
 from api.models.user import User
 from api.schemas.errors import FirebaseError
 from api.utils.errors import ErrorResponse
@@ -112,8 +113,8 @@ def patchUser(uid):
         user.save_to_db()
 
     if 'password' in data.keys():
-        user.password = data['password']
-        update_firebase_password(user.id, user.password)
+        update_firebase_password(user.id, data['password'])
+        user.password = generate_password_hash(data['password'])
         user.save_to_db()
 
     return jsonify(FTLUserSchema().dump(user).data)
