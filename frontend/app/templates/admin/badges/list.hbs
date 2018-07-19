@@ -1,7 +1,7 @@
 <div class="ui grid user-grid">
     <div class="row">
         <div class="sixteen wide column">
-            {{badge-table badges=badges prevPage=(action 'prevPage') nextPage=(action 'nextPage')}}
+            {{badge-table badges=badges user=user session=session sendbadgeId=(action 'deleteBadge' badge) prevPage=(action 'prevPage') nextPage=(action 'nextPage')}}
         </div>
     </div>
 </div>

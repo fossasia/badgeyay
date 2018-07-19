@@ -18,7 +18,7 @@
                         {{#ui-popup content='Edit' class='ui icon button'}}
                             <i class="edit icon"></i>
                         {{/ui-popup}}
-                        {{#ui-popup content='Delete' class='ui icon button'}}
+                        {{#ui-popup content='Delete' class='ui icon button' click=(action 'deleteBadge' badge)}}
                             <i class="trash alternate outline icon"></i>
                         {{/ui-popup}}
                         {{#ui-popup content='Download Badge' class='ui icon button'}}

@@ -11,10 +11,13 @@ from api.models.modules import Module
 from api.schemas.modules import ModuleSchema
 from api.helpers.verifyToken import adminRequired
 from api.schemas.user import AllUsersSchema, UserAllowedUsage, DatedUserSchema
-from api.schemas.badges import DatedBadgeSchema
 from api.schemas.badges import AllBadges, AllGenBadges
 from api.schemas.file import FileSchema
 from api.schemas.errors import JsonNotFound
+from api.schemas.badges import (
+    DatedBadgeSchema,
+    DeletedBadges
+)
 from api.schemas.admin import (
     AdminSchema,
     AllUserStat,
@@ -90,6 +93,18 @@ def get_all_badge_detail():
             badges = Badges.query.paginate(
                 page, app.config['POSTS_PER_PAGE'], False)
         return jsonify(schema.dump(badges.items).data)
+
+
+@router.route('/all-badge-detail/<badgeId>', methods=['DELETE'])
+@adminRequired
+def delete_badge(badgeId):
+    badge = Badges.getBadge(badgeId)
+    temp_badge = badge
+    if not badge:
+        print('No badge found with the specified ID')
+
+    badge.delete_from_db()
+    return jsonify(DeletedBadges().dump(temp_badge).data)
 
 
 @router.route('/admin-report', methods=['GET'])
