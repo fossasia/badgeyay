@@ -33,7 +33,34 @@ export default Controller.extend({
   showProgress   : false,
   progress       : 0,
   progressState  : '',
-  actions        : {
+  csvClicked() {
+    this.set('csvEnable', true);
+    this.set('manualEnable', false);
+  },
+
+  manualClicked() {
+    this.set('manualEnable', true);
+    this.set('csvEnable', false);
+  },
+
+  defImageClicked() {
+    this.set('defImage', true);
+    this.set('colorImage', false);
+    this.set('custImage', false);
+  },
+
+  bgColorClicked() {
+    this.set('colorImage', true);
+    this.set('defImage', false);
+    this.set('custImage', false);
+  },
+
+  custImgClicked() {
+    this.set('custImage', true);
+    this.set('defImage', false);
+    this.set('colorImage', false);
+  },
+  actions: {
     submitForm() {
       const _this = this;
       const user = _this.get('store').peekAll('user');
@@ -217,6 +244,7 @@ export default Controller.extend({
 
 
     mutateCSV(csvData) {
+      this.csvClicked();
       const _this = this;
       const user = this.get('store').peekAll('user');
       let uid;
@@ -248,6 +276,7 @@ export default Controller.extend({
     },
 
     mutateText(txtData) {
+      this.manualClicked();
       this.set('textData', txtData);
     },
 
@@ -256,15 +285,18 @@ export default Controller.extend({
     },
 
     mutateBackground(id) {
+      this.defImageClicked();
       let defImageRecord = this.get('store').peekRecord('def-image', id);
       this.set('defImageName', defImageRecord.name + '.png');
     },
 
     mutateDefColor(color) {
+      this.bgColorClicked();
       this.set('defColor', color);
     },
 
     mutateCustomImage(imageData) {
+      this.custImgClicked();
       const _this = this;
       let uid = this.get('uid');
       if (uid === undefined || uid === '') {
@@ -326,34 +358,6 @@ export default Controller.extend({
 
     mutateBadgeSize(value) {
       this.set('defBadgeSize', value);
-    },
-
-    csvClicked() {
-      this.set('csvEnable', !this.csvEnable);
-      this.set('manualEnable', false);
-    },
-
-    manualClicked() {
-      this.set('manualEnable', !this.manualEnable);
-      this.set('csvEnable', false);
-    },
-
-    defImageClicked() {
-      this.set('defImage', !this.defImage);
-      this.set('colorImage', false);
-      this.set('custImage', false);
-    },
-
-    bgColorClicked() {
-      this.set('colorImage', !this.colorImage);
-      this.set('defImage', false);
-      this.set('custImage', false);
-    },
-
-    custImgClicked() {
-      this.set('custImage', !this.custImage);
-      this.set('defImage', false);
-      this.set('colorImage', false);
     }
   }
 });
