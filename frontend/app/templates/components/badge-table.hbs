@@ -2,6 +2,7 @@
     <thead>
         <tr>
             <th>Badge Creator ID</th>
+            <th>Badge Creator Name</th>
             <th>Badge Name</th>
             <th>Created At</th>
             <th>Deleted At</th>
@@ -12,6 +13,7 @@
         {{#each badges as |badge|}}
             <tr>
                 <td>{{badge.user_id}}</td>
+                <td>{{badge.username}}</td>
                 <td>{{badge.badge_name}}</td>
                 <td>{{sanitizeDate badge.created_at}}</td>
                 {{#if badge.deleted_at}}
@@ -39,7 +41,7 @@
     </tbody>
     <tfoot>
         <tr>
-            <th colspan="5">
+            <th colspan="6">
                 <div class="ui right floated pagination menu">
                     <a class="icon item" {{action 'prevPage'}}>
                         <i class="left chevron icon"></i>
