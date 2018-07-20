@@ -108,14 +108,15 @@ def get_all_badge_detail():
     page = request.args.get('page', 1, type=int)
     if 'state' in args.keys():
         schema = AdminBadgeSchema(many=True)
+        base_query = db.session.query(Badges, User).join(User, User.id == Badges.user_id)
         if args['state'] == 'all':
-            badges = Badges.query.paginate(
+            badges = base_query.paginate(
                 page, app.config['POSTS_PER_PAGE'], False)
         if args['state'] == 'created':
-            badges = Badges.query.filter(Badges.deleted_at.is_(None)).paginate(
+            badges = base_query.filter(Badges.deleted_at.is_(None)).paginate(
                 page, app.config['POSTS_PER_PAGE'], False)
         if args['state'] == 'deleted':
-            badges = Badges.query.filter(Badges.deleted_at.isnot(None)).paginate(
+            badges = base_query.filter(Badges.deleted_at.isnot(None)).paginate(
                 page, app.config['POSTS_PER_PAGE'], False)
         return jsonify(schema.dump(badges.items).data)
 

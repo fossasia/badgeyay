@@ -70,16 +70,17 @@ class AdminBadgeSchema(Schema):
     class Meta:
         type_ = 'all-admin-badges'
 
-    id = fields.Str(required=True, dump_only=True)
-    image = fields.Str(required=True)
-    csv = fields.Str(required=True)
-    text_colour = fields.Str(required=True)
-    badge_size = fields.Str(required=True)
-    download_link = fields.Str(required=True)
-    created_at = fields.Date(required=True)
-    user_id = fields.Str(required=True)
-    badge_name = fields.Str(required=True)
-    deleted_at = fields.DateTime()
+    id = fields.Str(required=True, dump_only=True, attribute='Badges.id')
+    image = fields.Str(required=True, attribute='Badges.image')
+    csv = fields.Str(required=True, attribute='Badges.csv')
+    text_colour = fields.Str(required=True, attribute='Badges.text_colour')
+    badge_size = fields.Str(required=True, attribute='Badges.badge_size')
+    download_link = fields.Str(required=True, attribute='Badges.download_link')
+    created_at = fields.Date(required=True, attribute='Badges.created_at')
+    user_id = fields.Str(required=True, attribute='Badges.user_id')
+    username = fields.Str(required=True, attribute='User.username')
+    badge_name = fields.Str(required=True, attribute='Badges.badge_name')
+    deleted_at = fields.DateTime(attribute='Badges.deleted_at')
 
 
 class AdminReportSchema(Schema):

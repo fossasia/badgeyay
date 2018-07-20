@@ -11,5 +11,6 @@ export default Model.extend({
   download_link : attr('string'),
   created_at    : attr('date'),
   user_id       : attr('string'),
+  username      : attr('string'),
   deleted_at    : attr('date')
 });
