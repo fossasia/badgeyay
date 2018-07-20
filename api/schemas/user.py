@@ -32,6 +32,7 @@ class AllUsersSchema(Schema):
     isAdmin = fields.Bool(attribute='Permissions.isAdmin')
     isUser = fields.Bool(attribute='Permissions.isUser')
     isSales = fields.Bool(attribute='Permissions.isSales')
+    lastLoginIp = fields.Str(allow_none=True, attribute='User.last_login_ip')
 
 
 class OAuthUserSchema(Schema):

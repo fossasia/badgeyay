@@ -19,6 +19,7 @@ router = Blueprint('loginUser', __name__)
 @router.route('/login')
 def login():
     args = request.args
+    ip_addr = request.environ['REMOTE_ADDR']
     if 'id' in args.keys():
         user = User.getUser(user_id=args['id'])
         uid = user.id
@@ -34,6 +35,10 @@ def login():
         token = jwt.encode(
             tokenObj,
             app.config.get('SECRET_KEY'))
+
+        # Saving the IP of the logged in user
+        user.last_login_ip = ip_addr
+        user.save_to_db()
 
         resp = {
             'id': user.id,

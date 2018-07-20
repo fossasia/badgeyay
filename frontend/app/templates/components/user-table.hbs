@@ -6,6 +6,7 @@
             <th>User Email</th>
             <th>User Created At</th>
             <th>User Deleted At</th>
+            <th>Last Login IP</th>
             <th>Actions</th>
         </tr>
     </thead>
@@ -22,6 +23,11 @@
                 <td>{{sanitizeDate user.deleted_at}}</td>
             {{else}}
                 <td>Not Yet</td>
+            {{/if}}
+            {{#if user.lastLoginIp}}
+                <td>{{user.lastLoginIp}}</td>
+            {{else}}
+                <td>Not Logged In Yet</td>
             {{/if}}
             <td>
                 {{#if authToken.permissions.isAdmin}}
@@ -41,7 +47,7 @@
     </tbody>
     <tfoot>
         <tr>
-            <th colspan="6">
+            <th colspan="7">
                 <div class="ui right floated pagination menu">
                     <a class="icon item" {{action 'prevPage'}}>
                         <i class="left chevron icon"></i>
