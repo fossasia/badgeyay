@@ -28,11 +28,11 @@
             {{/link-to}}
         {{/if}}
         {{#if session.isAuthenticated}}
-          {{#link-to 'create-badges' class='item ui orange text'}}
+          {{#link-to 'create-badges' class='item ui orange text create'}}
                 CREATE BADGES
             {{/link-to}}
         {{else}}
-            {{#link-to 'login' class='item ui orange text'}}
+            {{#link-to 'login' class='item ui orange text create'}}
                 CREATE BADGES
             {{/link-to}}
         {{/if}}
