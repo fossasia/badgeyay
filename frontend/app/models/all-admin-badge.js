@@ -10,5 +10,6 @@ export default Model.extend({
   badge_name    : attr('string'),
   download_link : attr('string'),
   created_at    : attr('date'),
-  user_id       : attr('string')
+  user_id       : attr('string'),
+  deleted_at    : attr('date')
 });

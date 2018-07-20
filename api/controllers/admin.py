@@ -112,10 +112,10 @@ def get_all_badge_detail():
             badges = Badges.query.paginate(
                 page, app.config['POSTS_PER_PAGE'], False)
         if args['state'] == 'created':
-            badges = Badges.query.paginate(
+            badges = Badges.query.filter(Badges.deleted_at.is_(None)).paginate(
                 page, app.config['POSTS_PER_PAGE'], False)
         if args['state'] == 'deleted':
-            badges = Badges.query.paginate(
+            badges = Badges.query.filter(Badges.deleted_at.isnot(None)).paginate(
                 page, app.config['POSTS_PER_PAGE'], False)
         return jsonify(schema.dump(badges.items).data)
 
