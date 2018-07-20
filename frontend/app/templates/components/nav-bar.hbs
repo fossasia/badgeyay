@@ -10,14 +10,14 @@
                     {{#link-to 'my-badges' class="large item navbar-dropdown upper"}}
                         My Badges
                     {{/link-to}}
+                    {{#link-to 'my-profile' class="large item navbar-dropdown upper"}}
+                        Settings
+                    {{/link-to}}
                     {{#if authToken.permissions.isAdmin}}
                         {{#link-to 'admin' class="large item navbar-dropdown upper"}}
                             Admin
                         {{/link-to}}
                     {{/if}}
-                    {{#link-to 'my-profile' class="large item navbar-dropdown upper"}}
-                        Settings
-                    {{/link-to}}
                     <div class="divider"></div>
                     <a class="large item navbar-dropdown upper" {{action 'logOut'}}>Logout</a>
                 </div>
