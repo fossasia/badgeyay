@@ -13,7 +13,6 @@ class BadgeSchema(Schema):
     download_link = fields.Str(required=True)
 
 
-
 class AllBadges(Schema):
     class Meta:
         type_ = 'all-badges'
