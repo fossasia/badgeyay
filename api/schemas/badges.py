@@ -9,22 +9,8 @@ class BadgeSchema(Schema):
         kwargs = {'id': '<id>'}
 
     id = fields.Str(required=True, dump_only=True)
-    badge_name = fields.Str(required=True)
-    image = fields.Str(required=True)
-    csv = fields.Str(required=True)
     badge_id = fields.Str(required=True)
-    text_color = fields.Str(required=True)
-    badge_size = fields.Str(required=True)
     download_link = fields.Str(required=True)
-    created_at = fields.Date(required=True)
-    user_id = fields.Relationship(
-        self_url='/api/upload/get_file',
-        self_url_kwargs={'file_id': '<id>'},
-        related_url='/user/register',
-        related_url_kwargs={'id': '<id>'},
-        include_resource_linkage=True,
-        type_='User'
-    )
 
 
 class AllBadges(Schema):
