@@ -7,7 +7,7 @@
             {{#each defImages as |image|}}
                 <div data-value="{{image.id}}" class="item">
                     <div class="ui grid">
-                        <div class="twelve wide column">{{image.name}}</div>
+                        <div class="twelve wide column">{{def-images image.name}}</div>
                         <div class="four wide column"><img class="ui mini image" src="/assets/images/badge_backgrounds/{{image.name}}{{fingerPrint}}.png"></div>
                     </div>
                 </div>
