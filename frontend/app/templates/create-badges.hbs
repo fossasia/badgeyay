@@ -41,9 +41,20 @@
             </p>
                 <div class="content">
                     <div class="center aligned">
-                        {{ badge-component/badge-size sendBadgeSize=(action 'mutateBadgeSize') }}
+                        {{ badge-component/paper-size sendPaperSize=(action 'mutatePaperSize') }}
                     </div>
                 </div>
+        </div>
+        <div class="ui horizontal divider"></div>
+        <div class="ui form width-container">
+            <p>
+                <b>Select from one of the Paper Sizes</b>
+            </p>
+            <div class="content">
+                <div class="center aligned">
+                    {{ badge-component/badge-size}}
+                </div>
+            </div>
         </div>
     </div>
     <div class="ui raised segment">
@@ -55,27 +66,27 @@
                     <i class="info icon"></i>
                 </a>
             </p>
-                <div class="content">
-                    <div class="center aligned">
-                        {{ background-component/def-image-component defImages=defImages sendDefImage=(action 'mutateBackground') }}
-                    </div>
+            <div class="content">
+                <div class="center aligned">
+                    {{ background-component/def-image-component defImages=defImages sendDefImage=(action 'mutateBackground') }}
                 </div>
-                <div class="ui horizontal divider">
-                    Or
-                  </div>
-                <div class="content">
-                    <div class="center aligned">
-                        {{ background-component/color-bg-component sendDefColor=(action 'mutateDefColor') }}
-                    </div>
+            </div>
+            <div class="ui horizontal divider">
+                Or
+            </div>
+            <div class="content">
+                <div class="center aligned">
+                    {{ background-component/color-bg-component sendDefColor=(action 'mutateDefColor') }}
                 </div>
-                <div class="ui horizontal divider">
-                    Or
-                  </div>
-                <div class="content">
-                    <div class="center aligned">
-                        {{ background-component/image-component sendImage=(action 'mutateCustomImage') }}
-                    </div>
+            </div>
+            <div class="ui horizontal divider">
+                Or
+              </div>
+            <div class="content">
+                <div class="center aligned">
+                    {{ background-component/image-component sendImage=(action 'mutateCustomImage') }}
                 </div>
+            </div>
         </div>
     </div>
     <div class="ui raised segment">
@@ -83,23 +94,23 @@
             <p>
                 <b>Select from following font customizations</b>
             </p>
-                <div class="content">
-                    <div class="center aligned">
-                        {{ text-component/font-type sendDefFont=(action 'mutateCustomFont')}}
-                    </div>
+            <div class="content">
+                <div class="center aligned">
+                    {{ text-component/font-type sendDefFont=(action 'mutateCustomFont')}}
                 </div>
-                <div class="ui horizontal divider"></div>
-                <div class="content">
-                    <div class="center aligned">
-                        {{ text-component/font-color sendDefFontColor=(action 'mutateDefFontColor')}}
-                    </div>
+            </div>
+            <div class="ui horizontal divider"></div>
+            <div class="content">
+                <div class="center aligned">
+                    {{ text-component/font-color sendDefFontColor=(action 'mutateDefFontColor')}}
                 </div>
-                <div class="ui horizontal divider"></div>
-                <div class="content">
-                    <div class="center aligned">
-                        {{ text-component/font-size sendDefSize=(action 'mutateFontSize')}}
-                    </div>
+            </div>
+            <div class="ui horizontal divider"></div>
+            <div class="content">
+                <div class="center aligned">
+                    {{ text-component/font-size sendDefSize=(action 'mutateFontSize')}}
                 </div>
+            </div>
         </div>
     </div>
     <button {{action "submitForm"}} class="ui fluid orange {{if authToken.isEmailVerified '' 'disabled'}} button">Create Badges</button>
