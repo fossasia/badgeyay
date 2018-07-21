@@ -83,8 +83,8 @@ export default Controller.extend({
         badgeData.badgename = _this.nameData;
       }
 
-      if (_this.defBadgeSize !== '' && _this.defBadgeSize !== undefined) {
-        badgeData.badge_size = _this.defBadgeSize;
+      if (_this.defPaperSize !== '' && _this.defPaperSize !== undefined) {
+        badgeData.badge_size = _this.defPaperSize;
       }
 
       if (_this.csvEnable) {
@@ -356,8 +356,8 @@ export default Controller.extend({
       this.set('defFontSize', value);
     },
 
-    mutateBadgeSize(value) {
-      this.set('defBadgeSize', value);
+    mutatePaperSize(value) {
+      this.set('defPaperSize', value);
     }
   }
 });
