@@ -45,7 +45,8 @@ def generateBadges():
     badge_name = data.get('badge_name') or 'My Badge'
     image_name = data.get('image')
     text_color = data.get('font_color') or '#ffffff'
-    badge_size = data.get('badge_size') or 'A3'
+    paper_size = data.get('paper_size') or 'A3'
+    badge_size = data.get('badge_size') or '4x3'
     font_size = data.get('font_size') or None
     font_choice = data.get('font_type') or None
     svg2png = SVG2PNG()
@@ -55,7 +56,7 @@ def generateBadges():
     else:
         svg2png.do_text_fill('static/badges/8BadgesOnA3.svg', text_color)
     merge_badges = MergeBadges(
-        image_name, csv_name, badge_size, font_size, font_choice)
+        image_name, csv_name, paper_size, badge_size, font_size, font_choice)
     merge_badges.merge_pdfs()
 
     uid = data.get('uid')

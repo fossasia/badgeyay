@@ -22,6 +22,7 @@ export default Controller.extend({
   badgeSize      : '',
   badgeGenerated : false,
   backLink       : APP.backLink,
+  defPaperSize   : '',
   genBadge       : '',
   defImageName   : '',
   csvEnable      : false,
@@ -75,16 +76,21 @@ export default Controller.extend({
 
       let badgeData = {
         uid        : _this.uid,
-        badge_size : 'A3',
-        badgename  : ''
+        paper_size : 'A3',
+        badgename  : '',
+        badge_size : '4x3'
       };
 
       if (_this.nameData !== '') {
         badgeData.badgename = _this.nameData;
       }
 
+      if (_this.badgeSize !== '' && _this.badgeSize !== undefined) {
+        badgeData.badge_size = _this.badgeSize;
+      }
+
       if (_this.defPaperSize !== '' && _this.defPaperSize !== undefined) {
-        badgeData.badge_size = _this.defPaperSize;
+        badgeData.paper_size = _this.defPaperSize;
       }
 
       if (_this.csvEnable) {
@@ -142,6 +148,7 @@ export default Controller.extend({
       } else if (_this.csvEnable) {
         if (_this.csvFile !== undefined && _this.csvFile !== '') {
           badgeData.csv = _this.csvFile;
+          this.set('showProgress', true);
           this.set('progress', 40);
           this.set('progressState', 'Gathering background');
           _this.send('sendDefaultImg', badgeData);
@@ -358,6 +365,10 @@ export default Controller.extend({
 
     mutatePaperSize(value) {
       this.set('defPaperSize', value);
+    },
+
+    mutateBadgeSize(value) {
+      this.set('badgeSize', value);
     }
   }
 });
