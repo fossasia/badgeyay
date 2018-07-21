@@ -17,7 +17,6 @@ router.map(function() {
   this.route('my-badges');
   this.route('not-found');
   this.route('not-found-catch', { path: '/*path' });
-  this.route('my-profile');
   this.route('forgotpwd');
 
   this.route('reset', function() {
@@ -46,6 +45,7 @@ router.map(function() {
     this.route('settings');
   });
   this.route('sitemap');
+  this.route('settings');
 });
 
 export default router;
