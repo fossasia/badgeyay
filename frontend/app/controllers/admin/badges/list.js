@@ -8,6 +8,9 @@ export default Controller.extend({
   page        : 1,
   state       : '',
   badges      : null,
+  allow_next  : true,
+  allow_prev  : false,
+  allow       : true,
   notify      : inject.service('notify'),
   actions     : {
 
@@ -30,6 +33,12 @@ export default Controller.extend({
           if (records.length > 0) {
             this.set('page', filter.page);
             this.set('badges', records);
+            if (records.length < 10) {
+              this.set('allow_next', false);
+            } else {
+              this.set('allow_next', true);
+            }
+            this.set('allow_prev', true);
           } else {
             this.notify.error('No badges found');
           }
@@ -48,6 +57,12 @@ export default Controller.extend({
           .then(records => {
             this.set('page', this.page - 1);
             this.set('badges', records);
+            if (this.page === 1) {
+              this.set('allow_prev', false);
+            } else {
+              this.set('allow_prev', true);
+            }
+            this.set('allow_next', true);
           })
           .catch(() => {
             this.get('notify').error('Please try again!');
