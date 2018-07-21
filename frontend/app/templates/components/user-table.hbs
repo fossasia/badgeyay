@@ -49,12 +49,17 @@
         <tr>
             <th colspan="7">
                 <div class="ui right floated pagination menu">
-                    <a class="icon item" {{action 'prevPage'}}>
-                        <i class="left chevron icon"></i>
-                    </a>
-                    <a class="icon item" {{action 'nextPage'}}>
-                        <i class="right chevron icon"></i>
-                    </a>
+                    {{#if allow_prev}}
+                        <a class="icon item" {{action 'prevPage'}}>
+                            <i class="left chevron icon"></i>
+                        </a>
+                    {{/if}}
+
+                    {{#if allow_next}}
+                        <a class="icon item" {{action 'nextPage'}}>
+                            <i class="right chevron icon"></i>
+                        </a>
+                    {{/if}}
                 </div>
             </th>
         </tr>
