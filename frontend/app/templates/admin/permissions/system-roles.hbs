@@ -2,22 +2,11 @@
   <div class="ui {{if isLoading 'active'}} inverted dimmer">
     <div class="ui loader"></div>
   </div>
-  <div>
-    <h3 class="ui left aligned header">
-      {{'System Roles'}}
-    </h3>
-    <div class="ui divider"></div>
-  </div>
-  <div>
-    <h3 class="ui left aligned header">
-      {{'Admin Permissions'}}
-    </h3>
-  </div>
-  <table class="ui celled table">
+  <table class="ui table">
     <thead>
       <tr>
         <th>{{'Admin Role'}}</th>
-        <th>{{'Actions'}}</th>
+        <th class="center aligned">{{'Actions'}}</th>
       </tr>
     </thead>
     <tbody>
@@ -28,7 +17,7 @@
               <br>
               <i class="envelope outline icon"></i>{{admin.email}}
           </td>
-          <td>
+          <td class="center aligned">
             <div class="ui horizontal compact basic buttons">
               {{#ui-popup content='Delete' class='ui icon button' click=(action 'deleteAdmin' admin.email)}}
                 <i class="trash alternate outline icon"></i>
@@ -45,11 +34,11 @@
       </tr>
     </tbody>
   </table>
-  <table class="ui celled table">
+  <table class="ui table">
     <thead>
       <tr>
         <th>{{'Sales Role'}}</th>
-        <th>{{'Actions'}}</th>
+        <th class="center aligned">{{'Actions'}}</th>
       </tr>
     </thead>
     <tbody>
@@ -60,7 +49,7 @@
               <br>
               <i class="envelope outline icon"></i>{{sale.email}}
           </td>
-          <td>
+          <td class="center aligned">
             <div class="ui horizontal compact basic buttons">
               {{#ui-popup content='Delete' class='ui icon button' click=(action 'deleteSaleRole' sale.email)}}
                 <i class="trash alternate outline icon"></i>
