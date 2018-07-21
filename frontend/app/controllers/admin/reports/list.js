@@ -9,6 +9,7 @@ export default Controller.extend({
   notify      : inject.service('notify'),
   allow_next  : true,
   allow_prev  : false,
+  allow       : true,
   actions     : {
     nextPage() {
       let filters = {};

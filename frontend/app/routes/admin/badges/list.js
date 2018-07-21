@@ -26,5 +26,10 @@ export default Route.extend({
     this._super(...arguments);
     set(controller, 'state', this.params.badge_status);
     set(controller, 'badges', model);
+    if (model.length < 10) {
+      set(controller, 'allow_prev', false);
+      set(controller, 'allow_next', false);
+      set(controller, 'allow', false);
+    }
   }
 });

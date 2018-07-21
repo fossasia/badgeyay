@@ -10,6 +10,7 @@ export default Controller.extend({
   badges      : null,
   allow_next  : true,
   allow_prev  : false,
+  allow       : true,
   notify      : inject.service('notify'),
   actions     : {
 

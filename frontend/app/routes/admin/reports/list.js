@@ -17,5 +17,10 @@ export default Route.extend({
   setupController(controller, model) {
     this._super(...arguments);
     set(controller, 'reports', model);
+    if (model.length < 9) {
+      set(controller, 'allow_prev', false);
+      set(controller, 'allow_next', false);
+      set(controller, 'allow', false);
+    }
   }
 });
