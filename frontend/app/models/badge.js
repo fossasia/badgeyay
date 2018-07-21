@@ -11,5 +11,6 @@ export default Model.extend({
   font_color    : attr('string'),
   font_size     : attr('string'),
   badge_size    : attr('string'),
+  paper_size    : attr('string'),
   download_link : attr('string')
 });

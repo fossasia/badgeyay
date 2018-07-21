@@ -14,7 +14,8 @@ export default JSONAPISerializer.extend({
       'font_type'  : json.data.attributes['font-type'],
       'font_color' : json.data.attributes['font-color'],
       'font_size'  : json.data.attributes['font-size'],
-      'badge_size' : json.data.attributes['badge-size']
+      'paper_size' : json.data.attributes['paper-size'],
+      'badge_size' : json.data.attributes.badge_size
     };
 
     delete json.data;

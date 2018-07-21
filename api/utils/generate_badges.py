@@ -8,18 +8,26 @@ from defusedxml.lxml import _etree as etree
 
 
 class GenerateBadges:
-    def __init__(self, image_name, csv_name, badge_size, font_size, font_choice):
+    def __init__(self, image_name, csv_name, paper_dimen, badge_size, font_size, font_choice):
         self.APP_ROOT = app.config.get('BASE_DIR')
         self.image_name = image_name
         self.image = os.path.join(app.config.get('BASE_DIR'), 'static', 'uploads', 'image', image_name)
         self.csv = os.path.join(app.config.get('BASE_DIR'), 'static', 'uploads', 'csv', csv_name)
         self.paper_size = {'A3': ['297mm', '420mm'], 'A4': ['210mm', '297mm'], 'A5': ['148mm', '210mm'], 'A6': ['105mm', '148mm']}
-        self.badge_size = badge_size
+        self.paper_dimen = paper_dimen
+        if self.paper_dimen == 'A2':
+            self.NUMBER_OF_BADGES_PER_PAGE = 18
+            self.svgPath = 'static/badges/' + badge_size + 'onA2.svg'
+        elif self.paper_dimen == 'A3':
+            self.NUMBER_OF_BADGES_PER_PAGE = 8
+            self.svgPath = 'static/badges/' + badge_size + 'onA3.svg'
+        elif self.paper_dimen == 'A4':
+            self.NUMBER_OF_BADGES_PER_PAGE = 6
+            self.svgPath = 'static/badges/' + badge_size + 'onA4.svg'
         self.wrap = True
         self.font_size = font_size
         self.font_choice = font_choice
-        self.NUMBER_OF_BADGES_PER_PAGE = 8
-        with open(os.path.join(self.APP_ROOT, 'static/badges/8BadgesOnA3.svg'), encoding="UTF-8") as f:
+        with open(os.path.join(self.APP_ROOT, self.svgPath), encoding="UTF-8") as f:
             self.CONTENT = f.read()
 
     def run_generator(self):
@@ -67,16 +75,15 @@ class GenerateBadges:
 
             for j, text in enumerate(row):
                 text = html.escape(text)
-                content = content.replace(
-                    'person_{}_line_{}'.format(i + 1, j + 1), text)
-            content = content.replace('badge_{}.png'.format(i + 1), os.path.join(self.folder, 'background.png'))
+                content = content.replace('Person_{}_{}'.format(i + 1, j + 1), text)
+            content = content.replace('Pictures/18033231.jpeg', os.path.join(self.folder, 'background.png'))
         with open(target, 'w', encoding='UTF-8') as f:
             f.write(content)
-        self.configure_badge_page(target)
+        # self.configure_badge_page(target)
 
     def configure_badge_page(self, badge_page):
-        paper_width = self.paper_size.get(self.badge_size)[0]
-        paper_height = self.paper_size.get(self.badge_size)[1]
+        paper_width = self.paper_size.get(self.paper_dimen)[0]
+        paper_height = self.paper_size.get(self.paper_dimen)[1]
         tree = parse(open(badge_page, 'r'))
         root = tree.getroot()
         path = root.xpath('//*[@id="svg2"]')[0]

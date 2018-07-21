@@ -48,11 +48,11 @@
         <div class="ui horizontal divider"></div>
         <div class="ui form width-container">
             <p>
-                <b>Select from one of the Paper Sizes</b>
+                <b>Select from one of the Badge Sizes</b>
             </p>
             <div class="content">
                 <div class="center aligned">
-                    {{ badge-component/badge-size}}
+                    {{ badge-component/badge-size sendBadgeSize=(action 'mutateBadgeSize')}}
                 </div>
             </div>
         </div>
