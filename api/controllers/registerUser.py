@@ -112,7 +112,7 @@ def patchUser(uid):
         update_firebase_username(user.id, user.username)
         user.save_to_db()
 
-    if 'password' in data.keys():
+    if 'password' in data.keys() and data['password'] is not None:
         update_firebase_password(user.id, data['password'])
         user.password = generate_password_hash(data['password'])
         user.save_to_db()
