@@ -270,12 +270,14 @@ def all_generated_badges():
 
 
 @router.route('/all-admin', methods=['GET'])
+@adminRequired
 def get_all_admin():
     admin_users = User.query.filter_by(siteAdmin=True).all()
     return jsonify(AllAdminRole(many=True).dump(admin_users).data)
 
 
 @router.route('/all-role', methods=['GET'])
+@adminRequired
 def get_all_roles():
     args = request.args
     if 'class' in args.keys():
@@ -430,6 +432,7 @@ def get_user_dated():
 
 
 @router.route('/set_pricing', methods=['POST'])
+@adminRequired
 def set_pricing():
     schema = SetPricingSchema()
     input_data = request.get_json()
@@ -448,6 +451,7 @@ def set_pricing():
 
 
 @router.route('/get_pricing', methods=['GET'])
+@adminRequired
 def get_pricing():
     utils = Utilities.query.first()
     ret_data = {
