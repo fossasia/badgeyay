@@ -8,7 +8,17 @@ from defusedxml.lxml import _etree as etree
 
 
 class GenerateBadges:
-    def __init__(self, image_name, csv_name, paper_dimen, badge_size, font_size, font_choice):
+    def __init__(self,
+                 image_name,
+                 csv_name,
+                 paper_dimen,
+                 badge_size,
+                 font_choice,
+                 font_size_1,
+                 font_size_2,
+                 font_size_3,
+                 font_size_4,
+                 font_size_5):
         self.APP_ROOT = app.config.get('BASE_DIR')
         self.image_name = image_name
         self.image = os.path.join(app.config.get('BASE_DIR'), 'static', 'uploads', 'image', image_name)
@@ -25,7 +35,6 @@ class GenerateBadges:
             self.NUMBER_OF_BADGES_PER_PAGE = 6
             self.svgPath = 'static/badges/' + badge_size + 'onA4.svg'
         self.wrap = True
-        self.font_size = font_size
         self.font_choice = font_choice
         with open(os.path.join(self.APP_ROOT, self.svgPath), encoding="UTF-8") as f:
             self.CONTENT = f.read()
@@ -62,8 +71,6 @@ class GenerateBadges:
             content = content.replace("inkscape-font-specification:sans-serif", "inkscape-font-specification:" + self.font_choice)
             content = content.replace("font-family:ubuntu", "font-family:" + self.font_choice)
             content = content.replace("inkscape-font-specification:ubuntu", "inkscape-font-specification:" + self.font_choice)
-        if self.font_size:
-            content = content.replace("font-size:31.25px", "font-size:" + str(self.font_size) + "px")
         for i, row in enumerate(rows):
             row = [entry for entry in row if not entry.isspace()]
             if len(row) == 0:
