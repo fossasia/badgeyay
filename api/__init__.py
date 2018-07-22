@@ -6,6 +6,7 @@ from api.config import config
 from flask_cors import CORS
 from api.models.settings import Settings
 from api.db import db
+from api.utils.dimen import init_dimen
 
 
 def create_app():
@@ -19,6 +20,8 @@ def create_app():
     else:
         app.config['SQLALCHEMY_DATABASE_URI'] = os.environ['DATABASE_URL']
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
+
+    init_dimen()
 
     with app.app_context():
         db.init_app(app)

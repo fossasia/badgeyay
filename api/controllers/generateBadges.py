@@ -54,7 +54,7 @@ def generateBadges():
         svg2png.do_text_fill(
             os.getcwd() + '/api/static/badges/8BadgesOnA3.svg', text_color)
     else:
-        svg2png.do_text_fill('static/badges/8BadgesOnA3.svg', text_color)
+        svg2png.do_text_fill('static/badges/8BadgesOnA3.svg', text_color, badge_size, paper_size)
     merge_badges = MergeBadges(
         image_name, csv_name, paper_size, badge_size, font_size, font_choice)
     merge_badges.merge_pdfs()
