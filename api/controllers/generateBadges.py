@@ -11,14 +11,15 @@ from api.helpers.verifyToken import loginRequired
 from api.utils.errors import ErrorResponse
 from api.models.badges import Badges
 from api.models.user import User
-from api.schemas.badges import BadgeSchema, UserBadges, DeletedBadges
+from api.schemas.badges import BadgeSchema, UserBadges, DeletedBadges, EditBadgeSchema
 from api.utils.merge_badges import MergeBadges
 from api.utils.svg_to_png import SVG2PNG
 from api.schemas.errors import (
     ImageNotFound,
     JsonNotFound,
     CSVNotFound,
-    UsageNotAllowed
+    UsageNotAllowed,
+    UserNotFound
 )
 from firebase_admin import db as firebase_db
 from api.utils.firebaseUploader import fileUploader, deleteFile
@@ -103,6 +104,25 @@ def send_badge_mail(badgeId, userId, badgeLink):
         'badgeLink': badgeLink
     })
     print('Pushed badge generation mail to : ', badgeId)
+
+
+@router.route('/generate_badges', methods=['PATCH'])
+@loginRequired
+def edit_badges():
+    schema = EditBadgeSchema()
+    try:
+        input_data = request.json()
+    except Exception:
+        return ErrorResponse(JsonNotFound().message, 422, {'Content-Type': 'application/json'}).respond()
+    data, err = schema.load(input_data)
+    if err:
+        return jsonify(err)
+    badge = Badges.getBadge(badge_id=data['badge_id'])
+    if badge.user_id != data['user_id']:
+        return ErrorResponse(UserNotFound(data['user_id']).message, 422, {'Content-Type': 'application/json'}).respond()
+    temp_badge = badge
+    badge.delete_from_db()
+    return jsonify(EditBadgeSchema().dump(temp_badge).data)
 
 
 @router.route('/get_badges', methods=['GET'])

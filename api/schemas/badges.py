@@ -13,6 +13,16 @@ class BadgeSchema(Schema):
     download_link = fields.Str(required=True)
 
 
+class EditBadgeSchema(Schema):
+    class Meta:
+        type_ = 'edit-badges'
+        kwargs = {'id': '<id>'}
+
+    id = fields.Str(required=True)
+    badge_id = fields.Str(required=True)
+    user_id = fields.Str(required=True)
+
+
 class AllBadges(Schema):
     class Meta:
         type_ = 'all-badges'
