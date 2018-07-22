@@ -52,7 +52,7 @@ def generateBadges():
     svg2png = SVG2PNG()
     if config.ENV == 'PROD':
         svg2png.do_text_fill(
-            os.getcwd() + '/api/static/badges/8BadgesOnA3.svg', text_color)
+            os.getcwd() + '/api/static/badges/8BadgesOnA3.svg', text_color, badge_size, paper_size)
     else:
         svg2png.do_text_fill('static/badges/8BadgesOnA3.svg', text_color, badge_size, paper_size)
     merge_badges = MergeBadges(
