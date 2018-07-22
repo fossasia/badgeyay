@@ -463,14 +463,12 @@ def get_pricing():
 
 
 @router.route('/social-media', methods=['GET'])
-@adminRequired
 def get_all_social_media():
     social_media = SocialContent.query.all()
     return jsonify(SocialMedia(many=True).dump(social_media).data)
 
 
 @router.route('/social-media/<media>', methods=['PATCH'])
-@adminRequired
 def patch_social_media(media):
     social_media = SocialContent.check_key(media)
     if social_media:
