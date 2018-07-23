@@ -11,39 +11,73 @@
         </tr>
     </thead>
     <tbody>
-        {{#each users as |user|}}
-        <tr>
-            <td>
-                <img class="ui tiny centered circular image" src="{{user.photoURL}}">
-            </td>
-            <td>{{user.username}}</td>
-            <td>{{user.email}}</td>
-            <td>{{sanitizeDate user.created_at}}</td>
-            {{#if user.deleted_at}}
-                <td>{{sanitizeDate user.deleted_at}}</td>
-            {{else}}
-                <td>Not Yet</td>
-            {{/if}}
-            {{#if user.lastLoginIp}}
-                <td>{{user.lastLoginIp}}</td>
-            {{else}}
-                <td>Not Logged In Yet</td>
-            {{/if}}
-            <td>
-                {{#if authToken.permissions.isAdmin}}
-                <div class="ui horizontal compact basic buttons">
-                    {{#ui-popup content='Edit' class="ui icon button" click=(action 'openModal' 'user-edit' user)}}
-                    <i class="edit icon"></i>
-                    {{/ui-popup}} {{#ui-popup content='Delete' class='ui icon button' click=(action 'deleteUser' user)}}
-                    <i class="trash alternate outline icon"></i>
-                    {{/ui-popup}}
-                </div>
-                {{else}}
-                <p>You donot have the permission to edit role</p>
-                {{/if}}
-            </td>
-        </tr>
-        {{/each}}
+        {{#if single}}
+            <tr>
+                    <td>
+                        <img class="ui tiny centered circular image" src="{{users.photoURL}}">
+                    </td>
+                    <td>{{users.username}}</td>
+                    <td>{{users.email}}</td>
+                    <td>{{sanitizeDate users.created_at}}</td>
+                    {{#if users.deleted_at}}
+                        <td>{{sanitizeDate users.deleted_at}}</td>
+                    {{else}}
+                        <td>Not Yet</td>
+                    {{/if}}
+                    {{#if users.lastLoginIp}}
+                        <td>{{users.lastLoginIp}}</td>
+                    {{else}}
+                        <td>Not Logged In Yet</td>
+                    {{/if}}
+                    <td>
+                        {{#if authToken.permissions.isAdmin}}
+                            <div class="ui horizontal compact basic buttons">
+                                {{#ui-popup content='Edit' class="ui icon button" click=(action 'openModal' 'user-edit' users)}}
+                                    <i class="edit icon"></i>
+                                {{/ui-popup}} {{#ui-popup content='Delete' class='ui icon button' click=(action 'deleteUser' users)}}
+                                    <i class="trash alternate outline icon"></i>
+                                {{/ui-popup}}
+                            </div>
+                        {{else}}
+                            <p>You donot have the permission to edit role</p>
+                        {{/if}}
+                    </td>
+                </tr>
+        {{else}}
+            {{#each users as |user|}}
+                <tr>
+                    <td>
+                        <img class="ui tiny centered circular image" src="{{user.photoURL}}">
+                    </td>
+                    <td>{{user.username}}</td>
+                    <td>{{user.email}}</td>
+                    <td>{{sanitizeDate user.created_at}}</td>
+                    {{#if user.deleted_at}}
+                        <td>{{sanitizeDate user.deleted_at}}</td>
+                    {{else}}
+                        <td>Not Yet</td>
+                    {{/if}}
+                    {{#if user.lastLoginIp}}
+                        <td>{{user.lastLoginIp}}</td>
+                    {{else}}
+                        <td>Not Logged In Yet</td>
+                    {{/if}}
+                    <td>
+                        {{#if authToken.permissions.isAdmin}}
+                            <div class="ui horizontal compact basic buttons">
+                                {{#ui-popup content='Edit' class="ui icon button" click=(action 'openModal' 'user-edit' user)}}
+                                    <i class="edit icon"></i>
+                                {{/ui-popup}} {{#ui-popup content='Delete' class='ui icon button' click=(action 'deleteUser' user)}}
+                                    <i class="trash alternate outline icon"></i>
+                                {{/ui-popup}}
+                            </div>
+                        {{else}}
+                            <p>You donot have the permission to edit role</p>
+                        {{/if}}
+                    </td>
+                </tr>
+            {{/each}}
+        {{/if}}
     </tbody>
     {{#if allow}}
         <tfoot>
