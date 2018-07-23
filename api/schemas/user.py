@@ -35,6 +35,23 @@ class AllUsersSchema(Schema):
     lastLoginIp = fields.Str(allow_none=True, attribute='User.last_login_ip')
 
 
+class SearchedUserSchema(Schema):
+    class Meta:
+        type_ = 'all-users'
+
+    id = fields.Str(required=True, dump_only=True)
+    username = fields.Str(required=True)
+    email = fields.Str(required=True)
+    password = fields.Str(required=True)
+    created_at = fields.Date(required=True)
+    photoURL = fields.Str(required=True)
+    deleted_at = fields.Date()
+    isAdmin = fields.Bool()
+    isUser = fields.Bool()
+    isSales = fields.Bool()
+    lastLoginIp = fields.Str(allow_none=True)
+
+
 class OAuthUserSchema(Schema):
     class Meta:
         type_ = 'users'
