@@ -1,17 +1,180 @@
 <div class="field">
-    <label>Select font size</label>
-  <input type="range"
-  class="max-width"
-  oninput={{action (mut defFontSize)
-  value="target.value"}}
-  min={{min}}
-  max={{max}}
-  steps="1">
-  <div style="text-align: center;">
-  {{#if textZoom}}
-    <div class="text-zoom">{{defFontSize}}</div>
-  {{else}}
-    <div >{{defFontSize}}</div>
-  {{/if}}
+  <label>Select Font</label>
+</div>
+<div class="ui centered grid">
+  <div class="three column row">
+    <div class="center aligned column">Field</div>
+    <div class="center aligned column">Font Size (in pixels)</div>
+    <div class="center aligned column">Adjust long content to width automatically</div>
+  </div>
+  <div class="three column row">
+    <div class="center aligned column">First Name</div>
+    <div class="center aligned column">
+      <div class="one wide cloumn">
+        {{#ui-dropdown class="selection" onChange=(action (mut font1))}}
+        <div class="default text">Size</div>
+        <i class="dropdown icon"></i>
+        <div class="menu">
+          <div class="item" data-item="1">1</div>
+          <div class="item" data-item="2">2</div>
+          <div class="item" data-item="3">3</div>
+          <div class="item" data-item="4">4</div>
+          <div class="item" data-item="5">5</div>
+          <div class="item" data-item="6">6</div>
+          <div class="item" data-item="7">7</div>
+          <div class="item" data-item="8">8</div>
+          <div class="item" data-item="9">9</div>
+          <div class="item" data-item="10">10</div>
+          <div class="item" data-item="11">11</div>
+          <div class="item" data-item="12">12</div>
+          <div class="item" data-item="13">13</div>
+          <div class="item" data-item="14">14</div>
+          <div class="item" data-item="15">15</div>
+        </div>
+        {{/ui-dropdown}}
+      </div>
+    </div>
+    <div class="center aligned column">
+      <div class="ui toggle checkbox">
+        <input name="public" type="checkbox">
+        <label></label>
+      </div>
+    </div>
+  </div>
+  <div class="three column row">
+    <div class="center aligned column">Last Name</div>
+    <div class="center aligned column">
+      <div class="one wide cloumn">
+        {{#ui-dropdown class="selection" onChange=(action (mut font2))}}
+        <div class="default text">Size</div>
+        <i class="dropdown icon"></i>
+        <div class="menu">
+          <div class="item" data-item="1">1</div>
+          <div class="item" data-item="2">2</div>
+          <div class="item" data-item="3">3</div>
+          <div class="item" data-item="4">4</div>
+          <div class="item" data-item="5">5</div>
+          <div class="item" data-item="6">6</div>
+          <div class="item" data-item="7">7</div>
+          <div class="item" data-item="8">8</div>
+          <div class="item" data-item="9">9</div>
+          <div class="item" data-item="10">10</div>
+          <div class="item" data-item="11">11</div>
+          <div class="item" data-item="12">12</div>
+          <div class="item" data-item="13">13</div>
+          <div class="item" data-item="14">14</div>
+          <div class="item" data-item="15">15</div>
+        </div>
+        {{/ui-dropdown}}
+      </div>
+    </div>
+    <div class="center aligned column">
+      <div class="ui toggle checkbox">
+        <input name="public" type="checkbox">
+        <label></label>
+      </div>
+    </div>
+  </div>
+  <div class="three column row">
+    <div class="center aligned column">Designation</div>
+    <div class="center aligned column">
+      <div class="one wide cloumn">
+        {{#ui-dropdown class="selection" onChange=(action (mut font3))}}
+        <div class="default text">Size</div>
+        <i class="dropdown icon"></i>
+        <div class="menu">
+          <div class="item" data-item="1">1</div>
+          <div class="item" data-item="2">2</div>
+          <div class="item" data-item="3">3</div>
+          <div class="item" data-item="4">4</div>
+          <div class="item" data-item="5">5</div>
+          <div class="item" data-item="6">6</div>
+          <div class="item" data-item="7">7</div>
+          <div class="item" data-item="8">8</div>
+          <div class="item" data-item="9">9</div>
+          <div class="item" data-item="10">10</div>
+          <div class="item" data-item="11">11</div>
+          <div class="item" data-item="12">12</div>
+          <div class="item" data-item="13">13</div>
+          <div class="item" data-item="14">14</div>
+          <div class="item" data-item="15">15</div>
+        </div>
+        {{/ui-dropdown}}
+      </div>
+    </div>
+    <div class="center aligned column">
+      <div class="ui toggle checkbox">
+        <input name="public" type="checkbox">
+        <label></label>
+      </div>
+    </div>
+  </div>
+  <div class="three column row">
+    <div class="center aligned column">Organization</div>
+    <div class="center aligned column">
+      <div class="one wide cloumn">
+        {{#ui-dropdown class="selection" onChange=(action (mut font4))}}
+        <div class="default text">Size</div>
+        <i class="dropdown icon"></i>
+        <div class="menu">
+          <div class="item" data-item="1">1</div>
+          <div class="item" data-item="2">2</div>
+          <div class="item" data-item="3">3</div>
+          <div class="item" data-item="4">4</div>
+          <div class="item" data-item="5">5</div>
+          <div class="item" data-item="6">6</div>
+          <div class="item" data-item="7">7</div>
+          <div class="item" data-item="8">8</div>
+          <div class="item" data-item="9">9</div>
+          <div class="item" data-item="10">10</div>
+          <div class="item" data-item="11">11</div>
+          <div class="item" data-item="12">12</div>
+          <div class="item" data-item="13">13</div>
+          <div class="item" data-item="14">14</div>
+          <div class="item" data-item="15">15</div>
+        </div>
+        {{/ui-dropdown}}
+      </div>
+    </div>
+    <div class="center aligned column">
+      <div class="ui toggle checkbox">
+        <input name="public" type="checkbox">
+        <label></label>
+      </div>
+    </div>
+  </div>
+  <div class="three column row">
+    <div class="center aligned column">Handle (e.g. Github)</div>
+    <div class="center aligned column">
+      <div class="one wide cloumn">
+        {{#ui-dropdown class="selection" onChange=(action (mut font5))}}
+        <div class="default text">Size</div>
+        <i class="dropdown icon"></i>
+        <div class="menu">
+          <div class="item" data-item="1">1</div>
+          <div class="item" data-item="2">2</div>
+          <div class="item" data-item="3">3</div>
+          <div class="item" data-item="4">4</div>
+          <div class="item" data-item="5">5</div>
+          <div class="item" data-item="6">6</div>
+          <div class="item" data-item="7">7</div>
+          <div class="item" data-item="8">8</div>
+          <div class="item" data-item="9">9</div>
+          <div class="item" data-item="10">10</div>
+          <div class="item" data-item="11">11</div>
+          <div class="item" data-item="12">12</div>
+          <div class="item" data-item="13">13</div>
+          <div class="item" data-item="14">14</div>
+          <div class="item" data-item="15">15</div>
+        </div>
+        {{/ui-dropdown}}
+      </div>
+    </div>
+    <div class="center aligned column">
+      <div class="ui toggle checkbox">
+        <input name="public" type="checkbox">
+        <label></label>
+      </div>
+    </div>
   </div>
 </div>

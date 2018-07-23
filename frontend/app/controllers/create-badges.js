@@ -11,7 +11,11 @@ export default Controller.extend({
   authToken      : service('auth-session'),
   defColor       : '',
   defFontColor   : '',
-  defFontSize    : '',
+  defFont1Size   : '10',
+  defFont2Size   : '10',
+  defFont3Size   : '10',
+  defFont4Size   : '10',
+  defFont5Size   : '10',
   defFont        : '',
   uid            : '',
   textData       : '',
@@ -101,8 +105,12 @@ export default Controller.extend({
         badgeData.font_color = '#' + _this.defFontColor;
       }
 
-      if (_this.defFontSize !== '' && _this.defFontSize !== undefined) {
-        badgeData.font_size = _this.defFontSize.toString();
+      if (_this.defFont1Size !== '' && _this.defFont1Size !== undefined) {
+        badgeData.font_size_1 = _this.defFont1Size.toString();
+        badgeData.font_size_2 = _this.defFont2Size.toString();
+        badgeData.font_size_3 = _this.defFont3Size.toString();
+        badgeData.font_size_4 = _this.defFont4Size.toString();
+        badgeData.font_size_5 = _this.defFont5Size.toString();
       }
 
       if (_this.defFont !== '' && _this.defFont !== undefined) {
@@ -359,8 +367,23 @@ export default Controller.extend({
       this.set('defFont', id);
     },
 
-    mutateFontSize(value) {
-      this.set('defFontSize', value);
+    mutateFontSize(values) {
+      const [font1, font2, font3, font4, font5] = values;
+      if (font1 !== '') {
+        this.set('defFont1Size', font1);
+      }
+      if (font2 !== '') {
+        this.set('defFont2Size', font2);
+      }
+      if (font3 !== '') {
+        this.set('defFont3Size', font3);
+      }
+      if (font4 !== '') {
+        this.set('defFont4Size', font4);
+      }
+      if (font5 !== '') {
+        this.set('defFont5Size', font5);
+      }
     },
 
     mutatePaperSize(value) {
