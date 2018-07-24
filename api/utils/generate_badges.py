@@ -5,6 +5,7 @@ import html
 from flask import current_app as app
 from defusedxml.lxml import parse
 from defusedxml.lxml import _etree as etree
+from api.utils.dimen import badge_config
 
 
 class GenerateBadges:
@@ -15,15 +16,9 @@ class GenerateBadges:
         self.csv = os.path.join(app.config.get('BASE_DIR'), 'static', 'uploads', 'csv', csv_name)
         self.paper_size = {'A3': ['297mm', '420mm'], 'A4': ['210mm', '297mm'], 'A5': ['148mm', '210mm'], 'A6': ['105mm', '148mm']}
         self.paper_dimen = paper_dimen
-        if self.paper_dimen == 'A2':
-            self.NUMBER_OF_BADGES_PER_PAGE = 18
-            self.svgPath = 'static/badges/' + badge_size + 'onA2.svg'
-        elif self.paper_dimen == 'A3':
-            self.NUMBER_OF_BADGES_PER_PAGE = 8
-            self.svgPath = 'static/badges/' + badge_size + 'onA3.svg'
-        elif self.paper_dimen == 'A4':
-            self.NUMBER_OF_BADGES_PER_PAGE = 6
-            self.svgPath = 'static/badges/' + badge_size + 'onA4.svg'
+        dimen = badge_config[paper_dimen][badge_size]
+        self.NUMBER_OF_BADGES_PER_PAGE = dimen.badges
+        self.svgPath = 'static/badges/' + badge_size + 'on' + paper_dimen + '.svg'
         self.wrap = True
         self.font_size = font_size
         self.font_choice = font_choice

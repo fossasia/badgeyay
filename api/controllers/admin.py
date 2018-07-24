@@ -11,7 +11,7 @@ from api.models.utils import Utilities
 from api.models.modules import Module
 from api.schemas.modules import ModuleSchema
 from api.helpers.verifyToken import adminRequired
-from api.schemas.user import AllUsersSchema, UserAllowedUsage, DatedUserSchema
+from api.schemas.user import AllUsersSchema, UserAllowedUsage, DatedUserSchema, SearchedUserSchema
 from api.schemas.badges import AllBadges, AllGenBadges
 from api.schemas.file import FileSchema
 from api.schemas.errors import JsonNotFound
@@ -78,9 +78,10 @@ def show_all_users():
     args = request.args
     if 'email' in args.keys():
         user = User.getUser(email=args['email'])
+        schema = SearchedUserSchema()
         if not user:
             return ErrorResponse(UserNotFound().message, 422, {'Content-Type': 'application/json'}).respond()
-        return jsonify(AllUsersSchema().dump(user).data)
+        return jsonify(schema.dump(user).data)
     schema = AllUsersSchema(many=True)
     if 'state' in args.keys():
         base_query = db.session.query(User, Permissions).join(Permissions, Permissions.user_id == User.id)
