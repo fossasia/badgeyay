@@ -5,18 +5,29 @@
             {{'Where is the application running ?'}}
         </div>
     </h3>
-    <div class="field">
-        {{ui-radio label='Development' current=settings.appEnvironment onChange=(action (mut settings.appEnvironment)) name='environment'
-        value='0'}}
+    <div class="ui three column grid">
+        <div class="ui row">
+            <div class="column">
+                <div class="field">
+                    {{ui-radio label='Development' current=settings.appEnvironment onChange=(action (mut settings.appEnvironment)) name='environment'
+                    value='0'}}
+                </div>
+            </div>
+            <div class="column">
+                <div class="field">
+                    {{ui-radio label='Production' current=settings.appEnvironment onChange=(action (mut settings.appEnvironment)) name='environment'
+                    value='1'}}
+                </div>
+            </div>
+            <div class="column">
+                <div class="field">
+                    {{ui-radio label='Staging' current=settings.appEnvironment onChange=(action (mut settings.appEnvironment)) name='environment'
+                    value='2'}}
+                </div>
+            </div>
+        </div>
     </div>
-    <div class="field">
-        {{ui-radio label='Production' current=settings.appEnvironment onChange=(action (mut settings.appEnvironment)) name='environment'
-        value='1'}}
-    </div>
-    <div class="field">
-        {{ui-radio label='Staging' current=settings.appEnvironment onChange=(action (mut settings.appEnvironment)) name='environment'
-        value='2'}}
-    </div>
+    <div class="ui horizontal divider"></div>
     <h3 class="ui header">
         {{'App Name'}}
         <div class="sub header">
@@ -24,9 +35,6 @@
         </div>
     </h3>
     <div class="field">
-        <label>
-            {{'App Name'}}
-        </label>
         {{input type='text' name='app_name' value=settings.appName}}
     </div>
     <div class="ui hidden divider"></div>
@@ -42,7 +50,6 @@
         <label>Realtime Database</label>
         {{input type='text' name='realtime_database' value=settings.firebaseDatabaseURL}}
     </div>
-
     <div class="ui hidden divider"></div>
     <h3 class="ui header">
         {{'App secret key'}}
@@ -51,9 +58,6 @@
         </div>
     </h3>
     <div class="field">
-        <label>
-            {{'Secret'}}
-        </label>
         {{input type='text' name='secret_key' value=settings.secretKey}}
     </div>
     <div class="ui hidden divider"></div>
