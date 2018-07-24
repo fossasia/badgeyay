@@ -5,6 +5,7 @@ from defusedxml.lxml import parse
 from cairosvg import svg2png
 from flask import current_app as app
 from api.utils.dimen import badge_config
+from api.config import config
 
 
 class SVG2PNG:
@@ -20,7 +21,10 @@ class SVG2PNG:
         :param `fill` - color to be applied on text
         """
         dimensions = badge_config[paper_size][badge_size]
-        filename = 'static/badges/' + dimensions.badgeSize + 'on' + dimensions.paperSize + '.svg'
+        if config.ENV == 'LOCAL':
+            filename = 'static/badges/' + dimensions.badgeSize + 'on' + dimensions.paperSize + '.svg'
+        else:
+            filename = os.getcwd() + '/api/static/badges/' + dimensions.badgeSize + 'on' + dimensions.paperSize + '.svg'
         tree = etree.parse(open(os.path.join(self.APP_ROOT, filename), 'r'))
         element = tree.getroot()
         for idx in range(1, dimensions.badges + 1):
