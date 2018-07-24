@@ -1,157 +1,173 @@
-<div class="main-container create-badge segments">
-    <div class="ui raised segment">
-        <div class="ui form width-container">
-            <p>
-                <b>Name your Badges</b>
-            </p>
-            <div class="content">
-                <div class="center aligned">
-                    {{ data-component/name-component sendName=(action 'mutateName')}}
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="ui raised segment">
-        <div class="ui form width-container">
-            <p>
-                <b>Select from one of the Input Sources</b>
-                <a class="ui icon orange basic button guide" href="{{href-to 'user-guide'}}" data-tooltip="User Input Guide" data-position="right center">
-                    <i class="info icon"></i>
-                </a>
-            </p>
-                <div class="content">
-                    <div class="center aligned">
-                        {{ data-component/csv-component sendCSV=(action 'mutateCSV') }}
+<div class="ui grid">
+    <div class="{{if previewToggled 'ten' 'sixteen'}} wide column">
+        <div class="main-container create-badge segments">
+            <div class="ui raised segment">
+                <div class="ui form width-container">
+                    <div>
+                        <div class="ui right aligned grid">
+                            <div class="left floated left aligned six wide column">
+                                <b>Name your Badges</b>
+                            </div>
+                            <div class="right floated right aligned six wide column">
+                                <div class="ui">
+                                <button {{action 'togglePreview'}} class="ui basic orange button" data-tooltip="Toggle Preview (WIP)" data-position="right center">{{prevButton}}</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="content" style="margin-top: 10px;">
+                        <div class="center aligned">
+                            {{ data-component/name-component sendName=(action 'mutateName')}}
+                        </div>
                     </div>
                 </div>
-                  <div class="ui horizontal divider">
-                    Or
-                  </div>
-                <div class="content">
-                    <div class="center aligned">
-                        {{ data-component/text-component sendText=(action 'mutateText') }}
-                    </div>
-                </div>
-        </div>
-    </div>
-    <div class="ui raised segment">
-        <div class="ui form width-container">
-            <p>
-                <b>Select from one of the Paper Sizes</b>
-            </p>
-                <div class="content">
-                    <div class="center aligned">
-                        {{ badge-component/paper-size sendPaperSize=(action 'mutatePaperSize') }}
-                    </div>
-                </div>
-        </div>
-        <div class="ui horizontal divider"></div>
-        <div class="ui form width-container">
-            <p>
-                <b>Select from one of the Badge Sizes</b>
-            </p>
-            <div class="content">
-                <div class="center aligned">
-                    {{ badge-component/badge-size sendBadgeSize=(action 'mutateBadgeSize')}}
+            </div>
+            <div class="ui raised segment">
+                <div class="ui form width-container">
+                    <p>
+                        <b>Select from one of the Input Sources</b>
+                        <a class="ui icon orange basic button guide" href="{{href-to 'user-guide'}}" data-tooltip="User Input Guide" data-position="right center">
+                            <i class="info icon"></i>
+                        </a>
+                    </p>
+                        <div class="content">
+                            <div class="center aligned">
+                                {{ data-component/csv-component sendCSV=(action 'mutateCSV') }}
+                            </div>
+                        </div>
+                          <div class="ui horizontal divider">
+                            Or
+                          </div>
+                        <div class="content">
+                            <div class="center aligned">
+                                {{ data-component/text-component sendText=(action 'mutateText') }}
+                            </div>
+                        </div>
                 </div>
             </div>
-        </div>
-    </div>
-    <div class="ui raised segment">
-        <div class="ui form width-container">
-            <p>
-                <b>Select from one of the background sources</b>
-                <a class="ui icon orange basic button guide" data-tooltip="Best Suitable Image -> Size(width x height): 749 X 1049px & Resolution: 300 DPI"
-                    data-position="right center">
-                    <i class="info icon"></i>
-                </a>
-            </p>
-            <div class="content">
-                <div class="center aligned">
-                    {{ background-component/def-image-component defImages=defImages sendDefImage=(action 'mutateBackground') }}
-                </div>
-            </div>
-            <div class="ui horizontal divider">
-                Or
-            </div>
-            <div class="content">
-                <div class="center aligned">
-                    {{ background-component/color-bg-component sendDefColor=(action 'mutateDefColor') }}
-                </div>
-            </div>
-            <div class="ui horizontal divider">
-                Or
-              </div>
-            <div class="content">
-                <div class="center aligned">
-                    {{ background-component/image-component sendImage=(action 'mutateCustomImage') }}
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="ui raised segment">
-        <div class="ui form width-container">
-            <p>
-                <b>Select from following font customizations</b>
-            </p>
-            <div class="content">
-                <div class="center aligned">
-                    {{ text-component/font-type sendDefFont=(action 'mutateCustomFont')}}
-                </div>
-            </div>
-            <div class="ui horizontal divider"></div>
-            <div class="content">
-                <div class="center aligned">
-                    {{ text-component/font-color sendDefFontColor=(action 'mutateDefFontColor')}}
-                </div>
-            </div>
-            <div class="ui horizontal divider"></div>
-            <div class="content">
-                <div class="center aligned">
-                    {{ text-component/font-size sendDefSize=(action 'mutateFontSize')}}
-                </div>
-            </div>
-        </div>
-    </div>
-    <button {{action "submitForm"}} class="ui fluid orange {{if authToken.isEmailVerified '' 'disabled'}} button">Create Badges</button>
-    {{#each userError as |error|}}
-        <p>{{error.message}}</p>
-    {{/each}}
-    {{#if showProgress}}
-        <div class="ui hidden divider"></div>
-        <div>
-            <div class="ui centered aligned grid">{{progressState}}</div>
-            <div class="ui hidden divider"></div>
-            {{#ui-progress percent=progress class="teal indicating"}}
-                <div class="bar">
-                    <div class="progress"></div>
-                </div>
-            {{/ui-progress}}
-        </div>
-    {{/if}}
-    {{#if badgeGenerated}}
-        <div class="ui positive message">
-            <i class="close icon"></i>
-                <div class="ui center aligned header">
-                    Badge generated successfully!
+            <div class="ui raised segment">
+                <div class="ui form width-container">
+                    <p>
+                        <b>Select from one of the Paper Sizes</b>
+                    </p>
+                        <div class="content">
+                            <div class="center aligned">
+                                {{ badge-component/paper-size sendPaperSize=(action 'mutatePaperSize') }}
+                            </div>
+                        </div>
                 </div>
                 <div class="ui horizontal divider"></div>
-                <div class="ui center aligned secondary header">
-                    <a class="ui green basic button" href="{{badgeGeneratedLink}}">
-                        Download as PDF
-                    </a>
+                <div class="ui form width-container">
+                    <p>
+                        <b>Select from one of the Badge Sizes</b>
+                    </p>
+                    <div class="content">
+                        <div class="center aligned">
+                            {{ badge-component/badge-size sendBadgeSize=(action 'mutateBadgeSize')}}
+                        </div>
+                    </div>
                 </div>
-            <script type="text/javascript">
-                $('.message .close')
-                    .on('click', function () {
-                        $(this)
-                            .closest('.message')
-                            .transition('fade')
-                            ;
-                    });
-            </script>
+            </div>
+            <div class="ui raised segment">
+                <div class="ui form width-container">
+                    <p>
+                        <b>Select from one of the background sources</b>
+                        <a class="ui icon orange basic button guide" data-tooltip="Best Suitable Image -> Size(width x height): 749 X 1049px & Resolution: 300 DPI"
+                            data-position="right center">
+                            <i class="info icon"></i>
+                        </a>
+                    </p>
+                    <div class="content">
+                        <div class="center aligned">
+                            {{ background-component/def-image-component defImages=defImages sendDefImage=(action 'mutateBackground') }}
+                        </div>
+                    </div>
+                    <div class="ui horizontal divider">
+                        Or
+                    </div>
+                    <div class="content">
+                        <div class="center aligned">
+                            {{ background-component/color-bg-component sendDefColor=(action 'mutateDefColor') }}
+                        </div>
+                    </div>
+                    <div class="ui horizontal divider">
+                        Or
+                      </div>
+                    <div class="content">
+                        <div class="center aligned">
+                            {{ background-component/image-component sendImage=(action 'mutateCustomImage') }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="ui raised segment">
+                <div class="ui form width-container">
+                    <p>
+                        <b>Select from following font customizations</b>
+                    </p>
+                    <div class="content">
+                        <div class="center aligned">
+                            {{ text-component/font-type sendDefFont=(action 'mutateCustomFont')}}
+                        </div>
+                    </div>
+                    <div class="ui horizontal divider"></div>
+                    <div class="content">
+                        <div class="center aligned">
+                            {{ text-component/font-color sendDefFontColor=(action 'mutateDefFontColor')}}
+                        </div>
+                    </div>
+                    <div class="ui horizontal divider"></div>
+                    <div class="content">
+                        <div class="center aligned">
+                            {{ text-component/font-size sendDefSize=(action 'mutateFontSize')}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <button {{action "submitForm"}} class="ui fluid orange {{if authToken.isEmailVerified '' 'disabled'}} button">Create Badges</button>
+            {{#each userError as |error|}}
+                <p>{{error.message}}</p>
+            {{/each}}
+            {{#if showProgress}}
+                <div class="ui hidden divider"></div>
+                <div>
+                    <div class="ui centered aligned grid">{{progressState}}</div>
+                    <div class="ui hidden divider"></div>
+                    {{#ui-progress percent=progress class="teal indicating"}}
+                        <div class="bar">
+                            <div class="progress"></div>
+                        </div>
+                    {{/ui-progress}}
+                </div>
+            {{/if}}
+            {{#if badgeGenerated}}
+                <div class="ui positive message">
+                    <i class="close icon"></i>
+                        <div class="ui center aligned header">
+                            Badge generated successfully!
+                        </div>
+                        <div class="ui horizontal divider"></div>
+                        <div class="ui center aligned secondary header">
+                            <a class="ui green basic button" href="{{badgeGeneratedLink}}">
+                                Download as PDF
+                            </a>
+                        </div>
+                    <script type="text/javascript">
+                        $('.message .close')
+                            .on('click', function () {
+                                $(this)
+                                    .closest('.message')
+                                    .transition('fade')
+                                    ;
+                            });
+                    </script>
+                </div>
+            {{/if}}
         </div>
-    {{/if}}
+    </div>
+    <div class="{{if previewToggled 'five' ''}} wide column">
+        <!--Add Preview Section here-->
+    </div>
 </div>
 
 {{overlay-welcome user=user removeFTL=(action 'removeFTL')}}
