@@ -4,6 +4,7 @@
             <th class="no-sort">User Photo</th>
             <th>User Name</th>
             <th>User Email</th>
+            <th class="no-sort">User Role</th>
             <th>User Created At</th>
             <th>User Deleted At</th>
             <th class="no-sort">Last Login IP</th>
@@ -18,6 +19,7 @@
                     </td>
                     <td>{{users.username}}</td>
                     <td>{{users.email}}</td>
+                    <td>{{extract-role users}}</td>
                     <td>{{sanitizeDate users.created_at}}</td>
                     {{#if users.deleted_at}}
                         <td>{{sanitizeDate users.deleted_at}}</td>
@@ -52,6 +54,7 @@
                     </td>
                     <td>{{user.username}}</td>
                     <td>{{user.email}}</td>
+                    <td>{{extract-role user}}</td>
                     <td data-sort-value={{extract-time-stamp user.created_at}}>{{sanitizeDate user.created_at}}</td>
                     {{#if user.deleted_at}}
                         <td data-sort-value={{extract-time-stamp user.deleted_at}}>{{sanitizeDate user.deleted_at}}</td>
