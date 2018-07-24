@@ -13,7 +13,10 @@ def init_dimen():
     for paper in paper_sizes:
         if paper == 'A2':
             badge_config.__setitem__(paper, {'4x3': Dimen(18, '4x3', paper)})
+            badge_config[paper]['4.5x4'] = Dimen(15, '4.5x4', paper)
         elif paper == 'A3':
             badge_config.__setitem__(paper, {'4x3': Dimen(8, '4x3', paper)})
+            badge_config[paper]['4.5x4'] = Dimen(6, '4.5x4', paper)
         elif paper == 'A4':
             badge_config.__setitem__(paper, {'4x3': Dimen(6, '4x3', paper)})
+            badge_config[paper]['4.5x4'] = Dimen(2, '4.5x4', paper)
