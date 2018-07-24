@@ -25,6 +25,8 @@ export default Controller.extend({
   csvFile        : '',
   custImgFile    : '',
   badgeSize      : '',
+  previewToggled : false,
+  prevButton     : '<',
   badgeGenerated : false,
   backLink       : APP.backLink,
   defPaperSize   : '',
@@ -394,6 +396,15 @@ export default Controller.extend({
 
     mutateBadgeSize(value) {
       this.set('badgeSize', value);
+    },
+
+    togglePreview() {
+      this.set('previewToggled', !this.previewToggled);
+      if (this.previewToggled) {
+        this.set('prevButton', '>');
+      } else {
+        this.set('prevButton', '<');
+      }
     }
   }
 });

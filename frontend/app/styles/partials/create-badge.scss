@@ -1,8 +1,15 @@
-.create-badge {
-  position: relative;
-  padding-left: 6%;
-  padding-right: 6%;
-  top: -50px;
+.ui{
+
+  .column{
+    color: black;
+    
+    .create-badge {
+      position: relative;
+      padding-left: 6%;
+      padding-right: 6%;
+      top: -50px;
+    }
+  }
 }
 
 .guide {
