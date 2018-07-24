@@ -1,13 +1,13 @@
-<table class="ui table">
+<table class="ui sortable table">
     <thead>
         <tr>
-            <th>User Photo</th>
+            <th class="no-sort">User Photo</th>
             <th>User Name</th>
             <th>User Email</th>
             <th>User Created At</th>
             <th>User Deleted At</th>
-            <th>Last Login IP</th>
-            <th>Actions</th>
+            <th class="no-sort">Last Login IP</th>
+            <th class="no-sort">Actions</th>
         </tr>
     </thead>
     <tbody>
@@ -34,7 +34,8 @@
                             <div class="ui horizontal compact basic buttons">
                                 {{#ui-popup content='Edit' class="ui icon button" click=(action 'openModal' 'user-edit' users)}}
                                     <i class="edit icon"></i>
-                                {{/ui-popup}} {{#ui-popup content='Delete' class='ui icon button' click=(action 'deleteUser' users)}}
+                                {{/ui-popup}}
+                                {{#ui-popup content='Delete' class='ui icon button' click=(action 'deleteUser' users)}}
                                     <i class="trash alternate outline icon"></i>
                                 {{/ui-popup}}
                             </div>
@@ -51,11 +52,11 @@
                     </td>
                     <td>{{user.username}}</td>
                     <td>{{user.email}}</td>
-                    <td>{{sanitizeDate user.created_at}}</td>
+                    <td data-sort-value={{extract-time-stamp user.created_at}}>{{sanitizeDate user.created_at}}</td>
                     {{#if user.deleted_at}}
-                        <td>{{sanitizeDate user.deleted_at}}</td>
+                        <td data-sort-value={{extract-time-stamp user.deleted_at}}>{{sanitizeDate user.deleted_at}}</td>
                     {{else}}
-                        <td>Not Yet</td>
+                        <td data-sort-value="0">Not Yet</td>
                     {{/if}}
                     {{#if user.lastLoginIp}}
                         <td>{{user.lastLoginIp}}</td>
@@ -67,7 +68,8 @@
                             <div class="ui horizontal compact basic buttons">
                                 {{#ui-popup content='Edit' class="ui icon button" click=(action 'openModal' 'user-edit' user)}}
                                     <i class="edit icon"></i>
-                                {{/ui-popup}} {{#ui-popup content='Delete' class='ui icon button' click=(action 'deleteUser' user)}}
+                                {{/ui-popup}}
+                                {{#ui-popup content='Delete' class='ui icon button' click=(action 'deleteUser' user)}}
                                     <i class="trash alternate outline icon"></i>
                                 {{/ui-popup}}
                             </div>
@@ -167,4 +169,5 @@
 <script type="text/javascript">
     $('.ui.checkbox')
         .checkbox();
+    $('table').tablesort();
 </script>

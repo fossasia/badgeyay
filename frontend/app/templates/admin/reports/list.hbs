@@ -1,4 +1,4 @@
-<table class="ui table">
+<table class="ui sortable table">
     <thead>
         <tr>
             <th>Date</th>
@@ -11,11 +11,11 @@
     <tbody>
         {{#each reports as |report|}}
             <tr>
-                <td>{{sanitizeDate report.id}}</td>
-                <td>{{report.mailSentCount}}</td>
-                <td>{{report.badgeCount}}</td>
-                <td>{{report.userCreationCount}}</td>
-                <td>{{report.userDeletionCount}}</td>
+                <td data-sort-value={{extract-time-stamp report.id}}>{{sanitizeDate report.id}}</td>
+                <td data-sort-value={{report.mailSentCount}}>{{report.mailSentCount}}</td>
+                <td data-sort-value={{report.badgeCount}}>{{report.badgeCount}}</td>
+                <td data-sort-value={{report.userCreationCount}}>{{report.userCreationCount}}</td>
+                <td data-sort-value={{report.userDeletionCount}}>{{report.userDeletionCount}}</td>
             </tr>
         {{/each}}
     </tbody>
@@ -41,3 +41,7 @@
         </tfoot>
     {{/if}}
 </table>
+
+<script type="text/javascript">
+    $('table').tablesort();
+</script>
