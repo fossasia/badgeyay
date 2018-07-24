@@ -86,7 +86,10 @@ class SVG2PNG:
 
         font_size = [1, font_size_1, font_size_2, font_size_3, font_size_4, font_size_5]
         dimensions = badge_config[paper_size][badge_size]
-        filename = 'static/badges/' + dimensions.badgeSize + 'on' + dimensions.paperSize + '.svg'
+        if config.ENV == 'LOCAL':
+            filename = 'static/badges/' + dimensions.badgeSize + 'on' + dimensions.paperSize + '.svg'
+        else:
+            filename = os.getcwd() + '/api/static/badges/' + dimensions.badgeSize + 'on' + dimensions.paperSize + '.svg'
         tree = etree.parse(open(os.path.join(self.APP_ROOT, filename), 'r'))
         element = tree.getroot()
 
