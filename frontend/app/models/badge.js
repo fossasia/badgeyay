@@ -9,7 +9,11 @@ export default Model.extend({
   image         : attr('string'),
   font_type     : attr('string'),
   font_color    : attr('string'),
-  font_size     : attr('string'),
+  font_size_1   : attr('string'),
+  font_size_2   : attr('string'),
+  font_size_3   : attr('string'),
+  font_size_4   : attr('string'),
+  font_size_5   : attr('string'),
   badge_size    : attr('string'),
   paper_size    : attr('string'),
   download_link : attr('string')
