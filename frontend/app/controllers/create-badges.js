@@ -10,6 +10,7 @@ export default Controller.extend({
   notify         : service('notify'),
   authToken      : service('auth-session'),
   defColor       : '',
+  backColor      : '',
   defFontColor   : '',
   defFontSize    : '',
   defFont        : '',
@@ -300,6 +301,7 @@ export default Controller.extend({
     mutateDefColor(color) {
       this.bgColorClicked();
       this.set('defColor', color);
+      this.set('backColor', color);
     },
 
     mutateCustomImage(imageData) {
