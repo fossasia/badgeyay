@@ -45,16 +45,12 @@
                         </div>
                 </div>
             </div>
-            <div class="ui raised segment">
-                <div class="ui form width-container">
-                    <p>
-                        <b>Select from one of the Paper Sizes</b>
-                    </p>
-                        <div class="content">
-                            <div class="center aligned">
-                                {{ badge-component/paper-size sendPaperSize=(action 'mutatePaperSize') }}
-                            </div>
-                        </div>
+            <div class="ui horizontal divider">
+                Or
+            </div>
+            <div class="content">
+                <div class="center aligned">
+                    {{ background-component/color-bg-component sendDefColor=(action 'mutateDefColor') backColor=backColor}}
                 </div>
                 <div class="ui horizontal divider"></div>
                 <div class="ui form width-container">

@@ -47,16 +47,60 @@ def generateBadges():
     text_color = data.get('font_color') or '#ffffff'
     paper_size = data.get('paper_size') or 'A3'
     badge_size = data.get('badge_size') or '4x3'
-    font_size = data.get('font_size') or None
+    font_size_1 = data.get('font_size_1') or None
+    font_size_2 = data.get('font_size_2') or None
+    font_size_3 = data.get('font_size_3') or None
+    font_size_4 = data.get('font_size_4') or None
+    font_size_5 = data.get('font_size_5') or None
     font_choice = data.get('font_type') or None
+
     svg2png = SVG2PNG()
+
     if config.ENV == 'PROD':
         svg2png.do_text_fill(
-            os.getcwd() + '/api/static/badges/8BadgesOnA3.svg', text_color, badge_size, paper_size)
+            os.getcwd() + '/api/static/badges/8BadgesOnA3.svg',
+            text_color,
+            badge_size,
+            paper_size)
+
+        svg2png.change_font_size(
+            os.getcwd() + '/api/static/badges/8BadgesOnA3.svg',
+            badge_size,
+            paper_size,
+            font_size_1,
+            font_size_2,
+            font_size_3,
+            font_size_4,
+            font_size_5)
     else:
-        svg2png.do_text_fill('static/badges/8BadgesOnA3.svg', text_color, badge_size, paper_size)
+        svg2png.do_text_fill(
+            'static/badges/8BadgesOnA3.svg',
+            text_color,
+            badge_size,
+            paper_size)
+
+        svg2png.change_font_size(
+            'static/badges/8BadgesOnA3.svg',
+            badge_size,
+            paper_size,
+            font_size_1,
+            font_size_2,
+            font_size_3,
+            font_size_4,
+            font_size_5)
+
     merge_badges = MergeBadges(
-        image_name, csv_name, paper_size, badge_size, font_size, font_choice)
+        image_name,
+        csv_name,
+        paper_size,
+        badge_size,
+        font_choice,
+        font_size_1,
+        font_size_2,
+        font_size_3,
+        font_size_4,
+        font_size_5)
+
     merge_badges.merge_pdfs()
 
     uid = data.get('uid')
