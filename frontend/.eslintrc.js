@@ -17,7 +17,8 @@ module.exports = {
   },
   globals: {
     module  : true,
-    process : true
+    process : true,
+    Uint8Array : true
   },
   rules: {
     'space-before-blocks': 'error',

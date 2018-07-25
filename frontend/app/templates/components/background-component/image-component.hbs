@@ -2,4 +2,6 @@
     <label>Upload Background Image</label>
     <input name="bg-image" onchange={{action "encodeImage"}} type="file" accept="image/png">
 </div>
-
+<div class="field">
+  {{forms/image-upload needsCropper=true id='badge_back' icon='camera' hint='Select User Image' maxSizeInKb=1000}}
+</div>
