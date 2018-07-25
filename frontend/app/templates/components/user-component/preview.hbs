@@ -1,0 +1,41 @@
+<div class="ui raised segment">
+    <div class="bgImg"
+        style="color: #{{defColor}};
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-image: {{if defImage "url('/assets/images/badge_backgrounds/"}}{{if defImage defImageName}}{{if defImage "');"}}
+            {{if custImage 'url('}}{{if custImage backImg}}{{if custImage ');'}}">
+        <div class="preview content">
+            <p
+            style="
+            font-size : {{rel font_fn}}px;
+            font-family : {{defFont}};">
+            {{fn}}
+            </p>
+            <p
+            style="
+            font-size : {{rel font_ln}}px;
+            font-family : {{defFont}};">
+            {{ln}}
+            </p>
+            <p
+            style="
+            font-size : {{rel font_desg}}px;
+            font-family : {{defFont}};">
+            {{desg}}
+            </p>
+            <p
+            style="
+            font-size : {{rel font_org}}px;
+            font-family : {{defFont}};">
+            {{org}}
+            </p>
+            <p
+            style="
+            font-size : {{rel font_sh}}px;
+            font-family : {{defFont}};">
+            {{sh}}
+            </p>
+        </div>
+    </div>
+</div>

@@ -41,6 +41,12 @@ export default Controller.extend({
   showProgress   : false,
   progress       : 0,
   progressState  : '',
+  firstName      : '',
+  lastName       : '',
+  organization   : '',
+  socialHandle   : '',
+  designation    : '',
+  prevImageData  : '',
   csvClicked() {
     this.set('csvEnable', true);
     this.set('manualEnable', false);
@@ -295,6 +301,12 @@ export default Controller.extend({
 
     mutateText(txtData) {
       this.manualClicked();
+      let prevData = txtData.split('\n')[0].split(',');
+      this.set('firstName', prevData[0].toString());
+      this.set('lastName', prevData[1].toString());
+      this.set('designation', prevData[2].toString());
+      this.set('organization', prevData[3].toString());
+      this.set('socialHandle', prevData[4].toString());
       this.set('textData', txtData);
     },
 
@@ -316,6 +328,7 @@ export default Controller.extend({
 
     mutateCustomImage(imageData) {
       this.custImgClicked();
+      this.set('prevImageData', imageData);
       const _this = this;
       let uid = this.get('uid');
       if (uid === undefined || uid === '') {
