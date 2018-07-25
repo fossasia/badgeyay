@@ -6,7 +6,6 @@
             <th>User Email</th>
             <th class="no-sort">User Role</th>
             <th>User Created At</th>
-            <th>User Deleted At</th>
             <th class="no-sort">Last Login IP</th>
             <th class="no-sort">Actions</th>
         </tr>
@@ -21,11 +20,6 @@
                     <td>{{users.email}}</td>
                     <td>{{extract-role users}}</td>
                     <td>{{sanitizeDate users.created_at}}</td>
-                    {{#if users.deleted_at}}
-                        <td>{{sanitizeDate users.deleted_at}}</td>
-                    {{else}}
-                        <td>Not Yet</td>
-                    {{/if}}
                     {{#if users.lastLoginIp}}
                         <td>{{users.lastLoginIp}}</td>
                     {{else}}
