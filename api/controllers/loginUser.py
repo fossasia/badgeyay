@@ -1,4 +1,5 @@
 import jwt
+from datetime import datetime
 
 from flask import Blueprint, jsonify, request
 from flask import current_app as app
@@ -38,6 +39,7 @@ def login():
 
         # Saving the IP of the logged in user
         user.last_login_ip = ip_addr
+        user.last_login_date = datetime.utcnow()
         user.save_to_db()
 
         resp = {
