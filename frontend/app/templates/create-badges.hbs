@@ -87,7 +87,7 @@
                     </div>
                     <div class="content">
                         <div class="center aligned">
-                            {{ background-component/color-bg-component sendDefColor=(action 'mutateDefColor') }}
+                            {{ background-component/color-bg-component sendDefColor=(action 'mutateDefColor') backColor=backColor }}
                         </div>
                     </div>
                     <div class="ui horizontal divider">
@@ -167,10 +167,25 @@
     </div>
     <div class="{{if previewToggled 'five' 'hidden'}} wide column preview">
         <!--Add Preview Section here-->
-        {{ user-component/preview fn=firstName ln=lastName org=organization sh=socialHandle
-            desg=designation defColor=defFontColor font_fn=defFont1Size font_ln=defFont2Size
-            font_desg=defFont3Size font_org=defFont4Size font_sh=defFont5Size defFont=defFont
-            defImageName=defImageName backImg=prevImageData defImage=defImage custImage=custImage}}
+        {{
+            user-component/preview
+            fn=firstName
+            ln=lastName
+            org=organization
+            sh=socialHandle
+            desg=designation
+            defColor=defFontColor
+            font_fn=defFont1Size
+            font_ln=defFont2Size
+            font_desg=defFont3Size
+            font_org=defFont4Size
+            font_sh=defFont5Size
+            defFont=defFont
+            defImageName=defImageName
+            backImg=prevImageData
+            defImage=defImage
+            custImage=custImage
+        }}
     </div>
 </div>
 
