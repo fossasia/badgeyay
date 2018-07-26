@@ -12,6 +12,11 @@ export default Component.extend({
       this.set('userEdit', user);
     },
 
+    initModal(name, user) {
+      $('.ui.' + name + '.modal').modal('show');
+      this.set('userDelete', user);
+    },
+
     approveModal(element, component) {
       this.get('userEdit').save()
         .then(() => {
@@ -31,7 +36,7 @@ export default Component.extend({
     },
 
     deleteUser(user) {
-      user.destroyRecord()
+      this.get('userDelete').destroyRecord()
         .then(() => {
           this.notify.success('Deleted successfully');
         })

@@ -31,7 +31,7 @@
                                 {{#ui-popup content='Edit' class="ui icon button" click=(action 'openModal' 'user-edit' users)}}
                                     <i class="edit icon"></i>
                                 {{/ui-popup}}
-                                {{#ui-popup content='Delete' class='ui icon button' click=(action 'deleteUser' users)}}
+                                {{#ui-popup content='Delete' class='ui icon button' click=(action 'initModal' 'user-delete' user)}}
                                     <i class="trash alternate outline icon"></i>
                                 {{/ui-popup}}
                             </div>
@@ -66,7 +66,7 @@
                                 {{#ui-popup content='Edit' class="ui icon button" click=(action 'openModal' 'user-edit' user)}}
                                     <i class="edit icon"></i>
                                 {{/ui-popup}}
-                                {{#ui-popup content='Delete' class='ui icon button' click=(action 'deleteUser' user)}}
+                                {{#ui-popup content='Delete' class='ui icon button' click=(action 'initModal' 'user-delete' user)}}
                                     <i class="trash alternate outline icon"></i>
                                 {{/ui-popup}}
                             </div>
@@ -100,6 +100,27 @@
         </tfoot>
     {{/if}}
 </table>
+
+{{#ui-modal name="user-delete" class="user-delete" detachable=true onApprove=(action 'deleteUser') onDeny=(action 'denyModal')}}
+<i class="close icon"></i>
+<div class="header">
+    Delete User
+</div>
+<div class="content">
+<div class="description">
+    Are you sure you want to delete the user?
+</div>
+</div>
+<div class="actions">
+    <div class="ui black deny button">
+        Close
+    </div>
+    <div class="ui red approve right labeled icon button">
+        Delete
+        <i class="trash alternate outline icon"></i>
+    </div>
+</div>
+{{/ui-modal}}
 
 {{#ui-modal name="user-edit" class="user-edit" detachable=true onApprove=(action 'approveModal') onDeny=(action 'denyModal')}}
 <i class="close icon"></i>
