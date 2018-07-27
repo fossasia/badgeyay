@@ -33,6 +33,7 @@ class AllUsersSchema(Schema):
     isUser = fields.Bool(attribute='Permissions.isUser')
     isSales = fields.Bool(attribute='Permissions.isSales')
     lastLoginIp = fields.Str(allow_none=True, attribute='User.last_login_ip')
+    lastLoginDate = fields.DateTime(allow_none=True, attribute='User.last_login_date')
 
 
 class SearchedUserSchema(Schema):
@@ -50,6 +51,7 @@ class SearchedUserSchema(Schema):
     isUser = fields.Bool()
     isSales = fields.Bool()
     lastLoginIp = fields.Str(allow_none=True)
+    lastLoginDate = fields.Str(allow_none=True)
 
 
 class OAuthUserSchema(Schema):

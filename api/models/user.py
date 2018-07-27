@@ -26,6 +26,7 @@ class User(db.Model):
     permissions = db.relationship('Permissions', backref=db.backref('user_permissions'), lazy='dynamic')
     siteAdmin = db.Column(db.Boolean, default=False)
     last_login_ip = db.Column(db.String, nullable=True)
+    last_login_date = db.Column(db.DateTime, nullable=True)
 
     def __init__(self, id_, username, password, email, photoURL=None):
         self.id = id_
