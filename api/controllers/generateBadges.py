@@ -3,6 +3,7 @@ import datetime
 
 from shutil import rmtree
 from api.config import config
+from flask import current_app as app
 
 from flask import Blueprint, jsonify, request
 
@@ -153,9 +154,11 @@ def send_badge_mail(badgeId, userId, badgeLink):
 @loginRequired
 def get_badges():
     input_data = request.args
+    page = request.args.get('page', 1, type=int)
     user = User.getUser(user_id=input_data.get('uid'))
-    badges = Badges().query.filter_by(creator=user)
-    return jsonify(UserBadges(many=True).dump(badges).data)
+    badges = db.session.query(Badges).filter_by(creator=user).paginate(
+        page, app.config['POSTS_PER_PAGE'], False)
+    return jsonify(UserBadges(many=True).dump(badges.items).data)
 
 
 @router.route('/get_badges/<badgeId>', methods=['DELETE'])
