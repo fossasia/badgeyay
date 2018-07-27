@@ -2,7 +2,6 @@
     <div class="row">
         <div class="sixteen wide column">
             {{#tabbed-navigation isNonPointing=true}}
-                {{#link-to 'admin.users.list' 'all' class='item'}} All Users {{/link-to}}
                 {{#link-to 'admin.users.list' 'active' class='item'}} Active Users {{/link-to}}
                 {{#link-to 'admin.users.list' 'deleted' class='item'}} Deleted Users {{/link-to}}
                 <form class="ui form" {{action 'findUser' on="submit"}}>
