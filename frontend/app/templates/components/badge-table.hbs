@@ -1,11 +1,11 @@
-<table class="ui table">
+<table class="ui sortable table">
     <thead>
         <tr>
             <th>Badge Creator Name</th>
             <th>Badge Name</th>
             <th>Created At</th>
             <th>Deleted At</th>
-            <th class="center aligned">Actions</th>
+            <th class="no-sort center aligned">Actions</th>
         </tr>
     </thead>
     <tbody>
@@ -13,7 +13,7 @@
             <tr>
                 <td>{{badge.username}}</td>
                 <td>{{badge.badge_name}}</td>
-                <td>{{sanitizeDate badge.created_at}}</td>
+                <td data-sort-value={{extract-time-stamp badge.created_at}}>{{sanitizeDate badge.created_at}}</td>
                 {{#if badge.deleted_at}}
                     <td>{{sanitizeDate badge.deleted_at}}</td>
                 {{else}}
@@ -59,3 +59,6 @@
         </tfoot>
     {{/if}}
 </table>
+<script type="text/javascript">
+    $('table').tablesort();
+</script>
