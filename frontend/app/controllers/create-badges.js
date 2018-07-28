@@ -26,6 +26,7 @@ export default Controller.extend({
   custImgFile    : '',
   badgeSize      : '',
   previewToggled : false,
+  previewHeight  : '',
   prevButton     : '<',
   badgeGenerated : false,
   backLink       : APP.backLink,
@@ -428,6 +429,12 @@ export default Controller.extend({
     },
 
     mutateBadgeSize(value) {
+      if (value === '4.5x4') {
+        this.set('previewHeight', true);
+      } else {
+        this.set('previewHeight', false);
+      }
+      console.log(this.previewHeight);
       this.set('badgeSize', value);
     },
 

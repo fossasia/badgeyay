@@ -1,11 +1,12 @@
-<div class="ui basic segment">
-    <div class="bgImg ui raised segment"
+<div class="ui raised segment">
+    <div class="bgImg"
         style="color: #{{defColor}};
         background-size: cover;
         background-repeat: no-repeat;
+        height: {{if previewHeight '475' '600'}}px;
         background-image: {{if defImage "url('/assets/images/badge_backgrounds/"}}{{if defImage defImageName}}{{if defImage "');"}}
             {{if custImage 'url('}}{{if custImage backImg}}{{if custImage ');'}}">
-        <div class="preview content">
+        <div class="preview content" style="padding-top: {{if previewHeight '150' '200'}}px">
             <p
             style="
             font-size : {{rel font_fn}}px;
