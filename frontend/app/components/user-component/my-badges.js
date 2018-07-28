@@ -21,6 +21,7 @@ export default Component.extend({
         });
     },
 
+
     nextPage() {
       let filter = {};
       if (this.page > 1) {
