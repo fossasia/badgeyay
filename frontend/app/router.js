@@ -43,6 +43,7 @@ router.map(function() {
       this.route('list', { path: '/:badge_status' });
     });
     this.route('settings');
+    this.route('messages');
   });
   this.route('sitemap');
   this.route('settings');
