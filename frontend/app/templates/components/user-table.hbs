@@ -56,11 +56,6 @@
                     <td>{{user.email}}</td>
                     <td>{{extract-role user}}</td>
                     <td data-sort-value={{extract-time-stamp user.created_at}}>{{sanitizeDate user.created_at}}</td>
-                    {{#if user.deleted_at}}
-                        <td data-sort-value={{extract-time-stamp user.deleted_at}}>{{sanitizeDate user.deleted_at}}</td>
-                    {{else}}
-                        <td data-sort-value="0">Not Yet</td>
-                    {{/if}}
                     {{#if user.lastLoginDate}}
                         <td>{{sanitizeDate user.lastLoginDate}}</td>
                     {{else}}
