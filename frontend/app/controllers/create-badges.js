@@ -39,6 +39,7 @@ export default Controller.extend({
   colorImage     : false,
   overlay        : false,
   showProgress   : false,
+  imageData      : null,
   progress       : 0,
   progressState  : '',
   firstName      : '',
@@ -61,12 +62,14 @@ export default Controller.extend({
     this.set('defImage', true);
     this.set('colorImage', false);
     this.set('custImage', false);
+    this.set('imageData', null);
   },
 
   bgColorClicked() {
     this.set('colorImage', true);
     this.set('defImage', false);
     this.set('custImage', false);
+    this.set('imageData', null);
   },
 
   custImgClicked() {
@@ -204,13 +207,30 @@ export default Controller.extend({
               });
             }
           });
-      } else if (_this.custImage) {
-        if (_this.custImgFile !== undefined && _this.custImgFile !== '') {
-          badgeData.image = _this.custImgFile;
-          _this.send('sendBadge', badgeData);
-          this.set('progress', 70);
-          this.set('progressState', 'Preparing your badges');
-        }
+      } else if (this.imageData) {
+        this.get('store').createRecord('cust-img-file', {
+          uid       : this.uid,
+          imageData : this.imageData,
+          extension : '.png' })
+          .save()
+          .then(record => {
+            badgeData.image = record.filename;
+            _this.send('sendBadge', badgeData);
+            this.set('progress', 70);
+            this.set('progressState', 'Preparing your badges');
+          })
+          .catch(error => {
+            let userErrors = this.get('errors.user');
+            if (userErrors !== undefined) {
+              _this.set('userError', userErrors);
+              userErrors.forEach(error => {
+                _this.get('notify').error(error.message);
+                this.set('showProgress', false);
+                this.set('progress', 0);
+                this.set('progressState', '');
+              });
+            }
+          });
       } else if (_this.colorImage && _this.defColor !== undefined && _this.defColor !== '') {
         console.log(_this.defColor);
         let imageRecord = _this.get('store').createRecord('bg-color', {

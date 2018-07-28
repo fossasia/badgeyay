@@ -12,7 +12,7 @@ module('Integration | Component | background-component/image-component', functio
 
     await render(hbs`{{background-component/image-component}}`);
 
-    assert.equal(this.element.textContent.trim(), 'Upload Background Image');
+    assert.equal(this.element.textContent.trim(), 'Upload a Custom Image');
 
     // Template block usage:
     await render(hbs`
@@ -21,7 +21,7 @@ module('Integration | Component | background-component/image-component', functio
       {{/background-component/image-component}}
     `);
 
-    assert.equal(this.element.textContent.trim(), 'Upload Background Image');
+    assert.equal(this.element.textContent.trim(), 'Upload a Custom Image');
   });
 });
 

@@ -32,6 +32,7 @@ export default Component.extend({
               this.set('cropperModalIsShown', true);
             } else {
               this.set('selectedImage', untouchedImageData);
+              this.set('imageData', untouchedImageData);
             }
           };
           reader.readAsDataURL(input.files[0]);
@@ -44,6 +45,7 @@ export default Component.extend({
     imageCropped(croppedImageData) {
       this.set('cropperModalIsShown', false);
       this.set('selectedImage', croppedImageData);
+      this.set('imageData', croppedImageData);
     },
 
     removeSelection() {
