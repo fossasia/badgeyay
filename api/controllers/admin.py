@@ -31,7 +31,8 @@ from api.schemas.admin import (
     RoleSchema,
     SalesSchema,
     DeleteSales,
-    SettingsSchema
+    SettingsSchema,
+    Mails
 )
 from api.schemas.utils import SetPricingSchema, ReturnSetPricing
 from api.utils.errors import ErrorResponse
@@ -69,6 +70,16 @@ def post_settings():
                         data['firebaseStorageBucket'])
     settings.save_to_db()
     return jsonify(SettingsSchema().dump(settings).data)
+
+
+@router.route('/messages', methods=['GET'])
+def get_messages():
+    ref = firebasedb.reference('MailTemplate').get()
+    messages = []
+    for key in ref:
+        ref[key]['id'] = key
+        messages.append(ref[key])
+    return jsonify(Mails(many=True).dump(messages).data)
 
 
 @router.route('/show_all_users', methods=['GET'])

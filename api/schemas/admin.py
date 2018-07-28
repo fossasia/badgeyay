@@ -133,3 +133,11 @@ class SettingsSchema(Schema):
     secretKey = fields.Str()
     firebaseStorageBucket = fields.Str()
     firebaseDatabaseURL = fields.Str()
+
+
+class Mails(Schema):
+    class Meta:
+        type_ = 'messages'
+    id = fields.Str()
+    Description = fields.Str()
+    Subject = fields.Str()
