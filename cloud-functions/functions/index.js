@@ -288,8 +288,6 @@ function sendResetMail(token, email) {
 
   mailOptions.subject = `Password reset link`;
   mailOptions.html =
-    "<p>Hey {email}! Here is your password reset <a href=" +
-    PASSWORD_RESET_LINK +
-    "{token}>Link</a> and it will expire in 24 hours.<p>".format(resp);
+    "<p>Hey {email}! Here is your password reset <a href=http://badgeyay.com/#/reset/password?token={token}>Link</a> and it will expire in 24 hours.<p>".format(resp);
   return mailTransport.sendMail(mailOptions);
 }

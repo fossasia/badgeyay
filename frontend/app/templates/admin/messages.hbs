@@ -8,29 +8,13 @@
         </tr>
     </thead>
     <tbody>
-        <tr>
-            <td>Greeting</td>
-            <td>Sample Subject</td>
-            <td>Sample Template</td>
-            <td>Action on Message</td>
-        </tr>
-        <tr>
-            <td>Verification</td>
-            <td></td>
-            <td></td>
-            <td></td>
-        </tr>
-        <tr>
-            <td>Passoword Reset</td>
-            <td></td>
-            <td></td>
-            <td></td>
-        </tr>
-        <tr>
-            <td>Badge generation</td>
-            <td></td>
-            <td></td>
-            <td></td>
-        </tr>
+        {{#each model as |message|}}
+            <tr>
+                <td>{{message.id}}</td>
+                <td>{{message.Subject}}</td>
+                <td>{{message.Description}}</td>
+                <td>Action</td>
+            </tr>
+        {{/each}}
     </tbody>
 </table>
