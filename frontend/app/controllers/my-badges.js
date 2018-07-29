@@ -14,6 +14,11 @@ export default Controller.extend({
         .catch(() => {
           this.notify.error('Unable to delete Badge');
         });
+    },
+
+    updateBadgeName(badge) {
+      this.get('badge').save()
+        .then(() => this.get('notify').success('Badge Name Successfully Updated!'));
     }
   }
 });

@@ -12,7 +12,8 @@
             <img src="{{badge.image_link}}">
           </div>
           <div class="content">
-            <div class="header">{{badge.badge_name}}</div>
+            {{badge-name session=session model=model badge=badge user=user sendBadgeName=(action 'updateBadgeName' badge)}}
+            <div class="ui horizontal divider"></div>
             <div class="description">
               Badge Size: {{badge.badge_size}}
             </div>
