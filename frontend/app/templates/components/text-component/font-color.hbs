@@ -1,4 +1,10 @@
 <div class="field">
     <label>Select font color</label>
-    {{col-pick-input value=defFontColor}}
+    <div class="ui grid">
+        <div class="six wide column">
+            {{col-pick-input value=defFontColor}}
+        </div>
+        <div class="column" style="background-color: #{{fontColor}}; height: 35px; width: 35px; margin-top: 15px;">
+        </div>
+    </div>
 </div>

@@ -12,6 +12,7 @@ export default Controller.extend({
   defColor       : '',
   backColor      : '',
   defFontColor   : '',
+  fontColor      : '',
   defFont1Size   : '10',
   defFont2Size   : '10',
   defFont3Size   : '10',
@@ -399,6 +400,7 @@ export default Controller.extend({
 
     mutateDefFontColor(fontcolor) {
       this.set('defFontColor', fontcolor);
+      this.set('fontColor', fontcolor);
     },
 
     mutateCustomFont(id) {
