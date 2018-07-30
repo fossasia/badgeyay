@@ -118,6 +118,60 @@ class SVG2PNG:
         etree.ElementTree(element).write(filename, pretty_print=True)
         print("Font Size Saved!")
 
+    def change_font_family(self,
+                           filename,
+                           badge_size,
+                           paper_size,
+                           font_1,
+                           font_2,
+                           font_3,
+                           font_4,
+                           font_5):
+
+        """
+            Module to change Font Family of each badge lines
+                :param `filename` - svg file to modify.
+                :param `font_1` - Family to be applied on first line
+                :param `font_2` - Family to be applied on Second line
+                :param `font_3` - Family to be applied on Third line
+                :param `font_4` - Family to be applied on Fourth line
+                :param `font_5` - Family to be applied on Fifth line
+        """
+
+        font = [1, font_1, font_2, font_3, font_4, font_5]
+        dimensions = badge_config[paper_size][badge_size]
+        if config.ENV == 'LOCAL':
+            filename = 'static/badges/' + dimensions.badgeSize + 'on' + dimensions.paperSize + '.svg'
+        else:
+            filename = os.getcwd() + '/api/static/badges/' + dimensions.badgeSize + 'on' + dimensions.paperSize + '.svg'
+        tree = etree.parse(open(os.path.join(self.APP_ROOT, filename), 'r'))
+        element = tree.getroot()
+
+        for idx in range(1, dimensions.badges + 1):
+
+            for row in range(1, 6):
+                _id = 'Person_color_{}_{}'.format(idx, row)
+                path = element.xpath(("//*[@id='{}']").format(_id))[0]
+                style_detail = path.get("style")
+                style_detail = style_detail.split(";")
+
+                for ind, i in enumerate(style_detail):
+                    if i.split(':')[0] == 'font-family':
+                        style_detail[ind] = "font-family:" + font[row]
+                style_detail = ';'.join(style_detail)
+                text_nodes = path.getchildren()
+                path.set("font-family", style_detail)
+
+                for t in text_nodes:
+                    text_style_detail = t.get("style")
+                    text_style_detail = text_style_detail.split(";")
+                    text_style_detail[-1] = "font-family:" + font[row]
+                    text_style_detail = ";".join(text_style_detail)
+                    t.set("style", text_style_detail)
+
+        etree.ElementTree(element).write(filename, pretty_print=True)
+        print("Font Family Saved!")
+
     def do_svg2png(self, opacity, fill):
 
         """
