@@ -28,7 +28,6 @@ export default Controller.extend({
   badgeSize      : '',
   previewToggled : false,
   previewHeight  : '',
-  prevButton     : '<',
   badgeGenerated : false,
   backLink       : APP.backLink,
   defPaperSize   : '',
@@ -442,11 +441,6 @@ export default Controller.extend({
 
     togglePreview() {
       this.set('previewToggled', !this.previewToggled);
-      if (this.previewToggled) {
-        this.set('prevButton', '>');
-      } else {
-        this.set('prevButton', '<');
-      }
     }
   }
 });
