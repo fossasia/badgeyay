@@ -322,13 +322,13 @@ export default Controller.extend({
 
     mutateText(txtData) {
       this.manualClicked();
+      this.set('textData', txtData);
       let prevData = txtData.split('\n')[0].split(',');
       this.set('firstName', prevData[0].toString());
       this.set('lastName', prevData[1].toString());
       this.set('designation', prevData[2].toString());
       this.set('organization', prevData[3].toString());
       this.set('socialHandle', prevData[4].toString());
-      this.set('textData', txtData);
     },
 
     mutateName(namData) {
