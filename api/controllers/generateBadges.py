@@ -174,11 +174,11 @@ def delete_badge(badgeId):
     return jsonify(DeletedBadges().dump(temp_badge).data)
 
 
-@router.route('/get_badges', methods=['PATCH'])
+@router.route('/get_badges/<badgeId>', methods=['PATCH'])
 @loginRequired
-def change_name():
+def change_name(badgeId):
     data = request.get_json()['data']['attributes']
-    badge = Badges.getBadge(data['badge_id'])
-    badge.badge_name = data['badge_name']
+    badge = Badges.getBadge(badgeId)
+    badge.badge_name = data['badge-name']
     badge.save_to_db()
     return jsonify(BadgeSchema().dump(badge).data)

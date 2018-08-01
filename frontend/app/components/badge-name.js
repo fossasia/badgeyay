@@ -10,8 +10,8 @@ export default Component.extend({
   notify  : inject.service('notify'),
   actions : {
 
-    updateBadgeName(badge) {
-      this.get('sendBadgeName')(badge);
+    updateBadgeName() {
+      this.get('sendBadgeName')(this.get('badge'));
     },
 
 
