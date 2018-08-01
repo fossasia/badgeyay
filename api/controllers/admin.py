@@ -82,6 +82,18 @@ def get_messages():
     return jsonify(Mails(many=True).dump(messages).data)
 
 
+@router.route('/messages/<type_>', methods=['PATCH'])
+def patch_messages(type_):
+    data, err = Mails().load(request.get_json())
+    if err:
+        print(err)
+    ref = firebasedb.reference('MailTemplate/' + type_)
+    tempCopy = dict(data)
+    data.pop('id', None)
+    ref.set(data)
+    return jsonify(Mails().dump(tempCopy).data)
+
+
 @router.route('/show_all_users', methods=['GET'])
 @adminRequired
 def show_all_users():
