@@ -21,6 +21,9 @@ export default Component.extend({
         });
     },
 
+    sendBadgeName(badge) {
+      this.get('sendBadgeName')(badge);
+    },
 
     nextPage() {
       let filter = {};

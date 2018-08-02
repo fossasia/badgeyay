@@ -17,7 +17,7 @@ export default Controller.extend({
     },
 
     updateBadgeName(badge) {
-      this.get('badge').save()
+      badge.save()
         .then(() => this.get('notify').success('Badge Name Successfully Updated!'));
     }
   }

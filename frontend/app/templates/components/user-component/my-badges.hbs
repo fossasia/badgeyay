@@ -12,7 +12,7 @@
             <img src="{{badge.image_link}}">
           </div>
           <div class="content">
-            {{badge-name session=session model=model badge=badge user=user sendBadgeName=(action 'updateBadgeName' badge)}}
+            {{badge-name session=session model=model badge=badge user=user sendBadgeName=(action 'sendBadgeName' badge)}}
             <div class="ui horizontal divider"></div>
             <div class="description">
               Badge Size: {{badge.badge_size}}
@@ -30,7 +30,7 @@
                       <a href="{{badge.download_link}}">
                         <i class="download icon"></i>
                       </a>
-                  {{/ui-popup}}                  
+                  {{/ui-popup}}
                   {{#ui-popup content='Edit' class="ui icon button"}}
                       <i class="edit icon"></i>
                   {{/ui-popup}}
