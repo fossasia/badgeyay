@@ -192,7 +192,7 @@ def patch_module(id_):
     module = Module.query.filter_by(id=id_).first()
     data = request.get_json()['data']['attributes']
     module.ticketInclude = data['ticketInclude']
-    module.paymentInclude = data['ticketInclude']
+    module.paymentInclude = data['paymentInclude']
     module.donationInclude = data['donationInclude']
     module.save_to_db()
     return jsonify(ModuleSchema().dump(module).data)
