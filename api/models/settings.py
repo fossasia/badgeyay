@@ -18,17 +18,28 @@ class Settings(db.Model):
     firebaseStorageBucket = db.Column(db.String, nullable=False)
     firebaseDatabaseURL = db.Column(db.String, nullable=False)
 
+    # Email settings
+    fromMail = db.Column(db.String, default="bagdeyayofficial@gmail.com")
+
+    # Send Grid config
+    sendGridApiKey = db.Column(db.String)
+
     def __init__(self,
                  appEnvironment,
                  appName,
                  secretKey,
                  firebaseDatabaseURL,
-                 firebaseStorageBucket):
+                 firebaseStorageBucket,
+                 **kwargs):
         self.appEnvironment = appEnvironment
         self.appName = appName
         self.secretKey = secretKey
         self.firebaseStorageBucket = firebaseStorageBucket
         self.firebaseDatabaseURL = firebaseDatabaseURL
+        if 'fromMail' in kwargs.keys():
+            self.fromMail = kwargs['fromMail']
+        if 'sendGridApiKey' in kwargs.keys():
+            self.sendGridApiKey = kwargs['sendGridApiKey']
 
     def save_to_db(self):
         try:

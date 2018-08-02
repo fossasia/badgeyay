@@ -67,7 +67,9 @@ def post_settings():
                         data['appName'],
                         data['secretKey'],
                         data['firebaseDatabaseURL'],
-                        data['firebaseStorageBucket'])
+                        data['firebaseStorageBucket'],
+                        fromMail=data['fromMail'],
+                        sendGridApiKey=data['sendGridApiKey'])
     settings.save_to_db()
     return jsonify(SettingsSchema().dump(settings).data)
 

@@ -133,6 +133,8 @@ class SettingsSchema(Schema):
     secretKey = fields.Str()
     firebaseStorageBucket = fields.Str()
     firebaseDatabaseURL = fields.Str()
+    fromMail = fields.Str()
+    sendGridApiKey = fields.Str()
 
 
 class Mails(Schema):

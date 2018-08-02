@@ -61,6 +61,26 @@
         {{input type='text' name='secret_key' value=settings.secretKey}}
     </div>
     <div class="ui hidden divider"></div>
+    <h3 class="ui header">
+        {{'Sender Email'}}
+        <div class="sub header">
+            This is the sender email for all the mails
+        </div>
+    </h3>
+    <div class="field">
+        {{input type="email" name="senderEmail" value=settings.fromMail}}
+    </div>
+    <div class="ui hidden divider"></div>
+    <h3 class="ui header">
+        Send Grid API Key
+        <div class="sub header">
+            This is the SendGrid API Key
+        </div>
+    </h3>
+    <div class="field">
+        {{input type="text" name="sendGridApiKey" value=settings.sendGridApiKey}}
+    </div>
+    <div class="ui hidden divider"></div>
     <button class="ui teal wide button" type="submit">
         {{'Save'}}
     </button>
