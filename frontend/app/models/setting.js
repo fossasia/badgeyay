@@ -7,5 +7,7 @@ export default Model.extend({
   appName               : attr('string'),
   secretKey             : attr('string'),
   firebaseStorageBucket : attr('string'),
-  firebaseDatabaseURL   : attr('string')
+  firebaseDatabaseURL   : attr('string'),
+  fromMail              : attr('string'),
+  sendGridApiKey        : attr('string')
 });

@@ -14,7 +14,9 @@ export default Controller.extend({
         appName               : prevSettings.appName,
         secretKey             : prevSettings.secretKey,
         firebaseStorageBucket : prevSettings.firebaseStorageBucket,
-        firebaseDatabaseURL   : prevSettings.firebaseDatabaseURL })
+        firebaseDatabaseURL   : prevSettings.firebaseDatabaseURL,
+        sendGridApiKey        : prevSettings.sendGridApiKey,
+        fromMail              : prevSettings.fromMail })
         .save()
         .then(record => {
           this.set('model', record);
