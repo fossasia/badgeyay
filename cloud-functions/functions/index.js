@@ -126,20 +126,24 @@ exports.sendVerificationMail = functions.auth.user().onCreate(user => {
       var resp = {
         link: BASE_URL + "verify/email?id=" + encodeURIComponent(encoded)
       };
-      mailOptions.subject = "Please verify your Email | Badgeyay";
-      mailOptions.html = "<p>Please verify your email ID by clicking on this <a href={link}>Link</a></p>".format(
-        resp
-      );
-      return mailTransport
-        .sendMail(mailOptions)
-        .then(() => {
-          console.log("Verification Mail Sent");
-          writeMailData(uid, "success", 0);
-          return 0;
-        })
-        .catch(err => {
-          console.log(err);
-          return -1;
+      return db
+        .ref("MailTemplate/Verification")
+        .on("value", snapshot => {
+          mailOptions.subject = snapshot.Subject;
+          mailOptions.html = snapshot.Description.format(
+            resp
+          );
+          return mailTransport
+            .sendMail(mailOptions)
+            .then(() => {
+              console.log("Verification Mail Sent");
+              writeMailData(uid, "success", 0);
+              return 0;
+            })
+            .catch(err => {
+              console.log(err);
+              return -1;
+            });
         });
     });
     return 0;
@@ -173,20 +177,25 @@ function sendBadgeGenMail(uid, email, resp) {
     to: email
   };
 
-  mailOptions.subject = "Badge Generated {badgeId}".format(resp);
-  mailOptions.html = "<p> Hello {displayName}! Your badge is generated successfully, please visit the <a href={badgeLink}>link</a> to download badge</p>".format(
-    resp
-  );
-  return mailTransport
-    .sendMail(mailOptions)
-    .then(() => {
-      writeMailData(uid, "success", 3);
-      return console.log("Badge mail sent to: ", email);
-    })
-    .catch(err => {
-      console.error(err.message);
-      return -1;
+  return db
+    .ref("MailTemplate/BadgeGeneration")
+    .on("value", snapshot => {
+      mailOptions.subject = snapshot.Subject.format(resp);
+      mailOptions.html = snapshot.Description.format(
+        resp
+      );
+      return mailTransport
+        .sendMail(mailOptions)
+        .then(() => {
+          writeMailData(uid, "success", 3);
+          return console.log("Badge mail sent to: ", email);
+        })
+        .catch(err => {
+          console.error(err.message);
+          return -1;
+        });
     });
+
 }
 
 function writeMailData(uid, state, reason) {
@@ -220,20 +229,25 @@ function sendGreetingMail(uid, email, resp) {
     to: email
   };
 
-  mailOptions.subject = `Welcome to Badgeyay`;
-  mailOptions.text = "Hey {displayName}! Welcome to Badgeyay. We welcome you onboard and pleased to offer you service.".format(
-    resp
-  );
-  return mailTransport
-    .sendMail(mailOptions)
-    .then(() => {
-      writeMailData(uid, "success", 1);
-      return console.log("Welcome mail sent to: ", email);
-    })
-    .catch(err => {
-      console.error(err.message);
-      return -1;
+  return db
+    .ref("MailTemplate/Greeting")
+    .on("value", snapshot => {
+      mailOptions.subject = snapshot.Subject;
+      mailOptions.text = snapshot.Description.format(
+        resp
+      );
+      return mailTransport
+        .sendMail(mailOptions)
+        .then(() => {
+          writeMailData(uid, "success", 1);
+          return console.log("Welcome mail sent to: ", email);
+        })
+        .catch(err => {
+          console.error(err.message);
+          return -1;
+        });
     });
+
 }
 
 exports.sendWelcomeMail = functions.https.onRequest((req, res) => {
@@ -286,8 +300,12 @@ function sendResetMail(token, email) {
     token: token
   };
 
-  mailOptions.subject = `Password reset link`;
-  mailOptions.html =
-    "<p>Hey {email}! Here is your password reset <a href=http://badgeyay.com/#/reset/password?token={token}>Link</a> and it will expire in 24 hours.<p>".format(resp);
-  return mailTransport.sendMail(mailOptions);
+  return db
+    .ref("MailTemplate/PasswordReset")
+    .on("value", snapshot => {
+      mailOptions.subject = snapshot.Subject;
+      mailOptions.html = snapshot.Description.format(resp);
+      return mailTransport.sendMail(mailOptions);
+    });
+
 }
