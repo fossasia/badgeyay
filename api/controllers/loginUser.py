@@ -5,7 +5,7 @@ from flask import Blueprint, jsonify, request
 from flask import current_app as app
 from api.models.user import User
 from api.models.permissions import Permissions
-from api.schemas.user import FTLUserSchema
+from api.schemas.user import FTLUserSchema, UserSchema
 from api.schemas.token import LoginTokenSchema
 from api.utils.errors import ErrorResponse
 from api.schemas.errors import (
@@ -56,3 +56,13 @@ def index(uid):
     user = User.getUser(user_id=uid)
     schema = FTLUserSchema()
     return jsonify(schema.dump(user).data)
+
+
+@router.route('/updateLastLogin/<uid>', methods={'GET'})
+def updateLastLogin(uid):
+    user = User.getUser(user_id=uid)
+    if user:
+        user.last_login_ip = request.environ['REMOTE_ADDR']
+        user.last_login_date = datetime.utcnow()
+        user.save_to_db()
+        return jsonify(UserSchema().dump(user).data)

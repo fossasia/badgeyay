@@ -14,6 +14,7 @@ class UserSchema(Schema):
     password = fields.Str(required=True, load_only=True)
     photoURL = fields.Str()
     siteAdmin = fields.Bool()
+    last_login_date = fields.DateTime()
 
 
 class AllUsersSchema(Schema):
