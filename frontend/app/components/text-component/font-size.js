@@ -31,7 +31,7 @@ export default Component.extend({
       this.fonttype3,
       this.fonttype4,
       this.fonttype5
-    ])
+    ]);
   },
 
   mouseUp() {

@@ -58,7 +58,6 @@ def generateBadges():
     font_type_3 = data.get('font_type_3') or None
     font_type_4 = data.get('font_type_4') or None
     font_type_5 = data.get('font_type_5') or None
-    font_choice = data.get('font_type') or None
 
     svg2png = SVG2PNG()
 
