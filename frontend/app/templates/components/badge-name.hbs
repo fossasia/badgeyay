@@ -1,6 +1,6 @@
-<form class="ui form" {{action 'updateBadgeName' on="submit"}}>
-    <div class="ui field">
+<form class="ui form" {{action 'updateBadgeName' on="change"}}>
+    <div class="ui icon input">
+    <i class="pencil alternate icon"></i>
         {{input type="text" value=badge.badge_name }}
     </div>
-    <button type='submit' class="ui button" tabindex="0"><i class="pencil alternate icon"></i></button>
 </form>
