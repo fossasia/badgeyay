@@ -172,6 +172,60 @@ class SVG2PNG:
         etree.ElementTree(element).write(filename, pretty_print=True)
         print("Font Family Saved!")
 
+    def change_text_align(self,
+                          filename,
+                          badge_size,
+                          paper_size,
+                          align_1,
+                          align_2,
+                          align_3,
+                          align_4,
+                          align_5):
+
+        """
+            Module to change Text Alignment of each badge line
+                :param `filename` - svg file to modify.
+                :param `align_1` - Text Alignment to be applied on first line
+                :param `align_2` - Text Alignment to be applied on Second line
+                :param `align_3` - Text Alignment to be applied on Third line
+                :param `align_4` - Text Alignment to be applied on Fourth line
+                :param `align_5` - Text Alignment to be applied on Fifth line
+        """
+
+        align = [1, align_1, align_2, align_3, align_4, align_5]
+        dimensions = badge_config[paper_size][badge_size]
+        if config.ENV == 'LOCAL':
+            filename = 'static/badges/' + dimensions.badgeSize + 'on' + dimensions.paperSize + '.svg'
+        else:
+            filename = os.getcwd() + '/api/static/badges/' + dimensions.badgeSize + 'on' + dimensions.paperSize + '.svg'
+        tree = etree.parse(open(os.path.join(self.APP_ROOT, filename), 'r'))
+        element = tree.getroot()
+
+        for idx in range(1, dimensions.badges + 1):
+
+            for row in range(1, 6):
+                _id = 'Person_color_{}_{}'.format(idx, row)
+                path = element.xpath(("//*[@id='{}']").format(_id))[0]
+                style_detail = path.get("style")
+                style_detail = style_detail.split(";")
+
+                for ind, i in enumerate(style_detail):
+                    if i.split(':')[0] == 'text-align':
+                        style_detail[ind] = "text-align:" + align[row]
+                style_detail = ';'.join(style_detail)
+                text_nodes = path.getchildren()
+                path.set("text-align", style_detail)
+
+                for t in text_nodes:
+                    text_style_detail = t.get("style")
+                    text_style_detail = text_style_detail.split(";")
+                    text_style_detail[-1] = "text-align:" + align[row]
+                    text_style_detail = ";".join(text_style_detail)
+                    t.set("style", text_style_detail)
+
+        etree.ElementTree(element).write(filename, pretty_print=True)
+        print("Text Alignment Saved!")
+
     def do_svg2png(self, opacity, fill):
 
         """
