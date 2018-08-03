@@ -1,16 +1,36 @@
 <div class="field">
-  <label>Select Different Font Size</label>
+  <label>Customize Badge Layout</label>
 </div>
-<div class="ui centered grid">
-  <div class="three column row">
+<div class="ui stackable grid">
+  <div class="four column row">
     <div class="center aligned column">Field</div>
+    <div class="center aligned column">Font</div>
     <div class="center aligned column">Font Size (in pixels)</div>
     <div class="center aligned column">Adjust long content to width automatically</div>
   </div>
-  <div class="three column row">
+
+  <div class="four column row">
     <div class="center aligned column">First Name</div>
     <div class="center aligned column">
-      <div class="one wide cloumn">
+      <div class="one wide column">
+        {{#ui-dropdown class="selection" selected="Bob"  onChange=(action (mut fonttype1))}}
+          <div class="default text">Select font from list</div>
+          <i class="dropdown icon"></i>
+          <div class="menu">
+              <div class="item" data-item="Lato" style="font-family:'Lato'">Lato</div>
+              <div class="item" data-item="sans" style="font-family:'sans'">Sans</div>
+              <div class="item" data-item="Courier-Bold" style="font-family:'Courier-Bold'">Courier</div>
+              <div class="item" data-item="Helvetica" style="font-family:'Helvetica'">Helvetica</div>
+              <div class="item" data-item="Times-Bold" style="font-family:'Times-Bold'">Times-Bold</div>
+              <div class="item" data-item="monospace" style="font-family:'monospace'">Mono Space</div>
+              <div class="item" data-item="Times-Roman" style="font-family:'Times-Roman'">Times-Roman</div>
+              <div class="item" data-item="Courier 10 Pitch" style="font-family:'Courier 10 Pitch'">Courier 10 Pitch</div>
+          </div>
+        {{/ui-dropdown}}
+      </div>
+    </div>
+    <div class="center aligned column">
+      <div class="one wide column">
         {{#ui-dropdown class="selection" onChange=(action (mut font1))}}
         <div class="default text">Size</div>
         <i class="dropdown icon"></i>
@@ -41,8 +61,27 @@
       </div>
     </div>
   </div>
-  <div class="three column row">
+
+  <div class="four column row">
     <div class="center aligned column">Last Name</div>
+    <div class="center aligned column">
+      <div class="one wide column">
+        {{#ui-dropdown class="selection" selected="Bob" onChange=(action (mut fonttype2))}}
+          <div class="default text">Select font from list</div>
+          <i class="dropdown icon"></i>
+          <div class="menu">
+              <div class="item" data-item="Lato" style="font-family:'Lato'">Lato</div>
+              <div class="item" data-item="sans" style="font-family:'sans'">Sans</div>
+              <div class="item" data-item="Courier-Bold" style="font-family:'Courier-Bold'">Courier</div>
+              <div class="item" data-item="Helvetica" style="font-family:'Helvetica'">Helvetica</div>
+              <div class="item" data-item="Times-Bold" style="font-family:'Times-Bold'">Times-Bold</div>
+              <div class="item" data-item="monospace" style="font-family:'monospace'">Mono Space</div>
+              <div class="item" data-item="Times-Roman" style="font-family:'Times-Roman'">Times-Roman</div>
+              <div class="item" data-item="Courier 10 Pitch" style="font-family:'Courier 10 Pitch'">Courier 10 Pitch</div>
+          </div>
+        {{/ui-dropdown}}
+      </div>
+    </div>
     <div class="center aligned column">
       <div class="one wide cloumn">
         {{#ui-dropdown class="selection" onChange=(action (mut font2))}}
@@ -75,8 +114,27 @@
       </div>
     </div>
   </div>
-  <div class="three column row">
+
+  <div class="four column row">
     <div class="center aligned column">Designation</div>
+    <div class="center aligned column">
+      <div class="one wide column">
+        {{#ui-dropdown class="selection" selected="Bob" onChange=(action (mut fonttype3))}}
+          <div class="default text">Select font from list</div>
+          <i class="dropdown icon"></i>
+          <div class="menu">
+              <div class="item" data-item="Lato" style="font-family:'Lato'">Lato</div>
+              <div class="item" data-item="sans" style="font-family:'sans'">Sans</div>
+              <div class="item" data-item="Courier-Bold" style="font-family:'Courier-Bold'">Courier</div>
+              <div class="item" data-item="Helvetica" style="font-family:'Helvetica'">Helvetica</div>
+              <div class="item" data-item="Times-Bold" style="font-family:'Times-Bold'">Times-Bold</div>
+              <div class="item" data-item="monospace" style="font-family:'monospace'">Mono Space</div>
+              <div class="item" data-item="Times-Roman" style="font-family:'Times-Roman'">Times-Roman</div>
+              <div class="item" data-item="Courier 10 Pitch" style="font-family:'Courier 10 Pitch'">Courier 10 Pitch</div>
+          </div>
+        {{/ui-dropdown}}
+      </div>
+    </div>
     <div class="center aligned column">
       <div class="one wide cloumn">
         {{#ui-dropdown class="selection" onChange=(action (mut font3))}}
@@ -109,8 +167,27 @@
       </div>
     </div>
   </div>
-  <div class="three column row">
+
+  <div class="four column row">
     <div class="center aligned column">Organization</div>
+    <div class="center aligned column">
+      <div class="one wide column">
+        {{#ui-dropdown class="selection" selected="Bob" onChange=(action (mut fonttype4))}}
+          <div class="default text">Select font from list</div>
+          <i class="dropdown icon"></i>
+          <div class="menu">
+              <div class="item" data-item="Lato" style="font-family:'Lato'">Lato</div>
+              <div class="item" data-item="sans" style="font-family:'sans'">Sans</div>
+              <div class="item" data-item="Courier-Bold" style="font-family:'Courier-Bold'">Courier</div>
+              <div class="item" data-item="Helvetica" style="font-family:'Helvetica'">Helvetica</div>
+              <div class="item" data-item="Times-Bold" style="font-family:'Times-Bold'">Times-Bold</div>
+              <div class="item" data-item="monospace" style="font-family:'monospace'">Mono Space</div>
+              <div class="item" data-item="Times-Roman" style="font-family:'Times-Roman'">Times-Roman</div>
+              <div class="item" data-item="Courier 10 Pitch" style="font-family:'Courier 10 Pitch'">Courier 10 Pitch</div>
+          </div>
+        {{/ui-dropdown}}
+      </div>
+    </div>
     <div class="center aligned column">
       <div class="one wide cloumn">
         {{#ui-dropdown class="selection" onChange=(action (mut font4))}}
@@ -143,8 +220,27 @@
       </div>
     </div>
   </div>
-  <div class="three column row">
+
+  <div class="four column row">
     <div class="center aligned column">Handle (e.g. Github)</div>
+    <div class="center aligned column">
+      <div class="one wide column">
+        {{#ui-dropdown class="selection" selected="Bob" onChange=(action (mut fonttype5))}}
+          <div class="default text">Select font from list</div>
+          <i class="dropdown icon"></i>
+          <div class="menu">
+              <div class="item" data-item="Lato" style="font-family:'Lato'">Lato</div>
+              <div class="item" data-item="sans" style="font-family:'sans'">Sans</div>
+              <div class="item" data-item="Courier-Bold" style="font-family:'Courier-Bold'">Courier</div>
+              <div class="item" data-item="Helvetica" style="font-family:'Helvetica'">Helvetica</div>
+              <div class="item" data-item="Times-Bold" style="font-family:'Times-Bold'">Times-Bold</div>
+              <div class="item" data-item="monospace" style="font-family:'monospace'">Mono Space</div>
+              <div class="item" data-item="Times-Roman" style="font-family:'Times-Roman'">Times-Roman</div>
+              <div class="item" data-item="Courier 10 Pitch" style="font-family:'Courier 10 Pitch'">Courier 10 Pitch</div>
+          </div>
+        {{/ui-dropdown}}
+      </div>
+    </div>
     <div class="center aligned column">
       <div class="one wide cloumn">
         {{#ui-dropdown class="selection" onChange=(action (mut font5))}}

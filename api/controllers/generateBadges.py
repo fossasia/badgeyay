@@ -53,6 +53,11 @@ def generateBadges():
     font_size_3 = data.get('font_size_3') or None
     font_size_4 = data.get('font_size_4') or None
     font_size_5 = data.get('font_size_5') or None
+    font_type_1 = data.get('font_type_1') or None
+    font_type_2 = data.get('font_type_2') or None
+    font_type_3 = data.get('font_type_3') or None
+    font_type_4 = data.get('font_type_4') or None
+    font_type_5 = data.get('font_type_5') or None
     font_choice = data.get('font_type') or None
 
     svg2png = SVG2PNG()
@@ -73,6 +78,16 @@ def generateBadges():
             font_size_3,
             font_size_4,
             font_size_5)
+
+        svg2png.change_font_family(
+            os.getcwd() + '/api/static/badges/8BadgesOnA3.svg',
+            badge_size,
+            paper_size,
+            font_type_1,
+            font_type_2,
+            font_type_3,
+            font_type_4,
+            font_type_5)
     else:
         svg2png.do_text_fill(
             'static/badges/8BadgesOnA3.svg',
@@ -90,17 +105,21 @@ def generateBadges():
             font_size_4,
             font_size_5)
 
+        svg2png.change_font_family(
+            os.getcwd() + '/api/static/badges/8BadgesOnA3.svg',
+            badge_size,
+            paper_size,
+            font_type_1,
+            font_type_2,
+            font_type_3,
+            font_type_4,
+            font_type_5)
+
     merge_badges = MergeBadges(
         image_name,
         csv_name,
         paper_size,
-        badge_size,
-        font_choice,
-        font_size_1,
-        font_size_2,
-        font_size_3,
-        font_size_4,
-        font_size_5)
+        badge_size)
 
     merge_badges.merge_pdfs()
 
