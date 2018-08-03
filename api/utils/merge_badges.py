@@ -10,24 +10,12 @@ class MergeBadges:
                  image_name,
                  csv_name,
                  paper_size,
-                 badge_size,
-                 font_choice,
-                 font_size_1,
-                 font_size_2,
-                 font_size_3,
-                 font_size_4,
-                 font_size_5):
+                 badge_size):
         self.APP_ROOT = app.config.get('BASE_DIR')
         self.badge_generator = GenerateBadges(image_name,
                                               csv_name,
                                               paper_size,
-                                              badge_size,
-                                              font_size_1,
-                                              font_size_2,
-                                              font_size_3,
-                                              font_size_4,
-                                              font_size_5,
-                                              font_choice)
+                                              badge_size)
         self.badge_generator.run_generator()
         self.folder = os.path.join(self.APP_ROOT, 'static', 'temporary', os.path.splitext(image_name)[0])
 

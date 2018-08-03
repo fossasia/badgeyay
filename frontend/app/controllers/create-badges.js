@@ -18,7 +18,11 @@ export default Controller.extend({
   defFont3Size   : '10',
   defFont4Size   : '10',
   defFont5Size   : '10',
-  defFont        : '',
+  defFontType1   : '',
+  defFontType2   : '',
+  defFontType3   : '',
+  defFontType4   : '',
+  defFontType5   : '',
   uid            : '',
   textData       : '',
   nameData       : '',
@@ -126,8 +130,12 @@ export default Controller.extend({
         badgeData.font_size_5 = _this.defFont5Size.toString();
       }
 
-      if (_this.defFont !== '' && _this.defFont !== undefined) {
-        badgeData.font_type = _this.defFont;
+      if (_this.defFontType1 !== '' && _this.defFontType1 !== undefined) {
+        badgeData.font_type_1 = _this.defFontType1;
+        badgeData.font_type_2 = _this.defFontType2;
+        badgeData.font_type_3 = _this.defFontType3;
+        badgeData.font_type_4 = _this.defFontType4;
+        badgeData.font_type_5 = _this.defFontType5;
       }
 
       _this.send('sendManualData', badgeData);
@@ -402,8 +410,23 @@ export default Controller.extend({
       this.set('fontColor', fontcolor);
     },
 
-    mutateCustomFont(id) {
-      this.set('defFont', id);
+    mutateCustomFont(values) {
+      const [fonttype1, fonttype2, fonttype3, fonttype4, fonttype5] = values;
+      if (fonttype1 !== '') {
+        this.set('defFontType1', fonttype1);
+      }
+      if (fonttype2 !== '') {
+        this.set('defFontType2', fonttype2);
+      }
+      if (fonttype3 !== '') {
+        this.set('defFontType3', fonttype3);
+      }
+      if (fonttype4 !== '') {
+        this.set('defFontType4', fonttype4);
+      }
+      if (fonttype5 !== '') {
+        this.set('defFontType5', fonttype5);
+      }
     },
 
     mutateFontSize(values) {

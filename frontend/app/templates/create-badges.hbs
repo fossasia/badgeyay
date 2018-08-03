@@ -6,7 +6,7 @@
 <div class="ui grid">
     <div class="{{if previewToggled 'ten' 'sixteen'}} wide column">
         <div class="main-container create-badge segments">
-            <div class="ui raised segment">
+            <div class="ui segment">
                 <div class="ui form width-container">
                     <div>
                         <div class="ui right aligned grid">
@@ -26,7 +26,7 @@
                     </div>
                 </div>
             </div>
-            <div class="ui raised segment">
+            <div class="ui segment">
                 <div class="ui form width-container">
                     <p>
                         <b>Select from one of the Input Sources</b>
@@ -49,7 +49,7 @@
                         </div>
                 </div>
             </div>
-                <div class="ui raised segment">
+                <div class="ui segment">
                     <div class="ui form width-container">
                         <p>
                             <b>Select from one of the Paper Sizes</b>
@@ -72,7 +72,7 @@
                     </div>
                 </div>
             </div>
-            <div class="ui raised segment">
+            <div class="ui segment">
                 <div class="ui form width-container">
                     <p>
                         <b>Select from one of the background sources</b>
@@ -111,7 +111,7 @@
                     </p>
                     <div class="content">
                         <div class="center aligned">
-                            {{ text-component/font-type sendDefFont=(action 'mutateCustomFont')}}
+                            {{ text-component/font-type }}
                         </div>
                     </div>
                     <div class="ui horizontal divider"></div>
@@ -123,7 +123,7 @@
                     <div class="ui horizontal divider"></div>
                     <div class="content">
                         <div class="center aligned">
-                            {{ text-component/font-size sendDefSize=(action 'mutateFontSize')}}
+                            {{ text-component/font-size sendDefSize=(action 'mutateFontSize') sendDefFont=(action 'mutateCustomFont')}}
                         </div>
                     </div>
                 </div>
