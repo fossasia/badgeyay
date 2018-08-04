@@ -53,17 +53,21 @@
                     <div class="ui form width-container">
                         <p>
                             <b>Select from one of the Paper Sizes</b>
-                        </p>
+                            &nbsp;
                             <div class="content">
                                 <div class="center aligned">
                                     {{ badge-component/paper-size sendPaperSize=(action 'mutatePaperSize') }}
                                 </div>
                             </div>
+                        </p>
                     </div>
                 <div class="ui horizontal divider"></div>
                 <div class="ui form width-container">
                     <p>
                         <b>Select from one of the Badge Sizes</b>
+                        <div class="ui icon orange basic button" data-tooltip="Badge size is in inches, 1 inch = 2.54 cm, 1 inch = 25.4 mm" data-position="right center">
+                            <i class="info icon"></i>
+                        </div>
                     </p>
                     <div class="content">
                         <div class="center aligned">
