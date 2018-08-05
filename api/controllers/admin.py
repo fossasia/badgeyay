@@ -132,9 +132,14 @@ def get_all_modules():
 def get_all_badge_detail():
     args = request.args
     page = request.args.get('page', 1, type=int)
+    base_query = db.session.query(Badges, User).join(User, User.id == Badges.user_id)
+    if 'filter' in args.keys():
+        badges = base_query.filter(User.username.contains(args['filter']))
+        badges = badges.paginate(page, app.config['POSTS_PER_PAGE'], False)
+        schema = AdminBadgeSchema(many=True)
+        return jsonify(schema.dump(badges.items).data)
     if 'state' in args.keys():
         schema = AdminBadgeSchema(many=True)
-        base_query = db.session.query(Badges, User).join(User, User.id == Badges.user_id)
         if args['state'] == 'all':
             badges = base_query.paginate(
                 page, app.config['POSTS_PER_PAGE'], False)

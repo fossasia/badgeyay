@@ -1,64 +1,70 @@
-<table class="ui sortable table">
-    <thead>
-        <tr>
-            <th>Badge Creator Name</th>
-            <th>Badge Name</th>
-            <th>Created At</th>
-            <th>Deleted At</th>
-            <th class="no-sort center aligned">Actions</th>
-        </tr>
-    </thead>
-    <tbody>
-        {{#each badges as |badge|}}
+{{#if empty}}
+    <div class="ui floating error message">
+        No Badges found for the user
+    </div>
+{{else}}
+    <table class="ui sortable table">
+        <thead>
             <tr>
-                <td>{{badge.username}}</td>
-                <td>{{badge.badge_name}}</td>
-                <td data-sort-value={{extract-time-stamp badge.created_at}}>{{sanitizeDate badge.created_at}}</td>
-                {{#if badge.deleted_at}}
-                    <td>{{sanitizeDate badge.deleted_at}}</td>
-                {{else}}
-                    <td>Not Deleted</td>
-                {{/if}}
-                <td class="center aligned">
-                    <div class="ui horizontal compact basic buttons">
-                        {{#ui-popup content='Edit' class='ui icon button'}}
-                            <i class="edit icon"></i>
-                        {{/ui-popup}}
-                        {{#ui-popup content='Delete' class='ui icon button' click=(action 'deleteBadge' badge)}}
-                            <i class="trash alternate outline icon"></i>
-                        {{/ui-popup}}
-                        {{#ui-popup content='Download Badge' class='ui icon button'}}
-                            <a href={{badge.download_link}}>
-                                <i class="ui download icon"></i>
-                            </a>
-                        {{/ui-popup}}
-                    </div>
-                </td>
+                <th>Badge Creator Name</th>
+                <th>Badge Name</th>
+                <th>Created At</th>
+                <th>Deleted At</th>
+                <th class="no-sort center aligned">Actions</th>
             </tr>
-        {{/each}}
-    </tbody>
-    {{#if allow}}
-        <tfoot>
-            <tr>
-                <th colspan="5">
-                    <div class="ui right floated pagination menu">
-                        {{#if allow_prev}}
-                            <a class="icon item" {{action 'prevPage'}}>
-                                <i class="left chevron icon"></i>
-                            </a>
-                        {{/if}}
+        </thead>
+        <tbody>
+            {{#each badges as |badge|}}
+                <tr>
+                    <td>{{badge.username}}</td>
+                    <td>{{badge.badge_name}}</td>
+                    <td data-sort-value={{extract-time-stamp badge.created_at}}>{{sanitizeDate badge.created_at}}</td>
+                    {{#if badge.deleted_at}}
+                        <td>{{sanitizeDate badge.deleted_at}}</td>
+                    {{else}}
+                        <td>Not Deleted</td>
+                    {{/if}}
+                    <td class="center aligned">
+                        <div class="ui horizontal compact basic buttons">
+                            {{#ui-popup content='Edit' class='ui icon button'}}
+                                <i class="edit icon"></i>
+                            {{/ui-popup}}
+                            {{#ui-popup content='Delete' class='ui icon button' click=(action 'deleteBadge' badge)}}
+                                <i class="trash alternate outline icon"></i>
+                            {{/ui-popup}}
+                            {{#ui-popup content='Download Badge' class='ui icon button'}}
+                                <a href={{badge.download_link}}>
+                                    <i class="ui download icon"></i>
+                                </a>
+                            {{/ui-popup}}
+                        </div>
+                    </td>
+                </tr>
+            {{/each}}
+        </tbody>
+        {{#if allow}}
+            <tfoot>
+                <tr>
+                    <th colspan="5">
+                        <div class="ui right floated pagination menu">
+                            {{#if allow_prev}}
+                                <a class="icon item" {{action 'prevPage'}}>
+                                    <i class="left chevron icon"></i>
+                                </a>
+                            {{/if}}
 
-                        {{#if allow_next}}
-                            <a class="icon item" {{action 'nextPage'}}>
-                                <i class="right chevron icon"></i>
-                            </a>
-                        {{/if}}
-                    </div>
-                </th>
-            </tr>
-        </tfoot>
-    {{/if}}
-</table>
-<script type="text/javascript">
-    $('table').tablesort();
-</script>
+                            {{#if allow_next}}
+                                <a class="icon item" {{action 'nextPage'}}>
+                                    <i class="right chevron icon"></i>
+                                </a>
+                            {{/if}}
+                        </div>
+                    </th>
+                </tr>
+            </tfoot>
+        {{/if}}
+    </table>
+    <script type="text/javascript">
+        $('table').tablesort();
+    </script>
+{{/if}}
