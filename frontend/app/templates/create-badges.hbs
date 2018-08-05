@@ -1,9 +1,11 @@
-<div class="ui grid stackable">
-<div class="right floated right aligned two wide column">
-<button {{action 'togglePreview'}} class="tiny ui basic orange button" data-tooltip="Toggle Preview" data-position="left center"><i class="exchange icon"></i></button>
+<div class="ui stackable grid">
+    <div class="right floated right aligned two wide column">
+        <button {{action 'togglePreview'}} class="tiny ui basic orange button" data-tooltip="Toggle Preview" data-position="left center">
+            <i class="exchange icon"></i>
+        </button>
+    </div>
 </div>
-</div>
-<div class="ui grid stackable mobile reversed">
+<div class="ui stackable mobile reversed grid">
     <div class="{{if previewToggled 'ten' 'sixteen'}} wide column">
         <div class="main-container create-badge segments">
             <div class="ui segment">
@@ -104,7 +106,7 @@
                     </div>
                 </div>
             </div>
-            <div class="ui raised segment">
+            <div class="ui segment">
                 <div class="ui form width-container">
                     <p>
                         <b>Select from following font customizations</b>
