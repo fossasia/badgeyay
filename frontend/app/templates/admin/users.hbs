@@ -6,9 +6,9 @@
                 {{#link-to 'admin.users.list' 'deleted' class='item'}} Deleted Users {{/link-to}}
                 <form class="ui form" {{action 'findUser' on="submit"}}>
                     <div class="field">
-                        <div class="ui icon input">
+                        <div class="ui action input">
                             {{input type="text" autocomplete='off' value=userEmail placeholder="Search User..."}}
-                            <i class="search icon" onclick={{action 'findUser'}}></i>
+                            <button class="ui icon button" {{action 'findUser'}}><i class="search icon"></i></button>
                         </div>
                     </div>
                 </form>
