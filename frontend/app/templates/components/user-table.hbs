@@ -1,52 +1,22 @@
-<table class="ui sortable table">
-    <thead>
-        <tr>
-            <th class="no-sort">User Photo</th>
-            <th>User Name</th>
-            <th>User Email</th>
-            <th class="no-sort">User Role</th>
-            <th>User Created At</th>
-            <th>Last Login Date</th>
-            <th class="no-sort">Last Login IP</th>
-            <th class="no-sort">Actions</th>
-        </tr>
-    </thead>
-    <tbody>
-        {{#if single}}
+{{#if empty}}
+    <div class="ui floating error message">
+        No User Records found
+    </div>
+{{else}}
+    <table class="ui sortable table">
+        <thead>
             <tr>
-                    <td>
-                        <img class="ui tiny centered circular image" src="{{users.photoURL}}">
-                    </td>
-                    <td>{{users.username}}</td>
-                    <td>{{users.email}}</td>
-                    <td>{{extract-role users}}</td>
-                    <td>{{sanitizeDate users.created_at}}</td>
-                    {{#if users.lastLoginDate}}
-                        <td>{{sanitizeDate users.lastLoginDate}}</td>
-                    {{else}}
-                        <td>Not Logged In Yet</td>
-                    {{/if}}
-                    {{#if users.lastLoginIp}}
-                        <td>{{users.lastLoginIp}}</td>
-                    {{else}}
-                        <td>Not Logged In Yet</td>
-                    {{/if}}
-                    <td>
-                        {{#if authToken.permissions.isAdmin}}
-                            <div class="ui horizontal compact basic buttons">
-                                {{#ui-popup content='Edit' class="ui icon button" click=(action 'openModal' 'user-edit' users)}}
-                                    <i class="edit icon"></i>
-                                {{/ui-popup}}
-                                {{#ui-popup content='Delete' class='ui icon button' click=(action 'initModal' 'user-delete' user)}}
-                                    <i class="trash alternate outline icon"></i>
-                                {{/ui-popup}}
-                            </div>
-                        {{else}}
-                            <p>You donot have the permission to edit role</p>
-                        {{/if}}
-                    </td>
-                </tr>
-        {{else}}
+                <th class="no-sort">User Photo</th>
+                <th>User Name</th>
+                <th>User Email</th>
+                <th class="no-sort">User Role</th>
+                <th>User Created At</th>
+                <th>Last Login Date</th>
+                <th class="no-sort">Last Login IP</th>
+                <th class="no-sort">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
             {{#each users as |user|}}
                 <tr>
                     <td>
@@ -82,30 +52,30 @@
                     </td>
                 </tr>
             {{/each}}
-        {{/if}}
-    </tbody>
-    {{#if allow}}
-        <tfoot>
-            <tr>
-                <th colspan="8">
-                    <div class="ui right floated pagination menu">
-                        {{#if allow_prev}}
-                            <a class="icon item" {{action 'prevPage'}}>
-                                <i class="left chevron icon"></i>
-                            </a>
-                        {{/if}}
+        </tbody>
+        {{#if allow}}
+            <tfoot>
+                <tr>
+                    <th colspan="8">
+                        <div class="ui right floated pagination menu">
+                            {{#if allow_prev}}
+                                <a class="icon item" {{action 'prevPage'}}>
+                                    <i class="left chevron icon"></i>
+                                </a>
+                            {{/if}}
 
-                        {{#if allow_next}}
-                            <a class="icon item" {{action 'nextPage'}}>
-                                <i class="right chevron icon"></i>
-                            </a>
-                        {{/if}}
-                    </div>
-                </th>
-            </tr>
-        </tfoot>
-    {{/if}}
-</table>
+                            {{#if allow_next}}
+                                <a class="icon item" {{action 'nextPage'}}>
+                                    <i class="right chevron icon"></i>
+                                </a>
+                            {{/if}}
+                        </div>
+                    </th>
+                </tr>
+            </tfoot>
+        {{/if}}
+    </table>
+{{/if}}
 
 {{#ui-modal name="user-delete" class="user-delete" detachable=true onApprove=(action 'deleteUser') onDeny=(action 'denyModal')}}
 <i class="close icon"></i>

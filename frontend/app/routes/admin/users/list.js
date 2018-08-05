@@ -19,9 +19,8 @@ export default Route.extend({
     } else if (params.users_status === 'deleted') {
       filter.state = 'deleted';
     } else {
-      filter.email = params.users_status;
-      this.set('single', true);
-      return this.get('store').queryRecord('all-user', filter);
+      filter.filter = params.users_status;
+      return this.get('store').query('all-user', filter);
     }
     filter.page = params.page;
     return this.get('store').query('all-user', filter);
@@ -33,6 +32,8 @@ export default Route.extend({
     set(controller, 'single', this.single);
     if (model.length == 0) {
       set(controller, 'empty', true);
+    } else {
+      set(controller, 'empty', false);
     }
     set(controller, 'users', model);
     if (model.length < 10) {

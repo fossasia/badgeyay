@@ -1,4 +1,5 @@
 from flask import jsonify, Blueprint, request
+from sqlalchemy import or_
 from math import floor
 from api.db import db
 from api.models.user import User
@@ -101,11 +102,9 @@ def patch_messages(type_):
 def show_all_users():
     page = request.args.get('page', 1, type=int)
     args = request.args
-    if 'email' in args.keys():
-        user = User.getUser(email=args['email'])
-        schema = SearchedUserSchema()
-        if not user:
-            return ErrorResponse(UserNotFound().message, 422, {'Content-Type': 'application/json'}).respond()
+    if 'filter' in args.keys():
+        user = User.query.filter(or_(User.username.contains(args['filter']), User.email.contains(args['filter']))).all()
+        schema = SearchedUserSchema(many=True)
         return jsonify(schema.dump(user).data)
     schema = AllUsersSchema(many=True)
     if 'state' in args.keys():
