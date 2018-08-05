@@ -30,7 +30,7 @@ export default Controller.extend({
   csvFile        : '',
   custImgFile    : '',
   badgeSize      : '',
-  previewToggled : false,
+  previewToggled : true,
   previewHeight  : '',
   badgeGenerated : false,
   backLink       : APP.backLink,
