@@ -174,6 +174,7 @@ def get_admin_report():
         mail_sent_count = find_mail_count(mail_list, date_start) - find_mail_count(mail_list, date_end)
         badge_count = Badges.query.filter(
             Badges.created_at.between(date_start, date_end)).count()
+        badge_deletion_count = Badges.query.filter(Badges.deleted_at.between(date_start, date_end)).count()
         user_creation_count = User.query.filter(
             User.created_at.between(date_start, date_end)).count()
         user_deletion_count = User.query.filter(
@@ -182,6 +183,7 @@ def get_admin_report():
             'id': date_start,
             'mailSentCount': mail_sent_count,
             'badgeCount': badge_count,
+            'badgeDeletionCount': badge_deletion_count,
             'userCreationCount': user_creation_count,
             'userDeletionCount': user_deletion_count}
         payload.append(report)
