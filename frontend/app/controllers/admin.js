@@ -4,9 +4,9 @@ import Controller from '@ember/controller';
 const { inject } = Ember;
 
 export default Controller.extend({
-  userPage : 1,
-  notify   : inject.service('notify'),
-  actions  : {
+  userPage      : 1,
+  notifications : inject.service('notification-messages'),
+  actions       : {
     nextPageUsers() {
       const _this = this;
       _this.get('store').query('all-user', {
@@ -16,7 +16,11 @@ export default Controller.extend({
           _this.set('users', records);
           _this.set('userPage', _this.userPage + 1);
         } else {
-          _this.get('notify').error('No users ahead');
+          _this.get('notifications').clearAll();
+          _this.get('notifications').error('No users ahead', {
+            autoClear     : true,
+            clearDuration : 1500
+          });
         }
       }).catch(err => {
         console.log(err);

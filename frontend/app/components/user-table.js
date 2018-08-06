@@ -4,9 +4,9 @@ import Component from '@ember/component';
 const { $, inject } = Ember;
 
 export default Component.extend({
-  notify    : inject.service('notify'),
-  authToken : inject.service('auth-session'),
-  actions   : {
+  notifications : inject.service('notification-messages'),
+  authToken     : inject.service('auth-session'),
+  actions       : {
     openModal(name, user) {
       $('.ui.' + name + '.modal').modal('show');
       this.set('userEdit', user);
@@ -20,10 +20,18 @@ export default Component.extend({
     approveModal(element, component) {
       this.get('userEdit').save()
         .then(() => {
-          this.notify.success('Updated successfully');
+          this.get('notifications').clearAll();
+          this.get('notifications').success('Updated successfully', {
+            autoClear     : true,
+            clearDuration : 1500
+          });
         })
         .catch(() => {
-          this.notify.error('Unable to Update User');
+          this.get('notifications').clearAll();
+          this.get('notifications').error('Unable to Update User', {
+            autoClear     : true,
+            clearDuration : 1500
+          });
         })
         .finally(() => {
           return true;
@@ -38,10 +46,18 @@ export default Component.extend({
     deleteUser(user) {
       this.get('userDelete').destroyRecord()
         .then(() => {
-          this.notify.success('Deleted successfully');
+          this.get('notifications').clearAll();
+          this.get('notifications').success('Deleted successfully', {
+            autoClear     : true,
+            clearDuration : 1500
+          });
         })
         .catch(() => {
-          this.notify.error('Unable to delete user');
+          this.get('notifications').clearAll();
+          this.get('notifications').error('Unable to delete user', {
+            autoClear     : true,
+            clearDuration : 1500
+          });
         });
     },
 

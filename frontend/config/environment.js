@@ -14,6 +14,9 @@ module.exports = function(environment) {
       storageBucket     : 'badgeyay-195bf.appspot.com',
       messagingSenderId : '1033576063262'
     },
+    'ember-cli-notifications': {
+      includeFontAwesome: true
+    },
     torii: {
       sessionServiceName: 'session'
     },

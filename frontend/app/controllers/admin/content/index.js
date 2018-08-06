@@ -4,14 +4,20 @@ import Ember from 'ember';
 const { inject } = Ember;
 
 export default Controller.extend({
-  notify  : inject.service('notify'),
-  actions : {
+  notifications : inject.service('notification-messages'),
+  actions       : {
     submitForm() {
       this.set('isLoading', true);
       this.get('model')
         .save()
-        .then(() => this.notify.success('Update successfully'))
-        .catch(() => this.notify.error('Unable to update'))
+        .then(() => this.get('notifications').success('Update successfully', {
+          autoClear     : true,
+          clearDuration : 1500
+        }))
+        .catch(() => this.get('notifications').error('Unable to update', {
+          autoClear     : true,
+          clearDuration : 1500
+        }))
         .finally(() => this.set('isLoading', false));
     }
   }

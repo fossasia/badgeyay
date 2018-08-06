@@ -4,23 +4,31 @@ import Controller from '@ember/controller';
 const { inject } = Ember;
 
 export default Controller.extend({
-  queryParams : ['page'],
-  page        : 1,
-  state       : '',
-  badges      : null,
-  allow_next  : true,
-  allow_prev  : false,
-  allow       : true,
-  notify      : inject.service('notify'),
-  actions     : {
+  queryParams   : ['page'],
+  page          : 1,
+  state         : '',
+  badges        : null,
+  allow_next    : true,
+  allow_prev    : false,
+  allow         : true,
+  notifications : inject.service('notification-messages'),
+  actions       : {
 
     deleteBadge(badge) {
       badge.destroyRecord()
         .then(() => {
-          this.notify.success('Badge Deleted successfully');
+          this.get('notifications').clearAll();
+          this.get('notifications').success('Badge Deleted successfully', {
+            autoClear     : true,
+            clearDuration : 1500
+          });
         })
         .catch(() => {
-          this.notify.error('Unable to delete Badge');
+          this.get('notifications').clearAll();
+          this.get('notifications').error('Unable to delete Badge', {
+            autoClear     : true,
+            clearDuration : 1500
+          });
         });
     },
 
@@ -40,11 +48,19 @@ export default Controller.extend({
             }
             this.set('allow_prev', true);
           } else {
-            this.notify.error('No badges found');
+            this.get('notifications').clearAll();
+            this.get('notifications').error('No badges found', {
+              autoClear     : true,
+              clearDuration : 1500
+            });
           }
         })
         .catch(() => {
-          this.notify.error('Please try again!');
+          this.get('notifications').clearAll();
+          this.get('notifications').error('Please try again!', {
+            autoClear     : true,
+            clearDuration : 1500
+          });
         });
     },
 
@@ -65,10 +81,18 @@ export default Controller.extend({
             this.set('allow_next', true);
           })
           .catch(() => {
-            this.get('notify').error('Please try again!');
+            this.get('notifications').clearAll();
+            this.get('notifications').error('Please try again!', {
+              autoClear     : true,
+              clearDuration : 1500
+            });
           });
       } else {
-        this.notify.error('Cannot Go Down');
+        this.get('notifications').clearAll();
+        this.get('notifications').error('Cannot Go Down', {
+          autoClear     : true,
+          clearDuration : 1500
+        });
       }
     }
   }
