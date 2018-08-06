@@ -4,8 +4,18 @@
 <div class="ui stackable grid">
   <div class="four column row">
     <div class="center aligned column">Field</div>
-    <div class="center aligned column">Font</div>
-    <div class="center aligned column">Font Size (in pixels)</div>
+    <div class="center aligned column">Font<br>
+      <div class="ui checkbox">
+        {{input name="fonttypeall" type="checkbox" checked=fonttypeall}}
+        <label>Apply to all</label>
+      </div>
+    </div>
+    <div class="center aligned column">Font Size (in pixels)<br>
+      <div class="ui checkbox">
+        {{input name="fontsizeall" type="checkbox" checked=fontsizeall}}
+        <label>Apply to all</label>
+      </div>
+    </div>
     <div class="center aligned column">Adjust long content to width automatically</div>
   </div>
 
