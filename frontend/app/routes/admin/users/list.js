@@ -10,7 +10,6 @@ export default Route.extend({
 
   model(params) {
     let filter = {};
-    this.set('single', false);
     this.set('params', params);
     if (params.users_status === 'all') {
       filter.state = 'all';
@@ -29,7 +28,6 @@ export default Route.extend({
   setupController(controller, model) {
     this._super(...arguments);
     set(controller, 'state', this.params.users_status);
-    set(controller, 'single', this.single);
     if (model.length == 0) {
       set(controller, 'empty', true);
     } else {
