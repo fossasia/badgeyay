@@ -5,6 +5,14 @@
                 {{#link-to 'admin.badges.list' 'all' class='item'}} All Badges {{/link-to}}
                 {{#link-to 'admin.badges.list' 'created' class='item'}} Created Badges {{/link-to}}
                 {{#link-to 'admin.badges.list' 'deleted' class='item'}} Deleted Badges {{/link-to}}
+                <form class="ui form" {{action 'findBadges' on="submit"}}>
+                    <div class="field">
+                        <div class="ui action input">
+                            {{input type="text" autocomplete='off' value=user placeholder="Search Badges..."}}
+                            <button class="ui icon button" {{action 'findBadges'}}><i class="search icon"></i></button>
+                        </div>
+                    </div>
+                </form>
             {{/tabbed-navigation}}
         </div>
     </div>
