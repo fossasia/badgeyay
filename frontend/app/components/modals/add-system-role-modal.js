@@ -4,7 +4,7 @@ import Ember from 'ember';
 const { inject } = Ember;
 
 export default Component.extend({
-  notify: inject.service('notify'),
+  notifications: inject.service('notification-messages'),
   init() {
     this._super(...arguments);
   },

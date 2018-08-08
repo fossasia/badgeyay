@@ -2,10 +2,10 @@ import Controller from '@ember/controller';
 import { inject as service } from '@ember/service';
 
 export default Controller.extend({
-  routing : service('-routing'),
-  notify  : service('notify'),
-  uid     : '',
-  actions : {
+  routing       : service('-routing'),
+  notifications : service('notification-messages'),
+  uid           : '',
+  actions       : {
     updateProfileImage(profileImageData, extension) {
       const _this = this;
       const user = this.get('store').peekAll('user');
@@ -35,14 +35,20 @@ export default Controller.extend({
     updateUserName() {
       this.set('isLoadingName', true);
       this.get('user').save()
-        .then(() => this.get('notify').success('Username Successfully Updated!'))
+        .then(() => this.get('notifications').success('Username Successfully Updated!', {
+          autoClear     : true,
+          clearDuration : 1500
+        }))
         .finally(() => this.set('isLoadingName', false));
     },
 
     updateUserPassword() {
       this.set('isLoadingPassword', true);
       this.get('user').save()
-        .then(() => this.get('notify').success('Password Successfully Updated!'))
+        .then(() => this.get('notifications').success('Password Successfully Updated!', {
+          autoClear     : true,
+          clearDuration : 1500
+        }))
         .finally(() => this.set('isLoadingPassword', false));
     }
   }

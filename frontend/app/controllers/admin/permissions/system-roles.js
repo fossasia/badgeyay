@@ -4,7 +4,7 @@ import Ember from 'ember';
 const { inject } = Ember;
 
 export default Controller.extend({
-  notify                   : inject.service('notify'),
+  notifications            : inject.service('notification-messages'),
   isAddSystemRoleModalOpen : false,
   actions                  : {
     openAddSystemRoleModal(state) {
@@ -19,7 +19,11 @@ export default Controller.extend({
       }).then(recordObj => {
         this.set('roleFounded', recordObj);
       }).catch(err => {
-        this.notify.error('Unable to find user');
+        this.get('notifications').clearAll();
+        this.get('notifications').error('Unable to find user', {
+          autoClear     : true,
+          clearDuration : 1500
+        });
       }).finally(() => this.set('isLoading', false));
     },
 
@@ -29,14 +33,26 @@ export default Controller.extend({
           email     : user.email,
           adminStat : boolFlag
         }).save().then(() => {
-          this.notify.success('Admin created');
+          this.get('notifications').clearAll();
+          this.get('notifications').success('Admin created', {
+            autoClear     : true,
+            clearDuration : 1500
+          });
         }).catch(() => {
-          this.notify.error('Unable to set admin');
+          this.get('notifications').clearAll();
+          this.get('notifications').error('Unable to set admin', {
+            autoClear     : true,
+            clearDuration : 1500
+          });
         }).finally(() => {
           this.set('isAddSystemRoleModalOpen', false);
         });
       } else {
-        this.notify.error('Admin not enabled');
+        this.get('notifications').clearAll();
+        this.get('notifications').error('Admin not enabled', {
+          autoClear     : true,
+          clearDuration : 1500
+        });
       }
     },
 
@@ -46,14 +62,26 @@ export default Controller.extend({
           email     : user.email,
           salesStat : boolFlag
         }).save().then(() => {
-          this.notify.success('Sales created');
+          this.get('notifications').clearAll();
+          this.get('notifications').success('Sales created', {
+            autoClear     : true,
+            clearDuration : 1500
+          });
         }).catch(() => {
-          this.notify.error('Unable to set Sales roles');
+          this.get('notifications').clearAll();
+          this.get('notifications').error('Unable to set Sales roles', {
+            autoClear     : true,
+            clearDuration : 1500
+          });
         }).finally(() => {
           this.set('isAddSystemRoleModalOpen', false);
         });
       } else {
-        this.notify.error('Sales not enabled');
+        this.get('notifications').clearAll();
+        this.get('notifications').error('Sales not enabled', {
+          autoClear     : true,
+          clearDuration : 1500
+        });
       }
     },
 
@@ -61,10 +89,18 @@ export default Controller.extend({
       this.get('store').queryRecord('delete-sale', {
         email
       }).then(() => {
-        this.notify.success('Sales Role deleted successfully');
+        this.get('notifications').clearAll();
+        this.get('notifications').success('Sales Role deleted successfully', {
+          autoClear     : true,
+          clearDuration : 1500
+        });
       }).catch(err => {
         console.error(err);
-        this.notify.error('Unable to delete sales role');
+        this.get('notifications').clearAll();
+        this.get('notifications').error('Unable to delete sales role', {
+          autoClear     : true,
+          clearDuration : 1500
+        });
       });
     },
 
@@ -72,10 +108,18 @@ export default Controller.extend({
       this.get('store').queryRecord('delete-admin', {
         email
       }).then(() => {
-        this.notify.success('Admin deleted successfully');
+        this.get('notifications').clearAll();
+        this.get('notifications').success('Admin deleted successfully', {
+          autoClear     : true,
+          clearDuration : 1500
+        });
       }).catch(err => {
         console.error(err);
-        this.notify.error('Unable to delete admin');
+        this.get('notifications').clearAll();
+        this.get('notifications').error('Unable to delete admin', {
+          autoClear     : true,
+          clearDuration : 1500
+        });
       });
     }
   }

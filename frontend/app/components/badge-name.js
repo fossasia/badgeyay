@@ -7,8 +7,8 @@ export default Component.extend({
   init() {
     this._super(...arguments);
   },
-  notify  : inject.service('notify'),
-  actions : {
+  notifications : inject.service('notification-messages'),
+  actions       : {
 
     updateBadgeName() {
       this.get('sendBadgeName')(this.get('badge'));

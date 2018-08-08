@@ -9,17 +9,25 @@ export default Component.extend({
     this._super(...arguments);
   },
 
-  notify: inject.service('notify'),
+  notifications: inject.service('notification-messages'),
 
   actions: {
 
     deleteBadge(badge) {
       badge.destroyRecord()
         .then(() => {
-          this.notify.success('Badge Deleted successfully');
+          this.get('notifications').clearAll();
+          this.get('notifications').success('Badge Deleted successfully', {
+            autoClear     : true,
+            clearDuration : 1500
+          });
         })
         .catch(() => {
-          this.notify.error('Unable to delete Badge');
+          this.get('notifications').clearAll();
+          this.get('notifications').error('Unable to delete Badge', {
+            autoClear     : true,
+            clearDuration : 1500
+          });
         });
     },
 

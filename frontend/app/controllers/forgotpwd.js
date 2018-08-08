@@ -4,9 +4,9 @@ import Controller from '@ember/controller';
 const { inject } = Ember;
 
 export default Controller.extend({
-  session : inject.service(),
-  notify  : inject.service('notify'),
-  actions : {
+  session       : inject.service(),
+  notifications : inject.service('notification-messages'),
+  actions       : {
     sendResetMail(email) {
       // Get Token from backend
       const _this = this;
@@ -22,13 +22,19 @@ export default Controller.extend({
             token,
             email
           });
-          _this.get('notify').success('Reset mail sent to ' + email);
+          _this.get('notifications').success('Reset mail sent to ' + email, {
+            autoClear     : true,
+            clearDuration : 1500
+          });
         })
         .catch(err => {
           let userErrors = resetUserPromise.get('errors.user');
           if (userErrors !== undefined) {
             userErrors.forEach(error => {
-              _this.get('notify').error(error.message);
+              _this.get('notifications').error(error.message, {
+                autoClear     : true,
+                clearDuration : 1500
+              });
             });
           }
         });

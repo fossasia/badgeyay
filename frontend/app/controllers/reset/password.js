@@ -4,10 +4,10 @@ import Controller from '@ember/controller';
 const { inject } = Ember;
 
 export default Controller.extend({
-  queryParams : ['token'],
-  token       : null,
-  notify      : inject.service('notify'),
-  actions     : {
+  queryParams   : ['token'],
+  token         : null,
+  notifications : inject.service('notification-messages'),
+  actions       : {
     resetPwd(pwd) {
       const _this = this;
       let resetPwd = _this.get('store').createRecord('reset-password', {
@@ -17,10 +17,16 @@ export default Controller.extend({
       resetPwd.save()
         .then(record => {
           if (record.status === 'Changed') {
-            _this.get('notify').success('Please login with changed credentials');
+            _this.get('notifications').success('Please login with changed credentials', {
+              autoClear     : true,
+              clearDuration : 1500
+            });
             _this.transitionToRoute('/login');
           } else if (record.status === 'Not Changed') {
-            _this.get('notify').error('Unable to change the password');
+            _this.get('notifications').error('Unable to change the password', {
+              autoClear     : true,
+              clearDuration : 1500
+            });
           }
         })
         .catch(err => {

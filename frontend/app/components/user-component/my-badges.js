@@ -7,17 +7,25 @@ export default Component.extend({
   init() {
     this._super(...arguments);
   },
-  queryParams : ['page'],
-  page        : 1,
-  notify      : inject.service('notify'),
-  actions     : {
+  queryParams   : ['page'],
+  page          : 1,
+  notifications : inject.service('notification-messages'),
+  actions       : {
     deleteBadge(badge) {
       badge.destroyRecord()
         .then(() => {
-          this.notify.success('Badge Deleted successfully');
+          this.get('notifications').clearAll();
+          this.get('notifications').success('Badge Deleted successfully', {
+            autoClear     : true,
+            clearDuration : 1500
+          });
         })
         .catch(() => {
-          this.notify.error('Unable to delete Badge');
+          this.get('notifications').clearAll();
+          this.get('notifications').error('Unable to delete Badge', {
+            autoClear     : true,
+            clearDuration : 1500
+          });
         });
     },
 
@@ -35,14 +43,26 @@ export default Component.extend({
               this.set('my-badges', records);
               this.set('page', this.page + 1);
             } else {
-              this.notify.error('No More Badges found');
+              this.get('notifications').clearAll();
+              this.get('notifications').error('No More Badges found', {
+                autoClear     : true,
+                clearDuration : 1500
+              });
             }
           })
           .catch(err => {
-            this.get('notify').error('Please try again!');
+            this.get('notifications').clearAll();
+            this.get('notifications').error('Please try again!', {
+              autoClear     : true,
+              clearDuration : 1500
+            });
           });
       } else {
-        this.notify.error('No More Badges Found');
+        this.get('notifications').clearAll();
+        this.get('notifications').error('No More Badges Found', {
+          autoClear     : true,
+          clearDuration : 1500
+        });
       }
     },
     prevPage() {
@@ -55,10 +75,18 @@ export default Component.extend({
             this.set('page', this.page - 1);
           })
           .catch(err => {
-            this.get('notify').error('Please try again!');
+            this.get('notifications').clearAll();
+            this.get('notifications').error('Please try again!', {
+              autoClear     : true,
+              clearDuration : 1500
+            });
           });
       } else {
-        this.notify.error('No More Badges Found');
+        this.get('notifications').clearAll();
+        this.get('notifications').error('No More Badges Found', {
+          autoClear     : true,
+          clearDuration : 1500
+        });
       }
     }
   }

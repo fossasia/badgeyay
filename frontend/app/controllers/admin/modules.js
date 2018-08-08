@@ -4,17 +4,23 @@ import Ember from 'ember';
 const { inject } = Ember;
 
 export default Controller.extend({
-  notify  : inject.service('notify'),
-  actions : {
+  notifications : inject.service('notification-messages'),
+  actions       : {
     submit() {
       let modules = this.get('model');
       this.set('isLoading', true);
       modules.save()
         .then(() => {
-          this.notify.success('Settings have been saved successfully.');
+          this.get('notifications').success('Settings have been saved successfully.', {
+            autoClear     : true,
+            clearDuration : 1500
+          });
         })
         .catch(() => {
-          this.notify.error('An unexpected error has occurred. Settings not saved.');
+          this.get('notifications').error('An unexpected error has occurred. Settings not saved.', {
+            autoClear     : true,
+            clearDuration : 1500
+          });
         })
         .finally(() => {
           this.set('isLoading', false);

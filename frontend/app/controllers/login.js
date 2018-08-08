@@ -5,9 +5,9 @@ import Controller from '@ember/controller';
 const { inject, $ } = Ember;
 
 export default Controller.extend({
-  session   : inject.service(),
-  notify    : inject.service('notify'),
-  authToken : inject.service('auth-session'),
+  session       : inject.service(),
+  notifications : inject.service('notification-messages'),
+  authToken     : inject.service('auth-session'),
   beforeModel() {
     return this.get('session').fetch().catch(function() {});
   },
@@ -39,11 +39,18 @@ export default Controller.extend({
             .then(() => {
               this_.send('generateLoginToken', userData.uid);
             }).catch(() => {
-              this_.notify.error('Unable to login');
+              this_.get('notifications').error('Unable to login', {
+                autoClear     : true,
+                clearDuration : 1500
+              });
             });
         }).catch(function(err) {
           console.log(err.message);
-          this_.get('notify').error('Log In Failed ! Please try again');
+          this_.get('notifications').clearAll();
+          this_.notifications.error('Log In Failed ! Please try again', {
+            autoClear     : true,
+            clearDuration : 1500
+          });
         });
       } else {
         this_.get('session').open('firebase', {
@@ -72,14 +79,22 @@ export default Controller.extend({
             });
         }).catch(function(err) {
           console.log(err.message);
-          this_.get('notify').error('Log In Failed ! Please try again');
+          this_.get('notifications').clearAll();
+          this_.notifications.error('Log In Failed ! Please try again', {
+            autoClear     : true,
+            clearDuration : 1500
+          });
         });
       }
     },
 
     denyModal(element, component) {
       this.session.close();
-      this.notify.error('Please set your password');
+      this.get('notifications').clearAll();
+      this.get('notifications').error('Please set your password', {
+        autoClear     : true,
+        clearDuration : 1500
+      });
       return true;
     },
 
@@ -94,7 +109,10 @@ export default Controller.extend({
         this.get('userLoggedIn')
           .save()
           .then(obj => this.send('generateLoginToken', obj.id))
-          .catch(() => this.notify.error('Unable to save password'))
+          .catch(() => this.notifications.error('Unable to save password', {
+            autoClear     : true,
+            clearDuration : 1500
+          }))
           .finally(() => { return true });
       }
     },
@@ -118,10 +136,18 @@ export default Controller.extend({
           localStorage.setItem('loginToken', JSON.stringify(loginPayload));
 
           this_.transitionToRoute('/');
-          this_.get('notify').success('Log In Successful');
+          this_.get('notifications').clearAll();
+          this_.get('notifications').success('Log In Successful', {
+            autoClear     : true,
+            clearDuration : 1500
+          });
         })
         .catch(err => {
-          this_.get('notify').error('Unable to validate user');
+          this_.get('notifications').clearAll();
+          this_.get('notifications').error('Unable to validate user', {
+            autoClear     : true,
+            clearDuration : 1500
+          });
         });
 
       this.get('store').queryRecord('permission', {
@@ -139,7 +165,10 @@ export default Controller.extend({
           this.authToken.setPermission(permissionPayload);
         })
         .catch(() => {
-          this.notify.error('Unable to fetch permission');
+          this.notifications.error('Unable to fetch permission', {
+            autoClear     : true,
+            clearDuration : 1500
+          });
         });
     }
   }

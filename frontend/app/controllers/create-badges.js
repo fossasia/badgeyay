@@ -7,7 +7,7 @@ import { inject as service } from '@ember/service';
 
 export default Controller.extend({
   routing        : service('-routing'),
-  notify         : service('notify'),
+  notifications  : service('notification-messages'),
   authToken      : service('auth-session'),
   defColor       : '',
   backColor      : '',
@@ -159,7 +159,10 @@ export default Controller.extend({
           _this.set('csvFile', record.filename);
           badgeData.csv = _this.csvFile;
           _this.send('sendDefaultImg', badgeData);
-          _this.get('notify').success('Text saved Successfully');
+          _this.get('notifications').success('Text saved Successfully', {
+            autoClear     : true,
+            clearDuration : 1500
+          });
           this.set('progress', 40);
           this.set('progressState', 'Gathering background');
         }).catch(err => {
@@ -167,7 +170,11 @@ export default Controller.extend({
           if (userErrors !== undefined) {
             _this.set('userError', userErrors);
             userErrors.forEach(error => {
-              _this.get('notify').error(error.message);
+              _this.get('notifications').clearAll();
+              _this.get('notifications').error(error.message, {
+                autoClear     : true,
+                clearDuration : 1500
+              });
               this.set('showProgress', false);
               this.set('progress', 0);
               this.set('progressState', '');
@@ -183,7 +190,11 @@ export default Controller.extend({
           _this.send('sendDefaultImg', badgeData);
         }
       } else {
-        _this.get('notify').error('No Input source specified');
+        _this.get('notifications').clearAll();
+        _this.get('notifications').error('No Input source specified', {
+          autoClear     : true,
+          clearDuration : 1500
+        });
         this.set('showProgress', false);
         this.set('progress', 0);
       }
@@ -209,7 +220,11 @@ export default Controller.extend({
             if (userErrors !== undefined) {
               _this.set('userError', userErrors);
               userErrors.forEach(error => {
-                _this.get('notify').error(error.message);
+                _this.get('notifications').clearAll();
+                _this.get('notifications').error(error.message, {
+                  autoClear     : true,
+                  clearDuration : 1500
+                });
                 this.set('showProgress', false);
                 this.set('progress', 0);
                 this.set('progressState', '');
@@ -233,7 +248,11 @@ export default Controller.extend({
             if (userErrors !== undefined) {
               _this.set('userError', userErrors);
               userErrors.forEach(error => {
-                _this.get('notify').error(error.message);
+                _this.get('notifications').clearAll();
+                _this.get('notifications').error(error.message, {
+                  autoClear     : true,
+                  clearDuration : 1500
+                });
                 this.set('showProgress', false);
                 this.set('progress', 0);
                 this.set('progressState', '');
@@ -258,7 +277,11 @@ export default Controller.extend({
             if (userErrors !== undefined) {
               _this.set('userError', userErrors);
               userErrors.forEach(error => {
-                _this.get('notify').error(error.message);
+                _this.get('notifications').clearAll();
+                _this.get('notifications').error(error.message, {
+                  autoClear     : true,
+                  clearDuration : 1500
+                });
                 this.set('showProgress', false);
                 this.set('progress', 0);
                 this.set('progressState', '');
@@ -266,7 +289,11 @@ export default Controller.extend({
             }
           });
       } else {
-        _this.get('notify').error('No background source specified');
+        _this.get('notifications').clearAll();
+        _this.get('notifications').error('No background source specified', {
+          autoClear     : true,
+          clearDuration : 1500
+        });
         this.set('showProgress', false);
         this.set('progress', 0);
         this.set('progressState', '');
@@ -289,7 +316,11 @@ export default Controller.extend({
         })
         .catch(err => {
           _this.set('overlay', false);
-          _this.get('notify').error('Unable to generate badge');
+          _this.get('notifications').clearAll();
+          _this.get('notifications').error('Unable to generate badge', {
+            autoClear     : true,
+            clearDuration : 1500
+          });
           this.set('showProgress', false);
           this.set('progress', 0);
         });
@@ -315,14 +346,22 @@ export default Controller.extend({
       csv_.save()
         .then(record => {
           _this.set('csvFile', record.filename);
-          _this.get('notify').success('CSV uploaded Successfully');
+          _this.get('notifications').clearAll();
+          _this.get('notifications').success('CSV uploaded Successfully', {
+            autoClear     : true,
+            clearDuration : 1500
+          });
         })
         .catch(err => {
           let userErrors = csv_.get('errors.user');
           if (userErrors !== undefined) {
             _this.set('userError', userErrors);
             userErrors.forEach(error => {
-              _this.get('notify').error(error.message);
+              _this.get('notifications').clearAll();
+              _this.get('notifications').error(error.message, {
+                autoClear     : true,
+                clearDuration : 1500
+              });
             });
           }
         });
@@ -375,14 +414,22 @@ export default Controller.extend({
       image_.save()
         .then(record => {
           _this.set('custImgFile', record.filename);
-          _this.get('notify').success('Image uploaded Successfully');
+          _this.get('notifications').clearAll();
+          _this.get('notifications').success('Image uploaded Successfully', {
+            autoClear     : true,
+            clearDuration : 1500
+          });
         })
         .catch(err => {
           let userErrors = image_.get('errors.user');
           if (userErrors !== undefined) {
             _this.set('userError', userErrors);
             userErrors.forEach(error => {
-              _this.get('notify').error(error.message);
+              _this.get('notifications').clearAll();
+              _this.get('notifications').error(error.message, {
+                autoClear     : true,
+                clearDuration : 1500
+              });
             });
           }
         });

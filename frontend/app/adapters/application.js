@@ -1,15 +1,17 @@
 import DS from 'ember-data';
 import Ember from 'ember';
+import { inject as service } from '@ember/service';
 
 const { JSONAPIAdapter } = DS;
-const { inject: { service } } = Ember;
 
 export default JSONAPIAdapter.extend({
-  notify: service(),
+  notifications: service('notification-messages'),
 
   isInvalid() {
-    this.get('notify').error('An unexpected error occurred. Please try again later.', {
-      closeAfter: 5000
+    this.get('notifications').clearAll();
+    this.get('notifications').error('An unexpected error occurred. Please try again later.', {
+      autoClear     : true,
+      clearDuration : 1500
     });
   }
 });

@@ -4,13 +4,13 @@ import Controller from '@ember/controller';
 const { inject } = Ember;
 
 export default Controller.extend({
-  queryParams : ['page'],
-  page        : 1,
-  notify      : inject.service('notify'),
-  allow_next  : true,
-  allow_prev  : false,
-  allow       : true,
-  actions     : {
+  queryParams   : ['page'],
+  page          : 1,
+  notifications : inject.service('notification-messages'),
+  allow_next    : true,
+  allow_prev    : false,
+  allow         : true,
+  actions       : {
     nextPage() {
       let filters = {};
       filters.page = this.page + 1;
@@ -26,12 +26,20 @@ export default Controller.extend({
           this.set('allow_prev', true);
         })
         .catch(() => {
-          this.notify.error('Unable to process request');
+          this.get('notifications').clearAll();
+          this.get('notifications').error('Unable to process request', {
+            autoClear     : true,
+            clearDuration : 1500
+          });
         });
     },
     prevPage() {
       if (this.page <= 1) {
-        this.notify.error('Cannot go down');
+        this.get('notifications').clearAll();
+        this.get('notifications').error('Cannot go down', {
+          autoClear     : true,
+          clearDuration : 1500
+        });
       } else {
         let filters = {};
         filters.page = this.page - 1;
@@ -47,7 +55,11 @@ export default Controller.extend({
             this.set('allow_next', true);
           })
           .catch(() => {
-            this.notify.error('Unable to process request');
+            this.get('notifications').clearAll();
+            this.get('notifications').error('Unable to process request', {
+              autoClear     : true,
+              clearDuration : 1500
+            });
           });
       }
     }

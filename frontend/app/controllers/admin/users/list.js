@@ -4,15 +4,15 @@ import Ember from 'ember';
 const { inject } = Ember;
 
 export default Controller.extend({
-  queryParams : ['page'],
-  page        : 1,
-  state       : '',
-  users       : null,
-  allow_next  : true,
-  allow_prev  : false,
-  allow       : true,
-  notify      : inject.service('notify'),
-  actions     : {
+  queryParams   : ['page'],
+  page          : 1,
+  state         : '',
+  users         : null,
+  allow_next    : true,
+  allow_prev    : false,
+  allow         : true,
+  notifications : inject.service('notification-messages'),
+  actions       : {
     nextPage() {
       let filter = {};
       filter.page = this.page + 1;
@@ -30,11 +30,17 @@ export default Controller.extend({
             }
             this.set('allow_prev', true);
           } else {
-            this.notify.error('No users found');
+            this.get('notifications').error('No users found', {
+              autoClear     : true,
+              clearDuration : 1500
+            });
           }
         })
         .catch(() => {
-          this.get('notify').error('Please try again!');
+          this.get('notifications').error('Please try again!', {
+            autoClear     : true,
+            clearDuration : 1500
+          });
         });
     },
     prevPage() {
@@ -56,10 +62,16 @@ export default Controller.extend({
 
           })
           .catch(() => {
-            this.get('notify').error('Please try again!');
+            this.get('notifications').error('Please try again!', {
+              autoClear     : true,
+              clearDuration : 1500
+            });
           });
       } else {
-        this.notify.error('Cannot Go Down');
+        this.get('notifications').error('Cannot Go Down', {
+          autoClear     : true,
+          clearDuration : 1500
+        });
       }
     }
   }
