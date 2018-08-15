@@ -10,7 +10,7 @@
             {{#each socialMedia as |media|}}
                 <a class="item" href={{media.link}} target="_blank">
                     <i class="{{media.id}} icon"></i>
-                    {{ first-cap media.id}}
+                    <span class="mobile-hide">{{ first-cap media.id}}</span>
                 </a>
             {{/each}}
         </div>
