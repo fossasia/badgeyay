@@ -4,7 +4,7 @@
         background-size: cover;
         background-repeat: no-repeat;
         height: {{if previewHeight '475' '600'}}px;
-        background-image: {{if defImage "url('/images/badge_backgrounds/"}}{{if defImage defImageName}}{{if defImage "');"}}
+        background-image: {{if defImage "url('/images/badge_backgrounds/"}}{{if defImage defImageName}}{{if defImage fingerPrint}}{{if defImage ".png');"}}
             {{if custImage 'url('}}{{if custImage backImg}}{{if custImage ');'}}">
         <div class="preview content" style="padding-top: {{if previewHeight '150' '200'}}px">
             <p
