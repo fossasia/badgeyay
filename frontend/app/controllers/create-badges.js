@@ -385,7 +385,7 @@ export default Controller.extend({
     mutateBackground(id) {
       this.defImageClicked();
       let defImageRecord = this.get('store').peekRecord('def-image', id);
-      this.set('defImageName', defImageRecord.name + '.png');
+      this.set('defImageName', defImageRecord.name);
     },
 
     mutateDefColor(color) {
