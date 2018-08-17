@@ -89,6 +89,14 @@
                     </p>
                     <div class="content">
                         <div class="center aligned">
+                            {{ background-component/image-component imageData=imageData sendImage=(action 'mutateCustomImage') }}
+                        </div>
+                    </div>
+                    <div class="ui horizontal divider">
+                        Or
+                    </div>
+                    <div class="content">
+                        <div class="center aligned">
                             {{ background-component/def-image-component defImages=defImages sendDefImage=(action 'mutateBackground') }}
                         </div>
                     </div>
@@ -98,14 +106,6 @@
                     <div class="content">
                         <div class="center aligned">
                             {{ background-component/color-bg-component sendDefColor=(action 'mutateDefColor') backColor=backColor }}
-                        </div>
-                    </div>
-                    <div class="ui horizontal divider">
-                        Or
-                      </div>
-                    <div class="content">
-                        <div class="center aligned">
-                            {{ background-component/image-component imageData=imageData sendImage=(action 'mutateCustomImage') }}
                         </div>
                     </div>
                 </div>
