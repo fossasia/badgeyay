@@ -1,87 +1,89 @@
-<form class="ui {{if isLoading 'loading'}} form" {{action 'submit' on='submit' }} novalidate>
-    <h3 class="ui header">
-        {{'App Environment'}}
-        <div class="sub header">
-            {{'Where is the application running ?'}}
-        </div>
-    </h3>
-    <div class="ui three column grid">
-        <div class="ui row">
-            <div class="column">
-                <div class="field">
-                    {{ui-radio label='Development' current=settings.appEnvironment onChange=(action (mut settings.appEnvironment)) name='environment'
-                    value='0'}}
+<div class="ui basic segment">
+    <form class="ui {{if isLoading 'loading'}} form" {{action 'submit' on='submit' }} novalidate>
+        <h3 class="ui header">
+            {{'App Environment'}}
+            <div class="sub header">
+                {{'Where is the application running ?'}}
+            </div>
+        </h3>
+        <div class="ui three column grid">
+            <div class="ui row">
+                <div class="two wide column">
+                    <div class="two wide  field">
+                        {{ui-radio label='Development' current=settings.appEnvironment onChange=(action (mut settings.appEnvironment)) name='environment'
+                        value='0'}}
+                    </div>
+                </div>
+                <div class="two wide column">
+                    <div class="two wide  field">
+                        {{ui-radio label='Production' current=settings.appEnvironment onChange=(action (mut settings.appEnvironment)) name='environment'
+                        value='1'}}
+                    </div>
+                </div>
+                <div class="two wide column">
+                    <div class="two wide  field">
+                        {{ui-radio label='Staging' current=settings.appEnvironment onChange=(action (mut settings.appEnvironment)) name='environment'
+                        value='2'}}
+                    </div>
                 </div>
             </div>
-            <div class="column">
-                <div class="field">
-                    {{ui-radio label='Production' current=settings.appEnvironment onChange=(action (mut settings.appEnvironment)) name='environment'
-                    value='1'}}
-                </div>
+        </div>
+        <div class="ui horizontal divider"></div>
+        <h3 class="ui header">
+            {{'App Name'}}
+            <div class="sub header">
+                {{'The name of your deployment. This will be used throughout this application.'}}
             </div>
-            <div class="column">
-                <div class="field">
-                    {{ui-radio label='Staging' current=settings.appEnvironment onChange=(action (mut settings.appEnvironment)) name='environment'
-                    value='2'}}
-                </div>
+        </h3>
+        <div class="six wide field">
+            {{input type='text' name='app_name' value=settings.appName}}
+        </div>
+        <div class="ui hidden divider"></div>
+        <h3 class="ui header">
+            Firebase Configuration
+            <div class="sub header">Configure the service urls of firebase application</div>
+        </h3>
+        <div class="six wide field">
+            <label>Storage Bucket</label>
+            {{input type='text' name='storage_bucket' value=settings.firebaseStorageBucket}}
+        </div>
+        <div class="six wide field">
+            <label>Realtime Database</label>
+            {{input type='text' name='realtime_database' value=settings.firebaseDatabaseURL}}
+        </div>
+        <div class="ui hidden divider"></div>
+        <h3 class="ui header">
+            {{'App secret key'}}
+            <div class="sub header">
+                {{'Secret key for the application. Recommended is a random string minimum 20 characters in length.'}}
             </div>
+        </h3>
+        <div class="six wide field">
+            {{input type='text' name='secret_key' value=settings.secretKey}}
         </div>
-    </div>
-    <div class="ui horizontal divider"></div>
-    <h3 class="ui header">
-        {{'App Name'}}
-        <div class="sub header">
-            {{'The name of your deployment. This will be used throughout this application.'}}
+        <div class="ui hidden divider"></div>
+        <h3 class="ui header">
+            {{'Sender Email'}}
+            <div class="sub header">
+                This is the sender email for all the mails
+            </div>
+        </h3>
+        <div class="six wide field">
+            {{input type="email" name="senderEmail" value=settings.fromMail}}
         </div>
-    </h3>
-    <div class="field">
-        {{input type='text' name='app_name' value=settings.appName}}
-    </div>
-    <div class="ui hidden divider"></div>
-    <h3 class="ui header">
-        Firebase Configuration
-        <div class="sub header">Configure the service urls of firebase application</div>
-    </h3>
-    <div class="field">
-        <label>Storage Bucket</label>
-        {{input type='text' name='storage_bucket' value=settings.firebaseStorageBucket}}
-    </div>
-    <div class="field">
-        <label>Realtime Database</label>
-        {{input type='text' name='realtime_database' value=settings.firebaseDatabaseURL}}
-    </div>
-    <div class="ui hidden divider"></div>
-    <h3 class="ui header">
-        {{'App secret key'}}
-        <div class="sub header">
-            {{'Secret key for the application. Recommended is a random string minimum 20 characters in length.'}}
+        <div class="ui hidden divider"></div>
+        <h3 class="ui header">
+            Send Grid API Key
+            <div class="sub header">
+                This is the SendGrid API Key
+            </div>
+        </h3>
+        <div class="six wide field">
+            {{input type="text" name="sendGridApiKey" value=settings.sendGridApiKey}}
         </div>
-    </h3>
-    <div class="field">
-        {{input type='text' name='secret_key' value=settings.secretKey}}
-    </div>
-    <div class="ui hidden divider"></div>
-    <h3 class="ui header">
-        {{'Sender Email'}}
-        <div class="sub header">
-            This is the sender email for all the mails
-        </div>
-    </h3>
-    <div class="field">
-        {{input type="email" name="senderEmail" value=settings.fromMail}}
-    </div>
-    <div class="ui hidden divider"></div>
-    <h3 class="ui header">
-        Send Grid API Key
-        <div class="sub header">
-            This is the SendGrid API Key
-        </div>
-    </h3>
-    <div class="field">
-        {{input type="text" name="sendGridApiKey" value=settings.sendGridApiKey}}
-    </div>
-    <div class="ui hidden divider"></div>
-    <button class="ui teal wide button" type="submit">
-        {{'Save'}}
-    </button>
-</form>
+        <div class="ui hidden divider"></div>
+        <button class="ui teal wide button" type="submit">
+            {{'Save'}}
+        </button>
+    </form>
+</div>
