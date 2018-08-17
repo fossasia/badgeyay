@@ -3,3 +3,9 @@ $bkColor: #1b1c1d;
 footer {
   background-color: $bkColor;
 }
+
+@media only screen and (max-width: 600px) {
+  .mobile-hide{
+    display: none;
+  }
+}
