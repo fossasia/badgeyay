@@ -34,6 +34,16 @@ $ mkvirtualenv -p python3 badgeyay
 $ workon badgeyay               # To activate it again
 ```
 
+OR
+
+```sh
+$ sudo apt-get install python3-venv
+$ python3 -m venv badgeyay
+$ source badgeyay/bin/activate
+```
+
+
+
 > **source `which virtualenvwrapper.sh`** is used to prevent from breaking the `mkvirtualenv` command, you can find more about the issue, [here](https://stackoverflow.com/questions/13855463/bash-mkvirtualenv-command-not-found).
 
 * Now, since you are inside a virtual environment, you can setup `badgeyay` as an editable package.
