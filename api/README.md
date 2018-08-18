@@ -2,7 +2,7 @@
 
 > **Badgeyay provide an interface to event organizers for generating badges of events from concerts to conferences and meet-ups.**
 
-Badgeyay is a Badge generator with a simple web UI to add data and generate printable badges in a PDF.
+Badgeyay is an awesome Badge generator with a simple web UI to add data and generate printable badges in a PDF.
 
 ## Prerequisites
 
@@ -52,11 +52,11 @@ One-click Docker, Heroku, Scalingo and Bluemix deployment is also available:
 ### Input
 
 - The input can be a set of csv files(UTF-8) or a manual entry.
-- Detailed Information on Correct format of Input can be found at [Badgeyay User-Input Guide](http://badgeyay.com/#/guide).
+- Detailed Information on the Correct format of Input can be found at [Badgeyay User-Input Guide](http://badgeyay.com/#/guide).
 
 ### Output
 
-- The output file is pdf of size A3.
+- The output file is a pdf of size A3.
 - Each badge has the size A6.
 - The outputs are in a folder derived from the input csv.
 
