@@ -1,0 +1,6 @@
+config/config.py
+config/ServiceAccountkey.json
+static/uploads
+static/temporary
+app.yaml
+*.pdf

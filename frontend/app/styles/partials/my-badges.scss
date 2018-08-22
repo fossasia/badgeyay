@@ -1,0 +1,24 @@
+.ui.segment {
+  margin: 1%;
+
+  .cards {
+    .card {
+      padding-right: 10px;
+
+      img {
+        height: 300px;
+        width: 100%;
+      }
+    }
+  }
+}
+
+.noimage {
+  height: 90%;
+  width: 100%;
+  margin-left: 4%;
+}
+
+.pencil {
+  width: 180px;
+}

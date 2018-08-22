@@ -1,0 +1,67 @@
+.ui.basic.segments {
+  background: none transparent;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.main-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: $page-top-margin 0;
+  padding: 2%;
+}
+
+.description {
+  width: 100% !important;
+}
+
+@media screen and (max-width: 1500px) {
+  .main-container {
+    margin: 2% 0;
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  .main-container {
+    margin: 3% 0;
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  .main-container {
+    margin: 4% 0;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .main-container {
+    margin: 6% 0;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .main-container {
+    margin: 8% 0;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .main-container {
+    margin: 10% 0;
+  }
+}
+
+.max-width {
+  width: 100%;
+}
+
+
+.ui.container {
+  margin-bottom: 20px;
+}
+
+.top-margin {
+  margin-top: 20%;
+}

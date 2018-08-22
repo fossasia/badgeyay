@@ -1,3 +1,5 @@
+.idea/
+badgeyay.code-workspace
 /*.csv#
 *.badges
 *.swp
@@ -6,8 +8,9 @@
 .env
 .vagrant/
 venv/
-app/static/badges/
-.idea/
-cli/badgeyay.egg-info
-cli/build/
-cli/dist/
+.vscode/
+badgeyay/
+.coverage
+*.sublime-project
+*.sublime-workspace
+.DS_Store

@@ -1,0 +1,18 @@
+<div class="field">
+    <label>Select from default backgrounds</label>
+    {{#ui-dropdown class="selection" selected="Bob" onChange=(action (mut image))}}
+        <div class="default text">Select background from list</div>
+        <i class="dropdown icon"></i>
+        <div class="menu">
+            {{#each defImages as |image|}}
+                <div data-value="{{image.id}}" class="item">
+                    <div class="ui grid">
+                        <div class="twelve wide column">{{def-images image.name}}</div>
+                        <div class="four wide column"><img class="ui mini image" src="/images/badge_backgrounds/{{image.name}}{{fingerPrint}}.png"></div>
+                    </div>
+                </div>
+            {{/each}}
+        </div>
+    {{/ui-dropdown}}
+</div>
+

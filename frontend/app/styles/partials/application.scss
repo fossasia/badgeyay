@@ -1,0 +1,14 @@
+.pusher {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.main-container {
+  flex: 1;
+  padding-bottom: 40px;
+}
+
+.text-zoom {
+  font-size: 1.5em;
+}

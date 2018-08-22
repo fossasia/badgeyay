@@ -1,0 +1,50 @@
+
+.my-profile {
+  position: relative;
+  top: 10px;
+}
+
+// scss-lint:disable all
+#place {
+  position: relative;
+  top: -7%;
+}
+// scss-lint:enable all
+
+.image {
+  left: 2%;
+}
+
+.profile-image {
+  cursor: pointer;
+}
+
+.profile-image:hover {
+  .profile-change {
+    opacity: 1;
+  }
+
+  img {
+    opacity: 0.3;
+  }
+}
+
+
+.profile-change {
+  left: 24%;
+  opacity: 0;
+  position: absolute;
+  top: 50%;
+  transition: 0.5s ease;
+}
+
+.account {
+  left: 250px;
+  position: relative;
+}
+
+.password {
+  left: 243px;
+  position: relative;
+}
+

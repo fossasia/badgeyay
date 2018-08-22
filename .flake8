@@ -1,0 +1,8 @@
+[flake8]
+max-line-length = 150
+ignore = W191
+exclude =
+    .git,
+    __pycache__,
+    api/migrations,
+	site-packages

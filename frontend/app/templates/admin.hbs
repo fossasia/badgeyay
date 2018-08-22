@@ -1,0 +1,37 @@
+<div class="row">
+  <div class="x-scrollable sixteen wide column">
+    {{#tabbed-navigation}}
+      {{#link-to 'admin.index' class='item'}}
+        {{'Admin'}}
+      {{/link-to}}
+      {{#link-to 'admin.users' class='item'}}
+        {{'Users'}}
+      {{/link-to}}
+      {{#link-to 'admin.permissions' class='item'}}
+        {{'Permissions'}}
+      {{/link-to}}
+      {{#link-to 'admin.badges' class='item'}}
+        {{'Badges'}}
+      {{/link-to}}
+      {{#link-to 'admin.reports' class='item'}}
+        {{'Reports'}}
+      {{/link-to}}
+      {{#link-to 'admin.content' class='item'}}
+        {{'Content'}}
+      {{/link-to}}
+      {{#link-to 'admin.messages' class='item'}}
+        {{'Messages'}}
+      {{/link-to}}
+      {{#link-to 'admin.modules' class='item'}}
+        {{'Modules'}}
+      {{/link-to}}
+      {{#link-to 'admin.settings' class='item'}}
+        {{'Settings'}}
+      {{/link-to}}
+    {{/tabbed-navigation}}
+  </div>
+</div>
+
+<div class="ui basic segment">
+    {{outlet}}
+</div>

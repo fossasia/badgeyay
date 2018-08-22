@@ -1,0 +1,36 @@
+.ui{
+
+  .column{
+    color: black;
+    
+    .create-badge {
+      position: relative;
+      padding-left: 6%;
+      padding-right: 6%;
+      top: -35px;
+    }
+  }
+}
+
+.guide {
+  left: 10px;
+  position: relative;
+}
+
+.ui.image {
+  position: unset;
+}
+
+.ui {
+
+  .row {
+
+    .column {
+      color: black;
+    }
+  }
+}
+
+.hide {
+  display: none !important;
+}

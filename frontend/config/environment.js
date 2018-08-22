@@ -2,10 +2,34 @@
 
 module.exports = function(environment) {
   var ENV = {
-    modulePrefix: 'badgeyay',
+    modulePrefix : 'badgeyay',
     environment,
-    rootURL: '/',
-    locationType: 'hash',
+    rootURL      : '/',
+    locationType : 'auto',
+    firebase     : {
+      apiKey            : 'AIzaSyBZ6M-nLfy-Ig8esqfQmFn8FtF1OQ73VGQ',
+      authDomain        : 'badgeyay-195bf.firebaseapp.com',
+      databaseURL       : 'https://badgeyay-195bf.firebaseio.com',
+      projectId         : 'badgeyay-195bf',
+      storageBucket     : 'badgeyay-195bf.appspot.com',
+      messagingSenderId : '1033576063262'
+    },
+    'ember-cli-notifications': {
+      includeFontAwesome: true
+    },
+    torii: {
+      sessionServiceName: 'session'
+    },
+    pace: {
+      // addon-specific options to configure theme
+      theme : 'minimal',
+      color : 'orange'
+    },
+    contentSecurityPolicy: {
+      'script-src'  : '\'self\' \'unsafe-eval\' apis.google.com',
+      'frame-src'   : '\'self\' https://*.firebaseapp.com',
+      'connect-src' : '\'self\' wss://*.firebaseio.com https://*.googleapis.com'
+    },
     EmberENV: {
       FEATURES: {
         // Here you can enable experimental features on an ember canary build
@@ -19,6 +43,8 @@ module.exports = function(environment) {
     APP: {
       // Here you can pass flags/options to your application instance
       // when it is created
+      backLink      : 'http://localhost:5000',
+      resetFunction : 'http://localhost:8090/badgeyay-195bf/us-central1/sendResetMail'
     }
   };
 
@@ -45,6 +71,8 @@ module.exports = function(environment) {
   var deployTarget = process.env.DEPLOY_TARGET;
 
   if (environment === 'production') {
+    ENV.APP.backLink = 'https://badgeyay-api.herokuapp.com';
+    ENV.APP.resetFunction = 'https://us-central1-badgeyay-195bf.cloudfunctions.net/sendResetMail';
     if (deployTarget && deployTarget === 'gh-pages') {
       ENV.locationType = 'hash';
       ENV.rootURL = `/${process.env.REPO_SLUG || 'badgeyay'}`;

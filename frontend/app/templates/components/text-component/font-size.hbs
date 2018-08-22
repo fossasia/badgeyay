@@ -1,0 +1,256 @@
+<div class="field">
+  <label>Customize Badge Layout</label>
+</div>
+<div class="ui stackable grid">
+  <div class="four column row">
+    <div class="center aligned column">Field</div>
+    <div class="center aligned column">Font<br>
+      <div class="ui checkbox">
+        {{input name="fonttypeall" type="checkbox" checked=fonttypeall}}
+        <label>Apply to all</label>
+      </div>
+    </div>
+    <div class="center aligned column">Font Size (in pixels)<br>
+      <div class="ui checkbox">
+        {{input name="fontsizeall" type="checkbox" checked=fontsizeall}}
+        <label>Apply to all</label>
+      </div>
+    </div>
+    <div class="center aligned column">Adjust long content to width automatically</div>
+  </div>
+
+  <div class="four column row">
+    <div class="center aligned column">First Name</div>
+    <div class="center aligned column">
+      <div class="one wide column">
+        {{#ui-dropdown class="selection" selected="Bob"  onChange=(action (mut fonttype1))}}
+          <div class="default text">Helvetica</div>
+          <i class="dropdown icon"></i>
+          <div class="menu">
+              <div class="item" data-item="Lato" style="font-family:'Lato'">Lato</div>
+              <div class="item" data-item="sans" style="font-family:'sans'">Sans</div>
+              <div class="item" data-item="Courier-Bold" style="font-family:'Courier-Bold'">Courier</div>
+              <div class="item" data-item="Helvetica" style="font-family:'Helvetica'">Helvetica</div>
+              <div class="item" data-item="Times-Bold" style="font-family:'Times-Bold'">Times-Bold</div>
+              <div class="item" data-item="monospace" style="font-family:'monospace'">Mono Space</div>
+              <div class="item" data-item="Times-Roman" style="font-family:'Times-Roman'">Times-Roman</div>
+              <div class="item" data-item="Courier 10 Pitch" style="font-family:'Courier 10 Pitch'">Courier 10 Pitch</div>
+          </div>
+        {{/ui-dropdown}}
+      </div>
+    </div>
+    <div class="center aligned column">
+      <div class="one wide column">
+        {{#ui-dropdown class="selection" onChange=(action (mut font1))}}
+        <div class="default text">10</div>
+        <i class="dropdown icon"></i>
+        <div class="menu">
+          <div class="item" data-item="7">7</div>
+          <div class="item" data-item="8">8</div>
+          <div class="item" data-item="9">9</div>
+          <div class="item" data-item="10">10</div>
+          <div class="item" data-item="11">11</div>
+          <div class="item" data-item="12">12</div>
+          <div class="item" data-item="13">13</div>
+          <div class="item" data-item="14">14</div>
+          <div class="item" data-item="15">15</div>
+        </div>
+        {{/ui-dropdown}}
+      </div>
+    </div>
+    <div class="center aligned column">
+      <div class="ui toggle checkbox">
+        <input name="public" type="checkbox" checked="checked">
+        <label></label>
+      </div>
+    </div>
+  </div>
+
+  <div class="four column row">
+    <div class="center aligned column">Last Name</div>
+    <div class="center aligned column">
+      <div class="one wide column">
+        {{#ui-dropdown class="selection" selected="Bob" onChange=(action (mut fonttype2))}}
+          <div class="default text">Helvetica</div>
+          <i class="dropdown icon"></i>
+          <div class="menu">
+              <div class="item" data-item="Lato" style="font-family:'Lato'">Lato</div>
+              <div class="item" data-item="sans" style="font-family:'sans'">Sans</div>
+              <div class="item" data-item="Courier-Bold" style="font-family:'Courier-Bold'">Courier</div>
+              <div class="item" data-item="Helvetica" style="font-family:'Helvetica'">Helvetica</div>
+              <div class="item" data-item="Times-Bold" style="font-family:'Times-Bold'">Times-Bold</div>
+              <div class="item" data-item="monospace" style="font-family:'monospace'">Mono Space</div>
+              <div class="item" data-item="Times-Roman" style="font-family:'Times-Roman'">Times-Roman</div>
+              <div class="item" data-item="Courier 10 Pitch" style="font-family:'Courier 10 Pitch'">Courier 10 Pitch</div>
+          </div>
+        {{/ui-dropdown}}
+      </div>
+    </div>
+    <div class="center aligned column">
+      <div class="one wide cloumn">
+        {{#ui-dropdown class="selection" onChange=(action (mut font2))}}
+        <div class="default text">10</div>
+        <i class="dropdown icon"></i>
+        <div class="menu">
+          <div class="item" data-item="7">7</div>
+          <div class="item" data-item="8">8</div>
+          <div class="item" data-item="9">9</div>
+          <div class="item" data-item="10">10</div>
+          <div class="item" data-item="11">11</div>
+          <div class="item" data-item="12">12</div>
+          <div class="item" data-item="13">13</div>
+          <div class="item" data-item="14">14</div>
+          <div class="item" data-item="15">15</div>
+        </div>
+        {{/ui-dropdown}}
+      </div>
+    </div>
+    <div class="center aligned column">
+      <div class="ui toggle checkbox">
+        <input name="public" type="checkbox" checked="checked">
+        <label></label>
+      </div>
+    </div>
+  </div>
+
+  <div class="four column row">
+    <div class="center aligned column">Designation</div>
+    <div class="center aligned column">
+      <div class="one wide column">
+        {{#ui-dropdown class="selection" selected="Bob" onChange=(action (mut fonttype3))}}
+          <div class="default text">Helvetica</div>
+          <i class="dropdown icon"></i>
+          <div class="menu">
+              <div class="item" data-item="Lato" style="font-family:'Lato'">Lato</div>
+              <div class="item" data-item="sans" style="font-family:'sans'">Sans</div>
+              <div class="item" data-item="Courier-Bold" style="font-family:'Courier-Bold'">Courier</div>
+              <div class="item" data-item="Helvetica" style="font-family:'Helvetica'">Helvetica</div>
+              <div class="item" data-item="Times-Bold" style="font-family:'Times-Bold'">Times-Bold</div>
+              <div class="item" data-item="monospace" style="font-family:'monospace'">Mono Space</div>
+              <div class="item" data-item="Times-Roman" style="font-family:'Times-Roman'">Times-Roman</div>
+              <div class="item" data-item="Courier 10 Pitch" style="font-family:'Courier 10 Pitch'">Courier 10 Pitch</div>
+          </div>
+        {{/ui-dropdown}}
+      </div>
+    </div>
+    <div class="center aligned column">
+      <div class="one wide cloumn">
+        {{#ui-dropdown class="selection" onChange=(action (mut font3))}}
+        <div class="default text">10</div>
+        <i class="dropdown icon"></i>
+        <div class="menu">
+          <div class="item" data-item="7">7</div>
+          <div class="item" data-item="8">8</div>
+          <div class="item" data-item="9">9</div>
+          <div class="item" data-item="10">10</div>
+          <div class="item" data-item="11">11</div>
+          <div class="item" data-item="12">12</div>
+          <div class="item" data-item="13">13</div>
+          <div class="item" data-item="14">14</div>
+          <div class="item" data-item="15">15</div>
+        </div>
+        {{/ui-dropdown}}
+      </div>
+    </div>
+    <div class="center aligned column">
+      <div class="ui toggle checkbox">
+        <input name="public" type="checkbox" checked="checked">
+        <label></label>
+      </div>
+    </div>
+  </div>
+
+  <div class="four column row">
+    <div class="center aligned column">Organization</div>
+    <div class="center aligned column">
+      <div class="one wide column">
+        {{#ui-dropdown class="selection" selected="Bob" onChange=(action (mut fonttype4))}}
+          <div class="default text">Helvetica</div>
+          <i class="dropdown icon"></i>
+          <div class="menu">
+              <div class="item" data-item="Lato" style="font-family:'Lato'">Lato</div>
+              <div class="item" data-item="sans" style="font-family:'sans'">Sans</div>
+              <div class="item" data-item="Courier-Bold" style="font-family:'Courier-Bold'">Courier</div>
+              <div class="item" data-item="Helvetica" style="font-family:'Helvetica'">Helvetica</div>
+              <div class="item" data-item="Times-Bold" style="font-family:'Times-Bold'">Times-Bold</div>
+              <div class="item" data-item="monospace" style="font-family:'monospace'">Mono Space</div>
+              <div class="item" data-item="Times-Roman" style="font-family:'Times-Roman'">Times-Roman</div>
+              <div class="item" data-item="Courier 10 Pitch" style="font-family:'Courier 10 Pitch'">Courier 10 Pitch</div>
+          </div>
+        {{/ui-dropdown}}
+      </div>
+    </div>
+    <div class="center aligned column">
+      <div class="one wide cloumn">
+        {{#ui-dropdown class="selection" onChange=(action (mut font4))}}
+        <div class="default text">10</div>
+        <i class="dropdown icon"></i>
+        <div class="menu">
+          <div class="item" data-item="7">7</div>
+          <div class="item" data-item="8">8</div>
+          <div class="item" data-item="9">9</div>
+          <div class="item" data-item="10">10</div>
+          <div class="item" data-item="11">11</div>
+          <div class="item" data-item="12">12</div>
+          <div class="item" data-item="13">13</div>
+          <div class="item" data-item="14">14</div>
+          <div class="item" data-item="15">15</div>
+        </div>
+        {{/ui-dropdown}}
+      </div>
+    </div>
+    <div class="center aligned column">
+      <div class="ui toggle checkbox">
+        <input name="public" type="checkbox" checked="checked">
+        <label></label>
+      </div>
+    </div>
+  </div>
+
+  <div class="four column row">
+    <div class="center aligned column">Handle (e.g. Github)</div>
+    <div class="center aligned column">
+      <div class="one wide column">
+        {{#ui-dropdown class="selection" selected="Bob" onChange=(action (mut fonttype5))}}
+          <div class="default text">Helvetica</div>
+          <i class="dropdown icon"></i>
+          <div class="menu">
+              <div class="item" data-item="Lato" style="font-family:'Lato'">Lato</div>
+              <div class="item" data-item="sans" style="font-family:'sans'">Sans</div>
+              <div class="item" data-item="Courier-Bold" style="font-family:'Courier-Bold'">Courier</div>
+              <div class="item" data-item="Helvetica" style="font-family:'Helvetica'">Helvetica</div>
+              <div class="item" data-item="Times-Bold" style="font-family:'Times-Bold'">Times-Bold</div>
+              <div class="item" data-item="monospace" style="font-family:'monospace'">Mono Space</div>
+              <div class="item" data-item="Times-Roman" style="font-family:'Times-Roman'">Times-Roman</div>
+              <div class="item" data-item="Courier 10 Pitch" style="font-family:'Courier 10 Pitch'">Courier 10 Pitch</div>
+          </div>
+        {{/ui-dropdown}}
+      </div>
+    </div>
+    <div class="center aligned column">
+      <div class="one wide cloumn">
+        {{#ui-dropdown class="selection" onChange=(action (mut font5))}}
+        <div class="default text">10</div>
+        <i class="dropdown icon"></i>
+        <div class="menu">
+          <div class="item" data-item="7">7</div>
+          <div class="item" data-item="8">8</div>
+          <div class="item" data-item="9">9</div>
+          <div class="item" data-item="10">10</div>
+          <div class="item" data-item="11">11</div>
+          <div class="item" data-item="12">12</div>
+          <div class="item" data-item="13">13</div>
+          <div class="item" data-item="14">14</div>
+          <div class="item" data-item="15">15</div>
+        </div>
+        {{/ui-dropdown}}
+      </div>
+    </div>
+    <div class="center aligned column">
+      <div class="ui toggle checkbox">
+        <input name="public" type="checkbox" checked="checked">
+        <label></label>
+      </div>
+    </div>
+  </div>
+</div>

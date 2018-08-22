@@ -1,0 +1,167 @@
+{{#if empty}}
+    <div class="ui floating error message">
+        No User Records found
+    </div>
+{{else}}
+    <table class="ui sortable table">
+        <thead>
+            <tr>
+                <th class="no-sort">User Photo</th>
+                <th>User Name</th>
+                <th>User Email</th>
+                <th class="no-sort">User Role</th>
+                <th>User Created At</th>
+                <th>Last Login Date</th>
+                <th class="no-sort">Last Login IP</th>
+                <th class="no-sort">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each users as |user|}}
+                <tr>
+                    <td>
+                        <img class="ui tiny centered circular image" src="{{user.photoURL}}">
+                    </td>
+                    <td>{{user.username}}</td>
+                    <td>{{user.email}}</td>
+                    <td>{{extract-role user}}</td>
+                    <td data-sort-value={{extract-time-stamp user.created_at}}>{{sanitizeDate user.created_at}}</td>
+                    {{#if user.lastLoginDate}}
+                        <td>{{sanitizeDate user.lastLoginDate}}</td>
+                    {{else}}
+                        <td>Not Logged In Yet</td>
+                    {{/if}}
+                    {{#if user.lastLoginIp}}
+                        <td>{{user.lastLoginIp}}</td>
+                    {{else}}
+                        <td>Not Logged In Yet</td>
+                    {{/if}}
+                    <td>
+                        {{#if authToken.permissions.isAdmin}}
+                            <div class="ui horizontal compact basic buttons">
+                                {{#ui-popup content='Edit' class="ui icon button" click=(action 'openModal' 'user-edit' user)}}
+                                    <i class="edit icon"></i>
+                                {{/ui-popup}}
+                                {{#ui-popup content='Delete' class='ui icon button' click=(action 'initModal' 'user-delete' user)}}
+                                    <i class="trash alternate outline icon"></i>
+                                {{/ui-popup}}
+                            </div>
+                        {{else}}
+                            <p>You donot have the permission to edit role</p>
+                        {{/if}}
+                    </td>
+                </tr>
+            {{/each}}
+        </tbody>
+        {{#if allow}}
+            <tfoot>
+                <tr>
+                    <th colspan="8">
+                        <div class="ui right floated pagination menu">
+                            {{#if allow_prev}}
+                                <a class="icon item" {{action 'prevPage'}}>
+                                    <i class="left chevron icon"></i>
+                                </a>
+                            {{/if}}
+
+                            {{#if allow_next}}
+                                <a class="icon item" {{action 'nextPage'}}>
+                                    <i class="right chevron icon"></i>
+                                </a>
+                            {{/if}}
+                        </div>
+                    </th>
+                </tr>
+            </tfoot>
+        {{/if}}
+    </table>
+{{/if}}
+
+{{#ui-modal name="user-delete" class="user-delete" detachable=true onApprove=(action 'deleteUser') onDeny=(action 'denyModal')}}
+<i class="close icon"></i>
+<div class="header">
+    Delete User
+</div>
+<div class="content">
+<div class="description">
+    Are you sure you want to delete the user?
+</div>
+</div>
+<div class="actions">
+    <div class="ui black deny button">
+        Close
+    </div>
+    <div class="ui red approve right labeled icon button">
+        Delete
+        <i class="trash alternate outline icon"></i>
+    </div>
+</div>
+{{/ui-modal}}
+
+{{#ui-modal name="user-edit" class="user-edit" detachable=true onApprove=(action 'approveModal') onDeny=(action 'denyModal')}}
+<i class="close icon"></i>
+<div class="header">
+    Edit User Details
+</div>
+<div class="image content">
+    <div class="ui medium image">
+        <img class="ui circular image" src="{{userEdit.photoURL}}">
+    </div>
+    <div class="description">
+        <div class="ui header">{{userEdit.username}}</div>
+        <form class="ui form">
+            <div class="ui field">
+                <label>Email</label>
+                {{input type='email' value=userEdit.email}}
+            </div>
+            <div class="ui field">
+                <label>Username</label>
+                {{input type='text' value=userEdit.username}}
+            </div>
+            <div class="ui field">
+                <label>PhotoURL</label>
+                {{input type='text' value=userEdit.photoURL}}
+            </div>
+            <div class="ui compact menu">
+                <div class="ui simple dropdown item">
+                    Role
+                    <i class="dropdown icon"></i>
+                    <div class="menu">
+                         <div class="item">
+                            <div class="ui toggle checkbox">
+                                {{input type="checkbox" tabindex="0" class="hidden" checked=userEdit.isSales}}
+                                <label>
+                                    Sales
+                                </label>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class="ui toggle checkbox">
+                                {{input type="checkbox" tabindex="0" class="hidden" checked=userEdit.isAdmin}}
+                                <label>
+                                    Admin
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<div class="actions">
+    <div class="ui black deny button">
+        Close
+    </div>
+    <div class="ui positive right labeled icon button">
+        Submit
+        <i class="checkmark icon"></i>
+    </div>
+</div>
+{{/ui-modal}}
+
+<script type="text/javascript">
+    $('.ui.checkbox')
+        .checkbox();
+    $('table').tablesort();
+</script>

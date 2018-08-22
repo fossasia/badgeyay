@@ -1,0 +1,18 @@
+<footer>
+    <div class="ui bottom inverted menu">
+        <div class="left menu">
+            {{#link-to 'sitemap' class='item'}}
+                {{init-cap 'sitemap'}}
+            {{/link-to}}
+        </div>
+        <div class="right menu">
+            <strong class="item">Follow us on</strong>
+            {{#each socialMedia as |media|}}
+                <a class="item" href={{media.link}} target="_blank">
+                    <i class="{{media.id}} icon"></i>
+                    <span class="mobile-hide">{{ first-cap media.id}}</span>
+                </a>
+            {{/each}}
+        </div>
+    </div>
+</footer>

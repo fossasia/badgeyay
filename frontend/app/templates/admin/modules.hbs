@@ -1,0 +1,20 @@
+<form class="ui form {{if isLoading 'loading'}}" {{action 'submit' on='submit'}}>
+  <div class="ui basic segment grid">
+    <div class="row">
+      <div class="ui eight column  wide">
+        <div class="ui secondary header">
+          Payments
+        </div>
+      </div>
+      <div class="ui fifteen column  wide field right aligned">
+        {{ui-checkbox class='toggle' checked=model.paymentInclude onChange=(action (mut model.paymentInclude))}}
+      </div>
+    </div>
+    <div class="ui divider"></div>
+    <div class="row">
+      <div class="sixteen column wide right aligned">
+        <button class="ui teal button">Save</button>
+      </div>
+    </div>
+  </div>
+</form>

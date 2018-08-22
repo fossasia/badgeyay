@@ -1,0 +1,70 @@
+<div class="inline-columns">
+  <div class="ui stackable three column doubling centered grid login">
+    <div class="column">
+      <form class="ui large form" autocomplete="off" {{ action 'logIn' 'password' on="submit" }}>
+        <div class="ui aligned segment basic form-div">
+          <span class="form-title">Welcome</span>
+          <div></div>
+          <span class="form-subtitle">Lets make some badges</span>
+        </div>
+        <div class="ui segments no-border">
+          <div class="ui segment">
+            <div class="field">
+              <div class="ui left icon input">
+                <i class="mail icon"></i>
+                {{input name='email' placeholder='Email ID' value=email}}
+              </div>
+            </div>
+            <div class="field">
+              <div class="ui left icon input">
+                <i class="lock icon"></i>
+                {{input type='password' name='password' placeholder='Password' value=password}}
+              </div>
+            </div>
+            <div class="ui center aligned segment basic">
+              <button type="submit" class="ui fluid large submit orange basic button">
+                Login
+              </button>
+              <div class="div-links">
+                <a href="{{href-to 'forgotpwd'}}" class="text muted links"> Forgot your password ?</a>
+              </div>
+              <div class="ending-border"></div>
+              <div class="div-links">
+                <a href="{{href-to 'signup'}}" class="ui center aligned text muted weight-800 links">
+                  New to site? Create Account
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+    <div class="column oauth-methods">
+      <div class="ui segment basic center aligned">
+        <div class="mobile hidden login-with-fb"> </div>
+        <div class="ui vertical buttons oauth-buttons">
+          <div class="buttons">
+            <button type="button" class="ui google plus button capital large-oauth" {{ action 'logIn' 'google' }}>
+              <i class="google plus icon o-icon"></i>
+              <span class="log-text">Login with Google +</span>
+            </button>
+          </div>
+  <!--    <div class="ui horizontal divider"></div>
+          <div class="buttons">
+            <button type="button" class="ui facebook button capital large-oauth" {{ action 'logIn' 'facebook' }}>
+              <i class="facebook icon o-icon"></i>
+              <span class="log-text">Login with Facebook</span>
+            </button>
+          </div>
+  -->
+          <div class="buttons">
+            <button type="button" class="ui twitter button capital large-oauth" {{ action 'logIn' 'twitter' }}>
+              <i class="twitter icon o-icon"></i>
+              <span class="log-text">Login with Twitter</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

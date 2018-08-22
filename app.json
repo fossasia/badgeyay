@@ -1,7 +1,7 @@
 {
     "name": "BadgeYay-API",
     "description": "A fully functional REST API for badges generator using flask",
-    "repository": "https://github.com/fossasia/badgeyay/backend/",
+    "repository": "https://github.com/fossasia/badgeyay/api/",
     "keywords": [
         "badgeyay",
         "fossasia",
@@ -11,5 +11,20 @@
         {
             "url": "heroku/python"
         }
-    ]
+    ],
+    "env" : {
+      "SERVICE_ACCOUNT_JSON" : {
+        "description": "The service-account.json from Firebase app.",
+        "required": true
+      },
+      "DATABASE_URL" : {
+        "description": "URL for Heroku Postgres",
+        "required": true
+      }
+    },
+    "addons": [
+    {
+      "plan": "heroku-postgresql"
+    }
+  ]
 }

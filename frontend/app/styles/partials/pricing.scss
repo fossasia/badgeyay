@@ -1,0 +1,99 @@
+$bullet-color: #6b6666;
+$heading-alpha-color: #383535;
+$heading-bravo-color: #444141;
+$border-color: #bebbbb;
+$price-color: #686565;
+
+.wrapper {
+  margin-top: 20px;
+
+  .heading-alpha {
+    color: $heading-alpha-color;
+    font-size: 40px;
+    font-weight: 200;
+    text-align: center;
+  }
+}
+
+.pdf-div {
+  margin-bottom: 25px;
+
+  .pdf-img {
+    height: 60px;
+  }
+}
+
+.icon-pdf .shipped {
+  margin-bottom: 10px;
+
+  .bullets {
+    color: $bullet-color;
+    font-size: 14px;
+    font-weight: 400;
+    letter-spacing: 1px;
+    list-style: none;
+  }
+}
+
+.heading-bravo {
+  color: $heading-bravo-color;
+  font-size: 18px;
+  font-weight: 400;
+  letter-spacing: 1.5px;
+  margin-bottom: 40px;
+  text-transform: uppercase;
+}
+
+.grp-div {
+  margin-bottom: 25px;
+
+  .grp-img {
+    height: 60px;
+  }
+}
+
+.cb-price {
+  color: $price-color;
+  margin-bottom: 30px;
+  margin-top: 30px;
+  text-align: center;
+
+  .cb-price-tag {
+    font-weight: 200;
+  }
+
+  .cb-price-number {
+    font-size: 65px;
+    font-weight: 100;
+  }
+
+  .cb-price-label {
+    font-size: 30px;
+    font-weight: 300;
+  }
+
+  .coming-soon {
+    color: $price-color;
+    font-size: 25px;
+    font-weight: 300;
+    margin-bottom: 50px;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .border-left {
+    border-top: 1px solid $border-color;
+    left: 20%;
+    position: absolute;
+    right: 20%;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .border-left {
+    border-right: 1px solid $border-color;
+    bottom: 20%;
+    position: absolute;
+    top: 20%;
+  }
+}

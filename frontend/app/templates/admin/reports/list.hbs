@@ -1,0 +1,49 @@
+<table class="ui sortable table">
+    <thead>
+        <tr>
+            <th>Date</th>
+            <th>Mails Sent</th>
+            <th>Badges Generated</th>
+            <th>Badges Deleted</th>
+            <th>Users Created</th>
+            <th>Users Deleted</th>
+        </tr>
+    </thead>
+    <tbody>
+        {{#each reports as |report|}}
+            <tr>
+                <td data-sort-value={{extract-time-stamp report.id}}>{{sanitizeDate report.id}}</td>
+                <td data-sort-value={{report.mailSentCount}}>{{report.mailSentCount}}</td>
+                <td data-sort-value={{report.badgeCount}}>{{report.badgeCount}}</td>
+                <td data-sort-value={{report.badgeDeletionCount}}>{{report.badgeDeletionCount}}</td>
+                <td data-sort-value={{report.userCreationCount}}>{{report.userCreationCount}}</td>
+                <td data-sort-value={{report.userDeletionCount}}>{{report.userDeletionCount}}</td>
+            </tr>
+        {{/each}}
+    </tbody>
+    {{#if allow}}
+        <tfoot>
+            <tr>
+                <th colspan="6">
+                    <div class="ui right floated pagination menu">
+                        {{#if allow_prev}}
+                            <a class="icon item" {{action 'prevPage'}}>
+                                <i class="left chevron icon"></i>
+                            </a>
+                        {{/if}}
+
+                        {{#if allow_next}}
+                            <a class="icon item" {{action 'nextPage'}}>
+                                <i class="right chevron icon"></i>
+                            </a>
+                        {{/if}}
+                    </div>
+                </th>
+            </tr>
+        </tfoot>
+    {{/if}}
+</table>
+
+<script type="text/javascript">
+    $('table').tablesort();
+</script>

@@ -1,212 +1,74 @@
 
-# BadgeYAY
+# Badgeyay
+![Badgeyay](/frontend/public/images/Badgeyay-artwork.png)
 
-[![Travis branch](https://img.shields.io/travis/fossasia/badgeyay/development.svg?style=flat-square)](https://travis-ci.org/fossasia/badgeyay)
-[![Codecov branch](https://img.shields.io/codecov/c/github/fossasia/badgeyay/development.svg?style=flat-square&label=Codecov+Coverage)](https://codecov.io/gh/fossasia/badgeyay)
-[![Gitter](https://img.shields.io/badge/chat-on%20gitter-ff006f.svg?style=flat-square)][gitter]
+[![Gitter](https://img.shields.io/badge/chat-on%20gitter-ff006f.svg?style=flat-square)](https://gitter.im/fossasia/badgeyay)
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/1ac554483fac462797ffa5a8b9adf2fa?style=flat-square)](https://www.codacy.com/app/fossasia/badgeyay)
+[![Travis branch](https://api.travis-ci.org/fossasia/badgeyay.svg?branch=development&style=flat-square)](https://travis-ci.org/fossasia/badgeyay)
+[![Codecov branch](https://codecov.io/gh/fossasia/badgeyay/branch/development/graph/badge.svg?style=flat-square)](https://codecov.io/gh/fossasia/badgeyay)
 
-`badgeyay` is a simple badge generator with a simple web UI to add data and generate printable badges in a zip.
+> **Badgeyay provide an interface to event organizers for generating badges of events from concerts to conferences and meet-ups.**
 
-The user should be able to:
+Badgeyay is a Badge generator with a simple web UI to add data and generate printable badges in a PDF.
+
+The user can:
   * Choose size of badges
   * Choose background of badges and upload logo and background image
-  * Upload a CSV file or manually enter CSV data as: name, type of attendee, nick/handle, organization/project
+  * Upload a CSV file or manually enter CSV data as: name, type of attendee, designation, nick/handle, organization/project
 
-# Deploy
-One-click Docker, Heroku, Scalingo and Bluemix deployment is also available:
+## Communication
 
-[![Deploy to Docker Cloud](https://files.cloud.docker.com/images/deploy-to-dockercloud.svg)](https://cloud.docker.com/stack/deploy/?repo=https://github.com/fossasia/badgeyay) [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/fossasia/badgeyay/tree/development) [![Deploy on Scalingo](https://cdn.scalingo.com/deploy/button.svg)](https://my.scalingo.com/deploy?source=https://github.com/fossasia/badgeyay#development) [![Deploy to Bluemix](https://bluemix.net/deploy/button.png)](https://bluemix.net/deploy?repository=https://github.com/fossasia/badgeyay&branch=development)
+* Please join our **[mailing list](https://groups.google.com/forum/#!forum/open-event)** to discuss questions regarding the project.
+> https://groups.google.com/forum/#!forum/open-event
 
-Checkout badgeyay in action:
+* Our chat channel is on **[Gitter](https://gitter.im/fossasia/badgeyay)**
+> [gitter.im/fossasia/badgeyay](https://gitter.im/fossasia/badgeyay)
 
-[![Demo YouTube](https://user-images.githubusercontent.com/8705386/30831526-438f8c4c-a237-11e7-83fc-c12046f12e18.png)](https://www.youtube.com/watch?v=Gh8j_01LIoQ)
+## Installation
 
-Our current goal is to provide an interface to generate badges for the FOSSASIA conference.
+Badgeyay frontend and backend can be deployed easily and detailed installation instruction of frontend and backend have been provided below.
 
-If you like to join developing,
-
-- you can [chat on gitter][gitter], mentioning the maintainers.
-- you can find/create [issues](https://github.com/fossasia/badgeyay/issues) and solve them.
-  - When you solve an issue, you do not own it. Share your progress via a Pull-Requst as soon as possible.
-  - Discuss with others who work on the issue about the best solution. It is your responsibility, not the maintainer's to choose the best solution.
-- If in doubt, let's follow [CCCC][cccc].
-
-Specification
--------------
-
-### Technologies Used
-
-Badgeyay uses a number of open source projects:
-
-* [Flask](http://flask.pocoo.org/) - Microframework powered by python
-* [Bootstrap](https://getbootstrap.com/docs/3.3/) - Responsive frontend framework
-* [Shell](https://en.wikipedia.org/wiki/Unix_shell) - Script used for merging badges of different types
-* [Heroku](https://www.heroku.com/) - Webapp deployed here
-* [Travis](https://travis-ci.org/) - Continuous Integration of the project
-* [Github Release](https://help.github.com/articles/creating-releases/) - Releases are GitHub's way of packaging and providing software to the users
-
-### Testing Methodology Used
-
-* [Python Unit tests](https://docs.python.org/3/library/unittest.html) - for assertion, with the help of [Selenium](https://github.com/SeleniumHQ/Selenium) for web browser automation.
-
-The guidelines for setting up and running the tests are mentioned in the [testing docs](backend/docs/test/testing.md).
-
-### Input
-
-- The input is a set of csv files in the same folder, UTF-8.
-- The csv file is named after the badge type to take. Example: `vip.png.csv` uses the picture `vip.png`.
-- The CSV has up to 5 columns for the name and the twitter handle. They will be filled if this number is filled:
-  - `___X_`
-  - `___XX`
-  - `__XXX`
-  - `_XXXX`
-  - `XXXXX`
-
-  - badge_wrap: It can be **true** or **false**. If set to true then for each entry in the csv file two badges
-                will be generated so that they can be wrapped around the badge card.
-  - paper_size_format: As of now it's value can be either **"A3"** or **"A4"**. The value will decide the size
-                       of the page on which the badges (in groups of 8) will be printed. Not required if width
-                       and height of parameters are explicitly mentioned.
-  - width: Width of the page on which badges (in groups of 8) will be printed. Value should be in mm.
-           For example: **"297mm"**
-  - height: Height of the page on which badges (in groups of 8) will be printed. Value should be in mm.
-            For example: **"420mm"**.
-
-- A set of sample csv files can be found [here](https://github.com/fossasia/badgeyay/tree/development/backend/sample).
+1. [Badgeyay Frontend](/frontend/README.md)
+1. [Badgeyay Backend](/api/README.md)
+* **Installing git pre-push hook:**
+    * Run file `scripts/install-hook.py`. It will copy contents of `scripts/pre-push-hook.py` to `.git/hooks/pre-push`. Make sure that you have `.git/hooks/pre-push.sample` in your `.git` directory before performing this step.
+    * This will install git `pre-push-hook` in your local `.git` directory. It will run the commits against linting tests before pushing to a remote. See `scripts/pre-push-hook.py` if you encounter any errors.
 
 
-### Output
+## Technology Stack
 
-The output file is svg / pdf / multipage pdf of size A3.
-Each badge has the size A6.
-The outputs are in a folder derived from the input csv.
-The outputs can be either of the two types, viz ZIPs or PDFs, or both. User has the choice to choose from either of the two or from both of them.
+Please get familiar with the different components of the project in order to be able to contribute.
 
-### Customization
+* Backend Web Framework - [Flask](http://flask.pocoo.org/)
+* Frontend Web Framework - [Ember.js](https://emberjs.com/)
 
-You can change the font style, font size, color etc from the `.svg` file in the folder badges.
-Inkscape is generally used for editing of such files.
+## Branch Policy
 
-### Usage
+We have the following branches :
+ * **development**
+	 All development goes on in this branch. If you're making a contribution, please make a pull request to _development_.
+	 PRs to must pass a build check and all tests check on Travis.
 
-You need Ubuntu to run the application. We are working on integrating vagrant to make it easier to run on windows. Check out the [User Input Guide](https://badgeyay-dev.herokuapp.com/guide) for more details.
+ * **master**
+   This contains shipped code. After significant features/bug-fixes are accumulated on development, we make a version update, and make a release.
 
-### Install Dependencies
+## Contributions Best Practices
 
-Badgeyay requires the following dependencies to be installed
-- python3
+**Commits**
+* Write clear meaningful git commit messages (Do read http://chris.beams.io/posts/git-commit/)
+* Make sure your PR's description contains GitHub's special keyword references that automatically close the related issue when the PR is merged. (More info at https://github.com/blog/1506-closing-issues-via-pull-requests )
+* When you make very very minor changes to a PR of yours (like for example fixing a failing travis build or some small style corrections or minor changes requested by reviewers) make sure you squash your commits afterwards so that you don't have an absurd number of commits for a very small fix. (Learn how to squash at https://davidwalsh.name/squash-commits-git )
+* When you're submitting a PR for a UI-related issue, it would be really awesome if you add a screenshot of your change or a link to a deployment where it can be tested out along with your PR. It makes it very easy for the reviewers and you'll also get reviews quicker.
 
-For Ubuntu/Debian based Package Managers
-```
-sudo apt-get update
-sudo apt-get install python3
-```
+**Feature Requests and Bug Reports**
+* When you file a feature request or when you are submitting a bug report to the [Issue tracker](https://github.com/fossasia/badgeyay/issues), make sure you add steps to reproduce it. Especially if that bug is some weird/rare one.
 
-For Fedora/CentOS/RPM based package managers
-```
-sudo -i
-yum install python3
-exit
-```
+**Join the development**
+* Before you join development, please set up the system on your local machine and go through the application completely. Press on any link/button you can find and see where it leads to. Explore. (Don't worry ... Nothing will happen to the app or to you due to the exploring :wink: Only thing that will happen is, you'll be more familiar with what is where and might even get some cool ideas on how to improve various aspects of the app.)
+* If you would like to work on an issue, drop in a comment at the issue. If it is already assigned to someone, but there is no sign of any work being done, please free to drop in a comment so that the issue can be assigned to you if the previous assignee has dropped it entirely.
 
-For Arch based package managers:
-```
-sudo pacman -S python-cairosvg
-sudo pacman -S python-lxml
-```
+## License
 
-Installation
---------------
-Badgeyay can be easily deployed on a variety of platforms. Currently it can be deployed in following ways.
+This project is currently licensed under the **[GNU General Public License v3](/LICENSE)**.
 
-1. [Local Installation using Virtual environment](backend/docs/installation/localvir.md)
-
-2. [Local Installation using Vagrant environment](backend/docs/installation/localvag.md)
-
-3. [Deployment on Heroku](backend/docs/installation/heroku.md)
-
-4. [Deployment with Docker](backend/docs/installation/docker.md)
-
-
-Contributions, Bug Reports, Feature Requests
---------------
-This is an Open Source project and we would be happy to see contributors who report bugs and file feature requests by submitting pull requests as well. Please report issues in the [GitHub tracker](https://github.com/fossasia/badgeyay/issues/new).
-
-## Issue and Branch Policy
-
-Before making a pull request, please file an issue. So, other developers have the chance to give feedback or discuss details. Match every pull request with an issue please and add the issue number in description e.g. like "Fixes #123".
-
-We have the following branches   
- * **development**   
-   All development goes on in this branch. If you're making a contribution,
-   you are supposed to make a pull request to _development_.
-   PRs to master must pass a build check and a unit-test check on Travis.
- * **master**   
-   This contains shipped code. After significant features/bugfixes are accumulated on development, we make a version update, and make a release.
-
-
-Also read [CONTRIBUTING.md](https://github.com/fossasia/badgeyay/blob/development/.github/CONTRIBUTING.md)
-
-## CLI
-
-Badgeyay project can also be used as a cli application, and can also be imported as a library.
-
-Installation Steps
-------------------
-```bash
-cd cli\
-python setup.py install
-```
-
-When you execute `pip freeze` you will see badgeyay is installed as a library into your virtualenv.
-
-Verify
-------
-```bash
-badgeyay --help
-```
-This will show the information about the parameters to be supplied to the CLI application.
-
-
-Implementation
---------------
-
-[generate_badges.py](/backend/app/generate-badges.py) creates svg files from the `csv`, `png` and
-[badges/8BadgesOnA3.svg](/backend/badges/8BadgesOnA3.svg).
-
-[merge_badges.py](/backend/app/merge_badges.py) converts them into pdf files and merges
-them together into one.
-
-[Travis](https://github.com/fossasia/badgeyay/blob/development/.travis.yml) creates new releases with the `all-badges.pdf` file.
-
-License
--------------------
-
-Badgeyay - A simple badge generator. Its main purpose is to generate badges for events/conferences under the Open Event project of FOSSASIA. The Open Event project aims to make server and client software required for hosting events/conferences easy to build and configure. Copyright (C) 2016, FOSSASIA. This program is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version. This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with this program. If not, see http://www.gnu.org/licenses/.
-
-
-Maintainers
--------------------
-
-You can reach the maintainers and ping them personally by looking at the [Badgeyay team][team].
-
-You can become a maintainer by following the project and contributing code to it.
-Please see your role in the [CCCC][cccc].
-
-The project is maintained by the [Badgeyay maintainer's team][team].
-To join the team:
-1. Contribute
-2. You or someone else proposes you in an issue to become a member of the team.
-3. A Badgeyay admin adds you.
-
-To stay a maintainer in the team:
-1. Follow the rules of [CCCC][cccc] or [Badgeyay](.github/CONTRIBUTING.md) and do not violate them willingly or in a harmful way.
-
-To be removed from the team:
-1. Someone creates an issue to ask for removal, e.g. because of inactivity or a violation.
-2. An admin removes you.
-
-
-[gitter]: https://gitter.im/fossasia/badgeyay
-[cccc]: https://rfc.zeromq.org/spec:42/C4
-[team]: https://github.com/orgs/fossasia/teams/badgeyay-admin/members
+> To obtain the software under a different license, please contact [FOSSASIA](http://blog.fossasia.org/contact/).
