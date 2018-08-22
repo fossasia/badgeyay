@@ -47,9 +47,10 @@ $ source badgeyay/bin/activate
 > **source `which virtualenvwrapper.sh`** is used to prevent from breaking the `mkvirtualenv` command, you can find more about the issue, [here](https://stackoverflow.com/questions/13855463/bash-mkvirtualenv-command-not-found).
 
 * Now, since you are inside a virtual environment, you can setup `badgeyay` as an editable package.
+* Install all the requirements.
 
 ```sh
-(badgeyay) $ pip install -e .
+(badgeyay) pip install -r requirements.txt
 ```
 
 * Create application environment variables.
@@ -61,13 +62,15 @@ cp .env.example .env
 * To run the project on a local machine (default mode).
 
 ```sh
-(badgeyay) $ python app/main.py
+(badgeyay) $ export FLASK_APP=run.py
+
 ```
 
 * To run the project on a local machine (debug mode).
 
 ```sh
-(badgeyay) $ python app/main.py --dev
+(badgeyay) $ export FLASK_DEBUG=1
+(badgeyay) $ flask run
 ```
 
 ## Preferred Development Workflow
