@@ -63,7 +63,6 @@ cp .env.example .env
 
 ```sh
 (badgeyay) $ export FLASK_APP=run.py
-
 (badgeyay)$ flask run
 
 ```
@@ -72,7 +71,6 @@ cp .env.example .env
 
 ```sh
 (badgeyay) $ export FLASK_DEBUG=1
-
 (badgeyay)$ flask run
 ```
 
