@@ -64,17 +64,17 @@ cp .env.example .env
 ```sh
 (badgeyay) $ export FLASK_APP=run.py
 
+(badgeyay)$ flask run
+
 ```
 
 * To run the project on a local machine (debug mode).
 
 ```sh
 (badgeyay) $ export FLASK_DEBUG=1
-```
-* To run the project on local host.
-'''sh
+
 (badgeyay)$ flask run
-'''
+```
 
 ## Preferred Development Workflow
 
