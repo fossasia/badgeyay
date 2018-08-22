@@ -50,7 +50,7 @@ $ source badgeyay/bin/activate
 * Install all the requirements.
 
 ```sh
-(badgeyay) pip install -r requirements.txt
+(badgeyay)$ pip install -r requirements.txt
 ```
 
 * Create application environment variables.
