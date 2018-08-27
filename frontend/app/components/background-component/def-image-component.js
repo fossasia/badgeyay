@@ -1,6 +1,7 @@
 import Component from '@ember/component';
 
 export default Component.extend({
+  listview: false,
   init() {
     this.fingerPrint = window.ASSET_FINGERPRINT_HASH;
     this._super(...arguments);
@@ -9,6 +10,11 @@ export default Component.extend({
     let imageId = this.get('image');
     if (imageId !== undefined) {
       this.get('sendDefImage')(imageId);
+    }
+  },
+  actions: {
+    change() {
+      this.toggleProperty('listview');
     }
   }
 });

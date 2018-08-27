@@ -4,15 +4,33 @@
         <div class="default text">Select background from list</div>
         <i class="dropdown icon"></i>
         <div class="menu">
-            {{#each defImages as |image|}}
-                <div data-value="{{image.id}}" class="item">
-                    <div class="ui grid">
-                        <div class="twelve wide column">{{def-images image.name}}</div>
-                        <div class="four wide column"><img class="ui mini image" src="/images/badge_backgrounds/{{image.name}}{{fingerPrint}}.png"></div>
+            <br>
+            <div style="margin-left: 10px;" class="ui toggle checkbox listview">
+                <input type="checkbox" name="public" onchange={{action 'change'}}>
+                <label>List view</label>
+            </div>
+            <br>
+            <br>
+            {{#if listview}}
+                {{#each defImages as |image|}}
+                    <div data-value="{{image.id}}" class="item">
+                        <div class="ui grid">
+                            <div class="twelve wide column">{{def-images image.name}}</div>
+                            <div class="four wide column"><img class="ui mini image" src="/images/badge_backgrounds/{{image.name}}{{fingerPrint}}.png"></div>
+                        </div>
+                    </div>
+                {{/each}}
+            {{else}}
+                <div style="margin-left: 10px;" class="gallery">
+                    <div class="ui stackable grid">
+                        {{#each defImages as |image|}}
+                            <div data-value="{{image.id}}" class="item">
+                                <img class="ui tiny image" src="/images/badge_backgrounds/{{image.name}}{{fingerPrint}}.png">
+                            </div>
+                        {{/each}}
                     </div>
                 </div>
-            {{/each}}
+            {{/if}}
         </div>
     {{/ui-dropdown}}
 </div>
-
