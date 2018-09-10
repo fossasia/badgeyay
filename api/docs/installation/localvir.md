@@ -52,6 +52,24 @@ $ source badgeyay/bin/activate
 ```sh
 (badgeyay)$ pip install -r requirements.txt
 ```
+* Create the database. For that we first open the psql shell. Go to the directory where your postgres file is stored.
+
+```sh
+$ sudo -u postgres psql
+```
+
+While inside psql, create a user for badgeyay and then using the user create the database.
+
+For ease of development, you should create Postgres user with the same username as your OS account. For example, if your OS login account is _tom_, then you should create _tom_ user in Postgres. By this, you can skip entering password when using database.
+
+```sql
+CREATE USER tom WITH PASSWORD 'start';
+CREATE DATABASE badgeyay WITH OWNER tom;
+```
+
+Once database is created, exit the psql shell with `\q` followed by ENTER.
+
+If you want a graphical interface for this, you can try [pgAdmin](https://www.pgadmin.org/).
 
 * Create application environment variables.
 
@@ -61,17 +79,22 @@ cp .env.example .env
 
 * To run the project on a local machine (default mode).
 
+First run the ember server as given [here](https://github.com/fossasia/badgeyay/blob/development/frontend/README.md).
+It is necessary to run both the ember server and as well as the python backend server to get the service up and running.
+
+Then, in a terminal, type
+
 ```sh
-(badgeyay) $ export FLASK_APP=run.py
-(badgeyay)$ flask run
+(badgeyay/api) $ export FLASK_APP=run.py
+(badgeyay/api)$ flask run
 
 ```
 
 * To run the project on a local machine (debug mode).
 
 ```sh
-(badgeyay) $ export FLASK_DEBUG=1
-(badgeyay)$ flask run
+(badgeyay/api) $ export FLASK_DEBUG=1
+(badgeyay/api)$ flask run
 ```
 
 ## Preferred Development Workflow
