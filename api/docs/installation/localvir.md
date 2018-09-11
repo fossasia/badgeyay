@@ -110,7 +110,6 @@ Now Change the 'ENV' variable to 'LOCAL'
 ```sh
 (badgeyay) $ export FLASK_DEBUG=1
 (badgeyay)$ flask run
-(badgeyay) $ python app/main.py
 ```
 
 
