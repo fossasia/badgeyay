@@ -15,7 +15,7 @@ For a start, fork BadgeYay to your own github account. Then, clone it to your lo
 
 * **Step 1**
 ```sh
-$ git clone -b development https://github.com//badgeyay.git
+$ git clone -b development https://github.com/<username>/badgeyay.git
 ```
 
 Add an upstream remote so that you can push your patched branches for starting a PR .
