@@ -98,6 +98,9 @@ Now Change the 'ENV' variable to 'LOCAL'
 ```
 
  * **Step 6**
+ 
+* [Change directory to](/api/) 
+
 * To run the project on a local machine (default mode).
  ```sh
 (badgeyay) $ export FLASK_APP=run.py
