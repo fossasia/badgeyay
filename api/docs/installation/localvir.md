@@ -54,18 +54,7 @@ $ workon badgeyay # To activate it again
 (badgeyay)$ pip install -r requirements.txt
 ```
 
-* **Step 3** Changing the Configs for development
-
-```sh
-Go to Config file:
-```
-[Config](/api/config/config.py)
-
-```sh
-Now Change the 'ENV' variable to 'LOCAL'
-```
-
-* **Step 4** Now creating database and user
+* **Step 3** Now creating database and user
 
 # For linux users
 ```sh
@@ -92,26 +81,17 @@ CREATE DATABASE badgeyay WITH OWNER postgres;
 ```
 * Once database is created, exit the psql shell with \q followed by ENTER.
 
-* **Step 5** - Start the postgres service.
+* **Step 4** - Start the postgres service.
 
 ```sh
 sudo service postgresql restart
 ```
 
-* **Step 6**
-* To run the project on a local machine (default mode).
+* **Step 5**
+* To run the project on a local machine.
 
 ```sh
-(badgeyay) $ export FLASK_APP=run.py
-(badgeyay)$ flask run
-
-```
-
-* To run the project on a local machine (debug mode).
-
-```sh
-(badgeyay) $ export FLASK_DEBUG=1
-(badgeyay)$ flask run
+(badgeyay) $ python app/main.py
 ```
 
 ## Preferred Development Workflow
