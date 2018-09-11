@@ -87,12 +87,29 @@ CREATE DATABASE badgeyay WITH OWNER postgres;
 sudo service postgresql restart
 ```
 
-* **Step 5**
-* To run the project on a local machine.
 
+* **Step 5** Changing the Configs for development
+ ```sh
+Go to Config file:
+```
+[Config](/api/config/config.py)
+ ```sh
+Now Change the 'ENV' variable to 'LOCAL'
+```
+
+ * **Step 6**
+* To run the project on a local machine (default mode).
+ ```sh
+(badgeyay) $ export FLASK_APP=run.py
+(badgeyay)$ flask run
+ ```
+ * To run the project on a local machine (debug mode).
 ```sh
+(badgeyay) $ export FLASK_DEBUG=1
+(badgeyay)$ flask run
 (badgeyay) $ python app/main.py
 ```
+
 
 ## Preferred Development Workflow
 
