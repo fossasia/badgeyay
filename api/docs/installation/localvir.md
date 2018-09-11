@@ -99,7 +99,7 @@ Now Change the 'ENV' variable to 'LOCAL'
 
  * **Step 6**
  
-* [Change directory to](/api/) 
+* [Change directory to /api/](/api/) 
 
 * To run the project on a local machine (default mode).
  ```sh
