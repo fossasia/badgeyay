@@ -10,11 +10,15 @@ These are some additional depencies that you will need:
 $ sudo apt-get update
 ```
 
+## Steps
+
 Make sure you have the dependencies mentioned above installed before proceeding further.
-For a start, fork BadgeYay to your own github account. Then, clone it to your local system.
+
+* **Step 0** - For a start, fork BadgeYay to your own github account. Then, clone it to your local system. You will need to ```cd``` into your local badgeyay directory.
 
 ```sh
 $ git clone -b development https://github.com/<your_username>/badgeyay.git
+$ cd badgeyay
 ```
 
 Add an upstream remote so that you can push your patched branches for starting a PR .
@@ -24,7 +28,18 @@ $ cd badgeyay
 $ git remote add upstream https://github.com/fossasia/badgeyay.git
 ```
 
-* It is recommended that you use [`virtualenv`](https://virtualenv.pypa.io/en/stable/installation/)
+* **Step 1** - Install the python requirements. You need to be present in the root directory of the project.
+
+* System Wide Installation
+
+```sh
+sudo -H pip3 install -r api/requirements.txt
+```
+hint: You may need to upgrade your pip version and install following packages if you encounter errors while installing the requirements.
+
+* Installation in Virtual Environment
+
+ It is recommended that you use [`virtualenv`](https://virtualenv.pypa.io/en/stable/installation/)
 and [`virtualenvwrapper`](https://virtualenvwrapper.readthedocs.io/en/latest/install.html) to maintain a clean Python 3 environment. Create a `virtualenv`:
 
 ```sh
@@ -52,26 +67,67 @@ $ source badgeyay/bin/activate
 ```sh
 (badgeyay)$ pip install -r requirements.txt
 ```
+* **Step 2** - Create the database. For that we first open the psql shell. Go to the directory where your postgres file is stored.
 
-* Create application environment variables.
+```sh
+$ sudo -u postgres psql
+```
 
+While inside psql, create a user for badgeyay and then using the user create the database.
+
+For ease of development, you should create Postgres user with the same username as your OS account. For example, if your OS login account is _tom_, then you should create _tom_ user in Postgres. By this, you can skip entering password when using database.
+
+```sql
+CREATE USER tom WITH PASSWORD 'start';
+CREATE DATABASE badgeyay WITH OWNER tom;
 ```
-cp .env.example .env
+
+Once database is created, exit the psql shell with `\q` followed by ENTER.
+
+If you want a graphical interface for this, you can try [pgAdmin](https://www.pgadmin.org/).
+
+* **Step 3** - Adding the credentials in [Config file](https://github.com/fossasia/badgeyay/blob/development/api/config/config.py)
+
+According to the name of the user and its password that you have created, you will need to change the credentials in the config.py file.
+
+* By default, the user and password is 'postgres'. So if you make the user with the same credentials, there is not need to chagne them in the config file.
+
+* **Step 4** - Change the ENV variable in [Config file](https://github.com/fossasia/badgeyay/blob/development/api/config/config.py)
+
+While in the config file, change the `ENV` variable to `LOCAL`
 ```
+ENV = 'LOCAL'
+```
+
+* **Step 5** - Start the postgresql service
+
+You need to have postgresql running in the background.
+
+```sh
+sudo service postgresql restart
+```
+
+
+* **Step 5** - Start the application
 
 * To run the project on a local machine (default mode).
 
+First run the ember server as given [here](https://github.com/fossasia/badgeyay/blob/development/frontend/README.md).
+It is necessary to run both the ember server and as well as the python backend server to get the service up and running.
+
+Then, in a terminal, type
+
 ```sh
-(badgeyay) $ export FLASK_APP=run.py
-(badgeyay)$ flask run
+(badgeyay/api) $ export FLASK_APP=run.py
+(badgeyay/api)$ flask run
 
 ```
 
 * To run the project on a local machine (debug mode).
 
 ```sh
-(badgeyay) $ export FLASK_DEBUG=1
-(badgeyay)$ flask run
+(badgeyay/api) $ export FLASK_DEBUG=1
+(badgeyay/api)$ flask run
 ```
 
 ## Preferred Development Workflow
