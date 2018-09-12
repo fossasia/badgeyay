@@ -67,7 +67,7 @@ $ source badgeyay/bin/activate
 * Install all the requirements.
 
 ```sh
-(badgeyay)$ pip install -r requirements.txt
+(badgeyay)$ pip install -r api/requirements.txt
 ```
 * **Step 2** - Create the database. For that we first open the psql shell. Go to the directory where your postgres file is stored.
 
