@@ -47,6 +47,7 @@
  If something goes wrong with the build you can fire up a plain ubuntu image and try installing each package from the Dockerfile manually.		
 		
  Run this :		
+ 
  ````		
  docker pull ubuntu:16.04		
  docker run -it -v [full file path to your app files]:/app ubuntu:16.04 /bin/bash		
