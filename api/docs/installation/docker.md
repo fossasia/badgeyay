@@ -3,7 +3,6 @@
  ### Prerequisites		
 		
  Before you begin this, ensure the following is installed to your system:		
-
  - Docker, and		
  - A git repository to store your project and track changes.		
 		
@@ -36,9 +35,11 @@
  ### Build with PATH :		
 		
  Make sure you run this command from the same directory as the location of your Dockerfile		
+ 
  ``$ docker build .``		
 		
  Now run this command to see the Docker images you have in your local repository.		
+ 
  ``docker images``		
 		
  ## Debug your build		
