@@ -1,5 +1,7 @@
 # Docker
 
+![image](https://user-images.githubusercontent.com/35162705/45485499-7e21c880-b775-11e8-95d6-f377567f8f4e.png)
+
 ### Prerequisites
 
 Before you begin this, ensure the following is installed to your system:
@@ -59,6 +61,8 @@ Run this:
 
 ## Deploy on AWS Elastic Beanstalk
 
+![image-1](https://user-images.githubusercontent.com/35162705/45485469-677b7180-b775-11e8-875a-df476bf939a2.png)
+
 - Login to AWS and get to the Elastic Beanstalk service.
 - Create a new environment and select “Docker” as the preconfigured platform.
 - Upload a zip of your app files, which of course should include the Dockerfile. Create the zip from within the root directory of your app.
@@ -66,6 +70,10 @@ Run this:
 Once you have successfully uploaded your files on the right size instance, Elastic Beanstalk will deploy your app and make it available.
 
 Cheers:
+
+## demo deployment :
+
+![screenshot - 9_13_2018 5_54_03 pm](https://user-images.githubusercontent.com/35162705/45485578-c345fa80-b775-11e8-9335-e1f72773cc80.png)
 
 ## Useful Links:
 
