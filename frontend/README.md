@@ -75,9 +75,40 @@ For deploying on Kubernetes, you need following things properly installed on you
   * `kubectl get service`
   * Copy the External-IP from the showed list corresponding to your cluster's name and run it in your browser.
 
+# Deploying on Heroku :
+
+## Prerequisites
+
+You will need the following things properly installed on your computer.
+
+Git
+Node.js (with NPM)
+Ember CLI
+PhantomJS
+Running Locally
+
+````
+$ git clone https://github.com/fossasia/badgeyay
+$ cd badgeyay/frontend
+$ yarn install
+$ ember server
+````
+
+Your app should now be running on localhost:4200.
+
+## Deploying to Heroku
+
+````
+$ heroku create --buildpack https://codon-buildpacks.s3.amazonaws.com/buildpacks/heroku/emberjs.tgz
+$ git push heroku master
+$ heroku open
+````
+
+
 
 ## Further Reading / Useful Links
 
+* [Heroku Ember.js Buildpack](https://github.com/heroku/heroku-buildpack-emberjs)
 * [ember.js](https://emberjs.com/)
 * [ember-cli](https://ember-cli.com/)
 * Development Browser Extensions
