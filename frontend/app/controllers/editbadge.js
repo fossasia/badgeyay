@@ -1,6 +1,3 @@
-
-
-
 import Controller from '@ember/controller';
 import ENV from '../config/environment';
 
@@ -392,6 +389,7 @@ export default Controller.extend({
     },
 
     mutateDefColor(color) {
+      console.log(color);
       this.bgColorClicked();
       this.set('defColor', color);
       this.set('backColor', color);
@@ -513,7 +511,10 @@ export default Controller.extend({
     },
 
     togglePreview() {
+      console.log('helo');
       this.set('previewToggled', !this.previewToggled);
+      console.log(document.getElementById('toggle').checked);
+      // document.getElementById('toggle').checked=!document.getElementById('toggle').checked
     }
   }
 });

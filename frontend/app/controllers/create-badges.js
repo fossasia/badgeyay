@@ -510,6 +510,7 @@ export default Controller.extend({
     },
 
     togglePreview() {
+      document.getElementById('toggle').checked = !document.getElementById('toggle').checked;
       this.set('previewToggled', !this.previewToggled);
     }
   }
