@@ -511,6 +511,7 @@ export default Controller.extend({
 
     togglePreview() {
       this.set('previewToggled', !this.previewToggled);
+document.getElementsByClassName('switchcheck')[0].checked= !document.getElementsByClassName('switchcheck')[0].checked;
     }
   }
 });
