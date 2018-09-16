@@ -1,8 +1,12 @@
 <div class="ui stackable grid">
-    <div class="right floated right aligned two wide column">
-        <button {{action 'togglePreview'}} class="tiny ui basic orange button" data-tooltip="Toggle Preview" data-position="left center">
-            <i class="exchange icon"></i>
-        </button>
+    <div class="right floated right aligned one wide column" >
+        
+
+<label class="switch" {{action 'togglePreview'}}    data-tooltip="Toggle Preview" data-position="left center" >
+  <input  class="switchcheck"  type="checkbox"  checked>
+  <span class="slider round"></span>
+</label>
+
     </div>
 </div>
 <div class="ui stackable mobile reversed grid">
