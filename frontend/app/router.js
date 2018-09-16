@@ -47,6 +47,7 @@ router.map(function() {
   });
   this.route('sitemap');
   this.route('settings');
+  this.route('editbadge');
 });
 
 export default router;
