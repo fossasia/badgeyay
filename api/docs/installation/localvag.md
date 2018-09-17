@@ -2,14 +2,21 @@
 
 - Configure a Flask app on a VM using Vagrant, with provisioning handled by Ansible i.e setting up python, virtualenv, nginx, gunicorn, etc.
 
+
+
 ### Prerequisite
 
 You need to install:
 
 - Git
 - [Vagrant](Vagranthttps://www.vagrantup.com/downloads.html)
+
+![1-jxjvc6zvxchbw9pu2zgrjw](https://user-images.githubusercontent.com/35162705/45614480-46719400-ba87-11e8-9925-a1f71993d1aa.jpeg)
+
 - I will be using VirtualBox for this setup, you can grab a copy for your OS [here](https://www.virtualbox.org/wiki/Downloads).
 - If you use VirtualBox download it [here](https://www.virtualbox.org/wiki/Downloads).
+
+![1-6uma0awrapu6nq6lb8ehtq](https://user-images.githubusercontent.com/35162705/45614479-46719400-ba87-11e8-94e9-14a08153cb35.png)
 
 ### Creation of Vagrant file :
 
