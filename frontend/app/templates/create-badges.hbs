@@ -1,3 +1,33 @@
+<script>
+    function showcsv() {
+        document.getElementById('csv').style.display = 'block';
+        document.getElementById('details').style.display = 'none';
+
+    }
+    function showdetails() {
+        document.getElementById('details').style.display = 'block';
+        document.getElementById('csv').style.display = 'none';
+
+    }
+    function customimage() {
+        document.getElementById('custimg').style.display = 'block';
+        document.getElementById('custbg').style.display = 'none';
+        document.getElementById('custcol').style.display = 'none';
+
+    }
+    function custombg() {
+        document.getElementById('custbg').style.display = 'block';
+        document.getElementById('custimg').style.display = 'none';
+        document.getElementById('custcol').style.display = 'none';
+
+    }
+    function customcol() {
+        document.getElementById('custcol').style.display = 'block';
+        document.getElementById('custbg').style.display = 'none';
+        document.getElementById('custimg').style.display = 'none';
+
+    }
+</script>
 <div class="ui stackable grid">
     <div class="right floated right aligned two wide column">
         <button {{action 'togglePreview'}} class="tiny ui basic orange button" data-tooltip="Toggle Preview" data-position="left center">
@@ -36,45 +66,55 @@
                             <i class="info icon"></i>
                         </a>
                     </p>
-                        <div class="content">
-                            <div class="center aligned">
-                                {{ data-component/csv-component sendCSV=(action 'mutateCSV') }}
-                            </div>
+                    <div class="ui radio checkbox">
+                        <input type="radio" name="tab" value="igotnone" onclick="showcsv();" />
+                        <label>Upload CSV</label>
+                    </div>
+                    <div class="content" id="csv" style="display: none">
+                        <div class="center aligned">
+                            {{ data-component/csv-component sendCSV=(action 'mutateCSV') }}
                         </div>
-                          <div class="ui horizontal divider">
-                            Or
-                          </div>
-                        <div class="content">
-                            <div class="center aligned">
-                                {{ data-component/text-component sendText=(action 'mutateText') }}
-                            </div>
+                    </div>
+                    <br>
+                    <div class="ui radio checkbox">
+                        <input type="radio" name="tab" value="igotnone" onclick="showdetails();" />
+                        <label>Enter Details</label>
+                    </div>
+                    <div class="content" id="details" style="display:none">
+                        <div class="center aligned">
+                            {{ data-component/text-component sendText=(action 'mutateText') }}
                         </div>
+                    </div>
                 </div>
             </div>
-                <div class="ui equal width grid clearing segment">
-                    <div class="ui column form">
-                        <p>
-                            <b>Select from one of the Paper Sizes</b>
-                            &nbsp;
-                            <div class="content">
-                                <div class="center aligned">
-                                    {{ badge-component/paper-size sendPaperSize=(action 'mutatePaperSize') }}
-                                </div>
-                            </div>
-                        </p>
+            <div class="ui equal width grid clearing segment">
+                <div class="ui column form">
+                    <p>
+                        <b>Select from one of the Paper Sizes</b>
+                    </p>
+
+                    <div class="content">
+                        <div class="center aligned">
+                            {{ badge-component/paper-size sendPaperSize=(action 'mutatePaperSize') }}
+                        </div>
                     </div>
+                </div>
                 <div class="ui column form ">
+
+                    <div class="ui right floated icon orange basic button" data-tooltip="Badge size is in inches, 1 inch = 2.54 cm, 1 inch = 25.4 mm"
+                        data-position="right center">
+                        <i class="info icon"></i>
+                    </div>
                     <p>
                         <b>Select from one of the Badge Sizes</b>
-                        <div class="ui right floated icon orange basic button" data-tooltip="Badge size is in inches, 1 inch = 2.54 cm, 1 inch = 25.4 mm" data-position="right center">
-                            <i class="info icon"></i>
-                        </div>
+
                     </p>
                     <div class="content">
                         <div class="center aligned">
                             {{ badge-component/badge-size sendBadgeSize=(action 'mutateBadgeSize')}}
                         </div>
                     </div>
+
                 </div>
             </div>
             <div class="ui clearing segment">
@@ -86,23 +126,34 @@
                             <i class="info icon"></i>
                         </a>
                     </p>
-                    <div class="content">
+
+                    <div class="ui radio checkbox">
+                        <input type="radio" name="tab" value="igotnone" onclick="customimage();" />
+                        <label>Upload a Custom Image</label>
+                    </div>
+                    <div class="content" id="custimg" style="display:none">
                         <div class="center aligned">
                             {{ background-component/image-component imageData=imageData sendImage=(action 'mutateCustomImage') }}
                         </div>
                     </div>
-                    <div class="ui horizontal divider">
-                        Or
+                    <br>
+                    <div class="ui radio checkbox">
+                        <input type="radio" name="tab" value="igotnone" onclick="custombg();" />
+                        <label>Select from default backgrounds</label>
                     </div>
-                    <div class="content">
+                    <br>
+                    <div class="content" id="custbg" style="display: none">
                         <div class="center aligned">
                             {{ background-component/def-image-component defImages=defImages sendDefImage=(action 'mutateBackground') }}
                         </div>
                     </div>
-                    <div class="ui horizontal divider">
-                        Or
+
+
+                    <div class="ui radio checkbox">
+                        <input type="radio" name="tab" value="igotnone" onclick="customcol();" />
+                        <label>Select from a custom color</label>
                     </div>
-                    <div class="content">
+                    <div class="content"  id="custcol" style="display: none">
                         <div class="center aligned">
                             {{ background-component/color-bg-component sendDefColor=(action 'mutateDefColor') backColor=backColor }}
                         </div>
@@ -123,75 +174,56 @@
                     <div class="ui horizontal divider"></div>
                     <div class="content">
                         <div class="center aligned">
-                            {{ text-component/font-size fontsizeall=fontsizeall fonttypeall=fonttypeall sendDefSize=(action 'mutateFontSize') sendDefFont=(action 'mutateCustomFont')}}
+                            {{ text-component/font-size fontsizeall=fontsizeall fonttypeall=fonttypeall sendDefSize=(action 'mutateFontSize') sendDefFont=(action
+                            'mutateCustomFont')}}
                         </div>
                     </div>
                 </div>
             </div>
             <button {{action "submitForm"}} class="ui fluid orange {{if authToken.isEmailVerified '' 'disabled'}} button">Create Badges</button>
             {{#each userError as |error|}}
-                <p>{{error.message}}</p>
-            {{/each}}
-            {{#if showProgress}}
+            <p>{{error.message}}</p>
+            {{/each}} {{#if showProgress}}
+            <div class="ui hidden divider"></div>
+            <div>
+                <div class="ui centered aligned grid">{{progressState}}</div>
                 <div class="ui hidden divider"></div>
-                <div>
-                    <div class="ui centered aligned grid">{{progressState}}</div>
-                    <div class="ui hidden divider"></div>
-                    {{#ui-progress percent=progress class="teal indicating"}}
-                        <div class="bar">
-                            <div class="progress"></div>
-                        </div>
-                    {{/ui-progress}}
+                {{#ui-progress percent=progress class="teal indicating"}}
+                <div class="bar">
+                    <div class="progress"></div>
                 </div>
-            {{/if}}
-            {{#if badgeGenerated}}
-                <div class="ui positive message">
-                    <i class="close icon"></i>
-                        <div class="ui center aligned header">
-                            Badge generated successfully!
-                        </div>
-                        <div class="ui horizontal divider"></div>
-                        <div class="ui center aligned secondary header">
-                            <a class="ui green basic button" href="{{badgeGeneratedLink}}">
-                                Download as PDF
-                            </a>
-                        </div>
-                    <script type="text/javascript">
-                        $('.message .close')
-                            .on('click', function () {
-                                $(this)
-                                    .closest('.message')
-                                    .transition('fade')
-                                    ;
-                            });
-                    </script>
+                {{/ui-progress}}
+            </div>
+            {{/if}} {{#if badgeGenerated}}
+            <div class="ui positive message">
+                <i class="close icon"></i>
+                <div class="ui center aligned header">
+                    Badge generated successfully!
                 </div>
+                <div class="ui horizontal divider"></div>
+                <div class="ui center aligned secondary header">
+                    <a class="ui green basic button" href="{{badgeGeneratedLink}}">
+                        Download as PDF
+                    </a>
+                </div>
+                <script type="text/javascript">
+                    $('.message .close')
+                        .on('click', function () {
+                            $(this)
+                                .closest('.message')
+                                .transition('fade')
+                                ;
+                        });
+                </script>
+            </div>
             {{/if}}
         </div>
     </div>
     <div class="{{if previewToggled 'six' 'hide'}} wide column preview">
         <!--Add Preview Section here-->
-        {{
-            user-component/preview
-            fn=firstName
-            ln=lastName
-            org=organization
-            sh=socialHandle
-            desg=designation
-            defColor=defFontColor
-            font_fn=defFont1Size
-            font_ln=defFont2Size
-            font_desg=defFont3Size
-            font_org=defFont4Size
-            font_sh=defFont5Size
-            defFont=defFont
-            defImageName=defImageName
-            backImg=prevImageData
-            defImage=defImage
-            custImage=custImage
-            previewHeight=previewHeight
+        {{ user-component/preview fn=firstName ln=lastName org=organization sh=socialHandle desg=designation defColor=defFontColor
+        font_fn=defFont1Size font_ln=defFont2Size font_desg=defFont3Size font_org=defFont4Size font_sh=defFont5Size defFont=defFont
+        defImageName=defImageName backImg=prevImageData defImage=defImage custImage=custImage previewHeight=previewHeight
         }}
     </div>
-</div>
-
-{{overlay-welcome user=user removeFTL=(action 'removeFTL')}}
+</div>{{overlay-welcome user=user removeFTL=(action 'removeFTL')}}
