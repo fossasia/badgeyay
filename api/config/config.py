@@ -2,7 +2,7 @@
 DEBUG = True
 
 # Environment for working, can be LOCAL/PROD
-ENV = 'LOCAL'
+ENV = 'PROD'
 
 # Sample config for PostgreSQL Database
 POSTGRES = {
