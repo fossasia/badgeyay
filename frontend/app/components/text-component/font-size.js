@@ -21,7 +21,6 @@ export default Component.extend({
 
   click() {
     if (document.getElementsByName("fonttypeall")[0].checked === true) {
-      console.log("inside above");
       var temp_type = this.fonttype1 || this.fonttype2 || this.fonttype3 || this.fonttype4 || this.fonttype5;
       this.set('fonttype1', temp_type);
       this.set('fonttype2', temp_type);
