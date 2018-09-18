@@ -50,7 +50,7 @@ We have the following branches :
 
 - **development**
   All development goes on in this branch. If you're making a contribution, please make a pull request to _development_.
-  PRs to must pass a build check and all tests check on Travis.
+  PRs must pass a build check and all tests check on Travis.
 
 - **master**
 This contains shipped code. After significant features/bug-fixes are accumulated on development, we make a version update, and make a release.
