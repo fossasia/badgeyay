@@ -1,8 +1,8 @@
-<div class="ui stackable grid">
+    <div class="ui stackable grid">
     <div class="right floated right aligned two wide column" style="margin-right:50px;">
         
 
-<label class="switch" {{action 'togglePreview'}}  id="switch"   data-tooltip="Toggle Preview" data-position="left center" >
+<label class="switch" {{action 'togglePreview'}} onclick="document.getElementById('toggle').checked=!document.getElementById('toggle').checked" id="switch"   data-tooltip="Toggle Preview" data-position="left center" >
   <input type="checkbox" id="toggle" checked>
   <span class="slider round"></span>
 </label>
@@ -36,7 +36,7 @@
                 <div class="ui form width-container">
                     <p>
                         <b>Select from one of the Input Sources</b>
-                        <a class="ui right floated icon orange basic button" href="{{href-to 'user-guide'}}" target="_blank" data-tooltip="User Input Guide" data-position="right center">
+                        <a class="ui right floated icon orange basic button" href="{{href-to 'user-guide'}}" data-tooltip="User Input Guide" data-position="right center">
                             <i class="info icon"></i>
                         </a>
                     </p>
@@ -184,7 +184,6 @@
             sh=socialHandle
             desg=designation
             defColor=defFontColor
-            backColor=backColor
             font_fn=defFont1Size
             font_ln=defFont2Size
             font_desg=defFont3Size
@@ -201,3 +200,5 @@
 </div>
 
 {{overlay-welcome user=user removeFTL=(action 'removeFTL')}}
+
+

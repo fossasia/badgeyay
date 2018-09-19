@@ -389,6 +389,7 @@ export default Controller.extend({
     },
 
     mutateDefColor(color) {
+      console.log(color);
       this.bgColorClicked();
       this.set('defColor', color);
       this.set('backColor', color);
@@ -510,8 +511,10 @@ export default Controller.extend({
     },
 
     togglePreview() {
-      document.getElementById('toggle').checked = !document.getElementById('toggle').checked;
+      console.log('helo');
       this.set('previewToggled', !this.previewToggled);
+      console.log(document.getElementById('toggle').checked);
+      // document.getElementById('toggle').checked=!document.getElementById('toggle').checked
     }
   }
 });
