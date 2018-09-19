@@ -1,0 +1,27 @@
+version: '3'
+
+services:
+
+    postgres:
+        image: postgres:10-alpine
+        volumes:
+            - pg:/var/lib/postgresql/data
+            - ./postgres-initdb.d:/docker-entrypoint-initdb.d
+        ports:
+            - 127.0.0.1:5432:5432
+
+    web:
+        build: .
+        environment:
+            DATABASE_URL: postgresql://postgres:start@postgres:5432/badgeyay
+            ADMIN_EMAIL: "@{ADMIN_EMAIL}"
+            ADMIN_PASSWORD: "@{ADMIN_PASSWORD}"
+        links:
+            - postgres:postgres
+        volumes:
+            - ./data/web:/badgeyay/data
+        ports:
+            - 0.0.0.0:5000:5000
+
+volumes:
+    pg:
