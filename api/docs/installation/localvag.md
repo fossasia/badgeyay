@@ -8,7 +8,6 @@ You need to install:
 
 - Git
 - [Vagrant](https://www.vagrantup.com/downloads.html)
-![1-jxjvc6zvxchbw9pu2zgrjw](https://user-images.githubusercontent.com/35162705/45614480-46719400-ba87-11e8-9925-a1f71993d1aa.jpeg)
 
 - I will be using VirtualBox for this setup, you can grab a copy for your OS [here](https://www.virtualbox.org/wiki/Downloads).
 - If you use VirtualBox download it [here](https://www.virtualbox.org/wiki/Downloads).
