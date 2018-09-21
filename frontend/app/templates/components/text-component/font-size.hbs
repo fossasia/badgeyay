@@ -3,8 +3,8 @@
 </div>
 <div class="ui stackable grid">
   <div class="four column row">
-    <div class="center aligned column">Field</div>
-    <div class="center aligned column">Font<br>
+    <div class="center aligned column labels">Field</div>
+    <div class="center aligned column labels">Font<br>
       <div class="ui checkbox">
         {{input name="fonttypeall" type="checkbox" checked=fonttypeall}}
         <label>Apply to all</label>
@@ -20,8 +20,8 @@
   </div>
 
   <div class="four column row">
-    <div class="center aligned column">First Name</div>
-    <div class="center aligned column">
+    <div class="center aligned column labels">First Name</div>
+    <div class="center aligned column font_type">
       <div class="one wide column">
         {{#ui-dropdown class="selection" selected="Bob"  onChange=(action (mut fonttype1))}}
           <div class="default text">Helvetica</div>
@@ -67,8 +67,8 @@
   </div>
 
   <div class="four column row">
-    <div class="center aligned column">Last Name</div>
-    <div class="center aligned column">
+    <div class="center aligned column labels">Last Name</div>
+    <div class="center aligned column font_type">
       <div class="one wide column">
         {{#ui-dropdown class="selection" selected="Bob" onChange=(action (mut fonttype2))}}
           <div class="default text">Helvetica</div>
@@ -114,8 +114,8 @@
   </div>
 
   <div class="four column row">
-    <div class="center aligned column">Designation</div>
-    <div class="center aligned column">
+    <div class="center aligned column labels">Designation</div>
+    <div class="center aligned column font_type">
       <div class="one wide column">
         {{#ui-dropdown class="selection" selected="Bob" onChange=(action (mut fonttype3))}}
           <div class="default text">Helvetica</div>
@@ -161,8 +161,8 @@
   </div>
 
   <div class="four column row">
-    <div class="center aligned column">Organization</div>
-    <div class="center aligned column">
+    <div class="center aligned column labels">Organization</div>
+    <div class="center aligned column font_type">
       <div class="one wide column">
         {{#ui-dropdown class="selection" selected="Bob" onChange=(action (mut fonttype4))}}
           <div class="default text">Helvetica</div>
@@ -208,8 +208,8 @@
   </div>
 
   <div class="four column row">
-    <div class="center aligned column">Handle (e.g. Github)</div>
-    <div class="center aligned column">
+    <div class="center aligned column  labels">Handle (e.g. Github)</div>
+    <div class="center aligned column font_type">
       <div class="one wide column">
         {{#ui-dropdown class="selection" selected="Bob" onChange=(action (mut fonttype5))}}
           <div class="default text">Helvetica</div>
