@@ -14,20 +14,20 @@ This phase involves creating the EC2 instance which will hold the app.
 
 * **Step 4** - Now, in *Configuring Security Groups*, add a new rule to accept all HTTP connection as shown in the screenshot below. Then click on next.
 
-![aws1](https://user-images.githubusercontent.com/19776278/45806105-d6108000-bcdd-11e8-9fb1-906138e4f12f.png)
+![aws1](images/aws1.png)
 
 * **Step 5** - Click Launch in this 7th step and you will be presented with a dialog box to choose/create a key. From the drop-down menu, select 'create a key' and give it a name, let's say 'mykey' for instance.
 Then download the key. Keep it safe because if you lose it, you will lose access to the server.
 
-![aws4](https://user-images.githubusercontent.com/19776278/45806594-1a505000-bcdf-11e8-88ed-064400fafb63.png)
+![aws4](images/aws4.png)
 
 * **Step 6** - Once the instance is created, you will be forwarded to the instances list, like in the screenshot below.
 
-![aws3](https://user-images.githubusercontent.com/19776278/45806131-e58fc900-bcdd-11e8-86f4-de673f72663e.png)
+![aws3](images/aws3.png)
 
 Select the newly created isntance and then click on the Connect button. You will see a dialog box with instructions on how to connect to it using ssh.
 
-![aws2](https://user-images.githubusercontent.com/19776278/45806129-e3c60580-bcdd-11e8-825d-8a6e57def922.png)
+![aws2](images/aws2.png)
 
 * **Step 7** - Open the terminal in the directory where you have downloaded the key file and then run the command you got from the previous step. For this case, it would look like
 
