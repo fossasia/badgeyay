@@ -3,25 +3,28 @@ version: '3'
 services:
 
     postgres:
-        image: postgres:10-alpine
+        restart: always
+        image: postgres:10
+        environment:
+            - POSTGRES_USER=${POSTGRES_USER}
+            - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+            - POSTGRES_DB=${POSTGRES_DB}
         volumes:
-            - pg:/var/lib/postgresql/data
-            - ./postgres-initdb.d:/docker-entrypoint-initdb.d
+            - ./postgres-data/postgres:/var/lib/postgresql/data
         ports:
-            - 127.0.0.1:5432:5432
+            - "5432:5432"
 
-    web:
+    api:
+        restart: always
         build: .
         environment:
             DATABASE_URL: postgresql://postgres:start@postgres:5432/badgeyay
             ADMIN_EMAIL: "@{ADMIN_EMAIL}"
             ADMIN_PASSWORD: "@{ADMIN_PASSWORD}"
-        links:
-            - postgres:postgres
         volumes:
-            - ./data/web:/badgeyay/data
+            - .:/api
+        depends_on:
+            - postgres
         ports:
-            - 0.0.0.0:5000:5000
-
-volumes:
-    pg:
+            - 5000:5000
+        entrypoint: ["flask", "run"]
