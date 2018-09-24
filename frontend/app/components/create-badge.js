@@ -15,6 +15,7 @@ export default Component.extend({
       } else {
         EmberObject.$(document)[0].getElementsByClassName('bgImg ui raised segment')[0].style.height = '600px';
         EmberObject.$(document)[0].getElementsByClassName('six wide column preview')[0].style.position = 'inherit';
+
       }
     });
   }
