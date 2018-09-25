@@ -12,7 +12,7 @@ export default Route.extend({
   model() {
     return RSVP.hash({
       def_images : this.get('store').findAll('def-image'),
-      user : this.get('store').findRecord('user' , this.get('session.currentUser').uid)
+      user  :  this.get('store').findRecord('user', this.get('session.currentUser').uid)
     });
   },
 
