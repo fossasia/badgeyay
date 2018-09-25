@@ -1,20 +1,75 @@
-# Local Development Setup
+# Flask-Vagrant-Setup
 
-The instructions on this page will guide you in setting up a local development
-environment in your system. First things first, BadgeYay needs `Python 3` to run.
+- Configure a Flask app on a VM using Vagrant, with provisioning handled by Ansible i.e setting up python, virtualenv, nginx, gunicorn, etc.
 
-### Vagrant Installation Instructions
-1. Install Vagrant from [Vagrant Download Page](https://www.vagrantup.com/downloads.html)
-2. Install Virtualbox from [Vitualbox Download Page](https://www.virtualbox.org/wiki/Downloads)
-3. Clone the project from `git clone https://github.com/<your_username>/badgeyay.git`
-4. Enter the directory using `cd badgeyay`
-5. In Terminal in the "badgeyay" directory, type `vagrant up` to bring up the virtual machine. This will start installation of a ubuntu box within which the server will run with all its components. If after typing "vagrant up" you received an error stating “valid providers not found ...", type `vagrant up --provider=virtualbox`
-6. After the installation is completed `ssh` into vagrant environment using `vagrant ssh`. This will bring you to the root directory of the Virtual Machine
-7. Move to your project using `cd /vagrant`
-8. To Run the flask server you need to be in the "app" directory. Do `cd app`
-9. Run flask server in port `0.0.0.0`
-   ```
-   export FLASK_APP=main.py
-   python -m flask run --host=0.0.0.0
-   ```
-10. Now your server is up and running. To view the badgeyay page go to localhost:8001
+### Prerequisite
+
+You need to install:
+
+- Git
+- [Vagrant](https://www.vagrantup.com/downloads.html)
+
+- I will be using VirtualBox for this setup, you can grab a copy for your OS [here](https://www.virtualbox.org/wiki/Downloads).
+- If you use VirtualBox download it [here](https://www.virtualbox.org/wiki/Downloads).
+
+![1-6uma0awrapu6nq6lb8ehtq](https://user-images.githubusercontent.com/35162705/45614479-46719400-ba87-11e8-94e9-14a08153cb35.png)
+
+### Creation of Vagrant file :
+
+Type the following commands in a new file and save it as ``Vagrantfile`` :
+````
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+VAGRANTFILE_API_VERSION = "2"
+VAGRANT_IP = "10.0.0.5"
+
+Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
+  config.vm.box = "ubuntu/trusty64"
+  config.vm.network :private_network, ip: VAGRANT_IP
+
+  # -- if you don't fancy private ip, you can use the below --
+  # -- note however that by doing so, the 'provision' IP will need to change --
+  
+  # port forwarding to allow access to the app running on the guest OS
+  # from a dedicated port on the host machine
+  # config.vm.network "forwarded_port", guest: 80, host: 8080
+
+  # run Ansible from the Vagrant VM
+  config.vm.provision "ansible_local" do |ansible|
+    ansible.install = true
+    ansible.playbook = ".provisioning/deploy.yml"
+  end
+
+  # add localhost to Ansible inventory
+  config.vm.provision "shell", inline: "printf 'localhost\n' | sudo tee /etc/ansible/hosts > /dev/null"
+
+  # increase VM RAM size
+  config.vm.provider "virtualbox" do |vb|
+    vb.memory = "2048"
+  end
+end
+````
+
+### clone this repo and cd into it:
+````
+git clone https://github.com/fossasia/badgeyay.git .
+cd badgeyay
+````
+### Boot up your Vagrant environment:
+
+``vagrant up``
+
+_This may take less or more than a minute depending on your internet connection (so be patient)._
+
+- Vagrant runs the virtual machine without a UI. To prove that it is running, you can SSH into the machine:
+
+```
+vagrant ssh
+```
+### Access app
+
+Point your browser to: [http://10.0.0.5](http://10.0.0.5)
+
+Cheers :beers:
+
