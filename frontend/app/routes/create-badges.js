@@ -5,7 +5,7 @@ const { RSVP, set } = Ember;
 
 export default Route.extend({
   beforeModel() {
-    if (this.get('session.currentUser') == undefined) {
+    if (this.get('session.currentUser') === undefined) {
       this.transitionTo('login');
     }
   },
