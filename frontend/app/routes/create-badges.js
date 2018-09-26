@@ -5,12 +5,15 @@ const { RSVP, set } = Ember;
 
 export default Route.extend({
   beforeModel() {
-    if (this.get('session.currentUser') == undefined) {
+    if (this.get('session.currentUser') === undefined) {
       this.transitionTo('login');
     }
   },
   model() {
-    return RSVP.hash({ 'def_images': this.get('store').findAll('def-image'), 'user': this.get('store').findRecord('user', this.get('session.currentUser').uid) });
+    return RSVP.hash({ 
+    'def_images': this.get('store').findAll('def-image'), 
+    'user': this.get('store').findRecord('user', this.get('session.currentUser').uid)
+    });
   },
   setupController(controller, model) {
     this._super(...arguments);
