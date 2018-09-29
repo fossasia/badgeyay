@@ -1,33 +1,4 @@
-<script>
-    function showcsv() {
-        document.getElementById('csv').style.display = 'block';
-        document.getElementById('details').style.display = 'none';
 
-    }
-    function showdetails() {
-        document.getElementById('details').style.display = 'block';
-        document.getElementById('csv').style.display = 'none';
-
-    }
-    function customimage() {
-        document.getElementById('custimg').style.display = 'block';
-        document.getElementById('custbg').style.display = 'none';
-        document.getElementById('custcol').style.display = 'none';
-
-    }
-    function custombg() {
-        document.getElementById('custbg').style.display = 'block';
-        document.getElementById('custimg').style.display = 'none';
-        document.getElementById('custcol').style.display = 'none';
-
-    }
-    function customcol() {
-        document.getElementById('custcol').style.display = 'block';
-        document.getElementById('custbg').style.display = 'none';
-        document.getElementById('custimg').style.display = 'none';
-
-    }
-</script>
 <div class="ui stackable grid">
     <div class="right floated right aligned two wide column">
         <button {{action 'togglePreview'}} class="tiny ui basic orange button" data-tooltip="Toggle Preview" data-position="left center">
@@ -62,7 +33,7 @@
                 <div class="ui form width-container">
                     <p>
                         <b>Select from one of the Input Sources</b>
-                        <a class="ui right floated icon orange basic button" href="{{href-to 'user-guide'}}" data-tooltip="User Input Guide" data-position="right center">
+                        <a class="ui right floated icon orange basic button" href="{{href-to 'user-guide'}}" target="_blank" data-tooltip="User Input Guide" data-position="right center">
                             <i class="info icon"></i>
                         </a>
                     </p>
@@ -227,3 +198,33 @@
         }}
     </div>
 </div>{{overlay-welcome user=user removeFTL=(action 'removeFTL')}}
+<script>
+    function showcsv() {
+        document.getElementById('csv').style.display = 'block';
+        document.getElementById('details').style.display = 'none';
+
+    }
+    function showdetails() {
+        document.getElementById('details').style.display = 'block';
+        document.getElementById('csv').style.display = 'none';
+
+    }
+    function customimage() {
+        document.getElementById('custimg').style.display = 'block';
+        document.getElementById('custbg').style.display = 'none';
+        document.getElementById('custcol').style.display = 'none';
+
+    }
+    function custombg() {
+        document.getElementById('custbg').style.display = 'block';
+        document.getElementById('custimg').style.display = 'none';
+        document.getElementById('custcol').style.display = 'none';
+
+    }
+    function customcol() {
+        document.getElementById('custcol').style.display = 'block';
+        document.getElementById('custbg').style.display = 'none';
+        document.getElementById('custimg').style.display = 'none';
+
+    }
+</script>
