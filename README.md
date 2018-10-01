@@ -2,10 +2,9 @@
 
 ![Badgeyay](/frontend/public/images/Badgeyay-artwork.png)
 
-[![Gitter](https://img.shields.io/badge/chat-on%20gitter-ff006f.svg?style=flat-square)](https://gitter.im/fossasia/badgeyay)
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/1ac554483fac462797ffa5a8b9adf2fa?style=flat-square)](https://www.codacy.com/app/fossasia/badgeyay)
-[![Travis branch](https://api.travis-ci.org/fossasia/badgeyay.svg?branch=development&style=flat-square)](https://travis-ci.org/fossasia/badgeyay)
-[![Codecov branch](https://codecov.io/gh/fossasia/badgeyay/branch/development/graph/badge.svg?style=flat-square)](https://codecov.io/gh/fossasia/badgeyay)
+| **Chat** | **Code Quality** | **Build** | **Codecov** |
+|----------|-------------------|-----------|-------------|
+| [![Gitter](https://img.shields.io/badge/chat-on%20gitter-ff006f.svg?style=flat-square)](https://gitter.im/fossasia/badgeyay) | [![Codacy Badge](https://api.codacy.com/project/badge/Grade/1ac554483fac462797ffa5a8b9adf2fa?style=flat-square)](https://www.codacy.com/app/fossasia/badgeyay) | [![Travis branch](https://api.travis-ci.org/fossasia/badgeyay.svg?branch=development&style=flat-square)](https://travis-ci.org/fossasia/badgeyay) | [![Codecov branch](https://codecov.io/gh/fossasia/badgeyay/branch/development/graph/badge.svg?style=flat-square)](https://codecov.io/gh/fossasia/badgeyay) |
 
 > **Badgeyay provides an interface to event organizers for generating badges of events from concerts to conferences and meet-ups.**
 
