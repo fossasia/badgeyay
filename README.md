@@ -36,6 +36,12 @@ Badgeyay's frontend and backend can be deployed easily and a detailed installati
 3. **Installing git pre-push hook:**
    - Run file `scripts/install-hook.py`. It will copy contents of `scripts/pre-push-hook.py` to `.git/hooks/pre-push`. Make sure that you have `.git/hooks/pre-push.sample` in your `.git` directory before performing this step.
    - This will install git `pre-push-hook` in your local `.git` directory. It will run the commits against linting tests before pushing to a remote. See `scripts/pre-push-hook.py` if you encounter any errors.
+4. **Installing Bower:**
+   - Bower is a command line utility. Install it with npm `npm install -g bower`.
+   - Install packages with bower install `bower install <package>`. Bower installs packages to `bower_components/`.A package can be a GitHub shorthand, a Git endpoint, a URL, and more.
+   - Search Bower packages and find the registered package names for your favorite projects.
+   - Create a `bower.json` file for your package with `bower init`.
+   - Then save new dependencies to your `bower.json` with `bower install PACKAGE --save`
 
 ## Technology Stack
 
