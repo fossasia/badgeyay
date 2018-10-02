@@ -1,5 +1,4 @@
 .ui{
-
   .column{
     color: black;
     
@@ -22,9 +21,7 @@
 }
 
 .ui {
-
   .row {
-
     .column {
       color: black;
     }
@@ -32,4 +29,12 @@
 }
 .hide {
   display: none !important;
+}
+
+.font_type{
+  margin: 0 30px 0 -35px;
+}
+
+.labels{
+  margin: 0 10px 0 -10px; 
 }
