@@ -1,153 +1,214 @@
-<table class="ui table">
-    <thead>
-        <tr>
-            <th>Role</th>
-            <th>Site access</th>
-            <th>Badges</th>
-            <th>Settings</th>
-            <th>Password</th>
-            <th>Name</th>
-            <th>User Detail</th>
-            <th>Orders</th>
-            <th>Payment</th>
-            <th>Admin Dashboard</th>
-            <th>Sales Dashboard</th>
-            <th>Users List</th>
-            <th>Badges List</th>
-            <th>Roles Assignment</th>
-            <th>System Permissions</th>
-            <th>System Reports</th>
-            <th>System Messages</th>
-            <th>System Settings</th>
-            <th>Special Privilige</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>Super Admin</td>
-            <td>Admin has access to the homepage</td>
-            <td>Create and edit own badges and other user badges</td>
-            <td>Can view and edit settings</td>
-            <td>Can view & edit password of own as well as other users on system</td>
-            <td>Can change name of own and other users</td>
-            <td>Has access to the details of all users except the password</td>
-            <td>Can see all orders of all ussers and download PDF of all orders</td>
-            <td>Can set pricing for the badges and view, edit, delete payment info of users</td>
-            <td>Can access the dashboard and view mail stats, badges generated and user count</td>
-            <td>Admin can access all data and export it</td>
-            <td>Can View all users, can edit users and delete them (deletion will move users to "deleted users"</td>
-            <td>Can see all the badges made by the all the user.</td>
-            <td>Can assign all roles</td>
-            <td>Can check the details of user who have admin permissions like admin role </td>
-            <td>Usage of the resouces for particular month, Users created, badge generated and users left. Amount of revenue generated in the month.  </td>
-            <td>View all message/notification settings</td>
-            <td>Can change and view the system deployment credentials</td>
-            <td>Account cannot be deleted</td>
-        </tr>
-        <tr>
-            <td>Admin</td>
-            <td>Same as Super Admin</td>
-            <td>Same as Super Admin</td>
-            <td>Same as Super Admin</td>
-            <td>Same as Super Admin</td>
-            <td>Same as Super Admin</td>
-            <td>Same as Super Admin</td>
-            <td>Same as Super Admin</td>
-            <td>Same as Super Admin</td>
-            <td>Same as Super Admin</td>
-            <td>Same as Super Admin</td>
-            <td>Same as Super Admin</td>
-            <td>Same as Super Admin</td>
-            <td>Can assign all roles except super admin</td>
-            <td>Same as Super Admin</td>
-            <td>Same as Super Admin</td>
-            <td>Same as Super Admin</td>
-            <td>Same as Super Admin</td>
-            <td>None</td>
-        </tr>
-        <tr>
-            <td>Sales</td>
-            <td>Same as Super Admin</td>
-            <td>Can create, view and delete own badges and can view and download badges of other user</td>
-            <td>Can change and view own settings</td>
-            <td>Can change and edit own password</td>
-            <td>Can change the own name</td>
-            <td>Can see own details and edit them</td>
-            <td>Can see all own orders and can see orders of all users and download the PDF</td>
-            <td>Can add/edit/del own payment methods</td>
-            <td>Same as super admin</td>
-            <td>Same as super admin</td>
-            <td>Can only view all the users.</td>
-            <td>Can only view all the badges generated</td>
-            <td>None</td>
-            <td>None</td>
-            <td>Usage of the resouces for particular month, Users created, badge generated and users left. Amount of revenue generated in the month.  </td>
-            <td>View all message/notification settings</td>
-            <td>None</td>
-            <td>None</td>
-        </tr>
-        <tr>
-            <td>Verified User</td>
-            <td>Same as Super Admin</td>
-            <td>Can Create, View, Download and Delete own badges</td>
-            <td>Can change and view own settings</td>
-            <td>Can edit and change User password</td>
-            <td>Can change the own name</td>
-            <td>Can see own details and edit them</td>
-            <td>Can see all own orders and download PDF of orders</td>
-            <td>Can add/edit/delete payment info, e.g. credit cards, paypal</td>
-            <td>None</td>
-            <td>None</td>
-            <td>None</td>
-            <td>None</td>
-            <td>None</td>
-            <td>None</td>
-            <td>None</td>
-            <td>None</td>
-            <td>None</td>
-            <td>None</td>
-        </tr>
-        <tr>
-            <td>Unverified User</td>
-            <td>Can login to system, but does not have additional rights, e.g. change email</td>
-            <td>Can see badge creation, but cannot generate badges.</td>
-            <td>Can see settings, but cannot edit them.</td>
-            <td>Need to confirm email first.</td>
-            <td>None</td>
-            <td>Can see own details</td>
-            <td>None</td>
-            <td>None</td>
-            <td>None</td>
-            <td>None</td>
-            <td>None</td>
-            <td>None</td>
-            <td>None</td>
-            <td>None</td>
-            <td>None</td>
-            <td>None</td>
-            <td>None</td>
-            <td>None</td>
-        </tr>
-        <tr>
-            <td>Anonymous User</td>
-            <td>Can browse homepage only</td>
-            <td>None</td>
-            <td>None</td>
-            <td>None</td>
-            <td>None</td>
-            <td>None</td>
-            <td>None</td>
-            <td>None</td>
-            <td>None</td>
-            <td>None</td>
-            <td>None</td>
-            <td>None</td>
-            <td>None</td>
-            <td>None</td>
-            <td>None</td>
-            <td>None</td>
-            <td>None</td>
-            <td>None</td>
-        </tr>
-    </tbody>
+<table class="ui celled structured table">
+	<thead>
+		<tr>
+			<th>Permissions</th>
+			<th>Super Admin</th>
+			<th>Admin</th>
+			<th>Sales</th>
+			<th>Verified User</th>
+			<th>Unverified User</th>
+			<th>Anonymous User</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>Access to the homepage</td>
+			<td><i class="large green checkmark icon"></i></td>
+			<td><i class="large green checkmark icon"></i></td>
+			<td><i class="large green checkmark icon"></i></td>
+			<td><i class="large green checkmark icon"></i></td>
+			<td><i class="large green checkmark icon"></i></td>
+			<td><i class="large green checkmark icon"></i></td>
+		</tr>
+		<tr>
+			<td>Access to the homepage but can change details also like Email</td>
+			<td><i class="large green checkmark icon"></i></td>
+			<td><i class="large green checkmark icon"></i></td>
+			<td><i class="large green checkmark icon"></i></td>
+			<td><i class="large green checkmark icon"></i></td>
+			<td></td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>Create and edit own badges and other user badges</td>
+            <td><i class="large green checkmark icon"></i></td>
+			<td><i class="large green checkmark icon"></i></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>Create and edit own badges </td>
+			<td><i class="large green checkmark icon"></i></td>
+			<td><i class="large green checkmark icon"></i></td>
+			<td><i class="large green checkmark icon"></i></td>
+			<td><i class="large green checkmark icon"></i></td>
+			<td><i class="large green checkmark icon"></i></td>
+			<td><i class="large green checkmark icon"></i></td>
+		</tr>
+		<tr>
+			<td>Can view and edit settings</td>
+			<td><i class="large green checkmark icon"></i></td>
+			<td><i class="large green checkmark icon"></i></td>
+			<td><i class="large green checkmark icon"></i></td>
+			<td><i class="large green checkmark icon"></i></td>
+			<td><i class="large green checkmark icon"></i></td>
+			<td><i class="large green checkmark icon"></i></td>
+		</tr>
+		<tr>
+			<td>Can view and edit settings of other users</td>
+			<td><i class="large green checkmark icon"></i></td>
+			<td><i class="large green checkmark icon"></i></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>Can view & edit password of own as well as other users on system</td>
+			<td><i class="large green checkmark icon"></i></td>
+			<td><i class="large green checkmark icon"></i></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>Can view & edit password of own </td>
+			<td><i class="large green checkmark icon"></i></td>
+			<td><i class="large green checkmark icon"></i></td>
+			<td><i class="large green checkmark icon"></i></td>
+			<td><i class="large green checkmark icon"></i></td>
+			<td><i class="large green checkmark icon"></i></td>
+			<td><i class="large green checkmark icon"></i></td>
+		</tr>
+		<tr>
+			<td>Can change name of own and other users</td>
+			<td><i class="large green checkmark icon"></i></td>
+			<td><i class="large green checkmark icon"></i></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>Has access to the details of all users except the password</td>
+			<td><i class="large green checkmark icon"></i></td>
+			<td><i class="large green checkmark icon"></i></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>Can see all orders of all ussers and download PDF of all orders</td>
+			<td><i class="large green checkmark icon"></i></td>
+			<td><i class="large green checkmark icon"></i></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>Can set pricing for the badges and view, edit, delete payment info of users</td>
+			<td><i class="large green checkmark icon"></i></td>
+			<td><i class="large green checkmark icon"></i></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>Can access the dashboard and view mail stats, badges generated and user count</td>
+			<td><i class="large green checkmark icon"></i></td>
+			<td><i class="large green checkmark icon"></i></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>Can access all data and export it</td>
+			<td><i class="large green checkmark icon"></i></td>
+			<td><i class="large green checkmark icon"></i></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>Can View all users, can edit users and delete them (deletion will move users to "deleted users"</td>
+			<td><i class="large green checkmark icon"></i></td>
+			<td><i class="large green checkmark icon"></i></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>Can see all the badges made by the all the user.</td>
+			<td><i class="large green checkmark icon"></i></td>
+			<td><i class="large green checkmark icon"></i></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>Can assign all roles</td>
+			<td><i class="large green checkmark icon"></i></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>		
+		</tr>
+		<tr>
+			<td>Can check the details of user who have admin permissions like admin role </td>
+			<td><i class="large green checkmark icon"></i></td>
+			<td><i class="large green checkmark icon"></i></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>Usage of the resouces for particular month, Users created, badge generated and users left. Amount of
+                revenue generated in the month. </td>
+			<td><i class="large green checkmark icon"></i></td>
+			<td><i class="large green checkmark icon"></i></td>
+			<td><i class="large green checkmark icon"></i></td>
+			<td></td>
+			<td></td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>View all message/notification settings</td>
+			<td><i class="large green checkmark icon"></i></td>
+			<td><i class="large green checkmark icon"></i></td>
+			<td><i class="large green checkmark icon"></i></td>
+			<td></td>
+			<td></td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>Can change and view the system deployment credentials</td>
+			<td><i class="large green checkmark icon"></i></td>
+			<td><i class="large green checkmark icon"></i></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>Account cannot be deleted</td>
+			<td><i class="large green checkmark icon"></i></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+		</tr>
+	</tbody>
 </table>
