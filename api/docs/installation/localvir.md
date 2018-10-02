@@ -10,6 +10,11 @@ These are some additional depencies that you will need:
 $ sudo apt-get update
 ```
 
+## Video Installation
+
+  
+<p><a href="https://www.youtube.com/watch?v=oUakEOavgbo&feature=youtu.be" rel="nofollow"><img src="https://i.ytimg.com/vi/oUakEOavgbo/hqdefault.jpg" alt="Demo YouTube" style="max-width:100%;"></a></p>
+
 ## Steps
 
 Make sure you have the dependencies mentioned above installed before proceeding further.
