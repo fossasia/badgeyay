@@ -24,7 +24,14 @@ To install the app, run the following commands in a command line:
 * `git clone https://github.com/fossasia/badgeyay`
 * `cd badgeyay/frontend`
 * `npm install`
-* `bower install`
+
+### **Installing Bower:**
+   - Bower is a command line utility. Install it with npm `npm install -g bower`.
+   - Install packages with bower install `bower install <package>`. Bower installs packages to `bower_components/`.A package can be a GitHub shorthand, a Git endpoint, a URL, and more.
+   - Search Bower packages and find the registered package names for your favorite projects.
+   - Create a `bower.json` file for your package with `bower init`.
+   - Then save new dependencies to your `bower.json` with `bower install PACKAGE --save`
+   
 ## Running locally:
 
 To run the app locally on your machine, run the following commands in a command line:
