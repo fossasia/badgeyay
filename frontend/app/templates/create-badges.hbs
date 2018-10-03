@@ -1,4 +1,3 @@
-
 <div class="ui stackable grid">
     <div class="right floated right aligned two wide column">
         <button {{action 'togglePreview'}} class="tiny ui basic orange button" data-tooltip="Toggle Preview" data-position="left center">
@@ -33,12 +32,13 @@
                 <div class="ui form width-container">
                     <p>
                         <b>Select from one of the Input Sources</b>
-                        <a class="ui right floated icon orange basic button" href="{{href-to 'user-guide'}}" target="_blank" data-tooltip="User Input Guide" data-position="right center">
+                        <a class="ui right floated icon orange basic button" href="{{href-to 'user-guide'}}" target="_blank" data-tooltip="User Input Guide"
+                            data-position="right center">
                             <i class="info icon"></i>
                         </a>
                     </p>
-                    <div class="ui radio checkbox">
-                        <input type="radio" name="tab" value="igotnone" onclick="showcsv();" />
+                    <div class="ui radio checkbox"  onclick="showcsv();">
+                        <input type="radio" name="tab" value="igotnone"/>
                         <label>Upload CSV</label>
                     </div>
                     <div class="content" id="csv" style="display: none">
@@ -99,7 +99,7 @@
                     </p>
 
                     <div class="ui radio checkbox">
-                        <input type="radio" name="tab" value="igotnone" onclick="customimage();" />
+                        <input type="radio" name="tab1" value="igotnone" onclick="customimage();" />
                         <label>Upload a Custom Image</label>
                     </div>
                     <div class="content" id="custimg" style="display:none">
@@ -109,7 +109,7 @@
                     </div>
                     <br>
                     <div class="ui radio checkbox">
-                        <input type="radio" name="tab" value="igotnone" onclick="custombg();" />
+                        <input type="radio" name="tab1" value="igotnone" onclick="custombg();" />
                         <label>Select from default backgrounds</label>
                     </div>
                     <br>
@@ -121,10 +121,10 @@
 
 
                     <div class="ui radio checkbox">
-                        <input type="radio" name="tab" value="igotnone" onclick="customcol();" />
+                        <input type="radio" name="tab1" value="igotnone" onclick="customcol();" />
                         <label>Select from a custom color</label>
                     </div>
-                    <div class="content"  id="custcol" style="display: none">
+                    <div class="content" id="custcol" style="display: none">
                         <div class="center aligned">
                             {{ background-component/color-bg-component sendDefColor=(action 'mutateDefColor') backColor=backColor }}
                         </div>
