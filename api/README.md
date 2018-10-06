@@ -9,18 +9,24 @@ Badgeyay is an awesome Badge generator with a simple web UI to add data and gene
 Badgeyay backend requires the following dependencies to be installed.
    - python3
 
-    - For Ubuntu/Debian based Package Managers
-      *  `sudo apt-get update`
-      *  `sudo apt-get install python3`
+        * For Ubuntu/Debian based package managers
+          ```bash
+          sudo apt-get update
+          sudo apt-get install python3
+          ```
 
-    - For Fedora/CentOS/RPM based package managers
-      *   `sudo -i`
-      *   `yum install python3`
-      *   `exit`
+        * For Fedora/CentOS/RPM based package managers
+          ```bash
+          sudo -i
+          yum install python3
+          exit
+          ```
 
-    - For Arch based package managers:
-      *   `sudo pacman -S python-cairosvg`
-      *   `sudo pacman -S python-lxml`
+        * For Arch based package managers:
+          ```bash
+          sudo pacman -S python-cairosvg
+          sudo pacman -S python-lxml
+          ```
 
 ## Installation
 
