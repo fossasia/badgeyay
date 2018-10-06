@@ -25,7 +25,7 @@ Then download the key. Keep it safe because if you lose it, you will lose access
 
 ![aws3](aws/aws3.png)
 
-Select the newly created isntance and then click on the Connect button. You will see a dialog box with instructions on how to connect to it using ssh.
+Select the newly created instance and then click on the Connect button. You will see a dialog box with instructions on how to connect to it using ssh.
 
 ![aws2](aws/aws2.png)
 
@@ -118,7 +118,7 @@ $ ssh -i "mykey.pem" ubuntu@ec2-18-191-188-156.us-east-2.compute.amazonaws.com
 
 *Note -* Here also use the command you got from the Connect step in Phase 1.
 
-* **Step 6** - In the new terminal, run the folowing command -
+* **Step 6** - In the new terminal, run the following command -
 
 ```bash
 docker-compose run postgres psql -h postgres -p 5432 -U postgres --password
