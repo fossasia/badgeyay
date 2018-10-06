@@ -19,6 +19,10 @@ You will need the following things properly installed on your computer.
 
 ## Installation
 
+###Video Installation 
+
+<p><a href="https://youtu.be/R4E1F42dRls" rel="nofollow"><img src="https://i9.ytimg.com/vi/R4E1F42dRls/hqdefault.jpg?sqp=CNS20t0F&rs=AOn4CLD0xk_9FgfMMCfwiKzyvbZMFtZpBQ" alt="Demo YouTube" style="max-width:100%;"></a></p>
+
 To install the app, run the following commands in a command line:
 
 * `git clone https://github.com/fossasia/badgeyay`
