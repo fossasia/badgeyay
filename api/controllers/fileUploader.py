@@ -129,7 +129,7 @@ def upload_default():
         return ErrorResponse(PayloadNotFound().message, 422, {'Content-Type': 'application/json'}).respond()
 
     uid = data.get('uid')
-    image_name = data.get('defaultImage')
+    image_name = data.get('defaultImage') + ".png"
     image_data = None
     with open(os.path.join(app.config.get('BASE_DIR'), 'badge_backgrounds', image_name), "rb") as image_file:
         image_data = base64.b64encode(image_file.read())
