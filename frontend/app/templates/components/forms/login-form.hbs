@@ -18,7 +18,10 @@
             <div class="field">
               <div class="ui left icon input">
                 <i class="lock icon"></i>
-                {{input type='password' name='password' placeholder='Password' value=password}}
+                {{input type="password" id="pwd" name='password' placeholder='Password' value=password}}
+                <button type="button" id="eye" {{ action 'show1'}}>
+                  <img src="https://raw.githubusercontent.com/fossasia/badgeyay/development/frontend/public/images/eye-16.png" alt="eye">
+                </button>
               </div>
             </div>
             <div class="ui center aligned segment basic">
@@ -49,7 +52,7 @@
               <span class="log-text">Login with Google +</span>
             </button>
           </div>
-  <!--    <div class="ui horizontal divider"></div>
+          <!--    <div class="ui horizontal divider"></div>
           <div class="buttons">
             <button type="button" class="ui facebook button capital large-oauth" {{ action 'logIn' 'facebook' }}>
               <i class="facebook icon o-icon"></i>

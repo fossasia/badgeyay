@@ -1,5 +1,7 @@
 import Component from '@ember/component';
 
+var pwShown = 0;
+
 export default Component.extend({
   init() {
     this._super(...arguments);
@@ -19,6 +21,25 @@ export default Component.extend({
 
     logOut() {
       this.get('session').close();
+    },
+    show1() {
+      if (pwShown == 0) {
+        pwShown = 1;
+        show();
+      } else {
+        pwShown = 0;
+        hide();
+      }
+      function show() {
+        var p = document.getElementById('pwd');
+        p.setAttribute('type', 'text');
+      }
+
+      function hide() {
+        var p = document.getElementById('pwd');
+        p.setAttribute('type', 'password');
+      }
+
     }
 
   },
@@ -48,7 +69,6 @@ export default Component.extend({
             ]
           }
         }
-      })
-    ;
+      });
   }
 });

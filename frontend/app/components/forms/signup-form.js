@@ -1,4 +1,6 @@
 import Component from '@ember/component';
+var pwShown1 = 0;
+var pwShown = 0;
 
 export default Component.extend({
   init() {
@@ -20,6 +22,46 @@ export default Component.extend({
       username = this.get('username');
       if (email !== undefined && password !== undefined && username !== undefined) {
         this.get('signUp')(email, username, password);
+      }
+    },
+    show2() {
+
+
+      function show1() {
+        var p = document.getElementById('pwd2');
+        p.setAttribute('type', 'text');
+      }
+
+      function hide1() {
+        var p = document.getElementById('pwd2');
+        p.setAttribute('type', 'password');
+      }
+
+
+      if (pwShown == 0) {
+        pwShown = 1;
+        show1();
+      } else {
+        pwShown = 0;
+        hide1();
+      }
+    },
+    show1() {
+      function show() {
+        var p = document.getElementById('pwd1');
+        p.setAttribute('type', 'text');
+      }
+
+      function hide() {
+        var p = document.getElementById('pwd1');
+        p.setAttribute('type', 'password');
+      }
+      if (pwShown1 == 0) {
+        pwShown1 = 1;
+        show();
+      } else {
+        pwShown1 = 0;
+        hide();
       }
     }
   },
