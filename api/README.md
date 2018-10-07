@@ -9,18 +9,24 @@ Badgeyay is an awesome Badge generator with a simple web UI to add data and gene
 Badgeyay backend requires the following dependencies to be installed.
    - python3
 
-    - For Ubuntu/Debian based Package Managers
-      *  `sudo apt-get update`
-      *  `sudo apt-get install python3`
-  
-    - For Fedora/CentOS/RPM based package managers
-      *   `sudo -i`
-      *   `yum install python3`
-      *   `exit`
+        * For Ubuntu/Debian based package managers
+          ```bash
+          sudo apt-get update
+          sudo apt-get install python3
+          ```
 
-    - For Arch based package managers:
-      *   `sudo pacman -S python-cairosvg`
-      *   `sudo pacman -S python-lxml`
+        * For Fedora/CentOS/RPM based package managers
+          ```bash
+          sudo -i
+          yum install python3
+          exit
+          ```
+
+        * For Arch based package managers:
+          ```bash
+          sudo pacman -S python-cairosvg
+          sudo pacman -S python-lxml
+          ```
 
 ## Installation
 
@@ -34,10 +40,12 @@ Badgeyay backend can be easily deployed on a variety of platforms. Currently it 
 
 4. [Deployment with Docker](docs/installation/docker.md)
 
+5. [Deployment on AWS EC2](docs/installation/aws.md)
+
 One-click Docker, Heroku, Scalingo and Bluemix deployment is also available:
 
-[![Deploy to Docker Cloud](https://files.cloud.docker.com/images/deploy-to-dockercloud.svg)](https://cloud.docker.com/stack/deploy/?repo=https://github.com/fossasia/badgeyay) [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/fossasia/badgeyay/tree/development) 
-[![Deploy on Scalingo](https://cdn.scalingo.com/deploy/button.svg)](https://my.scalingo.com/deploy?source=https://github.com/fossasia/badgeyay#development) 
+[![Deploy to Docker Cloud](https://files.cloud.docker.com/images/deploy-to-dockercloud.svg)](https://cloud.docker.com/stack/deploy/?repo=https://github.com/fossasia/badgeyay) [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/fossasia/badgeyay/tree/development)
+[![Deploy on Scalingo](https://cdn.scalingo.com/deploy/button.svg)](https://my.scalingo.com/deploy?source=https://github.com/fossasia/badgeyay#development)
 [![Deploy to Bluemix](https://bluemix.net/deploy/button.png)](https://bluemix.net/deploy?repository=https://github.com/fossasia/badgeyay&branch=development)
 
 

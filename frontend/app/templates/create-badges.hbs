@@ -1,10 +1,14 @@
 <div class="ui stackable grid">
     <div class="right floated right aligned two wide column">
-        <button {{action 'togglePreview'}} class="tiny ui basic orange button" data-tooltip="Toggle Preview" data-position="left center">
-            <i class="exchange icon"></i>
-        </button>
+        <label class="switch" {{action 'togglePreview'}} data-tooltip="Toggle Preview" data-position="left center">
+            <input type="checkbox" class="checkswitch" checked>
+            <span class="slider round"></span>
+        </label>
     </div>
 </div>
+{{!----Event Listeners For Perview----}}
+{{#create-badge}}
+{{/create-badge}}
 <div class="ui stackable mobile reversed grid">
     <div class="{{if previewToggled 'ten' 'sixteen'}} wide column">
         <div class="main-container create-badge segments">

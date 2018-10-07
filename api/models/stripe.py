@@ -10,8 +10,8 @@ class Stripe(db.Model):
     stripe_publishable_key = db.Column(db.String)
     stripe_user_id = db.Column(db.String)
     stripe_auth_code = db.Column(db.String)
-    amount = db.column(db.String)
-    currency = db.coloumn(db.String)
+    amount = db.Column(db.String)
+    currency = db.Column(db.String)
 
     def __init__(self,
                  stripe_secret_key=None,
