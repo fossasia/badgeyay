@@ -62,36 +62,38 @@
                     </div>
                 </div>
             </div>
-            <div class="ui equal width grid clearing segment">
-                <div class="ui column form">
-                    <p>
-                        <b>Select from one of the Paper Sizes</b>
-                    </p>
+            <div class="ui  clearing segment">
+                <div class="ui equal width grid">
+                    <div class="ui column form">
+                        <p>
+                            <b>Select from one of the Paper Sizes</b>
+                        </p>
 
-                    <div class="content">
-                        <div class="center aligned">
-                            {{ badge-component/paper-size sendPaperSize=(action 'mutatePaperSize') }}
+                        <div class="content">
+                            <div class="center aligned">
+                                {{ badge-component/paper-size sendPaperSize=(action 'mutatePaperSize') }}
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="ui column form ">
+                    <div class="ui column form ">
 
-                    <div class="ui right floated icon orange basic button" data-tooltip="Badge size is in inches, 1 inch = 2.54 cm, 1 inch = 25.4 mm"
-                        data-position="right center">
-                        <i class="info icon"></i>
-                    </div>
-                    <p>
-                        <b>Select from one of the Badge Sizes</b>
-
-                    </p>
-                    <div class="content">
-                        <div class="center aligned">
-                            {{ badge-component/badge-size sendBadgeSize=(action 'mutateBadgeSize')}}
+                        <div class="ui right floated icon orange basic button" data-tooltip="Badge size is in inches, 1 inch = 2.54 cm, 1 inch = 25.4 mm"
+                            data-position="right center">
+                            <i class="info icon"></i>
                         </div>
-                    </div>
+                        <p>
+                            <b>Select from one of the Badge Sizes</b>
 
+                        </p>
+                        <div class="content">
+                            <div class="center aligned">
+                                {{ badge-component/badge-size sendBadgeSize=(action 'mutateBadgeSize')}}
+                            </div>
+                        </div>
+
+                    </div>
                 </div>
-            </div>
+            </div>    
             <div class="ui clearing segment">
                 <div class="ui form width-container">
                     <p>
