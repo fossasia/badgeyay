@@ -1,5 +1,6 @@
+import $ from 'jquery';
 import Component from '@ember/component';
-var pwShown1 = 0;
+var pwShownConfirm = 0;
 var pwShown = 0;
 
 export default Component.extend({
@@ -24,43 +25,35 @@ export default Component.extend({
         this.get('signUp')(email, username, password);
       }
     },
-    show2() {
-
-
-      function show1() {
-        var p = document.getElementById('pwd2');
-        p.setAttribute('type', 'text');
+    showPasswordSignupConfirm() {
+      function show() {
+        $('#pwdConfirm').attr('type',  'text');
       }
-
-      function hide1() {
-        var p = document.getElementById('pwd2');
-        p.setAttribute('type', 'password');
+      function hide() {
+        $('#pwdConfirm').attr('type', 'password');
       }
-
-
-      if (pwShown == 0) {
-        pwShown = 1;
-        show1();
+      if (pwShownConfirm == 0) {
+        pwShownConfirm = 1;
+        show();
       } else {
-        pwShown = 0;
-        hide1();
+        pwShownConfirm = 0;
+        hide();
       }
     },
-    show1() {
+    showPasswordSignup() {
       function show() {
-        var p = document.getElementById('pwd1');
-        p.setAttribute('type', 'text');
+        $('#pwd').attr('type', 'text');
       }
 
       function hide() {
-        var p = document.getElementById('pwd1');
-        p.setAttribute('type', 'password');
+        $('#pwd').attr('type', 'password');
+
       }
-      if (pwShown1 == 0) {
-        pwShown1 = 1;
+      if (pwShown == 0) {
+        pwShown = 1;
         show();
       } else {
-        pwShown1 = 0;
+        pwShown = 0;
         hide();
       }
     }

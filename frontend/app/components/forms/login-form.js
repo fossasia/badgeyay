@@ -1,3 +1,4 @@
+import $ from 'jquery';
 import Component from '@ember/component';
 
 var pwShown = 0;
@@ -22,7 +23,7 @@ export default Component.extend({
     logOut() {
       this.get('session').close();
     },
-    show1() {
+    showPasswordLogin() {
       if (pwShown == 0) {
         pwShown = 1;
         show();
@@ -31,13 +32,12 @@ export default Component.extend({
         hide();
       }
       function show() {
-        var p = document.getElementById('pwd');
-        p.setAttribute('type', 'text');
+        $('#pwd').attr('type', 'text');
       }
 
       function hide() {
-        var p = document.getElementById('pwd');
-        p.setAttribute('type', 'password');
+        $('#pwd').attr('type', 'password');
+
       }
 
     }

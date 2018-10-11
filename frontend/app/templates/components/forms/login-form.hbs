@@ -19,9 +19,11 @@
               <div class="ui left icon input">
                 <i class="lock icon"></i>
                 {{input type="password" id="pwd" name='password' placeholder='Password' value=password}}
-                <button type="button" id="eye" {{ action 'show1'}}>
-                  <img src="https://github.com/fossasia/badgeyay/development/frontend/public/images/eye-16.png" alt="eye">
-                </button>
+                <div class="ui small basic icon buttons">
+                  <button class="ui button" id="eye" {{ action 'showPasswordLogin'}}>
+                    <i class="eye icon"></i>
+                  </button>
+                </div>
               </div>
             </div>
             <div class="ui center aligned segment basic">
