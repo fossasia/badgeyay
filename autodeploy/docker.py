@@ -1,5 +1,4 @@
 import logging
-
 from command import execute
 
 logger = logging.getLogger(__name__)
@@ -14,12 +13,12 @@ class DockerComposeError(Exception):
         return '{}:\n {}'.format(self.message, self.errors)
 
 def _docker_compose(cwd, *cmd):
-    retcode, out, err = execute(cwd, '/usr/bin/docker-compose', *cmd)
+    retcode, out, err = execute(cwd, 'docker-compose', *cmd)
     if retcode == 0:
         return out
 
-    logger.error('docekr-compose failed: %s', cmd)
-    raise DockerComposeError('docker-compose exited with a non-zero exit code', 
+    logger.error('docker-compose failed: %s', cwd)
+    raise DockerComposeError('docker-compose exited with a non-zero exit code',
             err)
 
 class DockerCompose():
@@ -27,8 +26,14 @@ class DockerCompose():
         self.cwd = cwd
 
     def ps(self):
-        return _docker_compose(self.cwd ,'ps')
+        return _docker_compose(self.cwd, 'ps')
 
+    def build(self):
+        logger.info('building...')
+        res = _docker_compose(self.cwd, 'build')
+        logger.info('started')
+        return res
+    
     def start(self):
         logger.info('starting up...')
         res = _docker_compose(self.cwd, 'up', '-d')
@@ -38,8 +43,6 @@ class DockerCompose():
     def stop(self):
         logger.info('stopping...')
         res = _docker_compose(self.cwd, 'stop')
-        logger.info('stopped')
-        return res
 
     def update(self):
         logger.info('updating containers...')

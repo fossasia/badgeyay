@@ -2,9 +2,9 @@ import argparse
 import logging
 import threading
 import sys
-from os.path import join
-
 import yaml
+
+from os.path import join
 
 from auto_updater import AutoUpdater
 
@@ -16,26 +16,22 @@ logging.basicConfig(level=logging.INFO, format=log_format)
 
 parser = argparse.ArgumentParser()
 parser.add_argument('--workdir', help='Directory to clone projects in')
-parser.add_argument('--config', help='config.yml with project descriptions')
+parser.add_argument('--config', help='config.yml with project description')
 
 def get_auto_updater(cwd, name, cfg):
     logger.info('project <%s> from <%s> added', name, cfg['url'])
     a = AutoUpdater(
             name, cfg['url'], cwd=join(cwd, name), branch=cfg['branch'])
 
-    if 'init' in cfg or 'upgrade' in cfg:
-        a.add_scripts(
-                container=cfg['container'],
-                init_cmd=cfg['init']
-                upgrade_cmd=cfg['upgrade'])
-    
+    #init part
+
     return a
 
 def start_all_projects(projects):
     for p in projects:
         p.start()
 
-def update_all_properties(projects):
+def update_all_projects(projects):
     for p in projects:
         logger.info('updating %s', p.repo)
         p.update()
@@ -46,8 +42,11 @@ def update_all_properties(projects):
 
 if __name__ == '__main__':
     args = parser.parse_args()
-    if not args.workdir or not args.config:
-        print('workdir/config not set. run `--help` to show options')
+    if not args.workdir:
+        print('workdir not set. Run `--help` to show options')
+        sys.exit(1)
+    if not args.config:
+        print('config not set. Run `--config` to show options')
         sys.exit(1)
 
     cwd = args.workdir

@@ -13,11 +13,11 @@ class GitError(Exception):
         return '{}:\n {}'.format(self.message, self.errors)
 
 def _git(cwd, *cmd):
-    retcode, out, err = execute(cwd, '/usr/bin/git', *cmd)
+    retcode, out, err = execute(cwd, 'git', *cmd)
     if retcode == 0:
         return out
-
-    raise GitError('git exited wth a non-zero exit code', err)
+    
+    raise GitError('git exited with a non-zero exit code', err)
 
 class Git():
     def __init__(self, repo, cwd, branch='master'):
@@ -43,3 +43,13 @@ class Git():
 
     def last_commit_date(self):
         return _git(self.cwd, 'log', '-1', '--format=%cd')
+
+    def changed_files(self):
+        self.fetch()
+        res = _git(self.cwd, 'diff', '--stat', 'origin/{}'.format(self.branch))
+        lines = res.splitlines()
+        if lines:
+            last_line = lines[-1]
+            return int(last_line.split()[0])
+
+        return 0

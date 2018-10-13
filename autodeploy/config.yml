@@ -1,9 +1,7 @@
 server:
-    url: https://github.com/fossasia/badgeyay
+    url: https://github.com/fossasia/badgeyay/api
     branch: development
     container: web
-    upgrade: bash scripts/upgrade.sh
-    init: bash scripts/init.sh
 frontend:
-    url: https://github.com/fossasia/badgeyay
+    url: https://github.com/fossasia/badgeyay/frontend
     branch: development
