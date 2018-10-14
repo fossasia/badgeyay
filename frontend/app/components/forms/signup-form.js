@@ -1,10 +1,9 @@
 import Component from '@ember/component';
-
 export default Component.extend({
   init() {
     this._super(...arguments);
   },
-
+  level     : 0,
   email     : '',
   password  : '',
   isLoading : false,
@@ -23,7 +22,6 @@ export default Component.extend({
       }
     }
   },
-
   didRender() {
     this.$('.ui.form')
       .form({
@@ -72,5 +70,21 @@ export default Component.extend({
           }
         }
       });
+  },
+  keyDown(event) {
+    if (event.target.name === 'password') {
+      var strongRegex = new RegExp('^(?=.{8,})(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*\\W).*$', 'g');
+      var mediumRegex = new RegExp('^(?=.{7,})(((?=.*[A-Z])(?=.*[a-z]))|((?=.*[A-Z])(?=.*[0-9]))|((?=.*[a-z])(?=.*[0-9]))).*$', 'g');
+      var enoughRegex = new RegExp('(?=.{6,}).*', 'g');
+      if (false == enoughRegex.test(event.target.value)) {
+        this.set('level', 0);
+      } else if (strongRegex.test(event.target.value)) {
+        this.set('level', 4);
+      } else if (mediumRegex.test(event.target.value)) {
+        this.set('level', 3);
+      } else {
+        this.set('level', 1);
+      }
+    }
   }
 });
