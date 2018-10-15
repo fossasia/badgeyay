@@ -17,6 +17,10 @@ The user can:
 - Choose the background of the badges and upload the logo and the background image
 - Upload a CSV file or manually enter CSV data as: name, type of attendee, designation, nick/handle, organization/project
 
+## Demo
+
+![ezgif com-video-to-gif 15](/api/docs/installation/demo.gif)
+
 ## Communication
 
 - Please join our **[mailing list](https://groups.google.com/forum/#!forum/open-event)** to discuss questions regarding the project.
@@ -50,7 +54,7 @@ We have the following branches :
 
 - **development**
   All development goes on in this branch. If you're making a contribution, please make a pull request to _development_.
-  PRs to must pass a build check and all tests check on Travis.
+  PRs must pass a build check and all tests check on Travis.
 
 - **master**
 This contains shipped code. After significant features/bug-fixes are accumulated on development, we make a version update, and make a release.

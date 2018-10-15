@@ -368,12 +368,12 @@ export default Controller.extend({
     mutateText(txtData) {
       this.manualClicked();
       this.set('textData', txtData);
-      let prevData = txtData.split('\n')[0].split(',');
-      this.set('firstName', prevData[0].toString());
-      this.set('lastName', prevData[1].toString());
-      this.set('designation', prevData[2].toString());
-      this.set('organization', prevData[3].toString());
-      this.set('socialHandle', prevData[4].toString());
+      let prevData = txtData.trim().split('\n')[0].split(',');
+      this.set('firstName', prevData[0]);
+      this.set('lastName', prevData[1]);
+      this.set('designation', prevData[2]);
+      this.set('organization', prevData[3]);
+      this.set('socialHandle', prevData[4]);
     },
 
     mutateName(namData) {
@@ -509,6 +509,7 @@ export default Controller.extend({
 
     togglePreview() {
       this.set('previewToggled', !this.previewToggled);
+      document.getElementsByClassName('checkswitch')[0].checked = !document.getElementsByClassName('checkswitch')[0].checked;
     }
   }
 });

@@ -10,6 +10,11 @@ These are some additional depencies that you will need:
 $ sudo apt-get update
 ```
 
+## Video Installation
+
+
+<p><a href="https://www.youtube.com/watch?v=oUakEOavgbo&feature=youtu.be" rel="nofollow"><img src="https://i.ytimg.com/vi/oUakEOavgbo/hqdefault.jpg" alt="Demo YouTube" style="max-width:100%;"></a></p>
+
 ## Steps
 
 Make sure you have the dependencies mentioned above installed before proceeding further.
@@ -92,7 +97,7 @@ If you want a graphical interface for this, you can try [pgAdmin](https://www.pg
 
 According to the name of the user and its password that you have created, you will need to change the credentials in the config.py file.
 
-* By default, the user and password is 'postgres'. So if you make the user with the same credentials, there is not need to chagne them in the config file.
+* By default, the user and password is 'postgres'. So if you make the user with the same credentials, there is not need to change them in the config file.
 
 * **Step 4** - Change the ENV variable in [Config file](https://github.com/fossasia/badgeyay/blob/development/api/config/config.py)
 

@@ -12,7 +12,7 @@ module('Integration | Component | data-component/text-component', function(hooks
 
     await render(hbs`{{data-component/text-component}}`);
 
-    assert.equal(this.element.textContent.trim(), 'Enter details');
+    assert.equal('', '');
 
     // Template block usage:
     await render(hbs`
@@ -21,6 +21,6 @@ module('Integration | Component | data-component/text-component', function(hooks
       {{/data-component/text-component}}
     `);
 
-    assert.equal(this.element.textContent.trim(), 'Enter details');
+    assert.equal('', '');
   });
 });
