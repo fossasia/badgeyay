@@ -17,6 +17,10 @@ The user can:
 - Choose the background of the badges and upload the logo and the background image
 - Upload a CSV file or manually enter CSV data as: name, type of attendee, designation, nick/handle, organization/project
 
+## Demo
+
+![ezgif com-video-to-gif 15](/api/docs/installation/demo.gif)
+
 ## Communication
 
 - Please join our **[mailing list](https://groups.google.com/forum/#!forum/open-event)** to discuss questions regarding the project.
