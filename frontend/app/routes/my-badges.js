@@ -7,8 +7,10 @@ const { set } = Ember;
 export default Route.extend({
   beforeModel(transition) {
     this._super(...arguments);
+    if (this.get('session.uid') === undefined) {
+      this.transitionTo('login');
+    }
   },
-
   model(params) {
     let filter = {};
     const uid = this.get('session.uid');

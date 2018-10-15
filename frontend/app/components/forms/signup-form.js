@@ -18,11 +18,15 @@ export default Component.extend({
       let email = '';
       let password = '';
       let username = '';
+      let password_rep = '';
       email = this.get('email');
       password = this.get('password');
+      password_rep = this.get('password_repeat');
       username = this.get('username');
-      if (email !== undefined && password !== undefined && username !== undefined) {
-        this.get('signUp')(email, username, password);
+      if (password === password_rep) {
+        if (email !== undefined && password !== undefined && username !== undefined) {
+          this.get('signUp')(email, username, password);
+        }
       }
     },
     showPasswordSignupConfirm() {
