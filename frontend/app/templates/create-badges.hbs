@@ -129,7 +129,13 @@
                     </div>
                 </div>
             </div>
-            <button {{action "submitForm"}} class="ui fluid orange {{if authToken.isEmailVerified '' 'disabled'}} button">Create Badges</button>
+            {{#if authToken.isEmailVerified}}
+                <button {{action "submitForm"}} class="ui fluid orange button">Create Badges</button>
+            {{else}}
+            {{#link-to 'index'}}
+                <button {{action "submitForm"}} class="ui fluid orange button">Create Badges</button>
+            {{/link-to}}
+            {{/if}}
             {{#each userError as |error|}}
                 <p>{{error.message}}</p>
             {{/each}}
@@ -194,5 +200,4 @@
         }}
     </div>
 </div>
-
 {{overlay-welcome user=user removeFTL=(action 'removeFTL')}}

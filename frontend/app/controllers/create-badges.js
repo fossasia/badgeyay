@@ -86,6 +86,7 @@ export default Controller.extend({
     submitForm() {
       const _this = this;
       const user = _this.get('store').peekAll('user');
+      if(user.emailVerified){
       _this.set('overlay', true);
       let uid;
       user.forEach(user_ => {
@@ -139,7 +140,14 @@ export default Controller.extend({
       }
 
       _this.send('sendManualData', badgeData);
-
+    }
+    else{
+      _this.get('notifications').clearAll();
+      _this.get('notifications').error('Please Verify your E-Mail address to continue', {
+        autoClear     : true,
+        clearDuration : 1500
+      });
+    }
     },
 
     sendManualData(badgeData) {
