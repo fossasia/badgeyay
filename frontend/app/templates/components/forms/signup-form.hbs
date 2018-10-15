@@ -22,8 +22,9 @@
             <div class="field required">
                 <div class="ui left icon input">
                     <i class="lock icon"></i>
-                    {{input type="password" value=password name="password" placeholder="Password"}}
+                    {{input type="password" value=password  name="password"  id="pass" placeholder="Password"}}
                 </div>
+                <meter  id="password-strength-meter"  value={{level}} ></meter>
             </div>
             <div class="field required">
                 <div class="ui left icon input">
