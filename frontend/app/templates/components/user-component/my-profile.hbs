@@ -4,7 +4,7 @@
         <div class="ui basic left aligned segment">
           <div class="ui small circular image profile-image">
               <img onclick={{action "updateProfileImage"}} src="{{user.photoURL}}">
-              <input style="display: none;" id="profileImageSelector" type="file" onchange={{action "profileImageSelected"}}>
+              <input style="display: none;" id="profileImageSelector" accept="image/*"  type="file" onchange={{action "profileImageSelected"}}>
               <div class="profile-change"><b>Change</b></div>
           </div>
         </div>
