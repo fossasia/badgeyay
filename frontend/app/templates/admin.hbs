@@ -1,36 +1,44 @@
-<div class="row">
-  <div class="x-scrollable sixteen wide column">
-    {{#tabbed-navigation}}
-      {{#link-to 'admin.index' class='item'}}
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="#">Menu</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        {{#tabbed-navigation}}
+        {{#link-to 'admin.index' class='item'}}
         {{'Admin'}}
-      {{/link-to}}
-      {{#link-to 'admin.users' class='item'}}
+        {{/link-to}}
+        {{#link-to 'admin.users' class='item'}}
         {{'Users'}}
-      {{/link-to}}
-      {{#link-to 'admin.permissions' class='item'}}
+        {{/link-to}}
+        {{#link-to 'admin.permissions' class='item'}}
         {{'Permissions'}}
-      {{/link-to}}
-      {{#link-to 'admin.badges' class='item'}}
+        {{/link-to}}
+        {{#link-to 'admin.badges' class='item'}}
         {{'Badges'}}
-      {{/link-to}}
-      {{#link-to 'admin.reports' class='item'}}
+        {{/link-to}}
+        {{#link-to 'admin.reports' class='item'}}
         {{'Reports'}}
-      {{/link-to}}
-      {{#link-to 'admin.content' class='item'}}
+        {{/link-to}}
+        {{#link-to 'admin.content' class='item'}}
         {{'Content'}}
-      {{/link-to}}
-      {{#link-to 'admin.messages' class='item'}}
+        {{/link-to}}
+        {{#link-to 'admin.messages' class='item'}}
         {{'Messages'}}
-      {{/link-to}}
-      {{#link-to 'admin.modules' class='item'}}
+        {{/link-to}}
+        {{#link-to 'admin.modules' class='item'}}
         {{'Modules'}}
-      {{/link-to}}
-      {{#link-to 'admin.settings' class='item'}}
+        {{/link-to}}
+        {{#link-to 'admin.settings' class='item'}}
         {{'Settings'}}
-      {{/link-to}}
-    {{/tabbed-navigation}}
+        {{/link-to}}
+        {{/tabbed-navigation}}     
+        </li>
+    </ul>
   </div>
-</div>
+</nav>
 
 <div class="ui basic segment">
     {{outlet}}
