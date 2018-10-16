@@ -18,7 +18,12 @@
             <div class="field">
               <div class="ui left icon input">
                 <i class="lock icon"></i>
-                {{input type='password' name='password' placeholder='Password' value=password}}
+                {{input type="password" id="pwd" name='password' placeholder='Password' value=password}}
+                <div class="ui small basic icon buttons">
+                  <button class="ui button" id="eye" {{ action 'showPasswordLogin'}}>
+                    <i class="eye icon"></i>
+                  </button>
+                </div>
               </div>
             </div>
             <div class="ui center aligned segment basic">
@@ -49,7 +54,7 @@
               <span class="log-text">Login with Google +</span>
             </button>
           </div>
-  <!--    <div class="ui horizontal divider"></div>
+          <!--    <div class="ui horizontal divider"></div>
           <div class="buttons">
             <button type="button" class="ui facebook button capital large-oauth" {{ action 'logIn' 'facebook' }}>
               <i class="facebook icon o-icon"></i>

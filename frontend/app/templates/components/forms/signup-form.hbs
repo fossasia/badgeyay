@@ -1,49 +1,58 @@
 <div class="ui stackable three column doubling centered grid signup">
-<div class="column">
-    <form class="ui form" onsubmit={{action 'signUp'}}>
-        <div class="ui aligned segment basic form-div">
-          <span class="form-title">Registration Form</span>
-          <div></div>
-          <span class="form-subtitle">Sign up today</span>
-        </div>
-        <div class="ui stacked element">
-            <div class="field required">
-                <div class="ui left icon input">
-                    <i class="mail icon"></i>
-                    {{input type="text" value=email name="email" placeholder="E-mail address"}}
+    <div class="column">
+        <form class="ui form" onsubmit={{action 'signUp'}}>
+            <div class="ui aligned segment basic form-div">
+                <span class="form-title">Registration Form</span>
+                <div></div>
+                <span class="form-subtitle">Sign up today</span>
+            </div>
+            <div class="ui stacked element">
+                <div class="field required">
+                    <div class="ui left icon input">
+                        <i class="mail icon"></i>
+                        {{input type="text" value=email name="email" placeholder="E-mail address"}}
+                    </div>
+                </div>
+                <div class="field required">
+                    <div class="ui left icon input">
+                        <i class="user icon"></i>
+                        {{input type="text" value=username name="username" placeholder="Username"}}
+                    </div>
+                </div>
+                <div class="field required">
+                    <div class="ui left icon input">
+                        <i class="lock icon"></i>
+                        {{input type="password" id="pwd" value=password name="password" placeholder="Password"}}
+                        <div class="ui small basic icon buttons">
+                            <button class="ui button" id="eye1" {{ action 'showPasswordSignup'}}>
+                                <i class="eye icon"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="field required">
+                    <div class="ui left icon input">
+                        <i class="lock icon"></i>
+                        {{input type="password" id="pwdConfirm" name="password_repeat" placeholder="Re-enter Password"}}
+                        <div class="ui small basic icon buttons">
+                            <button class="ui button" id="eye2" {{ action 'showPasswordSignupConfirm'}}>
+                                <i class="eye icon"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="ui center aligned segment basic">
+                        <button class="ui fluid large submit orange basic button" style="margin-bottom: 10px;" type="submit">
+                            Sign Up
+                        </button>
+                        <div class="ending-border"></div>
+                        <div class="div-links">
+                            <a href="{{href-to 'login'}}" class="ui center aligned text muted weight-800 links">
+                                Already a user? Log in
+                            </a>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div class="field required">
-                <div class="ui left icon input">
-                    <i class="user icon"></i>
-                    {{input type="text" value=username name="username" placeholder="Username"}}
-                </div>
-            </div>
-            <div class="field required">
-                <div class="ui left icon input">
-                    <i class="lock icon"></i>
-                    {{input type="password" value=password  name="password"  id="pass" placeholder="Password"}}
-                </div>
-                <meter  id="password-strength-meter"  value={{level}} ></meter>
-            </div>
-            <div class="field required">
-                <div class="ui left icon input">
-                    <i class="lock icon"></i>
-                    {{input type="password" value=password_repeat name="password_repeat" placeholder="Re-enter Password"}}
-                </div>
-            </div>
-            <div class="ui center aligned segment basic">
-                <button class="ui fluid large submit orange basic button" style="margin-bottom: 10px;" type="submit">
-                    Sign Up
-                </button>
-                <div class="ending-border"></div>
-                <div class="div-links">
-                    <a href="{{href-to 'login'}}" class="ui center aligned text muted weight-800 links">
-                      Already a user? Log in
-                    </a>
-                </div>
-            </div>
-        </div>
-    </form>
-</div>
+        </form>
+    </div>
 </div>
