@@ -1,14 +1,14 @@
 <div class="ui stackable grid">
     <div class="row">
-      <div class="two wide column">
-        <div class="ui basic left aligned segment">
-          <div class="ui small circular image profile-image">
+      <div class="three wide column">
+        <div class="ui basic aligned segment" >
+          <div class="ui circular image profile-image">
               <img onclick={{action "updateProfileImage"}} src="{{user.photoURL}}">
               <input style="display: none;" id="profileImageSelector" type="file" onchange={{action "profileImageSelected"}}>
               <div class="profile-change"><b>Change</b></div>
           </div>
         </div>
-        <div class="ui secondary vertical menu">
+        <div class="ui secondary vertical menu" >
           <div class="active item" data-tab="account">
               Account
             <i class="ui angle right icon"></i>
@@ -19,7 +19,7 @@
           </div>
         </div>
       </div>
-      <div class="twelve wide column">
+      <div class="eleven wide column">
         <div class="ui active attached tab segment" data-tab="account">
           {{user-component/user-account session=session isLoading=isLoadingName user=user sendUserName=(action 'updateUserName')}}
         </div>
