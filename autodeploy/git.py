@@ -15,8 +15,7 @@ class GitError(Exception):
 def _git(cwd, *cmd):
     retcode, out, err = execute(cwd, 'git', *cmd)
     if retcode == 0:
-        return out
-    
+        return out    
     raise GitError('git exited with a non-zero exit code', err)
 
 class Git():
@@ -51,5 +50,4 @@ class Git():
         if lines:
             last_line = lines[-1]
             return int(last_line.split()[0])
-
         return 0

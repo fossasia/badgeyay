@@ -33,7 +33,7 @@ class DockerCompose():
         res = _docker_compose(self.cwd, 'build')
         logger.info('started')
         return res
-    
+
     def start(self):
         logger.info('starting up...')
         res = _docker_compose(self.cwd, 'up', '-d')
@@ -43,6 +43,8 @@ class DockerCompose():
     def stop(self):
         logger.info('stopping...')
         res = _docker_compose(self.cwd, 'stop')
+        logger.info('stopped')
+        return res
 
     def update(self):
         logger.info('updating containers...')
