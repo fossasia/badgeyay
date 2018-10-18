@@ -157,13 +157,7 @@
                     </div>
                 </div>
             </div>
-            {{#if authToken.isEmailVerified}}
-                <button {{action "submitForm"}} class="ui fluid orange button">Create Badges</button>
-            {{else}}
-            {{#link-to 'index'}}
-                <button {{action "submitForm"}} class="ui fluid orange button">Create Badges</button>
-            {{/link-to}}
-            {{/if}}
+            <button {{action "submitForm"}} class="ui fluid orange {{if authToken.isEmailVerified '' 'disabled'}} button">Create Badges</button>
             {{#each userError as |error|}}
             <p>{{error.message}}</p>
             {{/each}} {{#if showProgress}}
@@ -209,5 +203,34 @@
         defImageName=defImageName backImg=prevImageData defImage=defImage custImage=custImage previewHeight=previewHeight
         }}
     </div>
-</div>
-{{overlay-welcome user=user removeFTL=(action 'removeFTL')}}
+</div>{{overlay-welcome user=user removeFTL=(action 'removeFTL')}}
+<script>
+    function showcsv() {
+        document.getElementById('csv').style.display = 'block';
+        document.getElementById('details').style.display = 'none';
+
+    }
+    function showdetails() {
+        document.getElementById('details').style.display = 'block';
+        document.getElementById('csv').style.display = 'none';
+
+    }
+    function customimage() {
+        document.getElementById('custimg').style.display = 'block';
+        document.getElementById('custbg').style.display = 'none';
+        document.getElementById('custcol').style.display = 'none';
+
+    }
+    function custombg() {
+        document.getElementById('custbg').style.display = 'block';
+        document.getElementById('custimg').style.display = 'none';
+        document.getElementById('custcol').style.display = 'none';
+
+    }
+    function customcol() {
+        document.getElementById('custcol').style.display = 'block';
+        document.getElementById('custbg').style.display = 'none';
+        document.getElementById('custimg').style.display = 'none';
+
+    }
+</script>
