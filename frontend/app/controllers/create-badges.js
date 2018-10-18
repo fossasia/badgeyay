@@ -86,58 +86,60 @@ export default Controller.extend({
     submitForm() {
       const _this = this;
       const user = _this.get('store').peekAll('user');
-      if (user.emailVerified) {
-        _this.set('overlay', true);
-        let uid;
-        user.forEach(user_ => {
-          uid = user_.get('id');
-        });
-        if (uid !== undefined && uid !== '') {
-          _this.set('uid', uid);
-        }
-        let badgeData = {
-          uid        : _this.uid,
-          paper_size : 'A3',
-          badgename  : '',
-          badge_size : '4x3'
-        };
-        if (_this.nameData !== '') {
-          badgeData.badgename = _this.nameData;
-        }
-        if (_this.badgeSize !== '' && _this.badgeSize !== undefined) {
-          badgeData.badge_size = _this.badgeSize;
-        }
-        if (_this.defPaperSize !== '' && _this.defPaperSize !== undefined) {
-          badgeData.paper_size = _this.defPaperSize;
-        }
-        if (_this.csvEnable) {
-          badgeData.csv = _this.csvFile;
-        }
-        if (_this.defFontColor !== '' && _this.defFontColor !== undefined) {
-          badgeData.font_color = '#' + _this.defFontColor;
-        }
-        if (_this.defFont1Size !== '' && _this.defFont1Size !== undefined) {
-          badgeData.font_size_1 = _this.defFont1Size.toString();
-          badgeData.font_size_2 = _this.defFont2Size.toString();
-          badgeData.font_size_3 = _this.defFont3Size.toString();
-          badgeData.font_size_4 = _this.defFont4Size.toString();
-          badgeData.font_size_5 = _this.defFont5Size.toString();
-        }
-        if (_this.defFontType1 !== '' && _this.defFontType1 !== undefined) {
-          badgeData.font_type_1 = _this.defFontType1;
-          badgeData.font_type_2 = _this.defFontType2;
-          badgeData.font_type_3 = _this.defFontType3;
-          badgeData.font_type_4 = _this.defFontType4;
-          badgeData.font_type_5 = _this.defFontType5;
-        }
-        _this.send('sendManualData', badgeData);
-      } else {
-        _this.get('notifications').clearAll();
-        _this.get('notifications').error('Please Verify your E-Mail address to continue', {
-          autoClear     : true,
-          clearDuration : 1500
-        });
+      _this.set('overlay', true);
+      let uid;
+      user.forEach(user_ => {
+        uid = user_.get('id');
+      });
+      if (uid !== undefined && uid !== '') {
+        _this.set('uid', uid);
       }
+
+      let badgeData = {
+        uid        : _this.uid,
+        paper_size : 'A3',
+        badgename  : '',
+        badge_size : '4x3'
+      };
+
+      if (_this.nameData !== '') {
+        badgeData.badgename = _this.nameData;
+      }
+
+      if (_this.badgeSize !== '' && _this.badgeSize !== undefined) {
+        badgeData.badge_size = _this.badgeSize;
+      }
+
+      if (_this.defPaperSize !== '' && _this.defPaperSize !== undefined) {
+        badgeData.paper_size = _this.defPaperSize;
+      }
+
+      if (_this.csvEnable) {
+        badgeData.csv = _this.csvFile;
+      }
+
+      if (_this.defFontColor !== '' && _this.defFontColor !== undefined) {
+        badgeData.font_color = '#' + _this.defFontColor;
+      }
+
+      if (_this.defFont1Size !== '' && _this.defFont1Size !== undefined) {
+        badgeData.font_size_1 = _this.defFont1Size.toString();
+        badgeData.font_size_2 = _this.defFont2Size.toString();
+        badgeData.font_size_3 = _this.defFont3Size.toString();
+        badgeData.font_size_4 = _this.defFont4Size.toString();
+        badgeData.font_size_5 = _this.defFont5Size.toString();
+      }
+
+      if (_this.defFontType1 !== '' && _this.defFontType1 !== undefined) {
+        badgeData.font_type_1 = _this.defFontType1;
+        badgeData.font_type_2 = _this.defFontType2;
+        badgeData.font_type_3 = _this.defFontType3;
+        badgeData.font_type_4 = _this.defFontType4;
+        badgeData.font_type_5 = _this.defFontType5;
+      }
+
+      _this.send('sendManualData', badgeData);
+
     },
 
     sendManualData(badgeData) {
