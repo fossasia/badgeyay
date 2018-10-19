@@ -1,8 +1,10 @@
+from envparse import env
+
 # DEBUG variable
-DEBUG = True
+DEBUG = env.bool('BADGEYAY_DEBUG', default=True)
 
 # Environment for working, can be LOCAL/PROD
-ENV = 'PROD'
+ENV = env.str('BADGEYAY_ENV', default='PROD')
 
 # Sample config for PostgreSQL Database
 POSTGRES = {

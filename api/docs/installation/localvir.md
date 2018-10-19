@@ -99,11 +99,11 @@ According to the name of the user and its password that you have created, you wi
 
 * By default, the user and password is 'postgres'. So if you make the user with the same credentials, there is not need to change them in the config file.
 
-* **Step 4** - Change the ENV variable in [Config file](https://github.com/fossasia/badgeyay/blob/development/api/config/config.py)
+* **Step 4** - Setup the .env file similar to .env.example file.(https://github.com/fossasia/badgeyay/blob/development/.env.example)
 
-While in the config file, change the `ENV` variable to `LOCAL`
+In the .env file, set the `BADGEYAY_ENV` variable to `LOCAL`
 ```
-ENV = 'LOCAL'
+BADGEYAY_ENV = 'LOCAL'
 ```
 * When inside psql, create a user 'postgres' for badgeyay and then using the user create the database.
 
