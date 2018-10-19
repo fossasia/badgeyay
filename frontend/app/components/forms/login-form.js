@@ -33,11 +33,14 @@ export default Component.extend({
       }
       function show() {
         $('#pwd').attr('type', 'text');
+        $('#eye > i').removeClass('eye slash icon');
+        $('#eye > i').addClass('eye icon');
       }
 
       function hide() {
         $('#pwd').attr('type', 'password');
-
+        $('#eye > i').removeClass('eye icon');
+        $('#eye > i').addClass('eye slash icon');
       }
 
     }

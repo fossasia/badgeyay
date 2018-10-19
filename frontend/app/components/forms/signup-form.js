@@ -32,9 +32,13 @@ export default Component.extend({
     showPasswordSignupConfirm() {
       function show() {
         $('#pwdConfirm').attr('type',  'text');
+        $('#eye2 > i').removeClass('eye slash icon');
+        $('#eye2 > i').addClass('eye icon');
       }
       function hide() {
         $('#pwdConfirm').attr('type', 'password');
+        $('#eye2 > i').removeClass('eye icon');
+        $('#eye2 > i').addClass('eye slash icon');
       }
       if (pwShownConfirm == 0) {
         pwShownConfirm = 1;
@@ -47,11 +51,14 @@ export default Component.extend({
     showPasswordSignup() {
       function show() {
         $('#pwd').attr('type', 'text');
+        $('#eye1 > i').removeClass('eye slash icon');
+        $('#eye1 > i').addClass('eye icon');
       }
 
       function hide() {
         $('#pwd').attr('type', 'password');
-
+        $('#eye1 > i').removeClass('eye icon');
+        $('#eye1 > i').addClass('eye slash icon');
       }
       if (pwShown == 0) {
         pwShown = 1;
