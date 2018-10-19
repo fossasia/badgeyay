@@ -118,6 +118,17 @@ export default Component.extend({
         }
       });
   },
+  keyUp(event) {
+    if (event.target.name === 'password') {
+      if ((event.target.value).length < 6) {
+        $('#signUpSubmit').attr('disabled', 'true');
+        $('#feedback').html('Your password must have at least 6 characters');
+      } else {
+        $('#signUpSubmit').removeAttr('disabled');
+        $('#feedback').html('');
+      }
+    }
+  },
   keyDown(event) {
     if (event.target.name === 'password') {
       var strongRegex = new RegExp('^(?=.{8,})(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*\\W).*$', 'g');
