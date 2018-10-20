@@ -1,0 +1,7 @@
+server:
+    url: https://github.com/fossasia/badgeyay/api
+    branch: development
+    container: web
+frontend:
+    url: https://github.com/fossasia/badgeyay/frontend
+    branch: development
