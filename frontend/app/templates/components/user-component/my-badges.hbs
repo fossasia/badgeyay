@@ -1,18 +1,29 @@
-<div class="ui secondary pointing menu">
-<a class="active item">
-  My Badges
-</a>
+<div class="ui grid">
+  <div class="fourteen wide column">
+    <div class="ui secondary pointing menu">
+      <a class="active item">
+        My Badges
+      </a>
+    </div>
+  </div>
+  <div class="two wide column">
+    <button class="ui orange basic right floated button" {{action 'batchdownload'}}>Download Badges</button>
+  </div>
 </div>
-<div class="ui basic segment">
-  <div class="ui cards">
-    {{#if model.length}}
-      {{#each model as |badge|}}
+<div class="ui grid">
+  <div class="sixteen wide column">
+    <div class="ui basic segment">
+      <div class="ui cards">
+        {{#if model.length}}
+        {{#each model as |badge|}}
         <div class="card">
           <div class="image">
             <img src="{{badge.image_link}}">
+            <input type="checkbox" class="checkbox" id={{badge.download_link}}>
           </div>
           <div class="content">
-            {{badge-name session=session model=model badge=badge user=user sendBadgeName=(action 'sendBadgeName' badge)}}
+            {{badge-name session=session model=model badge=badge user=user sendBadgeName=(action 'sendBadgeName'
+            badge)}}
             <div class="ui horizontal divider"></div>
             <div class="description">
               Badge Size: {{badge.badge_size}}
@@ -25,42 +36,44 @@
             </div>
           </div>
           <div class="extra center aligned content">
-              <div class="ui horizontal compact basic buttons">
-                  {{#ui-popup content='Download' class="ui icon button"}}
-                      <a href="{{badge.download_link}}">
-                        <i class="download icon"></i>
-                      </a>
-                  {{/ui-popup}}
-                  {{#ui-popup content='Edit' class="ui icon button"}}
-                      <i class="edit icon"></i>
-                  {{/ui-popup}}
-                  {{#ui-popup content='Delete' class='ui icon button' click=(action 'deleteBadge' badge)}}
-                      <i class="trash alternate outline icon"></i>
-                  {{/ui-popup}}
-              </div>
+            <div class="ui horizontal compact basic buttons">
+              {{#ui-popup content='Download' class="ui icon button"}}
+              <a href="{{badge.download_link}}">
+                <i class="download icon"></i>
+              </a>
+              {{/ui-popup}}
+              {{#ui-popup content='Edit' class="ui icon button"}}
+              <i class="edit icon"></i>
+              {{/ui-popup}}
+              {{#ui-popup content='Delete' class='ui icon button' click=(action 'deleteBadge' badge)}}
+              <i class="trash alternate outline icon"></i>
+              {{/ui-popup}}
+            </div>
           </div>
         </div>
-      {{/each}}
-    {{/if}}
-    <div class="card">
-      <a class="" href="/create-badges">
-        {{#if model.length}}
-        <img src="/images/add_more.png" style="margin-top: 70px">
-        {{else}}
-        <img src="/images/add_more.png" style="margin-top: 70px; margin-bottom: 90px">
+        {{/each}}
         {{/if}}
-      </a>
+        <div class="card">
+          <a class="" href="/create-badges">
+            {{#if model.length}}
+            <img src="/images/add_more.png" style="margin-top: 70px">
+            {{else}}
+            <img src="/images/add_more.png" style="margin-top: 70px; margin-bottom: 90px">
+            {{/if}}
+          </a>
+        </div>
+      </div>
     </div>
   </div>
 </div>
 {{#if model.length}}
-  <div class="ui horizontal divider"></div>
-  <div class="ui left floated pagination menu">
-      <a class="icon item" {{action 'prevPage'}}>
-          <i class="left chevron icon"></i>
-      </a>
-      <a class="icon item" {{action 'nextPage'}}>
-          <i class="right chevron icon"></i>
-      </a>
-  </div>
+<div class="ui horizontal divider"></div>
+<div class="ui left floated pagination menu">
+  <a class="icon item" {{action 'prevPage'}}>
+    <i class="left chevron icon"></i>
+  </a>
+  <a class="icon item" {{action 'nextPage'}}>
+    <i class="right chevron icon"></i>
+  </a>
+</div>
 {{/if}}
