@@ -93,13 +93,13 @@ Once database is created, exit the psql shell with `\q` followed by ENTER.
 
 If you want a graphical interface for this, you can try [pgAdmin](https://www.pgadmin.org/).
 
-* **Step 3** - Adding the credentials in [Config file](https://github.com/fossasia/badgeyay/blob/development/api/config/config.py)
+* **Step 3** - Setup the .env file similar to [.env.example file](https://github.com/fossasia/badgeyay/blob/development/.env.example)
 
-According to the name of the user and its password that you have created, you will need to change the credentials in the config.py file.
+According to the name of the user and its password that you have created, you will need to set the credentials in the .env file.
 
-* By default, the user and password is 'postgres'. So if you make the user with the same credentials, there is not need to change them in the config file.
+* By default, the user and password is 'postgres'. So if you make the user with the same credentials, there is no need to set these variables.
 
-* **Step 4** - Setup the .env file similar to .env.example file.(https://github.com/fossasia/badgeyay/blob/development/.env.example)
+* **Step 4** - Setup the .env file similar to [.env.example file](https://github.com/fossasia/badgeyay/blob/development/.env.example)
 
 In the .env file, set the `BADGEYAY_ENV` variable to `LOCAL`
 ```

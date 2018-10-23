@@ -8,11 +8,11 @@ ENV = env.str('BADGEYAY_ENV', default='PROD')
 
 # Sample config for PostgreSQL Database
 POSTGRES = {
-    'user': 'postgres',
-    'pw': 'postgres',
+    'user': env.str('BADGEYAY_DATABASE_OWNER', default='postgres'),
+    'pw': env.str('BADGEYAY_DATABASE_PASSWORD', default='postgres'),
     'host': 'localhost',
     'port': '5432',
-    'db': 'badgeyay',
+    'db': env.str('BADGEYAY_DATABASE', default='badgeyay'),
     'secret': 'thisisaverysupersecretkeyforfossasiabadgeyay'
 }
 
