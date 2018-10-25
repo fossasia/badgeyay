@@ -53,6 +53,7 @@ export default Controller.extend({
   socialHandle   : '@dompiero07',
   designation    : 'Social Media Manager',
   prevImageData  : 'https://raw.githubusercontent.com/fossasia/badgeyay/development/frontend/public/images/badge_backgrounds/red_futuristic.png',
+  imageData      : 'https://raw.githubusercontent.com/fossasia/badgeyay/development/frontend/public/images/badge_backgrounds/red_futuristic.png',
   csvClicked() {
     this.set('csvEnable', true);
     this.set('manualEnable', false);
