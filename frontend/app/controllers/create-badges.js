@@ -44,7 +44,6 @@ export default Controller.extend({
   colorImage     : false,
   overlay        : false,
   showProgress   : false,
-  imageData      : null,
   progress       : 0,
   progressState  : '',
   firstName      : 'Dominic',
