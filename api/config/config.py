@@ -1,5 +1,6 @@
 from envparse import env
 
+env.read_envfile()
 # DEBUG variable
 DEBUG = env.bool('BADGEYAY_DEBUG', default=True)
 
