@@ -1,37 +1,56 @@
-<div class="row">
-  <div class="x-scrollable sixteen wide column">
-    {{#tabbed-navigation}}
-      {{#link-to 'admin.index' class='item'}}
-        {{'Admin'}}
-      {{/link-to}}
-      {{#link-to 'admin.users' class='item'}}
-        {{'Users'}}
-      {{/link-to}}
-      {{#link-to 'admin.permissions' class='item'}}
-        {{'Permissions'}}
-      {{/link-to}}
-      {{#link-to 'admin.badges' class='item'}}
-        {{'Badges'}}
-      {{/link-to}}
-      {{#link-to 'admin.reports' class='item'}}
-        {{'Reports'}}
-      {{/link-to}}
-      {{#link-to 'admin.content' class='item'}}
-        {{'Content'}}
-      {{/link-to}}
-      {{#link-to 'admin.messages' class='item'}}
-        {{'Messages'}}
-      {{/link-to}}
-      {{#link-to 'admin.modules' class='item'}}
-        {{'Modules'}}
-      {{/link-to}}
-      {{#link-to 'admin.settings' class='item'}}
-        {{'Settings'}}
-      {{/link-to}}
-    {{/tabbed-navigation}}
-  </div>
+<i style="zoom:1.5" class="th list icon"></i>
+<div class="x-scrollable sixteen wide column tabbedlist">
+  {{#tabbed-navigation}}
+  {{#link-to 'admin.index' class='item'}}
+  {{'Admin'}}
+  {{/link-to}}
+  {{#link-to 'admin.users' class='item'}}
+  {{'Users'}}
+  {{/link-to}}
+  {{#link-to 'admin.permissions' class='item'}}
+  {{'Permissions'}}
+  {{/link-to}}
+  {{#link-to 'admin.badges' class='item'}}
+  {{'Badges'}}
+  {{/link-to}}
+  {{#link-to 'admin.reports' class='item'}}
+  {{'Reports'}}
+  {{/link-to}}
+  {{#link-to 'admin.content' class='item'}}
+  {{'Content'}}
+  {{/link-to}}
+  {{#link-to 'admin.messages' class='item'}}
+  {{'Messages'}}
+  {{/link-to}}
+  {{#link-to 'admin.modules' class='item'}}
+  {{'Modules'}}
+  {{/link-to}}
+  {{#link-to 'admin.settings' class='item'}}
+  {{'Settings'}}
+  {{/link-to}}
+  {{/tabbed-navigation}}
+
 </div>
 
 <div class="ui basic segment">
-    {{outlet}}
+  {{outlet}}
 </div>
+
+<script>
+  $('.th.list.icon').click(function () {
+    if ($('.tabbedlist')[0].style.display === "block") {
+      $('.tabbedlist')[0].style.display = "none";
+    }
+    else {
+      $('.tabbedlist')[0].style.display = "block";
+    }
+  })
+  window.onresize = function (e) {
+    if (e.currentTarget.innerWidth >= 767) {
+      $('.tabbedlist')[0].style.display = "block";
+    }
+    else {
+      $('.tabbedlist')[0].style.display = "none";
+    }
+  }
+</script>
