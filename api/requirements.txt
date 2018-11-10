@@ -12,6 +12,7 @@ click==6.7
 cryptography==2.2.2
 cssselect2==0.2.1
 defusedxml==0.5.0
+envparse==0.2.0
 firebase-admin==2.10.0
 Flask==1.0.2
 flask-cors==3.0.3
