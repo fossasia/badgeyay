@@ -8,6 +8,15 @@ from defusedxml.lxml import _etree as etree
 from api.utils.dimen import badge_config
 
 
+def remove_extra(badge_page, offset):
+    tree = etree.parse(open(badge_page, 'r'))
+    root = tree.getroot()
+    children = root.findall('.//{http://www.w3.org/2000/svg}g')
+    for i in range(offset, len(children)):
+        children[i].getparent().remove(children[i])
+    etree.ElementTree(root).write(badge_page, pretty_print=True)
+
+
 class GenerateBadges:
     def __init__(self,
                  image_name,
@@ -69,16 +78,8 @@ class GenerateBadges:
             content = content.replace('Pictures/18033231.jpeg', os.path.join(self.folder, 'background.png'))
         with open(target, 'w', encoding='UTF-8') as f:
             f.write(content)
-        self.remove_extra(target, len(rows) + 1)
+        remove_extra(target, len(rows) + 1)
         # self.configure_badge_page(target)
-
-    def remove_extra(self, badge_page, offset):
-        tree = etree.parse(open(badge_page, 'r'))
-        root = tree.getroot()
-        children = root.findall('.//{http://www.w3.org/2000/svg}g')
-        for i in range(offset, len(children)):
-            children[i].getparent().remove(children[i])
-        etree.ElementTree(root).write(badge_page, pretty_print=True)
 
     def configure_badge_page(self, badge_page):
         paper_width = self.paper_size.get(self.paper_dimen)[0]
