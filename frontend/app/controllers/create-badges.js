@@ -23,6 +23,11 @@ export default Controller.extend({
   defFontType3   : '',
   defFontType4   : '',
   defFontType5   : '',
+  defFontCol1    : '',
+  defFontCol2    : '',
+  defFontCol3    : '',
+  defFontCol4    : '',
+  defFontCol5    : '',
   uid            : '',
   textData       : '',
   nameData       : '',
@@ -44,7 +49,6 @@ export default Controller.extend({
   colorImage     : false,
   overlay        : false,
   showProgress   : false,
-  imageData      : null,
   progress       : 0,
   progressState  : '',
   firstName      : 'Dominic',
@@ -53,6 +57,7 @@ export default Controller.extend({
   socialHandle   : '@dompiero07',
   designation    : 'Social Media Manager',
   prevImageData  : 'https://raw.githubusercontent.com/fossasia/badgeyay/development/frontend/public/images/badge_backgrounds/red_futuristic.png',
+  imageData      : 'https://raw.githubusercontent.com/fossasia/badgeyay/development/frontend/public/images/badge_backgrounds/red_futuristic.png',
   csvClicked() {
     this.set('csvEnable', true);
     this.set('manualEnable', false);
@@ -507,6 +512,26 @@ export default Controller.extend({
       }
       console.log(this.previewHeight);
       this.set('badgeSize', value);
+    },
+    mutateFontCol(values) {
+      console.log(values);
+      const [font1, font2, font3, font4, font5] = values;
+      if (font1 !== '') {
+        this.set('defFontCol1', font1);
+      }
+      if (font2 !== '') {
+        this.set('defFontCol2', font2);
+      }
+      if (font3 !== '') {
+        this.set('defFontCol3', font3);
+      }
+      if (font4 !== '') {
+        this.set('defFontCol4', font4);
+      }
+      if (font5 !== '') {
+        this.set('defFontCol5', font5);
+      }
+
     },
 
     togglePreview() {

@@ -1,5 +1,6 @@
 import Component from '@ember/component';
 import Ember from 'ember';
+import $ from 'jquery';
 
 const { inject } = Ember;
 
@@ -88,6 +89,22 @@ export default Component.extend({
           clearDuration : 1500
         });
       }
+    },
+    batchdownload() {
+      var arr = $('.checkbox');
+      var r = 0;
+      var timeout = setInterval(function() {
+        while (r < arr.length) {
+          if (arr[r].checked === true) {
+            window.open(arr[r].id, '_blank');
+          }
+          r = r + 1;
+        }
+        if (arr.length == r) {
+          clearInterval(timeout);
+        }
+      }, 1000);
     }
   }
 });
+

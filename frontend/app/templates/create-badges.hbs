@@ -11,7 +11,7 @@
 {{/create-badge}}
 <div class="ui stackable mobile reversed grid">
     <div class="{{if previewToggled 'ten' 'sixteen'}} wide column">
-        <div class="main-container create-badge segments">
+        <div class="create-badge segments">
             <div class="ui clearing segment">
                 <div class="ui form width-container">
                     <div>
@@ -93,7 +93,7 @@
 
                     </div>
                 </div>
-            </div>    
+            </div>
             <div class="ui clearing segment">
                 <div class="ui form width-container">
                     <p>
@@ -139,7 +139,7 @@
             </div>
             <div class="ui segment">
                 <div class="ui form width-container">
-                    <p>
+                    {{!-- <p>
                         <b>Select from following font customizations</b>
                     </p>
                     <div class="ui horizontal divider"></div>
@@ -147,11 +147,11 @@
                         <div class="center aligned">
                             {{ text-component/font-color sendDefFontColor=(action 'mutateDefFontColor') fontColor=fontColor}}
                         </div>
-                    </div>
+                    </div> --}}
                     <div class="ui horizontal divider"></div>
                     <div class="content">
                         <div class="center aligned">
-                            {{ text-component/font-size fontsizeall=fontsizeall fonttypeall=fonttypeall sendDefSize=(action 'mutateFontSize') sendDefFont=(action
+                            {{ text-component/font-size fontsizeall=fontsizeall fonttypeall=fonttypeall sendDefSize=(action 'mutateFontSize') sendDefFontCol=(action 'mutateFontCol') sendDefFont=(action
                             'mutateCustomFont')}}
                         </div>
                     </div>
@@ -199,7 +199,8 @@
     <div class="{{if previewToggled 'six' 'hide'}} wide column preview">
         <!--Add Preview Section here-->
         {{ user-component/preview fn=firstName ln=lastName org=organization sh=socialHandle desg=designation defColor=defFontColor
-        font_fn=defFont1Size font_ln=defFont2Size font_desg=defFont3Size font_org=defFont4Size font_sh=defFont5Size defFont=defFont
+        font_fn=defFont1Size font_ln=defFont2Size font_desg=defFont3Size font_org=defFont4Size font_sh=defFont5Size fontcol_fn=defFontCol1
+        fontcol_ln=defFontCol2 fontcol_desg=defFontCol3 fontcol_org=defFontCol4 fontcol_sh=defFontCol5 defFont=defFont
         defImageName=defImageName backImg=prevImageData defImage=defImage custImage=custImage previewHeight=previewHeight
         }}
     </div>

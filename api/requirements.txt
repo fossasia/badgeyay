@@ -12,6 +12,7 @@ click==6.7
 cryptography==2.2.2
 cssselect2==0.2.1
 defusedxml==0.5.0
+envparse==0.2.0
 firebase-admin==2.10.0
 Flask==1.0.2
 flask-cors==3.0.3
@@ -45,7 +46,7 @@ PyPDF2==1.26.0
 python-dateutil==2.7.3
 python-editor==1.0.3
 pytz==2018.4
-requests==2.18.4
+requests>=2.20.0
 rsa==3.4.2
 six==1.11.0
 SQLAlchemy==1.2.7
