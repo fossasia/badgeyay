@@ -16,6 +16,7 @@ PIP = $(PYBINARIES)/pip
 HONCHO = $(PYBINARIES)/honcho
 
 NPM ?= npm
+BOWER ?= bower
 
 clean.frontend:
 	rm -rf $(NODE_MODULES)
@@ -26,7 +27,7 @@ clean:
 install:
 	$(PIP) install --ignore-installed -r $(API)/requirements.txt
 	$(NPM) --prefix $(FRONTEND) install
-
+	$(BOWER) install --config.cwd=$(FRONTEND)
 
 lock:
 	# Lock Dependencies
