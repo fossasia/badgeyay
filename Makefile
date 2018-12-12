@@ -29,6 +29,10 @@ install:
 	$(NPM) --prefix $(FRONTEND) install
 	$(BOWER) install --config.cwd=$(FRONTEND)
 
+test:
+	$(NPM) --prefix $(FRONTEND) test
+	$(NPM) --prefix $(FRONTEND) test --server
+
 lock:
 	# Lock Dependencies
 	
