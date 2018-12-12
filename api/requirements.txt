@@ -27,6 +27,7 @@ google-cloud-storage==1.9.0
 google-resumable-media==0.3.1
 googleapis-common-protos==1.5.3
 gunicorn==19.7.1
+honcho==1.0.1
 idna==2.6
 itsdangerous==0.24
 Jinja2==2.10
