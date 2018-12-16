@@ -139,19 +139,13 @@
             </div>
             <div class="ui segment">
                 <div class="ui form width-container">
-                    <p>
-                        <b>Select from following font customizations</b>
-                    </p>
+                    
+                    {{!-- {{ text-component/font-color}} --}}
+                       
                     <div class="ui horizontal divider"></div>
                     <div class="content">
                         <div class="center aligned">
-                            {{ text-component/font-color sendDefFontColor=(action 'mutateDefFontColor') fontColor=fontColor}}
-                        </div>
-                    </div>
-                    <div class="ui horizontal divider"></div>
-                    <div class="content">
-                        <div class="center aligned">
-                            {{ text-component/font-size fontsizeall=fontsizeall fonttypeall=fonttypeall sendDefSize=(action 'mutateFontSize') sendDefFont=(action
+                            {{ text-component/font-size fontsizeall=fontsizeall fonttypeall=fonttypeall sendDefSize=(action 'mutateFontSize') sendDefFontCol=(action 'mutateFontCol') sendDefFont=(action
                             'mutateCustomFont')}}
                         </div>
                     </div>
@@ -199,8 +193,9 @@
     <div class="{{if previewToggled 'six' 'hide'}} wide column preview">
         <!--Add Preview Section here-->
         {{ user-component/preview fn=firstName ln=lastName org=organization sh=socialHandle desg=designation defColor=defFontColor
-        font_fn=defFont1Size font_ln=defFont2Size font_desg=defFont3Size font_org=defFont4Size font_sh=defFont5Size defFont=defFont
-        defImageName=defImageName backImg=imageData defImage=defImage custImage=custImage previewHeight=previewHeight
+        font_fn=defFont1Size font_ln=defFont2Size font_desg=defFont3Size font_org=defFont4Size font_sh=defFont5Size fontcol_fn=defFontCol1
+        fontcol_ln=defFontCol2 fontcol_desg=defFontCol3 fontcol_org=defFontCol4 fontcol_sh=defFontCol5 defFont=defFont
+        defImageName=defImageName backImg=prevImageData defImage=defImage custImage=custImage previewHeight=previewHeight
         }}
     </div>
 </div>{{overlay-welcome user=user removeFTL=(action 'removeFTL')}}

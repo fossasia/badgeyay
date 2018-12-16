@@ -45,7 +45,11 @@ def generateBadges():
     csv_name = data.get('csv')
     badge_name = data.get('badge_name') or 'My Badge'
     image_name = data.get('image')
-    text_color = data.get('font_color') or '#ffffff'
+    font_color_1 = data.get('font_color_1') or '#ffffff'
+    font_color_2 = data.get('font_color_2') or '#ffffff'
+    font_color_3 = data.get('font_color_3') or '#ffffff'
+    font_color_4 = data.get('font_color_4') or '#ffffff'
+    font_color_5 = data.get('font_color_5') or '#ffffff'
     paper_size = data.get('paper_size') or 'A3'
     badge_size = data.get('badge_size') or '4x3'
     font_size_1 = data.get('font_size_1') or None
@@ -58,13 +62,16 @@ def generateBadges():
     font_type_3 = data.get('font_type_3') or 'helvetica'
     font_type_4 = data.get('font_type_4') or 'helvetica'
     font_type_5 = data.get('font_type_5') or 'helvetica'
-
     svg2png = SVG2PNG()
 
     if config.ENV == 'PROD':
         svg2png.do_text_fill(
             os.getcwd() + '/api/static/badges/8BadgesOnA3.svg',
-            text_color,
+            font_color_1,
+            font_color_2,
+            font_color_3,
+            font_color_4,
+            font_color_5,
             badge_size,
             paper_size)
 
@@ -90,7 +97,11 @@ def generateBadges():
     else:
         svg2png.do_text_fill(
             'static/badges/8BadgesOnA3.svg',
-            text_color,
+            font_color_1,
+            font_color_2,
+            font_color_3,
+            font_color_4,
+            font_color_5,
             badge_size,
             paper_size)
 
@@ -131,7 +142,7 @@ def generateBadges():
     user_creator.allowed_usage = user_creator.allowed_usage - 1
 
     badge_created = Badges(image=image_name, csv=csv_name,
-                           text_color=text_color, badge_size=badge_size,
+                           text_color=font_color_1, badge_size=badge_size,
                            badge_name=badge_name, creator=user_creator)
 
     badge_created.save_to_db()
