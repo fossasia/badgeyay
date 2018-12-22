@@ -53,8 +53,6 @@ One-click Docker, Heroku, Scalingo and Bluemix deployment is also available:
 
 * [Python Unit tests](https://docs.python.org/3/library/unittest.html).
 
-> The guidelines for setting up and running the tests are mentioned in the [Testing docs](docs/test/testing.md).
-
 ## Working
 
 ### Input
