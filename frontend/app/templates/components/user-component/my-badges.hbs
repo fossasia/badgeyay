@@ -45,6 +45,17 @@
               {{#ui-popup content='Edit' class="ui icon button"}}
               <i class="edit icon"></i>
               {{/ui-popup}}
+              {{#ui-popup content='Share' class="ui icon button"}}
+              <div class="ui dropdown">
+                <i class="share alternate icon"></i>
+                <div class="menu">
+                  <div class="item"><a href="https://www.facebook.com/dialog/feed?app_id=1389892087910588&caption={{badge.badge_name}}&link={{badge.download_link}}&picture{{badge.image_link}}/200/200" target="_blank"><i
+                        class="facebook icon"></i>Share to Facebook</a></div>
+                  <div class="item"><a href="https://twitter.com/home?status=Hi!%20See%20my%20new%20badge%20on%20Badgeyay%20here%20-%20%20%0A{{badge.download_link}}"
+                      target="_blank"><i class="twitter icon"></i>Share to Twitter</a></div>
+                </div>
+              </div>
+              {{/ui-popup}}
               {{#ui-popup content='Delete' class='ui icon button' click=(action 'deleteBadge' badge)}}
               <i class="trash alternate outline icon"></i>
               {{/ui-popup}}
@@ -77,3 +88,7 @@
   </a>
 </div>
 {{/if}}
+<script>
+  $('.ui.dropdown')
+    .dropdown();
+</script>
