@@ -33,6 +33,10 @@ export default Component.extend({
     sendBadgeName(badge) {
       this.get('sendBadgeName')(badge);
     },
+    shareBadge(badge) {
+      let address = 'https://www.facebook.com/dialog/feed?app_id=1389892087910588&caption=' + badge.badge_name + '&link=' + badge.download_link + '&picture=' + badge.image_link + '/200/200';
+      window.open(address, 'facebook-share-dialog', 'width=800,height=800');
+    },
 
     nextPage() {
       let filter = {};
