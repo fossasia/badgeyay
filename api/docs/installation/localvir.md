@@ -35,46 +35,47 @@ $ git remote add upstream https://github.com/fossasia/badgeyay.git
 ```
 
 
-* **Step 1** - Install the python requirements. You need to be present in the root directory of the project.
+* **Step 2** - Install the python requirements. You need to be present in the root directory of the project.
 
-* System Wide Installation
+    * System Wide Installation
 
-```sh
-sudo -H pip3 install -r api/requirements.txt
-```
-hint: You may need to upgrade your pip version and install following packages if you encounter errors while installing the requirements.
+    ```sh
+    sudo -H pip3 install -r api/requirements.txt
+    ```
+    hint: You may need to upgrade your pip version and install following packages if you encounter errors while installing the requirements.
 
-* Installation in Virtual Environment
+  * Installation in Virtual Environment
 
- It is recommended that you use [`virtualenv`](https://virtualenv.pypa.io/en/stable/installation/)
-and [`virtualenvwrapper`](https://virtualenvwrapper.readthedocs.io/en/latest/install.html) to maintain a clean Python 3 environment. Create a `virtualenv`:
+   It is recommended that you use [`virtualenv`](https://virtualenv.pypa.io/en/stable/installation/)
+  and [`virtualenvwrapper`](https://virtualenvwrapper.readthedocs.io/en/latest/install.html) to maintain a clean Python 3 environment. Create a `virtualenv`:
 
-```sh
-$ source `which virtualenvwrapper.sh`
-$ mkvirtualenv -p python3 badgeyay
-(badgeyay) $ deactivate         # To deactivate the virtual environment
-$ workon badgeyay               # To activate it again
-```
+  ```sh
+  $ source `which virtualenvwrapper.sh`
+  $ mkvirtualenv -p python3 badgeyay
+  (badgeyay) $ deactivate         # To deactivate the virtual environment
+  $ workon badgeyay               # To activate it again
+  ```
 
-OR
+  OR
 
-```sh
-$ sudo apt-get install python3-venv
-$ python3 -m venv badgeyay
-$ source badgeyay/bin/activate
-```
+  ```sh
+  $ sudo apt-get install python3-venv
+  $ python3 -m venv badgeyay
+  $ source badgeyay/bin/activate
+  ```
 
 
 
-> **source 'which virtualenvwrapper.sh'** is used to prevent from breaking the 'mkvirtualenv' command, you can find more about the issue, [here](https://stackoverflow.com/questions/13855463/bash-mkvirtualenv-command-not-found).
+  > **source 'which virtualenvwrapper.sh'** is used to prevent from breaking the 'mkvirtualenv' command, you can find more about the issue, [here](https://stackoverflow.com/questions/13855463/bash-mkvirtualenv-command-not-found).
 
-* Now, since you are inside a virtual environment, you can setup 'badgeyay' as an editable package.
-* Install all the requirements.
+  * Now, since you are inside a virtual environment, you can setup 'badgeyay' as an editable package.
+  * Install all the requirements.
 
-```sh
-(badgeyay)$ pip install -r api/requirements.txt
-```
-* **Step 2** - Create the database. For that we first open the psql shell. Go to the directory where your postgres file is stored.
+  ```sh
+  (badgeyay)$ pip install -r api/requirements.txt
+  ```
+
+* **Step 3** - Create the database. For that we first open the psql shell. Go to the directory where your postgres file is stored.
 
 ```sh
 $ sudo -u postgres psql
@@ -93,19 +94,16 @@ Once database is created, exit the psql shell with `\q` followed by ENTER.
 
 If you want a graphical interface for this, you can try [pgAdmin](https://www.pgadmin.org/).
 
-* **Step 3** - Setup the .env file similar to [.env.example file](https://github.com/fossasia/badgeyay/blob/development/.env.example)
+* **Step 4** - Setup the .env file similar to [.env.example file](https://github.com/fossasia/badgeyay/blob/development/.env.example)
 
 According to the name of the user and its password that you have created, you will need to set the credentials in the .env file.
 
-* By default, the user and password is 'postgres'. So if you make the user with the same credentials, there is no need to set these variables.
-
-* **Step 4** - Setup the .env file similar to [.env.example file](https://github.com/fossasia/badgeyay/blob/development/.env.example)
+* By default, the user and password is 'postgres'. So if you make the user with the same credentials, there is no need to set these variables. When inside psql, create a user 'postgres' for badgeyay and then using the user create the database.
 
 In the .env file, set the `BADGEYAY_ENV` variable to `LOCAL`
 ```
 BADGEYAY_ENV = 'LOCAL'
 ```
-* When inside psql, create a user 'postgres' for badgeyay and then using the user create the database.
 
 * **Step 5** - Start the postgresql service
 
@@ -116,7 +114,7 @@ sudo service postgresql restart
 ```
 
 
-* **Step 5** - Start the application
+* **Step 6** - Start the application
 
 * To run the project on a local machine (default mode).
 
