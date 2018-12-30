@@ -1,42 +1,59 @@
 <div class="ui basic segment">
-    <div class="bgImg ui raised segment"
-        style="color: #{{defColor}};
-        background-size: cover;
-        background-repeat: no-repeat;
-        height: {{if previewHeight '475' '600'}}px;
-        background-image: {{if defImage "url('/images/badge_backgrounds/"}}{{if defImage defImageName}}{{if defImage fingerPrint}}{{if defImage ".png');"}}
-            {{if custImage 'url('}}{{if custImage backImg}}{{if custImage ');'}}">
-        <div class="preview content" style="padding-top: {{if previewHeight '150' '200'}}px">
-            <p
-            style="
-            font-size : {{rel font_fn}}px;
-            font-family : {{defFont}};">
-            {{fn}}
-            </p>
-            <p
-            style="
-            font-size : {{rel font_ln}}px;
-            font-family : {{defFont}};">
-            {{ln}}
-            </p>
-            <p
-            style="
-            font-size : {{rel font_desg}}px;
-            font-family : {{defFont}};">
-            {{desg}}
-            </p>
-            <p
-            style="
-            font-size : {{rel font_org}}px;
-            font-family : {{defFont}};">
-            {{org}}
-            </p>
-            <p
-            style="
-            font-size : {{rel font_sh}}px;
-            font-family : {{defFont}};">
-            {{sh}}
-            </p>
+    <div class="bgImg ui raised segment" style="padding:0">
+        <div
+            style="background-size: cover;
+            background-repeat: no-repeat;
+            height: {{if previewHeight '105' '120'}}px;
+            color: #{{logoFontColor}};
+            font-size: 60px;
+            text-align: center;
+            line-height: {{if previewHeight '105' '120'}}px;
+            background-color: #{{logoBackColor}};
+            background-image: {{if custLogoImage 'url('}}{{if custLogoImage logoImageData}}{{if custLogoImage ');'}})">
+            {{#unless custLogoImage}}
+                {{logo_text}}
+            {{/unless}}
+        </div>
+        <div
+            style="color: #{{defColor}};
+            background-size: cover;
+            background-repeat: no-repeat;
+            height: {{if previewHeight '370' '480'}}px;
+            background-color: #{{backColor}};
+            background-image: {{if defImage "url('/images/badge_backgrounds/"}}{{if defImage defImageName}}{{if defImage fingerPrint}}{{if defImage ".png');"}}
+                {{if custImage 'url('}}{{if custImage backImg}}{{if custImage ');'}}">
+            <div class="preview content" style="padding-top: {{if previewHeight '45' '80'}}px">
+                <p
+                style="
+                font-size : {{rel font_fn}}px;
+                font-family : {{defFont}};">
+                {{fn}}
+                </p>
+                <p
+                style="
+                font-size : {{rel font_ln}}px;
+                font-family : {{defFont}};">
+                {{ln}}
+                </p>
+                <p
+                style="
+                font-size : {{rel font_desg}}px;
+                font-family : {{defFont}};">
+                {{desg}}
+                </p>
+                <p
+                style="
+                font-size : {{rel font_org}}px;
+                font-family : {{defFont}};">
+                {{org}}
+                </p>
+                <p
+                style="
+                font-size : {{rel font_sh}}px;
+                font-family : {{defFont}};">
+                {{sh}}
+                </p>
+            </div>
         </div>
     </div>
 </div>

@@ -29,6 +29,7 @@ export default Controller.extend({
   userError      : '',
   csvFile        : '',
   custImgFile    : '',
+  logoImgFile    : '',
   badgeSize      : '',
   previewToggled : true,
   previewHeight  : '',
@@ -36,15 +37,19 @@ export default Controller.extend({
   backLink       : APP.backLink,
   defPaperSize   : '',
   genBadge       : '',
-  defImageName   : '',
+  defImageName   : 'black_futuristic',
   csvEnable      : false,
   manualEnable   : false,
-  defImage       : false,
-  custImage      : true,
+  defImage       : true,
+  custImage      : false,
   colorImage     : false,
+  custLogoImage  : true,
   overlay        : false,
   showProgress   : false,
   progress       : 0,
+  logo_text      : 'fossasia',
+  logoBackColor  : '',
+  logoFontColor  : '000',
   progressState  : '',
   firstName      : 'Dominic',
   lastName       : 'Del Piero',
@@ -52,7 +57,8 @@ export default Controller.extend({
   socialHandle   : '@dompiero07',
   designation    : 'Social Media Manager',
   prevImageData  : 'https://raw.githubusercontent.com/fossasia/badgeyay/development/frontend/public/images/badge_backgrounds/red_futuristic.png',
-  imageData      : 'https://raw.githubusercontent.com/fossasia/badgeyay/development/frontend/public/images/badge_backgrounds/red_futuristic.png',
+  imageData      : '/images/badge_backgrounds/black_futuristic.png',
+  logoImageData  : '/images/badge_backgrounds/default_logo.png',
   csvClicked() {
     this.set('csvEnable', true);
     this.set('manualEnable', false);
@@ -211,8 +217,8 @@ export default Controller.extend({
           .then(record => {
             _this.set('custImgFile', record.filename);
             badgeData.image = _this.custImgFile;
-            _this.send('sendBadge', badgeData);
-            this.set('progress', 70);
+            _this.send('sendLogoImg', badgeData);
+            this.set('progress', 60);
             this.set('progressState', 'Preparing your badges');
           })
           .catch(error => {
@@ -239,8 +245,8 @@ export default Controller.extend({
           .save()
           .then(record => {
             badgeData.image = record.filename;
-            _this.send('sendBadge', badgeData);
-            this.set('progress', 70);
+            _this.send('sendLogoImg', badgeData);
+            this.set('progress', 60);
             this.set('progressState', 'Preparing your badges');
           })
           .catch(error => {
@@ -268,6 +274,81 @@ export default Controller.extend({
         imageRecord.save()
           .then(record => {
             badgeData.image = record.filename;
+            badgeData.logo_image = record.filename;
+            _this.send('sendLogoImg', badgeData);
+            this.set('progress', 60);
+            this.set('progressState', 'Preparing your badges');
+          })
+          .catch(error => {
+            let userErrors = imageRecord.get('errors.user');
+            if (userErrors !== undefined) {
+              _this.set('userError', userErrors);
+              userErrors.forEach(error => {
+                _this.get('notifications').clearAll();
+                _this.get('notifications').error(error.message, {
+                  autoClear     : true,
+                  clearDuration : 1500
+                });
+                this.set('showProgress', false);
+                this.set('progress', 0);
+                this.set('progressState', '');
+              });
+            }
+          });
+      } else {
+        _this.get('notifications').clearAll();
+        _this.get('notifications').error('No background source specified', {
+          autoClear     : true,
+          clearDuration : 1500
+        });
+        this.set('showProgress', false);
+        this.set('progress', 0);
+        this.set('progressState', '');
+      }
+    },
+
+    sendLogoImg(badgeData) {
+      const _this = this;
+      console.log('here:', this.custLogoImage, _this.logoBackColor);
+      if (this.custLogoImage && this.logoImageData) {
+        this.get('store').createRecord('cust-img-file', {
+          uid       : this.uid,
+          imageData : this.logoImageData,
+          extension : '.png' })
+          .save()
+          .then(record => {
+            badgeData.logo_image = record.filename;
+            _this.send('sendBadge', badgeData);
+            this.set('progress', 70);
+            this.set('progressState', 'Preparing your badges');
+          })
+          .catch(error => {
+            let userErrors = this.get('errors.user');
+            if (userErrors !== undefined) {
+              _this.set('userError', userErrors);
+              userErrors.forEach(error => {
+                _this.get('notifications').clearAll();
+                _this.get('notifications').error(error.message, {
+                  autoClear     : true,
+                  clearDuration : 1500
+                });
+                this.set('showProgress', false);
+                this.set('progress', 0);
+                this.set('progressState', '');
+              });
+            }
+          });
+      } else if (!_this.custLogoImage && _this.logoBackColor) {
+        console.log(_this.logoBackColor);
+        let imageRecord = _this.get('store').createRecord('bg-color', {
+          uid      : _this.uid,
+          bg_color : _this.logoBackColor
+        });
+        imageRecord.save()
+          .then(record => {
+            badgeData.logo_text = _this.logo_text;
+            badgeData.logo_image = record.filename;
+            badgeData.logo_color = '#' + _this.logoFontColor;
             _this.send('sendBadge', badgeData);
             this.set('progress', 70);
             this.set('progressState', 'Preparing your badges');
@@ -300,13 +381,13 @@ export default Controller.extend({
       }
     },
 
-
     sendBadge(badgeData) {
       const _this = this;
       let badgeRecord = _this.get('store').createRecord('badge', badgeData);
       this.set('progress', 80);
       badgeRecord.save()
         .then(record => {
+          console.log(record);
           _this.set('overlay', false);
           _this.set('badgeGenerated', true);
           _this.set('genBadge', record);
@@ -325,7 +406,6 @@ export default Controller.extend({
           this.set('progress', 0);
         });
     },
-
 
     mutateCSV(csvData) {
       this.csvClicked();
@@ -394,45 +474,21 @@ export default Controller.extend({
       this.set('backColor', color);
     },
 
-    mutateCustomImage(imageData) {
+    mutateLogoFontColor(color) {
+      console.log(color);
+      this.set('logoFontColor', color);
+    },
+
+    mutateLogoBackColor(color) {
+      console.log(color);
+      this.set('logoBackColor', color);
+    },
+
+    mutateCustomImage() {
       this.custImgClicked();
-      this.set('prevImageData', imageData);
-      const _this = this;
-      let uid = this.get('uid');
-      if (uid === undefined || uid === '') {
-        const user = this.get('store').peekAll('user');
-        user.forEach(user_ => {
-          uid = user_.get('id');
-          _this.set('uid', uid);
-        });
-      }
-      let image_ = this.get('store').createRecord('cust-img-file', {
-        uid,
-        imageData,
-        extension: '.png'
-      });
-      image_.save()
-        .then(record => {
-          _this.set('custImgFile', record.filename);
-          _this.get('notifications').clearAll();
-          _this.get('notifications').success('Image uploaded Successfully', {
-            autoClear     : true,
-            clearDuration : 1500
-          });
-        })
-        .catch(err => {
-          let userErrors = image_.get('errors.user');
-          if (userErrors !== undefined) {
-            _this.set('userError', userErrors);
-            userErrors.forEach(error => {
-              _this.get('notifications').clearAll();
-              _this.get('notifications').error(error.message, {
-                autoClear     : true,
-                clearDuration : 1500
-              });
-            });
-          }
-        });
+      document.getElementById('custimg').style.display = 'block';
+      document.getElementById('custbg').style.display = 'none';
+      document.getElementById('custcol').style.display = 'none';
     },
 
     removeFTL() {
@@ -507,6 +563,18 @@ export default Controller.extend({
       }
       console.log(this.previewHeight);
       this.set('badgeSize', value);
+    },
+
+    customlogoimage() {
+      this.set('custLogoImage', true);
+      document.getElementById('custlogoimg').style.display = 'block';
+      document.getElementById('custlogocol').style.display = 'none';
+    },
+
+    customlogocol() {
+      this.set('custLogoImage', false);
+      document.getElementById('custlogoimg').style.display = 'none';
+      document.getElementById('custlogocol').style.display = 'block';
     },
 
     togglePreview() {

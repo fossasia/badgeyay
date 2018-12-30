@@ -1,6 +1,7 @@
 import base64
 import os
-from api.utils.svg_to_png import SVG2PNG
+from PIL import Image
+from io import BytesIO
 from flask import Blueprint, request, jsonify
 from api.utils.errors import ErrorResponse
 from api.helpers.verifyToken import loginRequired
@@ -155,13 +156,12 @@ def background_color():
     except Exception:
         return ErrorResponse(PayloadNotFound().message, 422, {'Content-Type': 'application/json'}).respond()
 
-    svg2png = SVG2PNG()
-
     bg_color = '#' + str(bg_color)
-    user_defined_path = svg2png.do_svg2png(1, bg_color)
-    with open(user_defined_path, "rb") as image_file:
-        image_data = base64.b64encode(image_file.read())
-        os.remove(user_defined_path)
+    img = Image.new('RGB', (744, 838), bg_color)
+
+    buff = BytesIO()
+    img.save(buff, format="JPEG")
+    image_data = base64.b64encode(buff.getvalue())
 
     try:
         imageName = saveToImage(imageFile=image_data.decode('utf-8'), extension=".png")
