@@ -10,6 +10,7 @@ export default Component.extend({
   },
   queryParams   : ['page'],
   page          : 1,
+  routing       : inject.service('-routing'),
   notifications : inject.service('notification-messages'),
   actions       : {
     deleteBadge(badge) {
@@ -33,15 +34,16 @@ export default Component.extend({
     sendBadgeName(badge) {
       this.get('sendBadgeName')(badge);
     },
-
     nextPage() {
-      let filter = {};
-      if (this.page > 1) {
+      if (this.page >= 1) {
+        const uid = this.get('session.uid');
+        var filter = {};
         filter.page = this.page + 1;
-        this.get('store').query('my-badges', filter)
+        filter.state = 'all';
+        this.get('nextPage')(this.page).query('my-badges', { uid, filter })
           .then(records => {
             if (records.length > 0) {
-              this.set('my-badges', records);
+              this.set('model', records);
               this.set('page', this.page + 1);
             } else {
               this.get('notifications').clearAll();
@@ -67,12 +69,14 @@ export default Component.extend({
       }
     },
     prevPage() {
-      let filter = {};
       if (this.page - 1 > 0) {
+        const uid = this.get('session.uid');
+        var filter = {};
         filter.page = this.page - 1;
-        this.get('store').query('my-badges', filter)
+        filter.state = 'all';
+        this.get('nextPage')(this.page).query('my-badges', { uid, filter })
           .then(records => {
-            this.set('my-badges', records);
+            this.set('model', records);
             this.set('page', this.page - 1);
           })
           .catch(err => {
@@ -107,4 +111,3 @@ export default Component.extend({
     }
   }
 });
-
