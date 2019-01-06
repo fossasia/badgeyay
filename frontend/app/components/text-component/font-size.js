@@ -17,6 +17,11 @@ export default Component.extend({
     this.fonttype3 = '';
     this.fonttype4 = '';
     this.fonttype5 = '';
+    this.fontcol1 = '';
+    this.fontcol2 = '';
+    this.fontcol3 = '';
+    this.fontcol4 = '';
+    this.fontcol5 = '';
     this.fonttypeall = false;
     this.fontsizeall = false;
     this._super(...arguments);
@@ -72,6 +77,13 @@ export default Component.extend({
       this.fonttype3,
       this.fonttype4,
       this.fonttype5
+    ]);
+    this.get('sendDefFontCol')([
+      this.fontcol1,
+      this.fontcol2,
+      this.fontcol3,
+      this.fontcol4,
+      this.fontcol5
     ]);
   },
 

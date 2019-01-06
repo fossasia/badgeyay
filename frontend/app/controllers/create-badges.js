@@ -18,11 +18,16 @@ export default Controller.extend({
   defFont3Size   : '10',
   defFont4Size   : '10',
   defFont5Size   : '10',
-  defFontType1   : '',
-  defFontType2   : '',
-  defFontType3   : '',
-  defFontType4   : '',
-  defFontType5   : '',
+  defFontType1   : 'Helvetica',
+  defFontType2   : 'Helvetica',
+  defFontType3   : 'Helvetica',
+  defFontType4   : 'Helvetica',
+  defFontType5   : 'Helvetica',
+  defFontCol1    : 'ffffff',
+  defFontCol2    : 'ffffff',
+  defFontCol3    : 'ffffff',
+  defFontCol4    : 'ffffff',
+  defFontCol5    : 'ffffff',
   uid            : '',
   textData       : '',
   nameData       : '',
@@ -118,8 +123,12 @@ export default Controller.extend({
         badgeData.csv = _this.csvFile;
       }
 
-      if (_this.defFontColor !== '' && _this.defFontColor !== undefined) {
-        badgeData.font_color = '#' + _this.defFontColor;
+      if (_this.defFontCol1 !== '' && _this.defFontCol1 !== undefined) {
+        badgeData.font_color_1 = '#' + _this.defFontCol1.toString();
+        badgeData.font_color_2 = '#' + _this.defFontCol2.toString();
+        badgeData.font_color_3 = '#' + _this.defFontCol3.toString();
+        badgeData.font_color_4 = '#' + _this.defFontCol4.toString();
+        badgeData.font_color_5 = '#' + _this.defFontCol5.toString();
       }
 
       if (_this.defFont1Size !== '' && _this.defFont1Size !== undefined) {
@@ -260,7 +269,6 @@ export default Controller.extend({
             }
           });
       } else if (_this.colorImage && _this.defColor !== undefined && _this.defColor !== '') {
-        console.log(_this.defColor);
         let imageRecord = _this.get('store').createRecord('bg-color', {
           uid      : _this.uid,
           bg_color : _this.defColor
@@ -452,10 +460,6 @@ export default Controller.extend({
         });
     },
 
-    mutateDefFontColor(fontcolor) {
-      this.set('defFontColor', fontcolor);
-      this.set('fontColor', fontcolor);
-    },
 
     mutateCustomFont(values) {
       const [fonttype1, fonttype2, fonttype3, fonttype4, fonttype5] = values;
@@ -505,8 +509,26 @@ export default Controller.extend({
       } else {
         this.set('previewHeight', false);
       }
-      console.log(this.previewHeight);
       this.set('badgeSize', value);
+    },
+    mutateFontCol(values) {
+      const [font1, font2, font3, font4, font5] = values;
+      if (font1 !== '') {
+        this.set('defFontCol1', font1);
+      }
+      if (font2 !== '') {
+        this.set('defFontCol2', font2);
+      }
+      if (font3 !== '') {
+        this.set('defFontCol3', font3);
+      }
+      if (font4 !== '') {
+        this.set('defFontCol4', font4);
+      }
+      if (font5 !== '') {
+        this.set('defFontCol5', font5);
+      }
+
     },
 
     togglePreview() {
