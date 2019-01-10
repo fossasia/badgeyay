@@ -7,12 +7,15 @@
             {{#link-to 'faq' class='item'}}
                 {{init-cap 'faq'}}
             {{/link-to}}
+             {{#link-to 'contact-badgeyay' class='item'}}
+                {{init-cap 'contact'}}
+            {{/link-to}}
         </div>
         <div class="right menu">
             <strong class="item">Follow us on</strong>
             {{#each socialMedia as |media|}}
                 <a class="item" href={{media.link}} target="_blank">
-                    <i class="{{media.id}} icon"></i>
+                    <i class="{{media.icon}}"></i>
                     <span class="mobile-hide">{{ first-cap media.id}}</span>
                 </a>
             {{/each}}
