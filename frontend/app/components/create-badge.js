@@ -4,6 +4,9 @@ const EmberObject  = Ember;
 
 export default Component.extend({
   didInsertElement() {
+    if (EmberObject.$(document)[0].getElementsByClassName('six wide column preview').length != 0) {
+      EmberObject.$(document)[0].getElementsByClassName('checkswitch')[0].checked = true;
+    }
     EmberObject.$(window).bind('resize scroll', function(e) {
       var card = EmberObject.$(document)[0].getElementsByClassName('six wide column preview');
       if (card.length != 0) {
