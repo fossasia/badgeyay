@@ -75,6 +75,7 @@ def generateBadges():
             font_color_3,
             font_color_4,
             font_color_5,
+            logo_color,
             badge_size,
             paper_size)
 
