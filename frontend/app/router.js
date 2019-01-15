@@ -48,6 +48,7 @@ router.map(function() {
   this.route('sitemap');
   this.route('contact-badgeyay');
   this.route('faq');
+  this.route('about');
   this.route('settings');
 });
 

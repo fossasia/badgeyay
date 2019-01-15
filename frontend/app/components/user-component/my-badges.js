@@ -1,7 +1,6 @@
 import Component from '@ember/component';
 import Ember from 'ember';
 import $ from 'jquery';
-
 const { inject } = Ember;
 
 export default Component.extend({
@@ -91,7 +90,14 @@ export default Component.extend({
       }
     },
     batchdownload() {
-      var arr = $('.checkbox');
+      var arr = $('.checkbox:checkbox:checked');
+      if (arr.length === 0) {
+        this.get('notifications').error('Please select atleast Badge to Download!', {
+          autoClear     : true,
+          clearDuration : 1500
+        });
+        return;
+      }
       var r = 0;
       var timeout = setInterval(function() {
         while (r < arr.length) {
@@ -102,6 +108,11 @@ export default Component.extend({
         }
         if (arr.length == r) {
           clearInterval(timeout);
+          var s = 0;
+          while (s < arr.length) {
+            arr[s].checked = false;
+            s = s + 1;
+          }
         }
       }, 1000);
     }
