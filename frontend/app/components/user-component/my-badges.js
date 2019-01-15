@@ -1,7 +1,6 @@
 import Component from '@ember/component';
 import Ember from 'ember';
 import $ from 'jquery';
-
 const { inject } = Ember;
 
 export default Component.extend({
@@ -10,6 +9,7 @@ export default Component.extend({
   },
   queryParams   : ['page'],
   page          : 1,
+  routing       : inject.service('-routing'),
   notifications : inject.service('notification-messages'),
   actions       : {
     deleteBadge(badge) {
@@ -33,15 +33,16 @@ export default Component.extend({
     sendBadgeName(badge) {
       this.get('sendBadgeName')(badge);
     },
-
     nextPage() {
-      let filter = {};
-      if (this.page > 1) {
+      if (this.page >= 1) {
+        const uid = this.get('session.uid');
+        var filter = {};
         filter.page = this.page + 1;
-        this.get('store').query('my-badges', filter)
+        filter.state = 'all';
+        this.get('nextPage')(this.page).query('my-badges', { uid, filter })
           .then(records => {
             if (records.length > 0) {
-              this.set('my-badges', records);
+              this.set('model', records);
               this.set('page', this.page + 1);
             } else {
               this.get('notifications').clearAll();
@@ -67,12 +68,14 @@ export default Component.extend({
       }
     },
     prevPage() {
-      let filter = {};
       if (this.page - 1 > 0) {
+        const uid = this.get('session.uid');
+        var filter = {};
         filter.page = this.page - 1;
-        this.get('store').query('my-badges', filter)
+        filter.state = 'all';
+        this.get('nextPage')(this.page).query('my-badges', { uid, filter })
           .then(records => {
-            this.set('my-badges', records);
+            this.set('model', records);
             this.set('page', this.page - 1);
           })
           .catch(err => {
@@ -91,7 +94,14 @@ export default Component.extend({
       }
     },
     batchdownload() {
-      var arr = $('.checkbox');
+      var arr = $('.checkbox:checkbox:checked');
+      if (arr.length === 0) {
+        this.get('notifications').error('Please select atleast Badge to Download!', {
+          autoClear     : true,
+          clearDuration : 1500
+        });
+        return;
+      }
       var r = 0;
       var timeout = setInterval(function() {
         while (r < arr.length) {
@@ -102,9 +112,13 @@ export default Component.extend({
         }
         if (arr.length == r) {
           clearInterval(timeout);
+          var s = 0;
+          while (s < arr.length) {
+            arr[s].checked = false;
+            s = s + 1;
+          }
         }
       }, 1000);
     }
   }
 });
-

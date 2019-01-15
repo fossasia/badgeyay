@@ -10,6 +10,8 @@
 
 // scss-lint:disable all
 .preview {
-  top : -1% !important;
+  top: -1% !important;
+  z-index: 1;
 }
+
 // scss-lint:enable all

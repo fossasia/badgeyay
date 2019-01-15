@@ -1,16 +1,31 @@
 import Controller from '@ember/controller';
 import ENV from '../config/environment';
-
+import Ember from 'ember';
+const { $ } = Ember;
 const { APP } = ENV;
-
 import { inject as service } from '@ember/service';
 
 export default Controller.extend({
+  init: () => {
+    $.ajax({
+      url       : '/images/default_logo.png',
+      xhrFields : {
+        responseType: 'blob'
+      },
+      success: (data, defImagedata) => {
+        var reader = new FileReader();
+        reader.onloadend = function() {
+          localStorage.setItem('defImagedata', reader.result);
+        };
+        reader.readAsDataURL(data);
+      }
+    });
+  },
   routing        : service('-routing'),
   notifications  : service('notification-messages'),
   authToken      : service('auth-session'),
-  defColor       : '',
-  backColor      : '',
+  defColor       : [''],
+  backColor      : [''],
   defFontColor   : 'ffffff',
   fontColor      : '',
   defFont1Size   : '10',
@@ -33,7 +48,8 @@ export default Controller.extend({
   nameData       : '',
   userError      : '',
   csvFile        : '',
-  custImgFile    : '',
+  csvType        : '',
+  custImgFile    : [''],
   logoImgFile    : '',
   badgeSize      : '',
   previewToggled : true,
@@ -42,12 +58,12 @@ export default Controller.extend({
   backLink       : APP.backLink,
   defPaperSize   : '',
   genBadge       : '',
-  defImageName   : 'red_futuristic',
+  defImageName   : ['red_futuristic'],
   csvEnable      : false,
   manualEnable   : false,
-  defImage       : true,
-  custImage      : false,
-  colorImage     : false,
+  defImage       : [true],
+  custImage      : [false],
+  colorImage     : [false],
   custLogoImage  : true,
   overlay        : false,
   showProgress   : false,
@@ -62,10 +78,13 @@ export default Controller.extend({
   socialHandle   : '@dompiero07',
   designation    : 'Social Media Manager',
   prevImageData  : 'https://raw.githubusercontent.com/fossasia/badgeyay/development/frontend/public/images/badge_backgrounds/red_futuristic.png',
-  imageData      : '/images/badge_backgrounds/red_futuristic.png',
+  imageData      : ['/images/badge_backgrounds/red_futuristic.png'],
   logoImageData  : '/images/default_logo.png',
-  csvClicked() {
+  ticketTypes    : [''],
+
+  csvClicked(type) {
     this.set('csvEnable', true);
+    this.set('csvType', type);
     this.set('manualEnable', false);
   },
 
@@ -74,26 +93,42 @@ export default Controller.extend({
     this.set('csvEnable', false);
   },
 
-  defImageClicked() {
-    this.set('defImage', true);
-    this.set('colorImage', false);
-    this.set('custImage', false);
-    this.set('imageData', null);
+  defImageClicked(idx) {
+    let defImage = this.get('defImage');
+    let colorImage = this.get('colorImage');
+    let custImage = this.get('custImage');
+    let imageData = this.get('imageData');
+    defImage.set(idx, true);
+    colorImage.set(idx, false);
+    custImage.set(idx, false);
+    imageData.set(idx, null);
   },
 
-  bgColorClicked() {
-    this.set('colorImage', true);
-    this.set('defImage', false);
-    this.set('custImage', false);
-    this.set('imageData', null);
+  bgColorClicked(idx) {
+    let defImage = this.get('defImage');
+    let colorImage = this.get('colorImage');
+    let custImage = this.get('custImage');
+    let imageData = this.get('imageData');
+    defImage.set(idx, false);
+    colorImage.set(idx, true);
+    custImage.set(idx, false);
+    imageData.set(idx, null);
   },
 
-  custImgClicked() {
-    this.set('custImage', true);
-    this.set('defImage', false);
-    this.set('colorImage', false);
+  custImgClicked(idx) {
+    let defImage = this.get('defImage');
+    let colorImage = this.get('colorImage');
+    let custImage = this.get('custImage');
+    defImage.set(idx, false);
+    colorImage.set(idx, false);
+    custImage.set(idx, true);
   },
+
   actions: {
+    defaultlogoimage() {
+      this.set('custLogoImage', true);
+      this.set('logoImageData', localStorage.getItem('defImagedata'));
+    },
     submitForm() {
       const _this = this;
       const user = _this.get('store').peekAll('user');
@@ -110,7 +145,9 @@ export default Controller.extend({
         uid        : _this.uid,
         paper_size : 'A3',
         badgename  : '',
-        badge_size : '4x3'
+        badge_size : '4x3',
+        csv_type   : '',
+        imageData  : []
       };
 
       if (_this.nameData !== '') {
@@ -127,6 +164,7 @@ export default Controller.extend({
 
       if (_this.csvEnable) {
         badgeData.csv = _this.csvFile;
+        badgeData.csv_type = _this.csvType;
       }
 
       if (_this.defFontCol1 !== '' && _this.defFontCol1 !== undefined) {
@@ -152,6 +190,8 @@ export default Controller.extend({
         badgeData.font_type_4 = _this.defFontType4;
         badgeData.font_type_5 = _this.defFontType5;
       }
+
+      badgeData.ticket_types = this.get('ticketTypes');
 
       _this.send('sendManualData', badgeData);
 
@@ -217,102 +257,71 @@ export default Controller.extend({
 
     sendDefaultImg(badgeData) {
       const _this = this;
-      if (_this.defImage) {
-        let imageRecord = _this.get('store').createRecord('def-image-upload', {
-          uid          : _this.uid,
-          defaultImage : _this.defImageName
-        });
-        imageRecord.save()
-          .then(record => {
-            _this.set('custImgFile', record.filename);
-            badgeData.image = _this.custImgFile;
-            _this.send('sendLogoImg', badgeData);
-            this.set('progress', 60);
-            this.set('progressState', 'Preparing your badges');
-          })
-          .catch(error => {
-            let userErrors = imageRecord.get('errors.user');
-            if (userErrors !== undefined) {
-              _this.set('userError', userErrors);
-              userErrors.forEach(error => {
-                _this.get('notifications').clearAll();
-                _this.get('notifications').error(error.message, {
-                  autoClear     : true,
-                  clearDuration : 1500
-                });
-                this.set('showProgress', false);
-                this.set('progress', 0);
-                this.set('progressState', '');
-              });
-            }
+      let promises = [];
+      this.get('ticketTypes').forEach((ticketType, idx) => {
+        if (_this.defImage[idx]) {
+          let imageRecord = _this.get('store').createRecord('def-image-upload', {
+            uid          : _this.uid,
+            defaultImage : _this.defImageName[idx]
           });
-      } else if (this.imageData) {
-        this.get('store').createRecord('cust-img-file', {
-          uid       : this.uid,
-          imageData : this.imageData,
-          extension : '.png' })
-          .save()
-          .then(record => {
-            badgeData.image = record.filename;
-            _this.send('sendLogoImg', badgeData);
-            this.set('progress', 60);
-            this.set('progressState', 'Preparing your badges');
-          })
-          .catch(error => {
-            let userErrors = this.get('errors.user');
-            if (userErrors !== undefined) {
-              _this.set('userError', userErrors);
-              userErrors.forEach(error => {
-                _this.get('notifications').clearAll();
-                _this.get('notifications').error(error.message, {
-                  autoClear     : true,
-                  clearDuration : 1500
-                });
-                this.set('showProgress', false);
-                this.set('progress', 0);
-                this.set('progressState', '');
-              });
-            }
+
+          promises.push(imageRecord.save());
+
+        } else if (_this.imageData[idx]) {
+          let custImgFile = _this.get('store').createRecord('cust-img-file', {
+            uid       : this.uid,
+            imageData : this.imageData[idx],
+            extension : '.png' });
+
+          promises.push(custImgFile.save());
+
+        } else if (_this.colorImage[idx] && _this.defColor[idx] !== undefined && _this.defColor[idx] !== '') {
+          let imageRecord = _this.get('store').createRecord('bg-color', {
+            uid      : _this.uid,
+            bg_color : _this.defColor[idx]
           });
-      } else if (_this.colorImage && _this.defColor !== undefined && _this.defColor !== '') {
-        let imageRecord = _this.get('store').createRecord('bg-color', {
-          uid      : _this.uid,
-          bg_color : _this.defColor
-        });
-        imageRecord.save()
-          .then(record => {
-            badgeData.image = record.filename;
-            badgeData.logo_image = record.filename;
-            _this.send('sendLogoImg', badgeData);
-            this.set('progress', 60);
-            this.set('progressState', 'Preparing your badges');
-          })
-          .catch(error => {
-            let userErrors = imageRecord.get('errors.user');
-            if (userErrors !== undefined) {
-              _this.set('userError', userErrors);
-              userErrors.forEach(error => {
-                _this.get('notifications').clearAll();
-                _this.get('notifications').error(error.message, {
-                  autoClear     : true,
-                  clearDuration : 1500
-                });
-                this.set('showProgress', false);
-                this.set('progress', 0);
-                this.set('progressState', '');
-              });
-            }
+
+          promises.push(imageRecord.save());
+
+        } else {
+          _this.get('notifications').clearAll();
+          _this.get('notifications').error('No background source specified', {
+            autoClear     : true,
+            clearDuration : 1500
           });
-      } else {
-        _this.get('notifications').clearAll();
-        _this.get('notifications').error('No background source specified', {
-          autoClear     : true,
-          clearDuration : 1500
+          this.set('showProgress', false);
+          this.set('progress', 0);
+          this.set('progressState', '');
+          return;
+        }
+      });
+
+      Promise.all(promises)
+        .then(records => {
+          badgeData.image = [];
+          records.forEach(record => {
+            badgeData.image.push(record.filename);
+          });
+          _this.set('progress', 60);
+          _this.set('progressState', 'Preparing your badges');
+          _this.send('sendLogoImg', badgeData);
+        })
+        .catch(error => {
+          let userErrors = this.get('errors.user');
+          if (userErrors !== undefined) {
+            _this.set('userError', userErrors);
+            userErrors.forEach(error => {
+              _this.get('notifications').clearAll();
+              _this.get('notifications').error(error.message, {
+                autoClear     : true,
+                clearDuration : 1500
+              });
+              _this.set('showProgress', false);
+              _this.set('progress', 0);
+              _this.set('progressState', '');
+            });
+          }
         });
-        this.set('showProgress', false);
-        this.set('progress', 0);
-        this.set('progressState', '');
-      }
     },
 
     sendLogoImg(badgeData) {
@@ -346,7 +355,6 @@ export default Controller.extend({
             }
           });
       } else if (!_this.custLogoImage && _this.logoBackColor) {
-        console.log(_this.logoBackColor);
         let imageRecord = _this.get('store').createRecord('bg-color', {
           uid      : _this.uid,
           bg_color : _this.logoBackColor
@@ -378,7 +386,7 @@ export default Controller.extend({
           });
       } else {
         _this.get('notifications').clearAll();
-        _this.get('notifications').error('No background source specified', {
+        _this.get('notifications').error('No Logo background source specified', {
           autoClear     : true,
           clearDuration : 1500
         });
@@ -394,7 +402,6 @@ export default Controller.extend({
       this.set('progress', 80);
       badgeRecord.save()
         .then(record => {
-          console.log(record);
           _this.set('overlay', false);
           _this.set('badgeGenerated', true);
           _this.set('genBadge', record);
@@ -414,8 +421,7 @@ export default Controller.extend({
         });
     },
 
-    mutateCSV(csvData) {
-      this.csvClicked();
+    uploadCSV(csvData) {
       const _this = this;
       const user = this.get('store').peekAll('user');
       let uid;
@@ -454,6 +460,28 @@ export default Controller.extend({
         });
     },
 
+    mutateCSV(csvData) {
+      this.csvClicked('basic');
+      this.send('uploadCSV', csvData);
+    },
+
+    mutateEventyayCSV(csvData) {
+      this.csvClicked('eventyay');
+      let csv = atob(csvData.substr(21));
+      let csvTextLines = csv.split(/\r\n|\n/);
+      var headers = csvTextLines[0].split(',');
+      let ticketTypes = new Set();
+      for (var i = 1; i < csvTextLines.length; i++) {
+        var data = csvTextLines[i].split(',');
+        if (data.length == headers.length) {
+          ticketTypes.add(data[10]);
+        }
+      }
+      console.log(ticketTypes);
+      this.set('ticketTypes', [...ticketTypes]);
+      this.send('uploadCSV', csvData);
+    },
+
     mutateText(txtData) {
       this.manualClicked();
       this.set('textData', txtData);
@@ -469,16 +497,19 @@ export default Controller.extend({
       this.set('nameData', namData);
     },
 
-    mutateBackground(id) {
-      this.defImageClicked();
+    mutateBackground(idx, id) {
+      this.defImageClicked(idx);
       let defImageRecord = this.get('store').peekRecord('def-image', id);
-      this.set('defImageName', defImageRecord.name);
+      let defImageName = this.get('defImageName');
+      defImageName.set(idx, defImageRecord.name);
     },
 
-    mutateDefColor(color) {
-      this.bgColorClicked();
-      this.set('defColor', color);
-      this.set('backColor', color);
+    mutateDefColor(idx, color) {
+      this.bgColorClicked(idx);
+      let defColor = this.get('defColor');
+      let backColor = this.get('backColor');
+      defColor.set(idx, color);
+      backColor.set(idx, color);
     },
 
     mutateLogoFontColor(color) {
@@ -491,11 +522,10 @@ export default Controller.extend({
       this.set('logoBackColor', color);
     },
 
-    mutateCustomImage() {
-      this.custImgClicked();
-      document.getElementById('custimg').style.display = 'block';
-      document.getElementById('custbg').style.display = 'none';
-      document.getElementById('custcol').style.display = 'none';
+    mutateCustomImage(idx, image) {
+      this.custImgClicked(idx);
+      let imageData = this.get('imageData');
+      imageData.set(idx, image);
     },
 
     removeFTL() {
@@ -560,9 +590,9 @@ export default Controller.extend({
 
     mutateBadgeSize(value) {
       if (value === '4.5x4') {
-        this.set('previewHeight', true);
-      } else {
         this.set('previewHeight', false);
+      } else {
+        this.set('previewHeight', true);
       }
       this.set('badgeSize', value);
     },

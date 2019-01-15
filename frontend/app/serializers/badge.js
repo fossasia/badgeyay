@@ -8,6 +8,7 @@ export default JSONAPISerializer.extend({
     json.badge = {
       uid          : json.data.attributes.uid,
       csv          : json.data.attributes.csv,
+      csv_type     : json.data.attributes['csv-type'],
       image        : json.data.attributes.image,
       logo_text    : json.data.attributes['logo-text'],
       logo_color   : json.data.attributes['logo-color'],
@@ -30,7 +31,8 @@ export default JSONAPISerializer.extend({
       font_type_4  : json.data.attributes['font-type-4'],
       font_type_5  : json.data.attributes['font-type-5'],
       paper_size   : json.data.attributes['paper-size'],
-      badge_size   : json.data.attributes['badge-size']
+      badge_size   : json.data.attributes['badge-size'],
+      ticket_types : json.data.attributes['ticket-types']
     };
 
     delete json.data;
