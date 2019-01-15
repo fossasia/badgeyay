@@ -17,11 +17,11 @@ export default Component.extend({
     this.fonttype3 = '';
     this.fonttype4 = '';
     this.fonttype5 = '';
-    this.fontcol1 = 'fffffff';
-    this.fontcol2 = 'fffffff';
-    this.fontcol3 = 'fffffff';
-    this.fontcol4 = 'fffffff';
-    this.fontcol5 = 'fffffff';
+    this.fontcol1 = 'ffffff';
+    this.fontcol2 = 'ffffff';
+    this.fontcol3 = 'ffffff';
+    this.fontcol4 = 'ffffff';
+    this.fontcol5 = 'ffffff';
     this.fonttypeall = false;
     this.fontsizeall = false;
     this._super(...arguments);
