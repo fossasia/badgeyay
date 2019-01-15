@@ -19,7 +19,7 @@ class Settings(db.Model):
     firebaseDatabaseURL = db.Column(db.String, nullable=False)
 
     # Email settings
-    fromMail = db.Column(db.String, default="bagdeyayofficial@gmail.com")
+    fromMail = db.Column(db.String, default="badgeyayofficial@gmail.com")
 
     # Send Grid config
     sendGridApiKey = db.Column(db.String)

@@ -20,12 +20,16 @@ def remove_extra(badge_page, offset):
 class GenerateBadges:
     def __init__(self,
                  image_name,
+                 logo_text,
+                 logo_image,
                  csv_name,
                  paper_dimen,
                  badge_size):
         self.APP_ROOT = app.config.get('BASE_DIR')
         self.image_name = image_name
+        self.logo_text = logo_text
         self.image = os.path.join(app.config.get('BASE_DIR'), 'static', 'uploads', 'image', image_name)
+        self.logo_image = os.path.join(app.config.get('BASE_DIR'), 'static', 'uploads', 'image', logo_image)
         self.csv = os.path.join(app.config.get('BASE_DIR'), 'static', 'uploads', 'csv', csv_name)
         self.paper_size = {'A3': ['297mm', '420mm'], 'A4': ['210mm', '297mm'], 'A5': ['148mm', '210mm'], 'A6': ['105mm', '148mm']}
         self.paper_dimen = paper_dimen
@@ -43,6 +47,7 @@ class GenerateBadges:
         except Exception as e:
             print(e)
 
+        shutil.copyfile(self.logo_image, os.path.join(self.folder, 'logo_image.png'))
         shutil.copyfile(self.image, os.path.join(self.folder, 'background.png'))
         shutil.copyfile(self.csv, os.path.join(self.folder, 'data.csv'))
 
@@ -76,6 +81,8 @@ class GenerateBadges:
                 text = html.escape(text)
                 content = content.replace('Person_{}_{}'.format(i + 1, j + 1), text)
             content = content.replace('Pictures/18033231.jpeg', os.path.join(self.folder, 'background.png'))
+            content = content.replace('Pictures/logo.jpeg', os.path.join(self.folder, 'logo_image.png'))
+            content = content.replace('Logo_Text', self.logo_text)
         with open(target, 'w', encoding='UTF-8') as f:
             f.write(content)
         remove_extra(target, len(rows) + 1)
