@@ -18,17 +18,23 @@ export default Controller.extend({
   defFont3Size   : '10',
   defFont4Size   : '10',
   defFont5Size   : '10',
-  defFontType1   : '',
-  defFontType2   : '',
-  defFontType3   : '',
-  defFontType4   : '',
-  defFontType5   : '',
+  defFontType1   : 'Helvetica',
+  defFontType2   : 'Helvetica',
+  defFontType3   : 'Helvetica',
+  defFontType4   : 'Helvetica',
+  defFontType5   : 'Helvetica',
+  defFontCol1    : 'ffffff',
+  defFontCol2    : 'ffffff',
+  defFontCol3    : 'ffffff',
+  defFontCol4    : 'ffffff',
+  defFontCol5    : 'ffffff',
   uid            : '',
   textData       : '',
   nameData       : '',
   userError      : '',
   csvFile        : '',
   custImgFile    : '',
+  logoImgFile    : '',
   badgeSize      : '',
   previewToggled : true,
   previewHeight  : '',
@@ -36,15 +42,19 @@ export default Controller.extend({
   backLink       : APP.backLink,
   defPaperSize   : '',
   genBadge       : '',
-  defImageName   : '',
+  defImageName   : 'red_futuristic',
   csvEnable      : false,
   manualEnable   : false,
-  defImage       : false,
-  custImage      : true,
+  defImage       : true,
+  custImage      : false,
   colorImage     : false,
+  custLogoImage  : true,
   overlay        : false,
   showProgress   : false,
   progress       : 0,
+  logo_text      : 'fossasia',
+  logoBackColor  : '',
+  logoFontColor  : '000',
   progressState  : '',
   firstName      : 'Dominic',
   lastName       : 'Del Piero',
@@ -52,7 +62,8 @@ export default Controller.extend({
   socialHandle   : '@dompiero07',
   designation    : 'Social Media Manager',
   prevImageData  : 'https://raw.githubusercontent.com/fossasia/badgeyay/development/frontend/public/images/badge_backgrounds/red_futuristic.png',
-  imageData      : 'https://raw.githubusercontent.com/fossasia/badgeyay/development/frontend/public/images/badge_backgrounds/red_futuristic.png',
+  imageData      : '/images/badge_backgrounds/red_futuristic.png',
+  logoImageData  : '/images/default_logo.png',
   csvClicked() {
     this.set('csvEnable', true);
     this.set('manualEnable', false);
@@ -118,8 +129,12 @@ export default Controller.extend({
         badgeData.csv = _this.csvFile;
       }
 
-      if (_this.defFontColor !== '' && _this.defFontColor !== undefined) {
-        badgeData.font_color = '#' + _this.defFontColor;
+      if (_this.defFontCol1 !== '' && _this.defFontCol1 !== undefined) {
+        badgeData.font_color_1 = '#' + _this.defFontCol1.toString();
+        badgeData.font_color_2 = '#' + _this.defFontCol2.toString();
+        badgeData.font_color_3 = '#' + _this.defFontCol3.toString();
+        badgeData.font_color_4 = '#' + _this.defFontCol4.toString();
+        badgeData.font_color_5 = '#' + _this.defFontCol5.toString();
       }
 
       if (_this.defFont1Size !== '' && _this.defFont1Size !== undefined) {
@@ -211,8 +226,8 @@ export default Controller.extend({
           .then(record => {
             _this.set('custImgFile', record.filename);
             badgeData.image = _this.custImgFile;
-            _this.send('sendBadge', badgeData);
-            this.set('progress', 70);
+            _this.send('sendLogoImg', badgeData);
+            this.set('progress', 60);
             this.set('progressState', 'Preparing your badges');
           })
           .catch(error => {
@@ -239,6 +254,77 @@ export default Controller.extend({
           .save()
           .then(record => {
             badgeData.image = record.filename;
+            _this.send('sendLogoImg', badgeData);
+            this.set('progress', 60);
+            this.set('progressState', 'Preparing your badges');
+          })
+          .catch(error => {
+            let userErrors = this.get('errors.user');
+            if (userErrors !== undefined) {
+              _this.set('userError', userErrors);
+              userErrors.forEach(error => {
+                _this.get('notifications').clearAll();
+                _this.get('notifications').error(error.message, {
+                  autoClear     : true,
+                  clearDuration : 1500
+                });
+                this.set('showProgress', false);
+                this.set('progress', 0);
+                this.set('progressState', '');
+              });
+            }
+          });
+      } else if (_this.colorImage && _this.defColor !== undefined && _this.defColor !== '') {
+        let imageRecord = _this.get('store').createRecord('bg-color', {
+          uid      : _this.uid,
+          bg_color : _this.defColor
+        });
+        imageRecord.save()
+          .then(record => {
+            badgeData.image = record.filename;
+            badgeData.logo_image = record.filename;
+            _this.send('sendLogoImg', badgeData);
+            this.set('progress', 60);
+            this.set('progressState', 'Preparing your badges');
+          })
+          .catch(error => {
+            let userErrors = imageRecord.get('errors.user');
+            if (userErrors !== undefined) {
+              _this.set('userError', userErrors);
+              userErrors.forEach(error => {
+                _this.get('notifications').clearAll();
+                _this.get('notifications').error(error.message, {
+                  autoClear     : true,
+                  clearDuration : 1500
+                });
+                this.set('showProgress', false);
+                this.set('progress', 0);
+                this.set('progressState', '');
+              });
+            }
+          });
+      } else {
+        _this.get('notifications').clearAll();
+        _this.get('notifications').error('No background source specified', {
+          autoClear     : true,
+          clearDuration : 1500
+        });
+        this.set('showProgress', false);
+        this.set('progress', 0);
+        this.set('progressState', '');
+      }
+    },
+
+    sendLogoImg(badgeData) {
+      const _this = this;
+      if (this.custLogoImage && this.logoImageData) {
+        this.get('store').createRecord('cust-img-file', {
+          uid       : this.uid,
+          imageData : this.logoImageData,
+          extension : '.png' })
+          .save()
+          .then(record => {
+            badgeData.logo_image = record.filename;
             _this.send('sendBadge', badgeData);
             this.set('progress', 70);
             this.set('progressState', 'Preparing your badges');
@@ -259,15 +345,17 @@ export default Controller.extend({
               });
             }
           });
-      } else if (_this.colorImage && _this.defColor !== undefined && _this.defColor !== '') {
-        console.log(_this.defColor);
+      } else if (!_this.custLogoImage && _this.logoBackColor) {
+        console.log(_this.logoBackColor);
         let imageRecord = _this.get('store').createRecord('bg-color', {
           uid      : _this.uid,
-          bg_color : _this.defColor
+          bg_color : _this.logoBackColor
         });
         imageRecord.save()
           .then(record => {
-            badgeData.image = record.filename;
+            badgeData.logo_text = _this.logo_text;
+            badgeData.logo_image = record.filename;
+            badgeData.logo_color = '#' + _this.logoFontColor;
             _this.send('sendBadge', badgeData);
             this.set('progress', 70);
             this.set('progressState', 'Preparing your badges');
@@ -300,13 +388,13 @@ export default Controller.extend({
       }
     },
 
-
     sendBadge(badgeData) {
       const _this = this;
       let badgeRecord = _this.get('store').createRecord('badge', badgeData);
       this.set('progress', 80);
       badgeRecord.save()
         .then(record => {
+          console.log(record);
           _this.set('overlay', false);
           _this.set('badgeGenerated', true);
           _this.set('genBadge', record);
@@ -325,7 +413,6 @@ export default Controller.extend({
           this.set('progress', 0);
         });
     },
-
 
     mutateCSV(csvData) {
       this.csvClicked();
@@ -394,45 +481,21 @@ export default Controller.extend({
       this.set('backColor', color);
     },
 
-    mutateCustomImage(imageData) {
+    mutateLogoFontColor(color) {
+      console.log(color);
+      this.set('logoFontColor', color);
+    },
+
+    mutateLogoBackColor(color) {
+      console.log(color);
+      this.set('logoBackColor', color);
+    },
+
+    mutateCustomImage() {
       this.custImgClicked();
-      this.set('prevImageData', imageData);
-      const _this = this;
-      let uid = this.get('uid');
-      if (uid === undefined || uid === '') {
-        const user = this.get('store').peekAll('user');
-        user.forEach(user_ => {
-          uid = user_.get('id');
-          _this.set('uid', uid);
-        });
-      }
-      let image_ = this.get('store').createRecord('cust-img-file', {
-        uid,
-        imageData,
-        extension: '.png'
-      });
-      image_.save()
-        .then(record => {
-          _this.set('custImgFile', record.filename);
-          _this.get('notifications').clearAll();
-          _this.get('notifications').success('Image uploaded Successfully', {
-            autoClear     : true,
-            clearDuration : 1500
-          });
-        })
-        .catch(err => {
-          let userErrors = image_.get('errors.user');
-          if (userErrors !== undefined) {
-            _this.set('userError', userErrors);
-            userErrors.forEach(error => {
-              _this.get('notifications').clearAll();
-              _this.get('notifications').error(error.message, {
-                autoClear     : true,
-                clearDuration : 1500
-              });
-            });
-          }
-        });
+      document.getElementById('custimg').style.display = 'block';
+      document.getElementById('custbg').style.display = 'none';
+      document.getElementById('custcol').style.display = 'none';
     },
 
     removeFTL() {
@@ -452,10 +515,6 @@ export default Controller.extend({
         });
     },
 
-    mutateDefFontColor(fontcolor) {
-      this.set('defFontColor', fontcolor);
-      this.set('fontColor', fontcolor);
-    },
 
     mutateCustomFont(values) {
       const [fonttype1, fonttype2, fonttype3, fonttype4, fonttype5] = values;
@@ -505,8 +564,38 @@ export default Controller.extend({
       } else {
         this.set('previewHeight', false);
       }
-      console.log(this.previewHeight);
       this.set('badgeSize', value);
+    },
+    mutateFontCol(values) {
+      const [font1, font2, font3, font4, font5] = values;
+      if (font1 !== '') {
+        this.set('defFontCol1', font1);
+      }
+      if (font2 !== '') {
+        this.set('defFontCol2', font2);
+      }
+      if (font3 !== '') {
+        this.set('defFontCol3', font3);
+      }
+      if (font4 !== '') {
+        this.set('defFontCol4', font4);
+      }
+      if (font5 !== '') {
+        this.set('defFontCol5', font5);
+      }
+
+    },
+
+    customlogoimage() {
+      this.set('custLogoImage', true);
+      document.getElementById('custlogoimg').style.display = 'block';
+      document.getElementById('custlogocol').style.display = 'none';
+    },
+
+    customlogocol() {
+      this.set('custLogoImage', false);
+      document.getElementById('custlogoimg').style.display = 'none';
+      document.getElementById('custlogocol').style.display = 'block';
     },
 
     togglePreview() {

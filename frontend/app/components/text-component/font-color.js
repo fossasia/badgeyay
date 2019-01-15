@@ -1,12 +1,17 @@
+
 import Component from '@ember/component';
 
 export default Component.extend({
   init() {
-    this.defFontColor = '';
-    this._super(...arguments);
-  },
+    this.font_color_1 = '';
+    this.font_color_2 = '';
 
-  focusOut() {
-    this.get('sendDefFontColor')(this.get('defFontColor'));
+    this.font_color_3 = '';
+
+    this.font_color_4 = '';
+
+    this.font_color_5 = '';
+
+    this._super(...arguments);
   }
 });

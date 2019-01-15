@@ -47,6 +47,7 @@ router.map(function() {
   });
   this.route('sitemap');
   this.route('faq');
+  this.route('about');
   this.route('settings');
 });
 
