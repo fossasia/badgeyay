@@ -1,5 +1,4 @@
 import Component from '@ember/component';
-
 export default Component.extend({
   init() {
     this._super(...arguments);
@@ -9,6 +8,8 @@ export default Component.extend({
     updateUserPassword() {
       let password = this.get('newPassword');
       this.get('sendUserPassword')(password);
+      this.$('#newPassword').val('');
+      this.$('#newPasswordVerify').val('');
     }
   },
 
