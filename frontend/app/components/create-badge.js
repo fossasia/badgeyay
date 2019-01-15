@@ -16,9 +16,9 @@ export default Component.extend({
           card[0].style.top = '0';
         } else if (e.type === 'scroll' && this.window.innerWidth >= 764 && this.scrollY >= 1278) {
           card[0].style.position = 'fixed';
-          EmberObject.$(document)[0].getElementsByClassName('bgImg ui raised segment')[0].style.height = '570px';
+          EmberObject.$(document)[0].getElementsByClassName('bgImg ui raised segment')[0].style.height = '100%';
         } else {
-          EmberObject.$(document)[0].getElementsByClassName('bgImg ui raised segment')[0].style.height = '600px';
+          EmberObject.$(document)[0].getElementsByClassName('bgImg ui raised segment')[0].style.height = '100%';
           card[0].style.position = 'inherit';
         }
       }

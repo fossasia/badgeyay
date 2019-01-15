@@ -7,12 +7,13 @@ export default ModalBase.extend({
   onVisible() {
     later(this, () => {
       const imageHeight = this.$('img').height();
-      this.$('.content').css('height', `${imageHeight}px`);
+      this.$('.content').css('height', `${imageHeight + 100}px`);
+      this.$('.content').css('max-height', '400px');
       this.$('img').croppie({
         customClass : 'croppie',
         viewport    : {
-          width  : 600,
-          height : 300,
+          width  : this.get('width'),
+          height : this.get('height'),
           type   : 'square'
         }
       });
