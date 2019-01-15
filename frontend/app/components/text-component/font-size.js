@@ -17,17 +17,35 @@ export default Component.extend({
     this.fonttype3 = '';
     this.fonttype4 = '';
     this.fonttype5 = '';
-    this.fontcol1 = '';
-    this.fontcol2 = '';
-    this.fontcol3 = '';
-    this.fontcol4 = '';
-    this.fontcol5 = '';
+    this.fontcol1 = 'ffffff';
+    this.fontcol2 = 'ffffff';
+    this.fontcol3 = 'ffffff';
+    this.fontcol4 = 'ffffff';
+    this.fontcol5 = 'ffffff';
     this.fonttypeall = false;
     this.fontsizeall = false;
     this._super(...arguments);
   },
 
   click() {
+    if (this.EmberObject.$('[name="fontcolall"]')[0].checked === true) {
+      var temp_col = this.fontcol1 || this.fontcol2 || this.fontcol3 || this.fontcol4 || this.fontcol5;
+      this.set('fontcol1', temp_col);
+      this.set('fontcol2', temp_col);
+      this.set('fontcol3', temp_col);
+      this.set('fontcol4', temp_col);
+      this.set('fontcol5', temp_col);
+      let sel1 = this.EmberObject.$('.ember-col-pick');
+      for (let i = 1; i < sel1.length; i = i + 1) {
+        this.EmberObject.$('#' + sel1[i].id)[0].style = 'pointer-events:none';
+      }
+    }
+    if (this.EmberObject.$('[name="fontcolall"]')[0].checked === false) {
+      let sel1 = this.EmberObject.$('.ember-col-pick');
+      for (let i = 1; i < sel1.length; i = i + 1) {
+        this.EmberObject.$('#' + sel1[i].id)[0].style = 'pointer-events:unset';
+      }
+    }
     if (this.EmberObject.$('[name="fonttypeall"]')[0].checked === true) {
       var temp_type = this.fonttype1 || this.fonttype2 || this.fonttype3 || this.fonttype4 || this.fonttype5;
       this.set('fonttype1', temp_type);
