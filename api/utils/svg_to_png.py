@@ -64,6 +64,8 @@ class SVG2PNG:
                         t.set("style", text_style_detail)
 
         for texts in element[3]:
+            if len(texts) < 8:
+                continue
             path = texts[7]
             style_detail = path.get("style")
             style_detail = style_detail.split(";")
