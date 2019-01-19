@@ -1,0 +1,2 @@
+web: gunicorn --pythonpath api/ run:app
+node: npm --prefix frontend/ start

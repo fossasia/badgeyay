@@ -1,7 +1,7 @@
 <div class="ui stackable grid">
     <div class="right floated right aligned two wide column">
         <label class="switch" {{action 'togglePreview'}} data-tooltip="Toggle Preview" data-position="left center">
-            <input type="checkbox" class="checkswitch" checked>
+            <input type="checkbox" class="checkswitch" >
             <span class="slider round"></span>
         </label>
     </div>
@@ -97,6 +97,47 @@
             <div class="ui clearing segment">
                 <div class="ui form width-container">
                     <p>
+                        <b>Select from one of the Logo sources</b>
+                        <a class="ui right floated icon orange basic button" data-tooltip="Best Suitable Image -> Size(width x height): 749 X 211px & Resolution: 300 DPI"
+                            data-position="right center">
+                            <i class="info icon"></i>
+                        </a>
+                    </p>
+
+                    <div class="ui radio checkbox">
+                        <input type="radio" name="tab1" value="igotnone" onclick={{action 'customlogoimage'}}/>
+                        <label>Add event logo</label>
+                    </div>
+                    <div class="content" id="custlogoimg" style='display:none;'>
+                        <div class="center aligned">
+                            {{ background-component/logo-image-component logoImageData=logoImageData }}
+                        </div>
+                    </div>
+                    <br>
+                    <div class="ui radio checkbox">
+                        <input type="radio" name="tab1" value="igotnone" onclick={{action 'customlogocol'}}/>
+                        <label {{action "customLogoColorClicked"}}>Use event name text</label>
+                    </div>
+                    <div class="content" id="custlogocol" style='display:none;'>
+                        <div class="center aligned">
+                            <div class="ui icon input">
+                                {{input type="text" value=logo_text }}
+                            </div>
+                            <p>Select a Font Color</p>
+                            <div class="center aligned">
+                                {{ background-component/color-bg-component sendDefColor=(action 'mutateLogoFontColor') backColor=logoFontColor }}
+                            </div>
+                            <p>Select a Background Color</p>
+                            <div class="center aligned">
+                                {{ background-component/color-bg-component sendDefColor=(action 'mutateLogoBackColor') backColor=logoBackColor }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="ui clearing segment">
+                <div class="ui form width-container">
+                    <p>
                         <b>Select from one of the background sources</b>
                         <a class="ui right floated icon orange basic button" data-tooltip="Best Suitable Image -> Size(width x height): 749 X 1049px & Resolution: 300 DPI"
                             data-position="right center">
@@ -105,17 +146,17 @@
                     </p>
 
                     <div class="ui radio checkbox">
-                        <input type="radio" name="tab1" value="igotnone" onclick="customimage();" />
+                        <input type="radio" name="tab2" value="igotnone" onclick={{action "mutateCustomImage"}}/>
                         <label>Upload a Custom Image</label>
                     </div>
                     <div class="content" id="custimg" style="display:none">
                         <div class="center aligned">
-                            {{ background-component/image-component imageData=imageData sendImage=(action 'mutateCustomImage') }}
+                            {{ background-component/image-component imageData=imageData }}
                         </div>
                     </div>
                     <br>
                     <div class="ui radio checkbox">
-                        <input type="radio" name="tab1" value="igotnone" onclick="custombg();" />
+                        <input type="radio" name="tab2" value="igotnone" onclick="custombg();" />
                         <label>Select from default backgrounds</label>
                     </div>
                     <br>
@@ -127,7 +168,7 @@
 
 
                     <div class="ui radio checkbox">
-                        <input type="radio" name="tab1" value="igotnone" onclick="customcol();" />
+                        <input type="radio" name="tab2" value="igotnone" onclick="customcol();" />
                         <label>Select from a custom color</label>
                     </div>
                     <div class="content" id="custcol" style="display: none">
@@ -139,19 +180,13 @@
             </div>
             <div class="ui segment">
                 <div class="ui form width-container">
-                    <p>
-                        <b>Select from following font customizations</b>
-                    </p>
+
+                    {{!-- {{ text-component/font-color}} --}}
+
                     <div class="ui horizontal divider"></div>
                     <div class="content">
                         <div class="center aligned">
-                            {{ text-component/font-color sendDefFontColor=(action 'mutateDefFontColor') fontColor=fontColor}}
-                        </div>
-                    </div>
-                    <div class="ui horizontal divider"></div>
-                    <div class="content">
-                        <div class="center aligned">
-                            {{ text-component/font-size fontsizeall=fontsizeall fonttypeall=fonttypeall sendDefSize=(action 'mutateFontSize') sendDefFont=(action
+                            {{ text-component/font-size fontsizeall=fontsizeall fonttypeall=fonttypeall sendDefSize=(action 'mutateFontSize') sendDefFontCol=(action 'mutateFontCol') sendDefFont=(action
                             'mutateCustomFont')}}
                         </div>
                     </div>
@@ -199,8 +234,10 @@
     <div class="{{if previewToggled 'six' 'hide'}} wide column preview">
         <!--Add Preview Section here-->
         {{ user-component/preview fn=firstName ln=lastName org=organization sh=socialHandle desg=designation defColor=defFontColor
-        font_fn=defFont1Size font_ln=defFont2Size font_desg=defFont3Size font_org=defFont4Size font_sh=defFont5Size defFont=defFont
-        defImageName=defImageName backImg=imageData defImage=defImage custImage=custImage previewHeight=previewHeight
+        font_fn=defFont1Size font_ln=defFont2Size font_desg=defFont3Size font_org=defFont4Size font_sh=defFont5Size fontcol_fn=defFontCol1
+        fontcol_ln=defFontCol2 fontcol_desg=defFontCol3 fontcol_org=defFontCol4 fontcol_sh=defFontCol5 defFont=defFont
+        defImageName=defImageName backImg=imageData backColor=backColor custLogoImage=custLogoImage logoImageData=logoImageData
+        logoBackColor=logoBackColor logoFontColor=logoFontColor logo_text=logo_text defImage=defImage custImage=custImage previewHeight=previewHeight
         }}
     </div>
 </div>{{overlay-welcome user=user removeFTL=(action 'removeFTL')}}

@@ -8,11 +8,15 @@ from PyPDF2 import PdfFileMerger
 class MergeBadges:
     def __init__(self,
                  image_name,
+                 logo_text,
+                 logo_image,
                  csv_name,
                  paper_size,
                  badge_size):
         self.APP_ROOT = app.config.get('BASE_DIR')
         self.badge_generator = GenerateBadges(image_name,
+                                              logo_text,
+                                              logo_image,
                                               csv_name,
                                               paper_size,
                                               badge_size)
