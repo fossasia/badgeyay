@@ -35,13 +35,14 @@
                 <div class="field required">
                     <div class="ui left icon input">
                         <i class="lock icon"></i>
-                        {{input type="password" id="pwdConfirm" value=password_repeat name="password_repeat" placeholder="Re-enter Password"}}
+                        {{input type="password" id="pwdConfirm" value=password_repeat name="password_repeat" placeholder="Re-enter Password" }}
                         <div class="ui small basic icon buttons">
                             <button class="ui button" id="eye2" {{ action 'showPasswordSignupConfirm'}}>
                                 <i class="eye slash icon"></i>
                             </button>
                         </div>
                     </div>
+                    <div id="msg" style="text-align:center"></div>
                     <div class="ui center aligned segment basic">
                         <button disabled id="signUpSubmit" class="ui fluid large submit orange basic button" style="margin-bottom: 10px;" type="submit">
                             Sign Up
