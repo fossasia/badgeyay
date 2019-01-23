@@ -19,18 +19,24 @@ def remove_extra(badge_page, offset):
 
 class GenerateBadges:
     def __init__(self,
-                 image_name,
+                 image_names,
                  logo_text,
                  logo_image,
                  csv_name,
+                 csv_type,
                  paper_dimen,
-                 badge_size):
+                 badge_size,
+                 ticketTypes):
         self.APP_ROOT = app.config.get('BASE_DIR')
-        self.image_name = image_name
+        self.image_names = image_names
+        self.ticketTypes = ticketTypes
         self.logo_text = logo_text
-        self.image = os.path.join(app.config.get('BASE_DIR'), 'static', 'uploads', 'image', image_name)
+        self.images = []
+        for image_name in image_names:
+            self.images.append(os.path.join(app.config.get('BASE_DIR'), 'static', 'uploads', 'image', image_name))
         self.logo_image = os.path.join(app.config.get('BASE_DIR'), 'static', 'uploads', 'image', logo_image)
         self.csv = os.path.join(app.config.get('BASE_DIR'), 'static', 'uploads', 'csv', csv_name)
+        self.csv_type = csv_type
         self.paper_size = {'A3': ['297mm', '420mm'], 'A4': ['210mm', '297mm'], 'A5': ['148mm', '210mm'], 'A6': ['105mm', '148mm']}
         self.paper_dimen = paper_dimen
         dimen = badge_config[paper_dimen][badge_size]
@@ -41,32 +47,46 @@ class GenerateBadges:
             self.CONTENT = f.read()
 
     def run_generator(self):
-        self.folder = os.path.join(self.APP_ROOT, 'static', 'temporary', os.path.splitext(self.image_name)[0])
+        self.folder = os.path.join(self.APP_ROOT, 'static', 'temporary', os.path.splitext(self.image_names[0])[0])
         try:
             os.makedirs(self.folder)
         except Exception as e:
             print(e)
 
         shutil.copyfile(self.logo_image, os.path.join(self.folder, 'logo_image.png'))
-        shutil.copyfile(self.image, os.path.join(self.folder, 'background.png'))
+        for i in range(len(self.images)):
+            shutil.copyfile(self.images[i], os.path.join(self.folder, 'background'+str(i)+'.png'))
         shutil.copyfile(self.csv, os.path.join(self.folder, 'data.csv'))
 
         with open(os.path.join(self.folder, 'data.csv'), encoding='UTF-8') as f:
             rows = []
             i = 1
-            for row in csv.reader(f):
-                rows.append(row)
-                if self.wrap:
+            for idx in range(len(self.ticketTypes)):
+                f.seek(0)
+                for row in csv.reader(f):
+                    if self.csv_type == 'eventyay':
+                        if (row[-1] != self.ticketTypes[idx]):
+                            continue
+                        _row = row[3:5]
+                        _row.append(row[-3])
+                        _row.append(row[5])
+                        row = _row
                     rows.append(row)
-                if len(rows) == self.NUMBER_OF_BADGES_PER_PAGE:
-                    self.generate_badges(rows, i)
+                    if self.wrap:
+                        rows.append(row)
+                    if len(rows) == self.NUMBER_OF_BADGES_PER_PAGE:
+                        self.generate_badges(rows, i, idx)
+                        rows = []
+                        i += 1
+                if rows:
+                    self.generate_badges(rows, i, idx)
                     rows = []
                     i += 1
-            if rows:
-                self.generate_badges(rows, i)
 
-    def generate_badges(self, rows, index):
+    def generate_badges(self, rows, index, idx):
+        print(rows, index)
         target = os.path.join(self.folder, 'badges_{}.svg'.format(index))
+        print(target)
         content = self.CONTENT
         for i, row in enumerate(rows):
             row = [entry for entry in row if not entry.isspace()]
@@ -79,8 +99,9 @@ class GenerateBadges:
 
             for j, text in enumerate(row):
                 text = html.escape(text)
+                print(text)
                 content = content.replace('Person_{}_{}'.format(i + 1, j + 1), text)
-            content = content.replace('Pictures/18033231.jpeg', os.path.join(self.folder, 'background.png'))
+            content = content.replace('Pictures/18033231.jpeg', os.path.join(self.folder, 'background'+str(idx)+'.png'))
             content = content.replace('Pictures/logo.jpeg', os.path.join(self.folder, 'logo_image.png'))
             content = content.replace('Logo_Text', self.logo_text)
         with open(target, 'w', encoding='UTF-8') as f:
