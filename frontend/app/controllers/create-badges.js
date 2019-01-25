@@ -1,11 +1,27 @@
 import Controller from '@ember/controller';
 import ENV from '../config/environment';
-
+import Ember from 'ember';
+const { $ } = Ember;
 const { APP } = ENV;
-
 import { inject as service } from '@ember/service';
 
 export default Controller.extend({
+  init: () => {
+    $.ajax({
+      url       : 'https://raw.githubusercontent.com/fossasia/badgeyay/development/frontend/public/images/default_logo.png',
+      xhrFields : {
+        responseType: 'blob'
+      },
+      success: (data, defImagedata) => {
+        var reader = new FileReader();
+        reader.onloadend = function(defImagedata) {
+          this.defImagedata = reader.result;
+        };
+        reader.readAsDataURL(data);
+      }
+    });
+  },
+  defImagedata   : '',
   routing        : service('-routing'),
   notifications  : service('notification-messages'),
   authToken      : service('auth-session'),
@@ -94,6 +110,11 @@ export default Controller.extend({
     this.set('colorImage', false);
   },
   actions: {
+    defaultlogoimage() {
+      this.set('custLogoImage', true);
+      this.set('logoImageData', this.defImagedata);
+    },
+
     submitForm() {
       const _this = this;
       const user = _this.get('store').peekAll('user');
