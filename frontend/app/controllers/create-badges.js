@@ -83,10 +83,10 @@ export default Controller.extend({
     let colorImage = this.get('colorImage');
     let custImage = this.get('custImage');
     let imageData = this.get('imageData');
-    this.set('defImage', defImage.slice(0,idx).concat(true).concat(defImage.slice(idx+1)));
-    this.set('colorImage', colorImage.slice(0,idx).concat(false).concat(defImage.slice(idx+1)));
-    this.set('custImage', custImage.slice(0,idx).concat(false).concat(defImage.slice(idx+1)));
-    this.set('imageData', imageData.slice(0,idx).concat(null).concat(defImage.slice(idx+1)));
+    defImage.set(idx, true);
+    colorImage.set(idx, false);
+    custImage.set(idx, false);
+    imageData.set(idx, null);
   },
 
   bgColorClicked(idx) {
@@ -94,19 +94,19 @@ export default Controller.extend({
     let colorImage = this.get('colorImage');
     let custImage = this.get('custImage');
     let imageData = this.get('imageData');
-    this.set('defImage', defImage.slice(0,idx).concat(false).concat(defImage.slice(idx+1)));
-    this.set('colorImage', colorImage.slice(0,idx).concat(true).concat(defImage.slice(idx+1)));
-    this.set('custImage', custImage.slice(0,idx).concat(false).concat(defImage.slice(idx+1)));
-    this.set('imageData', imageData.slice(0,idx).concat(null).concat(defImage.slice(idx+1)));
+    defImage.set(idx, false);
+    colorImage.set(idx, true);
+    custImage.set(idx, false);
+    imageData.set(idx, null);
   },
 
   custImgClicked(idx) {
     let defImage = this.get('defImage');
     let colorImage = this.get('colorImage');
     let custImage = this.get('custImage');
-    this.set('defImage', defImage.slice(0,idx).concat(false).concat(defImage.slice(idx+1)));
-    this.set('colorImage', colorImage.slice(0,idx).concat(false).concat(defImage.slice(idx+1)));
-    this.set('custImage', custImage.slice(0,idx).concat(true).concat(defImage.slice(idx+1)));
+    defImage.set(idx, false);
+    colorImage.set(idx, false);
+    custImage.set(idx, true);
   },
 
   actions: {
@@ -128,7 +128,7 @@ export default Controller.extend({
         badgename  : '',
         badge_size : '4x3',
         csv_type   : '',
-        imageData  : [],
+        imageData  : []
       };
 
       if (_this.nameData !== '') {
@@ -172,7 +172,7 @@ export default Controller.extend({
         badgeData.font_type_5 = _this.defFontType5;
       }
 
-       badgeData.ticket_types = this.get('ticketTypes');
+      badgeData.ticket_types = this.get('ticketTypes');
 
       _this.send('sendManualData', badgeData);
 
@@ -239,7 +239,6 @@ export default Controller.extend({
     sendDefaultImg(badgeData) {
       const _this = this;
       let promises = [];
-      console.log(this.get('ticketTypes'));
       this.get('ticketTypes').forEach((ticketType, idx) => {
         if (_this.defImage[idx]) {
           let imageRecord = _this.get('store').createRecord('def-image-upload', {
@@ -279,16 +278,13 @@ export default Controller.extend({
       });
 
       Promise.all(promises)
-        .then((records) => {
+        .then(records => {
           badgeData.image = [];
-          console.log(records);
           records.forEach(record => {
             badgeData.image.push(record.filename);
-            console.log(record.filename);
           });
           _this.set('progress', 60);
           _this.set('progressState', 'Preparing your badges');
-          console.log(badgeData.image);
           _this.send('sendLogoImg', badgeData);
         })
         .catch(error => {
@@ -340,7 +336,6 @@ export default Controller.extend({
             }
           });
       } else if (!_this.custLogoImage && _this.logoBackColor) {
-        console.log(_this.logoBackColor);
         let imageRecord = _this.get('store').createRecord('bg-color', {
           uid      : _this.uid,
           bg_color : _this.logoBackColor
@@ -372,7 +367,7 @@ export default Controller.extend({
           });
       } else {
         _this.get('notifications').clearAll();
-        _this.get('notifications').error('No background source specified', {
+        _this.get('notifications').error('No Logo background source specified', {
           autoClear     : true,
           clearDuration : 1500
         });
@@ -388,7 +383,6 @@ export default Controller.extend({
       this.set('progress', 80);
       badgeRecord.save()
         .then(record => {
-          console.log(record);
           _this.set('overlay', false);
           _this.set('badgeGenerated', true);
           _this.set('genBadge', record);
@@ -458,12 +452,11 @@ export default Controller.extend({
       let csvTextLines = csv.split(/\r\n|\n/);
       var headers = csvTextLines[0].split(',');
       let ticketTypes = new Set();
-      for (var i=1; i<csvTextLines.length; i++) {
-          var data = csvTextLines[i].split(',');
-          console.log(data);
-          if (data.length == headers.length) {
-              ticketTypes.add(data[10]);
-          }
+      for (var i = 1; i < csvTextLines.length; i++) {
+        var data = csvTextLines[i].split(',');
+        if (data.length == headers.length) {
+          ticketTypes.add(data[10]);
+        }
       }
       console.log(ticketTypes);
       this.set('ticketTypes', [...ticketTypes]);
@@ -490,18 +483,14 @@ export default Controller.extend({
       let defImageRecord = this.get('store').peekRecord('def-image', id);
       let defImageName = this.get('defImageName');
       defImageName.set(idx, defImageRecord.name);
-      console.log(this.get('defImageName'));
     },
 
     mutateDefColor(idx, color) {
       this.bgColorClicked(idx);
       let defColor = this.get('defColor');
       let backColor = this.get('backColor');
-      defColor[idx] = color;
-      backColor[idx] = color;
-      this.set('defColor', defColor);
-      this.set('backColor', backColor);
-      console.log(this.get('backColor'));
+      defColor.set(idx, color);
+      backColor.set(idx, color);
     },
 
     mutateLogoFontColor(color) {
@@ -517,9 +506,7 @@ export default Controller.extend({
     mutateCustomImage(idx, image) {
       this.custImgClicked(idx);
       let imageData = this.get('imageData');
-      imageData[idx] = image;
-      this.set('imageData', imageData);
-      console.log(this.get('imageData'));
+      imageData.set(idx, image);
     },
 
     removeFTL() {
@@ -608,6 +595,9 @@ export default Controller.extend({
         this.set('defFontCol5', font5);
       }
 
+    },
+
+    defaultlogoimage() {
     },
 
     customlogoimage() {

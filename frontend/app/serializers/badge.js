@@ -32,7 +32,7 @@ export default JSONAPISerializer.extend({
       font_type_5  : json.data.attributes['font-type-5'],
       paper_size   : json.data.attributes['paper-size'],
       badge_size   : json.data.attributes['badge-size'],
-      ticket_types  : json.data.attributes['ticket-types'],
+      ticket_types : json.data.attributes['ticket-types']
     };
 
     delete json.data;

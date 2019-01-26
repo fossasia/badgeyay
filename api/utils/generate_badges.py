@@ -55,7 +55,7 @@ class GenerateBadges:
 
         shutil.copyfile(self.logo_image, os.path.join(self.folder, 'logo_image.png'))
         for i in range(len(self.images)):
-            shutil.copyfile(self.images[i], os.path.join(self.folder, 'background'+str(i)+'.png'))
+            shutil.copyfile(self.images[i], os.path.join(self.folder, 'background' + str(i) + '.png'))
         shutil.copyfile(self.csv, os.path.join(self.folder, 'data.csv'))
 
         with open(os.path.join(self.folder, 'data.csv'), encoding='UTF-8') as f:
@@ -84,9 +84,7 @@ class GenerateBadges:
                     i += 1
 
     def generate_badges(self, rows, index, idx):
-        print(rows, index)
         target = os.path.join(self.folder, 'badges_{}.svg'.format(index))
-        print(target)
         content = self.CONTENT
         for i, row in enumerate(rows):
             row = [entry for entry in row if not entry.isspace()]
@@ -99,9 +97,8 @@ class GenerateBadges:
 
             for j, text in enumerate(row):
                 text = html.escape(text)
-                print(text)
                 content = content.replace('Person_{}_{}'.format(i + 1, j + 1), text)
-            content = content.replace('Pictures/18033231.jpeg', os.path.join(self.folder, 'background'+str(idx)+'.png'))
+            content = content.replace('Pictures/18033231.jpeg', os.path.join(self.folder, 'background' + str(idx) + '.png'))
             content = content.replace('Pictures/logo.jpeg', os.path.join(self.folder, 'logo_image.png'))
             content = content.replace('Logo_Text', self.logo_text)
         with open(target, 'w', encoding='UTF-8') as f:
