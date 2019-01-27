@@ -10,8 +10,8 @@
             {{#link-to 'about' class='item'}}
             {{init-cap 'About Us'}}
             {{/link-to}}
-             {{#link-to 'contact-badgeyay' class='item'}}
-                {{init-cap 'contact'}}
+            {{#link-to 'contact-badgeyay' class='item'}}
+            {{init-cap 'contact'}}
             {{/link-to}}
         </div>
         <div class="right menu">
@@ -43,7 +43,7 @@
                     {{#link-to 'contact-badgeyay' class='item'}}
                     {{init-cap 'contact'}}
                     {{/link-to}}
-                    
+
                 </div>
             </div>
             <div class="seven wide column ">
@@ -79,9 +79,9 @@
                     Connect with Us
                 </h4>
                 <div class="ui inverted link list">
-                     {{#each socialMedia as |media|}}
+                    {{#each socialMedia as |media|}}
                     <a class="item" href={{media.link}} target="_blank" rel="noopener">
-                        <i class="{{media.id}} icon"></i>{{ first-cap media.id}}
+                        <i class="{{media.icon}}"></i>{{ first-cap media.id}}
                     </a>
                     {{/each}}
                 </div>
