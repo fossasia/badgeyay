@@ -10,9 +10,11 @@
                 <div class="field required">
                     <div class="ui left icon input">
                         <i class="mail icon"></i>
-                        {{input type="text" value=email name="email" placeholder="E-mail address"}}
+                        {{input type="text" value=email name="email" id="email" keyPress=(action 'emailcheck') placeholder="E-mail address"}}
                     </div>
+                    <div id="emailstatus" ></div>
                 </div>
+
                 <div class="field required">
                     <div class="ui left icon input">
                         <i class="user icon"></i>

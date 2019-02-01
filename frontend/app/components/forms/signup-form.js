@@ -29,6 +29,15 @@ export default Component.extend({
         }
       }
     },
+    emailcheck(event) {
+      var email = $('#email').val();
+      var regex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+      if (regex.test(email)) {
+        this.get('emailcheck')(email);
+      } else {
+        $('#emailstatus').text('Email Invalid');
+      }
+    },
     showPasswordSignupConfirm() {
       function show() {
         $('#pwdConfirm').attr('type',  'text');

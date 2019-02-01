@@ -21,6 +21,16 @@ from api.schemas.user import (
 router = Blueprint('registerUser', __name__)
 
 
+@router.route('/checkemail', methods=['GET'])
+def check_user():
+    email = request.args.get('email',1,type=str)
+    print(email)
+    if auth.check_user_by_email(email) == "EXISTS":
+        print("exists")
+        return jsonify({"data":{"attributes":{"exist":"Email Exists"},"links":{"self":"/user/checkemail"},"type":"checkuser","id":"null"},"links":{"self":"check-email"}})
+    else :
+        return jsonify({"data":{"attributes":{"exist":"Email Available"},"links":{"self":"/user/checkemail"},"type":"checkuser","id":"null"},"links":{"self":"check-email"}})
+
 @router.route('/register', methods=['POST'])
 def register_user():
     schema = UserSchema()
@@ -88,6 +98,7 @@ def register_user():
                 perm.save_to_db()
         else:
             newUser = user_
+        print(jsonify(schema.dump(newUser).data))
         return jsonify(schema.dump(newUser).data)
 
 

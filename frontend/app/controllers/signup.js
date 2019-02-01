@@ -1,5 +1,5 @@
 import Controller from '@ember/controller';
-
+import $ from 'jquery';
 import { inject as service } from '@ember/service';
 
 export default Controller.extend({
@@ -30,13 +30,13 @@ export default Controller.extend({
                 clearDuration : 1500
               });
             });
-          } else {
-            _this.get('notifications').error('Sign Up Failed ! Please try again', {
-              autoClear     : true,
-              clearDuration : 1500
-            });
           }
         });
+    },
+    emailcheck(email) {
+      this.get('store').queryRecord('checkuser', { email }).then(function(data) {
+        $('#emailstatus').text(data.get('exist'));
+      });
     }
   }
 });
