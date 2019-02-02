@@ -2,12 +2,12 @@
 <div class="ui stackable grid">
     <div class="right floated right aligned two wide column">
         <label class="switch" {{action 'togglePreview'}} data-tooltip="Toggle Preview" data-position="left center">
-            <input type="checkbox" class="checkswitch" >
+            <input type="checkbox" class="checkswitch">
             <span class="slider round"></span>
         </label>
     </div>
 </div>
-{{!----Event Listeners For Perview----}}
+{{!----Event Listeners For Perview----}}+
 {{#create-badge}}
 {{/create-badge}}
 <div class="ui stackable mobile reversed grid">
@@ -39,11 +39,12 @@
                         <b>Select from one of the Input Sources</b>
                         <a class="ui right floated icon orange basic button tooltip" href="{{href-to 'user-guide'}}" target="_blank" data-tooltip="User Input Guide"
                             data-position="right center">
+
                             <i class="info icon"></i>
                         </a>
                     </p>
-                    <div class="ui radio checkbox"  onclick="showcsv();">
-                        <input type="radio" name="tab" value="igotnone"/>
+                    <div class="ui radio checkbox" onclick="showcsv();">
+                        <input type="radio" name="tab" value="igotnone" />
                         <label>Upload CSV</label>
                     </div>
                     <div class="content" id="csv" style="display: none">
@@ -106,7 +107,12 @@
                     </p>
 
                     <div class="ui radio checkbox">
-                        <input type="radio" name="tab1" value="igotnone" onclick={{action 'customlogoimage'}}/>
+                        <input type="radio" name="tab1" value="igotnone" onclick={{action 'defaultlogoimage'}} />
+                        <label>Use default FOSSASIA logo</label>
+                    </div>
+                    <br>
+                    <div class="ui radio checkbox">
+                        <input type="radio" name="tab1" value="igotnone" onclick={{action 'customlogoimage'}} />
                         <label>Add event logo</label>
                     </div>
                     <div class="content" id="custlogoimg" style='display:none;'>
@@ -116,7 +122,7 @@
                     </div>
                     <br>
                     <div class="ui radio checkbox">
-                        <input type="radio" name="tab1" value="igotnone" onclick={{action 'customlogocol'}}/>
+                        <input type="radio" name="tab1" value="igotnone" onclick={{action 'customlogocol'}} />
                         <label {{action "customLogoColorClicked"}}>Use event name text</label>
                     </div>
                     <div class="content" id="custlogocol" style='display:none;'>
@@ -126,11 +132,13 @@
                             </div>
                             <p>Select a Font Color</p>
                             <div class="center aligned">
-                                {{ background-component/color-bg-component sendDefColor=(action 'mutateLogoFontColor') backColor=logoFontColor }}
+                                {{ background-component/color-bg-component sendDefColor=(action 'mutateLogoFontColor')
+                                backColor=logoFontColor }}
                             </div>
                             <p>Select a Background Color</p>
                             <div class="center aligned">
-                                {{ background-component/color-bg-component sendDefColor=(action 'mutateLogoBackColor') backColor=logoBackColor }}
+                                {{ background-component/color-bg-component sendDefColor=(action 'mutateLogoBackColor')
+                                backColor=logoBackColor }}
                             </div>
                         </div>
                     </div>
@@ -147,7 +155,7 @@
                     </p>
 
                     <div class="ui radio checkbox">
-                        <input type="radio" name="tab2" value="igotnone" onclick={{action "mutateCustomImage"}}/>
+                        <input type="radio" name="tab2" value="igotnone" onclick={{action "mutateCustomImage"}} />
                         <label>Upload a Custom Image</label>
                     </div>
                     <div class="content" id="custimg" style="display:none">
@@ -163,7 +171,8 @@
                     <br>
                     <div class="content" id="custbg" style="display: none">
                         <div class="center aligned">
-                            {{ background-component/def-image-component defImages=defImages sendDefImage=(action 'mutateBackground') }}
+                            {{ background-component/def-image-component defImages=defImages sendDefImage=(action
+                            'mutateBackground') }}
                         </div>
                     </div>
 
@@ -174,7 +183,8 @@
                     </div>
                     <div class="content" id="custcol" style="display: none">
                         <div class="center aligned">
-                            {{ background-component/color-bg-component sendDefColor=(action 'mutateDefColor') backColor=backColor }}
+                            {{ background-component/color-bg-component sendDefColor=(action 'mutateDefColor')
+                            backColor=backColor }}
                         </div>
                     </div>
                 </div>
@@ -187,13 +197,16 @@
                     <div class="ui horizontal divider"></div>
                     <div class="content">
                         <div class="center aligned">
-                            {{ text-component/font-size fontsizeall=fontsizeall fonttypeall=fonttypeall sendDefSize=(action 'mutateFontSize') sendDefFontCol=(action 'mutateFontCol') sendDefFont=(action
+                            {{ text-component/font-size fontsizeall=fontsizeall fonttypeall=fonttypeall
+                            sendDefSize=(action 'mutateFontSize') sendDefFontCol=(action 'mutateFontCol')
+                            sendDefFont=(action
                             'mutateCustomFont')}}
                         </div>
                     </div>
                 </div>
             </div>
-            <button {{action "submitForm"}} class="ui fluid orange {{if authToken.isEmailVerified '' 'disabled'}} button">Create Badges</button>
+            <button {{action "submitForm"}} class="ui fluid orange {{if authToken.isEmailVerified '' 'disabled'}} button">Create
+                Badges</button>
             {{#each userError as |error|}}
             <p>{{error.message}}</p>
             {{/each}} {{#if showProgress}}
@@ -234,11 +247,15 @@
     </div>
     <div class="{{if previewToggled 'six' 'hide'}} wide column preview">
         <!--Add Preview Section here-->
-        {{ user-component/preview fn=firstName ln=lastName org=organization sh=socialHandle desg=designation defColor=defFontColor
-        font_fn=defFont1Size font_ln=defFont2Size font_desg=defFont3Size font_org=defFont4Size font_sh=defFont5Size fontcol_fn=defFontCol1
+        {{ user-component/preview fn=firstName ln=lastName org=organization sh=socialHandle desg=designation
+        defColor=defFontColor
+        font_fn=defFont1Size font_ln=defFont2Size font_desg=defFont3Size font_org=defFont4Size font_sh=defFont5Size
+        fontcol_fn=defFontCol1
         fontcol_ln=defFontCol2 fontcol_desg=defFontCol3 fontcol_org=defFontCol4 fontcol_sh=defFontCol5 defFont=defFont
-        defImageName=defImageName backImg=imageData backColor=backColor custLogoImage=custLogoImage logoImageData=logoImageData
-        logoBackColor=logoBackColor logoFontColor=logoFontColor logo_text=logo_text defImage=defImage custImage=custImage previewHeight=previewHeight
+        defImageName=defImageName backImg=imageData backColor=backColor custLogoImage=custLogoImage
+        logoImageData=logoImageData
+        logoBackColor=logoBackColor logoFontColor=logoFontColor logo_text=logo_text defImage=defImage
+        custImage=custImage previewHeight=previewHeight
         }}
     </div>
 </div>{{overlay-welcome user=user removeFTL=(action 'removeFTL')}}
