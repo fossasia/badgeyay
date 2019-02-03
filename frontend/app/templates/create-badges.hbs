@@ -27,7 +27,7 @@
                     </div>
                     <div class="content" style="margin-top: 10px;">
                         <div class="center aligned">
-                            {{ data-component/name-component sendName=(action 'mutateName')}}
+                            {{ data-component/name-component formNameData=nameData sendName=(action 'mutateName')}}
                         </div>
                     </div>
                 </div>
@@ -60,6 +60,13 @@
                             {{ data-component/text-component sendText=(action 'mutateText') }}
                         </div>
                     </div>
+                    {{#if (eq mode 'edit')}}
+                      <br>
+                      <div class="ui radio checkbox">
+                          <input type="radio" name="tab" value="igotnone" checked onclick={{action 'csvChange'}}/>
+                          <label>Use previous data</label>
+                      </div>
+                    {{/if}}
                 </div>
             </div>
             <div class="ui  clearing segment">
@@ -140,6 +147,13 @@
                             </div>
                         </div>
                     </div>
+                    {{#if (eq mode 'edit')}}
+                      <br>
+                      <div class="ui radio checkbox">
+                          <input type="radio" name="tab1" value="igotnone" checked onclick={{action 'logoChange'}}/>
+                          <label>Use previous logo</label>
+                      </div>
+                    {{/if}}
                 </div>
             </div>
             <div class="ui clearing segment">
@@ -185,6 +199,13 @@
                             backColor=backColor }}
                         </div>
                     </div>
+                    {{#if (eq mode 'edit')}}
+                      <br>
+                      <div class="ui radio checkbox">
+                          <input type="radio" name="tab2" value="igotnone" checked onclick={{action 'imageChange'}}/>
+                          <label>Use previous background</label>
+                      </div>
+                    {{/if}}
                 </div>
             </div>
             <div class="ui segment">
@@ -196,9 +217,14 @@
                     <div class="content">
                         <div class="center aligned">
                             {{ text-component/font-size fontsizeall=fontsizeall fonttypeall=fonttypeall
+                            defFontType1=defFontType1 defFontType2=defFontType2 defFontType3=defFontType3
+                            defFontType4=defFontType4 defFontType5=defFontType5 defFont1Size=defFont1Size
+                            defFont2Size=defFont2Size defFont3Size=defFont3Size defFont4Size=defFont4Size
+                            defFont5Size=defFont5Size defFontCol1=defFontCol1 defFontCol2=defFontCol2
+                            defFontCol3=defFontCol3 defFontCol4=defFontCol4 defFontCol5=defFontCol5
                             sendDefSize=(action 'mutateFontSize') sendDefFontCol=(action 'mutateFontCol')
-                            sendDefFont=(action
-                            'mutateCustomFont')}}
+                            sendDefFont=(action 'mutateCustomFont')
+                          }}
                         </div>
                     </div>
                 </div>
@@ -251,7 +277,7 @@
         fontcol_fn=defFontCol1
         fontcol_ln=defFontCol2 fontcol_desg=defFontCol3 fontcol_org=defFontCol4 fontcol_sh=defFontCol5 defFont=defFont
         defImageName=defImageName backImg=imageData backColor=backColor custLogoImage=custLogoImage
-        logoImageData=logoImageData
+        logoImageData=logoImageData logoImgChanged=logoImgChanged
         logoBackColor=logoBackColor logoFontColor=logoFontColor logo_text=logo_text defImage=defImage
         custImage=custImage previewHeight=previewHeight
         }}

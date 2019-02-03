@@ -10,9 +10,9 @@
             line-height: {{if previewHeight '105' '120'}}px;
             background-color: #{{logoBackColor}};
             background-image: {{if custLogoImage 'url('}}{{if custLogoImage logoImageData}}{{if custLogoImage ');'}})">
-            {{#unless custLogoImage}}
+            {{#if (or (not logoImgChanged) (not custLogoImage))}}
                 {{logo_text}}
-            {{/unless}}
+            {{/if}}
         </div>
         <div
             style="color: #{{defColor}};

@@ -1,5 +1,6 @@
 import os
 import datetime
+import uuid
 
 from shutil import rmtree
 from api.config import config
@@ -149,8 +150,13 @@ def generateBadges():
 
     user_creator.allowed_usage = user_creator.allowed_usage - 1
 
-    badge_created = Badges(image=image_name, csv=csv_name, font_color_1=font_color_1, font_color_2=font_color_2,
+    badge_created = Badges(csv=csv_name, font_color_1=font_color_1, font_color_2=font_color_2,
                            font_color_3=font_color_3, font_color_4=font_color_4, font_color_5=font_color_5,
+                           font_size_1=font_size_1, font_size_2=font_size_2, font_size_3=font_size_3,
+                           font_size_4=font_size_4, font_size_5=font_size_5, font_type_1=font_type_1,
+                           font_type_2=font_type_2, font_type_3=font_type_3, font_type_4=font_type_4,
+                           font_type_5=font_type_5, paper_size=paper_size, logo_text=logo_text,
+                           logo_color=logo_color, logo_image=logo_image, image=image_name,
                            badge_size=badge_size, badge_name=badge_name, creator=user_creator)
 
     badge_created.save_to_db()
@@ -166,6 +172,13 @@ def generateBadges():
             badgePath, '../../uploads/image', image_name)
         link = fileUploader(imageDirectory, 'images/' + image_name)
         badge_created.image_link = link
+        if logo_image != '':
+            logoImageDirectory = os.path.join(
+                badgePath, '../../uploads/image', logo_image)
+            link = fileUploader(logoImageDirectory, 'images/' + logo_image)
+            badge_created.logo_image_link = link
+        else:
+            badge_created.logo_image_link = ''
         link = fileUploader(badgePath + '/all-badges.pdf',
                             'badges/' + badge_created.id + '.pdf')
         send_badge_mail(badge_created.id, user_creator.id, link)
@@ -176,6 +189,137 @@ def generateBadges():
 
     return jsonify(BadgeSchema().dump(badge_created).data)
 
+@router.route('/generate_badges/<badgeId>', methods=['GET'])
+@loginRequired
+def getBadge(badgeId):
+    badge = Badges.getBadge(badgeId).first()
+    if not badge:
+        print('No badge found with the specified ID')
+    return jsonify(BadgeSchema().dump(badge).data)
+
+@router.route('/generate_badges/<badgeId>', methods=['PATCH'])
+@loginRequired
+def editBadges(badgeId):
+    try:
+        data = request.get_json()['badge']
+    except Exception:
+        return ErrorResponse(JsonNotFound().message, 422, {'Content-Type': 'application/json'}).respond()
+
+    try:
+        badge = Badges.getBadge(badgeId)
+    except Exception:
+        return ErrorResponse(JsonNotFound().message, 422, {'Content-Type': 'application/json'}).respond()
+
+    uid = data.get('uid')
+    user_creator = User.getUser(user_id=uid)
+    del data['uid']
+
+    badge.update(data)
+
+    svg2png = SVG2PNG()
+    _badge = badge.first()
+
+    badgeFolder = _badge.image.split('.')[0]
+    badgePath = ''
+    if config.ENV == 'LOCAL':
+        badgePath = os.getcwd() + '/static/temporary/' + badgeFolder
+    else:
+        badgePath = os.getcwd() + '/api/static/temporary/' + badgeFolder
+    rmtree(badgePath, ignore_errors=True)
+
+    if config.ENV == 'PROD':
+        svg2png.do_text_fill(
+            os.getcwd() + '/api/static/badges/8BadgesOnA3.svg',
+            _badge.font_color_1,
+            _badge.font_color_2,
+            _badge.font_color_3,
+            _badge.font_color_4,
+            _badge.font_color_5,
+            _badge.logo_color,
+            _badge.badge_size,
+            _badge.paper_size)
+
+        svg2png.change_font_size(
+            os.getcwd() + '/api/static/badges/8BadgesOnA3.svg',
+            _badge.badge_size,
+            _badge.paper_size,
+            _badge.font_size_1,
+            _badge.font_size_2,
+            _badge.font_size_3,
+            _badge.font_size_4,
+            _badge.font_size_5)
+
+        svg2png.change_font_family(
+            os.getcwd() + '/api/static/badges/8BadgesOnA3.svg',
+            _badge.badge_size,
+            _badge.paper_size,
+            _badge.font_type_1,
+            _badge.font_type_2,
+            _badge.font_type_3,
+            _badge.font_type_4,
+            _badge.font_type_5)
+    else:
+        svg2png.do_text_fill(
+            'static/badges/8BadgesOnA3.svg',
+            _badge.logo_color,
+            _badge.font_color_1,
+            _badge.font_color_2,
+            _badge.font_color_3,
+            _badge.font_color_4,
+            _badge.font_color_5,
+            _badge.badge_size,
+            _badge.paper_size)
+
+        svg2png.change_font_size(
+            'static/badges/8BadgesOnA3.svg',
+            _badge.badge_size,
+            _badge.paper_size,
+            _badge.font_size_1,
+            _badge.font_size_2,
+            _badge.font_size_3,
+            _badge.font_size_4,
+            _badge.font_size_5)
+
+        svg2png.change_font_family(
+            os.getcwd() + '/api/static/badges/8BadgesOnA3.svg',
+            _badge.badge_size,
+            _badge.paper_size,
+            _badge.font_type_1,
+            _badge.font_type_2,
+            _badge.font_type_3,
+            _badge.font_type_4,
+            _badge.font_type_5)
+
+    merge_badges = MergeBadges(
+        _badge.image,
+        _badge.logo_text,
+        _badge.logo_image,
+        _badge.csv,
+        _badge.paper_size,
+        _badge.badge_size)
+
+    merge_badges.merge_pdfs()
+
+    if os.path.isdir(badgePath):
+        imageDirectory = os.path.join(
+            badgePath, '../../uploads/image', _badge.image)
+        link = fileUploader(imageDirectory, 'images/' + _badge.image)
+        _badge.image_link = link
+        if _badge.logo_image != '':
+            logoImageDirectory = os.path.join(
+                badgePath, '../../uploads/image', _badge.logo_image)
+            link = fileUploader(logoImageDirectory, 'images/' + _badge.logo_image)
+            _badge.logo_image_link = link
+        else:
+            _badge.logo_image_link = ''
+        link = fileUploader(badgePath + '/all-badges.pdf',
+                            'badges/' + str(uuid.uuid4()) + '.pdf')
+        send_badge_mail(_badge.id, user_creator.id, link)
+        _badge.download_link = link
+        rmtree(badgePath, ignore_errors=True)
+
+    db.session.commit()
+    return jsonify(BadgeSchema().dump(_badge).data)
 
 def send_badge_mail(badgeId, userId, badgeLink):
     ref = firebase_db.reference('badgeMails')

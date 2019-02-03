@@ -1,11 +1,12 @@
 import Controller from '@ember/controller';
 import ENV from '../config/environment';
+import $ from 'jquery';
 
 const { APP } = ENV;
 
 import { inject as service } from '@ember/service';
 
-export default Controller.extend({
+const CreateBadges =  Controller.extend({
   routing        : service('-routing'),
   notifications  : service('notification-messages'),
   authToken      : service('auth-session'),
@@ -52,7 +53,7 @@ export default Controller.extend({
   overlay        : false,
   showProgress   : false,
   progress       : 0,
-  logo_text      : 'fossasia',
+  logo_text      : '',
   logoBackColor  : '',
   logoFontColor  : '000',
   progressState  : '',
@@ -64,17 +65,24 @@ export default Controller.extend({
   prevImageData  : 'https://raw.githubusercontent.com/fossasia/badgeyay/development/frontend/public/images/badge_backgrounds/red_futuristic.png',
   imageData      : '/images/badge_backgrounds/red_futuristic.png',
   logoImageData  : '/images/default_logo.png',
+  mode           : 'create',
+  csvChanged     : false,
+  backImgChanged : false,
+  logoImgChanged : false,
   csvClicked() {
+    this.set('csvChanged', true);
     this.set('csvEnable', true);
     this.set('manualEnable', false);
   },
 
   manualClicked() {
+    this.set('csvChanged', true);
     this.set('manualEnable', true);
     this.set('csvEnable', false);
   },
 
   defImageClicked() {
+    this.set('backImgChanged', true);
     this.set('defImage', true);
     this.set('colorImage', false);
     this.set('custImage', false);
@@ -82,6 +90,7 @@ export default Controller.extend({
   },
 
   bgColorClicked() {
+    this.set('backImgChanged', true);
     this.set('colorImage', true);
     this.set('defImage', false);
     this.set('custImage', false);
@@ -89,6 +98,7 @@ export default Controller.extend({
   },
 
   custImgClicked() {
+    this.set('backImgChanged', true);
     this.set('custImage', true);
     this.set('defImage', false);
     this.set('colorImage', false);
@@ -109,12 +119,13 @@ export default Controller.extend({
       let badgeData = {
         uid        : _this.uid,
         paper_size : 'A3',
-        badgename  : '',
-        badge_size : '4x3'
+        badge_name : '',
+        badge_size : '4x3',
+        logo_text  : ''
       };
 
       if (_this.nameData !== '') {
-        badgeData.badgename = _this.nameData;
+        badgeData.badge_name = _this.nameData;
       }
 
       if (_this.badgeSize !== '' && _this.badgeSize !== undefined) {
@@ -159,6 +170,13 @@ export default Controller.extend({
 
     sendManualData(badgeData) {
       const _this = this;
+      if (this.mode === 'edit' && !this.csvChanged) {
+        this.send('sendDefaultImg', badgeData);
+        this.set('showProgress', true);
+        this.set('progress', 40);
+        this.set('progressState', 'Gathering background');
+        return;
+      }
       if (_this.manualEnable) {
         this.set('showProgress', true);
         this.set('progress', 10);
@@ -217,6 +235,13 @@ export default Controller.extend({
 
     sendDefaultImg(badgeData) {
       const _this = this;
+      if (this.mode === 'edit' && !this.backImgChanged) {
+        this.send('sendLogoImg', badgeData);
+        this.set('showProgress', true);
+        this.set('progress', 60);
+        this.set('progressState', 'Preparing your badges');
+        return;
+      }
       if (_this.defImage) {
         let imageRecord = _this.get('store').createRecord('def-image-upload', {
           uid          : _this.uid,
@@ -317,6 +342,13 @@ export default Controller.extend({
 
     sendLogoImg(badgeData) {
       const _this = this;
+      if (this.mode === 'edit' && !this.logoImgChanged) {
+        this.send('sendBadge', badgeData);
+        this.set('showProgress', true);
+        this.set('progress', 70);
+        this.set('progressState', 'Preparing your badges');
+        return;
+      }
       if (this.custLogoImage && this.logoImageData) {
         this.get('store').createRecord('cust-img-file', {
           uid       : this.uid,
@@ -390,6 +422,30 @@ export default Controller.extend({
 
     sendBadge(badgeData) {
       const _this = this;
+      if (this.mode === 'edit') {
+        let { badge } = this.get('model');
+        badge.setProperties(badgeData);
+        return badge.save()
+          .then(record => {
+            this.set('overlay', false);
+            this.set('badgeGenerated', true);
+            this.set('genBadge', record);
+            this.set('progress', 100);
+            this.set('progressState', '');
+            this.set('badgeGeneratedLink', record.download_link);
+          })
+          .catch(err => {
+            console.log(err);
+            _this.set('overlay', false);
+            _this.get('notifications').clearAll();
+            _this.get('notifications').error('Unable to generate badge', {
+              autoClear     : true,
+              clearDuration : 1500
+            });
+            this.set('showProgress', false);
+            this.set('progress', 0);
+          });
+      }
       let badgeRecord = _this.get('store').createRecord('badge', badgeData);
       this.set('progress', 80);
       badgeRecord.save()
@@ -588,12 +644,15 @@ export default Controller.extend({
 
     customlogoimage() {
       this.set('custLogoImage', true);
+      this.set('logoImgChanged', true);
+      this.set('logo_text', '');
       document.getElementById('custlogoimg').style.display = 'block';
       document.getElementById('custlogocol').style.display = 'none';
     },
 
     customlogocol() {
       this.set('custLogoImage', false);
+      this.set('logoImgChanged', true);
       document.getElementById('custlogoimg').style.display = 'none';
       document.getElementById('custlogocol').style.display = 'block';
     },
@@ -601,6 +660,13 @@ export default Controller.extend({
     togglePreview() {
       this.set('previewToggled', !this.previewToggled);
       document.getElementsByClassName('checkswitch')[0].checked = !document.getElementsByClassName('checkswitch')[0].checked;
+    },
+
+    defaultlogoimage() {
+      this.set('logoImgChanged', true);
     }
+
   }
 });
+
+export default CreateBadges;
