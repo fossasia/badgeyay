@@ -25,6 +25,9 @@ To install the app, run the following commands in a command line:
 * `cd badgeyay/frontend`
 * `npm install`
 * `bower install`
+
+Tip: If you are encountering any errors while installation of dependencies, you can use `yarn install` instead of `npm install` after deleting and cloning the repository again.
+
 ## Running locally:
 
 To run the app locally on your machine, run the following commands in a command line:
