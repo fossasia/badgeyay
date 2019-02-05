@@ -1,11 +1,26 @@
 import Controller from '@ember/controller';
 import ENV from '../config/environment';
-
+import Ember from 'ember';
+const { $ } = Ember;
 const { APP } = ENV;
-
 import { inject as service } from '@ember/service';
 
 export default Controller.extend({
+  init: () => {
+    $.ajax({
+      url       : '/images/default_logo.png',
+      xhrFields : {
+        responseType: 'blob'
+      },
+      success: (data, defImagedata) => {
+        var reader = new FileReader();
+        reader.onloadend = function() {
+          localStorage.setItem('defImagedata', reader.result);
+        };
+        reader.readAsDataURL(data);
+      }
+    });
+  },
   routing        : service('-routing'),
   notifications  : service('notification-messages'),
   authToken      : service('auth-session'),
@@ -110,6 +125,10 @@ export default Controller.extend({
   },
 
   actions: {
+    defaultlogoimage() {
+      this.set('custLogoImage', true);
+      this.set('logoImageData', localStorage.getItem('defImagedata'));
+    },
     submitForm() {
       const _this = this;
       const user = _this.get('store').peekAll('user');
