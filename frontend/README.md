@@ -25,7 +25,6 @@ To install the app, run the following commands in a command line:
 * `cd badgeyay/frontend`
 * `npm install`
 * `bower install`
-
 ## Running locally:
 
 To run the app locally on your machine, run the following commands in a command line:
