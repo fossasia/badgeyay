@@ -616,6 +616,9 @@ export default Controller.extend({
 
     },
 
+    // defaultlogoimage() {
+    // },
+
     customlogoimage() {
       this.set('custLogoImage', true);
       document.getElementById('custlogoimg').style.display = 'block';
