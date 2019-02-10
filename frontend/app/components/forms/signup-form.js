@@ -23,7 +23,7 @@ export default Component.extend({
       password = this.get('password');
       password_rep = this.get('password_repeat');
       username = this.get('username');
-      if (password === password_rep) {
+      if (password === password_rep && username !== password) {
         if (email !== undefined && password !== undefined && username !== undefined) {
           this.get('signUp')(email, username, password);
         }
