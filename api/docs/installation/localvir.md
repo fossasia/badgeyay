@@ -10,6 +10,12 @@ These are some additional depencies that you will need:
 $ sudo apt-get update
 ```
 
+* Postgres
+
+```sh
+$ sudo apt-get install postgresql postgresql-contrib libssl-dev
+```
+
 ## Video Installation
 
 
