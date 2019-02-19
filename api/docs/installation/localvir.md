@@ -10,14 +10,7 @@ These are some additional depencies that you will need:
 $ sudo apt-get update
 ```
 
-* Postgres
-
-```sh
-$ sudo apt-get install postgresql postgresql-contrib libssl-dev
-```
-
 ## Video Installation
-
 
 <p><a href="https://www.youtube.com/watch?v=oUakEOavgbo&feature=youtu.be" rel="nofollow"><img src="https://i.ytimg.com/vi/oUakEOavgbo/hqdefault.jpg" alt="Demo YouTube" style="max-width:100%;"></a></p>
 
@@ -80,6 +73,12 @@ $ git remote add upstream https://github.com/fossasia/badgeyay.git
   ```sh
   (badgeyay)$ pip install -r api/requirements.txt
   ```
+
+- **Postgres Installation**
+
+```sh
+$ sudo apt-get install postgresql postgresql-contrib libssl-dev
+```
 
 * **Step 3** - Create the database. For that we first open the psql shell. Go to the directory where your postgres file is stored.
 
