@@ -1,13 +1,13 @@
 <div class="ui top absolute menu">
     {{#link-to 'index' class="header item"}}
-    <h2 style="font-weight: normal;">badgeyay</h2>
+    <h2 style="font-weight: normal;" class="effect-shine">badgeyay</h2>
     {{/link-to}}
     <div class="right menu">
         {{#if session.isAuthenticated}}
             {{#ui-dropdown class='large item' action='hide'}}
                 <div class="upper">
                     <img class="ui avatar image" src="{{session.currentUser.photoURL}}">
-                    <span class="mobile-hide">{{session.currentUser.displayName}}</span>
+                    <span class="mobile-hide effecttext">{{session.currentUser.displayName}}</span>
                 </div>
                 <i class="dropdown icon"></i>
                 <div class="menu profile-dropdown-menu">
@@ -28,16 +28,16 @@
             {{/ui-dropdown}}
         {{else}}
             {{#link-to 'login'}}
-                <div class="right item ui button" style="text-transform: uppercase; font-weight: 400; line-spacing: 0.5px; line-height: 30px">Login</div>
+                <div class="right item ui button effecttext" style="text-transform: uppercase; font-weight: 400; line-spacing: 0.5px; line-height: 30px">Login</div>
             {{/link-to}}
         {{/if}}
         {{#if session.isAuthenticated}}
           {{#link-to 'create-badges' class='item ui orange text create'}}
-                CREATE BADGES
+                <div class="effecttext">CREATE BADGES</div>
             {{/link-to}}
         {{else}}
             {{#link-to 'login' class='item ui orange text create' click=(action 'loginToContinue')}}
-                CREATE BADGES
+                <div class="effecttext">CREATE BADGES</div>
             {{/link-to}}
         {{/if}}
     </div>

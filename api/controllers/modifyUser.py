@@ -29,15 +29,27 @@ def changePassword():
 
     if data and data['username']:
         user = User.getUser(username=data['username'])
+        
         if user:
             if not verifyPassword(user, data['password']):
                 return ErrorResponse(PasswordNotFound().message, 422, {'Content-Type': 'application/json'}).respond()
 
-            user.password = generate_password_hash(data['newPassword'])
+            newpassword = generate_password_hash(data['newPassword'])
+            oldpassword = generate_password_hash(data['oldPassword'])
+
+            if user.password!=oldpassword:
+                return jsonify(
+                Response(200).generateMessage(
+                    'Old Password not matched'))
+
+            user.password=newpassword
+
             try:
                 user.save_to_db()
             except Exception:
                 return ErrorResponse(OperationNotFound().message, 422, {'Content-Type': 'application/json'}).respond()
+
+
 
             return jsonify(
                 Response(200).generateMessage(
