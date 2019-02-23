@@ -6,8 +6,16 @@ export default Model.extend({
   uid           : attr('string'),
   badgename     : attr('string'),
   csv           : attr('string'),
+  csv_type      : attr('string'),
   image         : attr('string'),
-  font_color    : attr('string'),
+  logo_text     : attr('string'),
+  logo_color    : attr('string'),
+  logo_image    : attr('string'),
+  font_color_1  : attr('string'),
+  font_color_2  : attr('string'),
+  font_color_3  : attr('string'),
+  font_color_4  : attr('string'),
+  font_color_5  : attr('string'),
   font_size_1   : attr('string'),
   font_size_2   : attr('string'),
   font_size_3   : attr('string'),
@@ -20,5 +28,6 @@ export default Model.extend({
   font_type_5   : attr('string'),
   badge_size    : attr('string'),
   paper_size    : attr('string'),
-  download_link : attr('string')
+  download_link : attr('string'),
+  ticket_types  : attr('string')
 });

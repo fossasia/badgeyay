@@ -48,8 +48,12 @@
   position: relative;
 }
 
+.selection {
+  min-width:3em !important;
+}
+
 .ui.image {
-  position: unset;
+  margin:auto; 
 }
 
 .switch {

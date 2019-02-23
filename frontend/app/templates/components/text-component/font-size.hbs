@@ -2,7 +2,7 @@
   <label>Customize Badge Layout</label>
 </div>
 <div class="ui stackable grid">
-  <div class="four column row">
+  <div class="five column row">
     <div class="center aligned column labels">Field</div>
     <div class="center aligned column labels">Font<br>
       <div class="ui checkbox">
@@ -10,7 +10,13 @@
         <label>Apply to all</label>
       </div>
     </div>
-    <div class="center aligned column">Font Size (in pixels)<br>
+    <div class="center aligned column">Font Color<br>
+      <div class="ui checkbox">
+        {{input name="fontcolall" type="checkbox" checked=fontcolall}}
+        <label>Apply to all</label>
+      </div>
+    </div>
+    <div class="center aligned column">Font Size<br>
       <div class="ui checkbox">
         {{input name="fontsizeall" type="checkbox" checked=fontsizeall}}
         <label>Apply to all</label>
@@ -19,9 +25,9 @@
     <div class="center aligned column">Adjust long content to width automatically</div>
   </div>
 
-  <div class="four column row">
+  <div class="five column row">
     <div class="center aligned column labels">First Name</div>
-    <div class="center aligned column font_type">
+    <div class="center aligned column    ">
       <div class="one wide column">
         {{#ui-dropdown class="selection" selected="Bob"  onChange=(action (mut fonttype1))}}
           <div class="default text">Helvetica</div>
@@ -39,8 +45,13 @@
         {{/ui-dropdown}}
       </div>
     </div>
-    <div class="center aligned column">
+     <div class="center aligned column ">
       <div class="one wide column">
+        {{col-pick-input value=fontcol1 onChange=(action (mut fontcol1)) }}
+      </div>
+    </div>
+    <div class="center aligned column">
+      <div class="one wide cloumn">
         {{#ui-dropdown class="selection" onChange=(action (mut font1))}}
         <div class="default text">10</div>
         <i class="dropdown icon"></i>
@@ -58,17 +69,17 @@
         {{/ui-dropdown}}
       </div>
     </div>
-    <div class="center aligned column">
+   
+    <div class="center aligned column ">
       <div class="ui toggle checkbox">
         <input name="public" type="checkbox" checked="checked">
         <label></label>
       </div>
     </div>
   </div>
-
-  <div class="four column row">
+  <div class="five column row">
     <div class="center aligned column labels">Last Name</div>
-    <div class="center aligned column font_type">
+    <div class="center aligned column  ">
       <div class="one wide column">
         {{#ui-dropdown class="selection" selected="Bob" onChange=(action (mut fonttype2))}}
           <div class="default text">Helvetica</div>
@@ -84,6 +95,11 @@
               <div class="item" data-item="Courier 10 Pitch" style="font-family:'Courier 10 Pitch'">Courier 10 Pitch</div>
           </div>
         {{/ui-dropdown}}
+      </div>
+    </div>
+    <div class="center aligned column ">
+      <div class="one wide column">
+        {{col-pick-input value=fontcol2 onChange=(action (mut fontcol2)) }}
       </div>
     </div>
     <div class="center aligned column">
@@ -113,9 +129,9 @@
     </div>
   </div>
 
-  <div class="four column row">
+  <div class="five column row">
     <div class="center aligned column labels">Designation</div>
-    <div class="center aligned column font_type">
+    <div class="center aligned column  ">
       <div class="one wide column">
         {{#ui-dropdown class="selection" selected="Bob" onChange=(action (mut fonttype3))}}
           <div class="default text">Helvetica</div>
@@ -131,6 +147,11 @@
               <div class="item" data-item="Courier 10 Pitch" style="font-family:'Courier 10 Pitch'">Courier 10 Pitch</div>
           </div>
         {{/ui-dropdown}}
+      </div>
+    </div>
+    <div class="center aligned column ">
+      <div class="one wide column">
+        {{col-pick-input value=fontcol3 onChange=(action (mut fontcol3)) }}
       </div>
     </div>
     <div class="center aligned column">
@@ -152,6 +173,7 @@
         {{/ui-dropdown}}
       </div>
     </div>
+    
     <div class="center aligned column">
       <div class="ui toggle checkbox">
         <input name="public" type="checkbox" checked="checked">
@@ -160,9 +182,9 @@
     </div>
   </div>
 
-  <div class="four column row">
+  <div class="five column row">
     <div class="center aligned column labels">Organization</div>
-    <div class="center aligned column font_type">
+    <div class="center aligned column  ">
       <div class="one wide column">
         {{#ui-dropdown class="selection" selected="Bob" onChange=(action (mut fonttype4))}}
           <div class="default text">Helvetica</div>
@@ -178,6 +200,11 @@
               <div class="item" data-item="Courier 10 Pitch" style="font-family:'Courier 10 Pitch'">Courier 10 Pitch</div>
           </div>
         {{/ui-dropdown}}
+      </div>
+    </div>
+     <div class="center aligned column ">
+      <div class="one wide column">
+        {{col-pick-input value=fontcol4 onChange=(action (mut fontcol4)) }}
       </div>
     </div>
     <div class="center aligned column">
@@ -207,9 +234,9 @@
     </div>
   </div>
 
-  <div class="four column row">
+  <div class="five column row">
     <div class="center aligned column  labels">Handle (e.g. Github)</div>
-    <div class="center aligned column font_type">
+    <div class="center aligned column  ">
       <div class="one wide column">
         {{#ui-dropdown class="selection" selected="Bob" onChange=(action (mut fonttype5))}}
           <div class="default text">Helvetica</div>
@@ -225,6 +252,11 @@
               <div class="item" data-item="Courier 10 Pitch" style="font-family:'Courier 10 Pitch'">Courier 10 Pitch</div>
           </div>
         {{/ui-dropdown}}
+      </div>
+    </div>
+    <div class="center aligned column ">
+      <div class="one wide column">
+        {{col-pick-input value=fontcol5 onChange=(action (mut fontcol5)) }}
       </div>
     </div>
     <div class="center aligned column">

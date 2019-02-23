@@ -43,9 +43,17 @@ def generateBadges():
         return ErrorResponse(ImageNotFound().message, 422, {'Content-Type': 'application/json'}).respond()
 
     csv_name = data.get('csv')
+    csv_type = data.get('csv_type') or ''
     badge_name = data.get('badge_name') or 'My Badge'
-    image_name = data.get('image')
-    text_color = data.get('font_color') or '#ffffff'
+    image_names = data.get('image').split(',')
+    logo_image = data.get('logo_image')
+    logo_text = data.get('logo_text') or ''
+    logo_color = data.get('logo_color') or '#000000'
+    font_color_1 = data.get('font_color_1') or '#ffffff'
+    font_color_2 = data.get('font_color_2') or '#ffffff'
+    font_color_3 = data.get('font_color_3') or '#ffffff'
+    font_color_4 = data.get('font_color_4') or '#ffffff'
+    font_color_5 = data.get('font_color_5') or '#ffffff'
     paper_size = data.get('paper_size') or 'A3'
     badge_size = data.get('badge_size') or '4x3'
     font_size_1 = data.get('font_size_1') or None
@@ -58,13 +66,19 @@ def generateBadges():
     font_type_3 = data.get('font_type_3') or 'helvetica'
     font_type_4 = data.get('font_type_4') or 'helvetica'
     font_type_5 = data.get('font_type_5') or 'helvetica'
+    ticketTypes = data.get('ticket_types').split(',')
 
     svg2png = SVG2PNG()
 
     if config.ENV == 'PROD':
         svg2png.do_text_fill(
             os.getcwd() + '/api/static/badges/8BadgesOnA3.svg',
-            text_color,
+            font_color_1,
+            font_color_2,
+            font_color_3,
+            font_color_4,
+            font_color_5,
+            logo_color,
             badge_size,
             paper_size)
 
@@ -90,7 +104,12 @@ def generateBadges():
     else:
         svg2png.do_text_fill(
             'static/badges/8BadgesOnA3.svg',
-            text_color,
+            logo_color,
+            font_color_1,
+            font_color_2,
+            font_color_3,
+            font_color_4,
+            font_color_5,
             badge_size,
             paper_size)
 
@@ -115,10 +134,14 @@ def generateBadges():
             font_type_5)
 
     merge_badges = MergeBadges(
-        image_name,
+        image_names,
+        logo_text,
+        logo_image,
         csv_name,
+        csv_type,
         paper_size,
-        badge_size)
+        badge_size,
+        ticketTypes)
 
     merge_badges.merge_pdfs()
 
@@ -130,9 +153,9 @@ def generateBadges():
 
     user_creator.allowed_usage = user_creator.allowed_usage - 1
 
-    badge_created = Badges(image=image_name, csv=csv_name,
-                           text_color=text_color, badge_size=badge_size,
-                           badge_name=badge_name, creator=user_creator)
+    badge_created = Badges(image=image_names[0], csv=csv_name, font_color_1=font_color_1, font_color_2=font_color_2,
+                           font_color_3=font_color_3, font_color_4=font_color_4, font_color_5=font_color_5,
+                           badge_size=badge_size, badge_name=badge_name, creator=user_creator)
 
     badge_created.save_to_db()
 
@@ -144,8 +167,8 @@ def generateBadges():
         badgePath = os.getcwd() + '/api/static/temporary/' + badgeFolder
     if os.path.isdir(badgePath):
         imageDirectory = os.path.join(
-            badgePath, '../../uploads/image', image_name)
-        link = fileUploader(imageDirectory, 'images/' + image_name)
+            badgePath, '../../uploads/image', image_names[0])
+        link = fileUploader(imageDirectory, 'images/' + image_names[0])
         badge_created.image_link = link
         link = fileUploader(badgePath + '/all-badges.pdf',
                             'badges/' + badge_created.id + '.pdf')
@@ -172,7 +195,7 @@ def send_badge_mail(badgeId, userId, badgeLink):
 @loginRequired
 def get_badges():
     input_data = request.args
-    page = request.args.get('page', 1, type=int)
+    page = request.args.get('filter[page]', 1, type=int)
     user = User.getUser(user_id=input_data.get('uid'))
     badges = db.session.query(Badges).filter_by(creator=user).paginate(
         page, app.config['POSTS_PER_PAGE'], False)
