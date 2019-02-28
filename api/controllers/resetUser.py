@@ -52,6 +52,10 @@ def pwd_reset_token():
         'id': user.id,
         'exp': expire
     }, app.config.get('SECRET_KEY'))
-    resetObj = ResetPasswordToken(user.id, token.decode('UTF-8'))
+    try:
+        resetObj = ResetPasswordToken.query.get(user.id)
+        resetObj.token = token.decode('UTF-8')
+    except:
+        resetObj = ResetPasswordToken(user.id, token.decode('UTF-8'))
     resetObj.save_to_db()
     return jsonify(TokenSchema().dump(resetObj).data)
