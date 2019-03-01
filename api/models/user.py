@@ -15,6 +15,7 @@ class User(db.Model):
     username = db.Column(db.String(80))
     password = db.Column(db.String(100))
     email = db.Column(db.String(100))
+    badges_created=db.Column(db.Integer,default=0)
     photoURL = db.Column(db.String, default=_photoURL)
     allowed_usage = db.Column(db.Integer)
     ftl = db.Column(db.Boolean, default=True)
