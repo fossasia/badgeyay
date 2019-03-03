@@ -25,7 +25,7 @@ def reset_password():
         return ErrorResponse(PayloadNotFound().message, 422, {'Content-Type': 'application/json'}).respond()
 
     if data and data['username']:
-        user = User.getUser(data['username'])
+        user = User.getUser(username=data['username'])
         expire = datetime.datetime.utcnow() + datetime.timedelta(hours=24)
         token = jwt.encode({
             'id': user.username,
