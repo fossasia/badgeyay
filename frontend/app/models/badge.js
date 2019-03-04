@@ -6,6 +6,7 @@ export default Model.extend({
   uid             : attr('string'),
   badge_name      : attr('string'),
   csv             : attr('string'),
+  csv_type        : attr('string'),
   image           : attr('string'),
   image_link      : attr('string'),
   logo_image_link : attr('string'),
@@ -29,5 +30,6 @@ export default Model.extend({
   font_type_5     : attr('string'),
   badge_size      : attr('string'),
   paper_size      : attr('string'),
-  download_link   : attr('string')
+  download_link   : attr('string'),
+  ticket_types    : attr('string')
 });

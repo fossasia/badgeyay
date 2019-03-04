@@ -12,6 +12,8 @@ class BadgeSchema(Schema):
     badge_name = fields.Str(required=True)
     image = fields.Str(required=True)
     csv = fields.Str(required=True)
+    csv_type = fields.Str(required=True)
+    ticket_types = fields.Str(required=True)
     text_color = fields.Str(required=True)
     badge_size = fields.Str(required=True)
     download_link = fields.Str(required=True)
@@ -81,7 +83,6 @@ class UserBadges(Schema):
     created_at = fields.Date(required=True)
     image_link = fields.Str(required=True)
     paper_size = fields.Str(required=True)
-
     user_id = fields.Relationship(
         self_url='/api/upload/get_file',
         self_url_kwargs={'file_id': '<id>'},

@@ -44,8 +44,9 @@ def generateBadges():
         return ErrorResponse(ImageNotFound().message, 422, {'Content-Type': 'application/json'}).respond()
 
     csv_name = data.get('csv')
+    csv_type = data.get('csv_type') or ''
     badge_name = data.get('badge_name') or 'My Badge'
-    image_name = data.get('image')
+    image_names = data.get('image').split(',')
     logo_image = data.get('logo_image')
     logo_text = data.get('logo_text') or ''
     logo_color = data.get('logo_color') or '#000000'
@@ -66,6 +67,7 @@ def generateBadges():
     font_type_3 = data.get('font_type_3') or 'helvetica'
     font_type_4 = data.get('font_type_4') or 'helvetica'
     font_type_5 = data.get('font_type_5') or 'helvetica'
+    ticket_types = data.get('ticket_types').split(',')
 
     svg2png = SVG2PNG()
 
@@ -133,12 +135,14 @@ def generateBadges():
             font_type_5)
 
     merge_badges = MergeBadges(
-        image_name,
+        image_names,
         logo_text,
         logo_image,
         csv_name,
+        csv_type,
         paper_size,
-        badge_size)
+        badge_size,
+        ticket_types)
 
     merge_badges.merge_pdfs()
 
@@ -156,22 +160,26 @@ def generateBadges():
                            font_size_4=font_size_4, font_size_5=font_size_5, font_type_1=font_type_1,
                            font_type_2=font_type_2, font_type_3=font_type_3, font_type_4=font_type_4,
                            font_type_5=font_type_5, paper_size=paper_size, logo_text=logo_text,
-                           logo_color=logo_color, logo_image=logo_image, image=image_name,
-                           badge_size=badge_size, badge_name=badge_name, creator=user_creator)
+                           logo_color=logo_color, logo_image=logo_image, image=",".join(image_names),
+                           badge_size=badge_size, badge_name=badge_name, creator=user_creator,
+                           csv_type=csv_type, ticket_types=",".join(ticket_types))
 
     badge_created.save_to_db()
 
-    badgeFolder = badge_created.image.split('.')[0]
+    badgeFolder = image_names[0].split('.')[0]
     badgePath = ''
     if config.ENV == 'LOCAL':
         badgePath = os.getcwd() + '/static/temporary/' + badgeFolder
     else:
         badgePath = os.getcwd() + '/api/static/temporary/' + badgeFolder
     if os.path.isdir(badgePath):
-        imageDirectory = os.path.join(
-            badgePath, '../../uploads/image', image_name)
-        link = fileUploader(imageDirectory, 'images/' + image_name)
-        badge_created.image_link = link
+        image_links = []
+        for image in image_names:
+            imageDirectory = os.path.join(
+                badgePath, '../../uploads/image', image)
+            link = fileUploader(imageDirectory, 'images/' + image)
+            image_links.append(link)
+        badge_created.image_link = ",".join(image_links)
         if logo_image != '':
             logoImageDirectory = os.path.join(
                 badgePath, '../../uploads/image', logo_image)
@@ -189,6 +197,7 @@ def generateBadges():
 
     return jsonify(BadgeSchema().dump(badge_created).data)
 
+
 @router.route('/generate_badges/<badgeId>', methods=['GET'])
 @loginRequired
 def getBadge(badgeId):
@@ -196,6 +205,7 @@ def getBadge(badgeId):
     if not badge:
         print('No badge found with the specified ID')
     return jsonify(BadgeSchema().dump(badge).data)
+
 
 @router.route('/generate_badges/<badgeId>', methods=['PATCH'])
 @loginRequired
@@ -219,7 +229,7 @@ def editBadges(badgeId):
     svg2png = SVG2PNG()
     _badge = badge.first()
 
-    badgeFolder = _badge.image.split('.')[0]
+    badgeFolder = _badge.image.split(',')[0].split('.')[0]
     badgePath = ''
     if config.ENV == 'LOCAL':
         badgePath = os.getcwd() + '/static/temporary/' + badgeFolder
@@ -291,20 +301,25 @@ def editBadges(badgeId):
             _badge.font_type_5)
 
     merge_badges = MergeBadges(
-        _badge.image,
+        _badge.image.split(','),
         _badge.logo_text,
         _badge.logo_image,
         _badge.csv,
+        _badge.csv_type,
         _badge.paper_size,
-        _badge.badge_size)
+        _badge.badge_size,
+        _badge.ticket_types.split(','))
 
     merge_badges.merge_pdfs()
 
     if os.path.isdir(badgePath):
-        imageDirectory = os.path.join(
-            badgePath, '../../uploads/image', _badge.image)
-        link = fileUploader(imageDirectory, 'images/' + _badge.image)
-        _badge.image_link = link
+        image_links = []
+        for image in _badge.image.split(','):
+            imageDirectory = os.path.join(
+                badgePath, '../../uploads/image', image)
+            link = fileUploader(imageDirectory, 'images/' + image)
+            image_links.append(link)
+        _badge.image_link = ",".join(image_links)
         if _badge.logo_image != '':
             logoImageDirectory = os.path.join(
                 badgePath, '../../uploads/image', _badge.logo_image)
@@ -320,6 +335,7 @@ def editBadges(badgeId):
 
     db.session.commit()
     return jsonify(BadgeSchema().dump(_badge).data)
+
 
 def send_badge_mail(badgeId, userId, badgeLink):
     ref = firebase_db.reference('badgeMails')

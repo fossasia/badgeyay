@@ -7,8 +7,10 @@ class Badges(db.Model):
     __tablename__ = 'Badges'
 
     id = db.Column(db.String(100), primary_key=True)
-    image = db.Column(db.String(100), nullable=False)
+    image = db.Column(db.String, nullable=False)
     csv = db.Column(db.String(100), nullable=False)
+    csv_type = db.Column(db.String(100), nullable=False)
+    ticket_types = db.Column(db.String, nullable=False)
     badge_size = db.Column(db.String(100), nullable=False)
     download_link = db.Column(db.String)
     image_link = db.Column(db.String)

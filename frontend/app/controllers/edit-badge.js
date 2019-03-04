@@ -29,19 +29,18 @@ export default CreateBadges.extend({
       document.getElementById('custlogocol').style.display = 'none';
     },
 
-    imageChange() {
+    imageChange(idx) {
       let { badge } = this.model;
-      this.setProperties({
-        'backImgChanged' : false,
-        'imageData'      : badge.image_link,
-        'defImage'       : false,
-        'colorImage'     : false,
-        'custImage'      : true
-      });
-      console.log(this.get('backImgChanged'), this.get('imageData'));
-      document.getElementById('custcol').style.display = 'none';
-      document.getElementById('custbg').style.display = 'none';
-      document.getElementById('custimg').style.display = 'none';
+      let backImgChanged = this.get('backImgChanged');
+      let defImage = this.get('defImage');
+      let colorImage = this.get('colorImage');
+      let custImage = this.get('custImage');
+      let imageData = this.get('imageData');
+      backImgChanged.set(idx, false);
+      defImage.set(idx, false);
+      colorImage.set(idx, false);
+      custImage.set(idx, true);
+      imageData.set(idx, badge.image_link);
     },
 
     setUpTemplate(model) {
