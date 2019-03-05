@@ -6,7 +6,7 @@
         </label>
     </div>
 </div>
-{{!----Event Listeners For Perview----}}+
+{{!----Event Listeners For Perview----}}
 {{#create-badge}}
 {{/create-badge}}
 <div class="ui stackable mobile reversed grid">
@@ -200,8 +200,9 @@
                     </div>
                 </div>
             </div>
-            <button {{action "submitForm"}} class="ui fluid orange {{if authToken.isEmailVerified '' 'disabled'}} button">Create
-                Badges</button>
+            <button {{action "submitForm"}} class="ui fluid orange {{if authToken.isEmailVerified '' 'disabled'}} button">
+              {{if (eq mode 'create') 'Create Badges' 'Save Changes'}}
+            </button>
             {{#each userError as |error|}}
             <p>{{error.message}}</p>
             {{/each}} {{#if showProgress}}
