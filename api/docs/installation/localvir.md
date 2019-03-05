@@ -107,6 +107,7 @@ BADGEYAY_ENV = 'LOCAL'
 
 Add the FIREBASE_DB_URL, FIREBASE_STORAGE_BUCKET as it is from .env.example to .env
 
+
 * **Step 5** - Start the postgresql service
 
 You need to have postgresql running in the background.
