@@ -29,5 +29,6 @@ export default Model.extend({
   badge_size    : attr('string'),
   paper_size    : attr('string'),
   download_link : attr('string'),
-  ticket_types  : attr('string')
+  ticket_types  : attr('string'),
+  text_color    : attr('string')
 });

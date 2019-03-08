@@ -14,6 +14,7 @@ class Badges(db.Model):
     font_color_3 = db.Column(db.String(100), nullable=False)
     font_color_4 = db.Column(db.String(100), nullable=False)
     font_color_5 = db.Column(db.String(100), nullable=False)
+    text_color = db.Column(db.String(100))
     badge_size = db.Column(db.String(100), nullable=False)
     download_link = db.Column(db.String)
     image_link = db.Column(db.String)

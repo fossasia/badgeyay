@@ -54,6 +54,7 @@ def generateBadges():
     font_color_3 = data.get('font_color_3') or '#ffffff'
     font_color_4 = data.get('font_color_4') or '#ffffff'
     font_color_5 = data.get('font_color_5') or '#ffffff'
+    text_color=font_color_1
     paper_size = data.get('paper_size') or 'A3'
     badge_size = data.get('badge_size') or '4x3'
     font_size_1 = data.get('font_size_1') or None
@@ -155,7 +156,8 @@ def generateBadges():
 
     badge_created = Badges(image=image_names[0], csv=csv_name, font_color_1=font_color_1, font_color_2=font_color_2,
                            font_color_3=font_color_3, font_color_4=font_color_4, font_color_5=font_color_5,
-                           badge_size=badge_size, badge_name=badge_name, creator=user_creator)
+                           badge_size=badge_size, badge_name=badge_name, creator=user_creator,text_color=text_color)
+    
 
     badge_created.save_to_db()
 
