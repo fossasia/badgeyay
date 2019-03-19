@@ -29,6 +29,7 @@ def changePassword():
 
     if data and data['username']:
         user = User.getUser(username=data['username'])
+        
         if user:
             if not verifyPassword(user, data['password']):
                 return ErrorResponse(PasswordNotFound().message, 422, {'Content-Type': 'application/json'}).respond()
