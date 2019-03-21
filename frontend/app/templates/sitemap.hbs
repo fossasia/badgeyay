@@ -19,26 +19,27 @@
     </div>
         <div class='column'>
             <h4>{{init-cap 'account management'}}</h4>
-            {{#link-to 'signup' class='links'}}
-                {{init-cap 'register'}}
-            {{/link-to}}
-            <br>
-            {{#link-to 'login' class='links'}}
-                {{init-cap 'login'}}
-            {{/link-to}}
-            <br>
-            {{#link-to 'forgotpwd' class='links'}}
-                {{init-cap 'forgot password'}}
-            {{/link-to}}
-            <br>
             {{#if session.isAuthenticated}}
-              {{#link-to 'settings' class='links'}}
+                {{#link-to 'settings' class='links'}}
                     {{init-cap 'view profile'}}
+                {{/link-to}}
+                <br>
+                {{#link-to 'forgotpwd' class='links'}}
+                    {{init-cap 'forgot password'}}
                 {{/link-to}}
             {{else}}
-                {{#link-to 'login' class='links'}}
-                    {{init-cap 'view profile'}}
+                {{#link-to 'signup' class='links'}}
+                    {{init-cap 'register'}}
                 {{/link-to}}
+                <br>
+                {{#link-to 'login' class='links'}}
+                    {{init-cap 'login'}}
+                {{/link-to}}
+                <br>
+                {{#link-to 'forgotpwd' class='links'}}
+                    {{init-cap 'forgot password'}}
+                {{/link-to}}
+            <br>
             {{/if}}
         </div>
     </div>
