@@ -41,6 +41,14 @@ export default Component.extend({
     mutBackground(id) {
       let idx = this.get('idx');
       this.get('mutateBackground')(idx, id);
+    },
+
+    imageChange() {
+      let idx = this.get('idx');
+      this.get('imageChange')(idx);
+      document.getElementById('custcol' + idx).style.display = 'none';
+      document.getElementById('custbg' + idx).style.display = 'none';
+      document.getElementById('custimg' + idx).style.display = 'none';
     }
   }
 });

@@ -39,5 +39,12 @@
                 {{ background-component/color-bg-component sendDefColor=(action 'mutDefColor') backColor=backColor }}
             </div>
         </div>
+        {{#if (eq mode 'edit')}}
+          <br>
+          <div class="ui radio checkbox">
+              <input type="radio" name="tab{{idx}}" value="igotnone" checked onclick={{action 'imageChange'}}/>
+              <label>Use previous background</label>
+          </div>
+        {{/if}}
     </div>
 </div>
