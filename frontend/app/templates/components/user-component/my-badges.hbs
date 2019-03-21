@@ -44,7 +44,9 @@
                   </a>
                   {{/ui-popup}}
                   {{#ui-popup content='Edit' class="ui icon button"}}
-                  <i class="edit icon"></i>
+                    {{#link-to 'edit-badge' badge.id class="large item navbar-dropdown upper"}}
+                      <i class="edit icon"></i>
+                    {{/link-to}}
                   {{/ui-popup}}
                   {{#ui-popup content='Share' class="ui icon button"}}
                   <div class="ui dropdown">

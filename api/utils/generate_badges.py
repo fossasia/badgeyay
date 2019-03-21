@@ -103,7 +103,7 @@ class GenerateBadges:
             content = content.replace('Logo_Text', self.logo_text)
         with open(target, 'w', encoding='UTF-8') as f:
             f.write(content)
-        remove_extra(target, len(rows) + 1)
+        remove_extra(target, len(rows) + 2)
         # self.configure_badge_page(target)
 
     def configure_badge_page(self, badge_page):
