@@ -28,7 +28,7 @@
                     </div>
                     <div class="content" style="margin-top: 10px;">
                         <div class="center aligned">
-                            {{ data-component/name-component sendName=(action 'mutateName')}}
+                            {{ data-component/name-component formNameData=nameData sendName=(action 'mutateName')}}
                         </div>
                     </div>
                 </div>
@@ -71,6 +71,13 @@
                             {{ data-component/text-component sendText=(action 'mutateText') }}
                         </div>
                     </div>
+                    {{#if (eq mode 'edit')}}
+                      <br>
+                      <div class="ui radio checkbox">
+                          <input type="radio" name="inputsource" value="igotnone" checked onclick={{action 'csvChange'}}/>
+                          <label>Use previous data</label>
+                      </div>
+                    {{/if}}
                 </div>
             </div>
             <div class="ui  clearing segment">
@@ -152,11 +159,26 @@
                             </div>
                         </div>
                     </div>
+                    {{#if (eq mode 'edit')}}
+                      <br>
+                      <div class="ui radio checkbox">
+                          <input type="radio" name="tab" value="igotnone" checked onclick={{action 'logoChange'}}/>
+                          <label>Use previous logo</label>
+                      </div>
+                    {{/if}}
                 </div>
             </div>
             {{#each ticketTypes as |ticketType index|}}
+              {{#if (eq mode 'create')}}
                 {{ badge-component/badge-background mutateBackground=(action 'mutateBackground')
-                    mutateDefColor=(action 'mutateDefColor') mutateCustomImage=(action 'mutateCustomImage') defImages=defImages idx=index ticketType=ticketType}}
+                    mutateDefColor=(action 'mutateDefColor') mutateCustomImage=(action 'mutateCustomImage')
+                    defImages=defImages idx=index ticketType=ticketType mode=mode}}
+              {{else}}
+                {{ badge-component/badge-background mutateBackground=(action 'mutateBackground')
+                  mutateDefColor=(action 'mutateDefColor') mutateCustomImage=(action 'mutateCustomImage')
+                  defImages=defImages idx=index ticketType=ticketType mode=mode
+                  imageChange=(action 'imageChange')}}
+              {{/if}}
             {{/each}}
             <div class="ui segment">
                 <div class="ui form width-container">
@@ -167,15 +189,21 @@
                     <div class="content">
                         <div class="center aligned">
                             {{ text-component/font-size fontsizeall=fontsizeall fonttypeall=fonttypeall
+                            defFontType1=defFontType1 defFontType2=defFontType2 defFontType3=defFontType3
+                            defFontType4=defFontType4 defFontType5=defFontType5 defFont1Size=defFont1Size
+                            defFont2Size=defFont2Size defFont3Size=defFont3Size defFont4Size=defFont4Size
+                            defFont5Size=defFont5Size defFontCol1=defFontCol1 defFontCol2=defFontCol2
+                            defFontCol3=defFontCol3 defFontCol4=defFontCol4 defFontCol5=defFontCol5
                             sendDefSize=(action 'mutateFontSize') sendDefFontCol=(action 'mutateFontCol')
-                            sendDefFont=(action
-                            'mutateCustomFont')}}
+                            sendDefFont=(action 'mutateCustomFont')
+                          }}
                         </div>
                     </div>
                 </div>
             </div>
-            <button {{action "submitForm"}} class="ui fluid orange {{if authToken.isEmailVerified '' 'disabled'}} button">Create
-                Badges</button>
+            <button {{action "submitForm"}} class="ui fluid orange {{if authToken.isEmailVerified '' 'disabled'}} button">
+              {{if (eq mode 'create') 'Create Badges' 'Save Changes'}}
+            </button>
             {{#each userError as |error|}}
             <p>{{error.message}}</p>
             {{/each}} {{#if showProgress}}
@@ -219,10 +247,12 @@
         {{ user-component/preview fn=firstName ln=lastName org=organization sh=socialHandle desg=designation
         defColor=defFontColor
         font_fn=defFont1Size font_ln=defFont2Size font_desg=defFont3Size font_org=defFont4Size font_sh=defFont5Size
+        defFontType1=defFontType1
+        defFontType2=defFontType2 defFontType3=defFontType3 defFontType4=defFontType4 defFontType5=defFontType5
         fontcol_fn=defFontCol1
         fontcol_ln=defFontCol2 fontcol_desg=defFontCol3 fontcol_org=defFontCol4 fontcol_sh=defFontCol5 defFont=defFont
         defImageName=defImageName.[0] backImg=imageData.[0] backColor=backColor.[0] custLogoImage=custLogoImage
-        logoImageData=logoImageData
+        logoImageData=logoImageData logoImgChanged=logoImgChanged
         logoBackColor=logoBackColor logoFontColor=logoFontColor logo_text=logo_text defImage=defImage.[0]
         custImage=custImage.[0] previewHeight=previewHeight
         }}
