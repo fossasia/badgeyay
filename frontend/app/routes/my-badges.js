@@ -22,4 +22,4 @@ export default Route.extend({
       filter
     });
   }
-});
+})

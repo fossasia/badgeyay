@@ -17,7 +17,8 @@
         {{#if model.length}}
         {{#each model as |badge|}}
         <div class="card">
-          <div class="image">
+          <div class="image" style="position:relative">
+            <img src="{{badge.image_link}}" style="width:13%;height:13%;position:absolute">
             <img src="{{badge.image_link}}">
           </div>
           <div class="content">
