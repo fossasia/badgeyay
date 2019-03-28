@@ -1,11 +1,15 @@
 <div class="ui basic segment">
     <div class="bgImg ui raised segment" style="padding:0">
         <div
-            style="background-size: cover;
+            style="
+background-size:contain;
+background-position:center;
             background-repeat: no-repeat;
             height: {{if previewHeight '105' '120'}}px;
             color: #{{logoFontColor}};
+            width : 100%;
             font-size: 60px;
+            position : relative;
             text-align: center;
             line-height: {{if previewHeight '105' '120'}}px;
             background-color: #{{logoBackColor}};
