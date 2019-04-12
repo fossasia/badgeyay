@@ -62,8 +62,12 @@ class SVG2PNG:
                                 text_style_detail[ind] = "fill:" + str(fill[row])
                         text_style_detail = ";".join(text_style_detail)
                         t.set("style", text_style_detail)
+                    else:
+                        t.set("style", "fill:" + str(fill[row]))
 
         for texts in element[3]:
+            if len(texts) < 8:
+                continue
             path = texts[7]
             style_detail = path.get("style")
             style_detail = style_detail.split(";")
@@ -82,6 +86,8 @@ class SVG2PNG:
                             text_style_detail[ind] = "fill:" + str(logo_fill)
                     text_style_detail = ";".join(text_style_detail)
                     t.set("style", text_style_detail)
+                else:
+                    t.set("style", "fill:" + str(logo_fill))
 
             path.set("style", style_detail)
 
@@ -127,18 +133,22 @@ class SVG2PNG:
 
                 for ind, i in enumerate(style_detail):
                     if i.split(':')[0] == 'font-size':
-                        style_detail[ind] = "font-size:" + font_size[row]
+                        style_detail[ind] = "font-size:" + str(font_size[row]) + 'px'
                 style_detail = ';'.join(style_detail)
                 text_nodes = path.getchildren()
-                path.set("font-size", style_detail)
+                path.set("style", style_detail)
 
                 for t in text_nodes:
                     text_style_detail = t.get("style")
                     if text_style_detail is not None:
                         text_style_detail = text_style_detail.split(";")
-                        text_style_detail[-1] = "font-size:" + font_size[row]
+                        for ind, i in enumerate(text_style_detail):
+                            if i.split(':')[0] == 'font-size':
+                                text_style_detail[ind] = "font-size:" + str(font_size[row]) + 'px'
                         text_style_detail = ";".join(text_style_detail)
                         t.set("style", text_style_detail)
+                    else:
+                        t.set("style", "font-size:" + str(font_size[row]) + 'px')
 
         etree.ElementTree(element).write(filename, pretty_print=True)
         print("Font Size Saved!")
@@ -185,7 +195,7 @@ class SVG2PNG:
                         style_detail[ind] = "font-family:" + font[row]
                 style_detail = ';'.join(style_detail)
                 text_nodes = path.getchildren()
-                path.set("font-family", style_detail)
+                path.set("style", style_detail)
 
                 for t in text_nodes:
                     text_style_detail = t.get("style")
@@ -194,6 +204,8 @@ class SVG2PNG:
                         text_style_detail[-1] = "font-family:" + font[row]
                         text_style_detail = ";".join(text_style_detail)
                         t.set("style", text_style_detail)
+                    else:
+                        t.set("style", "font-family:" + font[row])
 
         etree.ElementTree(element).write(filename, pretty_print=True)
         print("Font Family Saved!")

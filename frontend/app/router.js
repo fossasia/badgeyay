@@ -14,6 +14,7 @@ router.map(function() {
   this.route('login');
   this.route('signup');
   this.route('create-badges');
+  this.route('edit-badge', { path: 'edit-badge/:badge_id' });
   this.route('my-badges');
   this.route('not-found');
   this.route('not-found-catch', { path: '/*path' });

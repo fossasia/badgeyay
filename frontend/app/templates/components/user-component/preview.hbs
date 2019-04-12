@@ -10,9 +10,9 @@
             line-height: {{if previewHeight '105' '120'}}px;
             background-color: #{{logoBackColor}};
             background-image: {{if custLogoImage 'url('}}{{if custLogoImage logoImageData}}{{if custLogoImage ');'}})">
-            {{#unless custLogoImage}}
+            {{#if (or (not logoImgChanged) (not custLogoImage))}}
                 {{logo_text}}
-            {{/unless}}
+            {{/if}}
         </div>
         <div
             class="preview-bottom component"
@@ -27,35 +27,35 @@
                 <p
                 style="
                 font-size : {{rel font_fn}}px;
-                font-family : {{defFont}};
+                font-family : {{defFontType1}};
                 color: #{{fontcol_fn}}">
                 {{fn}}
                 </p>
                 <p
                 style="
                 font-size : {{rel font_ln}}px;
-                font-family : {{defFont}};
+                font-family : {{defFontType2}};
                 color: #{{fontcol_ln}}">
                 {{ln}}
                 </p>
                 <p
                 style="
                 font-size : {{rel font_desg}}px;
-                font-family : {{defFont}};
+                font-family : {{defFontType3}};
                 color: #{{fontcol_desg}}">
                 {{desg}}
                 </p>
                 <p
                 style="
                 font-size : {{rel font_org}}px;
-                font-family : {{defFont}};
+                font-family : {{defFontType4}};
                 color: #{{fontcol_org}}">
                 {{org}}
                 </p>
                 <p
                 style="
                 font-size : {{rel font_sh}}px;
-                font-family : {{defFont}};
+                font-family : {{defFontType5}};
                 color: #{{fontcol_sh}}">
                 {{sh}}
                 </p>
