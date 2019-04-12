@@ -4,6 +4,10 @@ footer {
   background-color: $bkColor;
 }
 
+.ui.bottom.inverted.menu {
+  overflow: scroll;
+}
+
 @media only screen and (max-width: 600px) {
   .mobile-hide{
     display: none;

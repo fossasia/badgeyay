@@ -1,9 +1,9 @@
 <div class="ui basic segment">
     <div class="bgImg ui raised segment" style="padding:0">
-        <div
+        <div class="preview-top component"
             style="background-size: cover;
             background-repeat: no-repeat;
-            height: {{if previewHeight '105' '120'}}px;
+            height: {{if previewHeight '105' '110'}}px;
             color: #{{logoFontColor}};
             font-size: 60px;
             text-align: center;
@@ -15,14 +15,15 @@
             {{/unless}}
         </div>
         <div
+            class="preview-bottom component"
             style="color: #{{defColor}};
             background-size: cover;
             background-repeat: no-repeat;
-            height: {{if previewHeight '370' '480'}}px;
+            height: {{if previewHeight '370' '390'}}px;
             background-color: #{{backColor}};
             background-image: {{if defImage "url('/images/badge_backgrounds/"}}{{if defImage defImageName}}{{if defImage fingerPrint}}{{if defImage ".png');"}}
                 {{if custImage 'url('}}{{if custImage backImg}}{{if custImage ');'}}">
-            <div class="preview content" style="padding-top: {{if previewHeight '45' '80'}}px">
+            <div class="preview content" style="padding-top: {{if previewHeight '45' '60'}}px">
                 <p
                 style="
                 font-size : {{rel font_fn}}px;
