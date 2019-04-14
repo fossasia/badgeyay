@@ -153,7 +153,9 @@ Then, in a terminal, type
 ```sh
 (badgeyay/api) $ export FLASK_DEBUG=1
 (badgeyay/api)$ flask run
+```
 If Flask Run does not work on Mac Try using :
+```
 python3 -m flask run
 ```
 
