@@ -34,7 +34,7 @@ Badgeyay backend requires the following dependencies to be installed.
           brew install python
           ```
           * To install Homebrew 
-            ```
+            ```bash
             /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
             ```
             Paste it in MacOS Terminal prompt .
