@@ -80,7 +80,7 @@ $ git remote add upstream https://github.com/fossasia/badgeyay.git
 $ sudo apt-get install postgresql postgresql-contrib libssl-dev
 ```
 For MacOS
-```
+```bash
 brew install postgresql
 ```
 
