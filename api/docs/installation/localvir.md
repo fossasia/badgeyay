@@ -79,12 +79,21 @@ $ git remote add upstream https://github.com/fossasia/badgeyay.git
 ```sh
 $ sudo apt-get install postgresql postgresql-contrib libssl-dev
 ```
+For MacOS
+```bash
+brew install postgresql
+```
 
 * **Step 3** - Create the database. For that we first open the psql shell. Go to the directory where your postgres file is stored.
 
 ```sh
+# For linux users
 $ sudo -u postgres psql
+
+# For MacOS users
+psql -d postgres
 ```
+
 
 While inside psql, create a user for badgeyay and then using the user create the database.
 
@@ -120,6 +129,10 @@ You need to have postgresql running in the background.
 ```sh
 sudo service postgresql restart
 ```
+For Mac Users:
+```sh
+brew services postgresql restart
+```
 
 
 * **Step 6** - Start the application
@@ -140,6 +153,10 @@ Then, in a terminal, type
 ```sh
 (badgeyay/api) $ export FLASK_DEBUG=1
 (badgeyay/api)$ flask run
+```
+If Flask Run does not work on Mac Try using :
+```
+python3 -m flask run
 ```
 
 
