@@ -23,7 +23,7 @@ export default Component.extend({
       password = this.get('password');
       password_rep = this.get('password_repeat');
       username = this.get('username');
-      if (password === password_rep && username !== password) {
+      if (password === password_rep) {
         if (email !== undefined && password !== undefined && username !== undefined) {
           this.get('signUp')(email, username, password);
         }
@@ -127,13 +127,6 @@ export default Component.extend({
         $('#signUpSubmit').removeAttr('disabled');
         $('#feedback').html('');
       }
-    }
-    if (document.getElementById('pwd').value == document.getElementById('pwdConfirm').value) {
-      document.getElementById('msg').style.color = 'green';
-      document.getElementById('msg').innerHTML = 'Password match';
-    } else {
-      document.getElementById('msg').style.color = 'red';
-      document.getElementById('msg').innerHTML = 'Passwords do not match';
     }
   },
   keyDown(event) {

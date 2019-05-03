@@ -51,7 +51,6 @@
     "emberfire": "^2.0.10",
     "eslint-plugin-ember": "^5.2.0",
     "loader.js": "^4.7.0",
-    "natives":"^1.1.6",
     "semantic-ui": "^2.3.3",
     "semantic-ui-ember": "^3.0.3",
     "torii": "^0.10.1"

@@ -1,3 +1,4 @@
+
 .ui.segment {
   margin: 1%;
 
@@ -19,20 +20,16 @@
   margin-left: 4%;
 }
 
-.checkbox {
-  position: absolute;
-  top: 0px;
+.pencil {
+  width: 180px;
+}
+.checkbox { 
+  position: absolute; 
+  top: 0px; 
   right: 0px;
 }
 
 .image {
-  position: relative;
-}
+   position: relative;  
+  }
 
-.downloadBadge {
-  margin-top: -13px !important;
-}
-
-.downloadCheck {
-  margin-top: 7px !important;
-}

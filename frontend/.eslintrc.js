@@ -13,8 +13,7 @@ module.exports = {
     'plugin:ember-suave/recommended'
   ],
   env: {
-    'browser': true,
-    "es6": true,
+    'browser': true
   },
   globals: {
     module  : true,

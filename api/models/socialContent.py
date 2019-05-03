@@ -27,24 +27,10 @@ class SocialContent(db.Model):
     @classmethod
     def populate_initial(cls):
         if not SocialContent.check_key('github'):
-            githubdesc = 'Visit our repositories and start contributing.'
-            db.session.add(SocialContent('github', githubdesc, 'https://github.com/fossasia/badgeyay', 'github icon'))
+            db.session.add(SocialContent('github', 'Social network for developers', 'https://github.com/fossasia/badgeyay', 'github icon'))
             db.session.commit()
         if not SocialContent.check_key('twitter'):
-            twitterdesc = 'Visit our repositories and start contributing.'
-            db.session.add(SocialContent('twitter', twitterdesc, 'https://twitter.com/badgeyay', 'twitter icon'))
-            db.session.commit()
-        if not SocialContent.check_key('gitter'):
-            gitterdesc = 'Facing a problem? Join us.'
-            db.session.add(SocialContent('gitter', gitterdesc, 'https://gitter.im/fossasia/badgeyay', 'gitter icon'))
-            db.session.commit()
-        if not SocialContent.check_key('forum'):
-            forumdesc = 'Discuss about projects on our Google Channel.'
-            db.session.add(SocialContent('forum', forumdesc, 'https://groups.google.com/forum/#!forum/badgeyay', 'google icon'))
-            db.session.commit()
-        if not SocialContent.check_key('stack overflow'):
-            stackdesc = 'Your resource for all technical questions and answers.'
-            db.session.add(SocialContent('stack overflow', stackdesc, 'https://stackoverflow.com/questions/tagged/badgeyay', 'stack overflow icon'))
+            db.session.add(SocialContent('twitter', 'Online news and social networking service', 'https://twitter.com/badgeyay', 'twitter icon'))
             db.session.commit()
 
     @staticmethod

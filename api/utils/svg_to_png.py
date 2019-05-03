@@ -14,7 +14,7 @@ class SVG2PNG:
         self.APP_ROOT = app.config.get('BASE_DIR')
         self.ids = ['text4611', 'text4585', 'text4559', 'text4533', 'text4399', 'text4373', 'text4347', 'text4313']
 
-    def do_text_fill(self, filename, font_color_1, font_color_2, font_color_3, font_color_4, font_color_5, logo_fill, badge_size, paper_size):
+    def do_text_fill(self, filename, font_color_1, font_color_2, font_color_3, font_color_4, font_color_5, badge_size, paper_size):
         """
         Module to change color of badge's details
         :param `filename` - svg file to modify.
@@ -55,41 +55,13 @@ class SVG2PNG:
 
                 for t in text_nodes:
                     text_style_detail = t.get("style")
-                    if text_style_detail is not None:
-                        text_style_detail = text_style_detail.split(";")
-                        for ind, i in enumerate(text_style_detail):
-                            if i.split(':')[0] == 'fill':
-                                text_style_detail[ind] = "fill:" + str(fill[row])
-                        text_style_detail = ";".join(text_style_detail)
-                        t.set("style", text_style_detail)
-                    else:
-                        t.set("style", "fill:" + str(fill[row]))
-
-        for texts in element[3]:
-            if len(texts) < 8:
-                continue
-            path = texts[7]
-            style_detail = path.get("style")
-            style_detail = style_detail.split(";")
-            for ind, i in enumerate(style_detail):
-                if i.split(':')[0] == 'fill':
-                    style_detail[ind] = "fill:" + str(logo_fill)
-            style_detail = ';'.join(style_detail)
-            text_nodes = path.getchildren()
-
-            for t in text_nodes:
-                text_style_detail = t.get("style")
-                if text_style_detail is not None:
                     text_style_detail = text_style_detail.split(";")
                     for ind, i in enumerate(text_style_detail):
                         if i.split(':')[0] == 'fill':
-                            text_style_detail[ind] = "fill:" + str(logo_fill)
+                            text_style_detail[ind] = "fill:" + str(fill[row])
+
                     text_style_detail = ";".join(text_style_detail)
                     t.set("style", text_style_detail)
-                else:
-                    t.set("style", "fill:" + str(logo_fill))
-
-            path.set("style", style_detail)
 
         etree.ElementTree(element).write(filename, pretty_print=True)
         print("Text Fill saved!")
@@ -133,22 +105,17 @@ class SVG2PNG:
 
                 for ind, i in enumerate(style_detail):
                     if i.split(':')[0] == 'font-size':
-                        style_detail[ind] = "font-size:" + str(font_size[row]) + 'px'
+                        style_detail[ind] = "font-size:" + font_size[row]
                 style_detail = ';'.join(style_detail)
                 text_nodes = path.getchildren()
-                path.set("style", style_detail)
+                path.set("font-size", style_detail)
 
                 for t in text_nodes:
                     text_style_detail = t.get("style")
-                    if text_style_detail is not None:
-                        text_style_detail = text_style_detail.split(";")
-                        for ind, i in enumerate(text_style_detail):
-                            if i.split(':')[0] == 'font-size':
-                                text_style_detail[ind] = "font-size:" + str(font_size[row]) + 'px'
-                        text_style_detail = ";".join(text_style_detail)
-                        t.set("style", text_style_detail)
-                    else:
-                        t.set("style", "font-size:" + str(font_size[row]) + 'px')
+                    text_style_detail = text_style_detail.split(";")
+                    text_style_detail[-1] = "font-size:" + font_size[row]
+                    text_style_detail = ";".join(text_style_detail)
+                    t.set("style", text_style_detail)
 
         etree.ElementTree(element).write(filename, pretty_print=True)
         print("Font Size Saved!")
@@ -195,17 +162,14 @@ class SVG2PNG:
                         style_detail[ind] = "font-family:" + font[row]
                 style_detail = ';'.join(style_detail)
                 text_nodes = path.getchildren()
-                path.set("style", style_detail)
+                path.set("font-family", style_detail)
 
                 for t in text_nodes:
                     text_style_detail = t.get("style")
-                    if text_style_detail is not None:
-                        text_style_detail = text_style_detail.split(";")
-                        text_style_detail[-1] = "font-family:" + font[row]
-                        text_style_detail = ";".join(text_style_detail)
-                        t.set("style", text_style_detail)
-                    else:
-                        t.set("style", "font-family:" + font[row])
+                    text_style_detail = text_style_detail.split(";")
+                    text_style_detail[-1] = "font-family:" + font[row]
+                    text_style_detail = ";".join(text_style_detail)
+                    t.set("style", text_style_detail)
 
         etree.ElementTree(element).write(filename, pretty_print=True)
         print("Font Family Saved!")
@@ -256,11 +220,10 @@ class SVG2PNG:
 
                 for t in text_nodes:
                     text_style_detail = t.get("style")
-                    if text_style_detail is not None:
-                        text_style_detail = text_style_detail.split(";")
-                        text_style_detail[-1] = "text-align:" + align[row]
-                        text_style_detail = ";".join(text_style_detail)
-                        t.set("style", text_style_detail)
+                    text_style_detail = text_style_detail.split(";")
+                    text_style_detail[-1] = "text-align:" + align[row]
+                    text_style_detail = ";".join(text_style_detail)
+                    t.set("style", text_style_detail)
 
         etree.ElementTree(element).write(filename, pretty_print=True)
         print("Text Alignment Saved!")

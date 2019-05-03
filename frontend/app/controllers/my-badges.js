@@ -21,9 +21,7 @@ export default Controller.extend({
           });
         });
     },
-    nextPage() {
-      return this.get('store');
-    },
+
     updateBadgeName(badge) {
       badge.save()
         .then(() => this.get('notifications').success('Badge Name Successfully Updated!', {

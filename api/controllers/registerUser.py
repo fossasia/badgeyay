@@ -29,11 +29,6 @@ def register_user():
         data, err = schema.load(input_data)
         if err:
             return jsonify(err)
-
-        if User.getUser(username=data['username']):
-            errmsg = 'User with username already exists'
-            return ErrorResponse(FirebaseError(errmsg).message, 422, {'Content-Type': 'application/json'}).respond()
-
         try:
             user = auth.create_user(
                 email=data['email'],

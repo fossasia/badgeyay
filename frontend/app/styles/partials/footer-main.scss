@@ -1,6 +1,7 @@
+$bkColor: #1b1c1d;
+
 footer {
-  background-color: #1b1c1d;
-  z-index: -1;
+  background-color: $bkColor;
 }
 
 @media only screen and (max-width: 600px) {

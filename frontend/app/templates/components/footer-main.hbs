@@ -1,91 +1,21 @@
-{{!-- <footer>
+<footer>
     <div class="ui bottom inverted menu">
         <div class="left menu">
             {{#link-to 'sitemap' class='item'}}
-            {{init-cap 'sitemap'}}
+                {{init-cap 'sitemap'}}
             {{/link-to}}
             {{#link-to 'faq' class='item'}}
-            {{init-cap 'faq'}}
-            {{/link-to}}
-            {{#link-to 'about' class='item'}}
-            {{init-cap 'About Us'}}
-            {{/link-to}}
-             {{#link-to 'contact-badgeyay' class='item'}}
-                {{init-cap 'contact'}}
+                {{init-cap 'faq'}}
             {{/link-to}}
         </div>
         <div class="right menu">
             <strong class="item">Follow us on</strong>
             {{#each socialMedia as |media|}}
-            <a class="item" href={{media.link}} target="_blank">
-                <i class="{{media.id}} icon"></i>
-                <span class="mobile-hide">{{ first-cap media.id}}</span>
-            </a>
+                <a class="item" href={{media.link}} target="_blank">
+                    <i class="{{media.id}} icon"></i>
+                    <span class="mobile-hide">{{ first-cap media.id}}</span>
+                </a>
             {{/each}}
         </div>
     </div>
 </footer>
---}}
-<div class="ui inverted vertical footer segment">
-    <div class="ui container" style="padding-top: 40px">
-        <div class="ui stackable inverted divided equal height stackable grid">
-            <div class="three wide column">
-                <h4 class="ui inverted header">
-                    About
-                </h4>
-                <div class="ui inverted link list">
-                    {{#link-to 'sitemap' class='item'}}
-                    {{init-cap 'sitemap'}}
-                    {{/link-to}}
-                    {{#link-to 'faq' class='item'}}
-                    {{init-cap 'faq'}}
-                    {{/link-to}}
-                    {{#link-to 'contact-badgeyay' class='item'}}
-                    {{init-cap 'contact'}}
-                    {{/link-to}}
-                    
-                </div>
-            </div>
-            <div class="seven wide column ">
-                <h4 class="ui inverted header">
-                    Our Other Projects
-                </h4>
-                <div class="ui grid">
-                    <div class="six wide column">
-
-                        <div class="ui inverted link list">
-                            <a class="item" href="https://fossasia.org/" target="_blank" rel="noopener">Fossasia</a>
-                            <a class="item" href="https://loklak.org/" target="_blank" rel="noopener">Loklak</a>
-                            <a class="item" href="https://chat.susi.ai/" target="_blank" rel="noopener">SUSI</a>
-                            <a class="item" href="https://eventyay.com/" target="_blank" rel="noopener">Eventyay</a>
-                            <a class="item" href="https://github.com/fossasia/neurolab-android" target="_blank" rel="noopener">Neurolab</a>
-                        </div>
-                    </div>
-                    <div class="one wide column">
-
-                    </div>
-                    <div class="six wide column">
-                        <div class="ui inverted link list">
-                            <a class="item" href="https://pslab.io/" target="_blank" rel="noopener">PSlab</a>
-                            <a class="item" href="https://meilix.org/" target="_blank" rel="noopener">Meilix</a>
-                            <a class="item" href="https://phimp.me/" target="_blank" rel="noopener">Phimp.me</a>
-                            <a class="item" href="http://dev.yaydoc.org/" target="_blank" rel="noopener">Yaydoc</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="four wide column">
-                <h4 class="ui inverted header">
-                    Connect with Us
-                </h4>
-                <div class="ui inverted link list">
-                     {{#each socialMedia as |media|}}
-                    <a class="item" href={{media.link}} target="_blank" rel="noopener">
-                        <i class="{{media.id}} icon"></i>{{ first-cap media.id}}
-                    </a>
-                    {{/each}}
-                </div>
-            </div>
-        </div>
-    </div>
-</div>

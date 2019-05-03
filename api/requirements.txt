@@ -45,7 +45,6 @@ pycparser==2.18
 PyJWT==1.6.3
 PyPDF2==1.26.0
 python-dateutil==2.7.3
-python-decouple==3.1
 python-editor==1.0.3
 pytz==2018.4
 requests>=2.20.0
@@ -53,7 +52,7 @@ rsa==3.4.2
 six==1.11.0
 SQLAlchemy==1.2.7
 tinycss2==0.6.1
-urllib3==1.24.1
+urllib3==1.22
 webencodings==0.5.1
 Werkzeug==0.14.1
 marshmallow-jsonapi

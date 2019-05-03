@@ -27,18 +27,6 @@ Badgeyay backend requires the following dependencies to be installed.
           sudo pacman -S python-cairosvg
           sudo pacman -S python-lxml
           ```
-        
-
-        * For MacOS
-          ```bash
-          brew install python
-          ```
-          * To install Homebrew 
-            ```bash
-            /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-            ```
-            Paste it in MacOS Terminal prompt .
-
 
 ## Installation
 

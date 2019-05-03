@@ -12,7 +12,7 @@ from api.schemas.errors import (
 )
 from api.schemas.token import TokenSchema
 from api.models.token import ResetPasswordToken
-from psycopg2 import ProgrammingError
+
 
 router = Blueprint('resetUser', __name__)
 
@@ -25,7 +25,7 @@ def reset_password():
         return ErrorResponse(PayloadNotFound().message, 422, {'Content-Type': 'application/json'}).respond()
 
     if data and data['username']:
-        user = User.getUser(username=data['username'])
+        user = User.getUser(data['username'])
         expire = datetime.datetime.utcnow() + datetime.timedelta(hours=24)
         token = jwt.encode({
             'id': user.username,
@@ -52,11 +52,6 @@ def pwd_reset_token():
         'id': user.id,
         'exp': expire
     }, app.config.get('SECRET_KEY'))
-    try:
-        resetObj = ResetPasswordToken.query.get(user.id)
-        resetObj.token = token
-    except ProgrammingError:
-        resetObj = ResetPasswordToken(user.id, token.decode('UTF-8'))
-
+    resetObj = ResetPasswordToken(user.id, token.decode('UTF-8'))
     resetObj.save_to_db()
     return jsonify(TokenSchema().dump(resetObj).data)

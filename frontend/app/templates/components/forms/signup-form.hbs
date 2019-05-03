@@ -24,28 +24,26 @@
                         <i class="lock icon"></i>
                         {{input type="password" id="pwd" value=password name="password" placeholder="Password"}}
                         <div class="ui small basic icon buttons">
-                            <button class="ui button" type="button" id="eye1" {{ action 'showPasswordSignup'}}>
+                            <button class="ui button" id="eye1" {{ action 'showPasswordSignup'}}>
                                 <i class="eye slash icon"></i>
                             </button>
                         </div>
                     </div>
                     <small id="feedback"></small>
-                    <meter id="password-strength-meter" value={{level}}></meter>
+                    <meter  id="password-strength-meter"  value={{level}} ></meter>
                 </div>
                 <div class="field required">
                     <div class="ui left icon input">
                         <i class="lock icon"></i>
-                        {{input type="password" id="pwdConfirm" value=password_repeat name="password_repeat" placeholder="Re-enter Password" }}
+                        {{input type="password" id="pwdConfirm" value=password_repeat name="password_repeat" placeholder="Re-enter Password"}}
                         <div class="ui small basic icon buttons">
-                            <button class="ui button" type="button" id="eye2" {{ action 'showPasswordSignupConfirm'}}>
+                            <button class="ui button" id="eye2" {{ action 'showPasswordSignupConfirm'}}>
                                 <i class="eye slash icon"></i>
                             </button>
                         </div>
                     </div>
-                    <div id="msg" style="text-align:center"></div>
                     <div class="ui center aligned segment basic">
-                        <button disabled id="signUpSubmit" class="ui fluid large submit orange basic button" style="margin-bottom: 10px;"
-                            type="submit">
+                        <button disabled id="signUpSubmit" class="ui fluid large submit orange basic button" style="margin-bottom: 10px;" type="submit">
                             Sign Up
                         </button>
                         <div class="ending-border"></div>

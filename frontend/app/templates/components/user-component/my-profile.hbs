@@ -1,6 +1,6 @@
 <div class="ui stackable grid">
     <div class="row">
-      <div class="three wide column" style="text-align:center">
+      <div class="three wide column">
         <div class="ui basic aligned segment" >
           <div class="ui circular image profile-image">
               <img onclick={{action "updateProfileImage"}} src="{{user.photoURL}}">
@@ -19,8 +19,7 @@
           </div>
         </div>
       </div>
-      <div class="one wide column"></div>
-      <div class="ten wide column" style="padding-top: 50px">
+      <div class="eleven wide column">
         <div class="ui active attached tab segment" data-tab="account">
           {{user-component/user-account session=session isLoading=isLoadingName user=user sendUserName=(action 'updateUserName')}}
         </div>

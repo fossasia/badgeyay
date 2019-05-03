@@ -20,5 +20,5 @@
   {{input type='file' accept="image/png" id=inputIdGenerated class='styled input' name=name change=(action 'fileSelected')}}
 {{/if}}
 {{#if needsCropper}}
-  {{modals/cropper-modal isOpen=cropperModalIsShown height=height width=width imgData=imgData onImageCrop=(action 'imageCropped')}}
+  {{modals/cropper-modal isOpen=cropperModalIsShown imgData=imgData onImageCrop=(action 'imageCropped')}}
 {{/if}}

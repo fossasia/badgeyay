@@ -1,7 +1,7 @@
 <div class="ui stackable grid">
     <div class="right floated right aligned two wide column">
         <label class="switch" {{action 'togglePreview'}} data-tooltip="Toggle Preview" data-position="left center">
-            <input type="checkbox" class="checkswitch">
+            <input type="checkbox" class="checkswitch" checked>
             <span class="slider round"></span>
         </label>
     </div>
@@ -27,7 +27,7 @@
                     </div>
                     <div class="content" style="margin-top: 10px;">
                         <div class="center aligned">
-                            {{ data-component/name-component formNameData=nameData sendName=(action 'mutateName')}}
+                            {{ data-component/name-component sendName=(action 'mutateName')}}
                         </div>
                     </div>
                 </div>
@@ -36,13 +36,13 @@
                 <div class="ui form width-container">
                     <p>
                         <b>Select from one of the Input Sources</b>
-                        <a class="ui right floated icon orange basic button" href="{{href-to 'user-guide'}}" target="_blank"
-                            data-tooltip="User Input Guide" data-position="right center">
+                        <a class="ui right floated icon orange basic button" href="{{href-to 'user-guide'}}" target="_blank" data-tooltip="User Input Guide"
+                            data-position="right center">
                             <i class="info icon"></i>
                         </a>
                     </p>
                     <div class="ui radio checkbox"  onclick="showcsv();">
-                        <input type="radio" name="inputsource" value="igotnone"/>
+                        <input type="radio" name="tab" value="igotnone"/>
                         <label>Upload CSV</label>
                     </div>
                     <div class="content" id="csv" style="display: none">
@@ -51,18 +51,8 @@
                         </div>
                     </div>
                     <br>
-                    <div class="ui radio checkbox"  onclick="showeventyaycsv();">
-                        <input type="radio" name="inputsource" value="igotnone"/>
-                        <label>Upload Eventyay attendees CSV File</label>
-                    </div>
-                    <div class="content" id="eventyaycsv" style="display: none">
-                        <div class="center aligned">
-                            {{ data-component/csv-component sendCSV=(action 'mutateEventyayCSV') }}
-                        </div>
-                    </div>
-                    <br>
                     <div class="ui radio checkbox">
-                        <input type="radio" name="inputsource" value="igotnone" onclick="showdetails();" />
+                        <input type="radio" name="tab" value="igotnone" onclick="showdetails();" />
                         <label>Enter Details</label>
                     </div>
                     <div class="content" id="details" style="display:none">
@@ -70,13 +60,6 @@
                             {{ data-component/text-component sendText=(action 'mutateText') }}
                         </div>
                     </div>
-                    {{#if (eq mode 'edit')}}
-                      <br>
-                      <div class="ui radio checkbox">
-                          <input type="radio" name="inputsource" value="igotnone" checked onclick={{action 'csvChange'}}/>
-                          <label>Use previous data</label>
-                      </div>
-                    {{/if}}
                 </div>
             </div>
             <div class="ui  clearing segment">
@@ -114,95 +97,61 @@
             <div class="ui clearing segment">
                 <div class="ui form width-container">
                     <p>
-                        <b>Select from one of the Logo sources</b>
-                        <a class="ui right floated icon orange basic button" data-tooltip="Best Suitable Image -> Size(width x height): 749 X 211px & Resolution: 300 DPI"
+                        <b>Select from one of the background sources</b>
+                        <a class="ui right floated icon orange basic button" data-tooltip="Best Suitable Image -> Size(width x height): 749 X 1049px & Resolution: 300 DPI"
                             data-position="right center">
                             <i class="info icon"></i>
                         </a>
                     </p>
 
                     <div class="ui radio checkbox">
-                        <input type="radio" name="tab" value="igotnone" onclick={{action 'defaultlogoimage'}} />
-                        <label>Use default FOSSASIA logo</label>
+                        <input type="radio" name="tab1" value="igotnone" onclick="customimage();" />
+                        <label>Upload a Custom Image</label>
+                    </div>
+                    <div class="content" id="custimg" style="display:none">
+                        <div class="center aligned">
+                            {{ background-component/image-component imageData=imageData sendImage=(action 'mutateCustomImage') }}
+                        </div>
                     </div>
                     <br>
+                    <div class="ui radio checkbox">
+                        <input type="radio" name="tab1" value="igotnone" onclick="custombg();" />
+                        <label>Select from default backgrounds</label>
+                    </div>
+                    <br>
+                    <div class="content" id="custbg" style="display: none">
+                        <div class="center aligned">
+                            {{ background-component/def-image-component defImages=defImages sendDefImage=(action 'mutateBackground') }}
+                        </div>
+                    </div>
+
 
                     <div class="ui radio checkbox">
-                        <input type="radio" name="tab" value="igotnone" onclick={{action 'customlogoimage'}}/>
-                        <label>Add event logo</label>
+                        <input type="radio" name="tab1" value="igotnone" onclick="customcol();" />
+                        <label>Select from a custom color</label>
                     </div>
-                    <div class="content" id="custlogoimg" style='display:none;'>
+                    <div class="content" id="custcol" style="display: none">
                         <div class="center aligned">
-                            {{ background-component/logo-image-component logoImageData=logoImageData }}
+                            {{ background-component/color-bg-component sendDefColor=(action 'mutateDefColor') backColor=backColor }}
                         </div>
                     </div>
-                    <br>
-                    <div class="ui radio checkbox">
-                        <input type="radio" name="tab" value="igotnone" onclick={{action 'customlogocol'}}/>
-                        <label {{action "customLogoColorClicked"}}>Use event name text</label>
-                    </div>
-                    <div class="content" id="custlogocol" style='display:none;'>
-                        <div class="center aligned">
-                            <div class="ui icon input">
-                                {{input type="text" value=logo_text }}
-                            </div>
-                            <p>Select a Font Color</p>
-                            <div class="center aligned">
-                                {{ background-component/color-bg-component sendDefColor=(action 'mutateLogoFontColor')
-                                backColor=logoFontColor }}
-                            </div>
-                            <p>Select a Background Color</p>
-                            <div class="center aligned">
-                                {{ background-component/color-bg-component sendDefColor=(action 'mutateLogoBackColor')
-                                backColor=logoBackColor }}
-                            </div>
-                        </div>
-                    </div>
-                    {{#if (eq mode 'edit')}}
-                      <br>
-                      <div class="ui radio checkbox">
-                          <input type="radio" name="tab" value="igotnone" checked onclick={{action 'logoChange'}}/>
-                          <label>Use previous logo</label>
-                      </div>
-                    {{/if}}
                 </div>
             </div>
-            {{#each ticketTypes as |ticketType index|}}
-              {{#if (eq mode 'create')}}
-                {{ badge-component/badge-background mutateBackground=(action 'mutateBackground')
-                    mutateDefColor=(action 'mutateDefColor') mutateCustomImage=(action 'mutateCustomImage')
-                    defImages=defImages idx=index ticketType=ticketType mode=mode}}
-              {{else}}
-                {{ badge-component/badge-background mutateBackground=(action 'mutateBackground')
-                  mutateDefColor=(action 'mutateDefColor') mutateCustomImage=(action 'mutateCustomImage')
-                  defImages=defImages idx=index ticketType=ticketType mode=mode
-                  imageChange=(action 'imageChange')}}
-              {{/if}}
-            {{/each}}
             <div class="ui segment">
                 <div class="ui form width-container">
-
+                    
                     {{!-- {{ text-component/font-color}} --}}
-
+                       
                     <div class="ui horizontal divider"></div>
                     <div class="content">
                         <div class="center aligned">
-                            {{ text-component/font-size fontsizeall=fontsizeall fonttypeall=fonttypeall
-                            defFontType1=defFontType1 defFontType2=defFontType2 defFontType3=defFontType3
-                            defFontType4=defFontType4 defFontType5=defFontType5 defFont1Size=defFont1Size
-                            defFont2Size=defFont2Size defFont3Size=defFont3Size defFont4Size=defFont4Size
-                            defFont5Size=defFont5Size defFontCol1=defFontCol1 defFontCol2=defFontCol2
-                            defFontCol3=defFontCol3 defFontCol4=defFontCol4 defFontCol5=defFontCol5
-                            sendDefSize=(action 'mutateFontSize') sendDefFontCol=(action 'mutateFontCol')
-                            sendDefFont=(action 'mutateCustomFont')
-                          }}
+                            {{ text-component/font-size fontsizeall=fontsizeall fonttypeall=fonttypeall sendDefSize=(action 'mutateFontSize') sendDefFontCol=(action 'mutateFontCol') sendDefFont=(action
+                            'mutateCustomFont')}}
                         </div>
                     </div>
                 </div>
             </div>
-            <button {{action "submitForm"}} class="ui fluid orange {{if authToken.isEmailVerified '' 'disabled'}} button">
-              {{if (eq mode 'create') 'Create Badges' 'Save Changes'}}
-            </button>
+            <button {{action "submitForm"}} class="ui fluid orange {{if authToken.isEmailVerified '' 'disabled'}} button">Create Badges</button>
             {{#each userError as |error|}}
             <p>{{error.message}}</p>
             {{/each}} {{#if showProgress}}
@@ -243,30 +192,16 @@
     </div>
     <div class="{{if previewToggled 'six' 'hide'}} wide column preview">
         <!--Add Preview Section here-->
-        {{ user-component/preview fn=firstName ln=lastName org=organization sh=socialHandle desg=designation
-        defColor=defFontColor
-        font_fn=defFont1Size font_ln=defFont2Size font_desg=defFont3Size font_org=defFont4Size font_sh=defFont5Size
-        defFontType1=defFontType1
-        defFontType2=defFontType2 defFontType3=defFontType3 defFontType4=defFontType4 defFontType5=defFontType5
-        fontcol_fn=defFontCol1
+        {{ user-component/preview fn=firstName ln=lastName org=organization sh=socialHandle desg=designation defColor=defFontColor
+        font_fn=defFont1Size font_ln=defFont2Size font_desg=defFont3Size font_org=defFont4Size font_sh=defFont5Size fontcol_fn=defFontCol1
         fontcol_ln=defFontCol2 fontcol_desg=defFontCol3 fontcol_org=defFontCol4 fontcol_sh=defFontCol5 defFont=defFont
-        defImageName=defImageName.[0] backImg=imageData.[0] backColor=backColor.[0] custLogoImage=custLogoImage
-        logoImageData=logoImageData logoImgChanged=logoImgChanged
-        logoBackColor=logoBackColor logoFontColor=logoFontColor logo_text=logo_text defImage=defImage.[0]
-        custImage=custImage.[0] previewHeight=previewHeight
+        defImageName=defImageName backImg=prevImageData defImage=defImage custImage=custImage previewHeight=previewHeight
         }}
     </div>
 </div>{{overlay-welcome user=user removeFTL=(action 'removeFTL')}}
 <script>
     function showcsv() {
         document.getElementById('csv').style.display = 'block';
-        document.getElementById('eventyaycsv').style.display = 'none';
-        document.getElementById('details').style.display = 'none';
-
-    }
-    function showeventyaycsv() {
-        document.getElementById('csv').style.display = 'none';
-        document.getElementById('eventyaycsv').style.display = 'block';
         document.getElementById('details').style.display = 'none';
 
     }

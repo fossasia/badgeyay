@@ -3,9 +3,6 @@
 - [ ] bug report
 - [ ] feature request
 
-**Description :**
-<!-- Describe your feature -->
-
 **Current behaviour:**
 <!-- How the bug manifests. -->
 
