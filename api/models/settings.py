@@ -1,7 +1,9 @@
 import datetime
 
 from api.db import db
-from api.config import config
+from api.config import config as api_config
+
+from decouple import config
 
 
 class Settings(db.Model):
@@ -19,7 +21,7 @@ class Settings(db.Model):
     firebaseDatabaseURL = db.Column(db.String, nullable=False)
 
     # Email settings
-    fromMail = db.Column(db.String, default="bagdeyayofficial@gmail.com")
+    fromMail = db.Column(db.String, default="badgeyayofficial@gmail.com")
 
     # Send Grid config
     sendGridApiKey = db.Column(db.String)
@@ -55,9 +57,10 @@ class Settings(db.Model):
         if len(Settings.query.all()) == 0:
             settings = Settings(0,
                                 'Badgeyay',
-                                config.POSTGRES['secret'],
-                                'https://badgeyay-195bf.firebaseio.com',
-                                'badgeyay-195bf.appspot.com')
+                                api_config.POSTGRES['secret'],
+                                config('FIREBASE_DB_URL'),
+                                config('FIREBASE_STORAGE_BUCKET'),
+                                )
             settings.save_to_db()
         else:
             settings = Settings.latest_settings()

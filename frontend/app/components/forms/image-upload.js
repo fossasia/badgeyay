@@ -46,6 +46,7 @@ export default Component.extend({
       this.set('cropperModalIsShown', false);
       this.set('selectedImage', croppedImageData);
       this.set('imageData', croppedImageData);
+      this.get('mutateCustomImg')(croppedImageData);
     },
 
     removeSelection() {
