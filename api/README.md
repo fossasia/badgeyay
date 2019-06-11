@@ -6,19 +6,20 @@ Badgeyay is an awesome Badge generator with a simple web UI to add data and gene
 
 ## Prerequisites
 
-Badgeyay backend requires the following dependencies to be installed.
+Badgeyay backend depends on:
    - python3
+   - postgress SQL
 
         * For Ubuntu/Debian based package managers
           ```bash
           sudo apt-get update
-          sudo apt-get install python3
+          sudo apt-get install python3 postgresql postgresql-contrib
           ```
 
         * For Fedora/CentOS/RPM based package managers
           ```bash
           sudo -i
-          yum install python3
+          yum install python3 postgresql postgresql-contrib
           exit
           ```
 
@@ -26,12 +27,14 @@ Badgeyay backend requires the following dependencies to be installed.
           ```bash
           sudo pacman -S python-cairosvg
           sudo pacman -S python-lxml
+          sudo pacman -S postgresql
           ```
         
 
         * For MacOS
           ```bash
           brew install python
+          brew install postgress
           ```
           * To install Homebrew 
             ```bash
@@ -39,6 +42,7 @@ Badgeyay backend requires the following dependencies to be installed.
             ```
             Paste it in MacOS Terminal prompt .
 
+In addition to the above `zlib-dev`, `libxml2`, and `jpeg` must be present. (Most distros have them pre-installed)
 
 ## Installation
 
