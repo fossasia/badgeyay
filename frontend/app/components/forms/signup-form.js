@@ -128,12 +128,14 @@ export default Component.extend({
         $('#feedback').html('');
       }
     }
-    if (document.getElementById('pwd').value == document.getElementById('pwdConfirm').value) {
-      document.getElementById('msg').style.color = 'green';
-      document.getElementById('msg').innerHTML = 'Password match';
-    } else {
-      document.getElementById('msg').style.color = 'red';
-      document.getElementById('msg').innerHTML = 'Passwords do not match';
+    if (event.target.name === 'password' || event.target.id == 'pwdConfirm') {
+      if (document.getElementById('pwd').value == document.getElementById('pwdConfirm').value) {
+        document.getElementById('msg').style.color = 'green';
+        document.getElementById('msg').innerHTML = 'Passwords match';
+      } else {
+        document.getElementById('msg').style.color = 'red';
+        document.getElementById('msg').innerHTML = 'Passwords do not match';
+      }
     }
   },
   keyDown(event) {
