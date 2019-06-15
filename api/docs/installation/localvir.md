@@ -3,6 +3,7 @@
 The instructions on this page will guide you in setting up a local development
 environment in your system. First things first, BadgeYay needs 'Python 3' to run.
 Most of the distros come bundled with that but if it is not there please install it first.
+We will be installing postgres, but be sure you have `libxml2`, `zlib`, and `jpeg`. (Most distros do have them)
 
 These are some additional depencies that you will need:
 
@@ -41,7 +42,7 @@ $ git remote add upstream https://github.com/fossasia/badgeyay.git
     ```sh
     sudo -H pip3 install -r api/requirements.txt
     ```
-    hint: You may need to upgrade your pip version and install following packages if you encounter errors while installing the requirements.
+    Note: Errors might result here, just see which package is unmet, and just install them using the distro's package manager. You may need to upgrade your pip version
 
   * Installation in Virtual Environment
 
@@ -104,11 +105,11 @@ CREATE USER tom WITH PASSWORD 'start';
 CREATE DATABASE badgeyay WITH OWNER tom;
 ```
 
-Once database is created, exit the psql shell with `\q` followed by ENTER.
+Once database is created, exit the psql shell with `\q` followed by ENTER. Note that the password above was `start` and the user name was `tom`
 
 If you want a graphical interface for this, you can try [pgAdmin](https://www.pgadmin.org/).
 
-* **Step 4** - Setup the .env file similar to [.env.example file](https://github.com/fossasia/badgeyay/blob/development/.env.example)
+* **Step 4** - Copy the .env.example and rename it to .env (create an .env file or setup the .env file similar to [.env.example file](https://github.com/fossasia/badgeyay/blob/development/.env.example)
 
 According to the name of the user and its password that you have created, you will need to set the credentials in the .env file.
 

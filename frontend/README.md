@@ -13,7 +13,7 @@ This directory contains the frontend for badgeyay.
 You will need the following things properly installed on your computer.
 
 * [Git](https://git-scm.com/)
-* [Node.js](https://nodejs.org/) (with npm)
+* [Node.js](https://nodejs.org/) (with npm) (Preferred version is v9.11.2) (It's tricky to install npm on most system, maybe use nvm)
 * [Ember CLI](https://ember-cli.com/)
 * [Google Chrome](https://google.com/chrome/) (for testing purposes only)
 
