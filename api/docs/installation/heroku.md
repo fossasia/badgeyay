@@ -38,7 +38,7 @@ Now, login at Heroku:
 
 Authorize your Machine at Heroku
 
-Create and add a SSH Key at Heroku:
+Create and add a SSH Key at Heroku (optional but recommended):
 
 ````
 $ ssh-keygen -t rsa
@@ -47,26 +47,6 @@ $ heroku keys:add
 
 The public and private keys will be at ~/.ssh.
 
-### Creating a Git Repository
-
-Heroku's push/commits work just like as Git. But instead of using the "origin" you use "heroku".
-
-``$ git push origin master``
-
-and the deployment at Heroku (production) is done using:
-
-``$ git push heroku master``
-
-In the root of your project, go ahead and create a Git repository, commit, add, push:
-
-````
-$ git init
-$ git add -A
-$ git commit -m "First commit"
-$ git push origin master
-````
-
-### The Heroku Repository
 
 Now, let's create our app at Heroku:
 
@@ -77,23 +57,26 @@ Addons and Environment Variables:
 Now it's time to add the addons and the environment variables to your app at the Heroku server. For the app I mentioned in the beginning, I type:
 
 ````
-$ heroku addons:add heroku-postgresql:dev
-$ heroku pg:promote HEROKU_POSTGRESQL_ONYX_URL
+$ heroku addons:create heroku-postgresql:hobby-dev
+````
+
+When you run this command the output will a url which you should note as HEROKU_POSTGRESQL_URL
+
+````
+$ heroku pg:promote HEROKU_POSTGRESQL_URL
 $ heroku config:set MAIL_USERNAME="<login>"
 $ heroku config:set MAIL_PASSWORD="<password>"
 ````
 
-Adding Requirements :
+## Deploying!
 
-Heroku needs to know what libraries and packages it needs to install to be able to run your application. For this, create a file requirements.txt in the root of your app, with all the libraries from your environment.
+If everything is good, it's time to deploy your application.
 
-``$ cat pip freeze >> requirements.txt``
+Run this command :
 
-### Creation of Procfile :
+``$ git push heroku master``
 
-Create a file named Procfile. The content should be :
-
-``web gunicorn manage:app``
+That's it! The app should be running at < app-name >.herokuapp.com. 
 
 ### Using Foreman to Emulate Heroku
 
@@ -129,15 +112,3 @@ class HerokuConfig(ProductionConfig):
 To let Heroku know what configuration it should use, add this environment variavle :
 
 ``$ heroku config:set FLASK_CONFIG=heroku``
-
-## Deploying!
-
-If everything is good, it's time to deploy your application.
-
-Run this command :
-
-``$ git push heroku master``
-
-That's it! The app should be running at < app-name >.hero‐
-kuapp.com. 
-Cheers.
