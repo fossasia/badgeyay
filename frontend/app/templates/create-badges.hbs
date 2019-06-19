@@ -200,7 +200,7 @@
                     </div>
                 </div>
             </div>
-            <button {{action "submitForm"}} class="ui fluid orange {{if authToken.isEmailVerified '' 'disabled'}} button">
+            <button {{action "submitForm"}} class="ui fluid orange <!--{{if authToken.isEmailVerified '' 'disabled'}}--> button">
               {{if (eq mode 'create') 'Create Badges' 'Save Changes'}}
             </button>
             {{#each userError as |error|}}
