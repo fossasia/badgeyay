@@ -1,0 +1,9 @@
+<h2 class="ui dividing header">Subscription</h2>
+{{#if session.subscription }}
+  <label>You are currently a premium user of badgeyay. Your subscription lasts till {{session.subscriptionEndDate}}</label>
+  <button class="ui basic orange button" {{action "subscribe"}}>Update subscription</button>
+  <button class="ui basic orange button" {{action "cancel-subscription"}}>Cancel subscription</button>
+{{ else }}
+  <label>You are not subscribed to badgeyay yet. Please subscribe to enjoy premium features and unlimited badges.</label><br><br>
+  <button class="ui basic orange button" {{action "subscribe"}}>Subscribe</button>
+{{/if}}
