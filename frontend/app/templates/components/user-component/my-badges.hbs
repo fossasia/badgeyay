@@ -1,14 +1,16 @@
 <div class="ui grid">
-  <div class="fourteen wide column">
+  <div class="fifteen wide column">
     <div class="ui secondary pointing menu">
       <a class="active item">
         My Badges
       </a>
     </div>
   </div>
+  {{#if model.length}}
   <div class="two wide column">
     <button class="ui orange basic right floated button downloadBadge" {{action 'batchdownload'}}>Download Badges</button>
   </div>
+  {{/if}}
 </div>
 <div class="ui grid">
   <div class="sixteen wide column">
@@ -69,21 +71,22 @@
                 <input type="checkbox" class="ui checkbox downloadCheck" id={{badge.download_link}}>
                 {{/ui-popup}}
               </div>
-
             </div>
           </div>
         </div>
         {{/each}}
-        {{/if}}
         <div class="card">
           <a class="" href="/create-badges">
-            {{#if model.length}}
             <img src="/images/add_more.png" style="margin-top: 70px">
-            {{else}}
-            <img src="/images/add_more.png" style="margin-top: 70px; margin-bottom: 90px">
-            {{/if}}
           </a>
         </div>
+        {{else}}
+        <center>
+          <h2>You have not created any badges yet!</h2>
+          <img src="/images/empty.png" style="width:30%;">
+          <a class="ui fluid submit orange basic button" href="/create-badges" style="width: 30%">Create Badge</a>
+        </center>
+        {{/if}}
       </div>
     </div>
   </div>
