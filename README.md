@@ -87,8 +87,25 @@ This project is currently licensed under the **[GNU General Public License v3](/
 
       sudo -H pip3 install -r api/requirements.txt
 
-  The following error was found when the command was executed.
+  > The following error was found while trying to install the package.Module named 'setuptools'could not be found.
   
   Command "python setup.py egg_info" failed with error code 1 in /tmp/pip-build-yn0ryw7t/alembic/
+  
+  The error was mitigated using the following code.
+           
+       sudo apt-get install python3-setuptools
+      
+  > It failed building the wheel while trying to invoke the pillow package using the following command.
+  
+       sudo -H pip3 install -r api/requirements.txt
+       
+  The error was corrected using the following command.
+  
+    sudo -H pip3 install -r api/requirements.txt --no-cache-dir
+  
+       
+  
+       
+   
 
 
