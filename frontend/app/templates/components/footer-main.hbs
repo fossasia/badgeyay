@@ -81,7 +81,11 @@
                 <div class="ui inverted link list">
                      {{#each socialMedia as |media|}}
                     <a class="item" href={{media.link}} target="_blank" rel="noopener">
-                        <i class="{{media.id}} icon"></i>{{ first-cap media.id}}
+                      {{#if (eq media.id 'forum')}}
+                        <i class="blogger icon"></i>{{ first-cap media.id }}
+                      {{else}}
+                         <i class="{{media.id}} icon"></i>{{ first-cap media.id}}
+                      {{/if}}
                     </a>
                     {{/each}}
                 </div>
