@@ -1,31 +1,3 @@
-{{!-- <footer>
-    <div class="ui bottom inverted menu">
-        <div class="left menu">
-            {{#link-to 'sitemap' class='item'}}
-            {{init-cap 'sitemap'}}
-            {{/link-to}}
-            {{#link-to 'faq' class='item'}}
-            {{init-cap 'faq'}}
-            {{/link-to}}
-            {{#link-to 'about' class='item'}}
-            {{init-cap 'About Us'}}
-            {{/link-to}}
-             {{#link-to 'contact-badgeyay' class='item'}}
-                {{init-cap 'contact'}}
-            {{/link-to}}
-        </div>
-        <div class="right menu">
-            <strong class="item">Follow us on</strong>
-            {{#each socialMedia as |media|}}
-            <a class="item" href={{media.link}} target="_blank">
-                <i class="{{media.id}} icon"></i>
-                <span class="mobile-hide">{{ first-cap media.id}}</span>
-            </a>
-            {{/each}}
-        </div>
-    </div>
-</footer>
---}}
 <div class="ui inverted vertical footer segment">
     <div class="ui container" style="padding-top: 40px">
         <div class="ui stackable inverted divided equal height stackable grid">
@@ -81,7 +53,11 @@
                 <div class="ui inverted link list">
                      {{#each socialMedia as |media|}}
                     <a class="item" href={{media.link}} target="_blank" rel="noopener">
-                        <i class="{{media.id}} icon"></i>{{ first-cap media.id}}
+                      {{#if (eq media.id 'forum')}}
+                        <i class="blogger icon"></i>{{ first-cap media.id }}
+                      {{else}}
+                         <i class="{{media.id}} icon"></i>{{ first-cap media.id}}
+                      {{/if}}
                     </a>
                     {{/each}}
                 </div>
