@@ -1,44 +1,43 @@
-<div class="ui top absolute menu">
-    {{#link-to 'index' class="header item"}}
-    <h2 style="font-weight: normal;">badgeyay</h2>
-    {{/link-to}}
-    <div class="right menu">
-        {{#if session.isAuthenticated}}
-            {{#ui-dropdown class='large item' action='hide'}}
-                <div class="upper">
-                    <img class="ui avatar image" src="{{session.currentUser.photoURL}}">
-                    <span class="mobile-hide">{{session.currentUser.displayName}}</span>
-                </div>
-                <i class="dropdown icon"></i>
-                <div class="menu profile-dropdown-menu">
-                    {{#link-to 'my-badges' class="large item navbar-dropdown upper"}}
-                        My Badges
-                    {{/link-to}}
-                    {{#link-to 'settings' class="large item navbar-dropdown upper"}}
-                        Settings
-                    {{/link-to}}
-                    {{#if authToken.permissions.isAdmin}}
-                        {{#link-to 'admin' class="large item navbar-dropdown upper"}}
-                            Admin
-                        {{/link-to}}
-                    {{/if}}
-                    <div class="divider"></div>
-                    <a class="large item navbar-dropdown upper" {{action 'logOut'}}>Logout<i class="right aligned sign out alternate icon pull-right"></i></a>
-                </div>
-            {{/ui-dropdown}}
-        {{else}}
-            {{#link-to 'login'}}
-                <div class="right item ui button" style="text-transform: uppercase; font-weight: 400; line-spacing: 0.5px; line-height: 30px">Login</div>
-            {{/link-to}}
-        {{/if}}
-        {{#if session.isAuthenticated}}
-          {{#link-to 'create-badges' class='item ui orange text create'}}
-                CREATE BADGES
-            {{/link-to}}
-        {{else}}
-            {{#link-to 'login' class='item ui orange text create' click=(action 'loginToContinue')}}
-                CREATE BADGES
-            {{/link-to}}
-        {{/if}}
-    </div>
+<div class="mobile hidden row">
+	<div class="ui menu">
+		{{#link-to 'index' class='item' activeClass=''}}
+		<h3>Badgeyay</h3>
+		{{/link-to}}
+		<div class="right menu nav-bar">
+			{{#if session.isAuthenticated}}
+				{{#ui-dropdown class='item' action='hide'}}
+					<img class="ui avatar round image nav-bar-image" src="{{session.currentUser.photoURL}}">
+					<span>{{session.currentUser.displayName}}</span>
+					<i class="dropdown icon"></i>
+					<div class="menu profile-dropdown-menu">
+						<a href="{{href-to 'my-badges'}}" class="item">My Tickets</a>
+						<a href="{{href-to 'settings'}}" class="item">Settings</a>
+						{{#if authToken.permissions.isAdmin}}
+							<a href="{{href-to 'admin'}}" class="large item navbar-dropdown upper">
+								Admin
+							</a>
+						{{/if}}
+						<div class="divider"></div>
+						<a role="button" class="item button" {{action 'logOut'}}><span>Logout <i class="ui right floated large signout sign out icon"></i></span></a>
+					</div>
+				{{/ui-dropdown}}
+			{{else}}
+				<a href="{{href-to 'login'}}" class="item">{{t 'Login'}}</a>
+			{{/if}}
+			{{#if session.isAuthenticated}}
+				{{#link-to 'create-badges' class='item ui orange text'}}
+					<div>
+						CREATE BADGES
+					</div>
+				{{/link-to}}
+			{{else}}
+				{{#link-to 'login' class='item ui orange text' click=(action 'loginToContinue')}}
+					<div>
+						CREATE BADGES
+					</div>
+				{{/link-to}}
+			{{/if}}
+		</div>
+	</div>
 </div>
+
