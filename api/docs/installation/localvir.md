@@ -156,10 +156,25 @@ Then, in a terminal, type
 (badgeyay/api)$ flask run
 ```
 If Flask Run does not work on Mac Try using :
-```
+```py
 python3 -m flask run
 ```
 
+### Important Notes 
+
+- For MacOS Users:
+    - If during executing Step-2, You can get some build error during `Pillow Cycle`, Please follow this commands :
+    ```sh
+    brew install libjpeg zlib
+    brew link zlib --force
+    xcode-select --install
+    sudo installer -pkg /Library/Developer/CommandLineTools/Packages/macOS_SDK_headers_for_macOS_10.14.pkg -target /
+    ```
+    - If you get lcrypto missing libraries error during the installation process, Please follow this :
+    ```sh
+    brew reinstall openssl
+    export LIBRARY_PATH=$LIBRARY_PATH:/usr/local/opt/openssl/lib/
+    ```
 
 ## Preferred Development Workflow
 
