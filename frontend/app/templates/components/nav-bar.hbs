@@ -1,43 +1,40 @@
-<div class="mobile hidden row">
-	<div class="ui menu">
-		{{#link-to 'index' class='item' activeClass=''}}
+<div class="ui menu">
+	{{#link-to 'index' class='item' activeClass=''}}
 		<h3>Badgeyay</h3>
-		{{/link-to}}
-		<div class="right menu nav-bar">
-			{{#if session.isAuthenticated}}
-				{{#ui-dropdown class='item' action='hide'}}
-					<img class="ui avatar round image nav-bar-image" src="{{session.currentUser.photoURL}}">
-					<span>{{session.currentUser.displayName}}</span>
-					<i class="dropdown icon"></i>
-					<div class="menu profile-dropdown-menu">
-						<a href="{{href-to 'my-badges'}}" class="item">My Tickets</a>
-						<a href="{{href-to 'settings'}}" class="item">Settings</a>
-						{{#if authToken.permissions.isAdmin}}
-							<a href="{{href-to 'admin'}}" class="large item navbar-dropdown upper">
-								Admin
-							</a>
-						{{/if}}
-						<div class="divider"></div>
-						<a role="button" class="item button" {{action 'logOut'}}><span>Logout <i class="ui right floated large signout sign out icon"></i></span></a>
-					</div>
-				{{/ui-dropdown}}
-			{{else}}
-				<a href="{{href-to 'login'}}" class="item">{{t 'Login'}}</a>
-			{{/if}}
-			{{#if session.isAuthenticated}}
-				{{#link-to 'create-badges' class='item ui orange text'}}
-					<div>
-						CREATE BADGES
-					</div>
-				{{/link-to}}
-			{{else}}
-				{{#link-to 'login' class='item ui orange text' click=(action 'loginToContinue')}}
-					<div>
-						CREATE BADGES
-					</div>
-				{{/link-to}}
-			{{/if}}
-		</div>
+	{{/link-to}}
+	<div class="right menu nav-bar">
+		{{#if session.isAuthenticated}}
+			{{#ui-dropdown class='item' action='hide'}}
+				<img class="ui avatar round image nav-bar-image" src="{{session.currentUser.photoURL}}">
+				<span>{{session.currentUser.displayName}}</span>
+				<i class="dropdown icon"></i>
+				<div class="menu profile-dropdown-menu">
+					<a href="{{href-to 'my-badges'}}" class="item">My Tickets</a>
+    				<a href="{{href-to 'settings'}}" class="item">Settings</a>
+					{{#if authToken.permissions.isAdmin}}
+						<a href="{{href-to 'admin'}}" class="large item navbar-dropdown upper">
+							Admin
+						</a>
+					{{/if}}
+					<div class="divider"></div>
+					<a role="button" class="item button" {{action 'logOut'}}><span>Logout <i class="ui right floated large signout sign out icon"></i></span></a>
+				</div>
+			{{/ui-dropdown}}
+		{{else}}
+			<a href="{{href-to 'login'}}" class="item">{{t 'Login'}}</a>
+		{{/if}}
+		{{#if session.isAuthenticated}}
+			{{#link-to 'create-badges' class='item ui orange text'}}
+				<div>
+					CREATE BADGES
+				</div>
+			{{/link-to}}
+		{{else}}
+			{{#link-to 'login' class='item ui orange text' click=(action 'loginToContinue')}}
+				<div>
+					CREATE BADGES
+				</div>
+			{{/link-to}}
+		{{/if}}
 	</div>
 </div>
-
