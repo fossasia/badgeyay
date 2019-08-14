@@ -1,11 +1,9 @@
-import Ember from 'ember';
+import { inject as service } from '@ember/service';
 import Controller from '@ember/controller';
 
-const { inject } = Ember;
-
 export default Controller.extend({
-  session       : inject.service(),
-  notifications : inject.service('notification-messages'),
+  session       : service(),
+  notifications : service('notification-messages'),
   actions       : {
     sendResetMail(email) {
       // Get Token from backend

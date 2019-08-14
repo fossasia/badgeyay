@@ -1,8 +1,6 @@
-import Ember from 'ember';
+import RSVP from 'rsvp';
 import Route from '@ember/routing/route';
-import { setProperties } from '@ember/object';
-
-const { RSVP, set } = Ember;
+import { setProperties, set } from '@ember/object';
 
 export default Route.extend({
   templateName: 'create-badges',

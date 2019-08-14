@@ -1,15 +1,12 @@
+import { inject as service } from '@ember/service';
 import Component from '@ember/component';
-
-import Ember from 'ember';
-
-const { inject } = Ember;
 
 export default Component.extend({
   init() {
     this._super(...arguments);
   },
 
-  notifications: inject.service('notification-messages'),
+  notifications: service('notification-messages'),
 
   actions: {
 

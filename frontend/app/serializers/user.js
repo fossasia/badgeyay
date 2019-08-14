@@ -1,11 +1,9 @@
+import { inject as service } from '@ember/service';
 import DS from 'ember-data';
-import Ember from 'ember';
-
-const { inject } = Ember;
 const { JSONAPISerializer } = DS;
 
 export default JSONAPISerializer.extend({
-  authToken: inject.service('auth-session'),
+  authToken: service('auth-session'),
   keyForAttribute(key) {
     return key;
   },

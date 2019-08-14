@@ -1,6 +1,7 @@
-import Ember from 'ember';
-
-const { Component, observer, merge, on } = Ember;
+import Component from '@ember/component';
+import { observer } from '@ember/object';
+import { merge } from '@ember/polyfills';
+import { on } from '@ember/object/evented';
 
 export default Component.extend({
   tagName           : 'div',

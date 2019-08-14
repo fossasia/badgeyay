@@ -1,11 +1,10 @@
-import Ember from 'ember';
+import { inject as service } from '@ember/service';
+import $ from 'jquery';
 import Component from '@ember/component';
 
-const { $, inject } = Ember;
-
 export default Component.extend({
-  notifications : inject.service('notification-messages'),
-  authToken     : inject.service('auth-session'),
+  notifications : service('notification-messages'),
+  authToken     : service('auth-session'),
   actions       : {
     openModal(name, user) {
       $('.ui.' + name + '.modal').modal('show');

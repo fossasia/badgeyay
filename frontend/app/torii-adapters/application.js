@@ -1,13 +1,12 @@
-import Ember from 'ember';
+import { inject as service } from '@ember/service';
+import RSVP from 'rsvp';
 import ToriiFirebaseAdapter from 'emberfire/torii-adapters/firebase';
 import ENV from '../config/environment';
 
 const { APP } = ENV;
 
-const { inject, RSVP } = Ember;
-
 export default ToriiFirebaseAdapter.extend({
-  firebase: inject.service(),
+  firebase: service(),
 
   /**
    * Executed after Firebase authentication.

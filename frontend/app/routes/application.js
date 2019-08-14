@@ -1,13 +1,11 @@
+import { inject as service } from '@ember/service';
 import Route from '@ember/routing/route';
-import Ember from 'ember';
 import ENV from '../config/environment';
 
 const { APP } = ENV;
 
-const { inject } = Ember;
-
 export default Route.extend({
-  authToken: inject.service('auth-session'),
+  authToken: service('auth-session'),
   beforeModel() {
     return this.get('session')
       .fetch()

@@ -1,7 +1,8 @@
 /* jshint strict: false */
-import Ember from 'ember';
+import { observer, computed } from '@ember/object';
 
-const { Service, computed, observer, on, inject: { service } } = Ember;
+import { on } from '@ember/object/evented';
+import Service, { inject as service } from '@ember/service';
 
 export default Service.extend({
 

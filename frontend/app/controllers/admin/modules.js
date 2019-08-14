@@ -1,10 +1,8 @@
+import { inject as service } from '@ember/service';
 import Controller from '@ember/controller';
-import Ember from 'ember';
-
-const { inject } = Ember;
 
 export default Controller.extend({
-  notifications : inject.service('notification-messages'),
+  notifications : service('notification-messages'),
   actions       : {
     submit() {
       let modules = this.get('model');

@@ -1,7 +1,5 @@
-import Ember from 'ember';
+import { later } from '@ember/runloop';
 import ModalBase from 'badgeyay/components/modals/modal-base';
-
-const { run: { later } } = Ember;
 
 export default ModalBase.extend({
   onVisible() {

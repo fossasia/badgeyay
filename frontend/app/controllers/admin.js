@@ -1,11 +1,9 @@
-import Ember from 'ember';
+import { inject as service } from '@ember/service';
 import Controller from '@ember/controller';
-
-const { inject } = Ember;
 
 export default Controller.extend({
   userPage      : 1,
-  notifications : inject.service('notification-messages'),
+  notifications : service('notification-messages'),
   actions       : {
     nextPageUsers() {
       const _this = this;

@@ -1,5 +1,4 @@
 import DS from 'ember-data';
-import Ember from 'ember';
 import { inject as service } from '@ember/service';
 
 const { JSONAPIAdapter } = DS;

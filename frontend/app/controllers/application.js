@@ -1,12 +1,10 @@
-import Ember from 'ember';
+import { inject as service } from '@ember/service';
 import Controller from '@ember/controller';
 
-const { inject } = Ember;
-
 export default Controller.extend({
-  session       : inject.service(),
-  notifications : inject.service('notification-messages'),
-  authToken     : inject.service('auth-session'),
+  session       : service(),
+  notifications : service('notification-messages'),
+  authToken     : service('auth-session'),
   actions       : {
     logOut() {
       this.get('store').unloadAll();

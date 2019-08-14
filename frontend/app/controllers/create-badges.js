@@ -1,8 +1,6 @@
+import $ from 'jquery';
 import Controller from '@ember/controller';
 import ENV from '../config/environment';
-
-import Ember from 'ember';
-const { $ } = Ember;
 
 const { APP } = ENV;
 import { inject as service } from '@ember/service';

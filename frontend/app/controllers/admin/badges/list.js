@@ -1,7 +1,5 @@
-import Ember from 'ember';
+import { inject as service } from '@ember/service';
 import Controller from '@ember/controller';
-
-const { inject } = Ember;
 
 export default Controller.extend({
   queryParams   : ['page'],
@@ -11,7 +9,7 @@ export default Controller.extend({
   allow_next    : true,
   allow_prev    : false,
   allow         : true,
-  notifications : inject.service('notification-messages'),
+  notifications : service('notification-messages'),
   actions       : {
 
     deleteBadge(badge) {

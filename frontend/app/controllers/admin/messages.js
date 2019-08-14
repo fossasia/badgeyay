@@ -1,10 +1,9 @@
+import { inject as service } from '@ember/service';
+import $ from 'jquery';
 import Controller from '@ember/controller';
-import Ember from 'ember';
-
-const { $, inject } = Ember;
 
 export default Controller.extend({
-  notifications : inject.service('notification-messages'),
+  notifications : service('notification-messages'),
   actions       : {
     openModal(message) {
       $('.ui.admin-message.modal').modal('show');

@@ -1,7 +1,6 @@
+import { inject as service } from '@ember/service';
 import Component from '@ember/component';
-import Ember from 'ember';
 import $ from 'jquery';
-const { inject } = Ember;
 
 export default Component.extend({
   init() {
@@ -9,8 +8,8 @@ export default Component.extend({
   },
   queryParams   : ['page'],
   page          : 1,
-  routing       : inject.service('-routing'),
-  notifications : inject.service('notification-messages'),
+  routing       : service('-routing'),
+  notifications : service('notification-messages'),
   actions       : {
     deleteBadge(badge) {
       badge.destroyRecord()

@@ -1,8 +1,5 @@
+import { set } from '@ember/object';
 import Route from '@ember/routing/route';
-
-import Ember from 'ember';
-
-const { set } = Ember;
 
 export default Route.extend({
   beforeModel(transition) {

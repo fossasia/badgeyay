@@ -1,9 +1,8 @@
 /* jshint strict:false */
 
-import Ember from 'ember';
-import config from './config/environment';
+import Router from '@ember/routing/router';
 
-const { Router } = Ember;
+import config from './config/environment';
 
 const router = Router.extend({
   location : config.locationType,

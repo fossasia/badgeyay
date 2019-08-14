@@ -1,7 +1,6 @@
-import Ember from 'ember';
+import RSVP from 'rsvp';
+import { set } from '@ember/object';
 import Route from '@ember/routing/route';
-
-const { RSVP, set } = Ember;
 
 export default Route.extend({
   beforeModel() {
