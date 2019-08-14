@@ -14,7 +14,7 @@
 * **Step 1** - Clone the project and `cd` into it.
 
 ```bash
-git clone https://github.com/fossasia/badgeyay.git && cd badgeyay/api
+git clone https://github.com/fossasia/badgeyay.git && cd badgeyay/backend
 ```
 
 * **Step 2** - Then set the required `SERVER_NAME` environment variable. `SERVER_NAME` should the same as the domain on which the server is running and it should not include 'http', 'https',
