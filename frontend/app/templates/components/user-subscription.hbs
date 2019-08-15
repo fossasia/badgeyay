@@ -1,0 +1,9 @@
+<h2 class="ui dividing header">Subscription</h2>
+<label>You are not subscribed to badgeyay yet. Please subscribe to enjoy premium features and unlimited badges.</label><br><br>
+{{stripe-checkout
+  image="/square-image.png"
+  name="Demo Site"
+  description="2 widgets ($20.00)"
+  amount=2000
+  onToken=(action "processStripeToken")
+}}

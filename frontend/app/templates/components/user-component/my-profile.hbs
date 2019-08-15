@@ -17,6 +17,10 @@
               Password
             <i class="ui angle right icon"></i>
           </div>
+          <div class="item" data-tab="subscription">
+              Subscription
+            <i class="ui angle right icon"></i>
+          </div>
         </div>
       </div>
       <div class="one wide column"></div>
@@ -27,6 +31,10 @@
         <div class="ui horizontal divider"></div>
         <div class="ui attached tab segment" id="place" data-tab="password">
           {{user-component/user-password session=session isLoading=isLoadingPassword sendUserPassword=(action 'updateUserPassword')}}
+        </div>
+        <div class="ui horizontal divider"></div>
+        <div class="ui attached tab segment" data-tab="subscription">
+          {{user-subscription isLoading=isLoadingSubscription}}
         </div>
       </div>
     </div>

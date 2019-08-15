@@ -46,7 +46,10 @@ module.exports = function(environment) {
       // when it is created
       backLink      : 'http://localhost:5000',
       resetFunction : 'http://localhost:8090/badgeyay-195bf/us-central1/sendResetMail'
-    }
+    },
+    stripe: {
+        key: 'pk_test_C0sa3IlkLWBlrB8laH2fbqfh'
+    },
   };
 
   if (environment === 'development') {
