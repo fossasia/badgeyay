@@ -101,7 +101,7 @@ $ git clone https://github.com/fossasia/badgeyay.git && cd badgeyay
 * **Step 3** - Now we need to build the Docker image for Badgeyay
 
 ```sh
-$ cd backend/
+$ cd api/
 $ docker-Compose build
 ```
 
