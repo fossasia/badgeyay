@@ -35,8 +35,8 @@ The user can:
 
 Badgeyay's frontend and backend can be deployed easily and a detailed installation instruction of frontend and backend have been provided below.
 
-1. [Badgeyay Frontend](/docs/frontend/installation/README.md)
-2. [Badgeyay Backend](/docs/backend/installation/README.md)
+1. [Badgeyay Frontend](/frontend/README.md)
+2. [Badgeyay Backend](/api/README.md)
 3. **Installing git pre-push hook:**
    - Run file `scripts/install-hook.py`. It will copy contents of `scripts/pre-push-hook.py` to `.git/hooks/pre-push`. Make sure that you have `.git/hooks/pre-push.sample` in your `.git` directory before performing this step.
    - This will install git `pre-push-hook` in your local `.git` directory. It will run the commits against linting tests before pushing to a remote. See `scripts/pre-push-hook.py` if you encounter any errors.

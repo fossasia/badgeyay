@@ -40,7 +40,7 @@ $ git remote add upstream https://github.com/fossasia/badgeyay.git
     * System Wide Installation
 
     ```sh
-    sudo -H pip3 install -r backend/requirements.txt
+    sudo -H pip3 install -r api/requirements.txt
     ```
     Note: Errors might result here, just see which package is unmet, and just install them using the distro's package manager. You may need to upgrade your pip version
 
@@ -72,7 +72,7 @@ $ git remote add upstream https://github.com/fossasia/badgeyay.git
   * Install all the requirements.
 
   ```sh
-  (badgeyay)$ pip3 install -r backend/requirements.txt
+  (badgeyay)$ pip install -r api/requirements.txt
   ```
 
 - **Postgres Installation**
@@ -146,14 +146,14 @@ It is necessary to run both the ember server and as well as the python backend s
 Then, in a terminal, type
 
 ```sh
-(badgeyay/backend) $ export FLASK_APP=run.py
-(badgeyay/backend)$ flask run
+(badgeyay/api) $ export FLASK_APP=run.py
+(badgeyay/api)$ flask run
 ```
 
  * To run the project on a local machine (debug mode).
 ```sh
-(badgeyay/backend) $ export FLASK_DEBUG=1
-(badgeyay/backend)$ flask run
+(badgeyay/api) $ export FLASK_DEBUG=1
+(badgeyay/api)$ flask run
 ```
 If Flask Run does not work on Mac Try using :
 ```py
