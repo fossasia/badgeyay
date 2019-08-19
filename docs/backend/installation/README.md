@@ -42,15 +42,15 @@ In addition to the above `zlib-dev`, `libxml2`, and `jpeg` must be present. (Mos
 
 Badgeyay backend can be easily deployed on a variety of platforms. Currently it can be deployed in following ways.
 
-1. [Local Installation using Virtual environment](docs/installation/localvir.md)
+1. [Local Installation using Virtual environment](localvir.md)
 
-2. [Local Installation using Vagrant environment](docs/installation/localvag.md)
+2. [Local Installation using Vagrant environment](localvag.md)
 
-3. [Deployment on Heroku](docs/installation/heroku.md)
+3. [Deployment on Heroku](heroku.md)
 
-4. [Deployment with Docker](docs/installation/docker.md)
+4. [Deployment with Docker](docker.md)
 
-5. [Deployment on AWS EC2](docs/installation/aws.md)
+5. [Deployment on AWS EC2](aws.md)
 
 One-click Docker, Heroku, Scalingo and Bluemix deployment is also available:
 
