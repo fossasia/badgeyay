@@ -1,5 +1,5 @@
 import uuid
-from api.db import db
+from backend.db import db
 
 
 class Utilities(db.Model):

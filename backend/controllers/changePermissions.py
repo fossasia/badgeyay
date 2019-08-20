@@ -1,9 +1,9 @@
-from api.db import db
+from backend.db import db
 from flask import request, Blueprint, jsonify
-from api.models.permissions import Permissions
-from api.schemas.errors import UserNotFound, FieldNotFound
-from api.utils.errors import ErrorResponse
-from api.schemas.permissions import ModifyPermissionsIncoming, ModifyPermissionsDone
+from backend.models.permissions import Permissions
+from backend.schemas.errors import UserNotFound, FieldNotFound
+from backend.utils.errors import ErrorResponse
+from backend.schemas.permissions import ModifyPermissionsIncoming, ModifyPermissionsDone
 
 
 router = Blueprint('changePermissions', __name__)

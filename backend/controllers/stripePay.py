@@ -1,9 +1,9 @@
 import stripe
 from flask import Blueprint, jsonify, request
-from api.models.user import User
-from api.schemas.operation import StripePaymentSchema
-from api.utils.errors import ErrorResponse
-from api.schemas.errors import (
+from backend.models.user import User
+from backend.schemas.operation import StripePaymentSchema
+from backend.utils.errors import ErrorResponse
+from backend.schemas.errors import (
     PayloadNotFound,
     OperationNotFound
 )

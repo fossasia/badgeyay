@@ -1,14 +1,14 @@
 from flask import Blueprint, jsonify, request
-from api.db import db
-from api.utils.response import Response
-from api.utils.update_user import update_firebase_complete
-from api.models.user import User
-from api.helpers.verifyToken import loginRequired
-from api.utils.errors import ErrorResponse
-from api.helpers.verifyPassword import verifyPassword
+from backend.db import db
+from backend.utils.response import Response
+from backend.utils.update_user import update_firebase_complete
+from backend.models.user import User
+from backend.helpers.verifyToken import loginRequired
+from backend.utils.errors import ErrorResponse
+from backend.helpers.verifyPassword import verifyPassword
 from werkzeug.security import generate_password_hash
-from api.schemas.user import DeleteUserSchema, UpdateProfileSchema, UserSchema
-from api.schemas.errors import (
+from backend.schemas.user import DeleteUserSchema, UpdateProfileSchema, UserSchema
+from backend.schemas.errors import (
     PayloadNotFound,
     OperationNotFound,
     PasswordNotFound,

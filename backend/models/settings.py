@@ -1,7 +1,7 @@
 import datetime
 
-from api.db import db
-from api.config import config as api_config
+from backend.db import db
+from backend.config import config as api_config
 
 from decouple import config
 

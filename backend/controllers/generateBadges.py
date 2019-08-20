@@ -3,27 +3,27 @@ import datetime
 import uuid
 
 from shutil import rmtree
-from api.config import config
+from backend.config import config
 from flask import current_app as app
 
 from flask import Blueprint, jsonify, request
 
-from api.db import db
-from api.helpers.verifyToken import loginRequired
-from api.utils.errors import ErrorResponse
-from api.models.badges import Badges
-from api.models.user import User
-from api.schemas.badges import BadgeSchema, UserBadges, DeletedBadges
-from api.utils.merge_badges import MergeBadges
-from api.utils.svg_to_png import SVG2PNG
-from api.schemas.errors import (
+from backend.db import db
+from backend.helpers.verifyToken import loginRequired
+from backend.utils.errors import ErrorResponse
+from backend.models.badges import Badges
+from backend.models.user import User
+from backend.schemas.badges import BadgeSchema, UserBadges, DeletedBadges
+from backend.utils.merge_badges import MergeBadges
+from backend.utils.svg_to_png import SVG2PNG
+from backend.schemas.errors import (
     ImageNotFound,
     JsonNotFound,
     CSVNotFound,
     UsageNotAllowed
 )
 from firebase_admin import db as firebase_db
-from api.utils.firebaseUploader import fileUploader, deleteFile
+from backend.utils.firebaseUploader import fileUploader, deleteFile
 
 
 router = Blueprint('generateBadges', __name__)

@@ -1,19 +1,19 @@
 import os
 
 from flask import Blueprint, request, jsonify
-from api.utils.errors import ErrorResponse
+from backend.utils.errors import ErrorResponse
 from flask import current_app as app
-from api.helpers.uploads import saveToImage
-from api.helpers.verifyToken import loginRequired
-from api.utils.firebaseUploader import fileUploader
-from api.schemas.errors import (
+from backend.helpers.uploads import saveToImage
+from backend.helpers.verifyToken import loginRequired
+from backend.utils.firebaseUploader import fileUploader
+from backend.schemas.errors import (
     PayloadNotFound,
     ImageNotFound,
     UserNotFound,
     ExtensionNotFound
 )
-from api.schemas.user import UpdateUserSchema
-from api.models.user import User
+from backend.schemas.user import UpdateUserSchema
+from backend.models.user import User
 
 router = Blueprint('updateUserProfile', __name__)
 

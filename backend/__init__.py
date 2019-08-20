@@ -2,11 +2,11 @@ import os
 from flask import Flask
 import firebase_admin
 from firebase_admin import credentials
-from api.config import config
+from backend.config import config
 from flask_cors import CORS
-from api.models.settings import Settings
-from api.db import db
-from api.utils.dimen import init_dimen
+from backend.models.settings import Settings
+from backend.db import db
+from backend.utils.dimen import init_dimen
 
 
 def create_app():

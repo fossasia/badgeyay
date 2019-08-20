@@ -4,8 +4,8 @@ from defusedxml.lxml import _etree as etree
 from defusedxml.lxml import parse
 from cairosvg import svg2png
 from flask import current_app as app
-from api.utils.dimen import badge_config
-from api.config import config
+from backend.utils.dimen import badge_config
+from backend.config import config
 
 
 class SVG2PNG:

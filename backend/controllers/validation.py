@@ -1,13 +1,13 @@
 import jwt
 from flask import Blueprint, request, jsonify
 from flask import current_app as app
-from api.schemas.token import ValidTokenSchema
-from api.schemas.operation import EmailVerificationOperation
-from api.utils.encryptUtil import _decrypt, password
-from api.schemas.errors import UserNotFound
-from api.utils.errors import ErrorResponse
-from api.utils.update_user import update_firebase_emailVerified
-from api.models.user import User
+from backend.schemas.token import ValidTokenSchema
+from backend.schemas.operation import EmailVerificationOperation
+from backend.utils.encryptUtil import _decrypt, password
+from backend.schemas.errors import UserNotFound
+from backend.utils.errors import ErrorResponse
+from backend.utils.update_user import update_firebase_emailVerified
+from backend.models.user import User
 
 router = Blueprint('Validator', __name__)
 

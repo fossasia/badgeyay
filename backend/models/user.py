@@ -1,6 +1,6 @@
 from werkzeug.security import generate_password_hash
 from datetime import datetime
-from api.db import db
+from backend.db import db
 
 
 def _photoURL():

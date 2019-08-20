@@ -3,12 +3,12 @@ from datetime import datetime
 
 from flask import Blueprint, jsonify, request
 from flask import current_app as app
-from api.models.user import User
-from api.models.permissions import Permissions
-from api.schemas.user import FTLUserSchema, UserSchema
-from api.schemas.token import LoginTokenSchema
-from api.utils.errors import ErrorResponse
-from api.schemas.errors import (
+from backend.models.user import User
+from backend.models.permissions import Permissions
+from backend.schemas.user import FTLUserSchema, UserSchema
+from backend.schemas.token import LoginTokenSchema
+from backend.utils.errors import ErrorResponse
+from backend.schemas.errors import (
     UserNotFound,
     OperationNotFound,
 )

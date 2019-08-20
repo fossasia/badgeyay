@@ -1,5 +1,5 @@
 from flask import Blueprint, jsonify
-from api.utils.response import Response
+from backend.utils.response import Response
 
 router = Blueprint('errorHandler', __name__)
 

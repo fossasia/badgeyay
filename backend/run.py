@@ -1,8 +1,8 @@
 from flask_migrate import Migrate
-from api import create_app
-from api.db import db
-from api.models.utils import set_pricing
-from api.controllers import (
+from backend import create_app
+from backend.db import db
+from backend.models.utils import set_pricing
+from backend.controllers import (
     generateBadges,
     errorHandlers,
     loginUser,
@@ -20,8 +20,8 @@ from api.controllers import (
     stripePay,
     changePermissions
 )
-from api.models.modules import Module
-from api.models.socialContent import SocialContent
+from backend.models.modules import Module
+from backend.models.socialContent import SocialContent
 
 
 app = create_app()
