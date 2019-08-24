@@ -1,6 +1,6 @@
 import os
 from flask import current_app as app
-from api.utils.generate_badges import GenerateBadges
+from backend.utils.generate_badges import GenerateBadges
 from cairosvg import svg2pdf
 from PyPDF2 import PdfFileMerger
 

@@ -3,9 +3,9 @@ import jwt
 
 from flask import Blueprint, jsonify, request
 from flask import current_app as app
-from api.utils.response import Response
-from api.utils.errors import ErrorResponse
-from api.schemas.errors import (
+from backend.utils.response import Response
+from backend.utils.errors import ErrorResponse
+from backend.schemas.errors import (
     PayloadNotFound,
     OperationNotFound
 )

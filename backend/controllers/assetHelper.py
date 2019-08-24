@@ -1,8 +1,8 @@
 import os
 
-from api.config import config
+from backend.config import config
 from flask import Blueprint, jsonify
-from api.helpers.verifyToken import loginRequired
+from backend.helpers.verifyToken import loginRequired
 
 router = Blueprint('assethelper', __name__)
 

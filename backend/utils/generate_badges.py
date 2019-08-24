@@ -5,7 +5,7 @@ import html
 from flask import current_app as app
 from defusedxml.lxml import parse
 from defusedxml.lxml import _etree as etree
-from api.utils.dimen import badge_config
+from backend.utils.dimen import badge_config
 
 
 def remove_extra(badge_page, offset):

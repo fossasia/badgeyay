@@ -1,16 +1,16 @@
 from flask import Blueprint, jsonify, request
 from firebase_admin import auth
 from werkzeug.security import generate_password_hash
-from api.models.user import User
-from api.schemas.errors import FirebaseError
-from api.utils.errors import ErrorResponse
-from api.models.permissions import Permissions
-from api.config.config import admins
-from api.utils.update_user import (
+from backend.models.user import User
+from backend.schemas.errors import FirebaseError
+from backend.utils.errors import ErrorResponse
+from backend.models.permissions import Permissions
+from backend.config.config import admins
+from backend.utils.update_user import (
     update_firebase_username,
     update_firebase_password
 )
-from api.schemas.user import (
+from backend.schemas.user import (
     UserSchema,
     OAuthUserSchema,
     FTLUserSchema,

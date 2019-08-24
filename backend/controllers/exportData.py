@@ -3,10 +3,10 @@ import base64
 import uuid
 from flask import request, Blueprint, jsonify
 from flask import current_app as app
-from api.models.file import File
-from api.schemas.file import ExportFileSchema
-from api.utils.errors import ErrorResponse
-from api.schemas.errors import (
+from backend.models.file import File
+from backend.schemas.file import ExportFileSchema
+from backend.utils.errors import ErrorResponse
+from backend.schemas.errors import (
     FileNotFound
 )
 

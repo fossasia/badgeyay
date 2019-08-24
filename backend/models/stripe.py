@@ -1,4 +1,4 @@
-from api.db import db
+from backend.db import db
 
 
 class Stripe(db.Model):

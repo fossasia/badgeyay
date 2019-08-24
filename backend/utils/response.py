@@ -1,4 +1,4 @@
-from api.config import urlConfig
+from backend.config import urlConfig
 import uuid
 
 

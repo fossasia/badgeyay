@@ -3,12 +3,12 @@ import os
 from PIL import Image
 from io import BytesIO
 from flask import Blueprint, request, jsonify
-from api.utils.errors import ErrorResponse
-from api.helpers.verifyToken import loginRequired
-from api.helpers.uploads import saveToImage, saveToCSV, saveAsCSV
-from api.models.file import File
-from api.models.user import User
-from api.schemas.file import (
+from backend.utils.errors import ErrorResponse
+from backend.helpers.verifyToken import loginRequired
+from backend.helpers.uploads import saveToImage, saveToCSV, saveAsCSV
+from backend.models.file import File
+from backend.models.user import User
+from backend.schemas.file import (
     FileSchema,
     ManualFileSchema,
     CSVUploadSchema,
@@ -17,7 +17,7 @@ from api.schemas.file import (
     ColorImageSchema
 )
 from flask import current_app as app
-from api.schemas.errors import (
+from backend.schemas.errors import (
     UserNotFound,
     ImageNotFound,
     PayloadNotFound,

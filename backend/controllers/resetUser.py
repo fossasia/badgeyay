@@ -2,16 +2,16 @@ import jwt
 import datetime
 from flask import Blueprint, jsonify, request
 from flask import current_app as app
-from api.utils.response import Response
-from api.utils.errors import ErrorResponse
-from api.models.user import User
-from api.schemas.errors import (
+from backend.utils.response import Response
+from backend.utils.errors import ErrorResponse
+from backend.models.user import User
+from backend.schemas.errors import (
     PayloadNotFound,
     JsonNotFound,
     UserNotFound
 )
-from api.schemas.token import TokenSchema
-from api.models.token import ResetPasswordToken
+from backend.schemas.token import TokenSchema
+from backend.models.token import ResetPasswordToken
 from psycopg2 import ProgrammingError
 
 router = Blueprint('resetUser', __name__)

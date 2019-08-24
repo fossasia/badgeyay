@@ -2,12 +2,12 @@ import jwt
 from functools import wraps
 from flask import request, jsonify
 from flask import current_app as app
-from api.schemas.errors import (
+from backend.schemas.errors import (
     PayloadNotFound,
     AdminNotFound
 )
-from api.utils.errors import ErrorResponse
-from api.utils.response import Response
+from backend.utils.errors import ErrorResponse
+from backend.utils.response import Response
 
 
 def loginRequired(func):

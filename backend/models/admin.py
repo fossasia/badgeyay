@@ -1,5 +1,5 @@
 from werkzeug.security import generate_password_hash
-from api.db import db
+from backend.db import db
 
 
 class Admin(db.Model):

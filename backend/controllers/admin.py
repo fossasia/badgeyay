@@ -1,26 +1,26 @@
 from flask import jsonify, Blueprint, request
 from sqlalchemy import or_
 from math import floor
-from api.db import db
-from api.models.user import User
-from api.models.settings import Settings
-from api.models.permissions import Permissions
-from api.models.socialContent import SocialContent
-from api.models.badges import Badges
-from api.models.file import File
-from api.models.utils import Utilities
-from api.models.modules import Module
-from api.schemas.modules import ModuleSchema
-from api.helpers.verifyToken import adminRequired
-from api.schemas.user import AllUsersSchema, UserAllowedUsage, DatedUserSchema, SearchedUserSchema
-from api.schemas.badges import AllBadges, AllGenBadges
-from api.schemas.file import FileSchema
-from api.schemas.errors import JsonNotFound
-from api.schemas.badges import (
+from backend.db import db
+from backend.models.user import User
+from backend.models.settings import Settings
+from backend.models.permissions import Permissions
+from backend.models.socialContent import SocialContent
+from backend.models.badges import Badges
+from backend.models.file import File
+from backend.models.utils import Utilities
+from backend.models.modules import Module
+from backend.schemas.modules import ModuleSchema
+from backend.helpers.verifyToken import adminRequired
+from backend.schemas.user import AllUsersSchema, UserAllowedUsage, DatedUserSchema, SearchedUserSchema
+from backend.schemas.badges import AllBadges, AllGenBadges
+from backend.schemas.file import FileSchema
+from backend.schemas.errors import JsonNotFound
+from backend.schemas.badges import (
     DatedBadgeSchema,
     DeletedBadges
 )
-from api.schemas.admin import (
+from backend.schemas.admin import (
     AdminSchema,
     AllUserStat,
     AdminMailStat,
@@ -35,10 +35,10 @@ from api.schemas.admin import (
     SettingsSchema,
     Mails
 )
-from api.schemas.utils import SetPricingSchema, ReturnSetPricing
-from api.utils.errors import ErrorResponse
-from api.schemas.errors import UserNotFound
-from api.helpers.verifyToken import loginRequired
+from backend.schemas.utils import SetPricingSchema, ReturnSetPricing
+from backend.utils.errors import ErrorResponse
+from backend.schemas.errors import UserNotFound
+from backend.helpers.verifyToken import loginRequired
 from flask import current_app as app
 from firebase_admin import db as firebasedb
 from dateutil.relativedelta import relativedelta
