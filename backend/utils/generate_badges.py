@@ -26,12 +26,14 @@ class GenerateBadges:
                  csv_type,
                  paper_dimen,
                  badge_size,
-                 ticketTypes):
+                 ticketTypes,
+                 qr_code):
         self.APP_ROOT = app.config.get('BASE_DIR')
         self.image_names = image_names
         self.ticketTypes = ticketTypes
         self.logo_text = logo_text
         self.images = []
+        self.qr_code = qr_code
         for image_name in image_names:
             self.images.append(os.path.join(app.config.get('BASE_DIR'), 'static', 'uploads', 'image', image_name))
         self.logo_image = os.path.join(app.config.get('BASE_DIR'), 'static', 'uploads', 'image', logo_image)
@@ -98,6 +100,21 @@ class GenerateBadges:
             for j, text in enumerate(row):
                 text = html.escape(text)
                 content = content.replace('Person_{}_{}'.format(i + 1, j + 1), text)
+            # Generating qr code from text
+            if qr_code != 1:
+                qr = qrcode.QRCode(version = 1,
+                                   error_correction = qrcode.constants.ERROR_CORRECT_H,
+                                   box_size = 10,
+                                   border = 1,
+                )
+                # Add data
+                qr.add_data(self.qr_code)
+                qr.make(fit=True)
+                # Create an image from the QR Code instance
+                img = qr.make_image()
+                img.save(os.path.join(self.folder, 'qr.png'))
+                content = content.replace('Pictures/qr.jpeg', os.path.join(self.folder, 'qr.png'))
+
             content = content.replace('Pictures/18033231.jpeg', os.path.join(self.folder, 'background' + str(idx) + '.png'))
             content = content.replace('Pictures/logo.jpeg', os.path.join(self.folder, 'logo_image.png'))
             content = content.replace('Logo_Text', self.logo_text)

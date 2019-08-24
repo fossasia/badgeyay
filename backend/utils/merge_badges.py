@@ -14,7 +14,8 @@ class MergeBadges:
                  csv_type,
                  paper_size,
                  badge_size,
-                 ticketTypes):
+                 ticketTypes,
+                 qr_code):
         self.APP_ROOT = app.config.get('BASE_DIR')
         self.badge_generator = GenerateBadges(image_names,
                                               logo_text,
@@ -23,7 +24,8 @@ class MergeBadges:
                                               csv_type,
                                               paper_size,
                                               badge_size,
-                                              ticketTypes)
+                                              ticketTypes,
+                                              qr_code)
         self.badge_generator.run_generator()
         self.folder = os.path.join(self.APP_ROOT, 'static', 'temporary', os.path.splitext(image_names[0])[0])
 

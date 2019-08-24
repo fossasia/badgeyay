@@ -15,7 +15,7 @@
    viewBox="0 0 297 420"
    version="1.1"
    id="svg157"
-   inkscape:version="0.92.4 (ca053d0, 2019-01-16)"
+   inkscape:version="0.92.4 (5da689c313, 2019-01-14)"
    sodipodi:docname="4.5x4onA3.svg">
   <defs
      id="defs151" />
@@ -28,13 +28,13 @@
      inkscape:pageshadow="2"
      inkscape:zoom="0.35355339"
      inkscape:cx="528.14261"
-     inkscape:cy="543.43245"
+     inkscape:cy="749.11788"
      inkscape:document-units="mm"
      inkscape:current-layer="layer2"
      showgrid="false"
-     inkscape:window-width="1299"
-     inkscape:window-height="713"
-     inkscape:window-x="67"
+     inkscape:window-width="1366"
+     inkscape:window-height="709"
+     inkscape:window-x="0"
      inkscape:window-y="27"
      inkscape:window-maximized="1"
      inkscape:snap-bbox="true"
@@ -75,31 +75,455 @@
          id="path6329"
          d="M -2.5550014,123.53811 H 295.78031"
          style="fill:none;stroke:#000000;stroke-width:0.84173912;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:2.52521736, 0.84173912;stroke-dashoffset:0;stroke-opacity:1" />
+      <g
+         transform="translate(20.826629,-181.53831)"
+         id="layer1-7-7"
+         inkscape:label="Layer 1">
+        <image
+           width="114.3"
+           height="82.599998"
+           preserveAspectRatio="none"
+           style="stroke-width:0.98209292;image-rendering:optimizeQuality"
+           id="image100-4"
+           x="-6.258304e-06"
+           y="214"
+           xlink:href="/home/abi/Pictures/18033231.jpeg"
+           sodipodi:absref="/home/abi/Pictures/18033231.jpeg" />
+        <image
+           width="114.3"
+           height="19"
+           preserveAspectRatio="none"
+           style="stroke-width:0.98209292;image-rendering:optimizeQuality"
+           id="image5179-1"
+           x="-6.258304e-06"
+           y="195"
+           xlink:href="/home/abi/Pictures/logo.jpeg"
+           sodipodi:absref="/home/abi/Pictures/logo.jpeg" />
+        <text
+           id="Person_color_1_1-7"
+           y="240.36781"
+           x="11.869043"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:8.46666622px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#e8dfdf;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+           xml:space="preserve"
+           font-size="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#e8dfdf;fill-opacity:1;stroke:none;stroke-width:0.26458332"><tspan
+             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:8.46666622px;font-family:helvetica;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;fill:#e8dfdf"
+             y="240.36781"
+             x="11.869043"
+             id="tspan18-1"
+             sodipodi:role="line">Person_1_1</tspan></text>
+        <text
+           id="Person_color_1_2-1"
+           y="253.87294"
+           x="11.93829"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:7.76111126px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#e8dfdf;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+           xml:space="preserve"
+           font-size="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#e8dfdf;fill-opacity:1;stroke:none;stroke-width:0.26458332"><tspan
+             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:7.76111126px;font-family:helvetica;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;fill:#e8dfdf"
+             y="253.87294"
+             x="11.93829"
+             id="tspan22-1"
+             sodipodi:role="line">Person_1_2</tspan></text>
+        <text
+           xml:space="preserve"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.64444447px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#e8dfdf;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+           x="12.146029"
+           y="267.10208"
+           id="Person_color_1_3-7"
+           font-size="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#e8dfdf;fill-opacity:1;stroke:none;stroke-width:0.26458332"><tspan
+             sodipodi:role="line"
+             id="tspan26-0"
+             x="12.146029"
+             y="267.10208"
+             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.64444447px;font-family:helvetica;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;fill:#e8dfdf">Person_1_3</tspan></text>
+        <text
+           id="Person_color_1_4-4"
+           y="279.80209"
+           x="12.146029"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.64444447px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#e8dfdf;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+           xml:space="preserve"
+           font-size="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#e8dfdf;fill-opacity:1;stroke:none;stroke-width:0.26458332"><tspan
+             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.64444447px;font-family:helvetica;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;fill:#e8dfdf"
+             y="279.80209"
+             x="12.146029"
+             id="tspan30-0"
+             sodipodi:role="line">Person_1_4</tspan></text>
+        <text
+           xml:space="preserve"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.64444447px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#e8dfdf;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+           x="12.146029"
+           y="291.97311"
+           id="Person_color_1_5-8"
+           font-size="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#e8dfdf;fill-opacity:1;stroke:none;stroke-width:0.26458332"><tspan
+             sodipodi:role="line"
+             id="tspan34-5"
+             x="12.146029"
+             y="291.97311"
+             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.64444447px;font-family:helvetica;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;fill:#e8dfdf">Person_1_5</tspan></text>
+        <text
+           xml:space="preserve"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:12.69999981px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#f2f2f2;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+           x="57.115887"
+           y="207.63159"
+           id="text1245-1"><tspan
+             sodipodi:role="line"
+             id="tspan1243-6"
+             x="57.115887"
+             y="207.63159"
+             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:12.69999981px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle;fill:#f2f2f2;stroke-width:0.26458332">Logo_Text</tspan></text>
+      </g>
+      <g
+         transform="translate(155.23499,-181.53831)"
+         id="g8892-6"
+         inkscape:label="Layer 1">
+        <image
+           width="114.3"
+           height="82.599998"
+           preserveAspectRatio="none"
+           style="stroke-width:0.98209292;image-rendering:optimizeQuality"
+           id="image8869-2"
+           x="-6.258304e-06"
+           y="214"
+           xlink:href="/home/abi/Pictures/18033231.jpeg"
+           sodipodi:absref="/home/abi/Pictures/18033231.jpeg" />
+        <image
+           width="114.3"
+           height="19"
+           preserveAspectRatio="none"
+           style="stroke-width:0.98209292;image-rendering:optimizeQuality"
+           id="image8871-1"
+           x="-6.258304e-06"
+           y="195"
+           xlink:href="/home/abi/Pictures/logo.jpeg"
+           sodipodi:absref="/home/abi/Pictures/logo.jpeg" />
+        <text
+           id="Person_color_2_1-9"
+           y="240.36781"
+           x="11.869043"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:8.46666622px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#e8dfdf;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+           xml:space="preserve"
+           font-size="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#e8dfdf;fill-opacity:1;stroke:none;stroke-width:0.26458332"><tspan
+             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:8.46666622px;font-family:helvetica;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;fill:#e8dfdf"
+             y="240.36781"
+             x="11.869043"
+             id="tspan8873-6"
+             sodipodi:role="line">Person_2_1</tspan></text>
+        <text
+           id="Person_color_2_2-4"
+           y="253.87294"
+           x="11.93829"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:7.76111126px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#e8dfdf;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+           xml:space="preserve"
+           font-size="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#e8dfdf;fill-opacity:1;stroke:none;stroke-width:0.26458332"><tspan
+             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:7.76111126px;font-family:helvetica;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;fill:#e8dfdf"
+             y="253.87294"
+             x="11.93829"
+             id="tspan8876-8"
+             sodipodi:role="line">Person_2_2</tspan></text>
+        <text
+           xml:space="preserve"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.64444447px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#e8dfdf;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+           x="12.146029"
+           y="267.10208"
+           id="Person_color_2_3-0"
+           font-size="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#e8dfdf;fill-opacity:1;stroke:none;stroke-width:0.26458332"><tspan
+             sodipodi:role="line"
+             id="tspan8879-8"
+             x="12.146029"
+             y="267.10208"
+             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.64444447px;font-family:helvetica;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;fill:#e8dfdf">Person_2_3</tspan></text>
+        <text
+           id="Person_color_2_4-1"
+           y="279.80209"
+           x="12.146029"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.64444447px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#e8dfdf;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+           xml:space="preserve"
+           font-size="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#e8dfdf;fill-opacity:1;stroke:none;stroke-width:0.26458332"><tspan
+             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.64444447px;font-family:helvetica;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;fill:#e8dfdf"
+             y="279.80209"
+             x="12.146029"
+             id="tspan8882-0"
+             sodipodi:role="line">Person_2_4</tspan></text>
+        <text
+           xml:space="preserve"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.64444447px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#e8dfdf;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+           x="12.146029"
+           y="291.97311"
+           id="Person_color_2_5-2"
+           font-size="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#e8dfdf;fill-opacity:1;stroke:none;stroke-width:0.26458332"><tspan
+             sodipodi:role="line"
+             id="tspan8885-2"
+             x="12.146029"
+             y="291.97311"
+             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.64444447px;font-family:helvetica;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;fill:#e8dfdf">Person_2_5</tspan></text>
+        <text
+           xml:space="preserve"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:12.69999981px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#f2f2f2;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+           x="57.115887"
+           y="207.63159"
+           id="text8890-9"><tspan
+             sodipodi:role="line"
+             id="tspan8888-7"
+             x="57.115887"
+             y="207.63159"
+             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:12.69999981px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle;fill:#f2f2f2;stroke-width:0.26458332">Logo_Text</tspan></text>
+      </g>
+      <image
+         width="24.713812"
+         height="24.714001"
+         preserveAspectRatio="none"
+         id="image4144-3-2-3-9-5-4-5"
+         x="103.75356"
+         y="38.732609"
+         style="display:inline"
+         xlink:href="/home/abi/qr_code.jpg"
+         sodipodi:absref="/home/abi/badge_5.png" />
+      <image
+         width="24.713812"
+         height="24.714001"
+         preserveAspectRatio="none"
+         id="image4144-3-2-3-9-5-4-1-6"
+         x="237.89731"
+         y="37.674282"
+         style="display:inline"
+         xlink:href="/home/abi/qr_code.jpg"
+         sodipodi:absref="/home/abi/badge_5.png" />
+      <g
+         transform="translate(20.82663,-61.801555)"
+         id="layer1-7-4"
+         inkscape:label="Layer 1">
+        <image
+           width="114.3"
+           height="82.599998"
+           preserveAspectRatio="none"
+           style="stroke-width:0.98209292;image-rendering:optimizeQuality"
+           id="image100-6"
+           x="-6.258304e-06"
+           y="214"
+           xlink:href="/home/abi/Pictures/18033231.jpeg"
+           sodipodi:absref="/home/abi/Pictures/18033231.jpeg" />
+        <image
+           width="114.3"
+           height="19"
+           preserveAspectRatio="none"
+           style="stroke-width:0.98209292;image-rendering:optimizeQuality"
+           id="image5179-3"
+           x="-6.258304e-06"
+           y="195"
+           xlink:href="/home/abi/Pictures/logo.jpeg"
+           sodipodi:absref="/home/abi/Pictures/logo.jpeg" />
+        <text
+           id="Person_color_1_1-79"
+           y="240.36781"
+           x="11.869043"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:8.46666622px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#e8dfdf;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+           xml:space="preserve"
+           font-size="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#e8dfdf;fill-opacity:1;stroke:none;stroke-width:0.26458332"><tspan
+             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:8.46666622px;font-family:helvetica;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;fill:#e8dfdf"
+             y="240.36781"
+             x="11.869043"
+             id="tspan18-7"
+             sodipodi:role="line">Person_1_1</tspan></text>
+        <text
+           id="Person_color_1_2-4"
+           y="253.87294"
+           x="11.93829"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:7.76111126px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#e8dfdf;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+           xml:space="preserve"
+           font-size="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#e8dfdf;fill-opacity:1;stroke:none;stroke-width:0.26458332"><tspan
+             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:7.76111126px;font-family:helvetica;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;fill:#e8dfdf"
+             y="253.87294"
+             x="11.93829"
+             id="tspan22-9"
+             sodipodi:role="line">Person_1_2</tspan></text>
+        <text
+           xml:space="preserve"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.64444447px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#e8dfdf;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+           x="12.146029"
+           y="267.10208"
+           id="Person_color_1_3-1"
+           font-size="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#e8dfdf;fill-opacity:1;stroke:none;stroke-width:0.26458332"><tspan
+             sodipodi:role="line"
+             id="tspan26-7"
+             x="12.146029"
+             y="267.10208"
+             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.64444447px;font-family:helvetica;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;fill:#e8dfdf">Person_1_3</tspan></text>
+        <text
+           id="Person_color_1_4-0"
+           y="279.80209"
+           x="12.146029"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.64444447px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#e8dfdf;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+           xml:space="preserve"
+           font-size="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#e8dfdf;fill-opacity:1;stroke:none;stroke-width:0.26458332"><tspan
+             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.64444447px;font-family:helvetica;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;fill:#e8dfdf"
+             y="279.80209"
+             x="12.146029"
+             id="tspan30-6"
+             sodipodi:role="line">Person_1_4</tspan></text>
+        <text
+           xml:space="preserve"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.64444447px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#e8dfdf;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+           x="12.146029"
+           y="291.97311"
+           id="Person_color_1_5-0"
+           font-size="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#e8dfdf;fill-opacity:1;stroke:none;stroke-width:0.26458332"><tspan
+             sodipodi:role="line"
+             id="tspan34-8"
+             x="12.146029"
+             y="291.97311"
+             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.64444447px;font-family:helvetica;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;fill:#e8dfdf">Person_1_5</tspan></text>
+        <text
+           xml:space="preserve"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:12.69999981px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#f2f2f2;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+           x="57.115887"
+           y="207.63159"
+           id="text1245-5"><tspan
+             sodipodi:role="line"
+             id="tspan1243-3"
+             x="57.115887"
+             y="207.63159"
+             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:12.69999981px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle;fill:#f2f2f2;stroke-width:0.26458332">Logo_Text</tspan></text>
+      </g>
+      <g
+         transform="translate(155.235,-61.801555)"
+         id="g8892-9"
+         inkscape:label="Layer 1">
+        <image
+           width="114.3"
+           height="82.599998"
+           preserveAspectRatio="none"
+           style="stroke-width:0.98209292;image-rendering:optimizeQuality"
+           id="image8869-4"
+           x="-6.258304e-06"
+           y="214"
+           xlink:href="/home/abi/Pictures/18033231.jpeg"
+           sodipodi:absref="/home/abi/Pictures/18033231.jpeg" />
+        <image
+           width="114.3"
+           height="19"
+           preserveAspectRatio="none"
+           style="stroke-width:0.98209292;image-rendering:optimizeQuality"
+           id="image8871-15"
+           x="-6.258304e-06"
+           y="195"
+           xlink:href="/home/abi/Pictures/logo.jpeg"
+           sodipodi:absref="/home/abi/Pictures/logo.jpeg" />
+        <text
+           id="Person_color_2_1-4"
+           y="240.36781"
+           x="11.869043"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:8.46666622px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#e8dfdf;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+           xml:space="preserve"
+           font-size="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#e8dfdf;fill-opacity:1;stroke:none;stroke-width:0.26458332"><tspan
+             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:8.46666622px;font-family:helvetica;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;fill:#e8dfdf"
+             y="240.36781"
+             x="11.869043"
+             id="tspan8873-1"
+             sodipodi:role="line">Person_2_1</tspan></text>
+        <text
+           id="Person_color_2_2-5"
+           y="253.87294"
+           x="11.93829"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:7.76111126px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#e8dfdf;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+           xml:space="preserve"
+           font-size="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#e8dfdf;fill-opacity:1;stroke:none;stroke-width:0.26458332"><tspan
+             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:7.76111126px;font-family:helvetica;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;fill:#e8dfdf"
+             y="253.87294"
+             x="11.93829"
+             id="tspan8876-5"
+             sodipodi:role="line">Person_2_2</tspan></text>
+        <text
+           xml:space="preserve"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.64444447px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#e8dfdf;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+           x="12.146029"
+           y="267.10208"
+           id="Person_color_2_3-4"
+           font-size="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#e8dfdf;fill-opacity:1;stroke:none;stroke-width:0.26458332"><tspan
+             sodipodi:role="line"
+             id="tspan8879-9"
+             x="12.146029"
+             y="267.10208"
+             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.64444447px;font-family:helvetica;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;fill:#e8dfdf">Person_2_3</tspan></text>
+        <text
+           id="Person_color_2_4-8"
+           y="279.80209"
+           x="12.146029"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.64444447px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#e8dfdf;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+           xml:space="preserve"
+           font-size="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#e8dfdf;fill-opacity:1;stroke:none;stroke-width:0.26458332"><tspan
+             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.64444447px;font-family:helvetica;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;fill:#e8dfdf"
+             y="279.80209"
+             x="12.146029"
+             id="tspan8882-3"
+             sodipodi:role="line">Person_2_4</tspan></text>
+        <text
+           xml:space="preserve"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.64444447px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#e8dfdf;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+           x="12.146029"
+           y="291.97311"
+           id="Person_color_2_5-8"
+           font-size="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#e8dfdf;fill-opacity:1;stroke:none;stroke-width:0.26458332"><tspan
+             sodipodi:role="line"
+             id="tspan8885-5"
+             x="12.146029"
+             y="291.97311"
+             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.64444447px;font-family:helvetica;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;fill:#e8dfdf">Person_2_5</tspan></text>
+        <text
+           xml:space="preserve"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:12.69999981px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#f2f2f2;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+           x="57.115887"
+           y="207.63159"
+           id="text8890-2"><tspan
+             sodipodi:role="line"
+             id="tspan8888-2"
+             x="57.115887"
+             y="207.63159"
+             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:12.69999981px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle;fill:#f2f2f2;stroke-width:0.26458332">Logo_Text</tspan></text>
+      </g>
+      <image
+         width="24.713812"
+         height="24.714001"
+         preserveAspectRatio="none"
+         id="image4144-3-2-3-9-5-4-2"
+         x="103.75356"
+         y="158.46936"
+         style="display:inline"
+         xlink:href="/home/abi/qr_code.jpg"
+         sodipodi:absref="/home/abi/badge_5.png" />
+      <image
+         width="24.713812"
+         height="24.714001"
+         preserveAspectRatio="none"
+         id="image4144-3-2-3-9-5-4-1-7"
+         x="237.89729"
+         y="157.41103"
+         style="display:inline"
+         xlink:href="/home/abi/qr_code.jpg"
+         sodipodi:absref="/home/abi/badge_5.png" />
     </g>
     <g
        transform="translate(21.662015,-299.16542)"
        id="layer1-7"
        inkscape:label="Layer 1">
       <image
-         sodipodi:absref="/home/yogesh/Desktop/badgeyay/api/static/badges/Pictures/18033231.jpeg"
+         sodipodi:absref="/home/abi/projects/badgeyay/backend/static/badges/Pictures/18033231.jpeg"
          xlink:href="Pictures/18033231.jpeg"
-         y="214"
-         x="-6.258304e-06"
-         id="image100"
-         style="stroke-width:0.98209292;image-rendering:optimizeQuality;"
-         preserveAspectRatio="none"
+         width="114.3"
          height="82.6"
-         width="114.3" />
-      <image
-         sodipodi:absref="/home/yogesh/Desktop/badgeyay/api/static/badges/Pictures/logo.jpeg"
-         xlink:href="Pictures/logo.jpeg"
-         y="195"
-         x="-6.258304e-06"
-         id="image5179"
-         style="stroke-width:0.98209292;image-rendering:optimizeQuality"
          preserveAspectRatio="none"
+         style="stroke-width:0.98209292;image-rendering:optimizeQuality;"
+         id="image100"
+         x="-6.258304e-06"
+         y="214" />
+      <image
+         sodipodi:absref="/home/abi/projects/badgeyay/backend/static/badges/Pictures/logo.jpeg"
+         xlink:href="Pictures/logo.jpeg"
+         width="114.3"
          height="19"
-         width="114.3" />
+         preserveAspectRatio="none"
+         style="stroke-width:0.98209292;image-rendering:optimizeQuality"
+         id="image5179"
+         x="-6.258304e-06"
+         y="195" />
       <text
          id="Person_color_1_1"
          y="240.36781"
@@ -182,25 +606,25 @@
        id="g8892"
        inkscape:label="Layer 1">
       <image
-         sodipodi:absref="/home/yogesh/Desktop/badgeyay/api/static/badges/Pictures/18033231.jpeg"
+         sodipodi:absref="/home/abi/projects/badgeyay/backend/static/badges/Pictures/18033231.jpeg"
          xlink:href="Pictures/18033231.jpeg"
-         y="214"
-         x="-6.258304e-06"
-         id="image8869"
-         style="stroke-width:0.98209292;image-rendering:optimizeQuality;"
-         preserveAspectRatio="none"
+         width="114.3"
          height="82.6"
-         width="114.3" />
-      <image
-         sodipodi:absref="/home/yogesh/Desktop/badgeyay/api/static/badges/Pictures/logo.jpeg"
-         xlink:href="Pictures/logo.jpeg"
-         y="195"
-         x="-6.258304e-06"
-         id="image8871"
-         style="stroke-width:0.98209292;image-rendering:optimizeQuality"
          preserveAspectRatio="none"
+         style="stroke-width:0.98209292;image-rendering:optimizeQuality;"
+         id="image8869"
+         x="-6.258304e-06"
+         y="214" />
+      <image
+         sodipodi:absref="/home/abi/projects/badgeyay/backend/static/badges/Pictures/logo.jpeg"
+         xlink:href="Pictures/logo.jpeg"
+         width="114.3"
          height="19"
-         width="114.3" />
+         preserveAspectRatio="none"
+         style="stroke-width:0.98209292;image-rendering:optimizeQuality"
+         id="image8871"
+         x="-6.258304e-06"
+         y="195" />
       <text
          id="Person_color_2_1"
          y="240.36781"
@@ -278,409 +702,25 @@
            y="207.63159"
            style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:12.69999981px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle;fill:#f2f2f2;stroke-width:0.26458332">Logo_Text</tspan></text>
     </g>
-    <g
-       transform="translate(21.662015,-182.74868)"
-       id="g8917"
-       inkscape:label="Layer 1">
-      <image
-         sodipodi:absref="/home/yogesh/Desktop/badgeyay/api/static/badges/Pictures/18033231.jpeg"
-         xlink:href="Pictures/18033231.jpeg"
-         y="214"
-         x="-6.258304e-06"
-         id="image8894"
-         style="stroke-width:0.98209292;image-rendering:optimizeQuality;"
-         preserveAspectRatio="none"
-         height="82.6"
-         width="114.3" />
-      <image
-         sodipodi:absref="/home/yogesh/Desktop/badgeyay/api/static/badges/Pictures/logo.jpeg"
-         xlink:href="Pictures/logo.jpeg"
-         y="195"
-         x="-6.258304e-06"
-         id="image8896"
-         style="stroke-width:0.98209292;image-rendering:optimizeQuality"
-         preserveAspectRatio="none"
-         height="19"
-         width="114.3" />
-      <text
-         id="Person_color_3_1"
-         y="240.36781"
-         x="11.869043"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:8.46666622px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#e8dfdf;fill-opacity:1;stroke:none;stroke-width:0.26458332"
-         xml:space="preserve"
-         font-size="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#e8dfdf;fill-opacity:1;stroke:none;stroke-width:0.26458332"
-         font-family="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:8.46666622px;line-height:1.25;font-family:helvetica;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#e8dfdf;fill-opacity:1;stroke:none;stroke-width:0.26458332"><tspan
-           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:8.46666622px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;fill:#e8dfdf;font-family:helvetica"
-           y="240.36781"
-           x="11.869043"
-           id="tspan8898"
-           sodipodi:role="line">Person_3_1</tspan></text>
-      <text
-         id="Person_color_3_2"
-         y="253.87294"
-         x="11.93829"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:7.76111126px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#e8dfdf;fill-opacity:1;stroke:none;stroke-width:0.26458332"
-         xml:space="preserve"
-         font-size="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#e8dfdf;fill-opacity:1;stroke:none;stroke-width:0.26458332"
-         font-family="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:7.76111126px;line-height:1.25;font-family:helvetica;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#e8dfdf;fill-opacity:1;stroke:none;stroke-width:0.26458332"><tspan
-           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:7.76111126px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;fill:#e8dfdf;font-family:helvetica"
-           y="253.87294"
-           x="11.93829"
-           id="tspan8901"
-           sodipodi:role="line">Person_3_2</tspan></text>
-      <text
-         xml:space="preserve"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.64444447px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#e8dfdf;fill-opacity:1;stroke:none;stroke-width:0.26458332"
-         x="12.146029"
-         y="267.10208"
-         id="Person_color_3_3"
-         font-size="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#e8dfdf;fill-opacity:1;stroke:none;stroke-width:0.26458332"
-         font-family="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.64444447px;line-height:1.25;font-family:helvetica;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#e8dfdf;fill-opacity:1;stroke:none;stroke-width:0.26458332"><tspan
-           sodipodi:role="line"
-           id="tspan8904"
-           x="12.146029"
-           y="267.10208"
-           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.64444447px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;fill:#e8dfdf;font-family:helvetica">Person_3_3</tspan></text>
-      <text
-         id="Person_color_3_4"
-         y="279.80209"
-         x="12.146029"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.64444447px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#e8dfdf;fill-opacity:1;stroke:none;stroke-width:0.26458332"
-         xml:space="preserve"
-         font-size="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#e8dfdf;fill-opacity:1;stroke:none;stroke-width:0.26458332"
-         font-family="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.64444447px;line-height:1.25;font-family:helvetica;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#e8dfdf;fill-opacity:1;stroke:none;stroke-width:0.26458332"><tspan
-           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.64444447px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;fill:#e8dfdf;font-family:helvetica"
-           y="279.80209"
-           x="12.146029"
-           id="tspan8907"
-           sodipodi:role="line">Person_3_4</tspan></text>
-      <text
-         xml:space="preserve"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.64444447px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#e8dfdf;fill-opacity:1;stroke:none;stroke-width:0.26458332"
-         x="12.146029"
-         y="291.97311"
-         id="Person_color_3_5"
-         font-size="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#e8dfdf;fill-opacity:1;stroke:none;stroke-width:0.26458332"
-         font-family="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.64444447px;line-height:1.25;font-family:helvetica;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#e8dfdf;fill-opacity:1;stroke:none;stroke-width:0.26458332"><tspan
-           sodipodi:role="line"
-           id="tspan8910"
-           x="12.146029"
-           y="291.97311"
-           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.64444447px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;fill:#e8dfdf;font-family:helvetica">Person_3_5</tspan></text>
-      <text
-         xml:space="preserve"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:12.69999981px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#f2f2f2;fill-opacity:1;stroke:none;stroke-width:0.26458332"
-         x="57.115887"
-         y="207.63159"
-         id="text8915"><tspan
-           sodipodi:role="line"
-           id="tspan8913"
-           x="57.115887"
-           y="207.63159"
-           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:12.69999981px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle;fill:#f2f2f2;stroke-width:0.26458332">Logo_Text</tspan></text>
-    </g>
-    <g
-       transform="translate(156.07038,-182.74868)"
-       id="g8942"
-       inkscape:label="Layer 1">
-      <image
-         sodipodi:absref="/home/yogesh/Desktop/badgeyay/api/static/badges/Pictures/18033231.jpeg"
-         xlink:href="Pictures/18033231.jpeg"
-         y="214"
-         x="-6.258304e-06"
-         id="image8919"
-         style="stroke-width:0.98209292;image-rendering:optimizeQuality;"
-         preserveAspectRatio="none"
-         height="82.6"
-         width="114.3" />
-      <image
-         sodipodi:absref="/home/yogesh/Desktop/badgeyay/api/static/badges/Pictures/logo.jpeg"
-         xlink:href="Pictures/logo.jpeg"
-         y="195"
-         x="-6.258304e-06"
-         id="image8921"
-         style="stroke-width:0.98209292;image-rendering:optimizeQuality"
-         preserveAspectRatio="none"
-         height="19"
-         width="114.3" />
-      <text
-         id="Person_color_4_1"
-         y="240.36781"
-         x="11.869043"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:8.46666622px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#e8dfdf;fill-opacity:1;stroke:none;stroke-width:0.26458332"
-         xml:space="preserve"
-         font-size="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#e8dfdf;fill-opacity:1;stroke:none;stroke-width:0.26458332"
-         font-family="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:8.46666622px;line-height:1.25;font-family:helvetica;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#e8dfdf;fill-opacity:1;stroke:none;stroke-width:0.26458332"><tspan
-           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:8.46666622px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;fill:#e8dfdf;font-family:helvetica"
-           y="240.36781"
-           x="11.869043"
-           id="tspan8923"
-           sodipodi:role="line">Person_4_1</tspan></text>
-      <text
-         id="Person_color_4_2"
-         y="253.87294"
-         x="11.93829"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:7.76111126px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#e8dfdf;fill-opacity:1;stroke:none;stroke-width:0.26458332"
-         xml:space="preserve"
-         font-size="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#e8dfdf;fill-opacity:1;stroke:none;stroke-width:0.26458332"
-         font-family="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:7.76111126px;line-height:1.25;font-family:helvetica;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#e8dfdf;fill-opacity:1;stroke:none;stroke-width:0.26458332"><tspan
-           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:7.76111126px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;fill:#e8dfdf;font-family:helvetica"
-           y="253.87294"
-           x="11.93829"
-           id="tspan8926"
-           sodipodi:role="line">Person_4_2</tspan></text>
-      <text
-         xml:space="preserve"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.64444447px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#e8dfdf;fill-opacity:1;stroke:none;stroke-width:0.26458332"
-         x="12.146029"
-         y="267.10208"
-         id="Person_color_4_3"
-         font-size="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#e8dfdf;fill-opacity:1;stroke:none;stroke-width:0.26458332"
-         font-family="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.64444447px;line-height:1.25;font-family:helvetica;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#e8dfdf;fill-opacity:1;stroke:none;stroke-width:0.26458332"><tspan
-           sodipodi:role="line"
-           id="tspan8929"
-           x="12.146029"
-           y="267.10208"
-           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.64444447px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;fill:#e8dfdf;font-family:helvetica">Person_4_3</tspan></text>
-      <text
-         id="Person_color_4_4"
-         y="279.80209"
-         x="12.146029"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.64444447px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#e8dfdf;fill-opacity:1;stroke:none;stroke-width:0.26458332"
-         xml:space="preserve"
-         font-size="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#e8dfdf;fill-opacity:1;stroke:none;stroke-width:0.26458332"
-         font-family="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.64444447px;line-height:1.25;font-family:helvetica;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#e8dfdf;fill-opacity:1;stroke:none;stroke-width:0.26458332"><tspan
-           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.64444447px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;fill:#e8dfdf;font-family:helvetica"
-           y="279.80209"
-           x="12.146029"
-           id="tspan8932"
-           sodipodi:role="line">Person_4_4</tspan></text>
-      <text
-         xml:space="preserve"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.64444447px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#e8dfdf;fill-opacity:1;stroke:none;stroke-width:0.26458332"
-         x="12.146029"
-         y="291.97311"
-         id="Person_color_4_5"
-         font-size="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#e8dfdf;fill-opacity:1;stroke:none;stroke-width:0.26458332"
-         font-family="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.64444447px;line-height:1.25;font-family:helvetica;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#e8dfdf;fill-opacity:1;stroke:none;stroke-width:0.26458332"><tspan
-           sodipodi:role="line"
-           id="tspan8935"
-           x="12.146029"
-           y="291.97311"
-           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.64444447px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;fill:#e8dfdf;font-family:helvetica">Person_4_5</tspan></text>
-      <text
-         xml:space="preserve"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:12.69999981px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#f2f2f2;fill-opacity:1;stroke:none;stroke-width:0.26458332"
-         x="57.115887"
-         y="207.63159"
-         id="text8940"><tspan
-           sodipodi:role="line"
-           id="tspan8938"
-           x="57.115887"
-           y="207.63159"
-           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:12.69999981px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle;fill:#f2f2f2;stroke-width:0.26458332">Logo_Text</tspan></text>
-    </g>
-    <g
-       transform="translate(21.662015,-61.040294)"
-       id="g8967"
-       inkscape:label="Layer 1">
-      <image
-         sodipodi:absref="/home/yogesh/Desktop/badgeyay/api/static/badges/Pictures/18033231.jpeg"
-         xlink:href="Pictures/18033231.jpeg"
-         y="214"
-         x="-6.258304e-06"
-         id="image8944"
-         style="stroke-width:0.98209292;image-rendering:optimizeQuality;"
-         preserveAspectRatio="none"
-         height="82.6"
-         width="114.3" />
-      <image
-         sodipodi:absref="/home/yogesh/Desktop/badgeyay/api/static/badges/Pictures/logo.jpeg"
-         xlink:href="Pictures/logo.jpeg"
-         y="195"
-         x="-6.258304e-06"
-         id="image8946"
-         style="stroke-width:0.98209292;image-rendering:optimizeQuality"
-         preserveAspectRatio="none"
-         height="19"
-         width="114.3" />
-      <text
-         id="Person_color_5_1"
-         y="240.36781"
-         x="11.869043"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:8.46666622px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#e8dfdf;fill-opacity:1;stroke:none;stroke-width:0.26458332"
-         xml:space="preserve"
-         font-size="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#e8dfdf;fill-opacity:1;stroke:none;stroke-width:0.26458332"
-         font-family="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:8.46666622px;line-height:1.25;font-family:helvetica;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#e8dfdf;fill-opacity:1;stroke:none;stroke-width:0.26458332"><tspan
-           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:8.46666622px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;fill:#e8dfdf;font-family:helvetica"
-           y="240.36781"
-           x="11.869043"
-           id="tspan8948"
-           sodipodi:role="line">Person_5_1</tspan></text>
-      <text
-         id="Person_color_5_2"
-         y="253.87294"
-         x="11.93829"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:7.76111126px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#e8dfdf;fill-opacity:1;stroke:none;stroke-width:0.26458332"
-         xml:space="preserve"
-         font-size="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#e8dfdf;fill-opacity:1;stroke:none;stroke-width:0.26458332"
-         font-family="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:7.76111126px;line-height:1.25;font-family:helvetica;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#e8dfdf;fill-opacity:1;stroke:none;stroke-width:0.26458332"><tspan
-           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:7.76111126px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;fill:#e8dfdf;font-family:helvetica"
-           y="253.87294"
-           x="11.93829"
-           id="tspan8951"
-           sodipodi:role="line">Person_5_2</tspan></text>
-      <text
-         xml:space="preserve"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.64444447px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#e8dfdf;fill-opacity:1;stroke:none;stroke-width:0.26458332"
-         x="12.146029"
-         y="267.10208"
-         id="Person_color_5_3"
-         font-size="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#e8dfdf;fill-opacity:1;stroke:none;stroke-width:0.26458332"
-         font-family="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.64444447px;line-height:1.25;font-family:helvetica;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#e8dfdf;fill-opacity:1;stroke:none;stroke-width:0.26458332"><tspan
-           sodipodi:role="line"
-           id="tspan8954"
-           x="12.146029"
-           y="267.10208"
-           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.64444447px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;fill:#e8dfdf;font-family:helvetica">Person_5_3</tspan></text>
-      <text
-         id="Person_color_5_4"
-         y="279.80209"
-         x="12.146029"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.64444447px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#e8dfdf;fill-opacity:1;stroke:none;stroke-width:0.26458332"
-         xml:space="preserve"
-         font-size="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#e8dfdf;fill-opacity:1;stroke:none;stroke-width:0.26458332"
-         font-family="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.64444447px;line-height:1.25;font-family:helvetica;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#e8dfdf;fill-opacity:1;stroke:none;stroke-width:0.26458332"><tspan
-           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.64444447px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;fill:#e8dfdf;font-family:helvetica"
-           y="279.80209"
-           x="12.146029"
-           id="tspan8957"
-           sodipodi:role="line">Person_5_4</tspan></text>
-      <text
-         xml:space="preserve"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.64444447px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#e8dfdf;fill-opacity:1;stroke:none;stroke-width:0.26458332"
-         x="12.146029"
-         y="291.97311"
-         id="Person_color_5_5"
-         font-size="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#e8dfdf;fill-opacity:1;stroke:none;stroke-width:0.26458332"
-         font-family="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.64444447px;line-height:1.25;font-family:helvetica;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#e8dfdf;fill-opacity:1;stroke:none;stroke-width:0.26458332"><tspan
-           sodipodi:role="line"
-           id="tspan8960"
-           x="12.146029"
-           y="291.97311"
-           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.64444447px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;fill:#e8dfdf;font-family:helvetica">Person_5_5</tspan></text>
-      <text
-         xml:space="preserve"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:12.69999981px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#f2f2f2;fill-opacity:1;stroke:none;stroke-width:0.26458332"
-         x="57.115887"
-         y="207.63159"
-         id="text8965"><tspan
-           sodipodi:role="line"
-           id="tspan8963"
-           x="57.115887"
-           y="207.63159"
-           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:12.69999981px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle;fill:#f2f2f2;stroke-width:0.26458332">Logo_Text</tspan></text>
-    </g>
-    <g
-       transform="translate(156.07038,-61.040294)"
-       id="g8992"
-       inkscape:label="Layer 1">
-      <image
-         sodipodi:absref="/home/yogesh/Desktop/badgeyay/api/static/badges/Pictures/18033231.jpeg"
-         xlink:href="Pictures/18033231.jpeg"
-         y="214"
-         x="-6.258304e-06"
-         id="image8969"
-         style="stroke-width:0.98209292;image-rendering:optimizeQuality;"
-         preserveAspectRatio="none"
-         height="82.6"
-         width="114.3" />
-      <image
-         sodipodi:absref="/home/yogesh/Desktop/badgeyay/api/static/badges/Pictures/logo.jpeg"
-         xlink:href="Pictures/logo.jpeg"
-         y="195"
-         x="-6.258304e-06"
-         id="image8971"
-         style="stroke-width:0.98209292;image-rendering:optimizeQuality"
-         preserveAspectRatio="none"
-         height="19"
-         width="114.3" />
-      <text
-         id="Person_color_6_1"
-         y="240.36781"
-         x="11.869043"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:8.46666622px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#e8dfdf;fill-opacity:1;stroke:none;stroke-width:0.26458332"
-         xml:space="preserve"
-         font-size="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#e8dfdf;fill-opacity:1;stroke:none;stroke-width:0.26458332"
-         font-family="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:8.46666622px;line-height:1.25;font-family:helvetica;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#e8dfdf;fill-opacity:1;stroke:none;stroke-width:0.26458332"><tspan
-           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:8.46666622px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;fill:#e8dfdf;font-family:helvetica"
-           y="240.36781"
-           x="11.869043"
-           id="tspan8973"
-           sodipodi:role="line">Person_6_1</tspan></text>
-      <text
-         id="Person_color_6_2"
-         y="253.87294"
-         x="11.93829"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:7.76111126px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#e8dfdf;fill-opacity:1;stroke:none;stroke-width:0.26458332"
-         xml:space="preserve"
-         font-size="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#e8dfdf;fill-opacity:1;stroke:none;stroke-width:0.26458332"
-         font-family="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:7.76111126px;line-height:1.25;font-family:helvetica;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#e8dfdf;fill-opacity:1;stroke:none;stroke-width:0.26458332"><tspan
-           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:7.76111126px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;fill:#e8dfdf;font-family:helvetica"
-           y="253.87294"
-           x="11.93829"
-           id="tspan8976"
-           sodipodi:role="line">Person_6_2</tspan></text>
-      <text
-         xml:space="preserve"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.64444447px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#e8dfdf;fill-opacity:1;stroke:none;stroke-width:0.26458332"
-         x="12.146029"
-         y="267.10208"
-         id="Person_color_6_3"
-         font-size="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#e8dfdf;fill-opacity:1;stroke:none;stroke-width:0.26458332"
-         font-family="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.64444447px;line-height:1.25;font-family:helvetica;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#e8dfdf;fill-opacity:1;stroke:none;stroke-width:0.26458332"><tspan
-           sodipodi:role="line"
-           id="tspan8979"
-           x="12.146029"
-           y="267.10208"
-           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.64444447px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;fill:#e8dfdf;font-family:helvetica">Person_6_3</tspan></text>
-      <text
-         id="Person_color_6_4"
-         y="279.80209"
-         x="12.146029"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.64444447px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#e8dfdf;fill-opacity:1;stroke:none;stroke-width:0.26458332"
-         xml:space="preserve"
-         font-size="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#e8dfdf;fill-opacity:1;stroke:none;stroke-width:0.26458332"
-         font-family="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.64444447px;line-height:1.25;font-family:helvetica;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#e8dfdf;fill-opacity:1;stroke:none;stroke-width:0.26458332"><tspan
-           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.64444447px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;fill:#e8dfdf;font-family:helvetica"
-           y="279.80209"
-           x="12.146029"
-           id="tspan8982"
-           sodipodi:role="line">Person_6_4</tspan></text>
-      <text
-         xml:space="preserve"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.64444447px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#e8dfdf;fill-opacity:1;stroke:none;stroke-width:0.26458332"
-         x="12.146029"
-         y="291.97311"
-         id="Person_color_6_5"
-         font-size="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#e8dfdf;fill-opacity:1;stroke:none;stroke-width:0.26458332"
-         font-family="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.64444447px;line-height:1.25;font-family:helvetica;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#e8dfdf;fill-opacity:1;stroke:none;stroke-width:0.26458332"><tspan
-           sodipodi:role="line"
-           id="tspan8985"
-           x="12.146029"
-           y="291.97311"
-           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.64444447px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;fill:#e8dfdf;font-family:helvetica">Person_6_5</tspan></text>
-      <text
-         xml:space="preserve"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:12.69999981px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#f2f2f2;fill-opacity:1;stroke:none;stroke-width:0.26458332"
-         x="57.115887"
-         y="207.63159"
-         id="text8990"><tspan
-           sodipodi:role="line"
-           id="tspan8988"
-           x="57.115887"
-           y="207.63159"
-           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:12.69999981px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle;fill:#f2f2f2;stroke-width:0.26458332">Logo_Text</tspan></text>
-    </g>
+    <image
+       width="24.713812"
+       height="24.714001"
+       preserveAspectRatio="none"
+       id="image4144-3-2-3-9-5-4"
+       x="104.58894"
+       y="-78.894501"
+       style="display:inline"
+       xlink:href="/home/abi/qr_code.jpg"
+       sodipodi:absref="/home/abi/badge_5.png" />
+    <image
+       width="24.713812"
+       height="24.714001"
+       preserveAspectRatio="none"
+       id="image4144-3-2-3-9-5-4-1"
+       x="238.73268"
+       y="-79.952835"
+       style="display:inline"
+       xlink:href="/home/abi/qr_code.jpg"
+       sodipodi:absref="/home/abi/badge_5.png" />
   </g>
 </svg>

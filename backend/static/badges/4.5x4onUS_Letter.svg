@@ -15,7 +15,7 @@
    viewBox="0 0 215.9 279.4"
    version="1.1"
    id="svg8"
-   inkscape:version="0.92.4 (ca053d0, 2019-01-16)"
+   inkscape:version="0.92.4 (5da689c313, 2019-01-14)"
    sodipodi:docname="4.5x4onUS_Letter.svg">
   <defs
      id="defs2" />
@@ -26,16 +26,16 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.35355339"
-     inkscape:cx="237.61851"
-     inkscape:cy="587.90521"
+     inkscape:zoom="1.4142136"
+     inkscape:cx="566.17155"
+     inkscape:cy="757.61084"
      inkscape:document-units="mm"
-     inkscape:current-layer="layer2"
+     inkscape:current-layer="layer1"
      showgrid="false"
      units="in"
-     inkscape:window-width="1299"
-     inkscape:window-height="713"
-     inkscape:window-x="67"
+     inkscape:window-width="1366"
+     inkscape:window-height="709"
+     inkscape:window-x="0"
      inkscape:window-y="27"
      inkscape:window-maximized="1" />
   <metadata
@@ -70,25 +70,25 @@
        id="layer1-7"
        inkscape:label="Layer 1">
       <image
-         sodipodi:absref="/home/yogesh/Desktop/badgeyay/api/static/badges/Pictures/18033231.jpeg"
+         sodipodi:absref="/home/abi/projects/badgeyay/backend/static/badges/Pictures/18033231.jpeg"
          xlink:href="Pictures/18033231.jpeg"
-         y="214"
-         x="-6.258304e-06"
-         id="image100"
-         style="stroke-width:0.98209292;image-rendering:optimizeQuality;"
-         preserveAspectRatio="none"
+         width="114.3"
          height="82.6"
-         width="114.3" />
-      <image
-         sodipodi:absref="/home/yogesh/Desktop/badgeyay/api/static/badges/Pictures/logo.jpeg"
-         xlink:href="Pictures/logo.jpeg"
-         y="195"
-         x="-6.258304e-06"
-         id="image5179"
-         style="stroke-width:0.98209292;image-rendering:optimizeQuality"
          preserveAspectRatio="none"
+         style="stroke-width:0.98209292;image-rendering:optimizeQuality;"
+         id="image100"
+         x="-6.258304e-06"
+         y="214" />
+      <image
+         sodipodi:absref="/home/abi/projects/badgeyay/backend/static/badges/Pictures/logo.jpeg"
+         xlink:href="Pictures/logo.jpeg"
+         width="114.3"
          height="19"
-         width="114.3" />
+         preserveAspectRatio="none"
+         style="stroke-width:0.98209292;image-rendering:optimizeQuality"
+         id="image5179"
+         x="-6.258304e-06"
+         y="195" />
       <text
          id="Person_color_1_1"
          y="240.36781"
@@ -171,25 +171,25 @@
        id="g11931"
        inkscape:label="Layer 1">
       <image
-         sodipodi:absref="/home/yogesh/Desktop/badgeyay/api/static/badges/Pictures/18033231.jpeg"
+         sodipodi:absref="/home/abi/projects/badgeyay/backend/static/badges/Pictures/18033231.jpeg"
          xlink:href="Pictures/18033231.jpeg"
-         y="214"
-         x="-6.258304e-06"
-         id="image11908"
-         style="stroke-width:0.98209292;image-rendering:optimizeQuality;"
-         preserveAspectRatio="none"
+         width="114.3"
          height="82.6"
-         width="114.3" />
-      <image
-         sodipodi:absref="/home/yogesh/Desktop/badgeyay/api/static/badges/Pictures/logo.jpeg"
-         xlink:href="Pictures/logo.jpeg"
-         y="195"
-         x="-6.258304e-06"
-         id="image11910"
-         style="stroke-width:0.98209292;image-rendering:optimizeQuality"
          preserveAspectRatio="none"
+         style="stroke-width:0.98209292;image-rendering:optimizeQuality;"
+         id="image11908"
+         x="-6.258304e-06"
+         y="214" />
+      <image
+         sodipodi:absref="/home/abi/projects/badgeyay/backend/static/badges/Pictures/logo.jpeg"
+         xlink:href="Pictures/logo.jpeg"
+         width="114.3"
          height="19"
-         width="114.3" />
+         preserveAspectRatio="none"
+         style="stroke-width:0.98209292;image-rendering:optimizeQuality"
+         id="image11910"
+         x="-6.258304e-06"
+         y="195" />
       <text
          id="Person_color_2_1"
          y="240.36781"
@@ -267,5 +267,25 @@
            y="207.63159"
            style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:12.69999981px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle;fill:#f2f2f2;stroke-width:0.26458332">Logo_Text</tspan></text>
     </g>
+    <image
+       width="24.713812"
+       height="24.714001"
+       preserveAspectRatio="none"
+       id="image4144-3-2-3-9-5-4"
+       x="132.23053"
+       y="66.059235"
+       style="display:inline"
+       xlink:href="/home/abi/qr_code.jpg"
+       sodipodi:absref="/home/abi/badge_5.png" />
+    <image
+       width="24.713812"
+       height="24.714001"
+       preserveAspectRatio="none"
+       id="image4144-3-2-3-9-5-4-7"
+       x="132.44972"
+       y="177.06702"
+       style="display:inline"
+       xlink:href="/home/abi/qr_code.jpg"
+       sodipodi:absref="/home/abi/badge_5.png" />
   </g>
 </svg>

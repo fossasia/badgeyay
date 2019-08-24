@@ -68,6 +68,7 @@ def generateBadges():
     font_type_4 = data.get('font_type_4') or 'helvetica'
     font_type_5 = data.get('font_type_5') or 'helvetica'
     ticket_types = data.get('ticket_types').split(',')
+    qr_code = data.get('qr_code') or 1
 
     svg2png = SVG2PNG()
 
@@ -142,7 +143,8 @@ def generateBadges():
         csv_type,
         paper_size,
         badge_size,
-        ticket_types)
+        ticket_types,
+	qr_code)
 
     merge_badges.merge_pdfs()
 

@@ -59,3 +59,4 @@ Werkzeug==0.15.3
 marshmallow-jsonapi
 pycrypto==2.6.1
 stripe==1.84.0
+qrcode==6.0
