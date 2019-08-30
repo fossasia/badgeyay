@@ -19,7 +19,7 @@ The user can:
 
 ## Demo
 
-![ezgif com-video-to-gif 15](/api/docs/installation/demo.gif)
+![ezgif com-video-to-gif 15](/docs/backend/installation/demo.gif)
 
 ## Communication
 
