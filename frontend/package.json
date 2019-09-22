@@ -14,7 +14,8 @@
     "build": "ember build",
     "lint:js": "eslint ./*.js app config lib server tests",
     "start": "ember serve --port=4200",
-    "test": "ember test"
+    "test": "ember test",
+    "postinstall": "node -e \"try { require('fs').symlinkSync(require('path').resolve('node_modules/@bower_components'), 'bower_components', 'junction') } catch (e) { }\""
   },
   "devDependencies": {
     "@fortawesome/ember-fontawesome": "^0.1.2",
@@ -58,12 +59,12 @@
     "torii": "^0.10.1"
   },
   "engines": {
-    "node": "^4.5 || 6.* || >= 7.*"
+    "node": "^4.5 || 6.* || >= 7.*",
+    "yarn": ">= 1.0.0"
   },
   "dependencies": {
     "async": "^2.6.1",
     "babel-eslint": "^8.2.6",
-    "bower": "^1.8.4",
     "croppie": "^2.6.2",
     "ember": "^1.0.3",
     "ember-colpick": "^1.0.0",
@@ -72,6 +73,10 @@
     "eslint-plugin-ember-suave": "^1.0.0",
     "md5": "^2.2.1",
     "minimatch": "^3.0.4",
-    "node-sass": "^4.9.2"
+    "node-sass": "^4.9.2",
+    "@bower_components/Croppie": "Foliotek/Croppie",
+    "@bower_components/colpick": "josedvq/colpick-jQuery-Color-Picker",
+    "@bower_components/pace": "HubSpot/pace",
+    "@bower_components/seiyria-bootstrap-slider": "seiyria/bootstrap-slider"
   }
 }

@@ -35,7 +35,7 @@ matrix:
 
   - language: node_js
     node_js:
-      - "6"
+      - "8"
 
     addons:
       chrome: stable
@@ -53,9 +53,9 @@ matrix:
       - cd frontend
       - npm install
       - npm install --save ember-colpick
-      - npm install -g bower
+      - npm install -g yarn
       - npm install -g firebase-tools
-      - bower install
+      - yarn
       - ember g ember-colpick
       - npm config set spin false
 
