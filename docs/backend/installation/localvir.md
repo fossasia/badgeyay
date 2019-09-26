@@ -132,7 +132,7 @@ sudo service postgresql restart
 ```
 For Mac Users:
 ```sh
-brew services postgresql restart
+brew services restart postgresql
 ```
 
 
