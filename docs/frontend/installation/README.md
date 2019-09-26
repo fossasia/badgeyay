@@ -14,7 +14,7 @@ To install the app, run the following commands in a command line:
 * `git clone https://github.com/fossasia/badgeyay`
 * `cd badgeyay/frontend`
 * `npm install`
-* `bower install`
+* `yarn install`
 ## Running locally:
 
 To run the app locally on your machine, run the following commands in a command line:
