@@ -1,7 +1,6 @@
 from backend.db import db
 import uuid
 
-
 class Permissions(db.Model):
     __tablename__ = 'Permissions'
 

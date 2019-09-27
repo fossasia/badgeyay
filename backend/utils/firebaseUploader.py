@@ -1,6 +1,5 @@
 from firebase_admin import storage
 
-
 def fileUploader(file_path, blob_path):
     bucket = storage.bucket()
     fileUploaderBlob = bucket.blob(blob_path)
@@ -11,7 +10,6 @@ def fileUploader(file_path, blob_path):
         print(e)
     fileUploaderBlob.make_public()
     return fileUploaderBlob.public_url
-
 
 def deleteFile(blob_path):
     bucket = storage.bucket()

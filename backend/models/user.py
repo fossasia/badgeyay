@@ -2,11 +2,9 @@ from werkzeug.security import generate_password_hash
 from datetime import datetime
 from backend.db import db
 
-
 def _photoURL():
     return 'https://encrypted-tbn0.gstatic.com/' \
         'images?q=tbn:ANd9GcRWnJC8FyOPb9J-EjhQStzIZt_dk-dxuK-VyEnwQDdqIBKj4p7R8A'
-
 
 class User(db.Model):
     __tablename__ = 'User'

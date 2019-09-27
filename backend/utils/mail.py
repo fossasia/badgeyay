@@ -3,7 +3,6 @@ from flask import current_app as app
 from flask import jsonify
 from backend.utils.response import Response
 
-
 def sendMail(message):
     if message and message.receipent:
         try:

@@ -2,7 +2,6 @@ import jwt
 from flask import current_app as app
 from flask import Blueprint, jsonify, request
 from werkzeug.security import generate_password_hash
-
 from backend.models.user import User
 from backend.schemas.errors import PayloadNotFound, SignatureExpired, PasswordNotFound
 from backend.utils.errors import ErrorResponse
@@ -10,7 +9,6 @@ from backend.utils.update_user import update_firebase_password
 from backend.schemas.operation import ResetPasswordOperation
 
 router = Blueprint('Change Meta', __name__)
-
 
 @router.route('/password', methods=['POST'])
 def changePwd():

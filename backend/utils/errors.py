@@ -1,6 +1,5 @@
 from flask import make_response, jsonify
 
-
 class ErrorResponse():
 
     """

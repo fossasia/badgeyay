@@ -31,7 +31,6 @@ export default Controller.extend({
         });
     },
 
-
     updateUserName() {
       this.set('isLoadingName', true);
       this.get('user').save()

@@ -1,7 +1,6 @@
 from werkzeug.security import generate_password_hash
 from backend.db import db
 
-
 class Admin(db.Model):
     __tablename__ = 'Admin'
 

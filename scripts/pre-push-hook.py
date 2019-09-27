@@ -11,7 +11,6 @@ import sys
 # Change the first line of this file if your python3 installation
 # is elsewhere.
 
-
 def main():
 
     # flake8 linting tests for backend.
@@ -33,7 +32,6 @@ def main():
         print(result_front.stdout.decode('utf-8'))
         sys.exit(1)
     print('Ember tests passed.')
-
 
 if __name__ == '__main__':
     main()

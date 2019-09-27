@@ -17,9 +17,7 @@ from backend.schemas.user import (
     PermissionSchema
 )
 
-
 router = Blueprint('registerUser', __name__)
-
 
 @router.route('/register', methods=['POST'])
 def register_user():
@@ -95,14 +93,12 @@ def register_user():
             newUser = user_
         return jsonify(schema.dump(newUser).data)
 
-
 @router.route('/permission', methods=['GET'])
 def user_permissions():
     args = request.args
     if 'id' in args.keys():
         perm = Permissions.get_by_uid(args['id'])
         return jsonify(PermissionSchema().dump(perm).data)
-
 
 @router.route('/register/<uid>', methods=['PATCH'])
 def patchUser(uid):

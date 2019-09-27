@@ -1,7 +1,6 @@
 import uuid
 from backend.db import db
 
-
 class Utilities(db.Model):
     __tablename__ = 'Utilities'
 
@@ -17,7 +16,6 @@ class Utilities(db.Model):
             db.session.rollback()
             db.session.flush()
             print(e)
-
 
 def set_pricing():
     record = Utilities.query.first()

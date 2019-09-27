@@ -7,7 +7,6 @@ from flask import current_app as app
 from backend.utils.dimen import badge_config
 from backend.config import config
 
-
 class SVG2PNG:
 
     def __init__(self):

@@ -27,9 +27,7 @@ from backend.schemas.errors import (
     CSVNotFound
 )
 
-
 router = Blueprint('fileUploader', __name__)
-
 
 @router.route('/image', methods=['POST'])
 @loginRequired
@@ -54,7 +52,6 @@ def uploadImage():
     file_upload = File(filename=imageName, filetype='image', uploader=fetch_user)
     file_upload.save_to_db()
     return jsonify(ImageFileSchema().dump(file_upload).data)
-
 
 @router.route('/file', methods=['POST'])
 @loginRequired
@@ -85,7 +82,6 @@ def fileUpload():
     file_upload.save_to_db()
     return jsonify(CSVUploadSchema().dump(file_upload).data)
 
-
 @router.route('/manual_data', methods=['POST'])
 @loginRequired
 def upload_manual_data():
@@ -112,14 +108,12 @@ def upload_manual_data():
     file_upload.save_to_db()
     return jsonify(ManualFileSchema().dump(file_upload).data)
 
-
 @router.route('/get_file', methods=['GET'])
 @loginRequired
 def get_file():
     input_data = request.args
     file = File().query.filter_by(filename=input_data.get('filename')).first()
     return jsonify(FileSchema().dump(file).data)
-
 
 @router.route('/upload_default', methods=['POST'])
 @loginRequired
@@ -145,7 +139,6 @@ def upload_default():
     file_upload = File(filename=imageName, filetype='image', uploader=fetch_user)
     file_upload.save_to_db()
     return jsonify(DefImageSchem().dump(file_upload).data)
-
 
 @router.route('/background_color', methods=['POST'])
 @loginRequired

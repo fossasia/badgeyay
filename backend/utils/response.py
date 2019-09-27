@@ -1,7 +1,6 @@
 from backend.config import urlConfig
 import uuid
 
-
 class Response(object):
     """
     Send appropriate cleaned data that can be rendered into arbitrary media types.

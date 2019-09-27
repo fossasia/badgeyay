@@ -44,9 +44,7 @@ from firebase_admin import db as firebasedb
 from dateutil.relativedelta import relativedelta
 import datetime
 
-
 router = Blueprint('admin', __name__)
-
 
 @router.route('/settings', methods=['GET'])
 @adminRequired
@@ -56,7 +54,6 @@ def get_application_settings():
         if args['filter'] == 'latest':
             settings = Settings.latest_settings()
             return jsonify(SettingsSchema().dump(settings).data)
-
 
 @router.route('/settings', methods=['POST'])
 @adminRequired
@@ -74,7 +71,6 @@ def post_settings():
     settings.save_to_db()
     return jsonify(SettingsSchema().dump(settings).data)
 
-
 @router.route('/messages', methods=['GET'])
 def get_messages():
     ref = firebasedb.reference('MailTemplate').get()
@@ -83,7 +79,6 @@ def get_messages():
         ref[key]['id'] = key
         messages.append(ref[key])
     return jsonify(Mails(many=True).dump(messages).data)
-
 
 @router.route('/messages/<type_>', methods=['PATCH'])
 def patch_messages(type_):
@@ -95,7 +90,6 @@ def patch_messages(type_):
     data.pop('id', None)
     ref.set(data)
     return jsonify(Mails().dump(tempCopy).data)
-
 
 @router.route('/show_all_users', methods=['GET'])
 @adminRequired
@@ -118,13 +112,11 @@ def show_all_users():
     result = schema.dump(users.items)
     return jsonify(result.data)
 
-
 @router.route('/all-modules', methods=['GET'])
 @adminRequired
 def get_all_modules():
     module = Module.query.all()[0]
     return jsonify(ModuleSchema().dump(module).data)
-
 
 @router.route('/all-badge-detail', methods=['GET'])
 @adminRequired
@@ -150,7 +142,6 @@ def get_all_badge_detail():
                 page, app.config['POSTS_PER_PAGE'], False)
         return jsonify(schema.dump(badges.items).data)
 
-
 @router.route('/all-badge-detail/<badgeId>', methods=['DELETE'])
 @adminRequired
 def delete_badge(badgeId):
@@ -161,7 +152,6 @@ def delete_badge(badgeId):
 
     badge.delete_from_db()
     return jsonify(DeletedBadges().dump(temp_badge).data)
-
 
 @router.route('/admin-report', methods=['GET'])
 @adminRequired
@@ -193,7 +183,6 @@ def get_admin_report():
         payload.append(report)
     return jsonify(schema.dump(payload).data)
 
-
 @router.route('/all-modules/<id_>', methods=['PATCH'])
 @adminRequired
 def patch_module(id_):
@@ -204,7 +193,6 @@ def patch_module(id_):
     module.donationInclude = data['donationInclude']
     module.save_to_db()
     return jsonify(ModuleSchema().dump(module).data)
-
 
 @router.route('/show_all_users/<userid>', methods=['PATCH'])
 @adminRequired
@@ -226,7 +214,6 @@ def update_user(userid):
     result = schema.dump(user)
     return jsonify(result.data)
 
-
 @router.route('/show_all_users/<userid>', methods=['DELETE'])
 @adminRequired
 def delete_user(userid):
@@ -239,7 +226,6 @@ def delete_user(userid):
     result = schema.dump(user)
     return jsonify(result.data)
 
-
 @router.route('/admin-stat-mail', methods=['GET'])
 @adminRequired
 def get_admin_stat():
@@ -249,7 +235,6 @@ def get_admin_stat():
     last_three_days_date = curr_date - relativedelta(days=3)
     last_seven_days_date = curr_date - relativedelta(days=7)
     last_day_date = curr_date - relativedelta(days=1)
-
     prev_month_cnt = find_mail_count(mail_list, prev_month_date)
     last_three_days_cnt = find_mail_count(mail_list, last_three_days_date)
     last_day_cnt = find_mail_count(mail_list, last_day_date)
@@ -264,7 +249,6 @@ def get_admin_stat():
 
     return jsonify(AdminMailStat().dump(payload).data)
 
-
 def get_mail_list():
     mail_ref = firebasedb.reference('mails')
     mail_resp = mail_ref.get()
@@ -276,7 +260,6 @@ def get_mail_list():
         item['date'] = datetime.datetime.strptime(
             item['date'], '%Y-%m-%dT%H:%M:%SZ')
     return mail_list
-
 
 # Finding the successor node from the date passed
 def find_mail_count(mail_list, date):
@@ -290,7 +273,6 @@ def find_mail_count(mail_list, date):
             low = mid + 1
     return len(mail_list[low:])
 
-
 @router.route('/all-badge', methods=['GET'])
 @adminRequired
 def all_generated_badges():
@@ -300,13 +282,11 @@ def all_generated_badges():
         'cnt': str(badge_cnt)}
     return jsonify(AllGenBadges().dump(dataPayload).data)
 
-
 @router.route('/all-admin', methods=['GET'])
 @adminRequired
 def get_all_admin():
     admin_users = User.query.filter_by(siteAdmin=True).all()
     return jsonify(AllAdminRole(many=True).dump(admin_users).data)
-
 
 @router.route('/all-role', methods=['GET'])
 @adminRequired
@@ -321,7 +301,6 @@ def get_all_roles():
                 Permissions.isSales.is_(True)).all()
         return jsonify(RoleSchema(many=True).dump(users).data)
 
-
 @router.route('/all-user', methods=['GET'])
 @adminRequired
 def all_users_stat():
@@ -333,7 +312,6 @@ def all_users_stat():
         'registered': str(reg_users)}
     return jsonify(AllUserStat().dump(payload).data)
 
-
 @router.route('/get_all_badges', methods=['GET'])
 @loginRequired
 def get_all_badges():
@@ -344,7 +322,6 @@ def get_all_badges():
     result = schema.dump(all_badges)
     return jsonify(result.data)
 
-
 @router.route('/get_all_files', methods=['GET'])
 @loginRequired
 def get_all_files():
@@ -352,7 +329,6 @@ def get_all_files():
     files = File.query.paginate(
         page, app.config['POSTS_PER_PAGE'], False).items
     return jsonify(FileSchema(many=True).dump(files).data)
-
 
 @router.route('/register_admin', methods=['POST'])
 @adminRequired
@@ -371,7 +347,6 @@ def register_admin():
     else:
         return ErrorResponse(JsonNotFound().message, 422, {'Content-Type': 'application/json'}).respond()
 
-
 @router.route('/delete-admin', methods=['GET'])
 @adminRequired
 def delete_admin():
@@ -386,7 +361,6 @@ def delete_admin():
         permissions.save_to_db()
         user.save_to_db()
         return jsonify(DeleteAdminRole().dump(user).data)
-
 
 @router.route('/register_sales', methods=['POST'])
 @adminRequired
@@ -404,7 +378,6 @@ def register_sales():
     else:
         return ErrorResponse(JsonNotFound().message, 422, {'Content-Type': 'application/json'}).respond()
 
-
 @router.route('/delete-sales', methods=['GET'])
 @adminRequired
 def delete_sales():
@@ -419,7 +392,6 @@ def delete_sales():
         permissions.save_to_db()
         user.save_to_db()
         return jsonify(DeleteSales().dump(user).data)
-
 
 @router.route('/add_usage', methods=['POST'])
 @loginRequired
@@ -438,7 +410,6 @@ def admin_add_usage():
 
     return jsonify(UserAllowedUsage().dump(user).data)
 
-
 @router.route('/get_badges_dated', methods=['POST'])
 def get_badges_dated():
     schema = DatedBadgeSchema()
@@ -450,7 +421,6 @@ def get_badges_dated():
         'end_date')).filter(Badges.created_at >= data.get('start_date'))
     return jsonify(AllBadges(many=True).dump(dated_badges).data)
 
-
 @router.route('/get_users_dated', methods=['POST'])
 def get_user_dated():
     schema = DatedUserSchema()
@@ -461,7 +431,6 @@ def get_user_dated():
     dated_users = User.query.filter(User.created_at <= data.get(
         'end_date')).filter(User.created_at >= data.get('start_date'))
     return jsonify(AllUsersSchema(many=True).dump(dated_users).data)
-
 
 @router.route('/set_pricing', methods=['POST'])
 @adminRequired
@@ -481,7 +450,6 @@ def set_pricing():
     }
     return jsonify(ReturnSetPricing().dump(ret_data).data)
 
-
 @router.route('/get_pricing', methods=['GET'])
 @adminRequired
 def get_pricing():
@@ -493,12 +461,10 @@ def get_pricing():
     }
     return jsonify(ReturnSetPricing().dump(ret_data).data)
 
-
 @router.route('/social-media', methods=['GET'])
 def get_all_social_media():
     social_media = SocialContent.query.all()
     return jsonify(SocialMedia(many=True).dump(social_media).data)
-
 
 @router.route('/social-media/<media>', methods=['PATCH'])
 def patch_social_media(media):

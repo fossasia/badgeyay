@@ -1,7 +1,6 @@
 from marshmallow_jsonapi.flask import Schema
 from marshmallow_jsonapi import fields
 
-
 class TokenSchema(Schema):
     class Meta:
         type_ = 'reset-users'
@@ -10,7 +9,6 @@ class TokenSchema(Schema):
     id = fields.Str(required=True, dump_only=True)
     token = fields.Str(required=True)
 
-
 class ValidTokenSchema(Schema):
     class Meta:
         type_ = 'valid-tokens'
@@ -18,7 +16,6 @@ class ValidTokenSchema(Schema):
 
     id = fields.Str(required=True, dump_only=True)
     valid = fields.Bool(required=True)
-
 
 class LoginTokenSchema(Schema):
     class Meta:

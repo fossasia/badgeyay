@@ -1,7 +1,6 @@
 from marshmallow_jsonapi.flask import Schema
 from marshmallow_jsonapi import fields
 
-
 class FileSchema(Schema):
     class Meta:
         type_ = 'File'
@@ -19,7 +18,6 @@ class FileSchema(Schema):
         include_resource_linkage=True,
         type_='User'
     )
-
 
 class ManualFileSchema(Schema):
     class Meta:
@@ -39,7 +37,6 @@ class ManualFileSchema(Schema):
         type_='User'
     )
 
-
 class CSVUploadSchema(Schema):
     class Meta:
         type_ = 'csv-file'
@@ -57,7 +54,6 @@ class CSVUploadSchema(Schema):
         include_resource_linkage=True,
         type_='User'
     )
-
 
 class ImageFileSchema(Schema):
     class Meta:
@@ -77,7 +73,6 @@ class ImageFileSchema(Schema):
         type_='User'
     )
 
-
 class DefImageSchem(Schema):
     class Meta:
         type_ = 'def-image-uploads'
@@ -96,7 +91,6 @@ class DefImageSchem(Schema):
         type_='User'
     )
 
-
 class ColorImageSchema(Schema):
     class Meta:
         type_ = 'bg-color'
@@ -114,7 +108,6 @@ class ColorImageSchema(Schema):
         include_resource_linkage=True,
         type_='User'
     )
-
 
 class ExportFileSchema(Schema):
     class Meta:

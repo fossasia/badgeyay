@@ -1,6 +1,5 @@
 from marshmallow_jsonapi.exceptions import JSONAPIError
 
-
 class BaseError(JSONAPIError, ValueError):
 
     def __init__(self, uid=None, attr=None, status=422, **kwargs):
@@ -42,102 +41,85 @@ class BaseError(JSONAPIError, ValueError):
             ]
         }
 
-
 class UserNotFound(BaseError):
 
     def __init__(self, uid=None):
         super(UserNotFound, self).__init__(uid=uid, attr='user')
-
 
 class FieldNotFound(BaseError):
 
     def __init__(self):
         super(FieldNotFound, self).__init__(attr='field-missing')
 
-
 class FileNotFound(BaseError):
 
     def __init__(self, uid):
         super(FileNotFound, self).__init__(uid=uid, attr='file')
-
 
 class BadgeNotFound(BaseError):
 
     def __init__(self, uid):
         super(BadgeNotFound, self).__init__(uid=uid, attr='badge')
 
-
 class PayloadNotFound(BaseError):
 
     def __init__(self):
         super(PayloadNotFound, self).__init__(attr='payload')
-
 
 class CSVNotFound(BaseError):
 
     def __init__(self):
         super(CSVNotFound, self).__init__(attr='csv')
 
-
 class ImageNotFound(BaseError):
 
     def __init__(self):
         super(ImageNotFound, self).__init__(attr='image')
-
 
 class OperationNotFound(BaseError):
 
     def __init__(self):
         super(OperationNotFound, self).__init__(attr='operation')
 
-
 class ExtensionNotFound(BaseError):
 
     def __init__(self):
         super(ExtensionNotFound, self).__init__(attr='extension')
-
 
 class ManualDataNotFound(BaseError):
 
     def __init__(self):
         super(ManualDataNotFound, self).__init__(attr='manual_data')
 
-
 class JsonNotFound(BaseError):
 
     def __init__(self):
         super(JsonNotFound, self).__init__(attr='json')
-
 
 class PasswordNotFound(BaseError):
 
     def __init__(self):
         super(PasswordNotFound, self).__init__(attr='pass')
 
-
 class PNGNotFound(BaseError):
 
     def __init__(self):
         super(PNGNotFound, self).__init__(attr='png')
-
 
 class UsageNotAllowed(BaseError):
 
     def __init__(self):
         super(UsageNotAllowed, self).__init__(attr='not_allowed')
 
-
 class SignatureExpired(BaseError):
 
     def __init__(self):
         super(SignatureExpired, self).__init__(attr='sign_expired')
 
-
 class AdminNotFound(BaseError):
 
     def __init__(self):
         super(AdminNotFound, self).__init__(attr='Admin')
-
 
 class FirebaseError(BaseError):
 

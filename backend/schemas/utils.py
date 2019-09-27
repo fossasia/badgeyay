@@ -1,7 +1,6 @@
 from marshmallow_jsonapi.flask import Schema
 from marshmallow_jsonapi import fields
 
-
 class SetPricingSchema(Schema):
     class Meta:
         type_ = 'set-pricing'
@@ -9,7 +8,6 @@ class SetPricingSchema(Schema):
 
     id = fields.Str(required=True, dump_only=True)
     pricing = fields.Float(required=True)
-
 
 class ReturnSetPricing(Schema):
     class Meta:

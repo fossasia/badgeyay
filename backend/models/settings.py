@@ -1,10 +1,7 @@
 import datetime
-
 from backend.db import db
 from backend.config import config as api_config
-
 from decouple import config
-
 
 class Settings(db.Model):
 

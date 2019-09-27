@@ -1,7 +1,6 @@
 from marshmallow_jsonapi.flask import Schema
 from marshmallow_jsonapi import fields
 
-
 class ModuleSchema(Schema):
     class Meta:
         type_ = 'modules'

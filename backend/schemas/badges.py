@@ -1,7 +1,6 @@
 from marshmallow_jsonapi.flask import Schema
 from marshmallow_jsonapi import fields
 
-
 class BadgeSchema(Schema):
     class Meta:
         type_ = 'badge'
@@ -41,7 +40,6 @@ class BadgeSchema(Schema):
     paper_size = fields.Str(required=True)
     download_link = fields.Str()
 
-
 class AllBadges(Schema):
     class Meta:
         type_ = 'all-badges'
@@ -64,7 +62,6 @@ class AllBadges(Schema):
         include_resource_linkage=True,
         type_='User'
     )
-
 
 class UserBadges(Schema):
     class Meta:
@@ -92,7 +89,6 @@ class UserBadges(Schema):
         type_='User'
     )
 
-
 class DeletedBadges(Schema):
     class Meta:
         type_ = 'user-badges'
@@ -114,7 +110,6 @@ class DeletedBadges(Schema):
         type_='User'
     )
 
-
 class DatedBadgeSchema(Schema):
     class Meta:
         type_ = 'dated-badges'
@@ -123,7 +118,6 @@ class DatedBadgeSchema(Schema):
     id = fields.Str(required=True, dump_only=True)
     start_date = fields.Date(required=True)
     end_date = fields.Date(required=True)
-
 
 class AllGenBadges(Schema):
     class Meta:

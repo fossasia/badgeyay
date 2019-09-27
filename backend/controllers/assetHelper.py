@@ -1,11 +1,9 @@
 import os
-
 from backend.config import config
 from flask import Blueprint, jsonify
 from backend.helpers.verifyToken import loginRequired
 
 router = Blueprint('assethelper', __name__)
-
 
 @router.route('/default_images', methods=['GET'])
 @loginRequired

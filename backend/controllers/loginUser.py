@@ -1,6 +1,5 @@
 import jwt
 from datetime import datetime
-
 from flask import Blueprint, jsonify, request
 from flask import current_app as app
 from backend.models.user import User
@@ -13,9 +12,7 @@ from backend.schemas.errors import (
     OperationNotFound,
 )
 
-
 router = Blueprint('loginUser', __name__)
-
 
 @router.route('/login')
 def login():
@@ -50,13 +47,11 @@ def login():
 
     return ErrorResponse(OperationNotFound().message, 422, {'Content-Type': 'application/json'}).respond()
 
-
 @router.route('/register/<uid>', methods=['GET'])
 def index(uid):
     user = User.getUser(user_id=uid)
     schema = FTLUserSchema()
     return jsonify(schema.dump(user).data)
-
 
 @router.route('/updateLastLogin/<uid>', methods={'GET'})
 def updateLastLogin(uid):

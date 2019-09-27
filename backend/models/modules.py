@@ -1,6 +1,5 @@
 from backend.db import db
 
-
 class Module(db.Model):
     __tablename__ = 'Modules'
 

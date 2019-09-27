@@ -22,5 +22,4 @@ module('Unit | Route | edit-badge', function(hooks) {
     assert.equal(route.get('mode', 'edit'));
   });
 
-
 });

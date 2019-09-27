@@ -10,4 +10,3 @@ def execute(cwd, executable, *args):
     out, err = process.communicate()
 
     return process.returncode, str(out, 'utf-8'), str(err, 'utf-8')
-

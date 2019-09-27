@@ -11,7 +11,6 @@ from backend.models.user import User
 
 router = Blueprint('Validator', __name__)
 
-
 @router.route('/token')
 def validate_reset_token():
     args = request.args
@@ -26,7 +25,6 @@ def validate_reset_token():
         resp['valid'] = False
         print(e)
         return jsonify(ValidTokenSchema().dump(resp).data)
-
 
 @router.route('/email')
 def validate_email():

@@ -1,13 +1,11 @@
 import os
 import datetime
 import uuid
-
 from shutil import rmtree
 from backend.config import config
 from flask import current_app as app
 
 from flask import Blueprint, jsonify, request
-
 from backend.db import db
 from backend.helpers.verifyToken import loginRequired
 from backend.utils.errors import ErrorResponse
@@ -25,9 +23,7 @@ from backend.schemas.errors import (
 from firebase_admin import db as firebase_db
 from backend.utils.firebaseUploader import fileUploader, deleteFile
 
-
 router = Blueprint('generateBadges', __name__)
-
 
 @router.route('/generate_badges', methods=['POST'])
 @loginRequired
@@ -197,7 +193,6 @@ def generateBadges():
 
     return jsonify(BadgeSchema().dump(badge_created).data)
 
-
 @router.route('/generate_badges/<badgeId>', methods=['GET'])
 @loginRequired
 def getBadge(badgeId):
@@ -205,7 +200,6 @@ def getBadge(badgeId):
     if not badge:
         print('No badge found with the specified ID')
     return jsonify(BadgeSchema().dump(badge).data)
-
 
 @router.route('/generate_badges/<badgeId>', methods=['PATCH'])
 @loginRequired
@@ -336,7 +330,6 @@ def editBadges(badgeId):
     db.session.commit()
     return jsonify(BadgeSchema().dump(_badge).data)
 
-
 def send_badge_mail(badgeId, userId, badgeLink):
     ref = firebase_db.reference('badgeMails')
     print('Pushing badge generation mail to : ', badgeId)
@@ -345,7 +338,6 @@ def send_badge_mail(badgeId, userId, badgeLink):
         'badgeLink': badgeLink
     })
     print('Pushed badge generation mail to : ', badgeId)
-
 
 @router.route('/get_badges', methods=['GET'])
 @loginRequired
@@ -356,7 +348,6 @@ def get_badges():
     badges = db.session.query(Badges).filter_by(creator=user).paginate(
         page, app.config['POSTS_PER_PAGE'], False)
     return jsonify(UserBadges(many=True).dump(badges.items).data)
-
 
 @router.route('/get_badges/<badgeId>', methods=['DELETE'])
 @loginRequired
@@ -369,7 +360,6 @@ def delete_badge(badgeId):
     deleteFile('badges/' + badgeId + '.pdf')
     badge.delete_from_db()
     return jsonify(DeletedBadges().dump(temp_badge).data)
-
 
 @router.route('/get_badges/<badgeId>', methods=['PATCH'])
 @loginRequired

@@ -1,7 +1,6 @@
 from marshmallow_jsonapi.flask import Schema
 from marshmallow_jsonapi import fields
 
-
 class UserSchema(Schema):
     class Meta:
         type_ = 'user-signups'
@@ -15,7 +14,6 @@ class UserSchema(Schema):
     photoURL = fields.Str()
     siteAdmin = fields.Bool()
     last_login_date = fields.DateTime()
-
 
 class AllUsersSchema(Schema):
     class Meta:
@@ -36,7 +34,6 @@ class AllUsersSchema(Schema):
     lastLoginIp = fields.Str(allow_none=True, attribute='User.last_login_ip')
     lastLoginDate = fields.DateTime(allow_none=True, attribute='User.last_login_date')
 
-
 class SearchedUserSchema(Schema):
     class Meta:
         type_ = 'all-users'
@@ -54,7 +51,6 @@ class SearchedUserSchema(Schema):
     lastLoginIp = fields.Str(allow_none=True)
     lastLoginDate = fields.Str(allow_none=True)
 
-
 class OAuthUserSchema(Schema):
     class Meta:
         type_ = 'users'
@@ -67,7 +63,6 @@ class OAuthUserSchema(Schema):
     siteAdmin = fields.Bool()
     password = fields.Str(allow_none=True)
 
-
 class UpdateUserSchema(Schema):
     class Meta:
         type_ = 'users'
@@ -78,7 +73,6 @@ class UpdateUserSchema(Schema):
     email = fields.Str(required=True)
     photoURL = fields.Str(required=True)
 
-
 class UserAllowedUsage(Schema):
     class Meta:
         type_ = 'user_allowed_usage'
@@ -86,7 +80,6 @@ class UserAllowedUsage(Schema):
 
     id = fields.Str(required=True, dump_only=True)
     allowed_usage = fields.Str(required=True, dump_only=True)
-
 
 class FTLUserSchema(Schema):
     class Meta:
@@ -99,7 +92,6 @@ class FTLUserSchema(Schema):
     photoURL = fields.Str(required=True)
     ftl = fields.Boolean(required=True)
 
-
 class DeleteUserSchema(Schema):
     class Meta:
         type_ = 'delete-user'
@@ -107,7 +99,6 @@ class DeleteUserSchema(Schema):
 
     id = fields.Str(required=True, dump_only=True)
     uid = fields.Str(required=True)
-
 
 class DatedUserSchema(Schema):
     class Meta:
@@ -117,7 +108,6 @@ class DatedUserSchema(Schema):
     id = fields.Str(required=True, dump_only=True)
     start_date = fields.Date(required=True)
     end_date = fields.Date(required=True)
-
 
 class UpdateProfileSchema(Schema):
     class Meta:
@@ -129,7 +119,6 @@ class UpdateProfileSchema(Schema):
     username = fields.Str(required=True)
     email = fields.Str(required=True)
     password = fields.Str(required=True)
-
 
 class PermissionSchema(Schema):
     class Meta:

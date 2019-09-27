@@ -3,10 +3,8 @@ import os
 from flask import current_app as app
 import base64
 
-
 def generateFileName():
     return str(uuid.uuid4())
-
 
 def saveToImage(imageFile=None, extension='.png'):
     imageName = generateFileName() + extension
@@ -22,7 +20,6 @@ def saveToImage(imageFile=None, extension='.png'):
 
     return imageName
 
-
 def saveToCSV(csvFile=None, extension='.csv'):
     csvName = generateFileName() + extension
     csvDirectory = os.path.join(app.config.get('BASE_DIR'), 'static', 'uploads', 'csv')
@@ -37,7 +34,6 @@ def saveToCSV(csvFile=None, extension='.csv'):
     csv.close()
 
     return csvName
-
 
 def saveAsCSV(csvData=None):
     csvName = generateFileName() + '.csv'

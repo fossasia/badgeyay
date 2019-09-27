@@ -1,7 +1,6 @@
 from marshmallow_jsonapi.flask import Schema
 from marshmallow_jsonapi import fields
 
-
 class ModifyPermissionsIncoming(Schema):
     class Meta:
         type_ = 'modify-permissions'
@@ -11,7 +10,6 @@ class ModifyPermissionsIncoming(Schema):
     isUser = fields.Boolean(default=True)
     isAdmin = fields.Boolean(default=False)
     isSales = fields.Boolean(default=False)
-
 
 class ModifyPermissionsDone(Schema):
     class Meta:

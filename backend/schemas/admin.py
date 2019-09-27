@@ -1,7 +1,6 @@
 from marshmallow_jsonapi.flask import Schema
 from marshmallow_jsonapi import fields
 
-
 class AdminSchema(Schema):
     class Meta:
         type_ = 'create-admins'
@@ -10,7 +9,6 @@ class AdminSchema(Schema):
     id = fields.Str(required=True, dump_only=True)
     username = fields.Str(required=True)
     email = fields.Str(required=True)
-
 
 class AdminMailStat(Schema):
     class Meta:
@@ -23,7 +21,6 @@ class AdminMailStat(Schema):
     lastSevenDays = fields.Str(required=True, default='0')
     lastMonth = fields.Str(required=True, default='0')
 
-
 class AllUserStat(Schema):
     class Meta:
         type_ = 'admin-stat-users'
@@ -32,7 +29,6 @@ class AllUserStat(Schema):
     id = fields.Date(required=True, dump_only=True)
     superAdmin = fields.Str(required=True)
     registered = fields.Str(required=True)
-
 
 class AllAdminRole(Schema):
     class Meta:
@@ -44,7 +40,6 @@ class AllAdminRole(Schema):
     email = fields.Str(required=True)
     created_at = fields.Str(required=True)
 
-
 class DeleteAdminRole(Schema):
     class Meta:
         type_ = 'delete-admins'
@@ -53,7 +48,6 @@ class DeleteAdminRole(Schema):
     id = fields.Str(required=True, dump_only=True)
     email = fields.Str(required=True)
     siteAdmin = fields.Bool(required=True)
-
 
 class SocialMedia(Schema):
     class Meta:
@@ -64,7 +58,6 @@ class SocialMedia(Schema):
     description = fields.Str(required=True)
     link = fields.Str(required=True)
     icon = fields.Str(required=True)
-
 
 class AdminBadgeSchema(Schema):
     class Meta:
@@ -82,7 +75,6 @@ class AdminBadgeSchema(Schema):
     badge_name = fields.Str(required=True, attribute='Badges.badge_name')
     deleted_at = fields.DateTime(attribute='Badges.deleted_at')
 
-
 class AdminReportSchema(Schema):
     class Meta:
         type_ = 'admin-reports'
@@ -94,7 +86,6 @@ class AdminReportSchema(Schema):
     userCreationCount = fields.Int(as_string=True)
     userDeletionCount = fields.Int(as_string=True)
 
-
 class RoleSchema(Schema):
     class Meta:
         type_ = 'roles'
@@ -105,7 +96,6 @@ class RoleSchema(Schema):
     email = fields.Str(required=True)
     created_at = fields.Str(required=True)
 
-
 class SalesSchema(Schema):
     class Meta:
         type_ = 'create-sales'
@@ -114,7 +104,6 @@ class SalesSchema(Schema):
     username = fields.Str(required=True)
     email = fields.Str(required=True)
 
-
 class DeleteSales(Schema):
     class Meta:
         type_ = 'delete-sales'
@@ -122,7 +111,6 @@ class DeleteSales(Schema):
 
     id = fields.Str(required=True, dump_only=True)
     email = fields.Str(required=True)
-
 
 class SettingsSchema(Schema):
     class Meta:
@@ -136,7 +124,6 @@ class SettingsSchema(Schema):
     firebaseDatabaseURL = fields.Str()
     fromMail = fields.Str()
     sendGridApiKey = fields.Str()
-
 
 class Mails(Schema):
     class Meta:

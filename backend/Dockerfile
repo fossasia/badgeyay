@@ -1,7 +1,6 @@
 FROM python:3-slim
 LABEL maintainer="Yash Ladha <yashladhapankajladha123@gmail.com>"
 
-
 ENV INSTALL_PATH /badgeyay/api
 RUN mkdir -p "$INSTALL_PATH"
 RUN PYTHONPATH="$PYTHONPATH:/badgeyay/"

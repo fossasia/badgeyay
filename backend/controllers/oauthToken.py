@@ -1,6 +1,4 @@
 import jwt
-
-
 from flask import Blueprint, jsonify, request
 from flask import current_app as app
 from backend.utils.response import Response
@@ -10,9 +8,7 @@ from backend.schemas.errors import (
     OperationNotFound
 )
 
-
 router = Blueprint('oAuthToken', __name__)
-
 
 @router.route('/oauth_token', methods=['POST'])
 def oauth_token():

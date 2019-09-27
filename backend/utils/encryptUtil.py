@@ -2,21 +2,17 @@ from Crypto.Cipher import AES
 from hashlib import md5
 import base64
 
-
 password = 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa'
 
 BLOCK_SIZE = 16
-
 
 def pad(data):
     pad = BLOCK_SIZE - len(data) % BLOCK_SIZE
     return data + pad * chr(pad)
 
-
 def unpad(padded):
     pad = ord(chr(padded[-1]))
     return padded[:-pad]
-
 
 def _encrypt(data, nonce, password):
     m = md5()
@@ -33,7 +29,6 @@ def _encrypt(data, nonce, password):
 
     encrypted = aes.encrypt(data)
     return base64.urlsafe_b64encode(encrypted)
-
 
 def _decrypt(edata, nonce, password):
     edata = base64.urlsafe_b64decode(edata)
