@@ -2,7 +2,6 @@ from backend.db import db
 from datetime import datetime
 import uuid
 
-
 class Badges(db.Model):
     __tablename__ = 'Badges'
 

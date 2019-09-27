@@ -10,9 +10,7 @@ from backend.schemas.errors import (
     FileNotFound
 )
 
-
 router = Blueprint('exportData', __name__)
-
 
 @router.route('/csv/data', methods=['GET'])
 def export_data():

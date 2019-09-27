@@ -15,9 +15,7 @@ from backend.schemas.errors import (
     JsonNotFound
 )
 
-
 router = Blueprint('modifyUser', __name__)
-
 
 @router.route('/password', methods=['PUT'])
 @loginRequired
@@ -45,7 +43,6 @@ def changePassword():
     else:
         return ErrorResponse(JsonNotFound().message, 422, {'Content-Type': 'application/json'}).respond()
 
-
 @router.route('/name', methods=['PUT'])
 @loginRequired
 def changeName():
@@ -72,7 +69,6 @@ def changeName():
     else:
         return ErrorResponse(JsonNotFound().message, 422, {'Content-Type': 'application/json'}).respond()
 
-
 @router.route('/delete', methods=['DELETE'])
 @loginRequired
 def delete_user():
@@ -85,7 +81,6 @@ def delete_user():
     temp_user = user
     user.delete_user()
     return jsonify(DeleteUserSchema().dump(temp_user).data)
-
 
 @router.route('/update_profile', methods=['POST'])
 @loginRequired

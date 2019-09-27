@@ -1,6 +1,5 @@
 from firebase_admin import auth
 
-
 def update_firebase_photoURL(uid, photoURL):
     try:
         auth.update_user(
@@ -11,7 +10,6 @@ def update_firebase_photoURL(uid, photoURL):
     except Exception as e:
         print(e)
         return False
-
 
 def update_firebase_emailVerified(uid):
     try:
@@ -24,7 +22,6 @@ def update_firebase_emailVerified(uid):
         print(e)
         return False
 
-
 def update_firebase_password(uid, _pwd):
     try:
         auth.update_user(
@@ -35,7 +32,6 @@ def update_firebase_password(uid, _pwd):
     except Exception as e:
         print(e)
         return False
-
 
 def update_firebase_username(uid, username):
     try:
@@ -48,7 +44,6 @@ def update_firebase_username(uid, username):
         print(e)
         return False
 
-
 def update_firebase_email(uid, email):
     try:
         auth.update_user(
@@ -59,7 +54,6 @@ def update_firebase_email(uid, email):
     except Exception as e:
         print(e)
         return False
-
 
 def update_firebase_complete(uid, username, email, _pwd):
     try:

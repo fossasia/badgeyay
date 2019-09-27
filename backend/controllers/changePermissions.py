@@ -5,9 +5,7 @@ from backend.schemas.errors import UserNotFound, FieldNotFound
 from backend.utils.errors import ErrorResponse
 from backend.schemas.permissions import ModifyPermissionsIncoming, ModifyPermissionsDone
 
-
 router = Blueprint('changePermissions', __name__)
-
 
 @router.route('/add/user', methods=['POST'])
 def add_as_user():
@@ -33,7 +31,6 @@ def add_as_user():
 
     return jsonify(ModifyPermissionsDone().dump(user_permissions).data)
 
-
 @router.route('/add/sales', methods=['POST'])
 def add_as_sales():
     schema = ModifyPermissionsIncoming()
@@ -57,7 +54,6 @@ def add_as_sales():
     db.session.commit()
 
     return jsonify(ModifyPermissionsDone().dump(user_permissions).data)
-
 
 @router.route('/add/admin', methods=['POST'])
 def add_as_admin():

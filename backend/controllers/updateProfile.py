@@ -1,5 +1,4 @@
 import os
-
 from flask import Blueprint, request, jsonify
 from backend.utils.errors import ErrorResponse
 from flask import current_app as app
@@ -14,9 +13,7 @@ from backend.schemas.errors import (
 )
 from backend.schemas.user import UpdateUserSchema
 from backend.models.user import User
-
 router = Blueprint('updateUserProfile', __name__)
-
 
 @router.route('/profileImage', methods=['POST'])
 @loginRequired
@@ -43,7 +40,6 @@ def update_profile_image():
 
     fetch_user, imageLink = update_database(uid, imageName)
     return jsonify(UpdateUserSchema().dump(fetch_user).data)
-
 
 def update_database(uid, imageName):
     fetch_user = User.getUser(user_id=uid)

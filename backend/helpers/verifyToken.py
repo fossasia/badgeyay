@@ -9,7 +9,6 @@ from backend.schemas.errors import (
 from backend.utils.errors import ErrorResponse
 from backend.utils.response import Response
 
-
 def loginRequired(func):
     @wraps(func)
     def decorated(*args, **kwargs):
@@ -30,7 +29,6 @@ def loginRequired(func):
         return func(*args, **kwargs)
 
     return decorated
-
 
 def adminRequired(func):
     @wraps(func)

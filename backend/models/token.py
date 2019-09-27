@@ -1,6 +1,5 @@
 from backend.db import db
 
-
 class ResetPasswordToken(db.Model):
 
     __tablename__ = 'Reset Password Token'

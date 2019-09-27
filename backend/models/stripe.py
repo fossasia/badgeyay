@@ -1,6 +1,5 @@
 from backend.db import db
 
-
 class Stripe(db.Model):
     __tablename__ = 'Stripe'
 

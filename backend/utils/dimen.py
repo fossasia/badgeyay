@@ -4,9 +4,7 @@ class Dimen(object):
         self.badgeSize = badgeSize
         self.paperSize = paperSize
 
-
 badge_config = {}
-
 
 def init_dimen():
     paper_sizes = ['A0', 'A1', 'A2', 'A3', 'A4']

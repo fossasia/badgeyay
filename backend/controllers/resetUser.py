@@ -16,7 +16,6 @@ from psycopg2 import ProgrammingError
 
 router = Blueprint('resetUser', __name__)
 
-
 @router.route('/password', methods=['POST'])
 def reset_password():
     try:
@@ -36,7 +35,6 @@ def reset_password():
                 token.decode('UTF-8')))
     else:
         return ErrorResponse(JsonNotFound().message, 422, {'Content-Type': 'application/json'}).respond()
-
 
 @router.route('/token', methods=['POST'])
 def pwd_reset_token():

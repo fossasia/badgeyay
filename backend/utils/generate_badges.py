@@ -7,7 +7,6 @@ from defusedxml.lxml import parse
 from defusedxml.lxml import _etree as etree
 from backend.utils.dimen import badge_config
 
-
 def remove_extra(badge_page, offset):
     tree = etree.parse(open(badge_page, 'r'))
     root = tree.getroot()
@@ -15,7 +14,6 @@ def remove_extra(badge_page, offset):
     for i in range(offset, len(children)):
         children[i].getparent().remove(children[i])
     etree.ElementTree(root).write(badge_page, pretty_print=True)
-
 
 class GenerateBadges:
     def __init__(self,

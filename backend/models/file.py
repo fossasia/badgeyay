@@ -1,7 +1,6 @@
 import uuid
 from backend.db import db
 
-
 class File(db.Model):
     __tablename__ = 'File'
 

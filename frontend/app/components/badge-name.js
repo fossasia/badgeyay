@@ -14,7 +14,6 @@ export default Component.extend({
       this.get('sendBadgeName')(this.get('badge'));
     },
 
-
     didRender() {
       this.$('.ui.form')
         .form({

@@ -3,7 +3,6 @@ import ENV from '../config/environment';
 import { computed } from '@ember/object';
 import { inject as service } from '@ember/service';
 
-
 const { APP } = ENV;
 const { JSONAPIAdapter } = DS;
 

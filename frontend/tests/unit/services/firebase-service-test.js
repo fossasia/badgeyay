@@ -10,4 +10,3 @@ module('Unit | Service | firebase-service', function(hooks) {
     assert.ok(service);
   });
 });
-

@@ -8,9 +8,7 @@ from backend.schemas.errors import (
     OperationNotFound
 )
 
-
 router = Blueprint('stripPay', __name__)
-
 
 @router.route('/payment', methods=['POST'])
 def stripe_payment():

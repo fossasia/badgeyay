@@ -23,7 +23,6 @@ from backend.controllers import (
 from backend.models.modules import Module
 from backend.models.socialContent import SocialContent
 
-
 app = create_app()
 
 migrate = Migrate(app, db)
@@ -44,7 +43,6 @@ app.register_blueprint(changeMeta.router, url_prefix='/change')
 app.register_blueprint(exportData.router, url_prefix='/export')
 app.register_blueprint(stripePay.router, url_prefix='/payment')
 app.register_blueprint(changePermissions.router, url_prefix='/admin/modify')
-
 
 @app.before_first_request
 def create_tables():

@@ -10,7 +10,6 @@ export default Component.extend({
     }
   },
 
-
   didRender() {
     this.$('.ui.form')
       .form({

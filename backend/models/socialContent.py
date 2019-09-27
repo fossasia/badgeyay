@@ -1,6 +1,5 @@
 from backend.db import db
 
-
 class SocialContent(db.Model):
     __tablename__ = 'SocialContent'
 

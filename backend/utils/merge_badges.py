@@ -4,7 +4,6 @@ from backend.utils.generate_badges import GenerateBadges
 from cairosvg import svg2pdf
 from PyPDF2 import PdfFileMerger
 
-
 class MergeBadges:
     def __init__(self,
                  image_names,
