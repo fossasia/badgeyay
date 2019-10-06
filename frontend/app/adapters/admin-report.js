@@ -15,6 +15,7 @@ export default JSONAPIAdapter.extend({
     };
   }),
   pathForType: () => {
+    console.log("admin-report")
     return 'admin/admin-report';
   }
 });
