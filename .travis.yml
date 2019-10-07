@@ -51,12 +51,8 @@ matrix:
 
     before_install:
       - cd frontend
-      
       - npm install -g yarn
-      
       - yarn install
-#       - ember g ember-colpick
-      
 
     script:
       - npm run lint:js
