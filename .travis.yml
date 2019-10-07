@@ -51,13 +51,8 @@ matrix:
 
     before_install:
       - cd frontend
-      - npm install
-      - npm install --save ember-colpick
       - npm install -g yarn
-      - npm install -g firebase-tools
       - yarn install
-      - ember g ember-colpick
-      - npm config set spin false
 
     script:
       - npm run lint:js
