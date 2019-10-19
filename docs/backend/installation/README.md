@@ -28,7 +28,7 @@ Badgeyay backend depends on:
         * For MacOS
           ```bash
           brew install python
-          brew install postgress
+          brew install postgres
           ```
           * To install Homebrew 
             ```bash
