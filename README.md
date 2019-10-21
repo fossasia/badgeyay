@@ -2,10 +2,10 @@
 
 ![Badgeyay](/frontend/public/images/Badgeyay-artwork.png)
 
-[![Gitter](https://img.shields.io/badge/chat-on%20gitter-ff006f.svg?style=flat-square)](https://gitter.im/fossasia/badgeyay)
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/1ac554483fac462797ffa5a8b9adf2fa?style=flat-square)](https://www.codacy.com/app/fossasia/badgeyay)
-[![Build Status](https://api.travis-ci.org/fossasia/badgeyay.svg?branch=development&style=flat-square)](https://travis-ci.org/fossasia/badgeyay)
-[![Mailing](https://img.shields.io/badge/Mailing-List-red.svg)](https://groups.google.com/forum/#!forum/open-event)
+[![Gitter](/frontend/public/images/chat-on-gitter.svg)](https://gitter.im/fossasia/badgeyay)
+[![Codacy Badge](/frontend/public/images/code-quality.svg)](https://www.codacy.com/app/fossasia/badgeyay)
+[![Build Status](/frontend/public/images/build-passing.svg)](https://travis-ci.org/fossasia/badgeyay)
+[![Mailing](/frontend/public/images/Mailing-List-red.svg)](https://groups.google.com/forum/#!forum/open-event)
 
 > **Badgeyay provides an interface to event organizers for generating badges of events from concerts to conferences and meet-ups.**
 
