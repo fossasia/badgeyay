@@ -9,7 +9,6 @@ badgeyay.code-workspace
 .vagrant/
 venv/
 .vscode/
-badgeyay/
 .coverage
 *.sublime-project
 *.sublime-workspace
