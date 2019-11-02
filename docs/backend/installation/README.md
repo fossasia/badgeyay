@@ -54,7 +54,7 @@ Badgeyay backend can be easily deployed on a variety of platforms. Currently it 
 
 One-click Docker, Heroku, Scalingo and Bluemix deployment is also available:
 
-[![Deploy to Docker Cloud](https://files.cloud.docker.com/images/deploy-to-dockercloud.svg)](https://cloud.docker.com/stack/deploy/?repo=https://github.com/fossasia/badgeyay) [![Deploy](/frontend/public/images/heroku-deploy-button.svg)](https://heroku.com/deploy?template=https://github.com/fossasia/badgeyay/tree/development)
+[Deploy to Docker Cloud](https://cloud.docker.com/stack/deploy/?repo=https://github.com/fossasia/badgeyay) [![Deploy](/frontend/public/images/heroku-deploy-button.svg)](https://heroku.com/deploy?template=https://github.com/fossasia/badgeyay/tree/development)
 [![Deploy on Scalingo](/frontend/public/images/scalingo-deploy-button.svg)](https://my.scalingo.com/deploy?source=https://github.com/fossasia/badgeyay#development)
 [![Deploy to Bluemix](/frontend/public/images/bluemix-deploy-button.png)](https://bluemix.net/deploy?repository=https://github.com/fossasia/badgeyay&branch=development)
 

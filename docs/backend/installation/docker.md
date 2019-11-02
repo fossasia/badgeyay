@@ -1,6 +1,6 @@
 # Docker
 
-[![Deploy to Docker ](https://files.cloud.docker.com/images/deploy-to-dockercloud.svg)](https://cloud.docker.com/stack/deploy/?repo=https://github.com/fossasia/badgeyay)
+[Deploy to Docker](https://cloud.docker.com/stack/deploy/?repo=https://github.com/fossasia/badgeyay)
 
 * Get the latest version of docker. See the [offical site](https://docs.docker.com/engine/installation/) for installation info for your platform.
 
