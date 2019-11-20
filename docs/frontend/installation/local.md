@@ -7,6 +7,7 @@ You will need the following things properly installed on your computer.
 * [Git](https://git-scm.com/)
 * [Node.js](https://nodejs.org/) (with npm) (Preferred version 8.* || >= 10.*)
 * [Ember CLI](https://ember-cli.com/)
+* [Yarn](https://yarnpkg.com/en/docs/install#windows-stable)
 * [Google Chrome](https://google.com/chrome/) (for testing purposes only)
 
 ## Installation
