@@ -8,4 +8,4 @@ This directory contains the frontend for badgeyay.
 
 > Note to mobile users: On google chrome of mobile device, you need to **disable data saver** option in settings to open the [website](http://badgeyay.com/). Try clearing cache and cookies if the problem still persists.
 
-[Installation instructions](/docs/frontend/installation/README.md)
+[Installation instructions](../docs/frontend/installation/README.md)

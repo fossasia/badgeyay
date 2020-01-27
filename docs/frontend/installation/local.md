@@ -5,8 +5,9 @@
 You will need the following things properly installed on your computer.
 
 * [Git](https://git-scm.com/)
-* [Node.js](https://nodejs.org/) (with npm) (Preferred version is v9.11.2) (It's tricky to install npm on most system, maybe use nvm)
+* [Node.js](https://nodejs.org/) (with npm) (Preferred version 8.* || >= 10.*)
 * [Ember CLI](https://ember-cli.com/)
+* [Yarn](https://yarnpkg.com/en/docs/install#windows-stable)
 * [Google Chrome](https://google.com/chrome/) (for testing purposes only)
 
 ## Installation
@@ -16,6 +17,7 @@ To install the app, run the following commands in a command line:
 * `git clone https://github.com/fossasia/badgeyay`
 * `cd badgeyay/frontend`
 * `yarn install`
+
 ## Running locally:
 
 To run the app locally on your machine, run the following commands in a command line:
