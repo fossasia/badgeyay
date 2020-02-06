@@ -1,75 +1,13 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Badgeyay</title>
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Badgeyay is a simple badge generator with a simple web UI.">
-    <meta property="og:site_name" content="Badgeyay">
-    <link rel="shortcut icon" href="#" type="image/x-icon">
-    <!-- Add deployment url here -->
-    <meta property="og:url" content="">
-    <meta property="og:title" content="Badgeyay - Badge Generator">
-    <meta property="og:description" content="Badgeyay is a simple badge generator with a simple web UI to add data and generate printable badges in a zip.">
-    <meta name="twitter:site" content="@fossasia">
-    <meta name="twitter:url" content="https://twitter.com/fossasia">
-    <meta name="twitter:title" content="Badgeyay - FOSSASIA">
-    <meta name="twitter:description" content="Badgeyay is a simple badge generator with a simple web UI.">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css">
-  </head>
-  <body>
-
-    <nav class="navbar" role="navigation" aria-label="main navigation">
-      <div class="navbar-brand">
-        <a class="navbar-item" href="#">
-          <h2 class="title is-4"> <strong>  badgeyay </strong></h2>
-        </a>
-    
-        <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
-          <span aria-hidden="true"></span>
-          <span aria-hidden="true"></span>
-          <span aria-hidden="true"></span>
-        </a>
-      </div>
-    
-      <div id="navbarBasicExample" class="navbar-menu">
-        <div class="navbar-start">
-          <a class="navbar-item" href="{% url 'home' %}">
-            Home
-          </a>
-    
-          <a class="navbar-item">
-            Create Badges
-          </a>
-            </div>
-          </div>
-        </div>
-    
-        <div class="navbar-end">
-          <div class="navbar-item">
-            <div class="buttons">
-              <a class="button is-info" href="/accounts/signup/">
-                <strong>Sign up</strong>
-              </a>
-              <a class="button is-light" href="/accounts/login/">
-                Log in
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </nav>
-
-    <div class="container">
-      <div class="block">
-{% block content %}
-
-{% endblock %}
-      </div>
-    </div>
-
-
-  </body>
+<head>
+  <meta charset="utf-8">
+  <title>{% block title %}Badgeyay{% endblock %}</title>
+</head>
+<body>
+  <main>
+    {% block content %}
+    {% endblock %}
+  </main>
+</body>
 </html>
