@@ -56,6 +56,6 @@ tinycss2==0.6.1
 urllib3==1.24.2
 webencodings==0.5.1
 Werkzeug==0.15.3
-marshmallow-jsonapi
+marshmallow-jsonapi==0.20.0
 pycrypto==2.6.1
 stripe==1.84.0
