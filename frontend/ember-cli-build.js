@@ -20,8 +20,8 @@ module.exports = function(defaults) {
     }
   });
 
-  app.import('bower_components/Croppie/croppie.css');
-  app.import('bower_components/Croppie/croppie.min.js');
+  app.import('node_modules/croppie/croppie.css');
+  app.import('node_modules/croppie/croppie.min.js');
   // Use `app.import` to add additional libraries to the generated
   // output files.
   //

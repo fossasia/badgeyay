@@ -4,8 +4,8 @@
 
 [![Gitter](https://img.shields.io/badge/chat-on%20gitter-ff006f.svg?style=flat-square)](https://gitter.im/fossasia/badgeyay)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/1ac554483fac462797ffa5a8b9adf2fa?style=flat-square)](https://www.codacy.com/app/fossasia/badgeyay)
-[![Travis branch](https://api.travis-ci.org/fossasia/badgeyay.svg?branch=development&style=flat-square)](https://travis-ci.org/fossasia/badgeyay)
-[![Codecov branch](https://codecov.io/gh/fossasia/badgeyay/branch/development/graph/badge.svg?style=flat-square)](https://codecov.io/gh/fossasia/badgeyay)
+[![Build Status](https://api.travis-ci.org/fossasia/badgeyay.svg?branch=development&style=flat-square)](https://travis-ci.org/fossasia/badgeyay)
+[![Mailing](https://img.shields.io/badge/Mailing-List-red.svg)](https://groups.google.com/forum/#!forum/open-event)
 
 > **Badgeyay provides an interface to event organizers for generating badges of events from concerts to conferences and meet-ups.**
 
@@ -19,7 +19,7 @@ The user can:
 
 ## Demo
 
-![ezgif com-video-to-gif 15](/api/docs/installation/demo.gif)
+![ezgif com-video-to-gif 15](/docs/backend/installation/demo.gif)
 
 ## Communication
 
@@ -35,8 +35,8 @@ The user can:
 
 Badgeyay's frontend and backend can be deployed easily and a detailed installation instruction of frontend and backend have been provided below.
 
-1. [Badgeyay Frontend](/frontend/README.md)
-2. [Badgeyay Backend](/api/README.md)
+1. [Badgeyay Frontend](/docs/frontend/installation/README.md)
+2. [Badgeyay Backend](/docs/backend/installation/README.md)
 3. **Installing git pre-push hook:**
    - Run file `scripts/install-hook.py`. It will copy contents of `scripts/pre-push-hook.py` to `.git/hooks/pre-push`. Make sure that you have `.git/hooks/pre-push.sample` in your `.git` directory before performing this step.
    - This will install git `pre-push-hook` in your local `.git` directory. It will run the commits against linting tests before pushing to a remote. See `scripts/pre-push-hook.py` if you encounter any errors.

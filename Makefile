@@ -16,7 +16,7 @@ PIP = $(PYBINARIES)/pip
 HONCHO = $(PYBINARIES)/honcho
 
 NPM ?= npm
-BOWER ?= bower
+YARN ?= YARN
 
 clean.frontend:
 	rm -rf $(NODE_MODULES)
@@ -27,7 +27,7 @@ clean:
 install:
 	$(PIP) install --ignore-installed -r $(API)/requirements.txt
 	$(NPM) --prefix $(FRONTEND) install
-	$(BOWER) install --config.cwd=$(FRONTEND)
+	$(YARN) install --config.cwd=$(FRONTEND)
 
 test:
 	$(NPM) --prefix $(FRONTEND) test

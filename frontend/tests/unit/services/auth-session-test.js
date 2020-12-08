@@ -10,4 +10,3 @@ module('Unit | Service | auth-session', function(hooks) {
     assert.ok(service);
   });
 });
-

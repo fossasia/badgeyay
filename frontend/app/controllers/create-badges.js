@@ -8,7 +8,8 @@ const { APP } = ENV;
 import { inject as service } from '@ember/service';
 
 const CreateBadges =  Controller.extend({
-  init: () => {
+  init() {
+    this._super(...arguments);
     $.ajax({
       url       : '/images/default_logo.png',
       xhrFields : {
