@@ -4,7 +4,7 @@ blinker==1.4
 CacheControl==0.12.4
 cachetools==2.1.0
 cairocffi==0.8.0
-CairoSVG==2.1.3
+CairoSVG==2.5.1
 certifi==2018.4.16
 cffi==1.11.5
 chardet==3.0.4
