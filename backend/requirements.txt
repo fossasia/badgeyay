@@ -31,7 +31,7 @@ honcho==1.0.1
 idna==2.6
 itsdangerous==0.24
 Jinja2==2.10
-lxml==4.2.1
+lxml==4.6.3
 Mako==1.0.7
 MarkupSafe==1.0
 msgpack-python==0.5.6
