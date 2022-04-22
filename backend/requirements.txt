@@ -43,7 +43,7 @@ pyasn1==0.4.2
 pyasn1-modules==0.2.1
 pycparser==2.18
 PyJWT==1.6.3
-PyPDF2==1.26.0
+PyPDF2==1.27.5
 python-dateutil==2.7.3
 python-decouple==3.1
 python-editor==1.0.3
