@@ -64,7 +64,7 @@
   },
   "dependencies": {
     "@bower_components/pace": "HubSpot/pace",
-    "async": "^2.6.1",
+    "async": "^2.6.4",
     "babel-eslint": "^8.2.6",
     "bootstrap-slider": "~6.0.6",
     "croppie": "^2.6.4",
