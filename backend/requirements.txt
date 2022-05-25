@@ -42,7 +42,7 @@ psycopg2-binary==2.7.4
 pyasn1==0.4.2
 pyasn1-modules==0.2.1
 pycparser==2.18
-PyJWT==1.6.3
+PyJWT==2.4.0
 PyPDF2==1.26.0
 python-dateutil==2.7.3
 python-decouple==3.1
