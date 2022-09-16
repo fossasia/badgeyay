@@ -32,7 +32,7 @@ idna==2.6
 itsdangerous==0.24
 Jinja2==2.10
 lxml==4.6.5
-Mako==1.0.7
+Mako==1.2.2
 MarkupSafe==1.0
 msgpack-python==0.5.6
 Pillow==9.0.0
