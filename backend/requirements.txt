@@ -36,7 +36,7 @@ Mako==1.0.7
 MarkupSafe==1.0
 msgpack-python==0.5.6
 Pillow==9.0.0
-protobuf==3.5.2.post1
+protobuf==3.18.3
 psycopg2==2.7.4
 psycopg2-binary==2.7.4
 pyasn1==0.4.2
