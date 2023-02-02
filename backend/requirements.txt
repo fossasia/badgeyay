@@ -55,7 +55,7 @@ SQLAlchemy==1.2.7
 tinycss2==0.6.1
 urllib3==1.26.5
 webencodings==0.5.1
-Werkzeug==0.15.3
+Werkzeug==0.15.5
 marshmallow-jsonapi==0.20.0
 pycrypto==2.6.1
 stripe==1.84.0
